@@ -117,3 +117,30 @@ def test_cached_nla_never_loads_subject_and_cannot_recapture(monkeypatch):
         producer.backend.capture([1], [0], [0])
     with pytest.raises(ValueError, match="reader-only"):
         producer.use("logit_lens")
+
+
+def test_budget_callback_runs_before_generation_and_progress_follows_durable_batch(tmp_path):
+    first, _, union = fixture()
+    runtime = {"dtype": "bfloat16"}
+    backend = SimpleNamespace(
+        model_id="toy", revision="rev", device="cpu", capture_runtime=lambda: runtime
+    )
+    producer = Producer(backend, RandomReader())
+    events = []
+    path = tmp_path / "readouts.jsonl"
+
+    def stop():
+        raise RuntimeError("budget deadline")
+
+    with CaptureStore(tmp_path / "cache", union, runtime, 3) as store:
+        fill(store)
+        with pytest.raises(RuntimeError, match="budget deadline"):
+            producer.run_cached(first, "a", path, store, before_batch=stop)
+        assert producer.method._calls == 0 and path.read_bytes() == b""
+
+        def progress(event):
+            assert len(path.read_text().splitlines()) >= event["new_cells"]
+            events.append(event)
+
+        producer.run_cached(first, "a", path, store, on_batch=progress)
+        assert sum(e["new_cells"] for e in events) == first.n_cells

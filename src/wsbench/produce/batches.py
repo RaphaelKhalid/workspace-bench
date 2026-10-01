@@ -28,25 +28,15 @@ def blocks(manifest: CellManifest, family: str, batch_size: int, seed: int) -> l
     return result
 
 
-def execute_cached(producer, manifest, family, out, store, *, batch_size: int, seed: int):
-    """Replay full interrupted blocks with the same seed; append only missing cells."""
-    import torch
-
-    from .journal import ReadoutJournal
-    from .producer import Row
-
+def binding_for(manifest, family, config, capture_binding, runtime, *, batch_size, seed):
     plan = blocks(manifest, family, batch_size, seed)
-    config = producer.validate_manifest(manifest, family)
-    if not hasattr(producer.method, "read_batch"):
-        raise ValueError("reader does not implement batched execution")
-    store.check_reader(manifest)  # reject incomplete caches before any reader generation
-    binding = {
+    return {
         "manifest_sha256": manifest.fingerprint,
         "family": family,
         "reader": config,
-        "capture_binding": store.binding,
+        "capture_binding": capture_binding,
         "reader_runtime": {
-            **producer.backend.capture_runtime(),
+            **runtime,
             "methods_source_sha256": hashlib.sha256(
                 Path(__file__).with_name("methods.py").read_bytes()
             ).hexdigest(),
@@ -58,12 +48,51 @@ def execute_cached(producer, manifest, family, out, store, *, batch_size: int, s
             "plan_sha256": digest([asdict(b) for b in plan]),
         },
     }
+
+
+def execute_cached(
+    producer,
+    manifest,
+    family,
+    out,
+    store,
+    *,
+    batch_size: int,
+    seed: int,
+    before_batch=None,
+    on_batch=None,
+):
+    """Replay full interrupted blocks with the same seed; append only missing cells."""
+    import torch
+
+    from .journal import ReadoutJournal
+    from .producer import Row
+
+    plan = blocks(manifest, family, batch_size, seed)
+    config = producer.validate_manifest(manifest, family)
+    if not hasattr(producer.method, "read_batch"):
+        raise ValueError("reader does not implement batched execution")
+    # A full run checks all captures once while owning the store lock. Per-item reads
+    # still validate hashes; store writes or reopening invalidate this preflight.
+    store.check_reader(manifest, reuse_verified=True)
+    binding = binding_for(
+        manifest,
+        family,
+        config,
+        store.binding,
+        producer.backend.capture_runtime(),
+        batch_size=batch_size,
+        seed=seed,
+    )
     items = {item.id: item for item in manifest.family(family)}
     loaded_id, loaded = None, None
     with ReadoutJournal(out, binding=binding, expected=manifest.expected(family)) as journal:
         for block in plan:
             if all((item_id, block.layer, pos) in journal.present for item_id, pos in block.cells):
                 continue
+            if before_batch is not None:
+                before_batch()
+            existing = len(journal.present)
             vectors = []
             for item_id, pos in block.cells:
                 if loaded_id != item_id:
@@ -86,4 +115,13 @@ def execute_cached(producer, manifest, family, out, store, *, batch_size: int, s
                 token = item.tokens[item.positions.index(pos)]
                 journal.append(Row(item_id, block.layer, pos, token, readout).contract())
             journal.checkpoint()
+            if on_batch is not None:
+                on_batch(
+                    {
+                        "family": family,
+                        "layer": block.layer,
+                        "generated_cells": len(block.cells),
+                        "new_cells": len(journal.present) - existing,
+                    }
+                )
     return out

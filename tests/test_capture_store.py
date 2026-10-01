@@ -129,3 +129,31 @@ def test_second_writer_cannot_open_same_store(tmp_path):
         CaptureStore(tmp_path, union, {"dtype": "bfloat16"}, 3),
     ):
         pass
+
+
+def test_verified_scan_reuse_is_scoped_to_lock_and_invalidated_on_write(tmp_path, monkeypatch):
+    first, _, union = fixture()
+    store = CaptureStore(tmp_path, union, {"dtype": "bfloat16"}, 3)
+    calls = []
+    original = store.selected
+
+    def selected(item):
+        calls.append(item.id)
+        return original(item)
+
+    monkeypatch.setattr(store, "selected", selected)
+    with store:
+        fill(store)
+        store.check_reader(first)
+        store.check_reader(first, reuse_verified=True)
+        assert len(calls) == 2
+        store.put(union.items[0], store.get(union.items[0]))
+        store.check_reader(first, reuse_verified=True)
+        assert len(calls) == 4
+        path, _ = store._identity(union.items[0])
+        path.write_bytes(b"corrupt")
+        # Reusing the scan never bypasses payload validation for an actual read.
+        with pytest.raises(ValueError, match="invalid capture"):
+            store.selected(first.items[0])
+    with store, pytest.raises(ValueError, match="invalid capture"):
+        store.check_reader(first, reuse_verified=True)

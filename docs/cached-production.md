@@ -40,6 +40,11 @@ For all families on a given reader, load `Producer.load_cached(...)` once and ca
 invocations reload the model and are not the recommended full benchmark runner.
 Capture uses `Backend.capture` with adapters disabled and KV caching off.
 
+The full-roster library entry point `produce.reader_run.run_readers` now performs
+output preflight and this reuse automatically, with budget checks between batches.
+See [run controls](run-controls.md) for its tested behavior and remaining deployment
+integration; it does not itself authorize or rent a pod.
+
 NLA cached production loads **only its NLA reader**, without loading a second
 subject model. Its backend is marked reader-only: subject capture and switching
 to a subject-based lens are rejected. This removes the duplicate subject-weight
@@ -82,8 +87,8 @@ reader's dtype, and clears injection state after success or failure. Outputs are
 grouped back into the original cells and sample order.
 
 The current per-family CLI still loads the reader before discovering a completely
-finished readout journal. The deployment runner should check completed outputs
-before loading and reuse a loaded reader across unfinished families. Further gates
+finished readout journal. The full-roster library runner checks completed outputs
+before loading and reuses a loaded reader across unfinished families. Further gates
 include adapter-effect checks, merged-adapter equivalence where used, GPU pilot
 validation, export/watchdog controls and the fidelity audit. All-family mocked
 non-dry scoring now passes; see [sparse evaluation](sparse-evaluation.md) for the

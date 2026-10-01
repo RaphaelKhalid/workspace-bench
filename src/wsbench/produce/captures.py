@@ -65,6 +65,7 @@ class CaptureStore:
         self.hidden_size = hidden_size
         self._items = {(i.family, i.id): i for i in manifest.items}
         self._lock = None
+        self._verified_readers = set()
 
     @classmethod
     def existing(cls, root: Path):
@@ -73,6 +74,7 @@ class CaptureStore:
         return cls(root, manifest, binding["runtime"], binding["hidden_size"])
 
     def __enter__(self):
+        self._verified_readers.clear()
         self._lock = file_lock(self.root / ".writer.lock")
         self._lock.__enter__()
         try:
@@ -97,6 +99,7 @@ class CaptureStore:
     def __exit__(self, *exc):
         self._lock.__exit__(*exc)
         self._lock = None
+        self._verified_readers.clear()
 
     def _identity(self, item: ManifestItem) -> tuple[Path, dict]:
         if self._lock is None:
@@ -136,6 +139,7 @@ class CaptureStore:
             raise ValueError(f"invalid capture {item.family}/{item.id}: {exc}") from exc
 
     def put(self, item: ManifestItem, vectors: np.ndarray) -> None:
+        self._verified_readers.clear()
         path, identity = self._identity(item)
         self._validate(vectors, item)
         if path.exists():
@@ -158,11 +162,16 @@ class CaptureStore:
             raise ValueError(f"capture missing for {item.family}/{item.id}")
         return {layer: vectors[original.layers.index(layer)] for layer in item.layers}
 
-    def check_reader(self, manifest: CellManifest) -> None:
+    def check_reader(self, manifest: CellManifest, *, reuse_verified=False) -> None:
+        if self._lock is None:
+            raise RuntimeError("capture store must be opened")
         if manifest.fingerprint not in self.manifest.metadata.get("reader_manifests", []):
             raise ValueError("reader manifest absent from capture union")
+        if reuse_verified and manifest.fingerprint in self._verified_readers:
+            return
         for item in manifest.items:
             self.selected(item)
+        self._verified_readers.add(manifest.fingerprint)
 
 
 def capture_all(backend, store: CaptureStore) -> dict:

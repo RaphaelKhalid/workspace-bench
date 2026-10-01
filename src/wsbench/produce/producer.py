@@ -201,11 +201,30 @@ class Producer:
                 raise ValueError("reader settings differ from reference manifest")
         return reader_config
 
-    def run_cached(self, manifest, family, out, store, *, batch_size=16, seed=0):
+    def run_cached(
+        self,
+        manifest,
+        family,
+        out,
+        store,
+        *,
+        batch_size=16,
+        seed=0,
+        before_batch=None,
+        on_batch=None,
+    ):
         from .batches import execute_cached
 
         return execute_cached(
-            self, manifest, family, Path(out), store, batch_size=batch_size, seed=seed
+            self,
+            manifest,
+            family,
+            Path(out),
+            store,
+            batch_size=batch_size,
+            seed=seed,
+            before_batch=before_batch,
+            on_batch=on_batch,
         )
 
     def run_manifest(self, manifest: Any, family: str, out: Path | str) -> Path:
