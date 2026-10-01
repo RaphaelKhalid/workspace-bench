@@ -7,6 +7,7 @@ from collections.abc import Callable, Mapping, Sequence
 
 from wsbench import llm
 from wsbench.cache import Cache, fingerprint
+from wsbench.free_route import active as free_policy
 from wsbench.judge_config import ResolvedJudge
 from wsbench.llm import Spend, schema_block
 
@@ -38,6 +39,10 @@ def render_bag(tokens: Sequence[str], scores: Sequence[float] | None) -> str:
 
 def aux_judge(judge: ResolvedJudge, aux_models: Mapping[str, str], role: str) -> ResolvedJudge:
     """The judge used for an auxiliary stage: ``aux_models[role]`` if set, else the judge."""
+    policy = free_policy()
+    if policy is not None:
+        policy.require_model(judge.model)
+        return judge
     model = aux_models.get(role, judge.model)
     if model == judge.model:
         return judge
@@ -71,6 +76,8 @@ def summarize(
     pending: list[tuple[str, str, str]] = []  # (key, fp, text)
     for key, txt in bundles.items():
         fp = fingerprint(SUMMARIZER_PROMPT_VERSION, judge.model, txt)
+        if free_policy() is not None:
+            fp = fingerprint(fp, judge.reasoning, INTERP_SCHEMA)
         row = cache.get(f"summ:{key}", fp)
         if row is not None:
             out[key] = _text(row.get("result"))

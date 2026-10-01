@@ -16,6 +16,7 @@ The prompt-scope rule (``pos < rollout_start``) is the producer's obligation: a 
 for this family must contain prompt positions only; every row is in scope here.
 """
 
+import json
 import re
 from collections import defaultdict
 from collections.abc import Callable, Sequence
@@ -23,6 +24,7 @@ from collections.abc import Callable, Sequence
 from wsbench import llm
 from wsbench.cache import Cache, fingerprint
 from wsbench.family import fail
+from wsbench.free_route import active as free_policy
 from wsbench.llm import Spend
 from wsbench.manifest_judging import load_judge_readouts
 from wsbench.mcjudge import base_config, base_counts, item_scope, load_bank, with_readout_count
@@ -104,6 +106,24 @@ def _int_opt(args: JudgeArgs, key: str, default: int) -> int:
     return v
 
 
+def valid_free_design_reply(text: str) -> bool:
+    """Do not let an incomplete/refusal response become a zero-valued design score."""
+    try:
+        data = llm._parse_object(text)
+    except (ValueError, TypeError, json.JSONDecodeError):
+        return False
+    return (
+        data.get("identified_family") in (*prompts.FAMILIES, prompts.NONE_OPTION)
+        and type(data.get("asserts_misaligned_plan")) is bool
+        and all(
+            type(data.get(k)) is int and 0 <= data[k] <= 3
+            for k in ("design_rank", "design_fidelity", "commit_strength")
+        )
+        and all(data.get(k) in prompts.ORIGINS for k in ("origin_claimed", "origin_actual"))
+        and isinstance(data.get("reason"), str)
+    )
+
+
 def _batch(
     stage: str,
     calls: Calls,
@@ -118,6 +138,8 @@ def _batch(
     """cache key -> text. Cached (non-failed) rows are reused; the rest go through
     :func:`llm.stream_text` in one batch. A landed text (incl. ``""``) is ``cache.put``
     immediately as ``{"result": text, **extra(key, text)}``; ``None`` is never cached."""
+    if free_policy() is not None:
+        calls = [(key, fingerprint(fp, thinking, max_tokens), user) for key, fp, user in calls]
     out: dict[str, str | None] = {}
     pending: Calls = []
     for key, fp, user in calls:
@@ -132,6 +154,13 @@ def _batch(
 
     def on_result(i: int, text: str | None) -> None:
         key, fp, _user = pending[i]
+        if (
+            free_policy() is not None
+            and stage == "C"
+            and text is not None
+            and not valid_free_design_reply(text)
+        ):
+            text = None
         if text is not None:
             cache.put(key, fp, {"result": text, **(extra(key, text) if extra else {})})
         out[key] = text

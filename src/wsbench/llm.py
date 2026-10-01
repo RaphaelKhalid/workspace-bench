@@ -20,6 +20,9 @@ from collections.abc import Callable
 from dataclasses import dataclass
 from typing import Any, Literal
 
+from wsbench.errors import JudgeConfigError
+from wsbench.free_route import active as free_policy
+
 OPENROUTER = "https://openrouter.ai/api/v1"
 _TRANSIENT = (408, 409, 429, 500, 502, 503, 504, 529)
 _FATAL = ("AuthenticationError", "PermissionDeniedError", "NotFoundError")
@@ -27,10 +30,6 @@ _ATTEMPTS = 12
 _DEFAULT_MAX_TOKENS = {"openrouter": 8000, "anthropic": 16000}
 
 Route = Literal["anthropic", "openrouter"]
-
-
-class JudgeConfigError(RuntimeError):
-    """A configuration problem that would fail every judge call (raised, never degraded)."""
 
 
 @dataclass
@@ -61,6 +60,9 @@ def route(model: str) -> Route:
 
 
 def api_key(model: str) -> str:
+    policy = free_policy()
+    if policy is not None:
+        policy.require_model(model)
     if route(model) == "anthropic":
         key = os.environ.get("ANTHROPIC_API_KEY", "")
         if not key:
@@ -153,6 +155,46 @@ def _parse_object(content: str) -> dict[str, Any]:
     return data
 
 
+async def _openrouter_response(client: Any, *, spend: Spend, **kwargs: Any) -> Any:
+    policy = free_policy()
+    token = None
+    if policy is not None:
+        kwargs["extra_body"]["provider"] = policy.config["provider"]
+        token = policy.reserve(
+            kwargs["model"], structured="response_format" in kwargs, request=kwargs
+        )
+    try:
+        resp = await client.chat.completions.create(**kwargs)
+    except Exception as e:
+        if policy is not None:
+            policy.failed(token, e)
+        raise
+    spend.calls += 1
+    usage = getattr(resp, "usage", None)
+    cost = getattr(usage, "cost", None) if usage is not None else None
+    if cost is None and usage is not None:
+        cost = (getattr(usage, "model_extra", None) or {}).get("cost")
+    spend.usd += float(cost or 0.0)
+    if policy is not None:
+        policy.response(token, resp, cost)
+    if not getattr(resp, "choices", None):
+        raise ValueError("response has no choices")
+    if policy is not None:
+        spend.input_tokens += int(getattr(usage, "prompt_tokens", 0) or 0)
+        spend.output_tokens += int(getattr(usage, "completion_tokens", 0) or 0)
+        choice = resp.choices[0]
+        if (
+            getattr(choice.message, "refusal", None)
+            or getattr(choice, "finish_reason", None) == "content_filter"
+        ):
+            spend.refusals += 1
+            return None
+        if getattr(choice, "finish_reason", None) != "stop":
+            spend.errors += 1
+            return None
+    return resp
+
+
 async def _openrouter_once(
     client: Any,
     system: str,
@@ -172,10 +214,10 @@ async def _openrouter_once(
     }
     if reasoning is not None:
         extra_body["reasoning"] = reasoning
-    kwargs: dict[str, Any] = {}
-    if temperature is not None:
-        kwargs["temperature"] = temperature
-    resp = await client.chat.completions.create(
+    kwargs = {} if temperature is None else {"temperature": temperature}
+    resp = await _openrouter_response(
+        client,
+        spend=spend,
         timeout=timeout,
         model=model,
         max_tokens=max_tokens,
@@ -184,15 +226,48 @@ async def _openrouter_once(
         extra_body=extra_body,
         **kwargs,
     )
-    spend.calls += 1
-    if not getattr(resp, "choices", None):  # an error delivered in a 200 body
-        raise ValueError("response has no choices")
-    usage = getattr(resp, "usage", None)
-    cost = getattr(usage, "cost", None) if usage is not None else None
-    if cost is None and usage is not None:
-        cost = (getattr(usage, "model_extra", None) or {}).get("cost")
-    spend.usd += float(cost or 0.0)
-    return _parse_object(resp.choices[0].message.content or "")
+    if resp is None:
+        return None
+    result = _parse_object(resp.choices[0].message.content or "")
+    if free_policy() is not None:
+        from jsonschema import Draft202012Validator, ValidationError
+
+        try:
+            Draft202012Validator(schema["schema"]).validate(result)
+        except ValidationError as e:
+            raise ValueError("free judge returned a schema-invalid response") from e
+    return result
+
+
+async def _openrouter_text_once(
+    client: Any,
+    user: str,
+    *,
+    model: str,
+    thinking: bool,
+    max_tokens: int,
+    timeout: float,
+    spend: Spend,
+) -> str | None:
+    policy = free_policy()
+    if policy is None:
+        raise JudgeConfigError("OpenRouter text stages require the explicit free-only policy")
+    resp = await _openrouter_response(
+        client,
+        spend=spend,
+        timeout=timeout,
+        model=model,
+        max_tokens=max_tokens,
+        messages=[{"role": "user", "content": user}],
+        extra_body={
+            "usage": {"include": True},
+            "reasoning": policy.config["text_thinking"]["on" if thinking else "off"],
+        },
+    )
+    if resp is None:
+        return None
+    text = (resp.choices[0].message.content or "").strip()
+    return text or None
 
 
 async def _anthropic_once(
@@ -253,7 +328,7 @@ async def _one(
     system = system.encode("utf-8", "replace").decode("utf-8")
     user = user.encode("utf-8", "replace").decode("utf-8")
     for attempt in range(_ATTEMPTS):
-        await _pace(rpm)
+        await _pace(min(rpm, 20.0) if free_policy() is not None else rpm)
         try:
             if route_ == "anthropic":
                 return await _anthropic_once(
@@ -278,6 +353,8 @@ async def _one(
                 timeout=timeout,
                 spend=spend,
             )
+        except JudgeConfigError:
+            raise
         except Exception as e:
             name = type(e).__name__
             status = getattr(e, "status_code", None)
@@ -437,7 +514,8 @@ def preflight(model: str, reasoning: dict[str, Any] | None) -> None:
 
 
 # ---------------------------------------------------------------- free-text primitive
-# Used by agentic_misalignment (three free-text stages, no schema). Anthropic route only:
+# Used by agentic_misalignment (three free-text stages, no schema). The reference route is
+# Anthropic; an explicit free-only policy enables the pinned OpenRouter text transport.
 # streaming (the SDK refuses non-streaming requests whose max_tokens implies a >10 min
 # operation), per-call thinking on/off, and a budget-doubling retry when the text is empty and
 # stop_reason == "max_tokens" (thinking ate the budget), up to _TEXT_BUDGET_CEILING.
@@ -496,9 +574,10 @@ async def _one_text(
     """Same backoff / fatal classification as :func:`_one`, for one free-text call."""
     user = user.encode("utf-8", "replace").decode("utf-8")
     for attempt in range(_ATTEMPTS):
-        await _pace(rpm)
+        await _pace(min(rpm, 20.0) if free_policy() is not None else rpm)
         try:
-            return await _anthropic_text_once(
+            once = _anthropic_text_once if route(model) == "anthropic" else _openrouter_text_once
+            return await once(
                 client,
                 user,
                 model=model,
@@ -507,6 +586,8 @@ async def _one_text(
                 timeout=timeout,
                 spend=spend,
             )
+        except JudgeConfigError:
+            raise
         except Exception as e:
             name = type(e).__name__
             status = getattr(e, "status_code", None)
@@ -541,19 +622,19 @@ async def stream_text_async(
     timeout: float = 600.0,
     spend: Spend | None = None,
 ) -> Spend:
-    """Run user-only free-text prompts concurrently on the Anthropic route (no system block,
-    no schema), handing each stripped text (or ``None`` = exhausted retries / non-transient
-    error / refusal) to ``on_result(index, text)`` as it lands. ``""`` is a valid result (the
-    source returns it after the 64k budget ceiling). Any non-``claude-*`` model raises
-    :class:`JudgeConfigError`. Builds no client when there is nothing to call."""
+    """Run user-only prompts on Anthropic or the explicit free-only OpenRouter route.
+    Failures/refusals are None; the reference Anthropic empty-string behavior is unchanged.
+    OpenRouter rejects blank, truncated and provenance-invalid responses."""
     spend = spend or Spend()
     if not prompts:
         return spend
     if concurrency < 1 or rpm <= 0:
         raise JudgeConfigError(f"concurrency must be >= 1 and rpm > 0 (got {concurrency}, {rpm})")
-    if route(model) != "anthropic":
-        raise JudgeConfigError(f"free-text stage requires a claude-* model (got {model})")
-    client = _make_client("anthropic", api_key(model))
+    if route(model) != "anthropic" and free_policy() is None:
+        raise JudgeConfigError(
+            f"free-text stage requires a claude-* model or free-only policy (got {model})"
+        )
+    client = _make_client(route(model), api_key(model))
     sem = asyncio.Semaphore(concurrency)
 
     async def one(i: int, user: str) -> tuple[int, str | None]:

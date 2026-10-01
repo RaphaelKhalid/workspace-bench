@@ -4,6 +4,7 @@ from collections.abc import Mapping
 from dataclasses import dataclass, field
 from typing import Literal
 
+from wsbench.free_route import active as free_policy
 from wsbench.llm import route
 
 DEFAULT_JUDGE = "google/gemini-3.8-flash"
@@ -31,6 +32,15 @@ def resolve(
     config: JudgeConfig, *, flag: str | None = None, env: Mapping[str, str] | None = None
 ) -> ResolvedJudge:
     env = env or {}
+    policy = free_policy()
+    if policy is not None:
+        if flag:
+            policy.require_model(flag)
+        if env.get(ENV_OVERRIDE):
+            policy.require_model(env[ENV_OVERRIDE])
+        return ResolvedJudge(
+            model=policy.model, reasoning={"effort": "minimal"}, pinned=False, source="env"
+        )
     env_model = env.get(ENV_OVERRIDE, "")
     if flag:
         model, source = flag, "flag"

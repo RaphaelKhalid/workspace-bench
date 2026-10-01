@@ -8,6 +8,7 @@ from typing import Any
 
 from wsbench import llm, registry
 from wsbench.cache import Cache, fingerprint
+from wsbench.free_route import cache_context
 from wsbench.judge_config import ResolvedJudge
 from wsbench.llm import Spend
 from wsbench.readouts import Cell
@@ -66,6 +67,8 @@ def run_calls(
         fp = fingerprint(
             prompt_version, judge.model, judge.reasoning, temperature, c.system, c.user
         )
+        if cache_context() is not None:
+            fp = fingerprint(fp, schema, max_tokens)
         row = cache.get(c.key, fp)
         if row is not None:
             out[c.key] = row["result"]
@@ -110,7 +113,10 @@ _PREFLIGHTED: set[str] = set()
 
 
 def preflight_key(model: str, reasoning: dict | None) -> str:
-    return json.dumps([model, reasoning], sort_keys=True)
+    values = [model, reasoning]
+    if cache_context() is not None:
+        values.append(cache_context())
+    return json.dumps(values, sort_keys=True)
 
 
 class Preflighter:

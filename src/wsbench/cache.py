@@ -6,10 +6,15 @@ import time
 from pathlib import Path
 from typing import Any, Self
 
+from wsbench.free_route import cache_context
+
 _RESERVED = ("key", "fp", "ts")
 
 
 def fingerprint(*parts: Any) -> str:
+    context = cache_context()
+    if context is not None:
+        parts = (*parts, {"free_route": context})
     blob = json.dumps(parts, sort_keys=True, ensure_ascii=False)
     return hashlib.sha256(blob.encode("utf-8")).hexdigest()[:16]
 

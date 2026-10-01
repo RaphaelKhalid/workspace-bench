@@ -116,7 +116,9 @@ sparse report aggregation still need completion. Sparse files must not be sent t
 the original dense judge with `allow_missing=True`.
 
 Reader-specific manifests, artifact SHA/revision locks, deterministic sampling on
-resume, persisted activation reuse, batched reading, free-only API routing and quota
-handling, validation runs and budget-controlled deployment are unfinished. The current
+resume, persisted activation reuse, batched reading, validation runs and budget-controlled
+deployment are unfinished. Free-only API routing is implemented and offline-tested
+([protocol](free-judging.md)); live format verification is currently incomplete because
+the pinned provider returned 429s. The current
 producer implementation is an offline-tested correctness path, not the optimized rental
 runner. Nothing here authorizes launching a GPU before the remaining gates pass.

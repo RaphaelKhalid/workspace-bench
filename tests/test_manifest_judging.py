@@ -162,7 +162,7 @@ def test_arithmetic_judges_both_selected_layers_with_original_single_cell_prompt
     assert all(row["n_cells"] == 2 for row in result.rows)
 
 
-def test_runner_refuses_bad_artifact_before_preflight_and_namespaces_cache(tmp_path, mk_args):
+def test_runner_refuses_bad_artifact_before_preflight_and_namespaces_cache(tmp_path, capsys):
     manifest = example_manifest("association")
     manifest_path = tmp_path / "manifest.json"
     manifest.write(manifest_path)
@@ -187,6 +187,10 @@ def test_runner_refuses_bad_artifact_before_preflight_and_namespaces_cache(tmp_p
     with pytest.raises(SystemExit, match="coverage mismatch"):
         runner.run_families([spec], options, readouts_root=root, out=tmp_path / "out", env={})
     write_rows(path, rows)
+    with pytest.raises(SystemExit) as error:
+        runner.run_families([spec], options, readouts_root=root, out=tmp_path / "out", env={})
+    assert error.value.code == 2
+    assert "WSBENCH_FREE_ONLY" in capsys.readouterr().err
     options.dry_run = True
     result = runner.judge_family(
         spec, options, path, tmp_path / "out", judge=resolve(spec.judge, env={}), opts={}

@@ -12,6 +12,7 @@ from typing import Literal, Protocol
 from wsbench import llm, mcjudge
 from wsbench.cell_manifest import CellManifest
 from wsbench.family import fail
+from wsbench.free_route import active as free_policy
 from wsbench.judge_config import ResolvedJudge, resolve
 from wsbench.llm import JudgeConfigError
 from wsbench.manifest_judging import annotate_result, load_judge_readouts
@@ -94,7 +95,11 @@ def _judge_args(
         concurrency=args.concurrency,
         rpm=args.rpm,
         dry_run=args.dry_run,
-        aux_models=spec.judge.aux_models,
+        aux_models=(
+            dict.fromkeys(spec.judge.aux_models, judge.model)
+            if free_policy() is not None
+            else spec.judge.aux_models
+        ),
         extra=dict(opts),
         cell_manifest=manifest,
         family=spec.name,
@@ -114,7 +119,11 @@ def judge_family(
     jargs = _judge_args(spec, args, readouts, out, judge=judge, opts=opts)
     if jargs.cell_manifest is not None:
         load_judge_readouts(jargs)
+        if not args.dry_run and free_policy() is None:
+            fail("manifest judging requires WSBENCH_FREE_ONLY=1 before any API calls")
     result = annotate_result(spec.run(jargs), jargs)
+    if free_policy() is not None:
+        result.config["free_route"] = free_policy().config
     path = write_results(out, result)
     spend = result.counts.get("spend_usd", 0.0) or 0.0
     print(
@@ -200,6 +209,8 @@ def run_families(
         for s, readouts in runnable:
             jargs = _judge_args(s, args, readouts, out / s.name, judge=judges[s.name], opts=opts)
             load_judge_readouts(jargs)
+        if not args.dry_run and free_policy() is None:
+            fail("manifest judging requires WSBENCH_FREE_ONLY=1 before any API calls")
     # a family with a deterministic scorer of record makes no call unless opts=judge=mc
     needs_llm = [s for s, _r in runnable if not s.scorer or opts.get("judge") == "mc"]
     if needs_llm and not args.dry_run:
