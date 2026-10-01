@@ -2,8 +2,10 @@
 A benchmark layer L is the output of decoder block ``model.layers[L]`` (the residual stream after
 that block), the convention every bank was captured with."""
 
+import hashlib
 from contextlib import nullcontext
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Any, Self
 
 DEFAULT_MODEL = "Qwen/Qwen3.6-27B"
@@ -19,6 +21,31 @@ class Backend:
     device: str
     model_id: str
     revision: str | None = None
+    capture_allowed: bool = True
+
+    def capture_runtime(self) -> dict:
+        """Record runtime choices that can change captured floating-point activations."""
+        import torch
+        import transformers
+
+        config = self.model.config
+        config = getattr(config, "text_config", config)
+        result = {
+            "torch": str(torch.__version__),
+            "transformers": transformers.__version__,
+            "dtype": str(self.model.dtype),
+            "device": self.device,
+            "attention_implementation": getattr(config, "_attn_implementation", None),
+            "allow_tf32": torch.backends.cuda.matmul.allow_tf32,
+            "float32_matmul_precision": torch.get_float32_matmul_precision(),
+            "deterministic_algorithms": torch.are_deterministic_algorithms_enabled(),
+            "backend_source_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+            "capture_contract": "decoder-block-output; adapters-disabled; use-cache-false-v1",
+        }
+        if str(self.device).startswith("cuda"):
+            result["gpu"] = torch.cuda.get_device_name(self.device)
+            result["cuda"] = torch.version.cuda
+        return result
 
     @classmethod
     def load(
@@ -81,6 +108,8 @@ class Backend:
         """One forward pass; the residual stream after each requested block, at ``positions``."""
         import torch
 
+        if not self.capture_allowed:
+            raise ValueError("reader-only backend cannot capture subject activations")
         store: dict[int, Any] = {}
         handles = []
         blocks = self.blocks

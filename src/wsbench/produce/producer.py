@@ -79,10 +79,25 @@ class Producer:
 
     def use(self, method_spec: str | Method, **method_kw: Any) -> Self:
         """Switch method on the loaded model (``p.use("jlens")``); returns self."""
+        if not self.backend.capture_allowed:
+            raise ValueError("reader-only backend requires a fresh reader load when switching")
         m = method(method_spec, **method_kw)
         m.bind(self.backend)
         self.method = m
         return self
+
+    @classmethod
+    def load_cached(cls, model, method_spec, *, device="cuda", revision=None):
+        """NLA needs only its own reader once subject activations have been persisted."""
+        from .methods import NLA
+
+        reader = method(method_spec)
+        if not isinstance(reader, NLA):
+            return cls.load(model, reader, device=device, revision=revision)
+        backend = Backend(None, None, device, model, revision, capture_allowed=False)
+        reader.bind(backend)
+        backend.model, backend.tokenizer = reader._reader, reader._tok
+        return cls(backend, reader)
 
     # ---- the four entry points
 
@@ -151,10 +166,8 @@ class Producer:
                 fh.flush()
         return out
 
-    def run_manifest(self, manifest: Any, family: str, out: Path | str) -> Path:
-        """Produce exactly a resolved manifest's cells; resume by cell, never by item ID."""
-        from .journal import ReadoutJournal
-
+    def validate_manifest(self, manifest: Any, family: str) -> dict:
+        """Validate subject and reference settings before opening artifacts or generating."""
         if (self.backend.model_id, self.backend.revision) != (
             manifest.metadata["model"],
             manifest.metadata["model_revision"],
@@ -186,6 +199,21 @@ class Producer:
             }
             if reader_config != expected_config:
                 raise ValueError("reader settings differ from reference manifest")
+        return reader_config
+
+    def run_cached(self, manifest, family, out, store, *, batch_size=16, seed=0):
+        from .batches import execute_cached
+
+        return execute_cached(
+            self, manifest, family, Path(out), store, batch_size=batch_size, seed=seed
+        )
+
+    def run_manifest(self, manifest: Any, family: str, out: Path | str) -> Path:
+        """Produce exactly a resolved manifest's cells; resume by cell, never by item ID."""
+        from .journal import ReadoutJournal
+
+        reader_config = self.validate_manifest(manifest, family)
+        items = manifest.family(family)
         binding = {
             "manifest_sha256": manifest.fingerprint,
             "family": family,

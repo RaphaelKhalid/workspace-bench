@@ -33,6 +33,17 @@ class Method(Protocol):
 
     def bind(self, backend: Backend) -> None: ...  # load artifacts onto the backend's device
     def read(self, h: Any, layer: int) -> Readout: ...  # h: [d] fp32 CPU residual vector
+    def read_batch(self, h: Any, layer: int) -> list[Readout]: ...
+
+
+def _ranked(scores: Any, k: int, tokenizer: Any) -> list[Readout]:
+    import torch
+
+    vals, ids = torch.topk(scores, k, dim=-1)
+    return [
+        Readout(tokens=display_tokens(tokenizer, row), scores=[round(v, 4) for v in values])
+        for row, values in zip(ids.tolist(), vals.tolist(), strict=True)
+    ]
 
 
 # ---------------------------------------------------------------- vector lenses
@@ -65,6 +76,12 @@ class LogitLens:
             tokens=display_tokens(b.tokenizer, ids.tolist()),
             scores=[round(v, 4) for v in vals.tolist()],
         )
+
+    def read_batch(self, h: Any, layer: int) -> list[Readout]:
+        b = self._b
+        assert b is not None
+        x = b.final_norm(h.to(b.device))
+        return _ranked(x @ self._w_u.T, self.k, b.tokenizer)
 
 
 def _load_jacobians(repo: str, filename: str, device: str, revision: str | None = None) -> Any:
@@ -133,6 +150,16 @@ class JLens:
             scores=[round(v, 4) for v in vals.tolist()],
         )
 
+    def read_batch(self, h: Any, layer: int) -> list[Readout]:
+        b = self._b
+        assert b is not None and self._jac is not None
+        if not 0 <= layer < self._jac.shape[0]:
+            raise ValueError("layer outside Jacobian source layers")
+        if layer not in self._denom:
+            self._denom[layer] = (self._w_u @ self._jac[layer]).norm(dim=1).clamp_min(1e-9)
+        scores = ((h.to(b.device) @ self._jac[layer].T) @ self._w_u.T) / self._denom[layer]
+        return _ranked(scores, self.k, b.tokenizer)
+
 
 @dataclass
 class RLens:
@@ -166,6 +193,14 @@ class RLens:
             tokens=display_tokens(b.tokenizer, ids.tolist()),
             scores=[round(v, 4) for v in vals.tolist()],
         )
+
+    def read_batch(self, h: Any, layer: int) -> list[Readout]:
+        b = self._b
+        assert b is not None and self._jac is not None
+        if not 0 <= layer < self._jac.shape[0]:
+            raise ValueError("layer outside Jacobian source layers")
+        x = b.final_norm(h.to(b.device) @ self._jac[layer].T)
+        return _ranked(x @ self._w_u.T, self.k, b.tokenizer)
 
 
 @dataclass
@@ -213,6 +248,9 @@ class TemplateLens:
         self._active_layer, self._directions = None, None
 
     def read(self, h: Any, layer: int) -> Readout:
+        return self.read_batch(h.unsqueeze(0), layer)[0]
+
+    def read_batch(self, h: Any, layer: int) -> list[Readout]:
         import torch
         from safetensors import safe_open
 
@@ -223,11 +261,11 @@ class TemplateLens:
             self._directions = torch.nn.functional.normalize(directions, dim=-1).to(self._b.device)
             self._active_layer = layer
         vector = torch.nn.functional.normalize(h.to(self._b.device).float(), dim=-1)
-        vals, ids = torch.topk(self._directions @ vector, self.k)
-        return Readout(
-            tokens=[self._words[i] for i in ids.tolist()],
-            scores=[round(v, 4) for v in vals.tolist()],
-        )
+        vals, ids = torch.topk(vector @ self._directions.T, self.k, dim=-1)
+        return [
+            Readout(tokens=[self._words[i] for i in row], scores=[round(v, 4) for v in values])
+            for row, values in zip(ids.tolist(), vals.tolist(), strict=True)
+        ]
 
 
 # ---------------------------------------------------------------- verbalizers
@@ -335,6 +373,9 @@ class OLens:
         raise ValueError("no enclosed ideograph survives as a single token in the carrier prompt")
 
     def read(self, h: Any, layer: int) -> Readout:
+        return self.read_batch(h.unsqueeze(0), layer)[0]
+
+    def read_batch(self, h: Any, layer: int) -> list[Readout]:
         import torch
 
         b = self._b
@@ -342,13 +383,15 @@ class OLens:
         ids, slot = self._carrier(layer)
         embed = b.model.get_input_embeddings()
         with torch.no_grad():
-            e = embed(torch.tensor([ids], device=b.device)).clone()
+            e = embed(torch.tensor([ids], device=b.device).repeat(len(h), 1)).clone()
             v = h.to(b.device).float()
-            e[0, slot, :] = (self.alpha * v / v.norm().clamp_min(1e-9)).to(e.dtype)
+            e[:, slot, :] = (self.alpha * v / v.norm(dim=-1, keepdim=True).clamp_min(1e-9)).to(
+                e.dtype
+            )
             s = self.sampling
             out = b.model.generate(
                 inputs_embeds=e,
-                attention_mask=torch.ones(1, len(ids), device=b.device, dtype=torch.long),
+                attention_mask=torch.ones(len(h), len(ids), device=b.device, dtype=torch.long),
                 do_sample=s.temperature > 0,
                 temperature=max(s.temperature, 1e-5),
                 top_p=s.top_p,
@@ -358,7 +401,12 @@ class OLens:
                 pad_token_id=b.tokenizer.pad_token_id or b.tokenizer.eos_token_id,
             )
         texts = b.tokenizer.batch_decode(out, skip_special_tokens=True)
-        return Readout(samples=[t.strip() for t in texts])
+        if len(texts) != len(h) * s.k:
+            raise ValueError("Oracle generation returned wrong sample count")
+        return [
+            Readout(samples=[t.strip() for t in texts[i : i + s.k]])
+            for i in range(0, len(texts), s.k)
+        ]
 
 
 @dataclass
@@ -451,7 +499,7 @@ class NLA:
                 return out
             hp = h[:, mp, :]
             v = v.to(h.dtype).to(h.device)
-            vu = v / (v.norm() + 1e-9)
+            vu = v / (v.norm(dim=-1, keepdim=True) + 1e-9)
             h[:, mp, :] = hp + hp.norm(dim=-1, keepdim=True) * vu
             return out
 
@@ -459,16 +507,19 @@ class NLA:
         self._reader = reader
 
     def read(self, h: Any, layer: int) -> Readout:
+        return self.read_batch(h.unsqueeze(0), layer)[0]
+
+    def read_batch(self, h: Any, layer: int) -> list[Readout]:
         import torch
 
         b = self._b
         assert b is not None and self._reader is not None
-        self._vec["v"] = h.float()
         s = self.sampling
+        self._vec["v"] = h.float().repeat_interleave(s.k, dim=0)
         try:
             with torch.no_grad():
                 out = self._reader.generate(
-                    torch.tensor([self._ids], device=b.device),
+                    torch.tensor([self._ids], device=b.device).repeat(len(h), 1),
                     do_sample=s.temperature > 0,
                     temperature=max(s.temperature, 1e-5),
                     top_p=s.top_p,
@@ -481,7 +532,9 @@ class NLA:
             self._vec["v"] = None
         texts = self._tok.batch_decode(out[:, len(self._ids) :], skip_special_tokens=True)
         texts = [t.split("</explanation>")[0].removeprefix("<explanation>").strip() for t in texts]
-        return Readout(samples=texts)
+        if len(texts) != len(h) * s.k:
+            raise ValueError("NLA generation returned wrong sample count")
+        return [Readout(samples=texts[i : i + s.k]) for i in range(0, len(texts), s.k)]
 
 
 METHODS: dict[str, type] = {

@@ -549,6 +549,9 @@ class Produce(Command):
         self.device = "cuda"
         self.manifest = None
         self.revision = None
+        self.capture_store = None
+        self.batch_size = 16
+        self.seed = 0
 
     def finalize(self) -> None:
         self.method = str(self.method)
@@ -572,6 +575,9 @@ class Produce(Command):
         self.device = str(self.device)
         self.manifest = _path(self.manifest) if self.manifest else None
         self.revision = str(self.revision) if self.revision else None
+        self.capture_store = _path(self.capture_store) if self.capture_store else None
+        self.batch_size = _int(self.batch_size)
+        self.seed = _int(self.seed)
 
     def execute(self) -> int:
         from wsbench.produce import METHODS, Producer, write
@@ -584,6 +590,9 @@ class Produce(Command):
             return EXIT_USAGE
         if self.family and self.family not in readplan.families():
             print(f"unknown family {self.family!r}", file=sys.stderr)
+            return EXIT_USAGE
+        if self.capture_store and (not self.manifest or self.batch_size < 1 or self.seed < 0):
+            print("cached production requires manifest=, batch_size>0 and seed>=0", file=sys.stderr)
             return EXIT_USAGE
         manifest = None
         if self.manifest is not None:
@@ -624,6 +633,29 @@ class Produce(Command):
             except ValueError as e:
                 print(f"invalid reference reader: {e}", file=sys.stderr)
                 return EXIT_USAGE
+        if self.capture_store:
+            from wsbench.produce.captures import CaptureStore
+
+            try:
+                with CaptureStore.existing(self.capture_store) as store:
+                    store.check_reader(manifest)
+                    producer = Producer.load_cached(self.model, method_spec, **kwargs)
+                    out = (
+                        self.out or Path("outputs/readouts") / self.method / f"{self.family}.jsonl"
+                    )
+                    path = producer.run_cached(
+                        manifest,
+                        self.family,
+                        out,
+                        store,
+                        batch_size=self.batch_size,
+                        seed=self.seed,
+                    )
+            except (ValueError, OSError) as e:
+                print(f"cached production failed: {e}", file=sys.stderr)
+                return EXIT_USAGE
+            print(f"wrote {path}")
+            return 0
         producer = Producer.load(self.model, method_spec, **kwargs)
         if self.family:
             out = self.out or Path("outputs/readouts") / self.method / f"{self.family}.jsonl"
@@ -643,6 +675,57 @@ class Produce(Command):
         else:
             for r in rows:
                 print(json.dumps(r.contract(), ensure_ascii=False))
+        return 0
+
+
+class Capture(Command):
+    """Capture the shared manifest once; resume verified complete items without recapturing."""
+
+    def __init__(self):
+        super().__init__()
+        self.manifest = ""
+        self.out = ""
+        self.device = "cuda"
+
+    def finalize(self):
+        self.manifest = _path(self.manifest) if self.manifest else None
+        self.out = _path(self.out) if self.out else None
+        self.device = str(self.device)
+
+    def execute(self):
+        from wsbench.cell_manifest import CellManifest
+        from wsbench.produce.backend import Backend
+        from wsbench.produce.captures import CaptureStore, capture_all
+
+        if not self.manifest or not self.out:
+            print("capture requires manifest= and out=", file=sys.stderr)
+            return EXIT_USAGE
+        try:
+            manifest = CellManifest.load(self.manifest)
+            manifest.verify_banks()
+            if "reader_manifests" not in manifest.metadata:
+                raise ValueError("capture requires an explicit union of reader manifests")
+            if (self.out / "capture-run.json").exists():
+                with CaptureStore.existing(self.out) as store:
+                    if store.manifest.fingerprint != manifest.fingerprint:
+                        raise ValueError("capture manifest changed")
+                    available = [store.get(item) is not None for item in manifest.items]
+                    complete = all(available)
+                    if complete:
+                        print("all captures verified; no model loaded")
+                        return 0
+            backend = Backend.load(
+                manifest.metadata["model"],
+                device=self.device,
+                revision=manifest.metadata["model_revision"],
+                dtype="bfloat16",
+            )
+            hidden_size = backend.unembed.shape[1]
+            with CaptureStore(self.out, manifest, backend.capture_runtime(), hidden_size) as store:
+                print(json.dumps(capture_all(backend, store)))
+        except (ValueError, OSError) as e:
+            print(f"capture failed: {e}", file=sys.stderr)
+            return EXIT_USAGE
         return 0
 
 
@@ -697,6 +780,7 @@ COMMANDS: dict[str, type[Command]] = {
     "capable": Capable,
     "plan": Plan,
     "produce": Produce,
+    "capture": Capture,
     "freeze": Freeze,
     "convert-gen-dir": ConvertGenDir,
     "convert-read-json": ConvertReadJson,

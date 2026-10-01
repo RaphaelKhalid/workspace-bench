@@ -22,7 +22,8 @@ IDs and selected token positions. Reader compatibility changes layers explicitly
 There are **303,662 reader cells across all eight arms**, not 48,981 for the entire
 baseline comparison. These are reader workloads, not API request or cost estimates.
 The union of selected subject activation sites is 54,893, including NLA's additional
-layer 42. Reuse those captures across arms once persistent activation caching is ready.
+layer 42. The [shared capture store and batched producer](cached-production.md)
+reuse those vectors across arms; their GPU behavior still needs pilot validation.
 
 J/R artifacts contain exactly 63 source matrices, indexed 0–62, with target layer 62.
 That is verified from their public checkpoint pickle metadata without unpickling it.
