@@ -4,8 +4,10 @@ Status: implementation in progress; **not ready for GPU rental or a benchmark cl
 
 The candidate retains all 3,356 original items across 27 families. It resolves 48,981
 cells with the original family layer grids. This is a per-reader count, not the sum of
-all baseline arms. The candidate still requires fidelity validation and reader-specific
-layer manifests (Oracle excludes L63; NLA reads at its trained layer).
+all baseline arms. The candidate still requires fidelity validation. Explicit manifests
+now cover all eight reference arms: J/R/Oracle exclude unsupported L63, and NLA reads
+at its trained L42. See [reference artifacts and manifests](reference-readers.md) for
+exact counts, checkpoint pins and unresolved dependencies.
 
 ## What is implemented
 

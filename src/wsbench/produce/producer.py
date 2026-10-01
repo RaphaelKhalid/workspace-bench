@@ -171,6 +171,21 @@ class Producer:
             for name, value in vars(self.method).items()
             if not name.startswith("_")
         }
+        if reference := manifest.metadata.get("reader_reference"):
+            from wsbench.cell_manifest import digest
+
+            from .reference import load_lock, reference_method
+
+            if reference["lock_sha256"] != digest(load_lock()):
+                raise ValueError("reader artifact lock differs from manifest")
+            expected_reader = reference_method(reference["arm"])
+            expected_config = {
+                name: asdict(value) if is_dataclass(value) else value
+                for name, value in vars(expected_reader).items()
+                if not name.startswith("_")
+            }
+            if reader_config != expected_config:
+                raise ValueError("reader settings differ from reference manifest")
         binding = {
             "manifest_sha256": manifest.fingerprint,
             "family": family,

@@ -44,6 +44,7 @@ class LogitLens:
     artifact."""
 
     name: str = "logit_lens"
+    reference_arm_id: str | None = None
     layers: list[int] | None = None
     k: int = TOP_K
     _b: Backend | None = field(default=None, repr=False)
@@ -66,22 +67,29 @@ class LogitLens:
         )
 
 
-def _load_jacobians(repo: str, filename: str, device: str) -> Any:
+def _load_jacobians(repo: str, filename: str, device: str, revision: str | None = None) -> Any:
     """``J[layer, d, d]`` fp32 from a J-lens ``.pt`` (the official ``JacobianLens`` layout with
     ``J`` keyed by layer, or a plain ``jacobians`` stack)."""
     import torch
     from huggingface_hub import hf_hub_download
 
-    obj = torch.load(hf_hub_download(repo, filename), map_location="cpu", weights_only=False)
+    from .reference import locked_file
+
+    path = locked_file(repo, filename, revision) if revision else hf_hub_download(repo, filename)
+    obj = torch.load(path, map_location="cpu", weights_only=True)
     jac = obj["J"] if "J" in obj else obj["jacobians"]
     if isinstance(jac, dict):
         layers = sorted(int(k) for k in jac)
         stacked = torch.stack([jac[L] if L in jac else jac[str(L)] for L in layers]).float()
     else:
         stacked = jac.float()
-        layers = list(range(stacked.shape[0]))
+        layers = [int(layer) for layer in obj.get("source_layers", range(stacked.shape[0]))]
     if layers != list(range(len(layers))):
         raise ValueError(f"{filename}: source_layers not contiguous from 0: {layers}")
+    if "source_layers" in obj and [int(layer) for layer in obj["source_layers"]] != layers:
+        raise ValueError(f"{filename}: source_layers disagree with tensor keys")
+    if stacked.ndim != 3 or stacked.shape[0] != len(layers) or stacked.shape[1] != stacked.shape[2]:
+        raise ValueError(f"{filename}: invalid Jacobian dimensions")
     return stacked.to(device)
 
 
@@ -92,9 +100,11 @@ class JLens:
     wikitext lens for Qwen3.6-27B."""
 
     name: str = "jlens"
+    reference_arm_id: str | None = None
     layers: list[int] | None = None
     repo: str = "neuronpedia/jacobian-lens"
     filename: str = "qwen3.6-27b/jlens/Salesforce-wikitext/Qwen3.6-27B_jacobian_lens_n1000.pt"
+    revision: str | None = "b25d72a96b79c8e309d6625955a98751da47e67a"
     k: int = TOP_K
     _b: Backend | None = field(default=None, repr=False)
     _jac: Any = field(default=None, repr=False)
@@ -103,7 +113,7 @@ class JLens:
 
     def bind(self, backend: Backend) -> None:
         self._b = backend
-        self._jac = _load_jacobians(self.repo, self.filename, backend.device)
+        self._jac = _load_jacobians(self.repo, self.filename, backend.device, self.revision)
         self._w_u = backend.unembed.float()
 
     def read(self, h: Any, layer: int) -> Readout:
@@ -130,9 +140,11 @@ class RLens:
     ``W_U · norm(J·h)``. Default artifact: ``camilablank/workspace-lenses``."""
 
     name: str = "rlens"
+    reference_arm_id: str | None = None
     layers: list[int] | None = None
     repo: str = "camilablank/workspace-lenses"
     filename: str = "qwen3.6-27b/r-lens/lens.pt"
+    revision: str | None = "d740106d1e0f95456dc8718fba2895e9c8ffd6ef"
     k: int = TOP_K
     _b: Backend | None = field(default=None, repr=False)
     _jac: Any = field(default=None, repr=False)
@@ -140,7 +152,7 @@ class RLens:
 
     def bind(self, backend: Backend) -> None:
         self._b = backend
-        self._jac = _load_jacobians(self.repo, self.filename, backend.device)
+        self._jac = _load_jacobians(self.repo, self.filename, backend.device, self.revision)
         self._w_u = backend.unembed.float()
 
     def read(self, h: Any, layer: int) -> Readout:
@@ -152,6 +164,68 @@ class RLens:
         vals, ids = torch.topk(x @ self._w_u.T, self.k)
         return Readout(
             tokens=display_tokens(b.tokenizer, ids.tolist()),
+            scores=[round(v, 4) for v in vals.tolist()],
+        )
+
+
+@dataclass
+class TemplateLens:
+    """Cosine readout against frozen word/phrase directions, loading one layer at a time."""
+
+    name: str = "template_lens"
+    reference_arm_id: str | None = None
+    layers: list[int] | None = None
+    repo: str = "camilablank/workspace-lenses"
+    revision: str = "d740106d1e0f95456dc8718fba2895e9c8ffd6ef"
+    filename: str = "qwen3.6-27b/template-lens/templates+phrases_v3.safetensors"
+    words_filename: str = "qwen3.6-27b/template-lens/template_words+phrases_v3.txt"
+    k: int = TOP_K
+    _b: Backend | None = field(default=None, repr=False)
+    _path: Any = field(default=None, repr=False)
+    _words: list[str] = field(default_factory=list, repr=False)
+    _layer_ids: list[int] = field(default_factory=list, repr=False)
+    _active_layer: int | None = field(default=None, repr=False)
+    _directions: Any = field(default=None, repr=False)
+
+    def bind(self, backend: Backend) -> None:
+        from safetensors import safe_open
+
+        from .reference import locked_file
+
+        self._b = backend
+        self._path = locked_file(self.repo, self.filename, self.revision)
+        words = locked_file(self.repo, self.words_filename, self.revision)
+        self._words = []
+        for index, line in enumerate(words.read_text(encoding="utf-8").splitlines()):
+            row_id, text = line.split("\t", 1)
+            if int(row_id) != index or not text:
+                raise ValueError("template vocabulary must be an ordered row-to-text map")
+            self._words.append(text)
+        with safe_open(self._path, framework="pt", device="cpu") as tensors:
+            self._layer_ids = tensors.get_tensor("layers").tolist()
+            shape = tensors.get_slice("templates").get_shape()
+            if tensors.metadata()["model_id"] != backend.model_id:
+                raise ValueError("template subject differs from probed model")
+            if shape != [len(self._layer_ids), len(self._words), backend.unembed.shape[1]]:
+                raise ValueError("template dimensions do not match layer/vocabulary/model")
+            if len(set(self._layer_ids)) != len(self._layer_ids):
+                raise ValueError("duplicate template layer")
+        self._active_layer, self._directions = None, None
+
+    def read(self, h: Any, layer: int) -> Readout:
+        import torch
+        from safetensors import safe_open
+
+        assert self._b is not None and self._path is not None
+        if layer != self._active_layer:
+            with safe_open(self._path, framework="pt", device="cpu") as tensors:
+                directions = tensors.get_slice("templates")[self._layer_ids.index(layer)].float()
+            self._directions = torch.nn.functional.normalize(directions, dim=-1).to(self._b.device)
+            self._active_layer = layer
+        vector = torch.nn.functional.normalize(h.to(self._b.device).float(), dim=-1)
+        vals, ids = torch.topk(self._directions @ vector, self.k)
+        return Readout(
+            tokens=[self._words[i] for i in ids.tolist()],
             scores=[round(v, 4) for v in vals.tolist()],
         )
 
@@ -196,10 +270,11 @@ class OLens:
     while generating, so one model serves both roles."""
 
     name: str = "olens"
+    reference_arm_id: str | None = None
     layers: list[int] | None = None
     lora: str = "agu18dec/olens_and_ar:olens_s3d_rl600"
     repo_type: str = "model"
-    revision: str | None = None
+    revision: str | None = "c95215d5d2f6250f20c305ae55c6e4d7569f92dc"
     alpha: float = 16000.0
     prompt: str = (
         "An activation vector from layer {layer} of a language model is enclosed in activation "
@@ -214,9 +289,19 @@ class OLens:
         from huggingface_hub import snapshot_download
         from peft import PeftModel
 
-        adir = adapter_directory(
-            self.lora, snapshot_download, repo_type=self.repo_type, revision=self.revision
-        )
+        from .reference import locked_directory
+
+        if self.reference_arm_id or (
+            self.lora == "agu18dec/olens_and_ar:olens_s3d_rl600"
+            and self.revision == "c95215d5d2f6250f20c305ae55c6e4d7569f92dc"
+        ):
+            adir = str(
+                locked_directory(self.reference_arm_id or "oracle_rl", self.lora.split(":", 1)[1])
+            )
+        else:
+            adir = adapter_directory(
+                self.lora, snapshot_download, repo_type=self.repo_type, revision=self.revision
+            )
         if isinstance(backend.model, PeftModel):  # a previous verbalizer's adapter
             backend.model = backend.model.unload()
         backend.model = PeftModel.from_pretrained(backend.model, adir)
@@ -284,8 +369,10 @@ class NLA:
     at 42 unless the caller says otherwise; the vector's layer is not part of its prompt."""
 
     name: str = "nla"
+    reference_arm_id: str | None = None
     layers: list[int] | None = field(default_factory=lambda: [42])
     repo: str = "ceselder/qwen3.6-27b-nla-rl"
+    revision: str | None = "5a13b7ec21a69fcdd0fb24d5edbe96a92aef4b9f"
     adapter: str = "av_rl_adapters/iter_000400"
     sampling: Sampling = field(default_factory=Sampling)
     _b: Backend | None = field(default=None, repr=False)
@@ -302,8 +389,20 @@ class NLA:
         from peft import PeftModel
         from transformers import AutoModelForCausalLM, AutoTokenizer
 
+        from .reference import locked_directory
+
         self._b = backend
-        base = f"{snapshot_download(self.repo, allow_patterns=['av_base/*'])}/av_base"
+        locked = (
+            self.repo == "ceselder/qwen3.6-27b-nla-rl"
+            and self.revision == "5a13b7ec21a69fcdd0fb24d5edbe96a92aef4b9f"
+        )
+        if locked:
+            base = str(locked_directory(self.reference_arm_id or "nla_rl", "av_base"))
+        else:
+            local = snapshot_download(
+                self.repo, revision=self.revision, allow_patterns=["av_base/*"]
+            )
+            base = f"{local}/av_base"
         meta = yaml.safe_load(Path(f"{base}/nla_meta.yaml").read_text(encoding="utf-8"))
         tmpl = meta["prompt_templates"].get("av") or meta["prompt_templates"]["actor"]
         marker_id = int(meta["tokens"]["injection_token_id"])
@@ -321,12 +420,25 @@ class NLA:
         )
         self._ids = list(out["input_ids"] if hasattr(out, "keys") else out)
         (self._marker,) = [i for i, t in enumerate(self._ids) if t == marker_id]
+        if not 0 < self._marker < len(self._ids) - 1 or (
+            self._ids[self._marker - 1],
+            self._ids[self._marker + 1],
+        ) != (
+            int(meta["tokens"]["injection_left_neighbor_id"]),
+            int(meta["tokens"]["injection_right_neighbor_id"]),
+        ):
+            raise ValueError("NLA marker neighbors differ from checkpoint metadata")
         reader = AutoModelForCausalLM.from_pretrained(
             base, dtype=torch.bfloat16, device_map=backend.device
         )
         if self.adapter and self.adapter != "none":
-            local = snapshot_download(self.repo, allow_patterns=[f"{self.adapter}/*"])
-            adir = f"{local}/{self.adapter}"
+            if locked:
+                adir = str(locked_directory(self.reference_arm_id or "nla_rl", self.adapter))
+            else:
+                local = snapshot_download(
+                    self.repo, revision=self.revision, allow_patterns=[f"{self.adapter}/*"]
+                )
+                adir = f"{local}/{self.adapter}"
             reader = PeftModel.from_pretrained(reader, adir, torch_dtype=torch.bfloat16)
         reader.eval()
         (block1,) = [m for n, m in reader.named_modules() if n.endswith("model.layers.1")]
@@ -338,7 +450,8 @@ class NLA:
             if v is None or h.shape[1] <= mp:
                 return out
             hp = h[:, mp, :]
-            vu = v.to(h.dtype).to(h.device) / (v.norm() + 1e-9)
+            v = v.to(h.dtype).to(h.device)
+            vu = v / (v.norm() + 1e-9)
             h[:, mp, :] = hp + hp.norm(dim=-1, keepdim=True) * vu
             return out
 
@@ -375,6 +488,7 @@ METHODS: dict[str, type] = {
     "logit_lens": LogitLens,
     "jlens": JLens,
     "rlens": RLens,
+    "template_lens": TemplateLens,
     "olens": OLens,
     "nla": NLA,
 }

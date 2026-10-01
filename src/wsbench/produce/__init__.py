@@ -2,7 +2,19 @@
 ``gpu`` extra. The tour is ``docs/producing_readouts.md``."""
 
 from .backend import DEFAULT_MODEL, Backend
-from .methods import METHODS, NLA, JLens, LogitLens, Method, OLens, Readout, RLens, Sampling, method
+from .methods import (
+    METHODS,
+    NLA,
+    JLens,
+    LogitLens,
+    Method,
+    OLens,
+    Readout,
+    RLens,
+    Sampling,
+    TemplateLens,
+    method,
+)
 from .producer import Producer, Row, write
 from .render import Rendered, render, render_text
 
@@ -21,6 +33,7 @@ __all__ = [
     "Rendered",
     "Row",
     "Sampling",
+    "TemplateLens",
     "method",
     "render",
     "render_text",

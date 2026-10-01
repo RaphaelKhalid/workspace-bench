@@ -78,3 +78,16 @@ python -m wsbench.free_smoke --out outputs/free-route/smoke.json --formats json,
 Set a small invocation cap (for example `WSBENCH_FREE_MAX_REQUESTS=4`) for smoke tests.
 The result file is updated after each format, including a failure, so a later quota error
 cannot erase an earlier success. No API smoke is a substitute for judge calibration.
+
+## Separately evaluated Nemotron alternative
+
+At the reader-lock milestone, `nvidia/nemotron-3-super-120b-a12b:free` pinned to
+provider `nvidia` passed all three formats (JSON, plain text, reasoning text), with
+each response reporting zero cost. This is a candidate judge, not a silent fallback
+or evidence of accuracy on benchmark labels. Its responses and audit log are separate
+from Qwen's. Qwen/ModelRun returned another 429 and remains unvalidated for all formats.
+
+The catalog also lists `nvidia/nemotron-3.5-lightning:free`, but its exact Nvidia
+endpoint did not advertise structured outputs and reported status -2 at inspection.
+No inference was sent to it. Preserve strict schema support and zero-price routing
+when evaluating alternatives. Recheck availability before future calls.

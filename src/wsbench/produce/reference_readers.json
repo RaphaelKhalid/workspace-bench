@@ -1,0 +1,643 @@
+{
+  "schema_version": 1,
+  "status": "candidate_not_launch_ready",
+  "subject": {
+    "model": "Qwen/Qwen3.6-27B",
+    "revision": "6a9e13bd6fc8f0983b9b99948120bc37f49c13e9",
+    "dtype": "bfloat16",
+    "hidden_size": 5120
+  },
+  "roster_source": "README.md reference-arm roster at c66bc936cbf08e1646bd7852faaf26b1f2161de3",
+  "sampling_source": "docs/producing_readouts.md at c66bc936cbf08e1646bd7852faaf26b1f2161de3 explicitly states these in-house arm settings; NLA RL400 is the pinned upstream producer default.",
+  "arms": {
+    "logit_lens": {
+      "method": "logit_lens",
+      "layer_policy": "intersection",
+      "supported_layers": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63
+      ],
+      "files": [],
+      "top_k": 10,
+      "open_questions": []
+    },
+    "jlens": {
+      "method": "jlens",
+      "layer_policy": "intersection",
+      "supported_layers": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62
+      ],
+      "top_k": 10,
+      "files": [
+        {
+          "repo": "neuronpedia/jacobian-lens",
+          "repo_type": "model",
+          "revision": "b25d72a96b79c8e309d6625955a98751da47e67a",
+          "filename": "qwen3.6-27b/jlens/Salesforce-wikitext/Qwen3.6-27B_jacobian_lens_n1000.pt",
+          "sha256": "1718c8c52dd8a9dad03738d4d625937c1fbba10be325b872ed446c7290fc11e1",
+          "size": 3303032772
+        }
+      ],
+      "open_questions": []
+    },
+    "rlens": {
+      "method": "rlens",
+      "layer_policy": "intersection",
+      "supported_layers": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62
+      ],
+      "top_k": 10,
+      "files": [
+        {
+          "repo": "camilablank/workspace-lenses",
+          "repo_type": "model",
+          "revision": "d740106d1e0f95456dc8718fba2895e9c8ffd6ef",
+          "filename": "qwen3.6-27b/r-lens/lens.pt",
+          "sha256": "fe4d0b6a17318760e67e7a5ed417fc5dbb8e66129c6944656f506b2f10ce6192",
+          "size": 3303028567
+        }
+      ],
+      "open_questions": []
+    },
+    "template_lens": {
+      "method": "template_lens",
+      "layer_policy": "intersection",
+      "supported_layers": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63
+      ],
+      "top_k": 10,
+      "files": [
+        {
+          "repo": "camilablank/workspace-lenses",
+          "repo_type": "model",
+          "revision": "d740106d1e0f95456dc8718fba2895e9c8ffd6ef",
+          "filename": "qwen3.6-27b/template-lens/templates+phrases_v3.safetensors",
+          "sha256": "c8529864c78b081867450bbad274bc4f2863f22fa8d196ae23bcb8962158cf91",
+          "size": 8998859320
+        },
+        {
+          "repo": "camilablank/workspace-lenses",
+          "repo_type": "model",
+          "revision": "d740106d1e0f95456dc8718fba2895e9c8ffd6ef",
+          "filename": "qwen3.6-27b/template-lens/template_words+phrases_v3.txt",
+          "sha256": "77e81a0374ee20916d65f467b4db186d0026cd681184c91a6b6679f04cd3dc12",
+          "size": 188866
+        }
+      ],
+      "open_questions": [
+        "Verify that v3 rather than the base dictionary is the paper reference arm."
+      ]
+    },
+    "oracle_rl": {
+      "method": "olens",
+      "layer_policy": "intersection",
+      "supported_layers": [
+        20,
+        24,
+        28,
+        32,
+        36,
+        40,
+        44,
+        48,
+        52,
+        56,
+        60
+      ],
+      "sampling": {
+        "temperature": 1.0,
+        "top_p": 0.95,
+        "top_k": 64,
+        "max_new_tokens": 256,
+        "k": 1
+      },
+      "files": [
+        {
+          "repo": "agu18dec/olens_and_ar",
+          "repo_type": "model",
+          "revision": "c95215d5d2f6250f20c305ae55c6e4d7569f92dc",
+          "filename": "olens_s3d_rl600/adapter_config.json",
+          "sha256": "0479e800238bd3e2a7f2eb2c05310e617711de46ee16469582d028522ceb04c2",
+          "size": 1289
+        },
+        {
+          "repo": "agu18dec/olens_and_ar",
+          "repo_type": "model",
+          "revision": "c95215d5d2f6250f20c305ae55c6e4d7569f92dc",
+          "filename": "olens_s3d_rl600/adapter_model.safetensors",
+          "sha256": "7d4b301e002246af3c3f2bb6e768f8fa62f8aac2c231a0bd02a8d4f9ecafd9aa",
+          "size": 467047680
+        }
+      ],
+      "injection": {
+        "mode": "replace_embedding",
+        "transform": "unit",
+        "alpha": 16000.0,
+        "prompt_kind": "concepts_raw"
+      },
+      "open_questions": []
+    },
+    "oracle_sft": {
+      "method": "olens",
+      "layer_policy": "intersection",
+      "supported_layers": [
+        20,
+        24,
+        28,
+        32,
+        36,
+        40,
+        44,
+        48,
+        52,
+        56,
+        60
+      ],
+      "sampling": {
+        "temperature": 1.0,
+        "top_p": 0.95,
+        "top_k": 64,
+        "max_new_tokens": 256,
+        "k": 1
+      },
+      "files": [
+        {
+          "repo": "agu18dec/local-workspace",
+          "repo_type": "dataset",
+          "revision": "5aa232fea1f07689fd6bb084c030db87705d0978",
+          "filename": "ckpts/ao/distill/s3d.omp4bp.s2/step251/lora_hf/adapter_model.safetensors",
+          "sha256": "d5bdbe0d71e625974cd110a97d663b3a064dfbef16efc97ed96860f86b589080",
+          "size": 467047648
+        }
+      ],
+      "injection": {
+        "mode": "replace_embedding",
+        "transform": "unit",
+        "alpha": 16000.0,
+        "prompt_kind": "concepts_raw"
+      },
+      "open_questions": [
+        "Required dataset file returns HTTP 401 without gated access; config hash and converted adapter contract are not yet verified."
+      ]
+    },
+    "nla_sft": {
+      "method": "nla",
+      "layer_policy": "fixed",
+      "supported_layers": [
+        42
+      ],
+      "sampling": {
+        "temperature": 1.0,
+        "top_p": 0.95,
+        "top_k": 64,
+        "max_new_tokens": 256,
+        "k": 1
+      },
+      "injection": {
+        "block": 1,
+        "mode": "norm_matched_add",
+        "marker_id": 158983,
+        "left_id": 29,
+        "right_id": 510
+      },
+      "open_questions": [],
+      "files": [
+        {
+          "repo": "ceselder/qwen3.6-27b-nla-rl",
+          "repo_type": "model",
+          "revision": "5a13b7ec21a69fcdd0fb24d5edbe96a92aef4b9f",
+          "filename": "av_base/config.json",
+          "sha256": "10d517a120597b391bb5a9e1f67aad70a162656067c3f25d95eccd44e46564d9",
+          "size": 2740
+        },
+        {
+          "repo": "ceselder/qwen3.6-27b-nla-rl",
+          "repo_type": "model",
+          "revision": "5a13b7ec21a69fcdd0fb24d5edbe96a92aef4b9f",
+          "filename": "av_base/generation_config.json",
+          "sha256": "252e0efee3ded327704912616f3493a227cdc39eb4bab52fcae1ceb3ed5dc890",
+          "size": 213
+        },
+        {
+          "repo": "ceselder/qwen3.6-27b-nla-rl",
+          "repo_type": "model",
+          "revision": "5a13b7ec21a69fcdd0fb24d5edbe96a92aef4b9f",
+          "filename": "av_base/model.safetensors.index.json",
+          "sha256": "5c26baef87822882c6362d7ba2e916198299b403f988751faa15ee3654ec64d5",
+          "size": 83909
+        },
+        {
+          "repo": "ceselder/qwen3.6-27b-nla-rl",
+          "repo_type": "model",
+          "revision": "5a13b7ec21a69fcdd0fb24d5edbe96a92aef4b9f",
+          "filename": "av_base/model-00001-of-00002.safetensors",
+          "sha256": "8354ca745ac4a405be0df6918954534cd2be1e415494bc8c11622f8cf30ebd73",
+          "size": 49825162976
+        },
+        {
+          "repo": "ceselder/qwen3.6-27b-nla-rl",
+          "repo_type": "model",
+          "revision": "5a13b7ec21a69fcdd0fb24d5edbe96a92aef4b9f",
+          "filename": "av_base/model-00002-of-00002.safetensors",
+          "sha256": "66d6c918749ff5c0d53784c2b63e63ac4d32db33bb42d4b26a240029cf8a02f9",
+          "size": 3966947216
+        },
+        {
+          "repo": "ceselder/qwen3.6-27b-nla-rl",
+          "repo_type": "model",
+          "revision": "5a13b7ec21a69fcdd0fb24d5edbe96a92aef4b9f",
+          "filename": "av_base/tokenizer.json",
+          "sha256": "87a7830d63fcf43bf241c3c5242e96e62dd3fdc29224ca26fed8ea333db72de4",
+          "size": 19989343
+        },
+        {
+          "repo": "ceselder/qwen3.6-27b-nla-rl",
+          "repo_type": "model",
+          "revision": "5a13b7ec21a69fcdd0fb24d5edbe96a92aef4b9f",
+          "filename": "av_base/tokenizer_config.json",
+          "sha256": "83febe739ecefd99f984f546dfdc10149cedf293b9ee0291b99894341188b613",
+          "size": 1098
+        },
+        {
+          "repo": "ceselder/qwen3.6-27b-nla-rl",
+          "repo_type": "model",
+          "revision": "5a13b7ec21a69fcdd0fb24d5edbe96a92aef4b9f",
+          "filename": "av_base/chat_template.jinja",
+          "sha256": "e84f32a23fdda27689f868aa4a1a5621f41133e51a48d7f3efcbea2839574259",
+          "size": 7764
+        },
+        {
+          "repo": "ceselder/qwen3.6-27b-nla-rl",
+          "repo_type": "model",
+          "revision": "5a13b7ec21a69fcdd0fb24d5edbe96a92aef4b9f",
+          "filename": "av_base/nla_meta.yaml",
+          "sha256": "ee3aa5960da9b3180e50d180e66f98274ef44caca216bd0a6ddc5558ad5f2d14",
+          "size": 3383
+        }
+      ],
+      "adapter": "none"
+    },
+    "nla_rl": {
+      "method": "nla",
+      "layer_policy": "fixed",
+      "supported_layers": [
+        42
+      ],
+      "sampling": {
+        "temperature": 1.0,
+        "top_p": 0.95,
+        "top_k": 64,
+        "max_new_tokens": 256,
+        "k": 1
+      },
+      "injection": {
+        "block": 1,
+        "mode": "norm_matched_add",
+        "marker_id": 158983,
+        "left_id": 29,
+        "right_id": 510
+      },
+      "open_questions": [],
+      "files": [
+        {
+          "repo": "ceselder/qwen3.6-27b-nla-rl",
+          "repo_type": "model",
+          "revision": "5a13b7ec21a69fcdd0fb24d5edbe96a92aef4b9f",
+          "filename": "av_base/config.json",
+          "sha256": "10d517a120597b391bb5a9e1f67aad70a162656067c3f25d95eccd44e46564d9",
+          "size": 2740
+        },
+        {
+          "repo": "ceselder/qwen3.6-27b-nla-rl",
+          "repo_type": "model",
+          "revision": "5a13b7ec21a69fcdd0fb24d5edbe96a92aef4b9f",
+          "filename": "av_base/generation_config.json",
+          "sha256": "252e0efee3ded327704912616f3493a227cdc39eb4bab52fcae1ceb3ed5dc890",
+          "size": 213
+        },
+        {
+          "repo": "ceselder/qwen3.6-27b-nla-rl",
+          "repo_type": "model",
+          "revision": "5a13b7ec21a69fcdd0fb24d5edbe96a92aef4b9f",
+          "filename": "av_base/model.safetensors.index.json",
+          "sha256": "5c26baef87822882c6362d7ba2e916198299b403f988751faa15ee3654ec64d5",
+          "size": 83909
+        },
+        {
+          "repo": "ceselder/qwen3.6-27b-nla-rl",
+          "repo_type": "model",
+          "revision": "5a13b7ec21a69fcdd0fb24d5edbe96a92aef4b9f",
+          "filename": "av_base/model-00001-of-00002.safetensors",
+          "sha256": "8354ca745ac4a405be0df6918954534cd2be1e415494bc8c11622f8cf30ebd73",
+          "size": 49825162976
+        },
+        {
+          "repo": "ceselder/qwen3.6-27b-nla-rl",
+          "repo_type": "model",
+          "revision": "5a13b7ec21a69fcdd0fb24d5edbe96a92aef4b9f",
+          "filename": "av_base/model-00002-of-00002.safetensors",
+          "sha256": "66d6c918749ff5c0d53784c2b63e63ac4d32db33bb42d4b26a240029cf8a02f9",
+          "size": 3966947216
+        },
+        {
+          "repo": "ceselder/qwen3.6-27b-nla-rl",
+          "repo_type": "model",
+          "revision": "5a13b7ec21a69fcdd0fb24d5edbe96a92aef4b9f",
+          "filename": "av_base/tokenizer.json",
+          "sha256": "87a7830d63fcf43bf241c3c5242e96e62dd3fdc29224ca26fed8ea333db72de4",
+          "size": 19989343
+        },
+        {
+          "repo": "ceselder/qwen3.6-27b-nla-rl",
+          "repo_type": "model",
+          "revision": "5a13b7ec21a69fcdd0fb24d5edbe96a92aef4b9f",
+          "filename": "av_base/tokenizer_config.json",
+          "sha256": "83febe739ecefd99f984f546dfdc10149cedf293b9ee0291b99894341188b613",
+          "size": 1098
+        },
+        {
+          "repo": "ceselder/qwen3.6-27b-nla-rl",
+          "repo_type": "model",
+          "revision": "5a13b7ec21a69fcdd0fb24d5edbe96a92aef4b9f",
+          "filename": "av_base/chat_template.jinja",
+          "sha256": "e84f32a23fdda27689f868aa4a1a5621f41133e51a48d7f3efcbea2839574259",
+          "size": 7764
+        },
+        {
+          "repo": "ceselder/qwen3.6-27b-nla-rl",
+          "repo_type": "model",
+          "revision": "5a13b7ec21a69fcdd0fb24d5edbe96a92aef4b9f",
+          "filename": "av_base/nla_meta.yaml",
+          "sha256": "ee3aa5960da9b3180e50d180e66f98274ef44caca216bd0a6ddc5558ad5f2d14",
+          "size": 3383
+        },
+        {
+          "repo": "ceselder/qwen3.6-27b-nla-rl",
+          "repo_type": "model",
+          "revision": "5a13b7ec21a69fcdd0fb24d5edbe96a92aef4b9f",
+          "filename": "av_rl_adapters/iter_000400/adapter_config.json",
+          "sha256": "2faac994662bd69772c2cba30fd4fad05d0f26cfea81909c119e1848badc866b",
+          "size": 1190
+        },
+        {
+          "repo": "ceselder/qwen3.6-27b-nla-rl",
+          "repo_type": "model",
+          "revision": "5a13b7ec21a69fcdd0fb24d5edbe96a92aef4b9f",
+          "filename": "av_rl_adapters/iter_000400/adapter_model.safetensors",
+          "sha256": "b54e23e4e36dbd04023b307e3abfd4618b5db2b31b8e7c650a957ebb1c90c358",
+          "size": 1867782664
+        }
+      ],
+      "adapter": "av_rl_adapters/iter_000400"
+    }
+  }
+}

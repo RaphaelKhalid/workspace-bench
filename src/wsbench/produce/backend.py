@@ -83,6 +83,11 @@ class Backend:
 
         store: dict[int, Any] = {}
         handles = []
+        blocks = self.blocks
+        if not ids or not positions or any(not 0 <= p < len(ids) for p in positions):
+            raise ValueError("capture requires nonempty input and in-range absolute positions")
+        if any(not 0 <= layer < len(blocks) for layer in layers):
+            raise ValueError(f"capture layer out of range for a {len(blocks)}-block model")
         want = torch.tensor(positions, dtype=torch.long)
 
         def make(layer: int):
@@ -92,11 +97,6 @@ class Backend:
 
             return hook
 
-        blocks = self.blocks
-        for layer in layers:
-            if not 0 <= layer < len(blocks):
-                raise ValueError(f"layer {layer} out of range for a {len(blocks)}-block model")
-            handles.append(blocks[layer].register_forward_hook(make(layer)))
         # a verbalizer's adapter may be mounted on this model; the probed model is always the base
         plain = (
             self.model.disable_adapter()
@@ -104,12 +104,16 @@ class Backend:
             else nullcontext()
         )
         try:
+            for layer in layers:
+                handles.append(blocks[layer].register_forward_hook(make(layer)))
             with torch.no_grad(), plain:
                 x = torch.tensor([ids], device=self.device)
                 try:
-                    self.model(x, logits_to_keep=1)  # the hooks want the residual, not the head
-                except TypeError:
-                    self.model(x)
+                    self.model(x, logits_to_keep=1, use_cache=False)
+                except TypeError as exc:
+                    if "logits_to_keep" not in str(exc):
+                        raise
+                    self.model(x, use_cache=False)
         finally:
             for h in handles:
                 h.remove()

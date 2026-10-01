@@ -610,7 +610,21 @@ class Produce(Command):
         kwargs = {"device": self.device}
         if self.revision is not None:
             kwargs["revision"] = self.revision
-        producer = Producer.load(self.model, self.method, **kwargs)
+        method_spec = self.method
+        if manifest is not None and (reference := manifest.metadata.get("reader_reference")):
+            from wsbench.cell_manifest import digest
+            from wsbench.produce.reference import load_lock, reference_method
+
+            try:
+                if reference["lock_sha256"] != digest(load_lock()):
+                    raise ValueError("reader lock differs from manifest")
+                method_spec = reference_method(reference["arm"])
+                if method_spec.name != self.method:
+                    raise ValueError("method differs from reference manifest")
+            except ValueError as e:
+                print(f"invalid reference reader: {e}", file=sys.stderr)
+                return EXIT_USAGE
+        producer = Producer.load(self.model, method_spec, **kwargs)
         if self.family:
             out = self.out or Path("outputs/readouts") / self.method / f"{self.family}.jsonl"
             if manifest is not None:
