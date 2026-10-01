@@ -91,3 +91,50 @@ The catalog also lists `nvidia/nemotron-3.5-lightning:free`, but its exact Nvidi
 endpoint did not advertise structured outputs and reported status -2 at inspection.
 No inference was sent to it. Preserve strict schema support and zero-price routing
 when evaluating alternatives. Recheck availability before future calls.
+
+## Response contracts and incomplete results
+
+Static JSON schemas do not express all prompt-dependent constraints. Free judging
+uses a separate `free-structured-v1` cache suffix and records
+`config.free_response_validation` for the following contracts. Original prompts,
+option order, evidence gates and non-free scoring remain unchanged.
+
+| Families / mode | Additional free-response checks |
+|---|---|
+| Relational, conjunctive, user modeling | Integer choice within the actual displayed options, including escape |
+| Role-bound association | All three choices are integers from 1 through 6 |
+| Directed modulation | Valid choice and exactly one boolean overlap entry per content candidate |
+| Multi-concept directed modulation | Every selection resolves to its displayed letter/option; an empty list is valid |
+| Optional multi-token MC | Choice resolves to a displayed letter/option, including escape |
+| Chain intermediates | At most three integer values; `states_value` agrees with whether the list is empty |
+| Arithmetic intermediates | At most three finite numeric values; the single-cell flag agrees with the list; batched replies cover every entry index exactly once |
+
+The jailbreak and moral free contracts retain their separately versioned validators.
+Hallucination and concept-precision already have family-specific response validators.
+The basic and buggy-code schemas constrain their categorical/boolean fields and
+numeric score range; brew constrains color names and categories. These checks do not
+establish semantic correctness, detect every natural-language refusal, or prove
+equivalence to the original judge.
+
+Invalid structured replies are stored as failed results with the raw reply retained
+for diagnosis. A resume re-requests failed calls and revalidates cached responses.
+Empty summaries are likewise retryable, including legacy cache entries containing a
+blank interpretation. Valid escape choices and empty selection/value lists remain
+known negatives. Native quote-verification rules still apply to otherwise valid replies.
+
+Agentic free stages also revalidate cached text and use
+`free_agentic_cache=rendered-stage-v1`. Each stage key includes its actual rendered input,
+thinking setting and output cap, so a changed upstream note or account cannot reuse a
+downstream answer for different text. The non-free cache contract is unchanged.
+
+User-modeling free runs count a cell as unjudged when **any** required non-empty sample
+fails, even if another sample succeeded. Blank source readouts remain known empties.
+All families record `free_result_protocol=complete-judgments-v1`: if judgments or
+required readouts are missing, the headline value and confidence interval are withheld
+and `extras.headline_withheld=incomplete_free_judging` is set. Retained rows and extras
+are incomplete diagnostics, not publishable full-family scores. Successful judgments
+remain cached; a resumed complete run computes the score normally.
+
+Offline regressions cover malformed-but-schema-valid replies through native family
+pipelines, valid negative responses, partial samples, retry and cache reuse. No live
+accuracy or fidelity claim follows from these regressions.

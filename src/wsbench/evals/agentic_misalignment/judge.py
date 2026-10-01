@@ -55,6 +55,7 @@ STAGE_B_MAX_TOKENS = 16_000
 STAGE_C_MAX_TOKENS = 12_000
 SCENARIO_CAP = 24_000  # driver L306
 TOPK = 10  # J-lens bag rendering (driver L134, L165)
+FREE_CACHE_VERSION = "rendered-stage-v1"
 PARSED_FIELDS = (
     "identified_family",
     "asserts_misaligned_plan",
@@ -138,13 +139,25 @@ def _batch(
     """cache key -> text. Cached (non-failed) rows are reused; the rest go through
     :func:`llm.stream_text` in one batch. A landed text (incl. ``""``) is ``cache.put``
     immediately as ``{"result": text, **extra(key, text)}``; ``None`` is never cached."""
-    if free_policy() is not None:
-        calls = [(key, fingerprint(fp, thinking, max_tokens), user) for key, fp, user in calls]
+    strict_free = free_policy() is not None
+
+    def usable(text: object) -> bool:
+        return (
+            isinstance(text, str)
+            and bool(text.strip())
+            and (stage != "C" or valid_free_design_reply(text))
+        )
+
+    if strict_free:
+        calls = [
+            (key, fingerprint(fp, FREE_CACHE_VERSION, thinking, max_tokens, user), user)
+            for key, fp, user in calls
+        ]
     out: dict[str, str | None] = {}
     pending: Calls = []
     for key, fp, user in calls:
         row = cache.get(key, fp)
-        if row is not None:
+        if row is not None and (not strict_free or usable(row.get("result"))):
             out[key] = row["result"]
         else:
             pending.append((key, fp, user))
@@ -154,12 +167,7 @@ def _batch(
 
     def on_result(i: int, text: str | None) -> None:
         key, fp, _user = pending[i]
-        if (
-            free_policy() is not None
-            and stage == "C"
-            and text is not None
-            and not valid_free_design_reply(text)
-        ):
+        if strict_free and text is not None and not usable(text):
             text = None
         if text is not None:
             cache.put(key, fp, {"result": text, **(extra(key, text) if extra else {})})
@@ -229,6 +237,8 @@ def run(args: JudgeArgs) -> FamilyResult:
         chunk_chars=chunk_chars,
         layers_read=rep.layers,
     )
+    if free_policy() is not None:
+        config["free_agentic_cache"] = FREE_CACHE_VERSION
     if args.dry_run:
         first = next(((lb, pos) for (lb, pos) in a_user if (lb, pos) not in a_note), None)
         if first is None:
@@ -310,7 +320,8 @@ def run(args: JudgeArgs) -> FamilyResult:
                 continue
             notes[lb] = [PositionNote(p, a_note[(lb, p)] or "") for p in positions[lb]]
             chunks[lb] = chunk_notes(compress(notes[lb]), chunk_chars)
-            row = cache.get(f"B:{lb}", fp_b[lb])
+            # Free B keys include the rendered notes/partials, available at _batch below.
+            row = cache.get(f"B:{lb}", fp_b[lb]) if free_policy() is None else None
             if row is not None:
                 account[lb] = row["result"]
                 n_chunks[lb] = int(row.get("n_chunks") or len(chunks[lb]))

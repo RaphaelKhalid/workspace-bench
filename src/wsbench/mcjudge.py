@@ -176,6 +176,19 @@ def with_readout_count(result: FamilyResult, scope: list[dict], cells: list[Cell
     """Attach ``extras["n_items_without_readouts"]`` to a family's result (rendered by
     ``report`` as ``n (k no readouts)``)."""
     result.extras["n_items_without_readouts"] = items_without_readouts(scope, cells)
+    if cache_context() is not None:
+        result.config["free_result_protocol"] = "complete-judgments-v1"
+        if (
+            result.counts.get("n_unjudged_cells", 0)
+            or result.counts.get("n_missing_cells", 0)
+            or result.extras["n_items_without_readouts"]
+        ):
+            # Several native scorers use the full item denominator even after call failures.
+            # Keep their diagnostic rows, but never publish that partial number as a score.
+            result.value = None
+            result.ci95 = None
+            result.complete = False
+            result.extras["headline_withheld"] = "incomplete_free_judging"
     return result
 
 

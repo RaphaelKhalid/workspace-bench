@@ -26,6 +26,12 @@ from wsbench.mc import fold
 from wsbench.mcjudge import Call, Preflighter, item_scope, run_calls, with_readout_count
 from wsbench.readouts import Cell
 from wsbench.registry import REPO_ROOT, JudgeArgs
+from wsbench.response_validation import (
+    free_call_contract,
+    free_response_config,
+    valid_numeric_batch,
+    valid_numeric_values,
+)
 from wsbench.results import FamilyResult
 
 from .prompts import (
@@ -237,7 +243,9 @@ def run(args: JudgeArgs) -> FamilyResult:
     with Cache(args.out / "cells.jsonl") as cache:
         common: dict[str, Any] = {
             "judge": args.judge,
-            "prompt_version": prompt_version,
+            **free_call_contract(
+                prompt_version, valid_numeric_batch if mode == "all" else valid_numeric_values
+            ),
             "cache": cache,
             "spend": spend,
             "concurrency": args.concurrency,
@@ -265,10 +273,17 @@ def run(args: JudgeArgs) -> FamilyResult:
                         key=key,
                         system=SYSTEM_BATCH,
                         user=render_batch_user(entries, bag=rep.kind == "tokens"),
-                        meta={"item": i, "layer": layer, "n_entries": len(poss), "positions": poss},
+                        meta={
+                            "item": i,
+                            "layer": layer,
+                            "n_entries": len(poss),
+                            "positions": poss,
+                            "max_values": MAX_VALUES,
+                        },
                     )
                 )
-            results = run_calls(calls, schema=SCHEMA_BATCH, validate=valid_batch, **common)
+            common.setdefault("validate", valid_batch)
+            results = run_calls(calls, schema=SCHEMA_BATCH, **common)
             parsed = {
                 c.key: batch_entries(results.get(c.key), int(c.meta["n_entries"])) for c in calls
             }
@@ -280,7 +295,7 @@ def run(args: JudgeArgs) -> FamilyResult:
                     key=f"{i}|L{layer:03d}|p{pos}",
                     system=SYSTEM,
                     user=render_user(texts[(i, layer, pos)]),
-                    meta={"item": i, "layer": layer, "pos": pos},
+                    meta={"item": i, "layer": layer, "pos": pos, "max_values": MAX_VALUES},
                 )
                 for (i, layer, pos) in sorted(texts)
             ]
@@ -400,6 +415,7 @@ def run(args: JudgeArgs) -> FamilyResult:
         chance_label=CHANCE_LABEL,
         skipped_extra=n_off_cell,
         config_extra={
+            **free_response_config(),
             "cells": mode,
             "packaging": "one call per (item, layer)" if mode == "all" else "one call per cell",
             "layers_judged": layers_seen,

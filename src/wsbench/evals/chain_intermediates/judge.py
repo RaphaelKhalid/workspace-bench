@@ -23,6 +23,7 @@ from wsbench.llm import Spend
 from wsbench.manifest_judging import load_judge_readouts
 from wsbench.mcjudge import Call, Preflighter, item_scope, run_calls, with_readout_count
 from wsbench.registry import REPO_ROOT, JudgeArgs
+from wsbench.response_validation import free_call_contract, free_response_config, valid_values
 from wsbench.results import FamilyResult
 
 from .prompts import MAX_VALUES, NEAR, PROMPT_VERSION, SCHEMA, SYSTEM, render_user
@@ -140,7 +141,12 @@ def run(args: JudgeArgs) -> FamilyResult:
                 key=f"{k[0]}|L{k[1]:03d}" + (f"|p{k[2]}" if len(k) == 3 else ""),
                 system=SYSTEM,
                 user=render_user(text),
-                meta={"item": k[0], "layer": k[1], "pos": k[2] if len(k) == 3 else None},
+                meta={
+                    "item": k[0],
+                    "layer": k[1],
+                    "pos": k[2] if len(k) == 3 else None,
+                    "max_values": MAX_VALUES,
+                },
             )
             for k, text in sorted(texts.items())
         ]
@@ -148,7 +154,7 @@ def run(args: JudgeArgs) -> FamilyResult:
             calls,
             schema=SCHEMA,
             judge=args.judge,
-            prompt_version=PROMPT_VERSION,
+            **free_call_contract(PROMPT_VERSION, valid_values),
             cache=cache,
             spend=spend,
             concurrency=args.concurrency,
@@ -198,7 +204,7 @@ def run(args: JudgeArgs) -> FamilyResult:
         spend=spend,
         chance_label=CHANCE_LABEL,
         skipped_extra=n_extra_rows,
-        config_extra={"layers_judged": layers, "cells": mode},
+        config_extra={**free_response_config(), "layers_judged": layers, "cells": mode},
         extras={
             "n_calls": len(calls),
             "n_rows_not_last_token": n_extra_rows,

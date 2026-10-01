@@ -17,6 +17,7 @@ from wsbench.mcjudge import (
     with_readout_count,
 )
 from wsbench.registry import JudgeArgs
+from wsbench.response_validation import free_call_contract, free_response_config, valid_roles
 from wsbench.results import FamilyResult
 from wsbench.summarizer import aux_judge, render_bag, summarize
 
@@ -91,7 +92,7 @@ def run(args: JudgeArgs) -> FamilyResult:
                 calls,
                 schema=SCHEMA,
                 judge=args.judge,
-                prompt_version=PROMPT_VERSION,
+                **free_call_contract(PROMPT_VERSION, valid_roles),
                 cache=cache,
                 spend=spend,
                 concurrency=args.concurrency,
@@ -136,7 +137,7 @@ def run(args: JudgeArgs) -> FamilyResult:
             scope,
             rows,
             counts=counts,
-            config=base_config(args, PROMPT_VERSION),
+            config=base_config(args, PROMPT_VERSION, **free_response_config()),
             n_api_failed=n_api_failed + n_summary_failed,
         ),
         scope,

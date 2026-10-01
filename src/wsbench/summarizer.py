@@ -79,7 +79,7 @@ def summarize(
         if free_policy() is not None:
             fp = fingerprint(fp, judge.reasoning, INTERP_SCHEMA)
         row = cache.get(f"summ:{key}", fp)
-        if row is not None:
+        if row is not None and (free_policy() is None or _text(row.get("result")) is not None):
             out[key] = _text(row.get("result"))
         else:
             pending.append((key, fp, txt))
@@ -89,7 +89,10 @@ def summarize(
 
     def on_result(i: int, r: dict | None) -> None:
         key, fp, _txt = pending[i]
-        cache.put(f"summ:{key}", fp, {"result": r})
+        if free_policy() is not None and r is not None and _text(r) is None:
+            cache.put(f"summ:{key}", fp, {"result": None, "raw": r})
+        else:
+            cache.put(f"summ:{key}", fp, {"result": r})
         out[key] = _text(r)
 
     if preflight is not None:

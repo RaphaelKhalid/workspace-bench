@@ -20,6 +20,7 @@ from wsbench.mcjudge import (
 )
 from wsbench.readouts import Cell
 from wsbench.registry import JudgeArgs
+from wsbench.response_validation import free_call_contract, free_response_config, valid_choice
 from wsbench.results import FamilyResult
 from wsbench.summarizer import aux_judge, render_bag, summarize
 
@@ -152,6 +153,7 @@ def run(args: JudgeArgs) -> FamilyResult:
                         "sample_idx": k,
                         "gold_position": gold_position,
                         "n_options": len(opts),
+                        "n_shown": len(opts) + 1,
                     },
                 )
             )
@@ -160,7 +162,7 @@ def run(args: JudgeArgs) -> FamilyResult:
                 calls,
                 schema=UM_ATTRIBUTE_SCHEMA,
                 judge=args.judge,
-                prompt_version=PROMPT_VERSION,
+                **free_call_contract(PROMPT_VERSION, valid_choice),
                 cache=cache,
                 spend=spend,
                 concurrency=args.concurrency,
@@ -174,10 +176,12 @@ def run(args: JudgeArgs) -> FamilyResult:
     rows: list[dict] = []
     n_api_failed = 0
     judged_cells: set[str] = set()
+    failed_cells: set[str] = set()
     for c in calls:
         r = results.get(c.key)
         if r is None:
             n_api_failed += 1
+            failed_cells.add(c.meta["cell"])
             continue
         judged_cells.add(c.meta["cell"])
         it = by_id[c.meta["id"]]
@@ -204,7 +208,9 @@ def run(args: JudgeArgs) -> FamilyResult:
                 "choice_invalid": invalid,
             }
         )
-    # a cell is unjudged only if NONE of its sample calls (or its summary) landed
+    # Free runs require every non-empty sample; the frozen non-free accounting is unchanged.
+    if free_response_config():
+        judged_cells -= failed_cells
     n_unjudged = sum(1 for c in nonempty if c.key not in judged_cells)
     counts = base_counts(
         n_expected=len(cells),
@@ -219,7 +225,7 @@ def run(args: JudgeArgs) -> FamilyResult:
             scope,
             rows,
             counts=counts,
-            config=base_config(args, PROMPT_VERSION, seed=SEED),
+            config=base_config(args, PROMPT_VERSION, seed=SEED, **free_response_config()),
             n_api_failed=n_api_failed + n_summary_failed,
         ),
         scope,

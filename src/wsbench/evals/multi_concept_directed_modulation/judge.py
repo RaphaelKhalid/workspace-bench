@@ -22,6 +22,7 @@ from wsbench.manifest_judging import load_judge_readouts
 from wsbench.mc import letter_index
 from wsbench.mcjudge import Call, Preflighter, item_scope, run_calls, with_readout_count
 from wsbench.registry import REPO_ROOT, JudgeArgs
+from wsbench.response_validation import free_call_contract, free_response_config, valid_picks
 from wsbench.results import FamilyResult
 from wsbench.summarizer import SUMMARIZER_PROMPT_VERSION, aux_judge, render_bag, summarize
 
@@ -168,14 +169,14 @@ def run(args: JudgeArgs) -> FamilyResult:
                     key=f"{c.id}|L{c.layer:03d}|p{c.pos}",
                     system=SYSTEM,
                     user=render_user(readout, opts),
-                    meta={"item": c.id, "layer": c.layer, "pos": c.pos},
+                    meta={"item": c.id, "layer": c.layer, "pos": c.pos, "options": opts},
                 )
             )
         results = run_calls(
             calls,
             schema=SCHEMA,
             judge=args.judge,
-            prompt_version=PROMPT_VERSION,
+            **free_call_contract(PROMPT_VERSION, valid_picks),
             cache=cache,
             spend=spend,
             concurrency=args.concurrency,
@@ -235,6 +236,7 @@ def run(args: JudgeArgs) -> FamilyResult:
         spend=spend,
         chance_label=CHANCE_LABEL,
         config_extra={
+            **free_response_config(),
             "layers_judged": layers,
             "summarizer": SUMMARIZER_PROMPT_VERSION if rep.kind == "tokens" else None,
         },

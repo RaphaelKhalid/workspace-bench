@@ -47,6 +47,20 @@ def mock_api(monkeypatch):
             for i, (_, user) in enumerate(prompts):
                 calls.append((schema["name"], user))
                 response = schema_value(schema["schema"])
+                if schema["name"] in {"relation_mc", "readout_mc", "um_attribute", "dm_concept"}:
+                    if "choice" in response:
+                        escapes = re.findall(r"(\d+)\. cannot tell", user)
+                        response["choice"] = int(escapes[-1])
+                    else:
+                        response.update({f"q{j}_choice": 6 for j in (1, 2, 3)})
+                if schema["name"] == "dm_concept":
+                    response["domain_overlap"] = [False] * (response["choice"] - 1)
+                if schema["name"] == "picks":
+                    response["picks"] = []
+                if schema["name"] == "pick":
+                    response["choice"] = "F"
+                if schema["name"] in {"chain_free", "arith_free"}:
+                    response.update(states_value=False, values=[])
                 if schema["name"] == "ec_reason_mc":
                     response["choice"] = int(
                         re.search(r"(\d+)\. cannot tell from the readout", user)[1]
@@ -134,6 +148,7 @@ def test_all_family_execution_and_failure_accounting(
     if failed and calls:
         assert result.counts["n_unjudged_cells"] > 0, (family, result.counts, result.extras)
         assert not result.extras["judging_finished"]
+        assert result.value is None and result.ci95 is None
     elif not failed:
         if family == "jlens_concept_pr":
             assert {"concepts", "grades", "support"} <= {name for name, _ in calls}

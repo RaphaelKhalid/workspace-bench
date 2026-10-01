@@ -36,6 +36,7 @@ from wsbench.multitoken.prompts import LETTERS, PROMPT_VERSION, SCHEMA, SYSTEM, 
 from wsbench.multitoken.regex import SCORER_VERSION, SUMMARIZED_SCORER_VERSION
 from wsbench.readouts import Cell
 from wsbench.registry import REPO_ROOT, EvalSpec, JudgeArgs
+from wsbench.response_validation import free_call_contract, free_response_config, valid_letter
 from wsbench.results import FamilyResult
 from wsbench.summarizer import SUMMARIZER_PROMPT_VERSION, aux_judge, render_bag, summarize
 
@@ -450,14 +451,14 @@ def run_mc(args: JudgeArgs, *, name: str) -> FamilyResult:
                         key=key,
                         system=SYSTEM,
                         user=render_user(readout, role, opts),
-                        meta={"item": item_id, "layer": layer, "role": role},
+                        meta={"item": item_id, "layer": layer, "role": role, "options": opts},
                     )
                 )
         results = run_calls(
             calls,
             schema=SCHEMA,
             judge=args.judge,
-            prompt_version=PROMPT_VERSION,
+            **free_call_contract(PROMPT_VERSION, valid_letter),
             cache=cache,
             spend=spend,
             concurrency=args.concurrency,
@@ -510,6 +511,7 @@ def run_mc(args: JudgeArgs, *, name: str) -> FamilyResult:
             "layers_judged": layers,
             "summarizer": SUMMARIZER_PROMPT_VERSION if rep.kind == "tokens" else None,
             "instrument_of_record": SCORER_VERSION,
+            **free_response_config(),
         },
         extras={
             "n_calls": len(calls),

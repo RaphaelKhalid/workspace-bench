@@ -14,6 +14,7 @@ from wsbench.mc import classify, seed_int
 from wsbench.mcjudge import Call, Preflighter, item_scope, run_calls, with_readout_count
 from wsbench.readouts import Cell
 from wsbench.registry import REPO_ROOT, JudgeArgs
+from wsbench.response_validation import free_call_contract, free_response_config, valid_modulation
 from wsbench.results import FamilyResult
 
 from . import score
@@ -154,7 +155,13 @@ def run(args: JudgeArgs) -> FamilyResult:
                 polarity=str(by_id[r.item_id]["polarity"]),
                 tokens=tokens,
             ),
-            meta={"item": r.item_id, "layer": r.layer, "pos": r.pos, "sample": r.sample},
+            meta={
+                "item": r.item_id,
+                "layer": r.layer,
+                "pos": r.pos,
+                "sample": r.sample,
+                "n_shown": len(options[r.item_id][0]) + 1,
+            },
         )
         for r in rows
     ]
@@ -164,7 +171,7 @@ def run(args: JudgeArgs) -> FamilyResult:
             calls,
             schema=SCHEMA,
             judge=args.judge,
-            prompt_version=PROMPT_VERSION,
+            **free_call_contract(PROMPT_VERSION, valid_modulation),
             cache=cache,
             spend=spend,
             concurrency=args.concurrency,
@@ -199,4 +206,5 @@ def run(args: JudgeArgs) -> FamilyResult:
         skipped_rows=sum(rep.skipped.values()),
         spend=spend,
     )
+    result.config.update(free_response_config())
     return with_readout_count(result, scope, cells)
