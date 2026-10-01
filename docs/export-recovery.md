@@ -74,7 +74,41 @@ Use `export.restore_snapshot(snapshot, cache, destination, run_id=..., context=.
 to materialize a snapshot. It verifies objects and existing destination files
 before writing, resumes an interrupted restore, and refuses to overwrite different
 data. Restore a newer snapshot to a new output tree. Run capture/journal preflight
-on the restored tree before resuming computation or scoring.
+before resuming computation. For final completion checks, use the read-only
+verifier below instead of a recovery operation that can repair torn tails.
+
+## Final physical completeness
+
+After the final export and shutdown, verify the restored output tree locally:
+
+```sh
+python -m wsbench.produce.completeness --snapshot CACHE/snapshots/HASH.json --root RESTORED --readers outputs/manifests/readers --run-id RUN_ID --batch-size 16 --seed 0
+```
+
+Supply the trusted local reader manifests used for the run, not manifests chosen
+from downloaded results. The verifier requires the exact eight-arm roster, every
+original bank item, and at most 50,000 cells per reader. It verifies frozen
+reference compatibility, compares exported manifests to those expected locally,
+checks every listed file's size/hash, validates capture metadata/vector hashes,
+shape/dtype/finiteness, and checks readout provenance, execution plan, read-site
+tokens, sample/ranking shape, uniqueness and exact item/layer/position coverage.
+It rechecks bytes after the semantic scan to detect ordinary concurrent changes.
+Run it on a quiescent restored tree.
+
+This path never loads a model, starts a writer, repairs a torn row, creates
+sidecars, or rewrites evidence. A missing file/cell reports
+`physical_complete: false`, with expected/present counts and missing files;
+malformed data, mismatched hashes or provenance fail validation. Unlisted local
+data cannot fill snapshot gaps, and unknown capture/readout files are rejected.
+Missing mandatory manifests/bindings are errors. The CLI prints JSON and exits
+zero only for physical completeness (two for a well-formed incomplete export).
+It does not trust the worker's `status: complete` report.
+
+The result separates total reader cells from shared capture vectors and includes
+per-arm, per-family counts. `judging_complete` and
+`benchmark_fidelity_validated` remain false. File coverage and declared provenance
+do not prove actual neural execution, judge accuracy or WorkspaceBench equivalence.
+Unresolved reference checkpoints still fail closed before completion is certified.
 
 ## Evidence and outstanding integration
 
@@ -113,9 +147,10 @@ restart, transfers only a new 16-byte readout, and rejects a rewritten prefix.
 Offline supervisor tests cover report churn and export/cleanup exceptions. Neither proves
 cloud throughput or the availability of a particular RunPod SSH endpoint.
 
-The deployment launcher still must connect its remote worker handle to the
-external supervisor, verify deadline readiness on the real host, validate final
-benchmark coverage, and bind its budget forecast to measured pilot work. Export failure must never
+The remote worker is now connected through `produce.remote.run_remote`, and
+final physical coverage has the local verifier above. The deployment launcher
+still must pass preparation gates, verify deadline readiness on the real host,
+and bind its budget forecast to measured pilot work. Export failure must never
 leave paid compute waiting indefinitely.
 Keep recoverable remote data, stop compute, and report an incomplete export;
 do not delete retained outputs just because a stop request was acknowledged.

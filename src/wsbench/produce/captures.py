@@ -47,6 +47,32 @@ def capture_union(manifests: list[CellManifest]) -> CellManifest:
     )
 
 
+def read_capture(path, item, binding):
+    """Validate a persisted capture without opening or rewriting a capture store."""
+    try:
+        with np.load(path, allow_pickle=False) as data:
+            if set(data.files) != {"metadata", "vectors"}:
+                raise ValueError("unexpected capture members")
+            meta = json.loads(str(data["metadata"].item()))
+            array = data["vectors"]
+        if (
+            array.dtype != np.dtype("float32")
+            or array.shape != (len(item.layers), len(item.positions), binding["hidden_size"])
+            or not np.isfinite(array).all()
+        ):
+            raise ValueError("capture dtype/shape/finiteness mismatch")
+        expected = {
+            "binding_sha256": digest(binding),
+            "item_sha256": digest(asdict(item)),
+            "vectors_sha256": hashlib.sha256(array.tobytes()).hexdigest(),
+        }
+        if meta != expected:
+            raise ValueError("capture identity/content hash mismatch")
+        return array
+    except Exception as exc:
+        raise ValueError(f"invalid capture {item.family}/{item.id}: {exc}") from exc
+
+
 class CaptureStore:
     """One atomic NPZ per item; corruption fails instead of silently triggering recapture."""
 
@@ -121,22 +147,10 @@ class CaptureStore:
             raise ValueError("capture dtype/shape/finiteness mismatch")
 
     def get(self, item: ManifestItem) -> np.ndarray | None:
-        path, identity = self._identity(item)
+        path, _ = self._identity(item)
         if not path.exists():
             return None
-        try:
-            with np.load(path, allow_pickle=False) as data:
-                if set(data.files) != {"metadata", "vectors"}:
-                    raise ValueError("unexpected capture members")
-                meta = json.loads(str(data["metadata"].item()))
-                array = data["vectors"]
-            self._validate(array, item)
-            sha = hashlib.sha256(array.tobytes()).hexdigest()
-            if meta != {**identity, "vectors_sha256": sha}:
-                raise ValueError("capture identity/content hash mismatch")
-            return array
-        except Exception as exc:
-            raise ValueError(f"invalid capture {item.family}/{item.id}: {exc}") from exc
+        return read_capture(path, item, self.binding)
 
     def put(self, item: ManifestItem, vectors: np.ndarray) -> None:
         self._verified_readers.clear()

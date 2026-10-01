@@ -5,6 +5,7 @@ import hashlib
 import json
 import math
 import time
+from contextlib import nullcontext
 from dataclasses import asdict, is_dataclass
 from pathlib import Path
 
@@ -26,7 +27,9 @@ def public_config(reader):
     }
 
 
-def inspect_output(path, manifest, family, config, capture_binding, *, batch_size, seed):
+def inspect_output(
+    path, manifest, family, config, capture_binding, *, batch_size, seed, recover=True
+):
     """Recover only torn tails; reject drift/corruption without a model or Torch import."""
     path = Path(path)
     sidecar = path.with_suffix(path.suffix + ".run.json")
@@ -45,11 +48,26 @@ def inspect_output(path, manifest, family, config, capture_binding, *, batch_siz
     binding = binding_for(
         manifest, family, config, capture_binding, runtime, batch_size=batch_size, seed=seed
     )
+    if not recover and old != binding:
+        raise ValueError("readout manifest/reader configuration changed; use a new output")
+    if not recover and not path.exists():
+        return {"complete": False, "present": 0, "expected": len(expected)}
     # Opening also validates row identity, duplicates, mixed kinds and malformed complete rows.
-    with ReadoutJournal(path, binding=binding, expected=expected) as journal:
+    context = ReadoutJournal(path, binding=binding, expected=expected) if recover else nullcontext()
+    with context:
         items = {item.id: item for item in manifest.family(family)}
-        for line in path.read_text(encoding="utf-8").splitlines():
+        present = set()
+        data = path.read_bytes()
+        if not recover and data and not data.endswith(b"\n"):
+            raise ValueError("exported readouts contain an unfinished checkpoint line")
+        for line in data.splitlines():
             cell = _parse_row(json.loads(line))
+            if cell is None:
+                raise ValueError("invalid readout row")
+            key = (cell.id, cell.layer, cell.pos)
+            if key not in expected or key in present:
+                raise ValueError("duplicate readout or readout outside manifest")
+            present.add(key)
             item = items[cell.id]
             if cell.token != item.tokens[item.positions.index(cell.pos)]:
                 raise ValueError("cached read-site token differs from manifest")
@@ -64,8 +82,8 @@ def inspect_output(path, manifest, family, config, capture_binding, *, batch_siz
             ):
                 raise ValueError("cached ranking differs from reference reader")
         return {
-            "complete": journal.present == expected,
-            "present": len(journal.present),
+            "complete": present == expected,
+            "present": len(present),
             "expected": len(expected),
         }
 
