@@ -316,6 +316,11 @@ never pinned.
 | user_modeling | google/gemini-3.8-flash | um-v2 |
 
 - Override precedence: `judge_model=` flag > `WSBENCH_JUDGE_MODEL` env > the family pin.
+- Routes: model ids starting with `claude-` use Anthropic directly, with no explicit thinking
+  setting; all other ids use OpenRouter.
+- Reasoning: OpenRouter judges request `{"effort": "minimal"}` unless the family explicitly sets
+  `JudgeConfig.reasoning`. This also applies when changing models with `judge_model=` or
+  `WSBENCH_JUDGE_MODEL`.
 - `pinned_instrument` is true only when the resolved model equals the family pin; a result
   judged by an override is never a number of record and can never be `complete`.
 - Aux models (the summarizer for token readouts) come from the family's `JudgeConfig.aux_models`
