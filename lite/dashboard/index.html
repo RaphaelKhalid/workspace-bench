@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Open Kev Live</title>
+<style>
+  :root { --bg:#000000; --card:#000000; --line:#1a1a1a; --text:#f2f2f2; --muted:#7a7a7a; --green:#00ff9c; --cyan:#00d9ff; --violet:#9d7bff; --amber:#ffb800; --red:#ff4d6d; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; background:var(--bg); color:var(--text); font:15px/1.45 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+  .wrap { max-width:1180px; margin:0 auto; padding:22px 16px 60px; }
+  h1 { margin:0; font-size:26px; letter-spacing:-.02em; }
+  .sub { color:var(--muted); margin:4px 0 18px; }
+  .phase { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:18px; }
+  .phase span { border:1px solid var(--line); border-radius:999px; padding:6px 12px; color:var(--muted); font-size:13px; }
+  .phase .done { color:var(--green); border-color:#0f3d2c; }
+  .phase .on { color:#000; background:var(--cyan); border-color:var(--cyan); font-weight:700; animation:pulse 1.6s infinite; }
+  @keyframes pulse { 50% { box-shadow:0 0 22px var(--cyan); } }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:14px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:16px 18px; min-width:0; }
+  .card h2 { margin:0 0 10px; font-size:13px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); font-weight:600; }
+  .huge { font-size:56px; font-weight:800; letter-spacing:-.03em; font-variant-numeric:tabular-nums; line-height:1; }
+  .big { font-size:30px; font-weight:800; font-variant-numeric:tabular-nums; }
+  .mono { font-variant-numeric:tabular-nums; font-family:ui-monospace, "Cascadia Mono", Consolas, monospace; }
+  .muted { color:var(--muted); font-size:13px; }
+  .bar { height:10px; background:#0b0b0b; border:1px solid var(--line); border-radius:999px; overflow:hidden; margin:12px 0 8px; }
+  .bar > div { height:100%; width:0; background:linear-gradient(90deg, var(--violet), var(--cyan), var(--green)); box-shadow:0 0 18px var(--cyan); }
+  .chips { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+  .chip { border:1px solid var(--line); border-radius:10px; padding:6px 10px; font-size:13px; }
+  .chip b { font-variant-numeric:tabular-nums; }
+  .go { color:var(--green); text-shadow:0 0 18px rgba(0,255,156,.6); }
+  .stop { color:var(--red); }
+  .wait { color:var(--amber); }
+  .full { grid-column:1 / -1; }
+  .gauge { position:relative; height:64px; margin:18px 0 6px; }
+  .gauge .track { position:absolute; left:0; right:0; top:28px; height:6px; background:#0d0d0d; border-radius:6px; border:1px solid var(--line); }
+  .gauge .bar70 { position:absolute; top:10px; height:42px; width:2px; background:var(--green); box-shadow:0 0 12px var(--green); }
+  .gauge .lab70 { position:absolute; top:-6px; transform:translateX(-50%); color:var(--green); font-size:12px; font-weight:700; }
+  .gauge .dot { position:absolute; top:22px; width:18px; height:18px; border-radius:50%; transform:translateX(-50%); border:2px solid #000; }
+  .gauge .dl { position:absolute; top:44px; transform:translateX(-50%); font-size:11px; color:var(--muted); white-space:nowrap; }
+  table { width:100%; border-collapse:collapse; font-size:14px; }
+  td, th { padding:8px 6px; border-bottom:1px solid var(--line); text-align:left; }
+  th { color:var(--muted); font-weight:600; font-size:12px; text-transform:uppercase; letter-spacing:.06em; }
+  .hero { font-size:24px; font-weight:800; margin:6px 0 12px; }
+  .ev { font-family:ui-monospace, Consolas, monospace; font-size:12px; color:#9a9a9a; white-space:pre-wrap; max-height:200px; overflow:auto; }
+  svg { width:100%; height:120px; display:block; }
+  canvas#confetti { position:fixed; inset:0; pointer-events:none; z-index:9; }
+  @media (max-width:600px) { .huge { font-size:42px; } h1 { font-size:21px; } }
+</style>
+</head>
+<body>
+<canvas id="confetti"></canvas>
+<div class="wrap">
+  <h1>🎯 Open-source Kev ≥ 0.70 · one shot</h1>
+  <div class="sub">Qwen3.8-27B (Apache-2.0) teaches Kev-4B with the jb-v1 rubric + voice note → can the 4B open judge hit WorkspaceBench's κ ≥ 0.70 judge-swap bar? <span id="upd"></span></div>
+  <div class="phase" id="phase"></div>
+
+  <div class="grid">
+    <div class="card full">
+      <h2>🏷️ Teacher labels · Qwen3.8-27B via DeepInfra</h2>
+      <div class="huge mono" id="lab">—</div>
+      <div class="bar"><div id="labbar"></div></div>
+      <div class="muted" id="labmeta">connecting… 🔌</div>
+      <div class="chips" id="mix"></div>
+    </div>
+
+    <div class="card">
+      <h2>🚦 Gate · teacher vs Sonnet (training items)</h2>
+      <div class="big" id="gate">waiting for labels ⏳</div>
+      <div class="muted" id="gatemeta">GO if κ_rec ≥ 0.60 (old Qwen3.6 teacher: 0.511)</div>
+    </div>
+    <div class="card">
+      <h2>🖥️ Pod · A100 80GB</h2>
+      <div class="big" id="pod">not started 💤</div>
+      <div class="muted" id="podmeta"></div>
+    </div>
+    <div class="card">
+      <h2>💸 Spend</h2>
+      <div class="big" id="spend">—</div>
+      <div class="muted" id="spendmeta"></div>
+    </div>
+
+    <div class="card full">
+      <h2>🏋️ Kev-4B training (fixed R2 recipe)</h2>
+      <div class="big mono" id="step">—</div>
+      <div class="bar"><div id="stepbar"></div></div>
+      <div class="muted" id="stepmeta">starts after the gate says GO 🚦</div>
+      <div class="grid" style="margin-top:14px">
+        <div><div class="muted">⚡ live step</div><div class="big mono go" id="cStep">—</div></div>
+        <div><div class="muted">📚 records learned</div><div class="big mono" id="cRec">—</div></div>
+        <div><div class="muted">🔤 tokens crunched</div><div class="big mono" id="cTok">—</div></div>
+        <div><div class="muted">📈 complete</div><div class="big mono" id="cPct">—</div></div>
+        <div><div class="muted">⏱️ time left</div><div class="big mono" id="cEta">—</div></div>
+      </div>
+      <div class="muted" style="margin-top:6px">⚡ The trainer reports every 10 steps. Between reports these run on its own measured speed and snap back to the real step on every report.</div>
+      <svg id="loss" viewBox="0 0 600 120" preserveAspectRatio="none"></svg>
+    </div>
+
+    <div class="card full">
+      <h2>🏁 The number · recognition κ vs Sonnet 5 on 568 clean test cells</h2>
+      <div class="gauge" id="gauge"></div>
+      <div id="verdict" class="muted">The one test read happens after training 🥁</div>
+    </div>
+
+    <div class="card full"><h2>📜 Log</h2><div class="ev" id="ev"></div></div>
+  </div>
+</div>
+<script>
+const $ = id => document.getElementById(id);
+let S = null, celebrated = false, liveLab = null, liveStep = null;
+const PH = [["🏷️ labelling", "label"], ["🚦 gate", "gate"], ["🖥️ pod", "pod"], ["🏋️ training", "train"], ["🧪 test", "test"], ["🏁 verdict", "verdict"]];
+const REF = [["GLM-taught", 0.580, "#ff4d6d"], ["Qwen3.6-taught", 0.639, "#ffb800"]];
+function phaseOf(S) {
+  const L = S.local || {}, p = S.pod || {}, m = p.markers || {};
+  if (L.result) return "verdict";
+  if ("DONE_TRAIN_q38" in m || (p.test_live && p.test_live.total)) return "test";
+  if ((p.steps || []).length) return "train";
+  if (p.setup !== undefined || p.unreachable) return "pod";
+  if (L.gate) return "gate";
+  return "label";
+}
+function gaugeHTML(val) {
+  const X = v => `${Math.max(0, Math.min(100, (v - 0.4) / 0.5 * 100))}%`;
+  let h = `<div class="track"></div><div class="bar70" style="left:${X(0.70)}"></div><div class="lab70" style="left:${X(0.70)}">0.70 bar ✅</div>`;
+  for (const [n, v, c] of REF) h += `<div class="dot" style="left:${X(v)};background:${c}"></div><div class="dl" style="left:${X(v)}">${n} ${v.toFixed(3)}</div>`;
+  if (val != null) h += `<div class="dot" style="left:${X(val)};background:#00ff9c;width:24px;height:24px;top:19px;box-shadow:0 0 22px #00ff9c"></div><div class="dl" style="left:${X(val)};top:-6px;color:#00ff9c;font-weight:800">⭐ ${val.toFixed(3)}</div>`;
+  return h;
+}
+function render() {
+  if (!S) return;
+  const L = S.local || {}, p = S.pod || {}, lab = L.label || {}, ph = phaseOf(S), idx = PH.findIndex(x => x[1] === ph);
+  $("upd").textContent = S.updated ? `· updated ${Math.max(0, Math.round(S.now - S.updated))}s ago` : "";
+  $("phase").innerHTML = PH.map((x, i) => `<span class="${i < idx ? "done" : i === idx ? "on" : ""}">${i < idx ? "✅ " : ""}${x[0]}</span>`).join("");
+  const m = lab.mix || {};
+  $("mix").innerHTML = [["🎯 recognition", m.recognition], ["🔁 echo", m.echo], ["📚 topic", m.topic], ["🌫️ noise", m.noise]].map(([n, v]) => `<div class="chip">${n} <b>${(v || 0).toLocaleString()}</b></div>`).join("")
+    + `<div class="chip">⚠️ errors <b>${lab.errors || 0}</b></div>`;
+  const k = S.key || {};
+  const keyTxt = k.remaining != null ? ` · 🔑 key room $${k.remaining}` : "";
+  liveLab = {base: lab.labels || 0, rate: lab.rate || 0, at: performance.now(), total: lab.total || 3529};
+  $("labmeta").textContent = `${(lab.rate || 0).toFixed(2)} labels/s · $${(lab.usd || 0).toFixed(3)} spent${keyTxt}` + (lab.rate > 0 ? ` · ETA ${Math.ceil(((lab.total || 3529) - (lab.labels || 0)) / lab.rate / 60)} min 🔥` : (lab.labels >= (lab.total || 3529) - 30 ? " · done ✅" : ""));
+  if (L.gate) {
+    const g = L.gate, q = g.q38_voice_note || {}, o = g.q36_official || {};
+    $("gate").innerHTML = `<span class="${g.gate === "GO" ? "go" : "stop"}">${g.gate === "GO" ? "🟢 GO" : "🔴 STOP"} · κ_rec ${q.kappa_rec}</span>`;
+    $("gatemeta").textContent = `CI95 ${q.ci95} · vs Qwen3.6 ${o.kappa_rec} on the same ${g.readouts} readouts · paired Δ CI ${g.paired_diff_ci95} · ${g.sonnet_recognitions} Sonnet recognitions`;
+  }
+  if (p.unreachable) { $("pod").innerHTML = `<span class="wait">connecting… 🔌</span>`; }
+  else if (p.setup !== undefined) {
+    $("pod").innerHTML = p.setup_done ? `<span class="go">ready ✅</span>` : `<span class="wait">setting up ⚙️</span>`;
+    $("podmeta").textContent = (p.gpu_util != null ? `⚡ GPU ${p.gpu_util}% · ${p.gpu_mem} MiB` : "") + (p.setup && p.setup.length ? ` · ${p.setup[p.setup.length - 1]}` : "");
+  }
+  const rp = L.runpod || {};
+  $("spend").textContent = `$${(lab.usd || 0).toFixed(2)} 🧠 · $${rp.spent != null ? rp.spent : "—"} 🖥️`;
+  $("spendmeta").textContent = `OpenRouter labels · RunPod (watchdog cap $${rp.cap != null ? rp.cap : "—"})`;
+  const st = p.steps || [];
+  if (st.length) {
+    const last = st[st.length - 1];
+    liveStep = {last, since: (p.age || 0) + Math.max(0, S.now - S.updated), at: performance.now(), done: ("DONE_TRAIN_q38" in (p.markers || {})) || last.step >= last.total};
+    drawLoss(st);
+  }
+  if (p.test_live && p.test_live.total) $("stepmeta").textContent = `🧪 test read: judged ${p.test_live.done} / ${p.test_live.total} cells`;
+  $("ev").textContent = (p.events || []).join("\n") + (S.error ? `\n⚠️ ${S.error}` : "");
+  let star = null;
+  if (L.result) {
+    const r = L.result, me = r[S.star] || {};
+    star = me.kappa_recognition;
+    const win = star >= 0.70;
+    $("verdict").innerHTML = `<div class="hero ${win ? "go" : "stop"}">${win ? `🏆 κ_rec ${star} ≥ 0.70: open-weights Qwen3.8-27B (Apache-2.0) + voice note passes WorkspaceBench's judge-swap bar on the pre-registered 568 cells!` : `κ_rec ${star} — under the 0.70 bar`}</div>
+      <table><tr><th>judge vs Sonnet 5 (568 cells)</th><th>κ recognition</th><th>LB95</th><th>κ 4-way</th></tr>${Object.entries(r).map(([n, v]) => `<tr><td>${n === S.star ? "⭐ " : ""}${n}</td><td class="mono">${v.kappa_recognition}</td><td class="mono">${v.lb95_recognition != null ? v.lb95_recognition.toFixed(3) : ""}</td><td class="mono">${v.kappa_4way}</td></tr>`).join("")}</table>`;
+    if (win && !celebrated) { celebrated = true; confetti(); setTimeout(confetti, 1400); setTimeout(confetti, 2800); }
+  }
+  $("gauge").innerHTML = gaugeHTML(star);
+}
+function drawLoss(st) {
+  const s = $("loss"), W = 600, H = 120, P = 8, n = st.length;
+  if (n < 2) { s.innerHTML = ""; return; }
+  const mx = Math.max(...st.map(x => x.loss)), pt = (x, i) => [P + i * (W - 2 * P) / (n - 1), H - P - x / mx * (H - 2 * P)];
+  const avg = st.map((_, i) => { const a = st.slice(Math.max(0, i - 4), i + 1); return a.reduce((t, x) => t + x.loss, 0) / a.length; });
+  const line = (arr, col, w, op) => `<polyline fill="none" stroke="${col}" stroke-width="${w}" opacity="${op}" points="${arr.map((v, i) => pt(v, i).join(",")).join(" ")}"/>`;
+  s.innerHTML = line(st.map(x => x.loss), "#444", 1.2, 1) + line(avg, "#00d9ff", 3, 1);
+}
+function frame() {
+  if (liveLab) {
+    const v = Math.min(liveLab.total, liveLab.base + liveLab.rate * (performance.now() - liveLab.at) / 1000);
+    $("lab").textContent = `${Math.floor(v).toLocaleString()} / ${liveLab.total.toLocaleString()}`;
+    $("labbar").style.width = (100 * v / liveLab.total) + "%";
+  }
+  if (liveStep) {
+    const L = liveStep.last;
+    let est = L.step;
+    if (!liveStep.done) { const t = liveStep.since + (performance.now() - liveStep.at) / 1000; est = Math.min(L.step + t / (8 * L.spr), L.step + 9.99, L.total); }
+    const left = Math.max(0, (L.total - est) * 8 * L.spr);
+    $("step").textContent = `step ${est.toFixed(2)} / ${L.total} · epoch ${L.ep + 1} · loss ${L.loss.toFixed(3)} ${liveStep.done ? "✅" : "🔥"}`;
+    $("stepbar").style.width = (100 * est / L.total) + "%";
+    const rec = est * 8;
+    $("cStep").textContent = `${est.toFixed(3)}`;
+    $("cRec").textContent = Math.floor(rec).toLocaleString();
+    $("cTok").textContent = Math.floor(rec * 1700).toLocaleString();
+    $("cPct").textContent = `${(100 * est / L.total).toFixed(3)}%`;
+    $("cEta").textContent = liveStep.done ? "done ✅" : `${Math.floor(left / 3600)}:${String(Math.floor(left % 3600 / 60)).padStart(2, "0")}:${String(Math.floor(left % 60)).padStart(2, "0")}`;
+    if (!(S.pod && S.pod.test_live && S.pod.test_live.total)) $("stepmeta").textContent = liveStep.done ? "training done ✅ → serving + test read 🧪" : `${L.spr.toFixed(2)} s/record · 📚 ${Math.floor(est * 8).toLocaleString()} records seen · ⏱️ ${Math.floor(left / 60)}:${String(Math.floor(left % 60)).padStart(2, "0")} left`;
+  }
+}
+function confetti() {
+  const c = $("confetti"), x = c.getContext("2d"); c.width = innerWidth; c.height = innerHeight;
+  const ps = Array.from({length: 260}, () => ({x: Math.random() * c.width, y: -20 - Math.random() * c.height, v: 2 + Math.random() * 4, r: 4 + Math.random() * 6, c: ["#00ff9c", "#00d9ff", "#9d7bff", "#ffb800"][Math.floor(Math.random() * 4)], s: Math.random() * 6}));
+  let t = 0; (function f() { x.clearRect(0, 0, c.width, c.height); ps.forEach(p => { p.y += p.v; p.x += Math.sin((t + p.s) / 12) * 1.5; x.fillStyle = p.c; x.fillRect(p.x, p.y, p.r, p.r * .6); }); if (++t < 420) requestAnimationFrame(f); else x.clearRect(0, 0, c.width, c.height); })();
+}
+setInterval(frame, 50);
+async function tick() { try { S = await fetch("/api/state").then(r => r.json()); render(); } catch (e) { $("labmeta").textContent = "dashboard server unreachable 🔌"; } }
+tick(); setInterval(tick, 2500);
+</script>
+</body>
+</html>
