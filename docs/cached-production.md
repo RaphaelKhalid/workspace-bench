@@ -84,5 +84,7 @@ grouped back into the original cells and sample order.
 The current per-family CLI still loads the reader before discovering a completely
 finished readout journal. The deployment runner should check completed outputs
 before loading and reuse a loaded reader across unfinished families. Further gates
-include adapter-effect checks, merged-adapter equivalence where used, all-family
-non-dry scoring, GPU pilot validation, export/watchdog controls and the fidelity audit.
+include adapter-effect checks, merged-adapter equivalence where used, GPU pilot
+validation, export/watchdog controls and the fidelity audit. All-family mocked
+non-dry scoring now passes; see [sparse evaluation](sparse-evaluation.md) for the
+execution checks and the separate empirical validation requirements.
