@@ -8,6 +8,11 @@
                               the cells unjudged (builds prompt packs for outside judges).
     replay:<verdicts.jsonl>   answer each prompt from a file of {"h": <prompt hash>, "result": {...}}
                               (e.g. Luna verdicts), so the family's own scoring runs on them.
+    open-jb                   the open-weights jailbreak_recognition pipeline (RESULT_qwen_max.md):
+                              summaries by qwen/qwen3.6-27b, verdicts by qwen/qwen3.8-27b with the
+                              voice note (prompts/jb_v1_voice_note.txt) appended to the official
+                              system prompt; reasoning off, temperature 0, both pinned to DeepInfra.
+                              OpenRouter key from OPENROUTER_API_KEY.
 
 The prompt hash is sha256(system + "\\x00" + user), the join key across all of these.
 """
@@ -15,13 +20,18 @@ The prompt hash is sha256(system + "\\x00" + user), the join key across all of t
 from __future__ import annotations
 
 import asyncio
+import contextvars
 import hashlib
 import json
 import os
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-PREFIXES = ("vllm:", "capture", "replay:")
+PREFIXES = ("vllm:", "capture", "replay:", "open-jb")
+OPEN_SUMMARIZER, OPEN_JUDGE, OPEN_JUDGE_PROVIDER = "qwen/qwen3.6-27b", "qwen/qwen3.8-27b", "DeepInfra"
+VOICE_NOTE = ROOT / "prompts" / "jb_v1_voice_note.txt"
+_PROVIDER: contextvars.ContextVar = contextvars.ContextVar("wsbjev_provider", default=None)
+_PINNED = False
 
 
 def is_alt(model: str) -> bool:
@@ -143,8 +153,51 @@ async def _vllm(name: str, prompts, schema, on_result, spend, temperature) -> No
         await client.close()
 
 
+def _pin_providers(llm) -> None:
+    """Let a call pin its OpenRouter provider (no fallbacks) through _PROVIDER; other calls untouched."""
+    global _PINNED
+    if _PINNED:
+        return
+    orig = llm._make_client
+
+    def make_client(route_, key):
+        client = orig(route_, key)
+        create = client.chat.completions.create
+
+        async def wrapped(*args, **kw):
+            p = _PROVIDER.get()
+            if p:
+                kw["extra_body"] = {**(kw.get("extra_body") or {}),
+                                    "provider": {"order": [p], "allow_fallbacks": False, "require_parameters": True}}
+            return await create(*args, **kw)
+
+        client.chat.completions.create = wrapped
+        return client
+
+    llm._make_client = make_client
+    _PINNED = True
+
+
+async def _open_jb(prompts, schema, on_result, spend) -> None:
+    import wsbench.llm as llm
+
+    _pin_providers(llm)
+    off = {"enabled": False}
+    if schema.get("name") == "readout_recognition":
+        note = VOICE_NOTE.read_text(encoding="utf-8")
+        _PROVIDER.set(OPEN_JUDGE_PROVIDER)
+        await llm.stream_json_async([(s + note, u) for s, u in prompts], schema=schema, model=OPEN_JUDGE,
+                                    on_result=on_result, reasoning=off, temperature=0.0, max_tokens=1500, spend=spend)
+    else:  # the summarizer stage ("interp") and anything else: the open summarizer
+        _PROVIDER.set(OPEN_JUDGE_PROVIDER)
+        await llm.stream_json_async(prompts, schema=schema, model=OPEN_SUMMARIZER, on_result=on_result,
+                                    reasoning=off, temperature=0.0, spend=spend)
+
+
 async def handle(prompts, *, schema, model, on_result, spend, temperature=None) -> None:
-    if model.startswith("capture"):
+    if model.startswith("open-jb"):
+        await _open_jb(prompts, schema, on_result, spend)
+    elif model.startswith("capture"):
         _capture(prompts, schema, on_result)
     elif model.startswith("replay:"):
         _replay(model[len("replay:"):], prompts, on_result)
