@@ -318,8 +318,9 @@ never pinned.
 - Override precedence: `judge_model=` flag > `WSBENCH_JUDGE_MODEL` env > the family pin.
 - `pinned_instrument` is true only when the resolved model equals the family pin; a result
   judged by an override is never a number of record and can never be `complete`.
-- Aux models (the summarizer for token readouts) come from the family's `JudgeConfig.aux_models`
-  and are not affected by the override.
+- Aux models (the summarizer for token readouts) use the family's `JudgeConfig.aux_models` entry
+  when set; otherwise they use the resolved judge model, including any `judge_model=` or
+  `WSBENCH_JUDGE_MODEL` override.
 
 Five families (user_modeling and the four in-house MC families) were judged with
 `claude-opus-5` in their source scripts and moved to Gemini 3.8 Flash in this repo.
