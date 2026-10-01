@@ -168,6 +168,26 @@ class Sampling:
     k: int = 1  # samples per cell
 
 
+def adapter_directory(
+    reference: str, download: Any, *, repo_type: str = "model", revision: str | None = None
+) -> str:
+    """Resolve repo:subfolder without confusing model repositories with datasets."""
+    if repo_type not in {"model", "dataset"}:
+        raise ValueError("adapter repo_type must be model or dataset")
+    repo, _, subfolder = reference.partition(":")
+    if (
+        not repo
+        or subfolder.startswith(("/", "\\"))
+        or ".." in subfolder.replace("\\", "/").split("/")
+    ):
+        raise ValueError("invalid adapter repository/subfolder")
+    kwargs = {"repo_type": repo_type, "revision": revision}
+    if subfolder:
+        kwargs["allow_patterns"] = [f"{subfolder}/*"]
+    local = download(repo, **kwargs)
+    return str(Path(local) / subfolder) if subfolder else str(local)
+
+
 @dataclass
 class OLens:
     """The oracle lens: a LoRA on the probed model that verbalizes an activation placed in an
@@ -177,7 +197,9 @@ class OLens:
 
     name: str = "olens"
     layers: list[int] | None = None
-    lora: str = "agu18dec/local-workspace:ckpts/ao/rl/s3d.ddp600.s0/iter_000600"
+    lora: str = "agu18dec/olens_and_ar:olens_s3d_rl600"
+    repo_type: str = "model"
+    revision: str | None = None
     alpha: float = 16000.0
     prompt: str = (
         "An activation vector from layer {layer} of a language model is enclosed in activation "
@@ -192,18 +214,15 @@ class OLens:
         from huggingface_hub import snapshot_download
         from peft import PeftModel
 
-        repo, _, sub = self.lora.partition(":")
-        local = (
-            snapshot_download(repo, repo_type="dataset", allow_patterns=[f"{sub}/*"])
-            if sub
-            else snapshot_download(repo)
+        adir = adapter_directory(
+            self.lora, snapshot_download, repo_type=self.repo_type, revision=self.revision
         )
-        adir = f"{local}/{sub}" if sub else local
         if isinstance(backend.model, PeftModel):  # a previous verbalizer's adapter
             backend.model = backend.model.unload()
         backend.model = PeftModel.from_pretrained(backend.model, adir)
         backend.model.eval()
         self._b = backend
+        self._slots.clear()
 
     def _carrier(self, layer: int) -> tuple[list[int], int]:
         """The carrier prompt's ids and its slot index, choosing an enclosed-ideograph char that

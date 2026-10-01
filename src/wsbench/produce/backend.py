@@ -18,20 +18,26 @@ class Backend:
     tokenizer: Any
     device: str
     model_id: str
+    revision: str | None = None
 
     @classmethod
     def load(
-        cls, model_id: str = DEFAULT_MODEL, *, device: str = "cuda", dtype: str = "bfloat16"
+        cls,
+        model_id: str = DEFAULT_MODEL,
+        *,
+        device: str = "cuda",
+        dtype: str = "bfloat16",
+        revision: str | None = None,
     ) -> Self:
         import torch
         from transformers import AutoModelForCausalLM, AutoTokenizer
 
-        tok = AutoTokenizer.from_pretrained(model_id)
+        tok = AutoTokenizer.from_pretrained(model_id, revision=revision)
         model = AutoModelForCausalLM.from_pretrained(
-            model_id, dtype=getattr(torch, dtype), device_map=device
+            model_id, dtype=getattr(torch, dtype), device_map=device, revision=revision
         )
         model.eval()
-        return cls(model=model, tokenizer=tok, device=device, model_id=model_id)
+        return cls(model=model, tokenizer=tok, device=device, model_id=model_id, revision=revision)
 
     @property
     def blocks(self) -> Any:

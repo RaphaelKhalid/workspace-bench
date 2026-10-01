@@ -3,7 +3,7 @@ cell, a prompt over positions and layers, a plan row, or a whole eval set."""
 
 import json
 from collections.abc import Iterable, Iterator
-from dataclasses import dataclass
+from dataclasses import asdict, dataclass, is_dataclass
 from pathlib import Path
 from typing import Any, Self
 
@@ -69,10 +69,11 @@ class Producer:
         method_spec: str | Method = "logit_lens",
         *,
         device: str = "cuda",
+        revision: str | None = None,
         **method_kw: Any,
     ) -> Self:
         m = method(method_spec, **method_kw)  # before the model load, so a typo fails fast
-        backend = Backend.load(model, device=device)
+        backend = Backend.load(model, device=device, revision=revision)
         m.bind(backend)
         return cls(backend=backend, method=m)
 
@@ -148,6 +149,57 @@ class Producer:
                 rows = self.read_spec(spec, layers=layers)
                 fh.write("".join(json.dumps(r.contract(), ensure_ascii=False) + "\n" for r in rows))
                 fh.flush()
+        return out
+
+    def run_manifest(self, manifest: Any, family: str, out: Path | str) -> Path:
+        """Produce exactly a resolved manifest's cells; resume by cell, never by item ID."""
+        from .journal import ReadoutJournal
+
+        if (self.backend.model_id, self.backend.revision) != (
+            manifest.metadata["model"],
+            manifest.metadata["model_revision"],
+        ):
+            raise ValueError("backend model/revision differs from manifest")
+        items = manifest.family(family)
+        for item in items:
+            if self.method.layers and tuple(self.method.layers) != item.layers:
+                raise ValueError("fixed-layer reader needs its own explicit manifest")
+            if self.method.name == "olens" and not set(item.layers) <= set(range(20, 61, 4)):
+                raise ValueError("Oracle manifest contains layers outside L20..60 step 4")
+        reader_config = {
+            name: asdict(value) if is_dataclass(value) else value
+            for name, value in vars(self.method).items()
+            if not name.startswith("_")
+        }
+        binding = {
+            "manifest_sha256": manifest.fingerprint,
+            "family": family,
+            "reader": reader_config,
+        }
+        # Check serializability before opening an output or starting any model forward.
+        json.dumps(binding)
+        out = Path(out)
+        with ReadoutJournal(out, binding=binding, expected=manifest.expected(family)) as journal:
+            for item in items:
+                missing = item.cells - journal.present
+                if not missing:
+                    continue
+                positions = [p for p in item.positions if any(k[2] == p for k in missing)]
+                layers = [layer for layer in item.layers if any(k[1] == layer for k in missing)]
+                idx = [p % len(item.input_ids) for p in positions]
+                tokens = dict(zip(item.positions, item.tokens, strict=True))
+                for p, index in zip(positions, idx, strict=True):
+                    if self.backend.tokenizer.decode([item.input_ids[index]]) != tokens[p]:
+                        raise ValueError(f"tokenizer differs at {family}/{item.id}/{p}")
+                acts = self.backend.capture(list(item.input_ids), layers, idx)
+                for layer in layers:
+                    for i, pos in enumerate(positions):
+                        if (item.id, layer, pos) in missing:
+                            readout = self.method.read(acts[layer][i], layer)
+                            journal.append(
+                                Row(item.id, layer, pos, tokens[pos], readout).contract()
+                            )
+                journal.checkpoint()
         return out
 
     # ---- internals

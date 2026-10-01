@@ -102,6 +102,13 @@ def resolve(rule: dict[str, Any], tokens: list[str]) -> list[int]:
         return list(range(-n, 0))
     if kind == "positions":
         return [int(p) for p in rule["positions"] if 0 <= int(p) < n]
+    if kind == "signed_positions":
+        positions = rule["positions"]
+        if any(type(p) is not int or not -n <= p < n for p in positions):
+            raise ValueError("signed manifest position out of bounds")
+        if len({p % n for p in positions}) != len(positions):
+            raise ValueError("duplicate or aliased signed manifest position")
+        return list(positions)
     if kind == "line_one_newline":
         nls = [i for i, t in enumerate(tokens) if "\n" in _clean(t)]
         return [nls[-1]] if nls else []
