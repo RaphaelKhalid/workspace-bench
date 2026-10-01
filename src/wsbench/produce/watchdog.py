@@ -3,14 +3,84 @@
 import json
 import os
 import re
+import subprocess
+import sys
 import time
-import urllib.request
+from pathlib import Path
 
 from .budget import BudgetExceededError, nonnegative
 
 
 class PodControlError(RuntimeError):
     pass
+
+
+def control_request(
+    operation, pod_id, *, timeout_seconds=10, popen=subprocess.Popen, monotonic=time.monotonic
+):
+    """Bound DNS, TLS and response reading together; allow one second to reap on failure."""
+    if operation not in {"inspect", "stop"} or not re.fullmatch(r"[a-z0-9-]{6,64}", pod_id):
+        raise PodControlError("invalid control operation")
+    nonnegative("control timeout", timeout_seconds, positive=True)
+    if timeout_seconds > 10:
+        raise ValueError("control timeout must be at most ten seconds")
+    if not os.environ.get("RUNPOD_API_KEY"):
+        raise PodControlError("RunPod API key missing")
+    environment = {
+        k: v
+        for k, v in os.environ.items()
+        if k == "RUNPOD_API_KEY" or not k.upper().endswith(("_API_KEY", "_TOKEN"))
+    }
+    process = None
+    deadline = monotonic() + timeout_seconds
+    try:
+        process = popen(
+            [
+                sys._base_executable,  # Avoid the Windows virtualenv launcher proxy.
+                "-I",
+                str(Path(__file__).with_name("control_transport.py")),
+                operation,
+                pod_id,
+            ],
+            stdin=subprocess.DEVNULL,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.DEVNULL,
+            shell=False,
+            env=environment,
+            creationflags=subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0,
+        )
+        raw, _ = process.communicate(timeout=max(0, deadline - monotonic()))
+        if monotonic() > deadline:
+            raise PodControlError("RunPod control elapsed deadline exceeded")
+        if process.returncode != 0 or len(raw) > 4096:
+            raise PodControlError("RunPod control helper failed or exceeded response bound")
+        report = json.loads(raw)
+        if (
+            not isinstance(report, dict)
+            or report.get("ok") is not True
+            or not isinstance(report.get("value"), dict)
+        ):
+            raise PodControlError("RunPod control request failed; shutdown remains unverified")
+        return report["value"]
+    except (OSError, ValueError, subprocess.SubprocessError) as exc:
+        raise PodControlError(f"RunPod control failed: {type(exc).__name__}") from None
+    finally:
+        if process is not None:
+            reaped = False
+            try:
+                if process.poll() is None:
+                    process.kill()
+                process.wait(timeout=1)
+                reaped = True
+            except (OSError, subprocess.SubprocessError) as exc:
+                raise PodControlError(
+                    f"RunPod control cleanup failed: {type(exc).__name__}"
+                ) from None
+            finally:
+                # A Windows communicate reader can hold the buffered pipe lock until EOF.
+                # If termination/reaping failed, close could block past the cleanup bound.
+                if reaped and process.stdout is not None:
+                    process.stdout.close()
 
 
 class RunPodStopper:
@@ -22,27 +92,11 @@ class RunPodStopper:
         self.pod_id, self.run_id = pod_id, run_id
 
     def _request(self, method, suffix="", body=None):
-        key = os.environ.get("RUNPOD_API_KEY")
-        if not key:
-            raise PodControlError("RunPod API key missing")
-        request = urllib.request.Request(
-            f"https://api.runpod.io/v2/pods/{self.pod_id}{suffix}",
-            method=method,
-            data=None if body is None else json.dumps(body).encode(),
-            headers={
-                "Authorization": "Bearer " + key,
-                "Content-Type": "application/json",
-                "Accept": "application/json",
-                "User-Agent": "wsbench-budget-guard/1.0",
-            },
-        )
-        try:
-            with urllib.request.urlopen(request, timeout=10) as response:
-                data = response.read()
-                return json.loads(data) if data else {}
-        except (OSError, ValueError) as exc:
-            # Never include provider bodies/headers; those can contain account or environment data.
-            raise PodControlError(f"RunPod {method} failed: {type(exc).__name__}") from None
+        if method == "GET" and suffix == "" and body is None:
+            return control_request("inspect", self.pod_id)
+        if method == "POST" and suffix == "/action" and body == {"action": "stop"}:
+            return control_request("stop", self.pod_id)
+        raise PodControlError("unsupported control operation")
 
     def inspect(self):
         pod = self._request("GET")

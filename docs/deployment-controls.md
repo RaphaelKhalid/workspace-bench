@@ -52,8 +52,25 @@ The [restoration PR 331](https://github.com/runpod/runpodctl/pull/331) remains a
 unmerged draft awaiting backend enforcement. Some published guidance still
 mentions these flags; it is insufficient evidence of a working provider timer.
 The current controls rely on explicit API shutdown, and an API outage remains
-a limitation. The API transport timeout must also be made an absolute elapsed
-bound before treating the reserved shutdown margin as a tested upper bound.
+a limitation.
+
+Each control request now runs in an isolated standard-library Python subprocess.
+The parent gives process startup, DNS, TLS and response reading one shared
+ten-second elapsed allowance, then kills/reaps its child with a one-second wait
+bound. This prevents a trickling response from extending the timeout. The native
+base interpreter avoids Windows virtual-environment launcher proxies. Requests
+are limited to the fixed inspect/stop endpoints, redirects are refused, provider
+bodies are capped at 64 KiB, and only ownership/status/runtime-presence fields
+leave the helper. Other environment secrets and provider exception text are not
+copied into the control response.
+
+The maximum external shutdown path is three rounds of inspect/stop/verify plus
+three two-second retry waits: at most 105 seconds of configured request/cleanup
+allowances. That fits inside the 120-second shutdown reserve with room for the
+bounded supervisor poll/child cleanup. Tests simulate that full path and use a
+real trickling localhost server to verify elapsed timeout and child reaping.
+These bounds assume functioning local process scheduling/termination; they do
+not guarantee provider response, successful shutdown or a maximum provider bill.
 
 ## Lease and worker specification
 
