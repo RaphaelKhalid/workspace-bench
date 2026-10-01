@@ -234,6 +234,13 @@ async def _anthropic_once(
     return _parse_object(text)
 
 
+def _moderation_flagged(e: Exception) -> bool:
+    """OpenRouter's moderation 403 names the flagged input in ``error.metadata.flagged_input``."""
+    body = getattr(e, "body", None)
+    meta = body.get("metadata") if isinstance(body, dict) else None
+    return isinstance(meta, dict) and "flagged_input" in meta
+
+
 async def _one(
     route_: Route,
     client: Any,
@@ -281,6 +288,10 @@ async def _one(
         except Exception as e:
             name = type(e).__name__
             status = getattr(e, "status_code", None)
+            if route_ == "openrouter" and status == 403 and _moderation_flagged(e):
+                spend.refusals += 1  # one prompt flagged by moderation, not a config error
+                print(f"  llm refusal (moderation): {model}")
+                return None
             if name in _FATAL or status in (401, 402, 403):  # bad key, no credits, no access
                 raise JudgeConfigError(f"{name}: {str(e)[:300]}") from e
             transient = (

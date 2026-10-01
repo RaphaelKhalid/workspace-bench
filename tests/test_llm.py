@@ -27,6 +27,14 @@ class APITimeoutError(Exception):
     status_code = None
 
 
+class PermissionDeniedError(Exception):
+    status_code = 403
+
+    def __init__(self, message: str, body: Any = None):
+        super().__init__(message)
+        self.body = body
+
+
 def _or_response(content: str, cost: float = 0.01) -> Any:
     return SimpleNamespace(
         choices=[SimpleNamespace(message=SimpleNamespace(content=content))],
@@ -207,6 +215,22 @@ def test_openrouter_fatal_raises(keys, fast, monkeypatch):
     with pytest.raises(JudgeConfigError):
         stream_json([("s", "u")], schema=SCHEMA, model=GEMINI, on_result=lambda i, r: None)
     assert fake.closed
+
+
+def test_openrouter_moderation_skips_the_cell(keys, fast, monkeypatch):
+    flagged = PermissionDeniedError("flagged", body={"metadata": {"flagged_input": "x"}})
+    fake = FakeOpenRouter([flagged, _or_response('{"a": 1}')])
+    got, spend = _collect([("s", "u"), ("s", "v")], GEMINI, fake, monkeypatch, concurrency=1)
+    assert sorted(got.values(), key=str) == [None, {"a": 1}]
+    assert spend.refusals == 1 and spend.errors == 0 and spend.retries == 0
+    assert len(fake.calls) == 2
+
+
+def test_openrouter_permission_denied_still_raises(keys, fast, monkeypatch):
+    fake = FakeOpenRouter([PermissionDeniedError("no access", body={"message": "forbidden"})])
+    _install(monkeypatch, fake)
+    with pytest.raises(JudgeConfigError):
+        stream_json([("s", "u")], schema=SCHEMA, model=GEMINI, on_result=lambda i, r: None)
 
 
 def test_openrouter_non_object_after_retries(keys, fast, monkeypatch):
