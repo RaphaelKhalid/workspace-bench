@@ -1,5 +1,9 @@
 # workspace-bench
 
+> **This fork adds [`lite/`](lite/README.md): an open-weights judge for `jailbreak_recognition`.**
+> Qwen3.8-27B (Apache-2.0) agrees with the Sonnet 5 judge at κ = 0.714 on held-out cells, past the
+> judge-swap bar of 0.70. It costs ≈ $220 instead of ≈ $907 per J-lens arm via API, or ≈ $60 self-hosted.
+
 Evals of whether an activation-reading lens surfaces what Qwen3.6-27B computes but never
 writes. A lens reads the model's residual stream at a token position and produces either prose
 (an "O-lens": sampled sentences) or a top-10 token bag (a "J-lens": tokens with scores). Each eval
