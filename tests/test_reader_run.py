@@ -109,7 +109,7 @@ def setup(tmp_path, monkeypatch):
 
     monkeypatch.setattr(run.Producer, "load_cached", load)
     monkeypatch.setattr(run, "release", lambda producer: releases.append(producer.method.name))
-    with CaptureStore(tmp_path / "store", union, runtime, 3) as store:
+    with CaptureStore(tmp_path / "captures", union, runtime, 3) as store:
         fill(store)
         yield manifests, tmp_path / "out", store, loads, releases
 
@@ -204,4 +204,63 @@ def test_subject_and_layer_contracts_checked_before_loading(setup, change):
     )
     with pytest.raises(ValueError, match=r"subject|unsupported layers"):
         run.run_readers(manifests, out, store, guard=Guard())
+    assert not loads
+
+
+def test_export_hook_only_sees_durable_files_and_flushes_on_completion(setup):
+    manifests, out, store, _, _ = setup
+    exports = []
+
+    class Publisher:
+        def update(self, paths, force=False):
+            assert all(path.exists() for path in paths)
+            exports.append((paths, force))
+
+    run.run_readers(manifests, out, store, guard=Guard(), publisher=Publisher())
+    assert exports[-1][1] is True
+    assert sum(len(paths) == 3 and force for paths, force in exports) == 16
+
+
+def test_full_reader_export_restore_then_resume_needs_no_models(setup):
+    from wsbench.produce.export import SnapshotPublisher, receive_snapshot, restore_snapshot
+
+    manifests, old_out, store, loads, _ = setup
+    root = old_out.parent
+    out = root / "readouts"
+    exported, received, restored = [root / name for name in ["export", "receive", "restored"]]
+    context = {
+        "capture_manifest_sha256": store.manifest.fingerprint,
+        "reader_manifests": {arm: manifest.fingerprint for arm, manifest in manifests.items()},
+    }
+    for arm, manifest in manifests.items():
+        manifest.write(root / "manifests" / f"{arm}.json")
+    publisher = SnapshotPublisher(root, exported, run_id="integration-test", context=context)
+    publisher.update(
+        [
+            *store.root.glob("*.npz"),
+            *store.root.glob("*.json"),
+            *(root / "manifests").glob("*.json"),
+        ],
+        force=True,
+    )
+    run.run_readers(manifests, out, store, guard=Guard(), publisher=publisher)
+    snapshot = publisher.previous
+    receipt = receive_snapshot(
+        snapshot,
+        received,
+        lambda sha: (exported / "objects" / sha).open("rb"),
+        run_id="integration-test",
+        context=context,
+    )
+    assert receipt["verified"] and not receipt["benchmark_coverage_validated"]
+    restore_snapshot(snapshot, received, restored, run_id="integration-test", context=context)
+    restored_manifests = {
+        arm: CellManifest.load(restored / "manifests" / f"{arm}.json") for arm in run.ARM_IDS
+    }
+    loads.clear()
+    with CaptureStore.existing(restored / "captures") as restored_store:
+        result = run.run_readers(
+            restored_manifests, restored / "readouts", restored_store, guard=Guard()
+        )
+    assert result["status"] == "complete" and result["model_loads"] == 0
     assert not loads

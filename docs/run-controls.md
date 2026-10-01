@@ -85,8 +85,9 @@ actionable failure, never reported as stopped. Retained disk costs remain separa
 - Bind a representative pilot and all-arm forecast to the cumulative ledger.
 - Wire bounded worker/progress adapters and readiness checks into the launcher;
   arm an independent on-pod deadline as a fallback to external supervision.
-- Implement and test incremental export, receipts and recovery to the local
-  workspace; preserve durable outputs if transfer fails before stopping compute.
+- Wire the tested [incremental export and recovery](export-recovery.md) into
+  periodic and final pulls, capture seeding/flush and final coverage checks;
+  preserve durable outputs if transfer fails before stopping compute.
 - Test the assembled orchestration with fake transport/process failures, then
   recheck live resource ownership, current prices and storage accounting.
 

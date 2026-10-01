@@ -174,7 +174,7 @@ class CaptureStore:
         self._verified_readers.add(manifest.fingerprint)
 
 
-def capture_all(backend, store: CaptureStore) -> dict:
+def capture_all(backend, store: CaptureStore, *, before_item=None, on_item=None) -> dict:
     if (backend.model_id, backend.revision) != (
         store.manifest.metadata["model"],
         store.manifest.metadata["model_revision"],
@@ -187,6 +187,8 @@ def capture_all(backend, store: CaptureStore) -> dict:
         if store.get(item) is not None:
             result["reused_items"] += 1
             continue
+        if before_item is not None:
+            before_item()
         positions = [p % len(item.input_ids) for p in item.positions]
         for p, token in zip(positions, item.tokens, strict=True):
             if backend.tokenizer.decode([item.input_ids[p]]) != token:
@@ -197,6 +199,14 @@ def capture_all(backend, store: CaptureStore) -> dict:
         arrays = [tensors[layer].detach().float().cpu().numpy() for layer in item.layers]
         store.put(item, np.stack(arrays))
         result["captured_items"] += 1
+        if on_item is not None:
+            on_item(
+                {
+                    "family": item.family,
+                    "id": item.id,
+                    "path": str(store.root / f"{digest([item.family, item.id])}.npz"),
+                }
+            )
     return result
 
 

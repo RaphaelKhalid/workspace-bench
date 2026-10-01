@@ -89,6 +89,48 @@ def test_capture_resume_skips_complete_items_and_validates_backend(tmp_path):
             capture_all(backend, store)
 
 
+def test_capture_export_failure_keeps_item_and_budget_stops_next_forward(tmp_path):
+    _, _, union = fixture()
+    runtime = {"dtype": "bfloat16"}
+    calls, events = [], []
+
+    def capture(ids, layers, positions):
+        calls.append(ids)
+        return {layer: torch.ones(len(positions), 3) for layer in layers}
+
+    backend = SimpleNamespace(
+        model_id="toy",
+        revision="rev",
+        capture_runtime=lambda: runtime,
+        tokenizer=SimpleNamespace(decode=lambda ids: str(ids[0])),
+        capture=capture,
+    )
+    with CaptureStore(tmp_path, union, runtime, 3) as store:
+
+        def interrupted_export(event):
+            events.append(event)
+            assert store.get(union.items[0]) is not None
+            from pathlib import Path
+
+            assert Path(event["path"]).is_file()
+            raise OSError("export unavailable")
+
+        with pytest.raises(OSError, match="export unavailable"):
+            capture_all(backend, store, on_item=interrupted_export)
+        assert len(calls) == len(events) == 1
+
+        def expired_budget():
+            raise TimeoutError("budget deadline")
+
+        with pytest.raises(TimeoutError, match="budget deadline"):
+            capture_all(backend, store, before_item=expired_budget)
+        assert len(calls) == 1
+        report = capture_all(backend, store, on_item=events.append)
+        assert report["reused_items"] == report["captured_items"] == 1
+        assert len(calls) == len(events) == 2
+        assert events[0]["id"] != events[1]["id"]
+
+
 def test_block_plan_is_independent_of_progress():
     first, _, _ = fixture()
     plan = blocks(first, "a", 3, 0)

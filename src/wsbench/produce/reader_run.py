@@ -125,7 +125,9 @@ def release(producer):
         torch.cuda.empty_cache()
 
 
-def run_readers(manifests, out, store, *, guard, batch_size=16, seed=0, device="cuda"):
+def run_readers(
+    manifests, out, store, *, guard, batch_size=16, seed=0, device="cuda", publisher=None
+):
     """Compute only; caller supplies the supervised budget guard and owns pod shutdown."""
     out = Path(out)
     with file_lock(out / ".readers.lock"):
@@ -147,7 +149,23 @@ def run_readers(manifests, out, store, *, guard, batch_size=16, seed=0, device="
             report["budget"] = guard.snapshot()
             with atomic_writer(out / "readers-run.json") as handle:
                 handle.write((json.dumps(report, indent=2) + "\n").encode())
+            if publisher is not None:
+                paths = [out / "readers-run.json"]
+                if "family" in event and "arm" in event:
+                    path = out / event["arm"] / f"{event['family']}.jsonl"
+                    paths.extend([path, path.with_suffix(".jsonl.run.json")])
+                publisher.update(
+                    paths, force=event["stage"] in {"family_complete", "complete", "interrupted"}
+                )
 
+        if publisher is not None:
+            existing = []
+            for arm, families in states.items():
+                for family in families:
+                    path = out / arm / f"{family}.jsonl"
+                    if path.exists():
+                        existing.extend([path, path.with_suffix(".jsonl.run.json")])
+            publisher.update(existing)
         save({"stage": "preflight_complete"})
         producer = None
         try:
