@@ -171,6 +171,31 @@ def validate_plan(plan, manifests):
         raise ValueError("pilot plan differs from frozen workload, settings or implementation")
 
 
+def execution_selection(plan):
+    selection = {}
+    for arm, reader in plan["readers"].items():
+        families = defaultdict(list)
+        for row in reader["blocks"]:
+            families[row["family"]].append(row["index"])
+        selection[arm] = dict(families)
+    return selection
+
+
+def load_plan(path, expected_sha256):
+    with Path(path).open("rb") as stream:
+        raw = stream.read(8 * 1024 * 1024 + 1)
+    if len(raw) > 8 * 1024 * 1024:
+        raise ValueError("pilot plan exceeds size bound")
+    plan = json.loads(raw)
+    if (
+        not isinstance(plan, dict)
+        or plan.get("sha256") != expected_sha256
+        or digest({k: v for k, v in plan.items() if k != "sha256"}) != expected_sha256
+    ):
+        raise ValueError("pilot plan digest differs from compute specification")
+    return plan
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--readers", type=Path, required=True)

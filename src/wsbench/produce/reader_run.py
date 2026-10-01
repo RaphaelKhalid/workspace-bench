@@ -11,7 +11,7 @@ from pathlib import Path
 from wsbench.cell_manifest import digest
 from wsbench.readouts import _parse_row
 
-from .batches import binding_for
+from .batches import binding_for, blocks, indexed_blocks
 from .journal import ReadoutJournal
 from .producer import Producer
 from .reference import ARM_IDS, load_lock, reference_method
@@ -27,16 +27,44 @@ def public_config(reader):
 
 
 def inspect_output(
-    path, manifest, family, config, capture_binding, *, batch_size, seed, recover=True
+    path,
+    manifest,
+    family,
+    config,
+    capture_binding,
+    *,
+    batch_size,
+    seed,
+    recover=True,
+    required_cells=None,
 ):
     """Recover only torn tails; reject drift/corruption without a model or Torch import."""
     path = Path(path)
     sidecar = path.with_suffix(path.suffix + ".run.json")
     expected = manifest.expected(family)
+    if required_cells is not None and (
+        not isinstance(required_cells, set) or not required_cells or not required_cells <= expected
+    ):
+        raise ValueError("required cells must be a nonempty subset of the full manifest")
+
+    def coverage(present):
+        result = {
+            "complete": present == expected,
+            "present": len(present),
+            "expected": len(expected),
+        }
+        if required_cells is not None:
+            result.update(
+                selection_complete=required_cells <= present,
+                selection_present=len(required_cells & present),
+                selection_expected=len(required_cells),
+            )
+        return result
+
     if not sidecar.exists():
         if path.exists() and path.stat().st_size:
             raise ValueError("existing readouts have no provenance sidecar")
-        return {"complete": False, "present": 0, "expected": len(expected)}
+        return coverage(set())
     old = json.loads(sidecar.read_text(encoding="utf-8"))
     runtime = old.get("reader_runtime")
     if not isinstance(runtime, dict) or not runtime.get("dtype"):
@@ -50,7 +78,7 @@ def inspect_output(
     if not recover and old != binding:
         raise ValueError("readout manifest/reader configuration changed; use a new output")
     if not recover and not path.exists():
-        return {"complete": False, "present": 0, "expected": len(expected)}
+        return coverage(set())
     # Opening also validates row identity, duplicates, mixed kinds and malformed complete rows.
     context = ReadoutJournal(path, binding=binding, expected=expected) if recover else nullcontext()
     with context:
@@ -80,11 +108,7 @@ def inspect_output(
                 or not all(math.isfinite(x) for x in cell.scores)
             ):
                 raise ValueError("cached ranking differs from reference reader")
-        return {
-            "complete": present == expected,
-            "present": len(present),
-            "expected": len(expected),
-        }
+        return coverage(present)
 
 
 def validate_manifests(manifests):
@@ -114,12 +138,40 @@ def validate_manifests(manifests):
     return readers
 
 
-def preflight(manifests, out, store, *, batch_size, seed):
+def selection_cells(manifests, block_selection, batch_size, seed):
+    if block_selection is None:
+        return None
+    if set(block_selection) != set(ARM_IDS):
+        raise ValueError("selected execution requires all eight readers")
+    result = {}
+    for arm, manifest in manifests.items():
+        families = {i.family for i in manifest.items}
+        if set(block_selection[arm]) != families:
+            raise ValueError("selected execution requires every family")
+        result[arm] = {}
+        for family in sorted(families):
+            if block_selection[arm][family] is None:
+                raise ValueError("selected execution requires explicit block indices")
+            chosen = indexed_blocks(
+                blocks(manifest, family, batch_size, seed), block_selection[arm][family]
+            )
+            result[arm][family] = {
+                (item_id, block.layer, pos) for _, block in chosen for item_id, pos in block.cells
+            }
+    return result
+
+
+def preflight(manifests, out, store, *, batch_size, seed, required=None):
     readers = validate_manifests(manifests)
     states = {}
     for arm in ARM_IDS:
         manifest = manifests[arm]
-        store.check_reader(manifest)
+        item_keys = (
+            {(f, item_id) for f, cells in required[arm].items() for item_id, _, _ in cells}
+            if required is not None
+            else None
+        )
+        store.check_reader(manifest, item_keys=item_keys)
         config = public_config(readers[arm])
         states[arm] = {
             family: inspect_output(
@@ -130,6 +182,7 @@ def preflight(manifests, out, store, *, batch_size, seed):
                 store.binding,
                 batch_size=batch_size,
                 seed=seed,
+                required_cells=required[arm][family] if required is not None else None,
             )
             for family in sorted({i.family for i in manifest.items})
         }
@@ -148,14 +201,29 @@ def release(producer):
 
 
 def run_readers(
-    manifests, out, store, *, guard, batch_size=16, seed=0, device="cuda", publisher=None
+    manifests,
+    out,
+    store,
+    *,
+    guard,
+    batch_size=16,
+    seed=0,
+    device="cuda",
+    publisher=None,
+    block_selection=None,
+    on_event=None,
 ):
     """Compute only; caller supplies the supervised budget guard and owns pod shutdown."""
     out = Path(out)
+    required = selection_cells(manifests, block_selection, batch_size, seed)
+    completion_key = "complete" if required is None else "selection_complete"
     with file_lock(out / ".readers.lock"):
-        readers, states = preflight(manifests, out, store, batch_size=batch_size, seed=seed)
+        readers, states = preflight(
+            manifests, out, store, batch_size=batch_size, seed=seed, required=required
+        )
         report = {
             "status": "running",
+            "scope": "full_manifest" if required is None else "selected_blocks",
             "started": time.time(),
             "arms": states,
             "manifest_hashes": {k: m.fingerprint for k, m in manifests.items()},
@@ -171,13 +239,17 @@ def run_readers(
             report["budget"] = guard.snapshot()
             with atomic_writer(out / "readers-run.json") as handle:
                 handle.write((json.dumps(report, indent=2) + "\n").encode())
+            if on_event is not None:
+                on_event(event)
             if publisher is not None:
                 paths = [out / "readers-run.json"]
                 if "family" in event and "arm" in event:
                     path = out / event["arm"] / f"{event['family']}.jsonl"
                     paths.extend([path, path.with_suffix(".jsonl.run.json")])
                 publisher.update(
-                    paths, force=event["stage"] in {"family_complete", "complete", "interrupted"}
+                    paths,
+                    force=event["stage"]
+                    in {"family_complete", "complete", "pilot_complete", "interrupted"},
                 )
 
         if publisher is not None:
@@ -192,12 +264,13 @@ def run_readers(
         producer = None
         try:
             for arm in ARM_IDS:
-                pending = [f for f, s in states[arm].items() if not s["complete"]]
+                pending = [f for f, s in states[arm].items() if not s[completion_key]]
                 if not pending:
                     continue
                 guard.check()
                 manifest = manifests[arm]
                 save({"stage": "loading", "arm": arm})
+                load_started = time.monotonic()
                 producer = Producer.load_cached(
                     manifest.metadata["model"],
                     readers.pop(arm),
@@ -205,7 +278,6 @@ def run_readers(
                     revision=manifest.metadata["model_revision"],
                 )
                 report["model_loads"] += 1
-                save({"stage": "reader_loaded", "arm": arm})
 
                 def on_batch(event, arm=arm):
                     report["generated_cells"] += event["generated_cells"]
@@ -213,6 +285,14 @@ def run_readers(
                     save({"stage": "batch_checkpointed", "arm": arm, **event})
 
                 try:
+                    loaded = {
+                        "stage": "reader_loaded",
+                        "arm": arm,
+                        "elapsed_seconds": time.monotonic() - load_started,
+                    }
+                    if hasattr(producer, "backend"):
+                        loaded["runtime"] = producer.backend.capture_runtime()
+                    save(loaded)
                     for family in pending:
                         guard.check()
                         path = out / arm / f"{family}.jsonl"
@@ -225,6 +305,11 @@ def run_readers(
                             seed=seed,
                             before_batch=guard.check,
                             on_batch=on_batch,
+                            **(
+                                {"block_indices": block_selection[arm][family]}
+                                if block_selection is not None
+                                else {}
+                            ),
                         )
                         state = inspect_output(
                             path,
@@ -234,15 +319,24 @@ def run_readers(
                             store.binding,
                             batch_size=batch_size,
                             seed=seed,
+                            required_cells=required[arm][family] if required is not None else None,
                         )
-                        if not state["complete"]:
+                        if not state[completion_key]:
                             raise ValueError("reader returned with incomplete output")
                         states[arm][family] = state
                         save({"stage": "family_complete", "arm": arm, "family": family})
                 finally:
+                    release_started = time.monotonic()
                     release(producer)
                     producer = None
-            report["status"] = "complete"
+                    save(
+                        {
+                            "stage": "reader_released",
+                            "arm": arm,
+                            "elapsed_seconds": time.monotonic() - release_started,
+                        }
+                    )
+            report["status"] = "complete" if required is None else "pilot_complete"
             return report
         except BaseException as exc:
             report.update(status="interrupted", error_type=type(exc).__name__)

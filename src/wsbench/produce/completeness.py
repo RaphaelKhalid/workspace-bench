@@ -10,6 +10,7 @@ from wsbench.cell_manifest import CellManifest, digest
 from . import reader_run
 from .captures import CaptureStore, capture_union, read_capture
 from .export import contained, validate_snapshot, verify_object
+from .measurements import measurement_path
 from .reference import ARM_IDS
 
 
@@ -74,7 +75,9 @@ def verify_export(snapshot, root, manifests, *, run_id, batch_size=16, seed=0):
         "present_vectors": 0,
     }
     required = set(mandatory)
-    optional = {"readers-run.json", "readouts/readers-run.json"}
+    optional = {"readers-run.json", "readouts/readers-run.json", "manifests/operational-pilot.json"}
+    # Byte-verified operational records never contribute to grid completeness.
+    optional.update(name for name in entries if measurement_path(name))
     for item in union.items:
         name = f"captures/{digest([item.family, item.id])}.npz"
         required.add(name)

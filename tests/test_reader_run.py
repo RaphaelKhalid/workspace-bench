@@ -10,7 +10,7 @@ from test_capture_store import fill, fixture
 
 from wsbench.cell_manifest import CellManifest, digest
 from wsbench.produce import reader_run as run
-from wsbench.produce.batches import binding_for
+from wsbench.produce.batches import binding_for, blocks, indexed_blocks
 from wsbench.produce.budget import BudgetExceededError
 from wsbench.produce.captures import CaptureStore, capture_union
 from wsbench.produce.journal import ReadoutJournal
@@ -31,13 +31,21 @@ class Guard:
 
 
 @pytest.fixture
-def setup(tmp_path, monkeypatch):
+def setup(tmp_path, monkeypatch, request):
     base, _, _ = fixture()
+    base = replace(
+        base,
+        items=base.items
+        + tuple(
+            replace(base.items[0], id=f"extra-{i}") for i in range(getattr(request, "param", 0))
+        ),
+    )
     base = replace(base, items=base.items + tuple(replace(i, family="b") for i in base.items))
     lock = {
         "subject": {"model": "toy", "revision": "rev"},
         "arms": {
-            arm: {"layer_policy": "intersection", "supported_layers": [0, 1]} for arm in run.ARM_IDS
+            arm: {"layer_policy": "intersection", "supported_layers": [0, 1], "open_questions": []}
+            for arm in run.ARM_IDS
         },
     }
     manifests = {
@@ -65,9 +73,26 @@ def setup(tmp_path, monkeypatch):
             self.method = reader
 
         def run_cached(
-            self, manifest, family, path, store, *, batch_size, seed, before_batch, on_batch
+            self,
+            manifest,
+            family,
+            path,
+            store,
+            *,
+            batch_size,
+            seed,
+            before_batch,
+            on_batch,
+            block_indices=None,
         ):
             before_batch()
+            selected = {
+                (item_id, block.layer, pos)
+                for _, block in indexed_blocks(
+                    blocks(manifest, family, batch_size, seed), block_indices
+                )
+                for item_id, pos in block.cells
+            }
             binding = binding_for(
                 manifest,
                 family,
@@ -81,7 +106,11 @@ def setup(tmp_path, monkeypatch):
                 before = len(j.present)
                 for item in manifest.family(family):
                     for _, layer, pos in sorted(item.cells):
-                        if (item.id, layer, pos) not in j.present:
+                        if (item.id, layer, pos) in selected and (
+                            item.id,
+                            layer,
+                            pos,
+                        ) not in j.present:
                             j.append(
                                 {
                                     "id": item.id,
@@ -122,6 +151,18 @@ def test_one_load_per_arm_and_zero_loads_for_complete_resume(setup):
     again = run.run_readers(manifests, out, store, guard=Guard())
     assert again["model_loads"] == again["new_cells"] == 0
     assert loads == list(run.ARM_IDS)
+
+
+def test_measurement_failure_after_load_releases_reader(setup):
+    manifests, out, store, loads, releases = setup
+
+    def fail(event):
+        if event["stage"] == "reader_loaded":
+            raise OSError("measurement export unavailable")
+
+    with pytest.raises(OSError, match="measurement export"):
+        run.run_readers(manifests, out, store, guard=Guard(), on_event=fail)
+    assert loads == releases == [run.ARM_IDS[0]]
 
 
 @pytest.mark.parametrize("corruption", ["token", "duplicate", "provenance", "samples", "nan"])

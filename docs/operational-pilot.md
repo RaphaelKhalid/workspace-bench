@@ -69,14 +69,54 @@ It excludes the subsequent export callback. Cached work generates no new timing
 observation. Failed/interrupted work is not a successful throughput sample, but
 its billed time must still be included in the cost ledger.
 
+## Supervised execution and measurements
+
+The existing worker accepts a pilot by adding both `pilot_plan` (the uploaded JSON
+path) and `pilot_plan_sha256` (the plan's canonical digest) to its compute spec.
+The controller already binds the entire spec digest. The pod verifies the plan's
+digest, regenerates its deterministic selection against the full manifests and
+current source, and checks batch size/seed before model loading. A plan file alone
+is not readiness approval. Use the same external supervisor and independent pod
+deadline described in [deployment controls](deployment-controls.md).
+
+`run_pod_compute` requires prior spending plus the proposed session cap plus
+retained-storage reserve to fit $2 for pilot execution. This is part of the same
+$20 goal cap. The stricter check does not grant a new pilot budget on restart.
+Ordinary `run_compute` is a low-level compute callable, not a rental controller.
+
+The worker exports `manifests/operational-pilot.json` alongside full manifests.
+It reports `status=pilot_complete`, `scope=operational_pilot`, and the plan digest.
+Reader coverage reports retain full `complete/present/expected` and separate
+`selection_complete/selection_present/selection_expected` fields. A successful
+pilot remains incomplete under the independent full export verifier. Continuing
+without a pilot selection fills remaining captures and readouts; whole completed
+pilot batches are reused. A zero-work pilot resume loads no models.
+
+Every invocation creates a fresh `measurements/<attempt-id>.jsonl`, preserving
+earlier attempts. Records are flushed and fsynced before export. They include
+attempt identity/manifests/settings/plan digest, initial and final budget snapshots,
+capture model loading/runtime, durable capture events, reader loading/runtime,
+batch events, reader release and terminal success or error type. Attempt elapsed
+time uses a monotonic clock. No raw error message or readout text is recorded.
+Actual runtime metadata is recorded when the backend is available; a declared
+device in the initial binding is not proof of a particular GPU.
+
+Each log remains append-only in the export. After a hard interruption, only an
+unfinished final line may be removed, with its exact bytes first preserved in a
+`.jsonl.recovered-tail.bin` file. Malformed committed rows, reordered sequences or
+decreasing elapsed time fail before model loading. An attempt with no terminal
+record is incomplete evidence, never evidence of zero cost. Operational records
+are byte-verified during final export verification but never fill missing grid
+cells or certify scientific fidelity.
+
 ## Remaining rental gates
 
-The primitives are implemented; the supervised worker does not yet accept or run
-the pilot plan. Still required: connect the plan to that worker without weakening
-its deadline/export controls, persist measurement history across interruptions,
-record setup/load/export/shutdown overhead, and bind the all-reader forecast to
-actual measured work and hardware/runtime. A cell-count ratio alone is not a cost
-forecast, especially for variable-length prose generation.
+Still required: record and reconcile rental setup, final export/transfer and
+shutdown overhead; validate measured event coverage and hardware/runtime; and
+bind the conservative all-reader forecast to those measurements. In-process model
+load times are now recorded, but these alone do not cover the complete bill.
+A cell-count ratio alone is not a cost forecast, especially for variable-length
+prose generation. No actual GPU pilot has been run.
 
 If the capped pilot cannot measure all required phases, stop compute and report
 incomplete evidence. Do not extrapolate omitted readers as free or increase the

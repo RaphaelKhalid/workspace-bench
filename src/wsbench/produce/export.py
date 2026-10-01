@@ -10,6 +10,7 @@ from pathlib import Path, PurePosixPath
 
 from wsbench.cell_manifest import digest
 
+from .measurements import measurement_path
 from .reference import ARM_IDS
 from .storage import atomic_writer, file_lock
 
@@ -35,6 +36,7 @@ def relative_output(name):
     if PurePosixPath(name).is_absolute() or str(PurePosixPath(name)) != name:
         raise ValueError("export paths must be normalized and relative")
     allowed = name in {"readers-run.json", "readouts/readers-run.json"}
+    allowed |= measurement_path(name)
     if len(parts) == 2 and parts[0] == "captures":
         allowed |= parts[1] in {"manifest.json", "capture-run.json"}
         allowed |= parts[1].endswith(".npz") and SHA.fullmatch(parts[1][:-4]) is not None
