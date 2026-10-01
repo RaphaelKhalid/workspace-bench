@@ -94,7 +94,8 @@ def supervise(
     guard,
     stopper,
     *,
-    progress,
+    progress=None,
+    mirror=None,
     inactivity_seconds=300,
     poll_seconds=5,
     monotonic=time.monotonic,
@@ -105,6 +106,8 @@ def supervise(
     nonnegative("poll_seconds", poll_seconds, positive=True)
     if poll_seconds > 10:
         raise ValueError("watchdog poll interval must be at most ten seconds")
+    if mirror is None and not callable(progress):
+        raise ValueError("supervisor requires a checkpoint progress callback or export mirror")
     # This function must run outside the pod so it survives the stop and can verify it.
     if os.environ.get("RUNPOD_POD_ID") == stopper.pod_id:
         raise ValueError("external supervisor cannot verify shutdown from inside its target pod")
@@ -125,7 +128,7 @@ def supervise(
                 result["reason"] = "budget_deadline"
                 break
             # Progress is a verified checkpoint identity/count, not a timer heartbeat.
-            current = progress()
+            current = mirror.tick() if mirror is not None else progress()
             if current != last_progress:
                 last_progress, last_change = current, monotonic()
             if monotonic() - last_change >= inactivity_seconds:
@@ -143,8 +146,23 @@ def supervise(
             result["worker_cleanup_error"] = type(exc).__name__
         finally:
             try:
-                result["shutdown"] = stopper.stop_verified(sleep=sleep)
-            except PodControlError as exc:
-                result["shutdown"] = {"verified": False, "error": str(exc)}
+                if mirror is not None:
+                    if result["reason"] == "completed":
+                        allowance = min(30, guard.snapshot()["seconds_until_stop"])
+                        result["export"] = mirror.finish(allowance)
+                    else:
+                        mirror.close()
+                        result["export"] = {"status": "cancelled", "reason": result["reason"]}
+            except BaseException as exc:
+                result["export"] = {"status": "failed", "error_type": type(exc).__name__}
+                try:
+                    mirror.close()
+                except BaseException as cleanup:
+                    result["export"]["cleanup_error_type"] = type(cleanup).__name__
+            finally:
+                try:
+                    result["shutdown"] = stopper.stop_verified(sleep=sleep)
+                except PodControlError as exc:
+                    result["shutdown"] = {"verified": False, "error": str(exc)}
     result["budget"] = guard.snapshot()
     return result

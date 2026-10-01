@@ -134,3 +134,63 @@ def test_invalid_status_response_cannot_authorize_mutation(monkeypatch, response
     with pytest.raises(PodControlError, match="ownership"):
         stopper.stop_verified(sleep=lambda _: None)
     assert methods == ["GET"]
+
+
+@pytest.mark.parametrize(
+    "failure,exit_code,expected",
+    [("tick", None, "supervisor_error"), ("finish", 0, "completed"), ("close", 7, "worker_failed")],
+)
+def test_export_and_worker_cleanup_failures_never_skip_shutdown(failure, exit_code, expected):
+    events = []
+
+    class Worker:
+        def poll(self):
+            return exit_code
+
+        def kill(self):
+            events.append("kill")
+            raise RuntimeError("worker transport down")
+
+    class Mirror:
+        def tick(self):
+            events.append("tick")
+            raise TimeoutError("transfer deadline")
+
+        def finish(self, seconds):
+            events.append(("finish", seconds))
+            raise TimeoutError("final transfer deadline")
+
+        def close(self):
+            events.append("close")
+            if failure == "close":
+                raise RuntimeError("export helper cleanup failed")
+
+    class Guard:
+        def check(self):
+            pass
+
+        def snapshot(self):
+            return {"seconds_until_stop": 12.5}
+
+    class Stopper:
+        pod_id = "testpod123"
+
+        def inspect(self):
+            return {"status": "RUNNING"}
+
+        def stop_verified(self, **kwargs):
+            events.append("stop")
+            return {"verified": True}
+
+    result = supervise(Worker(), Guard(), Stopper(), mirror=Mirror())
+    assert result["reason"] == expected and result["shutdown"]["verified"]
+    assert events[-1] == "stop"
+    if failure == "tick":
+        assert result["worker_cleanup_error"] == "RuntimeError"
+        assert result["export"]["status"] == "cancelled"
+    else:
+        assert result["export"]["status"] == "failed"
+    if failure == "finish":
+        assert ("finish", 12.5) in events
+    if failure == "close":
+        assert result["export"]["cleanup_error_type"] == "RuntimeError"

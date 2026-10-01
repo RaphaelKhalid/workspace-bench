@@ -91,9 +91,26 @@ class SFTPSource:
     def snapshot(self, sha):
         if not SHA.fullmatch(sha):
             raise ValueError("invalid snapshot hash")
+        data = self._json(f"snapshots/{sha}.json", 4 * 1024 * 1024)
+        if data.get("sha256") != sha:
+            raise ValueError("requested snapshot hash differs")
+        return data
+
+    def latest(self, run_id):
+        data = self._json("latest.json", 4096)
+        if (
+            set(data) != {"sha256", "run_id"}
+            or data["run_id"] != run_id
+            or not isinstance(data["sha256"], str)
+            or not SHA.fullmatch(data["sha256"])
+        ):
+            raise ValueError("invalid or foreign export pointer")
+        return data["sha256"]
+
+    def _json(self, relative, limit):
         self.check()
-        with self.sftp.open(str(self.root / "snapshots" / f"{sha}.json"), "rb") as stream:
-            pieces, remaining = [], 4 * 1024 * 1024
+        with self.sftp.open(str(self.root / relative), "rb") as stream:
+            pieces, remaining = [], limit
             while remaining:
                 self.check()
                 chunk = stream.read(min(65536, remaining))
@@ -104,8 +121,8 @@ class SFTPSource:
             if not remaining:
                 raise ValueError("snapshot metadata exceeds transfer bound")
         data = json.loads(b"".join(pieces))
-        if data.get("sha256") != sha:
-            raise ValueError("requested snapshot hash differs")
+        if not isinstance(data, dict):
+            raise ValueError("invalid export metadata object")
         return data
 
 

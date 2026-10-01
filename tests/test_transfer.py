@@ -1,7 +1,9 @@
 """The transport pins host keys, reuses one SFTP session and enforces bounded reads."""
 
 import io
+import json
 import sys
+from pathlib import PurePosixPath
 from types import SimpleNamespace
 
 import pytest
@@ -114,3 +116,38 @@ def test_invalid_transfer_configuration_fails_without_connection(root, deadline)
             deadline_epoch=deadline,
             wall=lambda: 0,
         )
+
+
+@pytest.mark.parametrize(
+    "pointer",
+    [
+        {"sha256": "a" * 64, "run_id": "other"},
+        {"sha256": "../escape", "run_id": "ours"},
+        {"sha256": "a" * 64, "run_id": "ours", "extra": True},
+        [],
+    ],
+)
+def test_latest_pointer_requires_owner_and_bounded_object(pointer):
+    source = object.__new__(SFTPSource)
+    source.root = PurePosixPath("/exports")
+    source.check = lambda: None
+    source.sftp = SimpleNamespace(open=lambda *a: io.BytesIO(json.dumps(pointer).encode()))
+    with pytest.raises(ValueError):
+        source.latest("ours")
+
+
+def test_latest_pointer_then_exact_snapshot():
+    source = object.__new__(SFTPSource)
+    source.root = PurePosixPath("/exports")
+    source.check = lambda: None
+    data = {
+        "/exports/latest.json": {"run_id": "ours", "sha256": "a" * 64},
+        f"/exports/snapshots/{'a' * 64}.json": {"sha256": "a" * 64},
+    }
+    source.sftp = SimpleNamespace(
+        open=lambda path, mode: io.BytesIO(json.dumps(data[path]).encode())
+    )
+    assert source.snapshot(source.latest("ours")) == {"sha256": "a" * 64}
+    source.sftp.open = lambda *a: io.BytesIO(b" " * 4096)
+    with pytest.raises(ValueError, match="bound"):
+        source.latest("ours")

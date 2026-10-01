@@ -61,15 +61,44 @@ on the restored tree before resuming computation or scoring.
 
 ## Evidence and outstanding integration
 
+`produce.mirror.ExportMirror` provides periodic pulls for the external supervisor.
+Construct it with the same explicit SFTP options (without `deadline_epoch`), local
+destination cache, a run-specific journal directory, run ID and manifest context.
+Pass it as `mirror=` to `watchdog.supervise`. The default interval and per-attempt
+deadline are 30 seconds; each is capped at 60 seconds. Transfer and object hashing
+run in an owned subprocess, leaving the parent free to check spending and inactivity.
+The parent kills and reaps an overdue helper; it never runs a shell or discovers keys.
+
+The receiver checks the run-bound `latest.json`, verifies every downloaded object,
+and compares successive histories. Earlier files cannot disappear, JSONL prefixes
+cannot shrink or change, and captures/manifests cannot be replaced. The journal's
+atomic `accepted.json` preserves the last accepted snapshot across supervisor
+restarts and rejects reuse with another run or manifest. Keep this journal and its
+destination cache together. Per-attempt spec/result files contain connection and
+local key-file paths, not private key contents; keep the directory private.
+
+Only changes to nonempty capture/readout files count as progress. Report timestamps
+and manifest churn cannot reset the inactivity timer. A completed worker triggers
+a fresh final pull, limited to the smaller of 30 seconds and the remaining budget
+allowance, including helper cleanup. Other termination reasons cancel the transfer.
+The supervisor attempts verified pod shutdown even when worker or export cleanup
+fails. A byte receipt is not a benchmark completeness or fidelity result. In
+particular, a snapshot can pass byte verification and then fail the history check;
+only the mirror's accepted journal records a successful history transition.
+
 Offline tests cover partial transfers, corruption, deadlines, path rejection,
 checkpoint prefix integrity and all-eight-reader mocked execution through export,
 restore and a zero-model-load completed resume. An additional real encrypted
 loopback SFTP smoke test transferred synthetic data, restored exact bytes, reused
-all objects on a second pull and rejected an incorrect host key. Neither proves
+all objects on a second pull and rejected an incorrect host key. The extended
+smoke also runs the actual mirror subprocess, restores its accepted history on
+restart, transfers only a new 16-byte readout, and rejects a rewritten prefix.
+Offline supervisor tests cover report churn and export/cleanup exceptions. Neither proves
 cloud throughput or the availability of a particular RunPod SSH endpoint.
 
-The deployment supervisor still must discover and pull successive snapshots,
-seed/flush captures, validate the final coverage and local receipt, and share the
-budget deadline. Export failure must never leave paid compute waiting indefinitely.
+The deployment launcher still must assemble a bounded model worker, seed/flush
+captures, validate final benchmark coverage, install independent on-pod shutdown,
+and bind its budget forecast to measured pilot work. Export failure must never
+leave paid compute waiting indefinitely.
 Keep recoverable remote data, stop compute, and report an incomplete export;
 do not delete retained outputs just because a stop request was acknowledged.
