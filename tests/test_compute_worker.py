@@ -211,3 +211,55 @@ def test_expired_budget_does_not_load_or_publish(compute):
     with pytest.raises(BudgetExceededError):
         execute(c, Guard(fail_at=1))
     assert not c.base_loads and not c.loads and not c.export.exists()
+
+
+@pytest.mark.parametrize("dead", [False, True])
+def test_pod_worker_requires_live_deadline_and_always_marks_terminal(compute, monkeypatch, dead):
+    c = compute
+    monkeypatch.setenv("RUNPOD_POD_ID", "testpod123")
+    monkeypatch.setenv("WSBENCH_RUN_ID", "testrun123")
+    events = []
+
+    class Handle:
+        def check(self):
+            if dead:
+                raise RuntimeError("deadline exited")
+
+        def mark_terminal(self, status):
+            events.append(status)
+
+    def arm(*args):
+        events.append("armed")
+        return Handle()
+
+    monkeypatch.setattr(worker, "arm_deadline", arm)
+
+    def invoke():
+        return worker.run_pod_compute(
+            c.manifests,
+            c.root,
+            c.export,
+            run_id="testrun123",
+            guard=Guard(),
+            stopper=SimpleNamespace(pod_id="testpod123", run_id="testrun123"),
+            deadline_journal=c.root.parent / "deadline",
+        )
+
+    if dead:
+        with pytest.raises(RuntimeError, match="deadline exited"):
+            invoke()
+        assert events == ["armed", "failed"] and not c.loads and not c.base_loads
+    else:
+        assert invoke()["status"] == "complete"
+        assert events == ["armed", "complete"] and c.loads == list(ARM_IDS)
+
+
+def test_pod_cli_bad_spec_attempts_owned_shutdown_before_any_model_load(tmp_path, monkeypatch):
+    monkeypatch.setenv("RUNPOD_POD_ID", "testpod123")
+    monkeypatch.setenv("WSBENCH_RUN_ID", "testrun123")
+    monkeypatch.setattr("sys.argv", ["worker", "--spec", str(tmp_path / "missing.json")])
+    stopped = []
+    monkeypatch.setattr(worker, "request_shutdown", lambda stopper: stopped.append(stopper.pod_id))
+    with pytest.raises(FileNotFoundError):
+        worker.main()
+    assert stopped == ["testpod123"]

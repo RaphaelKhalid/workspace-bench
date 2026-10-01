@@ -28,9 +28,11 @@ interruption and releases the base model before running readers. A complete
 restore/resume requires no model loads. There are no API judge calls in this path.
 
 The function is a compute entry point, not a resource launcher or an independent
-timeout mechanism. Run it inside a separately supervised process: a hung model
-load or CUDA forward cannot be interrupted by its synchronous budget callbacks.
-The actual launcher must also install an independent on-pod shutdown deadline.
+timeout mechanism. Its synchronous callbacks cannot interrupt a hung CUDA forward.
+The pod entry point `produce.worker.run_pod_compute` arms a detached deadline
+process before invoking it; the external supervisor still owns verified export
+and shutdown. See [deployment controls](deployment-controls.md) for the lease,
+readiness handshake, controller-loss handling and CLI contract.
 
 Pass the publisher to `reader_run.run_readers`. The runner seeds existing
 readout journals and bindings, queues changes after durable checkpoints, and
@@ -111,9 +113,9 @@ restart, transfers only a new 16-byte readout, and rejects a rewritten prefix.
 Offline supervisor tests cover report churn and export/cleanup exceptions. Neither proves
 cloud throughput or the availability of a particular RunPod SSH endpoint.
 
-The deployment launcher still must wrap the compute entry point in a bounded
-process, validate final benchmark coverage, install independent on-pod shutdown,
-and bind its budget forecast to measured pilot work. Export failure must never
+The deployment launcher still must connect its remote worker handle to the
+external supervisor, verify deadline readiness on the real host, validate final
+benchmark coverage, and bind its budget forecast to measured pilot work. Export failure must never
 leave paid compute waiting indefinitely.
 Keep recoverable remote data, stop compute, and report an incomplete export;
 do not delete retained outputs just because a stop request was acknowledged.

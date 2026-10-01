@@ -1,6 +1,9 @@
 """Capture once, publish durable checkpoints, then execute every frozen reader arm."""
 
+import argparse
 import gc
+import json
+import os
 import sys
 import time
 from contextlib import ExitStack
@@ -10,10 +13,13 @@ from wsbench.cell_manifest import CellManifest, digest
 
 from . import reader_run
 from .backend import Backend
+from .budget import BudgetGuard, LeaseBudget
 from .captures import CaptureStore, capture_all, capture_union
+from .deadline import arm_deadline, read_metadata, request_shutdown, require_local_pod
 from .export import SnapshotPublisher, contained
 from .reference import ARM_IDS
 from .storage import file_lock
+from .watchdog import RunPodStopper
 
 
 def release_backend(backend):
@@ -144,3 +150,98 @@ def run_compute(
             "export_snapshot_sha256": publisher.previous["sha256"],
             "benchmark_fidelity_validated": False,
         }
+
+
+def run_pod_compute(
+    manifests,
+    root,
+    export_root,
+    *,
+    run_id,
+    guard,
+    stopper,
+    deadline_journal,
+    batch_size=16,
+    seed=0,
+    device="cuda",
+):
+    """Arm a separate deadline before computation, retaining the external export/stop duty."""
+    require_local_pod(stopper)
+    if run_id != stopper.run_id:
+        raise ValueError("worker and deadline run identities differ")
+    handle = arm_deadline(guard, stopper, deadline_journal)
+
+    class SupervisedBudget:
+        def check(self):
+            handle.check()
+            return guard.check()
+
+        def snapshot(self):
+            return guard.snapshot()
+
+    status = "failed"
+    try:
+        result = run_compute(
+            manifests,
+            root,
+            export_root,
+            run_id=run_id,
+            guard=SupervisedBudget(),
+            batch_size=batch_size,
+            seed=seed,
+            device=device,
+        )
+        status = "complete"
+        return result
+    finally:
+        handle.mark_terminal(status)
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--spec", type=Path, required=True)
+    args = parser.parse_args()
+    stopper = RunPodStopper(
+        os.environ.get("RUNPOD_POD_ID", ""), os.environ.get("WSBENCH_RUN_ID", "")
+    )
+    require_local_pod(stopper)
+    try:
+        spec = read_metadata(args.spec)
+        if set(spec) != {
+            "run_id",
+            "pod_id",
+            "budget",
+            "readers",
+            "root",
+            "export_root",
+            "deadline_journal",
+            "batch_size",
+            "seed",
+            "device",
+        }:
+            raise ValueError("invalid compute specification")
+        if (spec["pod_id"], spec["run_id"]) != (stopper.pod_id, stopper.run_id):
+            raise ValueError("compute specification belongs to another pod or run")
+        manifests = {
+            arm: CellManifest.load(Path(spec["readers"]) / f"{arm}.json") for arm in ARM_IDS
+        }
+        result = run_pod_compute(
+            manifests,
+            spec["root"],
+            spec["export_root"],
+            run_id=spec["run_id"],
+            guard=BudgetGuard(LeaseBudget(**spec["budget"])),
+            stopper=stopper,
+            deadline_journal=spec["deadline_journal"],
+            batch_size=spec["batch_size"],
+            seed=spec["seed"],
+            device=spec["device"],
+        )
+    except BaseException:
+        request_shutdown(stopper)
+        raise
+    print(json.dumps(result))
+
+
+if __name__ == "__main__":
+    main()

@@ -88,6 +88,14 @@ class RunPodStopper:
             "action_required": "recheck API and stop the verified owned pod; billing may continue",
         }
 
+    def request_stop(self):
+        """On-pod fallback: recheck ownership, request stop, leave verification external."""
+        state = self.inspect()
+        if state["status"] == "EXITED" and state["runtime_absent"]:
+            return {"requested": False, "verified": False, "reason": "already_exited"}
+        self._request("POST", "/action", {"action": "stop"})
+        return {"requested": True, "verified": False}
+
 
 def supervise(
     worker,
