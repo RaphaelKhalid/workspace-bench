@@ -10,6 +10,7 @@ from wsbench.banks import load_bank
 from wsbench.cache import Cache
 from wsbench.family import cell_text, fail, mean, rate, require_cells
 from wsbench.llm import Spend
+from wsbench.manifest_judging import load_judge_readouts
 from wsbench.mcjudge import (
     Call,
     Preflighter,
@@ -20,7 +21,7 @@ from wsbench.mcjudge import (
     run_calls,
     with_readout_count,
 )
-from wsbench.readouts import Cell, load_readouts
+from wsbench.readouts import Cell
 from wsbench.registry import REPO_ROOT, JudgeArgs
 from wsbench.results import FamilyResult, bootstrap_ci, completeness
 
@@ -75,11 +76,16 @@ def run(args: JudgeArgs) -> FamilyResult:
     ids = [it["id"] for it in scope]
     by_id = {it["id"]: it for it in scope}
     read_layer = {it["id"]: int(header["read_cells"][it["lang_group"]]["layer"]) for it in scope}
-    cells, rep = load_readouts(args.readouts, ids=ids, layers=args.layers)
+    cells, rep = load_judge_readouts(args, ids=ids, layers=args.layers)
     # one cell per item: its read layer (or the override), the max-pos row = the EOF anchor
     layer_of = {i: (args.layers[0] if args.layers else read_layer[i]) for i in ids}
     if args.layers and len(args.layers) > 1:
         fail(f"{NAME}: one read layer per item; pass a single layer or none, not {args.layers}")
+    if args.cell_manifest is not None:
+        selected = args.cell_manifest.family(args.family)
+        if any(len(it.layers) != 1 or len(it.positions) != 1 for it in selected):
+            fail(f"{NAME}: the manifest must have one cell per item")
+        layer_of = {it.id: it.layers[0] for it in selected}
     groups: dict[tuple[str, int], list[Cell]] = defaultdict(list)
     for c in cells:
         groups[(c.id, c.layer)].append(c)

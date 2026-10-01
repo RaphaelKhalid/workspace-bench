@@ -5,6 +5,10 @@ import pkgutil
 from collections.abc import Callable, Mapping
 from dataclasses import dataclass, field
 from pathlib import Path
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from wsbench.cell_manifest import CellManifest
 
 from wsbench.judge_config import JudgeConfig, ResolvedJudge
 from wsbench.results import FamilyResult
@@ -30,6 +34,8 @@ class JudgeArgs:
     dry_run: bool
     aux_models: Mapping[str, str] = field(default_factory=dict)  # e.g. {"summarizer": model}
     extra: dict[str, str] = field(default_factory=dict)  # family options from opts=key=value
+    cell_manifest: "CellManifest | None" = None
+    family: str = ""
 
 
 @dataclass(frozen=True)

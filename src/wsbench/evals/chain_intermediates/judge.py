@@ -20,8 +20,8 @@ from wsbench.family import (
     tri_state,
 )
 from wsbench.llm import Spend
+from wsbench.manifest_judging import load_judge_readouts
 from wsbench.mcjudge import Call, Preflighter, item_scope, run_calls, with_readout_count
-from wsbench.readouts import load_readouts
 from wsbench.registry import REPO_ROOT, JudgeArgs
 from wsbench.results import FamilyResult
 
@@ -105,9 +105,11 @@ def run(args: JudgeArgs) -> FamilyResult:
     scope = item_scope(items, args)
     ids = [it["id"] for it in scope]
     by_id = {it["id"]: it for it in scope}
-    cells, rep = load_readouts(args.readouts, ids=ids, layers=args.layers)
+    cells, rep = load_judge_readouts(args, ids=ids, layers=args.layers)
     layers = args.layers if args.layers is not None else rep.layers
-    mode = args.extra.get("cells", "last")
+    if args.cell_manifest is not None and "cells" in args.extra:
+        fail(f"{NAME}: the manifest defines the cells; remove opts=cells")
+    mode = "all" if args.cell_manifest is not None else args.extra.get("cells", "last")
     if mode not in ("last", "all"):
         fail(f"{NAME}: opts=cells must be last or all, not {mode!r}")
     if mode == "last":

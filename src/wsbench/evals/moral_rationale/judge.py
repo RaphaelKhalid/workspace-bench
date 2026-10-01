@@ -6,6 +6,7 @@ from dataclasses import dataclass
 
 from wsbench.cache import Cache
 from wsbench.llm import Spend
+from wsbench.manifest_judging import load_judge_readouts
 from wsbench.mc import CANNOT, classify, join_samples, seed_int, seeded_shuffle
 from wsbench.mcjudge import (
     Call,
@@ -19,7 +20,7 @@ from wsbench.mcjudge import (
     run_calls,
     with_readout_count,
 )
-from wsbench.readouts import Cell, load_readouts
+from wsbench.readouts import Cell
 from wsbench.registry import JudgeArgs
 from wsbench.results import FamilyResult
 from wsbench.summarizer import aux_judge, render_bag, summarize
@@ -139,8 +140,8 @@ def run(args: JudgeArgs) -> FamilyResult:
     scope = item_scope(bank, args)
     pools = build_pools(bank)
     mcs = {it["id"]: build_mcs(it, *pools) for it in scope}
-    cells, rep = load_readouts(args.readouts, ids=[it["id"] for it in scope], layers=args.layers)
-    selected = select_cells(cells)
+    cells, rep = load_judge_readouts(args, ids=[it["id"] for it in scope], layers=args.layers)
+    selected = cells if args.cell_manifest is not None else select_cells(cells)
     nonempty = [c for c in selected if not c.empty]
     spend = Spend()
     pre = Preflighter(args.dry_run)

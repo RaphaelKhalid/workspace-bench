@@ -27,13 +27,14 @@ from wsbench.family import (
 )
 from wsbench.judge_config import JudgeConfig, ResolvedJudge
 from wsbench.llm import Spend
+from wsbench.manifest_judging import load_judge_readouts
 from wsbench.mc import fold, letter_index  # fold is part of this module's public surface
 from wsbench.mcjudge import Call, Preflighter, item_scope, run_calls, with_readout_count
 from wsbench.multitoken import regex
 from wsbench.multitoken.options import judged_roles, option_sets
 from wsbench.multitoken.prompts import LETTERS, PROMPT_VERSION, SCHEMA, SYSTEM, render_user
 from wsbench.multitoken.regex import SCORER_VERSION, SUMMARIZED_SCORER_VERSION
-from wsbench.readouts import Cell, load_readouts
+from wsbench.readouts import Cell
 from wsbench.registry import REPO_ROOT, EvalSpec, JudgeArgs
 from wsbench.results import FamilyResult
 from wsbench.summarizer import SUMMARIZER_PROMPT_VERSION, aux_judge, render_bag, summarize
@@ -126,7 +127,7 @@ def run_regex(args: JudgeArgs, *, name: str) -> FamilyResult:
         units_of = {it["id"]: regex.scored_units(it, contract) for it in scope}
     except ValueError as e:
         fail(f"{name}: bank violates its own contract: {e}")
-    cells, rep = load_readouts(args.readouts, ids=ids, layers=args.layers)
+    cells, rep = load_judge_readouts(args, ids=ids, layers=args.layers)
     layers = args.layers if args.layers is not None else rep.layers
     positions: dict[tuple[str, int], list[Cell]] = defaultdict(list)
     for c in cells:
@@ -391,7 +392,7 @@ def run_mc(args: JudgeArgs, *, name: str) -> FamilyResult:
     ids = [it["id"] for it in scope]
     by_id = {it["id"]: it for it in scope}
     options = option_sets(items)  # over the whole bank, never the scored subset
-    cells, rep = load_readouts(args.readouts, ids=ids, layers=args.layers)
+    cells, rep = load_judge_readouts(args, ids=ids, layers=args.layers)
     layers = args.layers if args.layers is not None else rep.layers
     positions: dict[tuple[str, int], list[Cell]] = defaultdict(list)
     for c in cells:

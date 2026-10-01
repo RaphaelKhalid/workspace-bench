@@ -156,6 +156,7 @@ def compile_draft(
         raise ValueError("recovered capture/tokenizer revision mismatch")
     rows = []
     bank_hashes = {}
+    read_context = {}
     expected_keys = set()
     for family in readplan.families():
         bank_dir = REPO_ROOT / "evals" / family
@@ -186,6 +187,10 @@ def compile_draft(
             positions = eligible if rule["kind"] == "original_readplan" else rule["positions"]
             if not positions or not set(positions) <= set(eligible):
                 raise ValueError(f"draft positions outside original eligible sites: {key}")
+            if family == "multi_concept_directed_modulation":
+                read_context.setdefault(family, {})[spec.id] = [
+                    [pos, rendered.decoded[pos]] for pos in eligible
+                ]
             rows.append(
                 ManifestItem(
                     family,
@@ -205,6 +210,7 @@ def compile_draft(
         "tokenizer_sha256": tokenizer_sha256,
         "banks_sha256": bank_hashes,
         "draft_sha256": digest(draft),
+        "read_context": read_context,
         "precision_recovery_sha256": digest(precision_inputs),
         "status": "resolved candidate; fidelity not yet validated",
     }

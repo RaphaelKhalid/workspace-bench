@@ -24,8 +24,9 @@ from wsbench import llm
 from wsbench.cache import Cache, fingerprint
 from wsbench.family import fail
 from wsbench.llm import Spend
+from wsbench.manifest_judging import load_judge_readouts
 from wsbench.mcjudge import base_config, base_counts, item_scope, load_bank, with_readout_count
-from wsbench.readouts import Cell, load_readouts
+from wsbench.readouts import Cell
 from wsbench.registry import JudgeArgs
 from wsbench.results import FamilyResult
 
@@ -155,8 +156,12 @@ def run(args: JudgeArgs) -> FamilyResult:
     chunk_chars = _int_opt(args, "chunk_chars", DEFAULT_CHUNK_CHARS)
     bank = load_bank(FAMILY)["items"]
     scope = item_scope(bank, args)
-    cells, rep = load_readouts(args.readouts, ids=[it["id"] for it in scope], layers=args.layers)
-    selected = [c for c in cells if c.pos % stride == 0]
+    cells, rep = load_judge_readouts(args, ids=[it["id"] for it in scope], layers=args.layers)
+    if args.cell_manifest is not None and "stride" in args.extra:
+        raise SystemExit("manifest positions cannot be combined with a stride override")
+    selected = (
+        cells if args.cell_manifest is not None else [c for c in cells if c.pos % stride == 0]
+    )
     readout_kind = READOUT_KIND["jlens" if rep.kind == "tokens" else "olens"]
     model = args.judge.model
 
@@ -167,6 +172,8 @@ def run(args: JudgeArgs) -> FamilyResult:
     max_pos: dict[str, int] = {}
     for c in cells:
         max_pos[c.id] = max(max_pos.get(c.id, -1), c.pos)
+    if args.cell_manifest is not None:
+        max_pos = {it.id: len(it.input_ids) - 1 for it in args.cell_manifest.family(args.family)}
     items = [it for it in scope if it["id"] in by_item]
     positions = {it["id"]: sorted(by_item[it["id"]]) for it in items}
 
@@ -187,7 +194,11 @@ def run(args: JudgeArgs) -> FamilyResult:
 
     spend = Spend()
     config = base_config(
-        args, PROMPT_VERSION, stride=stride, chunk_chars=chunk_chars, layers_read=rep.layers
+        args,
+        PROMPT_VERSION,
+        stride=None if args.cell_manifest is not None else stride,
+        chunk_chars=chunk_chars,
+        layers_read=rep.layers,
     )
     if args.dry_run:
         first = next(((lb, pos) for (lb, pos) in a_user if (lb, pos) not in a_note), None)

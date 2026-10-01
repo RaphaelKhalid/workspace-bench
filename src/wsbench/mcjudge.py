@@ -145,6 +145,9 @@ def load_bank(family: str) -> list[dict]:
 def item_scope(bank: list[dict], args: JudgeArgs) -> list[dict]:
     """bank ∩ ``items=`` (bank order), then ``limit=``."""
     items = bank
+    if args.cell_manifest is not None:
+        want = {it.id for it in args.cell_manifest.family(args.family)}
+        items = [it for it in items if it["id"] in want]
     if args.items is not None:
         want = set(args.items)
         items = [it for it in items if it["id"] in want]

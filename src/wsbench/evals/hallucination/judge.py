@@ -34,6 +34,7 @@ from typing import Any
 
 from wsbench.cache import Cache
 from wsbench.llm import Spend
+from wsbench.manifest_judging import load_judge_readouts, manifest_positions
 from wsbench.mcjudge import (
     Call,
     Preflighter,
@@ -43,7 +44,7 @@ from wsbench.mcjudge import (
     run_calls,
     with_readout_count,
 )
-from wsbench.readouts import expected_cells, load_readouts, missing_cells
+from wsbench.readouts import expected_cells, missing_cells
 from wsbench.registry import JudgeArgs
 from wsbench.results import FamilyResult
 from wsbench.summarizer import SUMMARIZER_PROMPT_VERSION, aux_judge, render_bag, summarize
@@ -274,7 +275,8 @@ def run(args: JudgeArgs) -> FamilyResult:
     by_id = {it["id"]: it for it in scope}
     sites = {it["id"]: {int(s["pos"]): s for s in it["sites"]} for it in scope}
     positions = {iid: list(ps) for iid, ps in sites.items()}
-    cells, rep = load_readouts(args.readouts, layers=args.layers, positions=positions)
+    positions = manifest_positions(args, positions)
+    cells, rep = load_judge_readouts(args, layers=args.layers, positions=positions)
     layers = sorted(args.layers) if args.layers else rep.layers
     expected = expected_cells(positions, layers)
     missing = missing_cells(cells, expected)

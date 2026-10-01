@@ -21,9 +21,10 @@ from wsbench.family import (
     tri_state,
 )
 from wsbench.llm import Spend
+from wsbench.manifest_judging import load_judge_readouts
 from wsbench.mc import fold
 from wsbench.mcjudge import Call, Preflighter, item_scope, run_calls, with_readout_count
-from wsbench.readouts import Cell, load_readouts
+from wsbench.readouts import Cell
 from wsbench.registry import REPO_ROOT, JudgeArgs
 from wsbench.results import FamilyResult
 
@@ -174,6 +175,10 @@ def valid_batch(call: Call, res: dict[str, Any]) -> bool:
 def cell_grid(args: JudgeArgs) -> str:
     """``opts=cells=frozen`` (default) reads the variant's one pre-registered cell;
     ``opts=cells=all`` reads every (layer, position) row in the file, any-cell rule."""
+    if args.cell_manifest is not None:
+        if "cells" in args.extra:
+            fail(f"{NAME}: the manifest defines the cells; remove opts=cells")
+        return "manifest"
     mode = args.extra.get("cells", "frozen")
     if mode not in ("frozen", "all"):
         fail(f"{NAME}: opts=cells must be frozen or all, not {mode!r}")
@@ -194,11 +199,13 @@ def run(args: JudgeArgs) -> FamilyResult:
         for i in ids
     }
     frozen_pos = {i: int(by_id[i]["cell"]["pos"]) for i in ids}
-    cells, rep = load_readouts(args.readouts, ids=ids, layers=args.layers)
+    cells, rep = load_judge_readouts(args, ids=ids, layers=args.layers)
     cells_of: dict[str, list[Cell]] = defaultdict(list)
     n_off_cell = 0
     for c in cells:
-        if mode == "all" or (c.layer == frozen_layer[c.id] and c.pos == frozen_pos[c.id]):
+        if mode in ("all", "manifest") or (
+            c.layer == frozen_layer[c.id] and c.pos == frozen_pos[c.id]
+        ):
             cells_of[c.id].append(c)
         else:
             n_off_cell += 1

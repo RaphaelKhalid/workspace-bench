@@ -18,9 +18,9 @@ from wsbench.family import (
     tri_state,
 )
 from wsbench.llm import Spend
+from wsbench.manifest_judging import load_judge_readouts
 from wsbench.mc import letter_index
 from wsbench.mcjudge import Call, Preflighter, item_scope, run_calls, with_readout_count
-from wsbench.readouts import load_readouts
 from wsbench.registry import REPO_ROOT, JudgeArgs
 from wsbench.results import FamilyResult
 from wsbench.summarizer import SUMMARIZER_PROMPT_VERSION, aux_judge, render_bag, summarize
@@ -90,7 +90,7 @@ def run(args: JudgeArgs) -> FamilyResult:
         - {str(c) for c in it.get("concepts") or []}
         for it in items
     }
-    cells, rep = load_readouts(args.readouts, ids=ids, layers=args.layers)
+    cells, rep = load_judge_readouts(args, ids=ids, layers=args.layers)
     layers = args.layers if args.layers is not None else rep.layers
 
     # the write window per item, from the rows' tokens (any layer), in forward order
@@ -104,6 +104,11 @@ def run(args: JudgeArgs) -> FamilyResult:
         )
     for c in cells:
         window[c.id].setdefault(c.pos, c.token or "")
+    if args.cell_manifest is not None:
+        context = args.cell_manifest.metadata.get("read_context", {}).get(NAME, {})
+        if any(i not in context for i in ids):
+            fail(f"{NAME}: manifest lacks the complete original write-window tokens")
+        window = {i: dict(context[i]) for i in ids}
     regions: dict[str, dict[int, Region]] = {}
     compliance: dict[str, Any] = {}
     for item_id, toks in window.items():
@@ -114,6 +119,9 @@ def run(args: JudgeArgs) -> FamilyResult:
     judged_pos = {
         i: sorted(p for p, r in regions.get(i, {}).items() if r is Region.IN_SENTENCE) for i in ids
     }
+    if args.cell_manifest is not None:
+        selected_pos = {it.id: set(it.positions) for it in args.cell_manifest.family(NAME)}
+        judged_pos = {i: [p for p in ps if p in selected_pos[i]] for i, ps in judged_pos.items()}
     have = {(c.id, c.layer, c.pos): c for c in cells}
     expected = [(i, layer, p) for i in ids for layer in layers for p in judged_pos[i]]
     missing = [k for k in expected if k not in have]

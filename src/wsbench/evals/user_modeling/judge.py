@@ -7,6 +7,7 @@ from typing import Any
 
 from wsbench.cache import Cache
 from wsbench.llm import Spend
+from wsbench.manifest_judging import load_judge_readouts
 from wsbench.mc import seed_int
 from wsbench.mcjudge import (
     Call,
@@ -17,7 +18,7 @@ from wsbench.mcjudge import (
     run_calls,
     with_readout_count,
 )
-from wsbench.readouts import Cell, load_readouts
+from wsbench.readouts import Cell
 from wsbench.registry import JudgeArgs
 from wsbench.results import FamilyResult
 from wsbench.summarizer import aux_judge, render_bag, summarize
@@ -87,6 +88,9 @@ def decode_choice(choice: Any, options: list[str], gold_position: int) -> tuple[
 def item_scope(bank: list[dict], args: JudgeArgs) -> list[dict]:
     """bank ∩ ``items=`` (bank order) on the bank key ``name``, then ``limit=``."""
     items = bank
+    if args.cell_manifest is not None:
+        want = {it.id for it in args.cell_manifest.family(args.family)}
+        items = [it for it in items if it["name"] in want]
     if args.items is not None:
         want = set(args.items)
         items = [it for it in items if it["name"] in want]
@@ -105,7 +109,7 @@ def run(args: JudgeArgs) -> FamilyResult:
     scope = item_scope(bank, args)
     by_id = {it["name"]: it for it in scope}
     options = build_options(bank)
-    cells, rep = load_readouts(args.readouts, ids=list(by_id), layers=args.layers)
+    cells, rep = load_judge_readouts(args, ids=list(by_id), layers=args.layers)
     nonempty = [c for c in cells if not c.empty]
     spend = Spend()
     pre = Preflighter(args.dry_run)

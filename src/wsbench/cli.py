@@ -95,6 +95,7 @@ class JudgeOptions(Command):
         self.items = None
         self.limit = 0
         self.allow_missing = False
+        self.manifest = None
         self.concurrency = 64
         self.rpm = 240.0
         self.dry_run = False
@@ -107,6 +108,7 @@ class JudgeOptions(Command):
         self.items = _strs(self.items)
         self.limit = _int(self.limit)
         self.allow_missing = _bool(self.allow_missing)
+        self.manifest = _path(self.manifest) if self.manifest else None
         self.concurrency = _int(self.concurrency)
         self.rpm = float(self.rpm)
         self.dry_run = _bool(self.dry_run)
@@ -545,6 +547,8 @@ class Produce(Command):
         self.limit = 0
         self.items = None
         self.device = "cuda"
+        self.manifest = None
+        self.revision = None
 
     def finalize(self) -> None:
         self.method = str(self.method)
@@ -566,6 +570,8 @@ class Produce(Command):
         self.limit = _int(self.limit)
         self.items = _strs(self.items)
         self.device = str(self.device)
+        self.manifest = _path(self.manifest) if self.manifest else None
+        self.revision = str(self.revision) if self.revision else None
 
     def execute(self) -> int:
         from wsbench.produce import METHODS, Producer, write
@@ -579,12 +585,40 @@ class Produce(Command):
         if self.family and self.family not in readplan.families():
             print(f"unknown family {self.family!r}", file=sys.stderr)
             return EXIT_USAGE
-        producer = Producer.load(self.model, self.method, device=self.device)
+        manifest = None
+        if self.manifest is not None:
+            from wsbench.cell_manifest import CellManifest
+
+            if not self.family or self.layers is not None or self.items is not None or self.limit:
+                print(
+                    "manifest production needs family= and forbids layers/items/limit overrides",
+                    file=sys.stderr,
+                )
+                return EXIT_USAGE
+            try:
+                manifest = CellManifest.load(self.manifest)
+                manifest.verify_banks()
+                manifest.family(self.family)
+                if self.model != manifest.metadata["model"]:
+                    raise ValueError("model differs from manifest")
+                if self.revision and self.revision != manifest.metadata["model_revision"]:
+                    raise ValueError("revision differs from manifest")
+                self.revision = manifest.metadata["model_revision"]
+            except (ValueError, OSError) as e:
+                print(f"invalid manifest: {e}", file=sys.stderr)
+                return EXIT_USAGE
+        kwargs = {"device": self.device}
+        if self.revision is not None:
+            kwargs["revision"] = self.revision
+        producer = Producer.load(self.model, self.method, **kwargs)
         if self.family:
             out = self.out or Path("outputs/readouts") / self.method / f"{self.family}.jsonl"
-            path = producer.run_family(
-                self.family, out, limit=self.limit, layers=self.layers, items=self.items
-            )
+            if manifest is not None:
+                path = producer.run_manifest(manifest, self.family, out)
+            else:
+                path = producer.run_family(
+                    self.family, out, limit=self.limit, layers=self.layers, items=self.items
+                )
             print(f"wrote {path}")
             return 0
         rows = producer.read_prompt(

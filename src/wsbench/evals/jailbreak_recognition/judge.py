@@ -6,6 +6,7 @@ from typing import Any
 
 from wsbench.cache import Cache
 from wsbench.llm import Spend
+from wsbench.manifest_judging import load_judge_readouts, manifest_positions
 from wsbench.mcjudge import (
     Call,
     Preflighter,
@@ -16,7 +17,7 @@ from wsbench.mcjudge import (
     run_calls,
     with_readout_count,
 )
-from wsbench.readouts import Cell, expected_cells, load_readouts, missing_cells
+from wsbench.readouts import Cell, expected_cells, missing_cells
 from wsbench.registry import JudgeArgs
 from wsbench.results import FamilyResult
 from wsbench.summarizer import aux_judge, render_bag, summarize
@@ -131,9 +132,8 @@ def run(args: JudgeArgs) -> FamilyResult:
     scope = item_scope(bank, args)
     by_id = {it["id"]: it for it in scope}
     positions = {it["id"]: grid_positions(it["read"]) for it in scope}
-    cells, rep = load_readouts(
-        args.readouts, ids=list(by_id), layers=args.layers, positions=positions
-    )
+    positions = manifest_positions(args, positions)
+    cells, rep = load_judge_readouts(args, ids=list(by_id), layers=args.layers, positions=positions)
     layers = args.layers if args.layers is not None else rep.layers
     expected = expected_cells(positions, layers)
     missing = missing_cells(cells, expected)

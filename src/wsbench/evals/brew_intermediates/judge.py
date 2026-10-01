@@ -11,8 +11,8 @@ from wsbench.banks import load_bank
 from wsbench.cache import Cache
 from wsbench.family import cell_text, fail, mean, pass_rate_result, require_cells
 from wsbench.llm import Spend
+from wsbench.manifest_judging import load_judge_readouts, manifest_positions
 from wsbench.mcjudge import Call, Preflighter, item_scope, run_calls, with_readout_count
-from wsbench.readouts import load_readouts
 from wsbench.registry import REPO_ROOT, JudgeArgs
 from wsbench.results import FamilyResult
 
@@ -94,7 +94,8 @@ def run(args: JudgeArgs) -> FamilyResult:
     positions = {
         it["id"]: sorted(int(p) for p, r in it["regions"].items() if r in wanted) for it in scope
     }
-    cells, rep = load_readouts(args.readouts, ids=ids, layers=args.layers, positions=positions)
+    positions = manifest_positions(args, positions)
+    cells, rep = load_judge_readouts(args, ids=ids, layers=args.layers, positions=positions)
     layers = args.layers if args.layers is not None else rep.layers
     have = {(c.id, c.layer, c.pos): c for c in cells}
     expected = [(i, layer, p) for i in ids for layer in layers for p in positions[i]]

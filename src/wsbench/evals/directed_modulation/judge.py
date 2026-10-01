@@ -9,9 +9,10 @@ from wsbench.banks import load_bank
 from wsbench.cache import Cache
 from wsbench.family import require_cells
 from wsbench.llm import Spend
+from wsbench.manifest_judging import load_judge_readouts
 from wsbench.mc import classify, seed_int
 from wsbench.mcjudge import Call, Preflighter, item_scope, run_calls, with_readout_count
-from wsbench.readouts import Cell, load_readouts
+from wsbench.readouts import Cell
 from wsbench.registry import REPO_ROOT, JudgeArgs
 from wsbench.results import FamilyResult
 
@@ -134,7 +135,7 @@ def run(args: JudgeArgs) -> FamilyResult:
     _header, bank = load_bank(BANK)
     scope = item_scope(bank, args)
     by_id = {it["id"]: it for it in scope}
-    cells, rep = load_readouts(args.readouts, ids=list(by_id), layers=args.layers)
+    cells, rep = load_judge_readouts(args, ids=list(by_id), layers=args.layers)
     layers = args.layers if args.layers is not None else rep.layers
     missing = missing_cells(list(by_id), layers, cells)
     require_cells("directed_modulation", missing, len(by_id) * len(layers), args)

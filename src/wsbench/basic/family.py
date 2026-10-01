@@ -11,8 +11,9 @@ from wsbench.cache import Cache
 from wsbench.family import pass_rate_result, require_cells, tri_state
 from wsbench.judge_config import JudgeConfig
 from wsbench.llm import Spend
+from wsbench.manifest_judging import load_judge_readouts
 from wsbench.mcjudge import Preflighter, item_scope, with_readout_count
-from wsbench.readouts import Cell, load_readouts
+from wsbench.readouts import Cell
 from wsbench.registry import REPO_ROOT, EvalSpec, JudgeArgs
 from wsbench.results import FamilyResult
 
@@ -52,7 +53,7 @@ def run_family(args: JudgeArgs, *, name: str, bank: Path) -> FamilyResult:
     scope = item_scope(items, args)
     ids = [it["id"] for it in scope]
     targets = {it["id"]: targets_of(it) for it in scope}
-    cells, rep = load_readouts(args.readouts, ids=ids, layers=args.layers)
+    cells, rep = load_judge_readouts(args, ids=ids, layers=args.layers)
     layers = args.layers if args.layers is not None else rep.layers
     groups = group_cells(cells)
     expected = [(i, layer) for i in ids for layer in layers]

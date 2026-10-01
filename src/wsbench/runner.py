@@ -10,9 +10,11 @@ from pathlib import Path
 from typing import Literal, Protocol
 
 from wsbench import llm, mcjudge
+from wsbench.cell_manifest import CellManifest
 from wsbench.family import fail
 from wsbench.judge_config import ResolvedJudge, resolve
 from wsbench.llm import JudgeConfigError
+from wsbench.manifest_judging import annotate_result, load_judge_readouts
 from wsbench.registry import EvalSpec, JudgeArgs
 from wsbench.results import FamilyResult, write_results
 
@@ -32,6 +34,7 @@ class Options(Protocol):
     """The judge options ``wsbench judge`` passes down (``cli.JudgeOptions``)."""
 
     judge_model: str | None
+    manifest: Path | None
     layers: list[int] | None
     items: list[str] | None
     limit: int
@@ -59,7 +62,7 @@ def parse_opts(pairs: Sequence[str]) -> dict[str, str]:
     return out
 
 
-def judge_family(
+def _judge_args(
     spec: EvalSpec,
     args: Options,
     readouts: Path,
@@ -67,10 +70,20 @@ def judge_family(
     *,
     judge: ResolvedJudge,
     opts: Mapping[str, str],
-) -> FamilyResult:
-    """Run one family with an already-resolved judge and pre-parsed ``opts=``; write its
-    ``results.json`` and print the one-line summary."""
-    jargs = JudgeArgs(
+) -> JudgeArgs:
+    manifest = None
+    path = getattr(args, "manifest", None)
+    if path is not None:
+        try:
+            manifest = CellManifest.load(Path(path))
+            manifest.verify_banks()
+        except (ValueError, OSError) as e:
+            fail(f"invalid manifest: {e}")
+    if manifest is not None:
+        if args.allow_missing or args.layers is not None:
+            fail("manifest mode forbids allow_missing and layer overrides")
+        out = out / "cache" / manifest.fingerprint
+    return JudgeArgs(
         readouts=readouts,
         out=out,
         judge=judge,
@@ -83,8 +96,25 @@ def judge_family(
         dry_run=args.dry_run,
         aux_models=spec.judge.aux_models,
         extra=dict(opts),
+        cell_manifest=manifest,
+        family=spec.name,
     )
-    result = spec.run(jargs)
+
+
+def judge_family(
+    spec: EvalSpec,
+    args: Options,
+    readouts: Path,
+    out: Path,
+    *,
+    judge: ResolvedJudge,
+    opts: Mapping[str, str],
+) -> FamilyResult:
+    """Validate coverage, run one family and write its result."""
+    jargs = _judge_args(spec, args, readouts, out, judge=judge, opts=opts)
+    if jargs.cell_manifest is not None:
+        load_judge_readouts(jargs)
+    result = annotate_result(spec.run(jargs), jargs)
     path = write_results(out, result)
     spend = result.counts.get("spend_usd", 0.0) or 0.0
     print(
@@ -165,6 +195,11 @@ def run_families(
             outcomes[s.name] = FamilyOutcome(s.name, "skipped", error=msg)
         else:
             runnable.append((s, readouts))
+    if getattr(args, "manifest", None) is not None:
+        # Coverage validation precedes every network preflight, including multi-family runs.
+        for s, readouts in runnable:
+            jargs = _judge_args(s, args, readouts, out / s.name, judge=judges[s.name], opts=opts)
+            load_judge_readouts(jargs)
     # a family with a deterministic scorer of record makes no call unless opts=judge=mc
     needs_llm = [s for s, _r in runnable if not s.scorer or opts.get("judge") == "mc"]
     if needs_llm and not args.dry_run:
@@ -254,4 +289,15 @@ def run_manifest(
         "families": families,
         "judge_overrides": {"flag": args.judge_model, "env": env.get("WSBENCH_JUDGE_MODEL")},
         "readouts_root": str(readouts_root),
+        **(
+            {
+                "cell_manifests": {
+                    o.family: o.result.config["cell_manifest"]
+                    for o in outcomes
+                    if o.result is not None and "cell_manifest" in o.result.config
+                }
+            }
+            if getattr(args, "manifest", None) is not None
+            else {}
+        ),
     }
