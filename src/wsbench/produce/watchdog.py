@@ -125,6 +125,10 @@ def supervise(
         state = stopper.inspect()
         if state["status"] != "RUNNING":
             raise PodControlError("owned pod is not running; supervisor never starts or resumes it")
+        start = getattr(worker, "start", None)
+        if callable(start):
+            guard.check()
+            start()
         while True:
             result["worker_exit"] = worker.poll()
             if result["worker_exit"] is not None:

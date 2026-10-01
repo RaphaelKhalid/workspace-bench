@@ -200,6 +200,9 @@ def run_pod_compute(
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--spec", type=Path, required=True)
+    parser.add_argument(
+        "--spec-sha256", help="Expected canonical specification digest from controller"
+    )
     args = parser.parse_args()
     stopper = RunPodStopper(
         os.environ.get("RUNPOD_POD_ID", ""), os.environ.get("WSBENCH_RUN_ID", "")
@@ -207,6 +210,8 @@ def main():
     require_local_pod(stopper)
     try:
         spec = read_metadata(args.spec)
+        if args.spec_sha256 is not None and digest(spec) != args.spec_sha256:
+            raise ValueError("compute specification digest differs from controller")
         if set(spec) != {
             "run_id",
             "pod_id",
