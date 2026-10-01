@@ -17,6 +17,21 @@ path with the publisher; `before_item` can check the budget before each forward.
 Cached capture items do not invoke `on_item`, so include them when seeding a
 resumed export. Force an update after the capture phase and on interruption.
 
+`produce.worker.run_compute(manifests, root, export_root, run_id=..., guard=...)`
+assembles capture and all eight readers with these callbacks. It validates the
+full reader roster before any model load, checks existing captures and readout
+journals, writes the immutable manifests, and seeds the export with existing
+capture files. Incomplete captures load the pinned base model in bfloat16 and
+check the budget before each forward; completed captures require no base-model
+load. The worker forces a pending checkpoint export on capture completion or
+interruption and releases the base model before running readers. A complete
+restore/resume requires no model loads. There are no API judge calls in this path.
+
+The function is a compute entry point, not a resource launcher or an independent
+timeout mechanism. Run it inside a separately supervised process: a hung model
+load or CUDA forward cannot be interrupted by its synchronous budget callbacks.
+The actual launcher must also install an independent on-pod shutdown deadline.
+
 Pass the publisher to `reader_run.run_readers`. The runner seeds existing
 readout journals and bindings, queues changes after durable checkpoints, and
 forces publication at family completion, run completion and interruption.
@@ -96,8 +111,8 @@ restart, transfers only a new 16-byte readout, and rejects a rewritten prefix.
 Offline supervisor tests cover report churn and export/cleanup exceptions. Neither proves
 cloud throughput or the availability of a particular RunPod SSH endpoint.
 
-The deployment launcher still must assemble a bounded model worker, seed/flush
-captures, validate final benchmark coverage, install independent on-pod shutdown,
+The deployment launcher still must wrap the compute entry point in a bounded
+process, validate final benchmark coverage, install independent on-pod shutdown,
 and bind its budget forecast to measured pilot work. Export failure must never
 leave paid compute waiting indefinitely.
 Keep recoverable remote data, stop compute, and report an incomplete export;

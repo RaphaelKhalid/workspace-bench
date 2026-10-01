@@ -70,7 +70,7 @@ def inspect_output(path, manifest, family, config, capture_binding, *, batch_siz
         }
 
 
-def preflight(manifests, out, store, *, batch_size, seed):
+def validate_manifests(manifests):
     if set(manifests) != set(ARM_IDS):
         raise ValueError("full reader run requires the exact eight-arm roster")
     lock = load_lock()
@@ -94,6 +94,11 @@ def preflight(manifests, out, store, *, batch_size, seed):
             if not set(item.layers) <= set(spec["supported_layers"]):
                 raise ValueError("reader manifest requests unsupported layers")
         readers[arm] = reference_method(arm)  # All unresolved arms fail before any load.
+    return readers
+
+
+def preflight(manifests, out, store, *, batch_size, seed):
+    readers = validate_manifests(manifests)
     states = {}
     for arm in ARM_IDS:
         manifest = manifests[arm]
