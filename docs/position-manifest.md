@@ -1,6 +1,6 @@
 # Position-only benchmark implementation
 
-Status: implementation in progress; **not ready for GPU rental or a benchmark claim**.
+Status: **parked; empirical validation pending**. See [current status and future work](project-status.md).
 
 The candidate retains all 3,356 original items across 27 families. It resolves 48,981
 cells with the original family layer grids. This is a per-reader count, not the sum of
@@ -99,7 +99,11 @@ It contains 299 original sequences / 130,058 token spellings. All have unique in
 and all recorded sequence lengths and current item metadata match. The raw recovered
 data is kept as a local generated artifact, not restored into the frozen banks.
 
-From this worktree, with the existing research artifacts:
+The compiled candidate is now tracked in [the protocol archive](../protocols/positions-v1/README.md).
+The commands below describe the original local compilation environment; its external research
+paths are not required to use the archived compiled candidate:
+
+From the original worktree, with the existing research artifacts:
 
 ```text
 python -m wsbench.capture_recovery --historical ../../research/astra/benchmark-pipeline-census/precision-manifest-before-strip.json --current evals/jlens_concept_pr/manifest.json --tokenizer ../../research/astra/benchmark-pipeline-census/tokenizer-qwen36/tokenizer.json --revision 6a9e13bd6fc8f0983b9b99948120bc37f49c13e9 --source-commit 2cae35eb6b581a2d937e7a6df9fe6361301799f4 --out outputs/inputs/precision.json
@@ -110,17 +114,12 @@ Compilation needs the optional Transformers tokenizer dependency; recovery itsel
 uses the standard library. Neither command loads model weights or calls an inference API.
 Use UTF-8 mode on Windows (`PYTHONUTF8=1` or `python -X utf8`) for the upstream tests.
 
-## Remaining preparation gates
+## Current status
 
-The shared manifest is wired into production, all family loaders, expected-cell checks,
-cache paths and result provenance. Fully mocked non-dry multi-stage runs and validated
-sparse report aggregation still need completion. Sparse files must not be sent through
-the original dense judge with `allow_missing=True`.
-
-Reader-specific manifests, artifact SHA/revision locks, deterministic sampling on
-resume, persisted activation reuse, batched reading, validation runs and budget-controlled
-deployment are unfinished. Free-only API routing is implemented and offline-tested
-([protocol](free-judging.md)); live format verification is currently incomplete because
-the pinned provider returned 429s. The current
-producer implementation is an offline-tested correctness path, not the optimized rental
-runner. Nothing here authorizes launching a GPU before the remaining gates pass.
+The manifest is integrated with production and all family judges. Reader-specific plans,
+mocked scoring checks, capture reuse, batched execution, export and execution controls are
+implemented and offline-tested. Real GPU execution, deployment behavior, judge validity,
+paired fidelity and measured full-run cost remain unverified. Exact reference artifacts
+also have unresolved questions. See [project status](project-status.md) for the authoritative
+pause and future-work record. Do not use `allow_missing=True` to reinterpret sparse outputs
+as a completed original dense benchmark.

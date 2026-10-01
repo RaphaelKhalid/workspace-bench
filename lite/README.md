@@ -1,5 +1,10 @@
 # WorkspaceBench-lite: an open-weights judge for `jailbreak_recognition`
 
+> **Parked (2026-10-01).** The results below concern the earlier jailbreak judge swap.
+> They do not establish fidelity or an under-$20 cost for the full benchmark. The newer
+> position-reduction implementation, archived protocol, and remaining validation work are
+> documented in [the fork's project status](../docs/project-status.md). No further experiments are scheduled.
+
 **An Apache-2.0 judge agrees with WorkspaceBench's Sonnet 5 judge at κ = 0.714, past the benchmark's κ ≥ 0.70 judge-swap bar. It costs about 4× less through an API and about 15× less self-hosted.**
 
 | | Official judge | This repo |

@@ -1,8 +1,17 @@
 # workspace-bench
 
-> **This fork adds [`lite/`](lite/README.md): an open-weights judge for `jailbreak_recognition`.**
-> Qwen3.8-27B (Apache-2.0) agrees with the Sonnet 5 judge at κ = 0.714 on held-out cells, past the
-> judge-swap bar of 0.70. It costs ≈ $220 instead of ≈ $907 per J-lens arm via API, or ≈ $60 self-hosted.
+> **Project parked (2026-10-01): experimental position-reduced WorkspaceBench.**
+> The candidate retains all 3,356 original items across 27 families and reduces the
+> planned grid from approximately 945,230 to 48,981 cells per full-grid reader (19.3x).
+> **Fidelity, reader rankings, real GPU execution, and a complete run under $20 are unverified.**
+> See [project status and future work](docs/project-status.md) and the
+> [archived protocol](protocols/positions-v1/README.md). No further experiments are scheduled.
+
+The earlier [open-weights jailbreak judge project](lite/README.md) is separate work.
+Its reported judge agreement does not validate this position-reduced protocol.
+The standalone [WorkspaceBench-lite repository](https://github.com/RaphaelKhalid/workspacebench-lite)
+contains the earlier judge-swap result and its limitations. The upstream benchmark usage
+below is retained for reference; its commands are not a validated cheap-run recipe.
 
 Evals of whether an activation-reading lens surfaces what Qwen3.6-27B computes but never
 writes. A lens reads the model's residual stream at a token position and produces either prose

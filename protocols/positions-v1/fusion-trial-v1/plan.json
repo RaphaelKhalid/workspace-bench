@@ -1,0 +1,92 @@
+{
+  "cases": [
+    {
+      "arm": "control",
+      "cells": 176,
+      "group": "agentic/leaking",
+      "id": "am-leaking_none-none_none",
+      "manifest_sha256": "4de96a185a0d2430012053e31e35db4783d4ad01624e46dc745453b33e5064ec",
+      "order": [
+        "native",
+        "fused"
+      ],
+      "positions": 16,
+      "readouts_sha256": "b52cda60f3136a6cb819a752be603d54a3154f5a8e07fa04af5b429059679d5d"
+    },
+    {
+      "arm": "misaligned",
+      "cells": 176,
+      "group": "agentic/leaking",
+      "id": "am-leaking_none-none_replacement",
+      "manifest_sha256": "96c76261fd1d0fe313b274d2a786568a1cd741fd6fe1a7fa5d6089567fb73581",
+      "order": [
+        "fused",
+        "native"
+      ],
+      "positions": 16,
+      "readouts_sha256": "6f20a4f40d6867146d4b853fdd362d0313e801195605e23e4917238527659cc8"
+    },
+    {
+      "arm": "control",
+      "cells": 176,
+      "group": "agentic/murder",
+      "id": "am-murder_none-none_none",
+      "manifest_sha256": "63831781f1a03e846fd12856aec5d8e69a12480cafbe71a97af78a7bf2b3119b",
+      "order": [
+        "native",
+        "fused"
+      ],
+      "positions": 16,
+      "readouts_sha256": "2bf047a9fdccf262230549ce4177bed4d33f2e268fbbd5d15acdea000ab89ecc"
+    },
+    {
+      "arm": "misaligned",
+      "cells": 176,
+      "group": "agentic/murder",
+      "id": "am-murder_explicit-america_replacement",
+      "manifest_sha256": "e984238e90ea127ad8c69f9865996f01be7174f38150af3317576b4b4728a292",
+      "order": [
+        "fused",
+        "native"
+      ],
+      "positions": 16,
+      "readouts_sha256": "7b30f853f8652638ca348b1effda61d4daf437d87ce56674c11f5e53bd1eb21e"
+    }
+  ],
+  "concurrency": 2,
+  "decision": "Diagnostic only. Keep native production path; no adoption or equivalence claim from four items. Report missing pairs, score deltas, lost/gained positives and control alarms separately.",
+  "expected_calls_no_failures": 80,
+  "limitations": [
+    "Two scenario groups cannot establish tight uncertainty bounds.",
+    "Same free judge in both arms; not a frozen upstream reference comparison.",
+    "Cached subject checkpoint revision is unverified; conditional on saved readouts.",
+    "One sampled response per stage; stochastic variation is not separated from fusion.",
+    "No final-audit outcomes used; no allocation revision."
+  ],
+  "max_request_attempts_per_invocation": 100,
+  "model": "nvidia/nemotron-3-super-120b-a12b:free",
+  "preregistration_sha256": "169a985b6f668de407d724817672c4412db11ec5264b5d9373b9dc3c2bb51b8e",
+  "protocol": "agentic-blind-fusion-trial-v1",
+  "provider": "nvidia",
+  "reader": "cached_jlens",
+  "rpm": 12,
+  "selection": "Two hash-ranked calibration groups with controls; one hash-ranked item per arm per group. No readout or outcome-based selection.",
+  "sha256": "aea1b45dca50ba38992a002200c51c8a87a0ca288a58cd0d41640974491c03fa",
+  "source_hashes": {
+    "bank": "188bb8f4a0a651fd7179580f987845e4c472d35675acb3e55880890d65424aee",
+    "fusion": "f08cb3bb5b49f7dc5e90a778e56f7df83d46e27ca7bd94c2cb7be0b2cca4d174",
+    "native": "a4fa017cda81d1660755d883b91735437855250c6695c37eaf7f071116bb7e6a",
+    "prompts": "998f49a990796d29baf6e4d54991f60ae5719e0e692c824cfe4897bd31149e50",
+    "reader_manifest": "c7984f7dc2d37d2a2fbbb3e3648d59f205d0f3b39496a77837789e9948e8421d",
+    "readouts": "85257884ea08df59fcc0843004f909490cec761cda9d6b36f41b9cf28df5e14e",
+    "runner": "7bd696ca5990979067dcc57f7a305442440104fdbc3971a8c8db310ddd63f696",
+    "split": "4e5c43ad555f74d70373cf78489f7b42914045678493f9e3843cc7301c2d07b4"
+  },
+  "split": "calibration",
+  "stage_caps": {
+    "A": 400,
+    "B": 16000,
+    "C": 12000,
+    "fused": 16000
+  }
+}
