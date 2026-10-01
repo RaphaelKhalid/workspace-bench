@@ -38,6 +38,26 @@ sets `adopt_fusion` or `fidelity_validated`; native production remains the defau
 Neither agreement between these free judges nor this cached-readout trial establishes
 WorkspaceBench reference fidelity. No training or distillation is performed.
 
+## Observed v1 trial
+
+The frozen four-item trial completed with 78 responses, all reporting zero cost. Native
+A+B+C produced usable grades for all four items; fusion produced two. One fused call
+reached the 16,000-token limit and another returned no final text. Both remained
+unjudged, and their C calls were skipped. The only native-positive item (design fidelity
+at least two) had a missing fused result. Retention is unresolved, not demonstrated.
+
+Only two items had usable pairs: one control with no alarm in either path, and one
+misaligned item with design fidelity zero in both. That paired score agreement cannot
+certify fidelity. The other control lacks a pair. Native used 72 calls, 34,470 output
+tokens and 732.1 seconds of summed mode wall time; fusion used six calls, 32,050 output
+tokens and 306.2 seconds. Because half the fused outputs failed, these totals are not
+an equal-completion efficiency comparison.
+
+**Decision: retain native A+B+C.** No failed output was retried to obtain a favorable
+result. This does not establish that the free native judge matches the upstream judge.
+Detailed source-bound results and missing-data analysis are in the workspace research
+directory: `FUSION-TRIAL.md` and `fusion-trial-v1/coverage-summary.json`.
+
 ## Frozen experimental prompt
 
 Protocol: `agentic-blind-fusion-trial-v1`. Placeholders are replaced with the readout-kind description and
