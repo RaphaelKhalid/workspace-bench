@@ -1,9 +1,19 @@
 """Crash-safe file replacement and process-scoped writer locks for production artifacts."""
 
+import hashlib
 import os
 import tempfile
 from contextlib import contextmanager
 from pathlib import Path
+
+
+def python_source_sha256(path: Path) -> str:
+    """Fingerprint Python's universal-newline source; never use this for data or weights."""
+    path = Path(path)
+    if path.suffix != ".py":
+        raise ValueError("source fingerprint accepts only Python files")
+    source = path.read_bytes().replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+    return hashlib.sha256(source).hexdigest()
 
 
 @contextmanager

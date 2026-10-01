@@ -1,7 +1,6 @@
 """Validate every output before loading; load each unfinished reference reader once."""
 
 import gc
-import hashlib
 import json
 import math
 import time
@@ -16,7 +15,7 @@ from .batches import binding_for
 from .journal import ReadoutJournal
 from .producer import Producer
 from .reference import ARM_IDS, load_lock, reference_method
-from .storage import atomic_writer, file_lock
+from .storage import atomic_writer, file_lock, python_source_sha256
 
 
 def public_config(reader):
@@ -42,7 +41,7 @@ def inspect_output(
     runtime = old.get("reader_runtime")
     if not isinstance(runtime, dict) or not runtime.get("dtype"):
         raise ValueError("reader runtime provenance missing")
-    backend_sha = hashlib.sha256(Path(__file__).with_name("backend.py").read_bytes()).hexdigest()
+    backend_sha = python_source_sha256(Path(__file__).with_name("backend.py"))
     if runtime.get("backend_source_sha256") != backend_sha:
         raise ValueError("reader backend implementation changed")
     binding = binding_for(

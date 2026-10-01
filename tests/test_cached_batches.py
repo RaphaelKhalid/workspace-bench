@@ -186,3 +186,94 @@ def test_budget_callback_runs_before_generation_and_progress_follows_durable_bat
 
         producer.run_cached(first, "a", path, store, on_batch=progress)
         assert sum(e["new_cells"] for e in events) == first.n_cells
+
+
+def test_pilot_blocks_resume_into_identical_full_run_without_replaying_complete_blocks(tmp_path):
+    first, _, union = fixture()
+    runtime = {"dtype": "bfloat16"}
+    backend = SimpleNamespace(
+        model_id="toy", revision="rev", device="cpu", capture_runtime=lambda: runtime
+    )
+    producer = Producer(backend, RandomReader())
+    events = []
+    with CaptureStore(tmp_path / "cache", union, runtime, 3) as store:
+        fill(store)
+        producer.run_cached(first, "a", tmp_path / "full", store, batch_size=2, seed=7)
+        producer.method._calls = 0
+        producer.run_cached(
+            first,
+            "a",
+            tmp_path / "pilot",
+            store,
+            batch_size=2,
+            seed=7,
+            block_indices=[1],
+            on_batch=events.append,
+        )
+        assert producer.method._calls == 1
+        assert len(events) == 1 and events[0]["index"] == 1
+        assert events[0]["elapsed_seconds"] > 0
+        producer.run_cached(
+            first,
+            "a",
+            tmp_path / "pilot",
+            store,
+            batch_size=2,
+            seed=7,
+            block_indices=[1],
+            on_batch=events.append,
+        )
+        assert producer.method._calls == 1 and len(events) == 1
+        producer.run_cached(first, "a", tmp_path / "pilot", store, batch_size=2, seed=7)
+        # Journal order may differ; compare keyed stochastic outputs and exact provenance.
+        assert sorted((tmp_path / "pilot").read_bytes().splitlines()) == sorted(
+            (tmp_path / "full").read_bytes().splitlines()
+        )
+        assert (tmp_path / "pilot.run.json").read_bytes() == (
+            tmp_path / "full.run.json"
+        ).read_bytes()
+        assert producer.method._calls == len(blocks(first, "a", 2, 7))
+
+
+def test_partial_capture_selection_does_not_mark_full_reader_verified(tmp_path):
+    first, _, union = fixture()
+    runtime = {"dtype": "bfloat16"}
+    backend = SimpleNamespace(
+        model_id="toy",
+        revision="rev",
+        capture_runtime=lambda: runtime,
+        tokenizer=SimpleNamespace(decode=lambda ids: str(ids[0])),
+        capture=lambda ids, layers, positions: {
+            layer: torch.ones(len(positions), 3) for layer in layers
+        },
+    )
+    events = []
+    with CaptureStore(tmp_path / "cache", union, runtime, 3) as store:
+        report = capture_all(backend, store, item_keys={("a", "one")}, on_item=events.append)
+        assert report["scope"] == "selected_items" and report["captured_items"] == 1
+        assert len(events) == 1 and events[0]["elapsed_seconds"] > 0
+        store.check_reader(first, item_keys={("a", "one")})
+        with pytest.raises(ValueError, match="capture missing"):
+            store.check_reader(first, reuse_verified=True)
+        # A pilot block can use only its required capture, with full-run binding unchanged.
+        reader_backend = SimpleNamespace(
+            model_id="toy", revision="rev", device="cpu", capture_runtime=lambda: runtime
+        )
+        producer = Producer(reader_backend, RandomReader())
+        producer.run_cached(
+            first, "a", tmp_path / "partial", store, batch_size=2, seed=0, block_indices=[0]
+        )
+        with pytest.raises(ValueError, match="capture missing"):
+            producer.run_cached(first, "a", tmp_path / "partial", store, batch_size=2, seed=0)
+        report = capture_all(backend, store, on_item=events.append)
+        assert report["captured_items"] == report["reused_items"] == 1
+        assert report["scope"] == "full_manifest"
+
+
+@pytest.mark.parametrize("indices", [[], [0, 0], [1, 0], [99], [-1], [True], "0"])
+def test_bad_pilot_indices_fail_before_generation(tmp_path, indices):
+    from wsbench.produce.batches import indexed_blocks
+
+    first, _, _ = fixture()
+    with pytest.raises(ValueError, match="indices"):
+        indexed_blocks(blocks(first, "a", 2, 0), indices)

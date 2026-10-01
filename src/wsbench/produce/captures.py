@@ -5,6 +5,7 @@ import hashlib
 import json
 from dataclasses import asdict, replace
 from pathlib import Path
+from time import perf_counter
 
 import numpy as np
 
@@ -176,19 +177,32 @@ class CaptureStore:
             raise ValueError(f"capture missing for {item.family}/{item.id}")
         return {layer: vectors[original.layers.index(layer)] for layer in item.layers}
 
-    def check_reader(self, manifest: CellManifest, *, reuse_verified=False) -> None:
+    def check_reader(self, manifest: CellManifest, *, reuse_verified=False, item_keys=None) -> None:
         if self._lock is None:
             raise RuntimeError("capture store must be opened")
-        if manifest.fingerprint not in self.manifest.metadata.get("reader_manifests", []):
+        fingerprint = manifest.fingerprint
+        if fingerprint not in self.manifest.metadata.get("reader_manifests", []):
             raise ValueError("reader manifest absent from capture union")
-        if reuse_verified and manifest.fingerprint in self._verified_readers:
+        items = selected_items(manifest, item_keys)
+        if reuse_verified and fingerprint in self._verified_readers:
             return
-        for item in manifest.items:
+        for item in items:
             self.selected(item)
-        self._verified_readers.add(manifest.fingerprint)
+        if item_keys is None:
+            self._verified_readers.add(fingerprint)
 
 
-def capture_all(backend, store: CaptureStore, *, before_item=None, on_item=None) -> dict:
+def selected_items(manifest, item_keys=None):
+    if item_keys is None:
+        return manifest.items
+    keys = {(i.family, i.id) for i in manifest.items}
+    if not isinstance(item_keys, (set, frozenset)) or not item_keys or not item_keys <= keys:
+        raise ValueError("selected capture items must be a nonempty subset of the full manifest")
+    return tuple(i for i in manifest.items if (i.family, i.id) in item_keys)
+
+
+def capture_all(backend, store: CaptureStore, *, before_item=None, on_item=None, item_keys=None):
+    items = selected_items(store.manifest, item_keys)
     if (backend.model_id, backend.revision) != (
         store.manifest.metadata["model"],
         store.manifest.metadata["model_revision"],
@@ -196,13 +210,19 @@ def capture_all(backend, store: CaptureStore, *, before_item=None, on_item=None)
         raise ValueError("capture backend subject/revision differs")
     if backend.capture_runtime() != store.binding["runtime"]:
         raise ValueError("capture backend runtime differs")
-    result = {"captured_items": 0, "reused_items": 0, "cells": store.manifest.n_cells}
-    for item in store.manifest.items:
+    result = {
+        "captured_items": 0,
+        "reused_items": 0,
+        "cells": sum(len(i.layers) * len(i.positions) for i in items),
+        "scope": "full_manifest" if item_keys is None else "selected_items",
+    }
+    for item in items:
         if store.get(item) is not None:
             result["reused_items"] += 1
             continue
         if before_item is not None:
             before_item()
+        started = perf_counter()
         positions = [p % len(item.input_ids) for p in item.positions]
         for p, token in zip(positions, item.tokens, strict=True):
             if backend.tokenizer.decode([item.input_ids[p]]) != token:
@@ -218,6 +238,9 @@ def capture_all(backend, store: CaptureStore, *, before_item=None, on_item=None)
                 {
                     "family": item.family,
                     "id": item.id,
+                    "input_tokens": len(item.input_ids),
+                    "vectors": len(item.layers) * len(item.positions),
+                    "elapsed_seconds": perf_counter() - started,
                     "path": str(store.root / f"{digest([item.family, item.id])}.npz"),
                 }
             )

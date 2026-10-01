@@ -52,6 +52,11 @@ allocation; actual device requirements remain a pilot measurement.
 
 ## Integrity and resume
 
+The [operational pilot](operational-pilot.md) uses selected whole batches with the
+same full-run provenance. Partial pilot coverage never satisfies full-run checks.
+That guide also documents Python source newline normalization for Windows/Linux
+provenance; all data and model artifacts retain byte-exact hashes.
+
 - Every item is an atomic NPZ with float32 vectors, manifest/item identity and a
   hash of all vector bytes. Files use no pickle and are checked for shape, dtype,
   finite values and hash integrity. Float32 storage preserves the captured BF16

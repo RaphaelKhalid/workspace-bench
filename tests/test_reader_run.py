@@ -1,6 +1,5 @@
 """Complete outputs avoid model loads; corruption and unresolved arms fail before any GPU work."""
 
-import hashlib
 import json
 from dataclasses import replace
 from pathlib import Path
@@ -15,6 +14,7 @@ from wsbench.produce.batches import binding_for
 from wsbench.produce.budget import BudgetExceededError
 from wsbench.produce.captures import CaptureStore, capture_union
 from wsbench.produce.journal import ReadoutJournal
+from wsbench.produce.storage import python_source_sha256
 
 
 class Guard:
@@ -57,9 +57,7 @@ def setup(tmp_path, monkeypatch):
     loads, releases = [], []
     runtime = {
         "dtype": "bfloat16",
-        "backend_source_sha256": hashlib.sha256(
-            Path(run.__file__).with_name("backend.py").read_bytes()
-        ).hexdigest(),
+        "backend_source_sha256": python_source_sha256(Path(run.__file__).with_name("backend.py")),
     }
 
     class FakeProducer:

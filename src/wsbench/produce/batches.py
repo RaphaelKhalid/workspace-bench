@@ -1,10 +1,12 @@
 """Deterministic layer-major blocks for reusable captures and reproducible reader resume."""
 
-import hashlib
 from dataclasses import asdict, dataclass
 from pathlib import Path
+from time import perf_counter
 
 from wsbench.cell_manifest import CellManifest, digest
+
+from .storage import python_source_sha256
 
 
 @dataclass(frozen=True)
@@ -18,12 +20,13 @@ def blocks(manifest: CellManifest, family: str, batch_size: int, seed: int) -> l
     if type(batch_size) is not int or batch_size < 1 or type(seed) is not int or seed < 0:
         raise ValueError("batch size must be positive and seed nonnegative integers")
     items = manifest.family(family)
+    manifest_hash = manifest.fingerprint
     result = []
     for layer in sorted({layer for item in items for layer in item.layers}):
         cells = [(item.id, pos) for item in items if layer in item.layers for pos in item.positions]
         for start in range(0, len(cells), batch_size):
             block = tuple(cells[start : start + batch_size])
-            value = digest(["reader-batches-v1", manifest.fingerprint, family, layer, block, seed])
+            value = digest(["reader-batches-v1", manifest_hash, family, layer, block, seed])
             result.append(ReadBlock(layer, block, int(value[:15], 16)))
     return result
 
@@ -37,9 +40,7 @@ def binding_for(manifest, family, config, capture_binding, runtime, *, batch_siz
         "capture_binding": capture_binding,
         "reader_runtime": {
             **runtime,
-            "methods_source_sha256": hashlib.sha256(
-                Path(__file__).with_name("methods.py").read_bytes()
-            ).hexdigest(),
+            "methods_source_sha256": python_source_sha256(Path(__file__).with_name("methods.py")),
         },
         "execution": {
             "protocol": "reader-batches-v1",
@@ -48,6 +49,19 @@ def binding_for(manifest, family, config, capture_binding, runtime, *, batch_siz
             "plan_sha256": digest([asdict(b) for b in plan]),
         },
     }
+
+
+def indexed_blocks(plan, indices=None):
+    if indices is None:
+        return list(enumerate(plan))
+    if (
+        not isinstance(indices, (list, tuple))
+        or not indices
+        or any(type(i) is not int or not 0 <= i < len(plan) for i in indices)
+        or list(indices) != sorted(set(indices))
+    ):
+        raise ValueError("selected block indices must be nonempty, unique, ordered and in range")
+    return [(i, plan[i]) for i in indices]
 
 
 def execute_cached(
@@ -61,6 +75,7 @@ def execute_cached(
     seed: int,
     before_batch=None,
     on_batch=None,
+    block_indices=None,
 ):
     """Replay full interrupted blocks with the same seed; append only missing cells."""
     import torch
@@ -69,12 +84,18 @@ def execute_cached(
     from .producer import Row
 
     plan = blocks(manifest, family, batch_size, seed)
+    selected = indexed_blocks(plan, block_indices)
     config = producer.validate_manifest(manifest, family)
     if not hasattr(producer.method, "read_batch"):
         raise ValueError("reader does not implement batched execution")
     # A full run checks all captures once while owning the store lock. Per-item reads
     # still validate hashes; store writes or reopening invalidate this preflight.
-    store.check_reader(manifest, reuse_verified=True)
+    selection = (
+        {(family, item_id) for _, block in selected for item_id, _ in block.cells}
+        if block_indices is not None
+        else None
+    )
+    store.check_reader(manifest, reuse_verified=True, item_keys=selection)
     binding = binding_for(
         manifest,
         family,
@@ -87,11 +108,12 @@ def execute_cached(
     items = {item.id: item for item in manifest.family(family)}
     loaded_id, loaded = None, None
     with ReadoutJournal(out, binding=binding, expected=manifest.expected(family)) as journal:
-        for block in plan:
+        for index, block in selected:
             if all((item_id, block.layer, pos) in journal.present for item_id, pos in block.cells):
                 continue
             if before_batch is not None:
                 before_batch()
+            started = perf_counter()
             existing = len(journal.present)
             vectors = []
             for item_id, pos in block.cells:
@@ -120,6 +142,8 @@ def execute_cached(
                     {
                         "family": family,
                         "layer": block.layer,
+                        "index": index,
+                        "elapsed_seconds": perf_counter() - started,
                         "generated_cells": len(block.cells),
                         "new_cells": len(journal.present) - existing,
                     }

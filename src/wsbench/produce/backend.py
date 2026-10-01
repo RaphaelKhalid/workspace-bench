@@ -2,11 +2,12 @@
 A benchmark layer L is the output of decoder block ``model.layers[L]`` (the residual stream after
 that block), the convention every bank was captured with."""
 
-import hashlib
 from contextlib import nullcontext
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Self
+
+from .storage import python_source_sha256
 
 DEFAULT_MODEL = "Qwen/Qwen3.6-27B"
 
@@ -39,7 +40,7 @@ class Backend:
             "allow_tf32": torch.backends.cuda.matmul.allow_tf32,
             "float32_matmul_precision": torch.get_float32_matmul_precision(),
             "deterministic_algorithms": torch.are_deterministic_algorithms_enabled(),
-            "backend_source_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+            "backend_source_sha256": python_source_sha256(Path(__file__)),
             "capture_contract": "decoder-block-output; adapters-disabled; use-cache-false-v1",
         }
         if str(self.device).startswith("cuda"):

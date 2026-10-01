@@ -212,6 +212,7 @@ class Producer:
         seed=0,
         before_batch=None,
         on_batch=None,
+        block_indices=None,
     ):
         from .batches import execute_cached
 
@@ -225,6 +226,7 @@ class Producer:
             seed=seed,
             before_batch=before_batch,
             on_batch=on_batch,
+            block_indices=block_indices,
         )
 
     def run_manifest(self, manifest: Any, family: str, out: Path | str) -> Path:
