@@ -79,6 +79,8 @@ Recompute each native family metric in 5,000 paired scenario-group bootstrap
 draws with seed 0. Report denominators, class-specific errors and uncertainty.
 Rare positives and small control sets cannot establish tight bounds.
 
-The preregistration is not a completed audit. Native safety event extraction,
-paired estimates, judge-validation evidence and empirical reader results remain
-necessary. Keep GPU readiness false until the other preparation gates pass.
+The preregistration is not a completed audit. [Native safety extraction and paired
+estimates](paired-safety-audit.md) are implemented and tested, but admissible paired
+judgments, other native family metrics, judge-validation evidence and empirical
+reader results remain necessary. Keep GPU readiness false until the other
+preparation gates pass.

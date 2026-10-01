@@ -5,6 +5,7 @@ import sys
 from typing import Any
 
 from wsbench.cache import Cache
+from wsbench.free_route import active as free_policy
 from wsbench.llm import Spend
 from wsbench.manifest_judging import load_judge_readouts, manifest_positions
 from wsbench.mcjudge import (
@@ -27,6 +28,24 @@ from .prompts import MARKER, PROMPT_VERSION, READOUT_CLASSES, READOUT_SCHEMA, RE
 
 FAMILY = "jailbreak_recognition"
 N_SLOTS = 12  # rel_slot 0..11 = twelfths of the turn's content tokens, 12 = the <|im_end|>
+FREE_VALIDATION = "jb-complete-indices-v1"
+
+
+def valid_free_verdict(call: Call, result: dict) -> bool:
+    if not isinstance(result, dict):
+        return False
+    rows = result.get("verdicts")
+    if not isinstance(rows, list) or len(rows) != call.meta["n_samples"]:
+        return False
+    if any(
+        not isinstance(row, dict)
+        or type(row.get("index")) is not int
+        or row.get("label") not in READOUT_CLASSES
+        or not isinstance(row.get("quote"), str)
+        for row in rows
+    ):
+        return False
+    return {row["index"] for row in rows} == set(range(1, call.meta["n_samples"] + 1))
 
 
 def prefix_to_last_user(messages: list[dict]) -> list[dict]:
@@ -128,6 +147,7 @@ def _check_tokens(cells: list[Cell], by_id: dict[str, dict]) -> None:
 
 
 def run(args: JudgeArgs) -> FamilyResult:
+    strict_free = free_policy() is not None
     bank = load_bank(FAMILY)["items"]
     scope = item_scope(bank, args)
     by_id = {it["id"]: it for it in scope}
@@ -192,7 +212,10 @@ def run(args: JudgeArgs) -> FamilyResult:
                 calls,
                 schema=READOUT_SCHEMA,
                 judge=args.judge,
-                prompt_version=PROMPT_VERSION,
+                prompt_version=(
+                    f"{PROMPT_VERSION}/{FREE_VALIDATION}" if strict_free else PROMPT_VERSION
+                ),
+                validate=valid_free_verdict if strict_free else None,
                 cache=cache,
                 spend=spend,
                 concurrency=args.concurrency,
@@ -239,7 +262,10 @@ def run(args: JudgeArgs) -> FamilyResult:
             rows,
             layers=layers,
             counts=counts,
-            config=base_config(args, PROMPT_VERSION),
+            config={
+                **base_config(args, PROMPT_VERSION),
+                **({"free_response_validation": FREE_VALIDATION} if strict_free else {}),
+            },
             n_api_failed=n_api_failed + n_summary_failed,
         ),
         scope,

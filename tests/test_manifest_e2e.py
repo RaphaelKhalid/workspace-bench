@@ -47,6 +47,15 @@ def mock_api(monkeypatch):
             for i, (_, user) in enumerate(prompts):
                 calls.append((schema["name"], user))
                 response = schema_value(schema["schema"])
+                if schema["name"] == "ec_reason_mc":
+                    response["choice"] = int(
+                        re.search(r"(\d+)\. cannot tell from the readout", user)[1]
+                    )
+                if schema["name"] == "readout_recognition":
+                    n = int(re.search(r"Readouts at that position \((\d+) of them", user)[1])
+                    response["verdicts"] = [
+                        {"index": j + 1, "label": "noise", "quote": ""} for j in range(n)
+                    ]
                 if "grades" in response and "\n\nConcepts:\n" in user:
                     concepts = re.findall(
                         r"^\d+\. (.*)$", user.split("\n\nConcepts:\n", 1)[1], re.M

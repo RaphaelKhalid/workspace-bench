@@ -70,7 +70,9 @@ def run_calls(
         if cache_context() is not None:
             fp = fingerprint(fp, schema, max_tokens)
         row = cache.get(c.key, fp)
-        if row is not None:
+        if row is not None and (
+            validate is None or (row.get("result") is not None and validate(c, row["result"]))
+        ):
             out[c.key] = row["result"]
         else:
             pending.append((c, fp))

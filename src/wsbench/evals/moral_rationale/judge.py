@@ -5,6 +5,7 @@ from collections import defaultdict
 from dataclasses import dataclass
 
 from wsbench.cache import Cache
+from wsbench.free_route import active as free_policy
 from wsbench.llm import Spend
 from wsbench.manifest_judging import load_judge_readouts
 from wsbench.mc import CANNOT, classify, join_samples, seed_int, seeded_shuffle
@@ -136,6 +137,7 @@ def select_cells(cells: list[Cell]) -> list[Cell]:
 
 
 def run(args: JudgeArgs) -> FamilyResult:
+    strict_free = free_policy() is not None
     bank = load_bank(FAMILY)
     scope = item_scope(bank, args)
     pools = build_pools(bank)
@@ -190,7 +192,17 @@ def run(args: JudgeArgs) -> FamilyResult:
                 calls,
                 schema=SCHEMA,
                 judge=args.judge,
-                prompt_version=PROMPT_VERSION,
+                prompt_version=(
+                    f"{PROMPT_VERSION}/free-valid-choice-v1" if strict_free else PROMPT_VERSION
+                ),
+                validate=(
+                    lambda call, result: (
+                        type(result.get("choice")) is int
+                        and 1 <= result["choice"] <= call.meta["n_options"]
+                    )
+                )
+                if strict_free
+                else None,
                 cache=cache,
                 spend=spend,
                 concurrency=args.concurrency,
@@ -247,7 +259,10 @@ def run(args: JudgeArgs) -> FamilyResult:
             scope,
             rows,
             counts=counts,
-            config=base_config(args, PROMPT_VERSION),
+            config={
+                **base_config(args, PROMPT_VERSION),
+                **({"free_response_validation": "valid-choice-v1"} if strict_free else {}),
+            },
             n_api_failed=n_api_failed + n_summary_failed,
         ),
         scope,
