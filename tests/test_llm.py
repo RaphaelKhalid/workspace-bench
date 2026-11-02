@@ -226,6 +226,13 @@ def test_openrouter_moderation_skips_the_cell(keys, fast, monkeypatch):
     assert len(fake.calls) == 2
 
 
+def test_openrouter_moderation_is_marked_as_a_refusal(keys, fast, monkeypatch):
+    flagged = PermissionDeniedError("flagged", body={"metadata": {"flagged_input": "x"}})
+    fake = FakeOpenRouter([flagged])
+    got, spend = _collect([("s", "u")], GEMINI, fake, monkeypatch, mark_refusals=True)
+    assert got == {0: llm.REFUSED_JSON} and spend.refusals == 1 and spend.errors == 0
+
+
 def test_openrouter_permission_denied_still_raises(keys, fast, monkeypatch):
     fake = FakeOpenRouter([PermissionDeniedError("no access", body={"message": "forbidden"})])
     _install(monkeypatch, fake)

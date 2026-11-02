@@ -404,7 +404,7 @@ async def _one(
             if route_ == "openrouter" and status == 403 and _moderation_flagged(e):
                 spend.refusals += 1  # one prompt flagged by moderation, not a config error
                 print(f"  llm refusal (moderation): {model}")
-                return None
+                return REFUSED_JSON if mark_refusals else None
             if name in _FATAL or status in (401, 402, 403):  # bad key, no credits, no access
                 raise JudgeConfigError(f"{name}: {str(e)[:300]}") from e
             transient = (
