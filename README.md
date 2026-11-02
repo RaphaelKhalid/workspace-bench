@@ -416,11 +416,13 @@ digest's token lines are also matched space-joined, stamped `+joined-2026-10-30`
 | user_modeling | claude-opus-5-5 | um-v3.4 |
 
 - Override precedence: `judge_model=` flag > `WSBENCH_JUDGE_MODEL` env > the family pin.
-- Routes: model ids starting with `claude-` use Anthropic directly, with no explicit thinking
-  setting; all other ids use OpenRouter.
-- Reasoning: OpenRouter judges request `{"effort": "minimal"}` unless the family explicitly sets
-  `JudgeConfig.reasoning`. This also applies when changing models with `judge_model=` or
-  `WSBENCH_JUDGE_MODEL`.
+- Routes: model ids starting with `claude-` use Anthropic directly; all other ids use OpenRouter.
+- Reasoning is resolved for the resolved model's route, so it also applies when changing models
+  with `judge_model=` or `WSBENCH_JUDGE_MODEL`. A family's `JudgeConfig.reasoning` keys are
+  route-specific (`anthropic_effort` rides the Anthropic route, every other key OpenRouter; keys
+  for the other route are dropped). With no key for its route, an OpenRouter judge requests
+  `{"effort": "minimal"}`, and an Anthropic judge sends no reasoning setting (its structured calls
+  then run at low effort on always-thinking models such as Opus 5.5, none on the others).
 - `pinned_instrument` is true only when the resolved model equals the family pin; a result
   judged by an override is never a number of record and can never be `complete`.
 - Aux models (e.g. unverbalized_hint's `fallback`, jlens_concept_pr's `extract`) come from the
