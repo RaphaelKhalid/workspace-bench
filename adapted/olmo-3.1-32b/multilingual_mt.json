@@ -1,0 +1,3622 @@
+{
+ "family": "multilingual-hard",
+ "parent_family": "multilingual-mt",
+ "contract": {
+  "multi_token": true,
+  "include_target": false,
+  "conjunctive_units": true
+ },
+ "gate": "Qwen3.6-27B behavioral, chat-templated capability question (enable_thinking=False, answer stem): greedy-verified AND >=8/10 @ temp 0.7 (answer in the text's language). EVAL RENDER: plain prompt, final prompt token; conjunctive regex over concept (en/zh gloss) + language; the L2 target is never creditable (next token).",
+ "frozen": "2026-09-10",
+ "adapt": {
+  "model": "olmo-3.1-32b",
+  "hf_id": "allenai/Olmo-3.1-32B-Instruct",
+  "frozen": "2026-10-24"
+ },
+ "items": [
+  {
+   "name": "mlh-ar-octopus",
+   "subfamily": "fwd",
+   "prompt": "الحيوان البحري الرخو صاحب الأذرع الثمانية المزودة بممصات والذي ينفث سائلاً داكناً عند الخطر يسمى",
+   "target": "الأخطبوط",
+   "target_alts": [
+    "أخطبوط",
+    "أخطبوطات",
+    "الأخاطيب"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "lang": "ar",
+   "intermediates": [
+    "octopus"
+   ],
+   "units": [
+    {
+     "role": "concept",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "octopus",
+       "devil fish"
+      ],
+      "zh": [
+       "章鱼",
+       "八爪鱼"
+      ]
+     },
+     "match": [
+      "octopus",
+      "devil fish",
+      "章鱼",
+      "八爪鱼"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Arabic"
+      ],
+      "zh": [
+       "阿拉伯语"
+      ],
+      "ar": [
+       "الأخطبوط",
+       "أخطبوط",
+       "أخطبوطات"
+      ]
+     },
+     "match": [
+      "Arabic",
+      "阿拉伯语",
+      "الأخطبوط",
+      "أخطبوط",
+      "أخطبوطات"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "concept": {
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       4,
+       7
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       6
+      ],
+      "ar": [
+       7,
+       6,
+       7
+      ]
+     }
+    },
+    "target": 7,
+    "target_alts": [
+     6,
+     7,
+     7
+    ]
+   },
+   "mc": {
+    "concept": {
+     "gold": "octopus",
+     "distractors": [
+      "squid",
+      "cuttlefish",
+      "chambered nautilus",
+      "jellyfish"
+     ]
+    }
+   },
+   "id": "mlh-ar-octopus",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "mlh-ar-spinal-cord",
+   "subfamily": "fwd",
+   "prompt": "الحزمة العصبية الطويلة الممتدة داخل قناة العمود الفقري والتي تنقل الإشارات بين الدماغ وبقية أعضاء الجسم تسمى",
+   "target": "الحبل الشوكي",
+   "target_alts": [
+    "حبل شوكي",
+    "الحبل الشوكيّ",
+    "النخاع الشوكي"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "lang": "ar",
+   "intermediates": [
+    "spinal cord"
+   ],
+   "units": [
+    {
+     "role": "concept",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "spinal cord"
+      ],
+      "zh": [
+       "脊髓",
+       "脊髓神经"
+      ]
+     },
+     "match": [
+      "spinal cord",
+      "脊髓",
+      "脊髓神经"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Arabic"
+      ],
+      "zh": [
+       "阿拉伯语"
+      ],
+      "ar": [
+       "الحبل الشوكي",
+       "حبل شوكي",
+       "النخاع الشوكي"
+      ]
+     },
+     "match": [
+      "Arabic",
+      "阿拉伯语",
+      "الحبل الشوكي",
+      "حبل شوكي",
+      "النخاع الشوكي"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "concept": {
+      "en": [
+       2
+      ],
+      "zh": [
+       6,
+       9
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       6
+      ],
+      "ar": [
+       9,
+       7,
+       10
+      ]
+     }
+    },
+    "target": 9,
+    "target_alts": [
+     7,
+     10,
+     10
+    ]
+   },
+   "mc": {
+    "concept": {
+     "gold": "spinal cord",
+     "distractors": [
+      "medulla oblongata",
+      "cerebellum",
+      "sciatic nerve",
+      "corpus callosum"
+     ]
+    }
+   },
+   "id": "mlh-ar-spinal-cord",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "mlh-ru-fryingpan",
+   "subfamily": "fwd",
+   "prompt": "Плоская металлическая посуда с длинной ручкой, на которой жарят яичницу и котлеты, — это",
+   "target": "сковорода",
+   "target_alts": [
+    "сковороды",
+    "сковороде",
+    "сковороду",
+    "сковородой",
+    "сковородки",
+    "сковородка",
+    "сковородку"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "lang": "ru",
+   "intermediates": [
+    "frying pan"
+   ],
+   "units": [
+    {
+     "role": "concept",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "frying pan",
+       "skillet pan"
+      ],
+      "zh": [
+       "平底锅",
+       "煎锅子"
+      ]
+     },
+     "match": [
+      "frying pan",
+      "skillet pan",
+      "平底锅",
+      "煎锅子"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Russian"
+      ],
+      "zh": [
+       "俄语"
+      ],
+      "ru": [
+       "сковорода",
+       "сковороду",
+       "сковородой"
+      ]
+     },
+     "match": [
+      "Russian",
+      "俄语",
+      "сковорода",
+      "сковороду",
+      "сковородой"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "concept": {
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       5,
+       6
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       3
+      ],
+      "ru": [
+       4,
+       5,
+       5
+      ]
+     }
+    },
+    "target": 4,
+    "target_alts": [
+     5,
+     5,
+     5,
+     5,
+     5,
+     5,
+     5
+    ]
+   },
+   "mc": {
+    "concept": {
+     "gold": "frying pan",
+     "distractors": [
+      "saucepan",
+      "stockpot",
+      "Dutch oven",
+      "baking sheet"
+     ]
+    }
+   },
+   "id": "mlh-ru-fryingpan",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "mlh-vi-extinguisher",
+   "subfamily": "fwd",
+   "prompt": "Vật hình trụ màu đỏ treo trên tường nhà, bên trong có bọt và khí nén, dùng để dập tắt ngọn lửa khi có hỏa hoạn, được gọi là",
+   "target": "bình chữa cháy",
+   "target_alts": [
+    "cái bình chữa cháy",
+    "bình cứu hỏa"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "lang": "vi",
+   "intermediates": [
+    "fire extinguisher"
+   ],
+   "units": [
+    {
+     "role": "concept",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "fire extinguisher"
+      ],
+      "zh": [
+       "灭火器"
+      ]
+     },
+     "match": [
+      "fire extinguisher",
+      "灭火器"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Vietnamese"
+      ],
+      "zh": [
+       "越南语"
+      ],
+      "vi": [
+       "bình chữa cháy",
+       "bình cứu hỏa"
+      ]
+     },
+     "match": [
+      "Vietnamese",
+      "越南语",
+      "bình chữa cháy",
+      "bình cứu hỏa"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "concept": {
+      "en": [
+       3
+      ],
+      "zh": [
+       4
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       4
+      ],
+      "vi": [
+       8,
+       8
+      ]
+     }
+    },
+    "target": 8,
+    "target_alts": [
+     10,
+     8
+    ]
+   },
+   "mc": {
+    "concept": {
+     "gold": "fire extinguisher",
+     "distractors": [
+      "smoke detector",
+      "fire hydrant",
+      "fire blanket",
+      "first aid kit"
+     ]
+    }
+   },
+   "id": "mlh-vi-extinguisher",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "mlh-vi-huyet-ap",
+   "subfamily": "fwd",
+   "prompt": "Bác sĩ quấn vòng bít quanh bắp tay rồi bơm hơi để đo chỉ số",
+   "target": "huyết áp",
+   "target_alts": [
+    "áp huyết",
+    "chỉ số huyết áp"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "lang": "vi",
+   "intermediates": [
+    "blood pressure"
+   ],
+   "units": [
+    {
+     "role": "concept",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "blood pressure"
+      ],
+      "zh": [
+       "血压"
+      ]
+     },
+     "match": [
+      "blood pressure",
+      "血压"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Vietnamese"
+      ],
+      "zh": [
+       "越南语"
+      ],
+      "vi": [
+       "huyết áp",
+       "áp huyết"
+      ]
+     },
+     "match": [
+      "Vietnamese",
+      "越南语",
+      "huyết áp",
+      "áp huyết"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "concept": {
+      "en": [
+       2
+      ],
+      "zh": [
+       4
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       4
+      ],
+      "vi": [
+       5,
+       5
+      ]
+     }
+    },
+    "target": 5,
+    "target_alts": [
+     5,
+     7
+    ]
+   },
+   "mc": {
+    "concept": {
+     "gold": "blood pressure",
+     "distractors": [
+      "heart rate",
+      "body temperature",
+      "respiratory rate",
+      "blood glucose level"
+     ]
+    }
+   },
+   "id": "mlh-vi-huyet-ap",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w101c0-mlh-ru-morozhenoe",
+   "lang": "ru",
+   "prompt": "Холодное сладкое лакомство из молока и сливок, которое летом продают в вафельном стаканчике или на палочке, называется",
+   "target": "мороженое",
+   "target_alts": [
+    "пломбир",
+    "эскимо"
+   ],
+   "intermediates": [
+    "ice cream"
+   ],
+   "units": [
+    {
+     "role": "concept",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "ice cream"
+      ],
+      "zh": [
+       "冰淇淋",
+       "雪糕"
+      ]
+     },
+     "match": [
+      "ice cream",
+      "冰淇淋",
+      "雪糕"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Russian"
+      ],
+      "zh": [
+       "俄语"
+      ],
+      "ru": [
+       "мороженое",
+       "пломбир",
+       "эскимо"
+      ]
+     },
+     "match": [
+      "Russian",
+      "俄语",
+      "мороженое",
+      "пломбир",
+      "эскимо"
+     ]
+    }
+   ],
+   "mc": {
+    "concept": {
+     "gold": "ice cream",
+     "distractors": [
+      "milk shake",
+      "frozen yogurt",
+      "fruit jelly",
+      "whipped cream"
+     ]
+    }
+   },
+   "subfamily": "fwd",
+   "probe_token_lens": {
+    "units": {
+     "concept": {
+      "en": [
+       2
+      ],
+      "zh": [
+       6,
+       5
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       3
+      ],
+      "ru": [
+       5,
+       5,
+       4
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Use only Russian (ru), Vietnamese (vi) or Indonesian (id), the only languages this model passes, and common concrete nouns (household objects, animals, food).",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Russian (ru), Vietnamese (vi) or Indonesian (id), the only languages this model passes, and common concrete nouns (household objects, animals, food)."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 3/60 passed.\n- Rejected by lint before gating: 17x units: concept canonical name is one token (uncreditable); 2x leak: ['alat'] in prompt; 1x leak: ['trai'] in prompt; 1x leak: ['buah'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): дикобраз -> model said 'поркспин' (1/10); пельмени -> model said 'вареники' (0/10); мухобойка -> model said 'метатеком' (0/10); зубочистка -> model said 'лотка' (0/10); баклажан -> model said 'морковь' (1/10); ласточка -> model said 'сорока' (2/10); con hươu cao cổ -> model said 'giraffe' (4/10); cái chổi -> model said 'bọt' (2/10); đôi đũa -> model said 'đũa' (5/10); cái lược -> model said 'teeth comb' (5/10); bantal guling -> model said 'pal' (0/10); мышеловка -> model said 'мушкатерием' (4/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): lebah madu; kuda nil; градусник",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w101c0-mlh-id-botolminum",
+   "lang": "id",
+   "prompt": "Wadah plastik atau logam bertutup yang diisi air lalu dibawa anak ke sekolah atau saat berolahraga supaya tidak haus, disebut",
+   "target": "botol minum",
+   "target_alts": [
+    "botol air",
+    "botol air minum",
+    "tumbler"
+   ],
+   "intermediates": [
+    "water bottle"
+   ],
+   "units": [
+    {
+     "role": "concept",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "water bottle",
+       "drinking bottle"
+      ],
+      "zh": [
+       "水瓶",
+       "水壶"
+      ]
+     },
+     "match": [
+      "water bottle",
+      "drinking bottle",
+      "水瓶",
+      "水壶"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Indonesian"
+      ],
+      "zh": [
+       "印尼语"
+      ],
+      "id": [
+       "botol minum",
+       "botol air",
+       "botol air minum",
+       "tumbler"
+      ]
+     },
+     "match": [
+      "Indonesian",
+      "印尼语",
+      "botol minum",
+      "botol air",
+      "botol air minum",
+      "tumbler"
+     ]
+    }
+   ],
+   "mc": {
+    "concept": {
+     "gold": "water bottle",
+     "distractors": [
+      "coffee mug",
+      "lunch box",
+      "thermos flask",
+      "drinking straw"
+     ]
+    }
+   },
+   "subfamily": "fwd",
+   "probe_token_lens": {
+    "units": {
+     "concept": {
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       4,
+       3
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       5
+      ],
+      "id": [
+       4,
+       3,
+       5,
+       3
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Use only Russian (ru), Vietnamese (vi) or Indonesian (id), the only languages this model passes, and common concrete nouns (household objects, animals, food).",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Russian (ru), Vietnamese (vi) or Indonesian (id), the only languages this model passes, and common concrete nouns (household objects, animals, food)."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 4/80 passed.\n- Rejected by lint before gating: 7x units: concept canonical name is one token (uncreditable); 6x units: concept pads a one-word name with generic words (uncreditab; 3x leak: ['trai'] in prompt; 2x leak: ['chim'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): kacamata -> model said 'spektifika' (0/10); bola lampu -> model said 'lampu' (0/10); jarum jahit -> model said 'agul' (0/10); jam tangan -> model said 'jam tangan' (5/10); зажигалка -> model said 'лёгкая зажигалка' (5/10); чайная ложка -> model said 'лопаткой' (0/10); яичница -> model said 'сunny side up' (4/10); снеговик -> model said 'Снегурочка' (1/10); домашние тапочки -> model said 'slippers' (5/10); con gà mái -> model said 'con giống' (0/10); con cá vàng -> model said 'loài gào' (4/10); cái gối -> model said 'bông đầu giường' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): telur ayam; микроволновка; мороженое; phở bò",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w101c1-mlh-ru-trafficlight",
+   "lang": "ru",
+   "prompt": "Уличный столб с красным, жёлтым и зелёным сигналами, который показывает машинам и пешеходам, когда можно ехать или идти, — это",
+   "target": "светофор",
+   "target_alts": [
+    "светофора",
+    "светофоры",
+    "светофоре",
+    "светофором"
+   ],
+   "intermediates": [
+    "traffic light"
+   ],
+   "units": [
+    {
+     "role": "concept",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "traffic light",
+       "traffic signal"
+      ],
+      "zh": [
+       "红绿灯",
+       "交通信号灯"
+      ]
+     },
+     "match": [
+      "traffic light",
+      "traffic signal",
+      "红绿灯",
+      "交通信号灯"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Russian"
+      ],
+      "zh": [
+       "俄语"
+      ],
+      "ru": [
+       "светофор",
+       "светофора",
+       "светофоры",
+       "светофоре",
+       "светофором"
+      ]
+     },
+     "match": [
+      "Russian",
+      "俄语",
+      "светофор",
+      "светофора",
+      "светофоры",
+      "светофоре",
+      "светофором"
+     ]
+    }
+   ],
+   "mc": {
+    "concept": {
+     "gold": "traffic light",
+     "distractors": [
+      "street lamp",
+      "road sign",
+      "zebra crossing",
+      "parking meter"
+     ]
+    }
+   },
+   "subfamily": "fwd",
+   "probe_token_lens": {
+    "units": {
+     "concept": {
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       6,
+       6
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       3
+      ],
+      "ru": [
+       5,
+       6,
+       6,
+       6,
+       6
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Use only Russian (ru), Vietnamese (vi) or Indonesian (id), the only languages this model passes, and common concrete nouns (household objects, animals, food).",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Russian (ru), Vietnamese (vi) or Indonesian (id), the only languages this model passes, and common concrete nouns (household objects, animals, food)."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 4/80 passed.\n- Rejected by lint before gating: 7x units: concept canonical name is one token (uncreditable); 6x units: concept pads a one-word name with generic words (uncreditab; 3x leak: ['trai'] in prompt; 2x leak: ['chim'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): kacamata -> model said 'spektifika' (0/10); bola lampu -> model said 'lampu' (0/10); jarum jahit -> model said 'agul' (0/10); jam tangan -> model said 'jam tangan' (5/10); зажигалка -> model said 'лёгкая зажигалка' (5/10); чайная ложка -> model said 'лопаткой' (0/10); яичница -> model said 'сunny side up' (4/10); снеговик -> model said 'Снегурочка' (1/10); домашние тапочки -> model said 'slippers' (5/10); con gà mái -> model said 'con giống' (0/10); con cá vàng -> model said 'loài gào' (4/10); cái gối -> model said 'bông đầu giường' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): telur ayam; микроволновка; мороженое; phở bò",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w101c2-mlh-ru-ballpointpen",
+   "lang": "ru",
+   "prompt": "Пишущий предмет с синей пастой внутри стержня и крошечным вращающимся металлическим наконечником, которым школьники пишут в тетрадях, — это",
+   "target": "шариковая ручка",
+   "target_alts": [
+    "шариковой ручки",
+    "шариковую ручку",
+    "шариковые ручки",
+    "шариковой ручкой",
+    "ручка",
+    "ручку"
+   ],
+   "intermediates": [
+    "ballpoint pen"
+   ],
+   "units": [
+    {
+     "role": "concept",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "ballpoint pen",
+       "ball pen"
+      ],
+      "zh": [
+       "圆珠笔"
+      ]
+     },
+     "match": [
+      "ballpoint pen",
+      "ball pen",
+      "圆珠笔"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Russian"
+      ],
+      "zh": [
+       "俄语"
+      ],
+      "ru": [
+       "шариковая ручка",
+       "шариковой ручки",
+       "шариковую ручку",
+       "шариковые ручки",
+       "шариковой ручкой",
+       "ручка",
+       "ручку"
+      ]
+     },
+     "match": [
+      "Russian",
+      "俄语",
+      "шариковая ручка",
+      "шариковой ручки",
+      "шариковую ручку",
+      "шариковые ручки",
+      "шариковой ручкой",
+      "ручка",
+      "ручку"
+     ]
+    }
+   ],
+   "mc": {
+    "concept": {
+     "gold": "ballpoint pen",
+     "distractors": [
+      "fountain pen",
+      "felt-tip pen",
+      "pencil",
+      "highlighter"
+     ]
+    }
+   },
+   "subfamily": "fwd",
+   "probe_token_lens": {
+    "units": {
+     "concept": {
+      "en": [
+       3,
+       2
+      ],
+      "zh": [
+       6
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       3
+      ],
+      "ru": [
+       8,
+       8,
+       8,
+       8,
+       9,
+       3,
+       3
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Use only Russian (ru), Vietnamese (vi) or Indonesian (id), the only languages this model passes, and common concrete nouns (household objects, animals, food).",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Russian (ru), Vietnamese (vi) or Indonesian (id), the only languages this model passes, and common concrete nouns (household objects, animals, food)."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 4/80 passed.\n- Rejected by lint before gating: 7x units: concept canonical name is one token (uncreditable); 6x units: concept pads a one-word name with generic words (uncreditab; 3x leak: ['trai'] in prompt; 2x leak: ['chim'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): kacamata -> model said 'spektifika' (0/10); bola lampu -> model said 'lampu' (0/10); jarum jahit -> model said 'agul' (0/10); jam tangan -> model said 'jam tangan' (5/10); зажигалка -> model said 'лёгкая зажигалка' (5/10); чайная ложка -> model said 'лопаткой' (0/10); яичница -> model said 'сunny side up' (4/10); снеговик -> model said 'Снегурочка' (1/10); домашние тапочки -> model said 'slippers' (5/10); con gà mái -> model said 'con giống' (0/10); con cá vàng -> model said 'loài gào' (4/10); cái gối -> model said 'bông đầu giường' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): telur ayam; микроволновка; мороженое; phở bò",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w102c2-mlh-ru-matryoshka",
+   "lang": "ru",
+   "prompt": "Деревянная расписная кукла, внутри которой прячутся такие же куклы поменьше, одна в другой, — знаменитый сувенир из Москвы, который называется",
+   "target": "матрёшка",
+   "target_alts": [
+    "матрешка",
+    "матрёшки",
+    "матрешки",
+    "матрёшку"
+   ],
+   "intermediates": [
+    "nesting doll"
+   ],
+   "units": [
+    {
+     "role": "concept",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "nesting doll",
+       "Russian doll",
+       "stacking doll"
+      ],
+      "zh": [
+       "俄罗斯套娃",
+       "套娃"
+      ]
+     },
+     "match": [
+      "nesting doll",
+      "Russian doll",
+      "stacking doll",
+      "俄罗斯套娃",
+      "套娃"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Russian"
+      ],
+      "zh": [
+       "俄语"
+      ],
+      "ru": [
+       "матрёшка",
+       "матрешка",
+       "матрёшки",
+       "матрешки",
+       "матрёшку"
+      ]
+     },
+     "match": [
+      "Russian",
+      "俄语",
+      "матрёшка",
+      "матрешка",
+      "матрёшки",
+      "матрешки",
+      "матрёшку"
+     ]
+    }
+   ],
+   "mc": {
+    "concept": {
+     "gold": "nesting doll",
+     "distractors": [
+      "rag doll",
+      "spinning top",
+      "rocking horse",
+      "jack-in-the-box"
+     ]
+    }
+   },
+   "subfamily": "fwd",
+   "probe_token_lens": {
+    "units": {
+     "concept": {
+      "en": [
+       2,
+       2,
+       2
+      ],
+      "zh": [
+       11,
+       5
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       3
+      ],
+      "ru": [
+       5,
+       4,
+       5,
+       4,
+       5
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Use only Russian (ru), Vietnamese (vi) or Indonesian (id), the only languages this model passes, and common concrete nouns (household objects, animals, food).",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Russian (ru), Vietnamese (vi) or Indonesian (id), the only languages this model passes, and common concrete nouns (household objects, animals, food)."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 9/59 passed.\n- Rejected by lint before gating: 2x units: concept pads a one-word name with generic words (uncreditab; 2x units: concept canonical name is one token (uncreditable); 1x leak: ['cuon'] in prompt; 1x leak: ['nhiet'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): морская свинка -> model said 'гуinea pig' (0/10); плюшевый мишка -> model said 'кролик' (0/10); простыня -> model said 'фитон' (0/10); бурый медведь -> model said 'борсук' (3/10); детская коляска -> model said 'прамидор' (1/10); gấu trúc -> model said 'Hổ' (1/10); dép tông -> model said 'sandali' (0/10); jagung bakar -> model said 'bakso' (0/10); burung gereja -> model said 'tikus' (0/10); kaca pembesar -> model said 'mikroskop' (1/10); кастрюля -> model said 'кастрюля' (3/10); бутерброд -> model said 'бутерброд' (6/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): điện thoại di động; bánh xèo; botol minum; светофор; hồng hạc; ubur-ubur; jeruk bali; шариковая ручка; paus biru",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t2-w103c0-mlh-id-meja-makan",
+   "lang": "id",
+   "prompt": "Perabot berkaki empat dengan permukaan datar tempat keluarga duduk bersama menyantap nasi dan lauk disebut",
+   "target": "meja makan",
+   "target_alts": [
+    "meja",
+    "mejanya"
+   ],
+   "intermediates": [
+    "dining table"
+   ],
+   "units": [
+    {
+     "role": "concept",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "dining table",
+       "kitchen table"
+      ],
+      "zh": [
+       "餐桌"
+      ]
+     },
+     "match": [
+      "dining table",
+      "kitchen table",
+      "餐桌"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Indonesian"
+      ],
+      "zh": [
+       "印度尼西亚语"
+      ],
+      "id": [
+       "meja makan",
+       "meja",
+       "mejanya"
+      ]
+     },
+     "match": [
+      "Indonesian",
+      "印度尼西亚语",
+      "meja makan",
+      "meja",
+      "mejanya"
+     ]
+    }
+   ],
+   "mc": {
+    "concept": {
+     "gold": "dining table",
+     "distractors": [
+      "writing desk",
+      "kitchen stool",
+      "food cupboard",
+      "dining chair"
+     ]
+    }
+   },
+   "subfamily": "fwd",
+   "probe_token_lens": {
+    "units": {
+     "concept": {
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       5
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       9
+      ],
+      "id": [
+       4,
+       2,
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Russian (ru), Vietnamese (vi) or Indonesian (id) only, and only everyday objects a child knows, described by their most obvious use.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Russian (ru), Vietnamese (vi) or Indonesian (id) only, and only everyday objects a child knows, described by their most obvious use."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 6/60 passed.\n- Rejected by lint before gating: 8x units: concept canonical name is one token (uncreditable); 2x leak: ['trai'] in prompt; 1x leak: ['ngot'] in prompt; 1x leak: ['tinh'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): дикий кабан -> model said 'барановский кролик' (1/10); спальный мешок -> model said 'igloo' (0/10); резиновые сапоги -> model said 'ботинки' (0/10); почтовый ящик -> model said 'ящик' (0/10); детская горка -> model said 'санка' (0/10); зелёный горошек -> model said 'кукурузные' (0/10); kẹo bông gòn -> model said 'cốm' (2/10); quả bóng đá -> model said 'penalti' (0/10); bình tưới -> model said 'giọt nước hoa' (0/10); singa laut -> model said 'manati' (0/10); teh celup -> model said 'teh tarik' (0/10); daun bawang -> model said 'bawang' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): солнцезащитный крем; es batu; bánh mì; áo dài; матрёшка; kẹo mút",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t2-w103c2-mlh-ru-plastilin",
+   "lang": "ru",
+   "prompt": "Мягкая масса для лепки, которая продаётся в коробке разноцветными брусками; дети разминают её в тёплых ладошках и лепят из неё зверушек и фигурки. Она называется",
+   "target": "пластилин",
+   "target_alts": [
+    "пластилина",
+    "пластилину",
+    "пластилином",
+    "пластилине"
+   ],
+   "intermediates": [
+    "modeling clay"
+   ],
+   "units": [
+    {
+     "role": "concept",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "modeling clay",
+       "play dough"
+      ],
+      "zh": [
+       "橡皮泥",
+       "彩泥"
+      ]
+     },
+     "match": [
+      "modeling clay",
+      "play dough",
+      "橡皮泥",
+      "彩泥"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Russian"
+      ],
+      "zh": [
+       "俄语"
+      ],
+      "ru": [
+       "пластилин",
+       "пластилина",
+       "пластилину",
+       "пластилином",
+       "пластилине"
+      ]
+     },
+     "match": [
+      "Russian",
+      "俄语",
+      "пластилин",
+      "пластилина",
+      "пластилину",
+      "пластилином",
+      "пластилине"
+     ]
+    }
+   ],
+   "mc": {
+    "concept": {
+     "gold": "modeling clay",
+     "distractors": [
+      "air-dry clay",
+      "kinetic sand",
+      "potter's clay",
+      "papier mache"
+     ]
+    }
+   },
+   "subfamily": "fwd",
+   "probe_token_lens": {
+    "units": {
+     "concept": {
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       7,
+       4
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       3
+      ],
+      "ru": [
+       5,
+       5,
+       6,
+       5,
+       5
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Russian (ru), Vietnamese (vi) or Indonesian (id) only, and only everyday objects a child knows, described by their most obvious use.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Russian (ru), Vietnamese (vi) or Indonesian (id) only, and only everyday objects a child knows, described by their most obvious use."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 6/60 passed.\n- Rejected by lint before gating: 8x units: concept canonical name is one token (uncreditable); 2x leak: ['trai'] in prompt; 1x leak: ['ngot'] in prompt; 1x leak: ['tinh'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): дикий кабан -> model said 'барановский кролик' (1/10); спальный мешок -> model said 'igloo' (0/10); резиновые сапоги -> model said 'ботинки' (0/10); почтовый ящик -> model said 'ящик' (0/10); детская горка -> model said 'санка' (0/10); зелёный горошек -> model said 'кукурузные' (0/10); kẹo bông gòn -> model said 'cốm' (2/10); quả bóng đá -> model said 'penalti' (0/10); bình tưới -> model said 'giọt nước hoa' (0/10); singa laut -> model said 'manati' (0/10); teh celup -> model said 'teh tarik' (0/10); daun bawang -> model said 'bawang' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): солнцезащитный крем; es batu; bánh mì; áo dài; матрёшка; kẹo mút",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t2-w104c1-mlh-vi-thuyen-buom",
+   "lang": "vi",
+   "prompt": "Con tàu nhỏ trên biển không cần động cơ, chạy được là nhờ gió thổi căng những tấm vải lớn dựng trên cột cao; đó là chiếc",
+   "target": "thuyền buồm",
+   "target_alts": [
+    "thuyền",
+    "con thuyền buồm"
+   ],
+   "intermediates": [
+    "sailboat"
+   ],
+   "units": [
+    {
+     "role": "concept",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "sailboat",
+       "sailing boat"
+      ],
+      "zh": [
+       "帆船"
+      ]
+     },
+     "match": [
+      "sailboat",
+      "sailing boat",
+      "帆船"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Vietnamese"
+      ],
+      "zh": [
+       "越南语"
+      ],
+      "vi": [
+       "thuyền buồm",
+       "thuyền",
+       "con thuyền buồm"
+      ]
+     },
+     "match": [
+      "Vietnamese",
+      "越南语",
+      "thuyền buồm",
+      "thuyền",
+      "con thuyền buồm"
+     ]
+    }
+   ],
+   "mc": {
+    "concept": {
+     "gold": "sailboat",
+     "distractors": [
+      "rowboat",
+      "ferry",
+      "canoe",
+      "motorboat"
+     ]
+    }
+   },
+   "subfamily": "fwd",
+   "probe_token_lens": {
+    "units": {
+     "concept": {
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       4
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       4
+      ],
+      "vi": [
+       6,
+       3,
+       7
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Russian (ru), Vietnamese (vi) or Indonesian (id) only, and only everyday objects a child knows, described by their most obvious use.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Russian (ru), Vietnamese (vi) or Indonesian (id) only, and only everyday objects a child knows, described by their most obvious use."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 104,
+    "steer": "- Last wave: 13/60 passed.\n- Rejected by lint before gating: 1x leak: ['bayi'] in prompt; 1x leak: ['kopi'] in prompt; 1x leak: ['phong'] in prompt; 1x leak: ['giay', 'nhua'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): карандаш -> model said 'школьный художник' (2/10); кроссовки -> model said 'лёгкие' (1/10); почтовая марка -> model said 'обложкой' (0/10); дверной звонок -> model said 'дзвенкой' (0/10); бумажник -> model said 'билетник' (1/10); пуговица -> model said 'батончик' (0/10); con diều -> model said 'giấy bay' (3/10); cây nến -> model said 'bình sáp' (0/10); khẩu trang -> model said 'khăn đệm' (0/10); sendok makan -> model said 'senduk' (4/10); tali sepatu -> model said 'seam' (0/10); celana panjang -> model said 'sandal' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): школьная тетрадь; bóng bay; xà phòng; chìa khóa; cục pin; kereta api; meja makan; mũ bảo hiểm; quả địa cầu; seragam sekolah; пластилин; gelang tangan",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t2-w105c1-mlh-ru-shkolnyj-avtobus",
+   "lang": "ru",
+   "prompt": "Большая жёлтая машина, которая каждое утро забирает детей с остановки и везёт их на уроки, называется",
+   "target": "школьный автобус",
+   "target_alts": [
+    "автобус",
+    "школьного автобуса"
+   ],
+   "intermediates": [
+    "school bus"
+   ],
+   "units": [
+    {
+     "role": "concept",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "school bus"
+      ],
+      "zh": [
+       "校车"
+      ]
+     },
+     "match": [
+      "school bus",
+      "校车"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Russian"
+      ],
+      "zh": [
+       "俄语"
+      ],
+      "ru": [
+       "школьный автобус",
+       "автобус",
+       "школьного автобуса"
+      ]
+     },
+     "match": [
+      "Russian",
+      "俄语",
+      "школьный автобус",
+      "автобус",
+      "школьного автобуса"
+     ]
+    }
+   ],
+   "mc": {
+    "concept": {
+     "gold": "school bus",
+     "distractors": [
+      "taxi cab",
+      "police car",
+      "city tram",
+      "minivan"
+     ]
+    }
+   },
+   "subfamily": "fwd",
+   "probe_token_lens": {
+    "units": {
+     "concept": {
+      "en": [
+       2
+      ],
+      "zh": [
+       3
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       3
+      ],
+      "ru": [
+       8,
+       4,
+       9
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Russian (ru), Vietnamese (vi) or Indonesian (id) only, and only everyday objects a child knows, described by their most obvious use.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Russian (ru), Vietnamese (vi) or Indonesian (id) only, and only everyday objects a child knows, described by their most obvious use."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 105,
+    "steer": "- Last wave: 6/60 passed.\n- Rejected by lint before gating: 15x units: concept canonical name is one token (uncreditable); 3x units: concept pads a one-word name with generic words (uncreditab; 2x leak: ['chiec'] in prompt; 1x leak: ['cuon'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): скамейка -> model said 'банкет' (1/10); корзинка -> model said 'мushroom basket' (2/10); áo khoác -> model said 'áo' (1/10); trống trường -> model said 'hô' (0/10); cái bát -> model said 'bát' (5/10); baju renang -> model said 'baju renang' (3/10); футболка -> model said 'топикан' (0/10); колокольчик -> model said 'колокольчик' (2/10); открытка -> model said 'традиция' (2/10); школьная парта -> model said 'доска' (0/10); акварельные краски -> model said 'конкурс' (0/10); ёлочная игрушка -> model said 'колокольчик' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): грузовик; kapal laut; nasi putih; фотоаппарат; thuyền buồm; quần đùi",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t2-w105c2-mlh-ru-avtobusnaya-ostanovka",
+   "lang": "ru",
+   "prompt": "Место у дороги с навесом и скамейкой, где люди стоят и ждут, когда подъедет большой городской транспорт, называется",
+   "target": "автобусная остановка",
+   "target_alts": [
+    "остановка",
+    "остановка автобуса",
+    "автобусной остановкой"
+   ],
+   "intermediates": [
+    "bus stop"
+   ],
+   "units": [
+    {
+     "role": "concept",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "bus stop"
+      ],
+      "zh": [
+       "公交车站",
+       "公共汽车站"
+      ]
+     },
+     "match": [
+      "bus stop",
+      "公交车站",
+      "公共汽车站"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Russian"
+      ],
+      "zh": [
+       "俄语"
+      ],
+      "ru": [
+       "автобусная остановка",
+       "остановка",
+       "остановка автобуса",
+       "автобусной остановкой"
+      ]
+     },
+     "match": [
+      "Russian",
+      "俄语",
+      "автобусная остановка",
+      "остановка",
+      "остановка автобуса",
+      "автобусной остановкой"
+     ]
+    }
+   ],
+   "mc": {
+    "concept": {
+     "gold": "bus stop",
+     "distractors": [
+      "taxi stand",
+      "gas station",
+      "parking lot",
+      "airport terminal"
+     ]
+    }
+   },
+   "subfamily": "fwd",
+   "probe_token_lens": {
+    "units": {
+     "concept": {
+      "en": [
+       2
+      ],
+      "zh": [
+       4,
+       5
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       3
+      ],
+      "ru": [
+       8,
+       3,
+       8,
+       9
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Russian (ru), Vietnamese (vi) or Indonesian (id) only, and only everyday objects a child knows, described by their most obvious use.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Russian (ru), Vietnamese (vi) or Indonesian (id) only, and only everyday objects a child knows, described by their most obvious use."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 105,
+    "steer": "- Last wave: 6/60 passed.\n- Rejected by lint before gating: 15x units: concept canonical name is one token (uncreditable); 3x units: concept pads a one-word name with generic words (uncreditab; 2x leak: ['chiec'] in prompt; 1x leak: ['cuon'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): скамейка -> model said 'банкет' (1/10); корзинка -> model said 'мushroom basket' (2/10); áo khoác -> model said 'áo' (1/10); trống trường -> model said 'hô' (0/10); cái bát -> model said 'bát' (5/10); baju renang -> model said 'baju renang' (3/10); футболка -> model said 'топикан' (0/10); колокольчик -> model said 'колокольчик' (2/10); открытка -> model said 'традиция' (2/10); школьная парта -> model said 'доска' (0/10); акварельные краски -> model said 'конкурс' (0/10); ёлочная игрушка -> model said 'колокольчик' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): грузовик; kapal laut; nasi putih; фотоаппарат; thuyền buồm; quần đùi",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t2-w105c2-mlh-vi-buu-dien",
+   "lang": "vi",
+   "prompt": "Nơi người ta mang thư và gói hàng đến để gửi cho người thân ở xa, và mua tem dán lên phong bì, gọi là",
+   "target": "bưu điện",
+   "target_alts": [
+    "nhà bưu điện",
+    "bưu cục"
+   ],
+   "intermediates": [
+    "post office"
+   ],
+   "units": [
+    {
+     "role": "concept",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "post office"
+      ],
+      "zh": [
+       "邮局"
+      ]
+     },
+     "match": [
+      "post office",
+      "邮局"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Vietnamese"
+      ],
+      "zh": [
+       "越南语"
+      ],
+      "vi": [
+       "bưu điện",
+       "nhà bưu điện",
+       "bưu cục"
+      ]
+     },
+     "match": [
+      "Vietnamese",
+      "越南语",
+      "bưu điện",
+      "nhà bưu điện",
+      "bưu cục"
+     ]
+    }
+   ],
+   "mc": {
+    "concept": {
+     "gold": "post office",
+     "distractors": [
+      "bank",
+      "library",
+      "police station",
+      "bookstore"
+     ]
+    }
+   },
+   "subfamily": "fwd",
+   "probe_token_lens": {
+    "units": {
+     "concept": {
+      "en": [
+       2
+      ],
+      "zh": [
+       2
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       4
+      ],
+      "vi": [
+       5,
+       7,
+       5
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Russian (ru), Vietnamese (vi) or Indonesian (id) only, and only everyday objects a child knows, described by their most obvious use.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Russian (ru), Vietnamese (vi) or Indonesian (id) only, and only everyday objects a child knows, described by their most obvious use."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 105,
+    "steer": "- Last wave: 6/60 passed.\n- Rejected by lint before gating: 15x units: concept canonical name is one token (uncreditable); 3x units: concept pads a one-word name with generic words (uncreditab; 2x leak: ['chiec'] in prompt; 1x leak: ['cuon'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): скамейка -> model said 'банкет' (1/10); корзинка -> model said 'мushroom basket' (2/10); áo khoác -> model said 'áo' (1/10); trống trường -> model said 'hô' (0/10); cái bát -> model said 'bát' (5/10); baju renang -> model said 'baju renang' (3/10); футболка -> model said 'топикан' (0/10); колокольчик -> model said 'колокольчик' (2/10); открытка -> model said 'традиция' (2/10); школьная парта -> model said 'доска' (0/10); акварельные краски -> model said 'конкурс' (0/10); ёлочная игрушка -> model said 'колокольчик' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): грузовик; kapal laut; nasi putih; фотоаппарат; thuyền buồm; quần đùi",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w100c1-mlh-id-semut-merah",
+   "lang": "id",
+   "prompt": "Serangga kecil berwarna seperti karat yang hidup berkoloni dan membuat sarang dari daun di pohon mangga, gigitannya terasa panas dan perih, disebut",
+   "target": "semut merah",
+   "target_alts": [
+    "semut rangrang",
+    "semut api",
+    "semut"
+   ],
+   "intermediates": [
+    "red ant"
+   ],
+   "units": [
+    {
+     "role": "concept",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "red ant",
+       "fire ant"
+      ],
+      "zh": [
+       "红蚂蚁",
+       "火蚁"
+      ]
+     },
+     "match": [
+      "red ant",
+      "fire ant",
+      "红蚂蚁",
+      "火蚁"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Indonesian"
+      ],
+      "zh": [
+       "印尼语"
+      ],
+      "id": [
+       "semut merah",
+       "semut rangrang",
+       "semut api",
+       "semut"
+      ]
+     },
+     "match": [
+      "Indonesian",
+      "印尼语",
+      "semut merah",
+      "semut rangrang",
+      "semut api",
+      "semut"
+     ]
+    }
+   ],
+   "mc": {
+    "concept": {
+     "gold": "red ant",
+     "distractors": [
+      "termite",
+      "house fly",
+      "wasp",
+      "bed bug"
+     ]
+    }
+   },
+   "subfamily": "fwd",
+   "probe_token_lens": {
+    "units": {
+     "concept": {
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       8,
+       4
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       5
+      ],
+      "id": [
+       4,
+       4,
+       3,
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Use only Russian (ru), Vietnamese (vi) or Indonesian (id), the only languages this model passes, and common concrete nouns (household objects, animals, food).",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Russian (ru), Vietnamese (vi) or Indonesian (id), the only languages this model passes, and common concrete nouns (household objects, animals, food)."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t2-w103c0-mlh-ru-detskie-kubiki",
+   "lang": "ru",
+   "prompt": "Маленькие квадратные деревянные игрушки с буквами и картинками на гранях, из которых малыши строят башни и домики, называются",
+   "target": "детские кубики",
+   "target_alts": [
+    "кубики",
+    "детских кубиков",
+    "кубик"
+   ],
+   "intermediates": [
+    "toy blocks"
+   ],
+   "units": [
+    {
+     "role": "concept",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "toy blocks",
+       "building blocks"
+      ],
+      "zh": [
+       "积木"
+      ]
+     },
+     "match": [
+      "toy blocks",
+      "building blocks",
+      "积木"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Russian"
+      ],
+      "zh": [
+       "俄语"
+      ],
+      "ru": [
+       "детские кубики",
+       "кубики",
+       "детских кубиков",
+       "кубик"
+      ]
+     },
+     "match": [
+      "Russian",
+      "俄语",
+      "детские кубики",
+      "кубики",
+      "детских кубиков",
+      "кубик"
+     ]
+    }
+   ],
+   "mc": {
+    "concept": {
+     "gold": "toy blocks",
+     "distractors": [
+      "jigsaw puzzle",
+      "toy train",
+      "stuffed animal",
+      "jack-in-the-box"
+     ]
+    }
+   },
+   "subfamily": "fwd",
+   "probe_token_lens": {
+    "units": {
+     "concept": {
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       3
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       3
+      ],
+      "ru": [
+       8,
+       4,
+       8,
+       3
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Russian (ru), Vietnamese (vi) or Indonesian (id) only, and only everyday objects a child knows, described by their most obvious use.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Russian (ru), Vietnamese (vi) or Indonesian (id) only, and only everyday objects a child knows, described by their most obvious use."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 0/56 passed.\n- Rejected by lint before gating: 10x units: concept canonical name is one token (uncreditable); 3x units: concept pads a one-word name with generic words (uncreditab; 1x natural:concept 'walnut' is not creditable; 1x natural:concept 'lobster' is not creditable. Avoid these.\n- Failed (gold -> what the model wrote): журнальный столик -> model said 'место для отдыха после работы' (0/10); жареные семечки -> model said 'тёплый июньский вечер' (0/10); медовый пряник -> model said 'лактоза' (0/10); колорадский жук -> model said 'картофельный вредитель' (0/10); дверной глазок -> model said 'оконечник' (1/10); hạt dưa -> model said 'giáp bí' (0/10); đèn ngủ -> model said 'chó' (0/10); bàn trang điểm -> model said 'nơi' (0/10); burung kolibri -> model said 'Kolibri' (5/10); keripik kentang -> model said 'kerupuk' (0/10); sikat kloset -> model said 'sponge' (0/10); tabung gas -> model said 'gas' (0/10). Make items like these easier or pick latents the model knows without a close sibling.",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t2-w103c1-mlh-ru-girlyanda",
+   "lang": "ru",
+   "prompt": "Длинный провод с множеством маленьких разноцветных лампочек, которые мигают на ёлке и в окнах под Новый год, называется",
+   "target": "гирлянда",
+   "target_alts": [
+    "ёлочная гирлянда",
+    "гирлянды",
+    "электрическая гирлянда"
+   ],
+   "intermediates": [
+    "string lights"
+   ],
+   "units": [
+    {
+     "role": "concept",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "string lights",
+       "fairy lights",
+       "Christmas lights"
+      ],
+      "zh": [
+       "彩灯串",
+       "圣诞彩灯"
+      ]
+     },
+     "match": [
+      "string lights",
+      "fairy lights",
+      "Christmas lights",
+      "彩灯串",
+      "圣诞彩灯"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Russian"
+      ],
+      "zh": [
+       "俄语"
+      ],
+      "ru": [
+       "гирлянда",
+       "ёлочная гирлянда",
+       "гирлянды",
+       "электрическая гирлянда"
+      ]
+     },
+     "match": [
+      "Russian",
+      "俄语",
+      "гирлянда",
+      "ёлочная гирлянда",
+      "гирлянды",
+      "электрическая гирлянда"
+     ]
+    }
+   ],
+   "mc": {
+    "concept": {
+     "gold": "string lights",
+     "distractors": [
+      "sparkler",
+      "disco ball",
+      "night lamp",
+      "tinsel"
+     ]
+    }
+   },
+   "subfamily": "fwd",
+   "probe_token_lens": {
+    "units": {
+     "concept": {
+      "en": [
+       2,
+       2,
+       2
+      ],
+      "zh": [
+       5,
+       8
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       3
+      ],
+      "ru": [
+       5,
+       9,
+       6,
+       13
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Russian (ru), Vietnamese (vi) or Indonesian (id) only, and only everyday objects a child knows, described by their most obvious use.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Russian (ru), Vietnamese (vi) or Indonesian (id) only, and only everyday objects a child knows, described by their most obvious use."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 0/56 passed.\n- Rejected by lint before gating: 10x units: concept canonical name is one token (uncreditable); 3x units: concept pads a one-word name with generic words (uncreditab; 1x natural:concept 'walnut' is not creditable; 1x natural:concept 'lobster' is not creditable. Avoid these.\n- Failed (gold -> what the model wrote): журнальный столик -> model said 'место для отдыха после работы' (0/10); жареные семечки -> model said 'тёплый июньский вечер' (0/10); медовый пряник -> model said 'лактоза' (0/10); колорадский жук -> model said 'картофельный вредитель' (0/10); дверной глазок -> model said 'оконечник' (1/10); hạt dưa -> model said 'giáp bí' (0/10); đèn ngủ -> model said 'chó' (0/10); bàn trang điểm -> model said 'nơi' (0/10); burung kolibri -> model said 'Kolibri' (5/10); keripik kentang -> model said 'kerupuk' (0/10); sikat kloset -> model said 'sponge' (0/10); tabung gas -> model said 'gas' (0/10). Make items like these easier or pick latents the model knows without a close sibling.",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t2-w103c1-mlh-ru-lopata-dlya-snega",
+   "lang": "ru",
+   "prompt": "Широкий инструмент на длинной ручке, которым зимой во дворе расчищают дорожки и сгребают белые сугробы, называется",
+   "target": "лопата для снега",
+   "target_alts": [
+    "лопата",
+    "снеговая лопата",
+    "лопатой для снега"
+   ],
+   "intermediates": [
+    "snow shovel"
+   ],
+   "units": [
+    {
+     "role": "concept",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "snow shovel",
+       "snow spade"
+      ],
+      "zh": [
+       "雪铲",
+       "铲雪锹"
+      ]
+     },
+     "match": [
+      "snow shovel",
+      "snow spade",
+      "雪铲",
+      "铲雪锹"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Russian"
+      ],
+      "zh": [
+       "俄语"
+      ],
+      "ru": [
+       "лопата для снега",
+       "лопата",
+       "снеговая лопата",
+       "лопатой для снега"
+      ]
+     },
+     "match": [
+      "Russian",
+      "俄语",
+      "лопата для снега",
+      "лопата",
+      "снеговая лопата",
+      "лопатой для снега"
+     ]
+    }
+   ],
+   "mc": {
+    "concept": {
+     "gold": "snow shovel",
+     "distractors": [
+      "pitchfork",
+      "snow plow",
+      "ice scraper",
+      "snow blower"
+     ]
+    }
+   },
+   "subfamily": "fwd",
+   "probe_token_lens": {
+    "units": {
+     "concept": {
+      "en": [
+       2,
+       3
+      ],
+      "zh": [
+       4,
+       6
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       3
+      ],
+      "ru": [
+       8,
+       3,
+       8,
+       9
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Russian (ru), Vietnamese (vi) or Indonesian (id) only, and only everyday objects a child knows, described by their most obvious use.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Russian (ru), Vietnamese (vi) or Indonesian (id) only, and only everyday objects a child knows, described by their most obvious use."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 0/56 passed.\n- Rejected by lint before gating: 10x units: concept canonical name is one token (uncreditable); 3x units: concept pads a one-word name with generic words (uncreditab; 1x natural:concept 'walnut' is not creditable; 1x natural:concept 'lobster' is not creditable. Avoid these.\n- Failed (gold -> what the model wrote): журнальный столик -> model said 'место для отдыха после работы' (0/10); жареные семечки -> model said 'тёплый июньский вечер' (0/10); медовый пряник -> model said 'лактоза' (0/10); колорадский жук -> model said 'картофельный вредитель' (0/10); дверной глазок -> model said 'оконечник' (1/10); hạt dưa -> model said 'giáp bí' (0/10); đèn ngủ -> model said 'chó' (0/10); bàn trang điểm -> model said 'nơi' (0/10); burung kolibri -> model said 'Kolibri' (5/10); keripik kentang -> model said 'kerupuk' (0/10); sikat kloset -> model said 'sponge' (0/10); tabung gas -> model said 'gas' (0/10). Make items like these easier or pick latents the model knows without a close sibling.",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t2-w103c1-mlh-vi-san-bong",
+   "lang": "vi",
+   "prompt": "Bãi cỏ xanh rộng lớn có vạch trắng và hai khung thành ở hai đầu, nơi hai đội cầu thủ chạy theo trái banh, gọi là",
+   "target": "sân bóng",
+   "target_alts": [
+    "sân bóng đá",
+    "sân đá bóng",
+    "sân cỏ"
+   ],
+   "intermediates": [
+    "soccer field"
+   ],
+   "units": [
+    {
+     "role": "concept",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "soccer field",
+       "football pitch",
+       "football field"
+      ],
+      "zh": [
+       "足球场"
+      ]
+     },
+     "match": [
+      "soccer field",
+      "football pitch",
+      "football field",
+      "足球场"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Vietnamese"
+      ],
+      "zh": [
+       "越南语"
+      ],
+      "vi": [
+       "sân bóng",
+       "sân bóng đá",
+       "sân đá bóng",
+       "sân cỏ"
+      ]
+     },
+     "match": [
+      "Vietnamese",
+      "越南语",
+      "sân bóng",
+      "sân bóng đá",
+      "sân đá bóng",
+      "sân cỏ"
+     ]
+    }
+   ],
+   "mc": {
+    "concept": {
+     "gold": "soccer field",
+     "distractors": [
+      "basketball court",
+      "tennis court",
+      "running track",
+      "golf course"
+     ]
+    }
+   },
+   "subfamily": "fwd",
+   "probe_token_lens": {
+    "units": {
+     "concept": {
+      "en": [
+       2,
+       2,
+       2
+      ],
+      "zh": [
+       4
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       4
+      ],
+      "vi": [
+       5,
+       7,
+       7,
+       4
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Russian (ru), Vietnamese (vi) or Indonesian (id) only, and only everyday objects a child knows, described by their most obvious use.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Russian (ru), Vietnamese (vi) or Indonesian (id) only, and only everyday objects a child knows, described by their most obvious use."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 0/56 passed.\n- Rejected by lint before gating: 10x units: concept canonical name is one token (uncreditable); 3x units: concept pads a one-word name with generic words (uncreditab; 1x natural:concept 'walnut' is not creditable; 1x natural:concept 'lobster' is not creditable. Avoid these.\n- Failed (gold -> what the model wrote): журнальный столик -> model said 'место для отдыха после работы' (0/10); жареные семечки -> model said 'тёплый июньский вечер' (0/10); медовый пряник -> model said 'лактоза' (0/10); колорадский жук -> model said 'картофельный вредитель' (0/10); дверной глазок -> model said 'оконечник' (1/10); hạt dưa -> model said 'giáp bí' (0/10); đèn ngủ -> model said 'chó' (0/10); bàn trang điểm -> model said 'nơi' (0/10); burung kolibri -> model said 'Kolibri' (5/10); keripik kentang -> model said 'kerupuk' (0/10); sikat kloset -> model said 'sponge' (0/10); tabung gas -> model said 'gas' (0/10). Make items like these easier or pick latents the model knows without a close sibling.",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w101c1-mlh-vi-rau-ram",
+   "lang": "vi",
+   "prompt": "Loại lá thơm thon nhọn, vị cay nồng, thường ăn kèm trứng vịt lộn và gỏi gà, gọi là",
+   "target": "rau răm",
+   "target_alts": [
+    "lá răm",
+    "cây rau răm",
+    "ngò răm"
+   ],
+   "intermediates": [
+    "Vietnamese coriander"
+   ],
+   "units": [
+    {
+     "role": "concept",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Vietnamese coriander",
+       "Vietnamese mint"
+      ],
+      "zh": [
+       "越南香菜",
+       "叻沙叶"
+      ]
+     },
+     "match": [
+      "Vietnamese coriander",
+      "Vietnamese mint",
+      "越南香菜",
+      "叻沙叶"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Vietnamese"
+      ],
+      "zh": [
+       "越南语"
+      ],
+      "vi": [
+       "rau răm",
+       "lá răm",
+       "cây rau răm",
+       "ngò răm"
+      ]
+     },
+     "match": [
+      "Vietnamese",
+      "越南语",
+      "rau răm",
+      "lá răm",
+      "cây rau răm",
+      "ngò răm"
+     ]
+    }
+   ],
+   "mc": {
+    "concept": {
+     "gold": "Vietnamese coriander",
+     "distractors": [
+      "Thai basil",
+      "perilla leaf",
+      "culantro",
+      "mint leaves"
+     ]
+    }
+   },
+   "subfamily": "fwd",
+   "probe_token_lens": {
+    "units": {
+     "concept": {
+      "en": [
+       4,
+       2
+      ],
+      "zh": [
+       7,
+       6
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       4
+      ],
+      "vi": [
+       4,
+       3,
+       6,
+       4
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Use only Russian (ru), Vietnamese (vi) or Indonesian (id), the only languages this model passes, and common concrete nouns (household objects, animals, food).",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Russian (ru), Vietnamese (vi) or Indonesian (id), the only languages this model passes, and common concrete nouns (household objects, animals, food)."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 0/60 passed.\n- Rejected by lint before gating: 8x units: concept pads a one-word name with generic words (uncreditab; 2x leak: ['trai'] in prompt; 2x leak: ['trang'] in prompt; 1x natural:concept 'varenyky' is not creditable. Avoid these.\n- Failed (gold -> what the model wrote): кипятильник -> model said 'чайник' (0/10); простокваша -> model said 'квас' (0/10); земляника -> model said 'арония' (0/10); quả na -> model said 'lê' (0/10); đèn dầu -> model said 'bếp gas' (1/10); kerang hijau -> model said 'udang' (0/10); daun pisang -> model said 'pandan' (0/10); подстаканник -> model said 'традиционный элемент обслуживания пассаж' (0/10); подберёзовик -> model said 'белый лисичек' (0/10); шиповник -> model said 'гуава' (0/10); маслёнка -> model said 'сырник' (0/10); меховая шуба -> model said 'классический элемент облачения северных ' (0/10). Make items like these easier or pick latents the model knows without a close sibling.",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w102c0-mlh-id-terasi-udang",
+   "lang": "id",
+   "prompt": "Bumbu padat berwarna cokelat kehitaman yang dibuat dari rebon yang difermentasi lalu dijemur, baunya sangat menyengat, dan wajib diulek bersama cabai serta tomat untuk membuat sambal, namanya",
+   "target": "terasi udang",
+   "target_alts": [
+    "terasi",
+    "belacan",
+    "trasi"
+   ],
+   "intermediates": [
+    "shrimp paste"
+   ],
+   "units": [
+    {
+     "role": "concept",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "shrimp paste",
+       "fermented shrimp paste"
+      ],
+      "zh": [
+       "虾酱",
+       "峇拉煎"
+      ]
+     },
+     "match": [
+      "shrimp paste",
+      "fermented shrimp paste",
+      "虾酱",
+      "峇拉煎"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Indonesian"
+      ],
+      "zh": [
+       "印尼语"
+      ],
+      "id": [
+       "terasi udang",
+       "terasi",
+       "belacan",
+       "trasi"
+      ]
+     },
+     "match": [
+      "Indonesian",
+      "印尼语",
+      "terasi udang",
+      "terasi",
+      "belacan",
+      "trasi"
+     ]
+    }
+   ],
+   "mc": {
+    "concept": {
+     "gold": "shrimp paste",
+     "distractors": [
+      "oyster sauce",
+      "chili paste",
+      "tamarind paste",
+      "soybean paste"
+     ]
+    }
+   },
+   "subfamily": "fwd",
+   "probe_token_lens": {
+    "units": {
+     "concept": {
+      "en": [
+       2,
+       3
+      ],
+      "zh": [
+       5,
+       7
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       5
+      ],
+      "id": [
+       4,
+       2,
+       3,
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Use only Russian (ru), Vietnamese (vi) or Indonesian (id), the only languages this model passes, and common concrete nouns (household objects, animals, food).",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Russian (ru), Vietnamese (vi) or Indonesian (id), the only languages this model passes, and common concrete nouns (household objects, animals, food)."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 1/40 passed.\n- Rejected by lint before gating: 6x units: concept canonical name is one token (uncreditable); 2x units: concept pads a one-word name with generic words (uncreditab; 1x natural:concept 'napkin' is not creditable; 1x natural:concept 'freezer' is not creditable. Avoid these.\n- Failed (gold -> what the model wrote): обогреватель -> model said 'рadiator' (2/10); лесной орех -> model said 'клубника' (0/10); чечевица -> model said 'картошка' (0/10); броненосец -> model said 'глистиндер' (0/10); mướp đắng -> model said 'lạc' (0/10); bí đao -> model said 'bí đỏ' (0/10); đậu bắp -> model said 'bí đỏ' (0/10); hạt sen -> model said 'trứng muối' (2/10); chim bói cá -> model said 'chó cá' (0/10); minyak kayu putih -> model said 'minyak wangi' (0/10); jambu air -> model said 'nanas' (0/10); ikan kakap -> model said 'ikan bilis' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): rau răm",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w102c2-mlh-id-perahu-nelayan",
+   "lang": "id",
+   "prompt": "Kendaraan air kayu kecil bercadik yang dipakai warga desa pesisir untuk melaut pada malam hari dan menebar jaring guna menangkap hasil laut disebut",
+   "target": "perahu nelayan",
+   "target_alts": [
+    "kapal nelayan",
+    "perahu",
+    "perahu ikan"
+   ],
+   "intermediates": [
+    "fishing boat"
+   ],
+   "units": [
+    {
+     "role": "concept",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "fishing boat"
+      ],
+      "zh": [
+       "渔船"
+      ]
+     },
+     "match": [
+      "fishing boat",
+      "渔船"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Indonesian"
+      ],
+      "zh": [
+       "印尼语"
+      ],
+      "id": [
+       "perahu nelayan",
+       "kapal nelayan",
+       "perahu",
+       "perahu ikan"
+      ]
+     },
+     "match": [
+      "Indonesian",
+      "印尼语",
+      "perahu nelayan",
+      "kapal nelayan",
+      "perahu",
+      "perahu ikan"
+     ]
+    }
+   ],
+   "mc": {
+    "concept": {
+     "gold": "fishing boat",
+     "distractors": [
+      "cargo ship",
+      "speed boat",
+      "passenger ferry",
+      "rubber raft"
+     ]
+    }
+   },
+   "subfamily": "fwd",
+   "probe_token_lens": {
+    "units": {
+     "concept": {
+      "en": [
+       2
+      ],
+      "zh": [
+       4
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       5
+      ],
+      "id": [
+       5,
+       5,
+       2,
+       4
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Use only Russian (ru), Vietnamese (vi) or Indonesian (id), the only languages this model passes, and common concrete nouns (household objects, animals, food).",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Russian (ru), Vietnamese (vi) or Indonesian (id), the only languages this model passes, and common concrete nouns (household objects, animals, food)."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 1/40 passed.\n- Rejected by lint before gating: 6x units: concept canonical name is one token (uncreditable); 2x units: concept pads a one-word name with generic words (uncreditab; 1x natural:concept 'napkin' is not creditable; 1x natural:concept 'freezer' is not creditable. Avoid these.\n- Failed (gold -> what the model wrote): обогреватель -> model said 'рadiator' (2/10); лесной орех -> model said 'клубника' (0/10); чечевица -> model said 'картошка' (0/10); броненосец -> model said 'глистиндер' (0/10); mướp đắng -> model said 'lạc' (0/10); bí đao -> model said 'bí đỏ' (0/10); đậu bắp -> model said 'bí đỏ' (0/10); hạt sen -> model said 'trứng muối' (2/10); chim bói cá -> model said 'chó cá' (0/10); minyak kayu putih -> model said 'minyak wangi' (0/10); jambu air -> model said 'nanas' (0/10); ikan kakap -> model said 'ikan bilis' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): rau răm",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t2-w103c0-mlh-id-jaring-ikan",
+   "lang": "id",
+   "prompt": "Anyaman tali berlubang-lubang yang dilemparkan nelayan ke laut untuk menangkap banyak udang dan hewan laut sekaligus disebut",
+   "target": "jaring ikan",
+   "target_alts": [
+    "jala ikan",
+    "jala",
+    "jaring"
+   ],
+   "intermediates": [
+    "fishing net"
+   ],
+   "units": [
+    {
+     "role": "concept",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "fishing net"
+      ],
+      "zh": [
+       "渔网"
+      ]
+     },
+     "match": [
+      "fishing net",
+      "渔网"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Indonesian"
+      ],
+      "zh": [
+       "印度尼西亚语"
+      ],
+      "id": [
+       "jaring ikan",
+       "jala ikan",
+       "jala",
+       "jaring"
+      ]
+     },
+     "match": [
+      "Indonesian",
+      "印度尼西亚语",
+      "jaring ikan",
+      "jala ikan",
+      "jala",
+      "jaring"
+     ]
+    }
+   ],
+   "mc": {
+    "concept": {
+     "gold": "fishing net",
+     "distractors": [
+      "fishing rod",
+      "fish trap",
+      "fishing hook",
+      "wicker basket"
+     ]
+    }
+   },
+   "subfamily": "fwd",
+   "probe_token_lens": {
+    "units": {
+     "concept": {
+      "en": [
+       2
+      ],
+      "zh": [
+       3
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       9
+      ],
+      "id": [
+       4,
+       4,
+       2,
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Russian (ru), Vietnamese (vi) or Indonesian (id) only, and only everyday objects a child knows, described by their most obvious use.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Russian (ru), Vietnamese (vi) or Indonesian (id) only, and only everyday objects a child knows, described by their most obvious use."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 2/60 passed.\n- Rejected by lint before gating: 7x units: concept pads a one-word name with generic words (uncreditab; 2x leak: ['chanh'] in prompt; 1x leak: ['гриб'] in prompt; 1x natural:concept 'porcini' is not creditable. Avoid these.\n- Failed (gold -> what the model wrote): куриный бульон -> model said 'жудо' (2/10); мясной фарш -> model said 'минсет' (0/10); подсолнечное масло -> model said 'куркума' (0/10); малиновое варенье -> model said 'кисель' (0/10); облепиха -> model said 'клоповник' (0/10); деревянная ложка -> model said 'лопата' (0/10); lạp xưởng -> model said 'mứt heo' (0/10); vú sữa -> model said 'lê' (0/10); sapu lidi -> model said 'bajang' (0/10); kentongan -> model said 'gambang' (0/10); винегрет -> model said 'оливье' (0/10); банный веник -> model said 'брезентом' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): terasi udang; perahu nelayan",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t2-w103c2-mlh-ru-kartonnaya-korobka",
+   "lang": "ru",
+   "prompt": "Ящик из плотной бурой бумаги, в котором приходят посылки, а при переезде складывают вещи и игрушки, называется",
+   "target": "картонная коробка",
+   "target_alts": [
+    "коробка",
+    "коробку",
+    "коробки",
+    "картонную коробку",
+    "картонной коробке"
+   ],
+   "intermediates": [
+    "cardboard box"
+   ],
+   "units": [
+    {
+     "role": "concept",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "cardboard box",
+       "shipping box"
+      ],
+      "zh": [
+       "纸箱",
+       "纸板箱"
+      ]
+     },
+     "match": [
+      "cardboard box",
+      "shipping box",
+      "纸箱",
+      "纸板箱"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Russian"
+      ],
+      "zh": [
+       "俄语"
+      ],
+      "ru": [
+       "картонная коробка",
+       "коробка",
+       "коробку",
+       "коробки",
+       "картонную коробку",
+       "картонной коробке"
+      ]
+     },
+     "match": [
+      "Russian",
+      "俄语",
+      "картонная коробка",
+      "коробка",
+      "коробку",
+      "коробки",
+      "картонную коробку",
+      "картонной коробке"
+     ]
+    }
+   ],
+   "mc": {
+    "concept": {
+     "gold": "cardboard box",
+     "distractors": [
+      "wooden crate",
+      "plastic container",
+      "shopping bag",
+      "metal trunk"
+     ]
+    }
+   },
+   "subfamily": "fwd",
+   "probe_token_lens": {
+    "units": {
+     "concept": {
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       3,
+       4
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       3
+      ],
+      "ru": [
+       6,
+       3,
+       3,
+       3,
+       6,
+       6
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Russian (ru), Vietnamese (vi) or Indonesian (id) only, and only everyday objects a child knows, described by their most obvious use.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Russian (ru), Vietnamese (vi) or Indonesian (id) only, and only everyday objects a child knows, described by their most obvious use."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 2/60 passed.\n- Rejected by lint before gating: 7x units: concept pads a one-word name with generic words (uncreditab; 2x leak: ['chanh'] in prompt; 1x leak: ['гриб'] in prompt; 1x natural:concept 'porcini' is not creditable. Avoid these.\n- Failed (gold -> what the model wrote): куриный бульон -> model said 'жудо' (2/10); мясной фарш -> model said 'минсет' (0/10); подсолнечное масло -> model said 'куркума' (0/10); малиновое варенье -> model said 'кисель' (0/10); облепиха -> model said 'клоповник' (0/10); деревянная ложка -> model said 'лопата' (0/10); lạp xưởng -> model said 'mứt heo' (0/10); vú sữa -> model said 'lê' (0/10); sapu lidi -> model said 'bajang' (0/10); kentongan -> model said 'gambang' (0/10); винегрет -> model said 'оливье' (0/10); банный веник -> model said 'брезентом' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): terasi udang; perahu nelayan",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t2-w103c2-mlh-vi-lo-muc",
+   "lang": "vi",
+   "prompt": "Ngày xưa học sinh tiểu học thường mang theo thứ chất lỏng màu tím đựng trong chai thủy tinh nhỏ để chấm ngòi bút viết chữ đẹp; chai nhỏ ấy gọi là",
+   "target": "lọ mực",
+   "target_alts": [
+    "bình mực",
+    "lọ mực tím",
+    "mực tím",
+    "mực"
+   ],
+   "intermediates": [
+    "ink bottle"
+   ],
+   "units": [
+    {
+     "role": "concept",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "ink bottle",
+       "ink pot",
+       "inkwell"
+      ],
+      "zh": [
+       "墨水瓶"
+      ]
+     },
+     "match": [
+      "ink bottle",
+      "ink pot",
+      "inkwell",
+      "墨水瓶"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Vietnamese"
+      ],
+      "zh": [
+       "越南语"
+      ],
+      "vi": [
+       "lọ mực",
+       "bình mực",
+       "lọ mực tím",
+       "mực tím",
+       "mực"
+      ]
+     },
+     "match": [
+      "Vietnamese",
+      "越南语",
+      "lọ mực",
+      "bình mực",
+      "lọ mực tím",
+      "mực tím",
+      "mực"
+     ]
+    }
+   ],
+   "mc": {
+    "concept": {
+     "gold": "ink bottle",
+     "distractors": [
+      "glue bottle",
+      "pencil case",
+      "fountain pen",
+      "paint jar"
+     ]
+    }
+   },
+   "subfamily": "fwd",
+   "probe_token_lens": {
+    "units": {
+     "concept": {
+      "en": [
+       2,
+       2,
+       2
+      ],
+      "zh": [
+       6
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       4
+      ],
+      "vi": [
+       4,
+       4,
+       6,
+       4,
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Russian (ru), Vietnamese (vi) or Indonesian (id) only, and only everyday objects a child knows, described by their most obvious use.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Russian (ru), Vietnamese (vi) or Indonesian (id) only, and only everyday objects a child knows, described by their most obvious use."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 2/60 passed.\n- Rejected by lint before gating: 7x units: concept pads a one-word name with generic words (uncreditab; 2x leak: ['chanh'] in prompt; 1x leak: ['гриб'] in prompt; 1x natural:concept 'porcini' is not creditable. Avoid these.\n- Failed (gold -> what the model wrote): куриный бульон -> model said 'жудо' (2/10); мясной фарш -> model said 'минсет' (0/10); подсолнечное масло -> model said 'куркума' (0/10); малиновое варенье -> model said 'кисель' (0/10); облепиха -> model said 'клоповник' (0/10); деревянная ложка -> model said 'лопата' (0/10); lạp xưởng -> model said 'mứt heo' (0/10); vú sữa -> model said 'lê' (0/10); sapu lidi -> model said 'bajang' (0/10); kentongan -> model said 'gambang' (0/10); винегрет -> model said 'оливье' (0/10); банный веник -> model said 'брезентом' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): terasi udang; perahu nelayan",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t2-w104c2-mlh-id-pasar-malam",
+   "lang": "id",
+   "prompt": "Tempat ramai yang hanya buka setelah matahari terbenam, penuh lapak jajanan, pakaian murah, dan komidi putar di lapangan, disebut",
+   "target": "pasar malam",
+   "target_alts": [
+    "pasar malamnya"
+   ],
+   "intermediates": [
+    "night market"
+   ],
+   "units": [
+    {
+     "role": "concept",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "night market"
+      ],
+      "zh": [
+       "夜市"
+      ]
+     },
+     "match": [
+      "night market",
+      "夜市"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Indonesian"
+      ],
+      "zh": [
+       "印度尼西亚语"
+      ],
+      "id": [
+       "pasar malam",
+       "pasar malamnya"
+      ]
+     },
+     "match": [
+      "Indonesian",
+      "印度尼西亚语",
+      "pasar malam",
+      "pasar malamnya"
+     ]
+    }
+   ],
+   "mc": {
+    "concept": {
+     "gold": "night market",
+     "distractors": [
+      "street fair",
+      "farmers market",
+      "flea market",
+      "food court"
+     ]
+    }
+   },
+   "subfamily": "fwd",
+   "probe_token_lens": {
+    "units": {
+     "concept": {
+      "en": [
+       2
+      ],
+      "zh": [
+       3
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       9
+      ],
+      "id": [
+       3,
+       4
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Russian (ru), Vietnamese (vi) or Indonesian (id) only, and only everyday objects a child knows, described by their most obvious use.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Russian (ru), Vietnamese (vi) or Indonesian (id) only, and only everyday objects a child knows, described by their most obvious use."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 104,
+    "steer": "- Last wave: 3/60 passed.\n- Rejected by lint before gating: 9x units: concept canonical name is one token (uncreditable); 2x units: concept pads a one-word name with generic words (uncreditab; 1x natural:concept 'stopwatch' is not creditable; 1x natural:concept 'accordion' is not creditable. Avoid these.\n- Failed (gold -> what the model wrote): эвакуатор -> model said 'трейлер' (0/10); щелкунчик -> model said 'порождение' (0/10); небоскрёб -> model said 'Скайтрап' (0/10); музыкальная шкатулка -> model said 'подарок от мамы' (0/10); пляжный зонт -> model said 'шалаш' (0/10); подзорная труба -> model said 'телескоп' (0/10); ống nghe -> model said 'stetoscope' (0/10); kincir angin -> model said 'molen' (0/10); резиновая грелка -> model said 'тепловая подушка' (0/10); шведская стенка -> model said 'традиция' (0/10); лыжные палки -> model said 'коньками' (0/10); спасательный круг -> model said 'основной спасательный круг' (1/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): jaring ikan; картонная коробка; lọ mực",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t2-w104c2-mlh-ru-detskij-sad",
+   "lang": "ru",
+   "prompt": "Место, куда родители утром приводят малышей до школы, чтобы те весь день играли, ели и спали там под присмотром воспитательницы, называется",
+   "target": "детский сад",
+   "target_alts": [
+    "детсад",
+    "садик",
+    "детским садом"
+   ],
+   "intermediates": [
+    "nursery school"
+   ],
+   "units": [
+    {
+     "role": "concept",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "nursery school",
+       "day nursery"
+      ],
+      "zh": [
+       "幼儿园"
+      ]
+     },
+     "match": [
+      "nursery school",
+      "day nursery",
+      "幼儿园"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Russian"
+      ],
+      "zh": [
+       "俄语"
+      ],
+      "ru": [
+       "детский сад",
+       "детсад",
+       "садик",
+       "детским садом"
+      ]
+     },
+     "match": [
+      "Russian",
+      "俄语",
+      "детский сад",
+      "детсад",
+      "садик",
+      "детским садом"
+     ]
+    }
+   ],
+   "mc": {
+    "concept": {
+     "gold": "nursery school",
+     "distractors": [
+      "primary school",
+      "high school",
+      "summer camp",
+      "music school"
+     ]
+    }
+   },
+   "subfamily": "fwd",
+   "probe_token_lens": {
+    "units": {
+     "concept": {
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       7
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       3
+      ],
+      "ru": [
+       6,
+       4,
+       3,
+       7
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Russian (ru), Vietnamese (vi) or Indonesian (id) only, and only everyday objects a child knows, described by their most obvious use.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Russian (ru), Vietnamese (vi) or Indonesian (id) only, and only everyday objects a child knows, described by their most obvious use."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 104,
+    "steer": "- Last wave: 3/60 passed.\n- Rejected by lint before gating: 9x units: concept canonical name is one token (uncreditable); 2x units: concept pads a one-word name with generic words (uncreditab; 1x natural:concept 'stopwatch' is not creditable; 1x natural:concept 'accordion' is not creditable. Avoid these.\n- Failed (gold -> what the model wrote): эвакуатор -> model said 'трейлер' (0/10); щелкунчик -> model said 'порождение' (0/10); небоскрёб -> model said 'Скайтрап' (0/10); музыкальная шкатулка -> model said 'подарок от мамы' (0/10); пляжный зонт -> model said 'шалаш' (0/10); подзорная труба -> model said 'телескоп' (0/10); ống nghe -> model said 'stetoscope' (0/10); kincir angin -> model said 'molen' (0/10); резиновая грелка -> model said 'тепловая подушка' (0/10); шведская стенка -> model said 'традиция' (0/10); лыжные палки -> model said 'коньками' (0/10); спасательный круг -> model said 'основной спасательный круг' (1/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): jaring ikan; картонная коробка; lọ mực",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  }
+ ]
+}

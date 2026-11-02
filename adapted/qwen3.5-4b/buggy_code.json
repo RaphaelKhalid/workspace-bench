@@ -1,0 +1,1240 @@
+{
+ "family": "buggy_code",
+ "source": "evals/workspace-bench/hillclimbing_evals/multi_token/buggy_code/read_bank.json (source repo; buggy and clean records unchanged, each tagged with src)",
+ "read_cells": {
+  "python": {
+   "anchor": "eof",
+   "layer": 30
+  },
+  "nonpython": {
+   "anchor": "eof",
+   "layer": 28
+  }
+ },
+ "read": "one cell per item: the EOF anchor (last token of the bare program), layer 60 for python and 56 for the other languages; bare render, nothing asked",
+ "removed": [
+  {
+   "name": "py-tax-before-discount",
+   "cause": "the coupon should reduce the taxable base; applying it after tax overcharges by the coupon's tax share",
+   "reason": "capability ceiling: review finds the bug only 2/4 — the tax-ordering subtlety is at the edge of Qwen's own understanding, so an AO miss would be uninterpretable"
+  },
+  {
+   "name": "sql-null-not-equal",
+   "reason": "Gate B' fail: predicts intended semantics, not actual"
+  },
+  {
+   "name": "bash-cd-empty-rm",
+   "reason": "Gate B' fail: outcome misses the empty-var case"
+  },
+  {
+   "name": "bash-unquoted-test",
+   "reason": "Gate B'/D fail: 1/3 outcome; review finds a different bug"
+  }
+ ],
+ "adapt": {
+  "model": "qwen3.5-4b",
+  "hf_id": "Qwen/Qwen3.5-4B",
+  "frozen": "2026-10-18"
+ },
+ "items": [
+  {
+   "src": "buggy",
+   "name": "py-minutes-not-carried",
+   "kind": "silent",
+   "code": "def add_minutes(hh, mm, extra):\n    mm = mm + extra\n    return f\"{hh}:{mm:02d}\"\n\nprint(add_minutes(9, 45, 30))",
+   "category": "minutes never carried into hours",
+   "cause": "45+30 minutes prints as 9:75 instead of rolling over to 10:15",
+   "level2_tokens": [],
+   "bug_line": 3,
+   "raises": false,
+   "language": "python",
+   "difficulty": "subtle",
+   "failure_mode": "silent",
+   "comment_line": null,
+   "verified": "exec: exit 0; stdout = '9:75'",
+   "n_lines": 5,
+   "gate_tier": "tolerant",
+   "consequence_class": "categorical",
+   "depth": "surface",
+   "review_finds": "4/4",
+   "jlens_hint": null,
+   "lang_group": "python",
+   "id": "py-minutes-not-carried",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.7,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "py-clean-removesuffix",
+   "code": "def strip_ext(filename):\n    return filename.removesuffix(\".csv\")\n\nprint(strip_ext(\"trades.csv\"))\nprint(strip_ext(\"stocks.csv\"))",
+   "language": "python",
+   "verified": "exec: exit 0; stdout = 'trades | stocks'",
+   "lang_group": "python",
+   "id": "py-clean-removesuffix",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "py-clean-strip-guests",
+   "code": "def guests(csv_line):\n    return [g.strip() for g in csv_line.split(\",\")]\n\nprint(guests(\"ann, bob, cy\")[1])",
+   "language": "python",
+   "verified": "exec: exit 0; stdout = 'bob'",
+   "lang_group": "python",
+   "id": "py-clean-strip-guests",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "py-clean-pct-clamped",
+   "code": "def battery_pct(charge_mah, capacity_mah):\n    return min(round(100 * charge_mah / capacity_mah), 100)\n\nprint(battery_pct(5200, 5000))",
+   "language": "python",
+   "verified": "exec: exit 0; stdout = '100'",
+   "lang_group": "python",
+   "id": "py-clean-pct-clamped",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "py-clean-nights",
+   "code": "def nights(check_in_day, check_out_day):\n    return check_out_day - check_in_day\n\nprint(nights(3, 6))",
+   "language": "python",
+   "verified": "exec: exit 0; stdout = '3'",
+   "lang_group": "python",
+   "id": "py-clean-nights",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "clean-js-sort-comparator",
+   "kind": "clean",
+   "code": "// Largest number in xs.\nfunction biggest(xs) {\n  return [...xs].sort((a, b) => a - b)[xs.length - 1];\n}\n\nconsole.log(biggest([9, 10, 100, 2]));",
+   "category": "none",
+   "cause": "",
+   "level2_tokens": [],
+   "bug_line": null,
+   "raises": false,
+   "language": "javascript",
+   "difficulty": "subtle",
+   "failure_mode": "correct",
+   "comment_line": 1,
+   "verified": "by inspection: `(a, b) => a - b` sorts [2, 9, 10, 100]; the copy has the same length as xs, so index xs.length - 1 is the last element, 100. The caller's array is untouched because sort runs on the spread copy.",
+   "looks_like": "default Array.prototype.sort / lexicographic ordering",
+   "why_correct": "the comparator makes the sort numeric and the spread sorts a copy, so neither the string-ordering trap nor the in-place mutation of the caller's array applies",
+   "idx": 20,
+   "n_lines": 6,
+   "lang_group": "nonpython",
+   "id": "clean-js-sort-comparator",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "buggy",
+   "name": "buggy-au-t2-w2c0-py-str-plus-int-age",
+   "id": "buggy-au-t2-w2c0-py-str-plus-int-age",
+   "code": "name = \"Ada\"\nage = 36\nmsg = name + \" is \" + age\nprint(msg)",
+   "verified": "exec: exit 1; stdout = ''; last = 'TypeError: can only concatenate str (not \"int\") to str'",
+   "cause": "A str is concatenated with the int age, so the + raises TypeError.",
+   "category": "str and int concatenation",
+   "bug_line": 3,
+   "level2_tokens": [
+    "concatenation",
+    "conversion"
+   ],
+   "consequence_class": "crash",
+   "raises": true,
+   "n_lines": 4,
+   "language": "python",
+   "lang_group": "python",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: About 6 lines of Python with an obvious crash raising a common exception (ZeroDivisionError, KeyError, IndexError, TypeError, AttributeError) on a line where a careful reader sees it coming.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "About 6 lines of Python with an obvious crash raising a common exception (ZeroDivisionError, KeyError, IndexError, TypeError, AttributeError) on a line where a careful reader sees it coming."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 2,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "buggy-au-clean-t2-w2c0-py-str-plus-int-age",
+   "id": "buggy-au-clean-t2-w2c0-py-str-plus-int-age",
+   "code": "city = \"Oslo\"\nyear = 1048\nline = city + \" founded \" + str(year)\nprint(line)",
+   "verified": "exec: exit 0; stdout = 'Oslo founded 1048'",
+   "why_correct": "The year is converted with str() before joining, so it prints Oslo founded 1048.",
+   "looks_like": "Adding a number to a string",
+   "language": "python",
+   "lang_group": "python",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: About 6 lines of Python with an obvious crash raising a common exception (ZeroDivisionError, KeyError, IndexError, TypeError, AttributeError) on a line where a careful reader sees it coming.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "About 6 lines of Python with an obvious crash raising a common exception (ZeroDivisionError, KeyError, IndexError, TypeError, AttributeError) on a line where a careful reader sees it coming."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 2,
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "buggy",
+   "name": "buggy-au-t2-w2c0-py-append-on-string",
+   "id": "buggy-au-t2-w2c0-py-append-on-string",
+   "code": "log = \"\"\nfor step in [\"boot\", \"load\"]:\n    log.append(step)\nprint(log)",
+   "verified": "exec: exit 1; stdout = ''; last = 'AttributeError: 'str' object has no attribute 'append''",
+   "cause": "log is a str, which has no append method, so the first iteration raises AttributeError.",
+   "category": "list method on string",
+   "bug_line": 3,
+   "level2_tokens": [
+    "immutable",
+    "string"
+   ],
+   "consequence_class": "crash",
+   "raises": true,
+   "n_lines": 4,
+   "language": "python",
+   "lang_group": "python",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: About 6 lines of Python with an obvious crash raising a common exception (ZeroDivisionError, KeyError, IndexError, TypeError, AttributeError) on a line where a careful reader sees it coming.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "About 6 lines of Python with an obvious crash raising a common exception (ZeroDivisionError, KeyError, IndexError, TypeError, AttributeError) on a line where a careful reader sees it coming."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 2,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "buggy-au-clean-t2-w2c0-py-append-on-string",
+   "id": "buggy-au-clean-t2-w2c0-py-append-on-string",
+   "code": "trail = []\nfor stop in [\"gate\", \"hall\"]:\n    trail.append(stop)\nprint(trail)",
+   "verified": "exec: exit 0; stdout = '['gate', 'hall']'",
+   "why_correct": "trail is a list, so append works and it prints ['gate', 'hall'].",
+   "looks_like": "Calling append on something that is not a list",
+   "language": "python",
+   "lang_group": "python",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: About 6 lines of Python with an obvious crash raising a common exception (ZeroDivisionError, KeyError, IndexError, TypeError, AttributeError) on a line where a careful reader sees it coming.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "About 6 lines of Python with an obvious crash raising a common exception (ZeroDivisionError, KeyError, IndexError, TypeError, AttributeError) on a line where a careful reader sees it coming."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 2,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "buggy",
+   "name": "buggy-au-t2-w3c0-py-point-missing-z",
+   "id": "buggy-au-t2-w3c0-py-point-missing-z",
+   "code": "point = (3, 4)\nx = point[0]\ny = point[1]\nz = point[2]\nprint(x + y + z)",
+   "verified": "exec: exit 1; stdout = ''; last = 'IndexError: tuple index out of range'",
+   "cause": "The tuple has only two items, so point[2] raises IndexError.",
+   "category": "index past a short tuple",
+   "bug_line": 4,
+   "level2_tokens": [
+    "missing",
+    "third"
+   ],
+   "consequence_class": "crash",
+   "raises": true,
+   "n_lines": 5,
+   "language": "python",
+   "lang_group": "python",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: About 6 lines of Python with an obvious crash raising a common exception (ZeroDivisionError, KeyError, IndexError, TypeError, AttributeError) on a line where a careful reader sees it coming.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "About 6 lines of Python with an obvious crash raising a common exception (ZeroDivisionError, KeyError, IndexError, TypeError, AttributeError) on a line where a careful reader sees it coming."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 3,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "buggy-au-clean-t2-w3c0-py-point-missing-z",
+   "id": "buggy-au-clean-t2-w3c0-py-point-missing-z",
+   "code": "coord = (3, 4, 5)\nx = coord[0]\ny = coord[1]\nz = coord[2]\nprint(x + y + z)",
+   "verified": "exec: exit 0; stdout = '12'",
+   "why_correct": "The tuple has three items, so index 2 exists and it prints 12.",
+   "looks_like": "A hard-coded index that might go past the end of the tuple.",
+   "language": "python",
+   "lang_group": "python",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: About 6 lines of Python with an obvious crash raising a common exception (ZeroDivisionError, KeyError, IndexError, TypeError, AttributeError) on a line where a careful reader sees it coming.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "About 6 lines of Python with an obvious crash raising a common exception (ZeroDivisionError, KeyError, IndexError, TypeError, AttributeError) on a line where a careful reader sees it coming."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 3,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "buggy-au-clean-t1-w4c0-py-free-shipping-conjunction",
+   "id": "buggy-au-clean-t1-w4c0-py-free-shipping-conjunction",
+   "code": "def can_enter(badge, pin_ok):\n    return badge and pin_ok\n\nhas_badge = True\npin_right = False\nprint(can_enter(has_badge, pin_right))",
+   "verified": "exec: exit 0; stdout = 'False'",
+   "why_correct": "Entry needs both a badge and a correct PIN, so `and` is right and the wrong PIN correctly gives False.",
+   "looks_like": "an `and` that should have been `or`",
+   "language": "python",
+   "lang_group": "python",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 4,
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "buggy",
+   "name": "buggy-au-t1-w4c0-py-fan-mode-labels-swapped",
+   "id": "buggy-au-t1-w4c0-py-fan-mode-labels-swapped",
+   "code": "def fan_mode(temp):\n    if temp > 25:\n        return \"off\"\n    return \"on\"\n\nprint(fan_mode(31))",
+   "verified": "exec: exit 0; stdout = 'off'",
+   "cause": "A hot reading returns \"off\", so at 31 degrees the fan is reported off instead of on.",
+   "category": "swapped branch labels",
+   "bug_line": 3,
+   "level2_tokens": [
+    "swapped",
+    "branches"
+   ],
+   "consequence_class": "categorical",
+   "raises": false,
+   "n_lines": 6,
+   "language": "python",
+   "lang_group": "python",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 4,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "buggy-au-clean-t1-w4c0-py-fan-mode-labels-swapped",
+   "id": "buggy-au-clean-t1-w4c0-py-fan-mode-labels-swapped",
+   "code": "def lamp_mode(lux):\n    if lux > 300:\n        return \"off\"\n    return \"on\"\n\nprint(lamp_mode(120))",
+   "verified": "exec: exit 0; stdout = 'on'",
+   "why_correct": "A bright room needs no lamp, so dim light at 120 correctly prints on.",
+   "looks_like": "branch labels swapped",
+   "language": "python",
+   "lang_group": "python",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 4,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "buggy",
+   "name": "buggy-au-t2-w5c0-py-win-loss-unbeaten",
+   "id": "buggy-au-t2-w5c0-py-win-loss-unbeaten",
+   "code": "record = {\"wins\": 9, \"losses\": 0}\nratio = record[\"wins\"] / record[\"losses\"]\nprint(f\"ratio {ratio}\")",
+   "verified": "exec: exit 1; stdout = ''; last = 'ZeroDivisionError: division by zero'",
+   "cause": "The team has 0 losses, so dividing wins by losses raises ZeroDivisionError.",
+   "category": "divide by zero count",
+   "bug_line": 2,
+   "level2_tokens": [
+    "unbeaten",
+    "zero"
+   ],
+   "consequence_class": "crash",
+   "raises": true,
+   "n_lines": 3,
+   "language": "python",
+   "lang_group": "python",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: About 6 lines of Python with an obvious crash raising a common exception (ZeroDivisionError, KeyError, IndexError, TypeError, AttributeError) on a line where a careful reader sees it coming.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "About 6 lines of Python with an obvious crash raising a common exception (ZeroDivisionError, KeyError, IndexError, TypeError, AttributeError) on a line where a careful reader sees it coming."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 5,
+    "gate": {
+     "rate": 0.7,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "buggy-au-clean-t2-w5c0-py-win-loss-unbeaten",
+   "id": "buggy-au-clean-t2-w5c0-py-win-loss-unbeaten",
+   "code": "results = {\"won\": 9, \"lost\": 3}\nrate = results[\"won\"] / (results[\"won\"] + results[\"lost\"])\nprint(f\"rate {rate}\")",
+   "verified": "exec: exit 0; stdout = 'rate 0.75'",
+   "why_correct": "It divides by total games (12), which is nonzero, so it prints rate 0.75.",
+   "looks_like": "a ratio that might divide by a zero count",
+   "language": "python",
+   "lang_group": "python",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: About 6 lines of Python with an obvious crash raising a common exception (ZeroDivisionError, KeyError, IndexError, TypeError, AttributeError) on a line where a careful reader sees it coming.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "About 6 lines of Python with an obvious crash raising a common exception (ZeroDivisionError, KeyError, IndexError, TypeError, AttributeError) on a line where a careful reader sees it coming."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 5,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "buggy",
+   "name": "buggy-au-t2-w5c0-py-zip-drops-last-key",
+   "id": "buggy-au-t2-w5c0-py-zip-drops-last-key",
+   "code": "keys = [\"red\", \"green\", \"blue\"]\ncodes = [1, 2]\npalette = dict(zip(keys, codes))\nprint(palette[\"blue\"])",
+   "verified": "exec: exit 1; stdout = ''; last = 'KeyError: 'blue''",
+   "cause": "zip stops at the shorter list, so \"blue\" never enters palette and palette[\"blue\"] raises KeyError.",
+   "category": "key lost by mismatched lengths",
+   "bug_line": 4,
+   "level2_tokens": [
+    "shortest",
+    "missing"
+   ],
+   "consequence_class": "crash",
+   "raises": true,
+   "n_lines": 4,
+   "language": "python",
+   "lang_group": "python",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: About 6 lines of Python with an obvious crash raising a common exception (ZeroDivisionError, KeyError, IndexError, TypeError, AttributeError) on a line where a careful reader sees it coming.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "About 6 lines of Python with an obvious crash raising a common exception (ZeroDivisionError, KeyError, IndexError, TypeError, AttributeError) on a line where a careful reader sees it coming."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 5,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "buggy-au-clean-t2-w5c0-py-zip-drops-last-key",
+   "id": "buggy-au-clean-t2-w5c0-py-zip-drops-last-key",
+   "code": "shades = [\"red\", \"green\", \"blue\"]\nvalues = [1, 2, 3]\ntable = dict(zip(shades, values))\nprint(table[\"blue\"])",
+   "verified": "exec: exit 0; stdout = '3'",
+   "why_correct": "Both lists have three items, so \"blue\" maps to 3 and it prints 3.",
+   "looks_like": "a zip that might silently drop a pair",
+   "language": "python",
+   "lang_group": "python",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: About 6 lines of Python with an obvious crash raising a common exception (ZeroDivisionError, KeyError, IndexError, TypeError, AttributeError) on a line where a careful reader sees it coming.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "About 6 lines of Python with an obvious crash raising a common exception (ZeroDivisionError, KeyError, IndexError, TypeError, AttributeError) on a line where a careful reader sees it coming."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 5,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "buggy",
+   "name": "buggy-au-t2-w5c0-py-translate-unknown-word",
+   "id": "buggy-au-t2-w5c0-py-translate-unknown-word",
+   "code": "spanish = {\"cat\": \"gato\", \"dog\": \"perro\"}\nsentence = \"the cat\"\nwords = [spanish[w] for w in sentence.split()]\nprint(\" \".join(words))",
+   "verified": "exec: exit 1; stdout = ''; last = 'KeyError: 'the''",
+   "cause": "\"the\" has no entry in the spanish dict, so spanish[w] raises KeyError on the first word.",
+   "category": "dictionary missing word",
+   "bug_line": 3,
+   "level2_tokens": [
+    "untranslated",
+    "missing"
+   ],
+   "consequence_class": "crash",
+   "raises": true,
+   "n_lines": 4,
+   "language": "python",
+   "lang_group": "python",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: About 6 lines of Python with an obvious crash raising a common exception (ZeroDivisionError, KeyError, IndexError, TypeError, AttributeError) on a line where a careful reader sees it coming.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "About 6 lines of Python with an obvious crash raising a common exception (ZeroDivisionError, KeyError, IndexError, TypeError, AttributeError) on a line where a careful reader sees it coming."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 5,
+    "gate": {
+     "rate": 0.875,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "buggy-au-clean-t2-w5c0-py-translate-unknown-word",
+   "id": "buggy-au-clean-t2-w5c0-py-translate-unknown-word",
+   "code": "french = {\"le\": \"the\", \"chat\": \"cat\"}\nphrase = \"le chat\"\nout = [french[w] for w in phrase.split()]\nprint(\" \".join(out))",
+   "verified": "exec: exit 0; stdout = 'the cat'",
+   "why_correct": "Every word in the phrase is a key, so it prints the cat.",
+   "looks_like": "a comprehension that could hit an unknown word",
+   "language": "python",
+   "lang_group": "python",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: About 6 lines of Python with an obvious crash raising a common exception (ZeroDivisionError, KeyError, IndexError, TypeError, AttributeError) on a line where a careful reader sees it coming.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "About 6 lines of Python with an obvious crash raising a common exception (ZeroDivisionError, KeyError, IndexError, TypeError, AttributeError) on a line where a careful reader sees it coming."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 5,
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "buggy",
+   "name": "buggy-au-t2-w5c0-py-last-of-cleared-queue",
+   "id": "buggy-au-t2-w5c0-py-last-of-cleared-queue",
+   "code": "queue = [\"job1\", \"job2\"]\nqueue.clear()\nlatest = queue[-1]\nprint(latest)",
+   "verified": "exec: exit 1; stdout = ''; last = 'IndexError: list index out of range'",
+   "cause": "clear() empties the list, so queue[-1] raises IndexError.",
+   "category": "index into emptied list",
+   "bug_line": 3,
+   "level2_tokens": [
+    "emptied",
+    "empty"
+   ],
+   "consequence_class": "crash",
+   "raises": true,
+   "n_lines": 4,
+   "language": "python",
+   "lang_group": "python",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: About 6 lines of Python with an obvious crash raising a common exception (ZeroDivisionError, KeyError, IndexError, TypeError, AttributeError) on a line where a careful reader sees it coming.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "About 6 lines of Python with an obvious crash raising a common exception (ZeroDivisionError, KeyError, IndexError, TypeError, AttributeError) on a line where a careful reader sees it coming."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 5,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "buggy-au-clean-t2-w5c0-py-last-of-cleared-queue",
+   "id": "buggy-au-clean-t2-w5c0-py-last-of-cleared-queue",
+   "code": "tasks = [\"job1\", \"job2\"]\ntasks.append(\"job3\")\nnewest = tasks[-1]\nprint(newest)",
+   "verified": "exec: exit 0; stdout = 'job3'",
+   "why_correct": "The list has three items, so tasks[-1] prints job3.",
+   "looks_like": "reading the last item of a list that was just changed",
+   "language": "python",
+   "lang_group": "python",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: About 6 lines of Python with an obvious crash raising a common exception (ZeroDivisionError, KeyError, IndexError, TypeError, AttributeError) on a line where a careful reader sees it coming.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "About 6 lines of Python with an obvious crash raising a common exception (ZeroDivisionError, KeyError, IndexError, TypeError, AttributeError) on a line where a careful reader sees it coming."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 5,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "buggy",
+   "name": "buggy-au-t2-w5c0-py-append-on-dict",
+   "id": "buggy-au-t2-w5c0-py-append-on-dict",
+   "code": "tags = {}\nfor word in [\"red\", \"blue\"]:\n    tags.append(word)\nprint(tags)",
+   "verified": "exec: exit 1; stdout = ''; last = 'AttributeError: 'dict' object has no attribute 'append''",
+   "cause": "{} creates a dict, which has no append method, so tags.append raises AttributeError.",
+   "category": "list method on dict",
+   "bug_line": 3,
+   "level2_tokens": [
+    "dict",
+    "list"
+   ],
+   "consequence_class": "crash",
+   "raises": true,
+   "n_lines": 4,
+   "language": "python",
+   "lang_group": "python",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: About 6 lines of Python with an obvious crash raising a common exception (ZeroDivisionError, KeyError, IndexError, TypeError, AttributeError) on a line where a careful reader sees it coming.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "About 6 lines of Python with an obvious crash raising a common exception (ZeroDivisionError, KeyError, IndexError, TypeError, AttributeError) on a line where a careful reader sees it coming."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 5,
+    "gate": {
+     "rate": 0.6666666666666666,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "buggy-au-clean-t2-w5c0-py-append-on-dict",
+   "id": "buggy-au-clean-t2-w5c0-py-append-on-dict",
+   "code": "labels = []\nfor w in [\"red\", \"blue\"]:\n    labels.append(w)\nprint(labels)",
+   "verified": "exec: exit 0; stdout = '['red', 'blue']'",
+   "why_correct": "labels is a list, so it prints ['red', 'blue'].",
+   "looks_like": "appending to a container that might not support append",
+   "language": "python",
+   "lang_group": "python",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: About 6 lines of Python with an obvious crash raising a common exception (ZeroDivisionError, KeyError, IndexError, TypeError, AttributeError) on a line where a careful reader sees it coming.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "About 6 lines of Python with an obvious crash raising a common exception (ZeroDivisionError, KeyError, IndexError, TypeError, AttributeError) on a line where a careful reader sees it coming."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 5,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "buggy",
+   "name": "buggy-au-t2-w5c1-py-filtered-minor-lookup",
+   "id": "buggy-au-t2-w5c1-py-filtered-minor-lookup",
+   "code": "ages = {\"Ann\": 34, \"Bo\": 15, \"Cal\": 41}\nadults = {n: a for n, a in ages.items() if a >= 18}\nprint(adults[\"Bo\"])",
+   "verified": "exec: exit 1; stdout = ''; last = 'KeyError: 'Bo''",
+   "cause": "Bo is 15, so the comprehension drops him and adults[\"Bo\"] raises KeyError.",
+   "category": "lookup of filtered-out key",
+   "bug_line": 3,
+   "level2_tokens": [
+    "filtered",
+    "missing"
+   ],
+   "consequence_class": "crash",
+   "raises": true,
+   "n_lines": 3,
+   "language": "python",
+   "lang_group": "python",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: About 6 lines of Python with an obvious crash raising a common exception (ZeroDivisionError, KeyError, IndexError, TypeError, AttributeError) on a line where a careful reader sees it coming.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "About 6 lines of Python with an obvious crash raising a common exception (ZeroDivisionError, KeyError, IndexError, TypeError, AttributeError) on a line where a careful reader sees it coming."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 5,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "buggy-au-clean-t2-w5c1-py-filtered-minor-lookup",
+   "id": "buggy-au-clean-t2-w5c1-py-filtered-minor-lookup",
+   "code": "prices = {\"pen\": 2, \"lamp\": 30, \"desk\": 120}\npricey = {k: v for k, v in prices.items() if v >= 20}\nprint(pricey[\"desk\"])",
+   "verified": "exec: exit 0; stdout = '120'",
+   "why_correct": "The desk costs 120, so it survives the filter and 120 is printed.",
+   "looks_like": "reading a key that the filter removed",
+   "language": "python",
+   "lang_group": "python",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: About 6 lines of Python with an obvious crash raising a common exception (ZeroDivisionError, KeyError, IndexError, TypeError, AttributeError) on a line where a careful reader sees it coming.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "About 6 lines of Python with an obvious crash raising a common exception (ZeroDivisionError, KeyError, IndexError, TypeError, AttributeError) on a line where a careful reader sees it coming."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 5,
+    "gate": {
+     "rate": 0.7,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "buggy",
+   "name": "buggy-au-t2-w5c1-py-empty-genre-opener",
+   "id": "buggy-au-t2-w5c1-py-empty-genre-opener",
+   "code": "playlists = {\"rock\": [\"Hey\", \"Run\"], \"jazz\": []}\ngenre = \"jazz\"\nopener = playlists[genre][0]\nprint(\"Now playing:\", opener)",
+   "verified": "exec: exit 1; stdout = ''; last = 'IndexError: list index out of range'",
+   "cause": "The jazz list is empty, so playlists[genre][0] raises IndexError.",
+   "category": "first item of empty list",
+   "bug_line": 3,
+   "level2_tokens": [
+    "empty",
+    "index"
+   ],
+   "consequence_class": "crash",
+   "raises": true,
+   "n_lines": 4,
+   "language": "python",
+   "lang_group": "python",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: About 6 lines of Python with an obvious crash raising a common exception (ZeroDivisionError, KeyError, IndexError, TypeError, AttributeError) on a line where a careful reader sees it coming.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "About 6 lines of Python with an obvious crash raising a common exception (ZeroDivisionError, KeyError, IndexError, TypeError, AttributeError) on a line where a careful reader sees it coming."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 5,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "buggy-au-clean-t2-w5c1-py-empty-genre-opener",
+   "id": "buggy-au-clean-t2-w5c1-py-empty-genre-opener",
+   "code": "shelves = {\"top\": [\"mug\", \"jar\"], \"low\": []}\nlevel = \"top\"\nfirst = shelves[level][0]\nprint(\"Grab:\", first)",
+   "verified": "exec: exit 0; stdout = 'Grab: mug'",
+   "why_correct": "The top shelf has two items, so it prints Grab: mug.",
+   "looks_like": "taking [0] of a list that might be empty",
+   "language": "python",
+   "lang_group": "python",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: About 6 lines of Python with an obvious crash raising a common exception (ZeroDivisionError, KeyError, IndexError, TypeError, AttributeError) on a line where a careful reader sees it coming.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "About 6 lines of Python with an obvious crash raising a common exception (ZeroDivisionError, KeyError, IndexError, TypeError, AttributeError) on a line where a careful reader sees it coming."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 5,
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "buggy",
+   "name": "buggy-au-t2-w5c2-py-settings-colour-spelling",
+   "id": "buggy-au-t2-w5c2-py-settings-colour-spelling",
+   "code": "settings = {\"color\": \"blue\", \"size\": 12}\nsize = settings[\"size\"]\nshade = settings[\"colour\"]\nprint(\"size:\", size)\nprint(\"shade:\", shade)",
+   "verified": "exec: exit 1; stdout = ''; last = 'KeyError: 'colour''",
+   "cause": "The dict key is \"color\" but the lookup uses \"colour\", so settings[\"colour\"] raises KeyError.",
+   "category": "misspelled dict key",
+   "bug_line": 3,
+   "level2_tokens": [
+    "misspelled",
+    "key"
+   ],
+   "consequence_class": "crash",
+   "raises": true,
+   "n_lines": 5,
+   "language": "python",
+   "lang_group": "python",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: About 6 lines of Python with an obvious crash raising a common exception (ZeroDivisionError, KeyError, IndexError, TypeError, AttributeError) on a line where a careful reader sees it coming.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "About 6 lines of Python with an obvious crash raising a common exception (ZeroDivisionError, KeyError, IndexError, TypeError, AttributeError) on a line where a careful reader sees it coming."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 5,
+    "gate": {
+     "rate": 0.7,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "buggy-au-clean-t2-w5c2-py-settings-colour-spelling",
+   "id": "buggy-au-clean-t2-w5c2-py-settings-colour-spelling",
+   "code": "prefs = {\"font\": \"serif\", \"zoom\": 2}\nzoom = prefs[\"zoom\"]\nface = prefs[\"font\"]\nprint(\"zoom:\", zoom)\nprint(\"face:\", face)",
+   "verified": "exec: exit 0; stdout = 'zoom: 2 | face: serif'",
+   "why_correct": "Both lookups use keys that exist in prefs, so it prints zoom: 2 and face: serif.",
+   "looks_like": "a dict lookup with a key that might not exist",
+   "language": "python",
+   "lang_group": "python",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: About 6 lines of Python with an obvious crash raising a common exception (ZeroDivisionError, KeyError, IndexError, TypeError, AttributeError) on a line where a careful reader sees it coming.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "About 6 lines of Python with an obvious crash raising a common exception (ZeroDivisionError, KeyError, IndexError, TypeError, AttributeError) on a line where a careful reader sees it coming."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 5,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "buggy",
+   "name": "buggy-au-t1-w100c0-py-shout-lowercased",
+   "id": "buggy-au-t1-w100c0-py-shout-lowercased",
+   "code": "def shout(msg):\n    return msg.lower() + \"!\"\n\nprint(shout(\"Goal\"))",
+   "verified": "exec: exit 0; stdout = 'goal!'",
+   "cause": "Shouting should uppercase the text, but lower() is called, so it prints goal! instead of GOAL!.",
+   "category": "wrong string method",
+   "bug_line": 2,
+   "level2_tokens": [
+    "wrong case",
+    "casing"
+   ],
+   "consequence_class": "value",
+   "raises": false,
+   "n_lines": 4,
+   "language": "python",
+   "lang_group": "python",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "buggy-au-clean-t1-w100c0-py-shout-lowercased",
+   "id": "buggy-au-clean-t1-w100c0-py-shout-lowercased",
+   "code": "def whisper(msg):\n    return msg.lower() + \"...\"\n\nprint(whisper(\"Quiet\"))",
+   "verified": "exec: exit 0; stdout = 'quiet...'",
+   "why_correct": "A whisper is meant to be lowercase, so it prints quiet....",
+   "looks_like": "It might look like the wrong case method.",
+   "language": "python",
+   "lang_group": "python",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.7,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "buggy",
+   "name": "buggy-au-t1-w100c1-py-kelvin-returns-celsius",
+   "id": "buggy-au-t1-w100c1-py-kelvin-returns-celsius",
+   "code": "def to_kelvin(celsius):\n    kelvin = celsius + 273.15\n    return celsius\n\nprint(to_kelvin(25))",
+   "verified": "exec: exit 0; stdout = '25'",
+   "cause": "The function computes kelvin but returns the original celsius, so it prints 25 instead of 298.15.",
+   "category": "wrong variable returned",
+   "bug_line": 3,
+   "level2_tokens": [
+    "unconverted",
+    "argument"
+   ],
+   "consequence_class": "value",
+   "raises": false,
+   "n_lines": 5,
+   "language": "python",
+   "lang_group": "python",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.7,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "buggy-au-clean-t1-w100c1-py-kelvin-returns-celsius",
+   "id": "buggy-au-clean-t1-w100c1-py-kelvin-returns-celsius",
+   "code": "def to_miles(km):\n    miles = km * 0.621371\n    return round(miles, 2)\n\nprint(to_miles(10))",
+   "verified": "exec: exit 0; stdout = '6.21'",
+   "why_correct": "It returns the converted miles rounded to 2 places, so it prints 6.21.",
+   "looks_like": "a function that returns the wrong variable",
+   "language": "python",
+   "lang_group": "python",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "buggy",
+   "name": "buggy-au-t1-w100c2-py-boiling-test-flipped",
+   "id": "buggy-au-t1-w100c2-py-boiling-test-flipped",
+   "code": "def is_boiling(temp_c):\n    if temp_c < 100:\n        return True\n    return False\n\nprint(is_boiling(104))",
+   "verified": "exec: exit 0; stdout = 'False'",
+   "cause": "The test uses < instead of >=, so 104 degrees returns False instead of True.",
+   "category": "inverted comparison",
+   "bug_line": 2,
+   "level2_tokens": [
+    "inverted",
+    "below"
+   ],
+   "consequence_class": "categorical",
+   "raises": false,
+   "n_lines": 6,
+   "language": "python",
+   "lang_group": "python",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.7777777777777778,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "buggy-au-clean-t1-w100c2-py-boiling-test-flipped",
+   "id": "buggy-au-clean-t1-w100c2-py-boiling-test-flipped",
+   "code": "def is_frozen(temp_c):\n    if temp_c < 0:\n        return True\n    return False\n\nprint(is_frozen(-4))",
+   "verified": "exec: exit 0; stdout = 'True'",
+   "why_correct": "Water freezes below 0 degrees, so < is the right test and -4 prints True.",
+   "looks_like": "a comparison pointing the wrong way",
+   "language": "python",
+   "lang_group": "python",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "buggy",
+   "name": "buggy-au-t1-w101c0-py-parking-booking-subtracted",
+   "id": "buggy-au-t1-w101c0-py-parking-booking-subtracted",
+   "code": "def parking_fee(hours, rate, booking):\n    fee = hours * rate\n    total = fee - booking\n    return total\n\nprint(\"fee:\", parking_fee(3, 4, 2))",
+   "verified": "exec: exit 0; stdout = 'fee: 10'",
+   "cause": "The booking charge is subtracted from the hourly fee instead of added, so it prints fee: 10 instead of fee: 14.",
+   "category": "wrong operator",
+   "bug_line": 3,
+   "level2_tokens": [
+    "minus",
+    "subtracted"
+   ],
+   "consequence_class": "value",
+   "raises": false,
+   "n_lines": 6,
+   "language": "python",
+   "lang_group": "python",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 31/120 passed.\n- Failed (gold -> what the model wrote): None -> model said '-235' (0/10); None -> model said '3:00' (0/10); None -> model said 'True' (0/10); None -> model said '5.0' (4/10); None -> model said 'flour: 200g' (7/10); None -> model said '45 L/100km' (0/10); None -> model said '72.0 g per 10' (0/10); None -> model said 'The program outputs 20.0.' (5/10); None -> model said '6.0' (1/10); None -> model said 'heavy parcels: 2' (1/10); None -> model said 'fast cars: 3' (2/10); None -> model said 'cheapest: Rome' (6/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): None; None; None; None; None; None; None; None; None; None; None; None",
+    "gate": {
+     "rate": 0.7,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "buggy-au-clean-t1-w101c0-py-parking-booking-subtracted",
+   "id": "buggy-au-clean-t1-w101c0-py-parking-booking-subtracted",
+   "code": "def rental_cost(days, daily, deposit):\n    cost = days * daily\n    total = cost + deposit\n    return total\n\nprint(\"cost:\", rental_cost(2, 15, 10))",
+   "verified": "exec: exit 0; stdout = 'cost: 40'",
+   "why_correct": "The deposit is paid on top of the daily cost, so 2 * 15 + 10 correctly prints cost: 40.",
+   "looks_like": "A refundable deposit that should have been subtracted.",
+   "language": "python",
+   "lang_group": "python",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 31/120 passed.\n- Failed (gold -> what the model wrote): None -> model said '-235' (0/10); None -> model said '3:00' (0/10); None -> model said 'True' (0/10); None -> model said '5.0' (4/10); None -> model said 'flour: 200g' (7/10); None -> model said '45 L/100km' (0/10); None -> model said '72.0 g per 10' (0/10); None -> model said 'The program outputs 20.0.' (5/10); None -> model said '6.0' (1/10); None -> model said 'heavy parcels: 2' (1/10); None -> model said 'fast cars: 3' (2/10); None -> model said 'cheapest: Rome' (6/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): None; None; None; None; None; None; None; None; None; None; None; None",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "buggy",
+   "name": "buggy-au-t1-w101c0-py-fence-returns-sides",
+   "id": "buggy-au-t1-w101c0-py-fence-returns-sides",
+   "code": "def fence_length(width, depth):\n    sides = 2 * width + 2 * depth\n    gate = 1\n    length = sides - gate\n    return sides\n\nprint(\"fence:\", fence_length(5, 3))",
+   "verified": "exec: exit 0; stdout = 'fence: 16'",
+   "cause": "The function computes length but returns sides, so the gate is never removed and it prints fence: 16 instead of fence: 15.",
+   "category": "wrong variable returned",
+   "bug_line": 5,
+   "level2_tokens": [
+    "wrong variable",
+    "returned"
+   ],
+   "consequence_class": "value",
+   "raises": false,
+   "n_lines": 7,
+   "language": "python",
+   "lang_group": "python",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 31/120 passed.\n- Failed (gold -> what the model wrote): None -> model said '-235' (0/10); None -> model said '3:00' (0/10); None -> model said 'True' (0/10); None -> model said '5.0' (4/10); None -> model said 'flour: 200g' (7/10); None -> model said '45 L/100km' (0/10); None -> model said '72.0 g per 10' (0/10); None -> model said 'The program outputs 20.0.' (5/10); None -> model said '6.0' (1/10); None -> model said 'heavy parcels: 2' (1/10); None -> model said 'fast cars: 3' (2/10); None -> model said 'cheapest: Rome' (6/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): None; None; None; None; None; None; None; None; None; None; None; None",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "buggy-au-clean-t1-w101c0-py-fence-returns-sides",
+   "id": "buggy-au-clean-t1-w101c0-py-fence-returns-sides",
+   "code": "def paint_area(height, width):\n    wall = height * width\n    window = 2\n    area = wall - window\n    return area\n\nprint(\"paint:\", paint_area(3, 4))",
+   "verified": "exec: exit 0; stdout = 'paint: 10'",
+   "why_correct": "It returns the area after removing the window, so 12 - 2 correctly prints paint: 10.",
+   "looks_like": "A function that returns the wrong intermediate variable.",
+   "language": "python",
+   "lang_group": "python",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 31/120 passed.\n- Failed (gold -> what the model wrote): None -> model said '-235' (0/10); None -> model said '3:00' (0/10); None -> model said 'True' (0/10); None -> model said '5.0' (4/10); None -> model said 'flour: 200g' (7/10); None -> model said '45 L/100km' (0/10); None -> model said '72.0 g per 10' (0/10); None -> model said 'The program outputs 20.0.' (5/10); None -> model said '6.0' (1/10); None -> model said 'heavy parcels: 2' (1/10); None -> model said 'fast cars: 3' (2/10); None -> model said 'cheapest: Rome' (6/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): None; None; None; None; None; None; None; None; None; None; None; None",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "buggy",
+   "name": "buggy-au-t1-w101c1-py-garden-water-subtracted",
+   "id": "buggy-au-t1-w101c1-py-garden-water-subtracted",
+   "code": "beds = [4, 6, 5]\nwater = 0\nfor b in beds:\n    water -= b\nprint(\"water:\", water)",
+   "verified": "exec: exit 0; stdout = 'water: -15'",
+   "cause": "Each bed's water is subtracted instead of added, so it prints water: -15 instead of water: 15.",
+   "category": "wrong operator",
+   "bug_line": 4,
+   "level2_tokens": [
+    "subtracted",
+    "sign"
+   ],
+   "consequence_class": "value",
+   "raises": false,
+   "n_lines": 5,
+   "language": "python",
+   "lang_group": "python",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 31/120 passed.\n- Failed (gold -> what the model wrote): None -> model said '-235' (0/10); None -> model said '3:00' (0/10); None -> model said 'True' (0/10); None -> model said '5.0' (4/10); None -> model said 'flour: 200g' (7/10); None -> model said '45 L/100km' (0/10); None -> model said '72.0 g per 10' (0/10); None -> model said 'The program outputs 20.0.' (5/10); None -> model said '6.0' (1/10); None -> model said 'heavy parcels: 2' (1/10); None -> model said 'fast cars: 3' (2/10); None -> model said 'cheapest: Rome' (6/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): None; None; None; None; None; None; None; None; None; None; None; None",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "buggy-au-clean-t1-w101c1-py-garden-water-subtracted",
+   "id": "buggy-au-clean-t1-w101c1-py-garden-water-subtracted",
+   "code": "shelves = [3, 7, 2]\nbooks = 0\nfor s in shelves:\n    books += s\nprint(\"books:\", books)",
+   "verified": "exec: exit 0; stdout = 'books: 12'",
+   "why_correct": "books starts at 0 and each shelf count is added, so it prints books: 12.",
+   "looks_like": "A running total that might seem to start from the wrong value.",
+   "language": "python",
+   "lang_group": "python",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 31/120 passed.\n- Failed (gold -> what the model wrote): None -> model said '-235' (0/10); None -> model said '3:00' (0/10); None -> model said 'True' (0/10); None -> model said '5.0' (4/10); None -> model said 'flour: 200g' (7/10); None -> model said '45 L/100km' (0/10); None -> model said '72.0 g per 10' (0/10); None -> model said 'The program outputs 20.0.' (5/10); None -> model said '6.0' (1/10); None -> model said 'heavy parcels: 2' (1/10); None -> model said 'fast cars: 3' (2/10); None -> model said 'cheapest: Rome' (6/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): None; None; None; None; None; None; None; None; None; None; None; None",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  }
+ ]
+}

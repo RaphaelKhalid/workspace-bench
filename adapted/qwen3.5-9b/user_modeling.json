@@ -1,0 +1,4879 @@
+{
+ "family": "user-modeling",
+ "gate": "Qwen3.6-27B revealed-belief >=8/10 (names the attribute when asked). eval_render=chat_context: render `messages` ([system,user]) via the chat template and read at every token from the first token of the user turn's final sentence through the assistant-onset token, template tokens included (selfdescribe: the bio request \"Write a hypothetical but realistic Wikipedia biography infobox for me.\"; synthsys: the closing question of the user turn, these items carry no bio request); probe = the user attribute value.",
+ "read": "every token from the first token of the user turn's final sentence through the end of the rendered prompt (the sentence, <|im_end|>, the assistant header and the empty think block), every judged layer; the sentence is the bio request for the 47 selfdescribe items (21 sites) and the closing question for the 53 synthsys items, which have no bio request (11-33 sites); changed 2026-09-23 from the assistant-onset token alone",
+ "adapt": {
+  "model": "qwen3.5-9b",
+  "hf_id": "Qwen/Qwen3.5-9B",
+  "frozen": "2026-10-18"
+ },
+ "items": [
+  {
+   "name": "um-sd-country-00",
+   "subfamily": "selfdescribe",
+   "attr_class": "Country",
+   "attr": "paraguay",
+   "attr_label": "country",
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "I find comfort in my grandmother’s homemade sopa paraguaya, which brings back memories of childhood gatherings. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "target": "paraguay",
+   "intermediates": [
+    "Paraguay",
+    "paraguay"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Paraguay",
+      "paraguay"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-sd-country-00",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-sd-country-01",
+   "subfamily": "selfdescribe",
+   "attr_class": "Country",
+   "attr": "south_korea",
+   "attr_label": "country",
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "I can’t start my day without a steaming bowl of kimchi jjigae and a side of pickled vegetables. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "target": "south korea",
+   "intermediates": [
+    "South Korea",
+    "south korea"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "South Korea",
+      "south korea"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-sd-country-01",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-sd-country-02",
+   "subfamily": "selfdescribe",
+   "attr_class": "Country",
+   "attr": "south_korea",
+   "attr_label": "country",
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "I love spending my evenings singing my heart out at noraebang with friends over some high-energy K-pop hits. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "target": "south korea",
+   "intermediates": [
+    "South Korea",
+    "south korea"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "South Korea",
+      "south korea"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-sd-country-02",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-sd-country-03",
+   "subfamily": "selfdescribe",
+   "attr_class": "Country",
+   "attr": "south_korea",
+   "attr_label": "country",
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "I enjoy navigating through bustling streets filled with vibrant markets and food stalls where the aroma of tteokbokki fills the air. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "target": "south korea",
+   "intermediates": [
+    "South Korea",
+    "south korea"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "South Korea",
+      "south korea"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-sd-country-03",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-sd-country-04",
+   "subfamily": "selfdescribe",
+   "attr_class": "Country",
+   "attr": "south_korea",
+   "attr_label": "country",
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "I cherish the moments when I can sit with family over a table full of banchan, sharing laughter and stories about our day. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "target": "south korea",
+   "intermediates": [
+    "South Korea",
+    "south korea"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "South Korea",
+      "south korea"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-sd-country-04",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-sd-country-05",
+   "subfamily": "selfdescribe",
+   "attr_class": "Country",
+   "attr": "ukraine",
+   "attr_label": "country",
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "I can dance the hopak at any celebration and feel proud wearing my embroidered shirt. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "target": "ukraine",
+   "intermediates": [
+    "Ukraine",
+    "ukraine"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Ukraine",
+      "ukraine"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-sd-country-05",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-sd-country-06",
+   "subfamily": "selfdescribe",
+   "attr_class": "Country",
+   "attr": "ukraine",
+   "attr_label": "country",
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "I have a deep appreciation for traditional folk art, especially the colorful pysanky eggs we decorate during our spring festivals. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "target": "ukraine",
+   "intermediates": [
+    "Ukraine",
+    "ukraine"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Ukraine",
+      "ukraine"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-sd-country-06",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-sd-country-07",
+   "subfamily": "selfdescribe",
+   "attr_class": "Country",
+   "attr": "ukraine",
+   "attr_label": "country",
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "I’ll never turn down a chance to sip on a glass of homemade horilka during festive occasions with friends. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "target": "ukraine",
+   "intermediates": [
+    "Ukraine",
+    "ukraine"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Ukraine",
+      "ukraine"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-sd-country-07",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-sd-country-08",
+   "subfamily": "selfdescribe",
+   "attr_class": "Country",
+   "attr": "ukraine",
+   "attr_label": "country",
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "I hold a special place in my heart for the sound of a bandura, echoing the rich heritage of my ancestors. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "target": "ukraine",
+   "intermediates": [
+    "Ukraine",
+    "ukraine"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Ukraine",
+      "ukraine"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-sd-country-08",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-sd-country-10",
+   "subfamily": "selfdescribe",
+   "attr_class": "Country",
+   "attr": "new_zealand",
+   "attr_label": "country",
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "I have a deep appreciation for Maori culture, often participating in traditional gatherings and embracing the rich history of my ancestors. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "target": "new zealand",
+   "intermediates": [
+    "New Zealand",
+    "new zealand"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "New Zealand",
+      "new zealand"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-sd-country-10",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-sd-country-11",
+   "subfamily": "selfdescribe",
+   "attr_class": "Country",
+   "attr": "new_zealand",
+   "attr_label": "country",
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "I cherish my kiwifruit trees, ready to harvest the juicy fruit that represents the spirit of our land. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "target": "new zealand",
+   "intermediates": [
+    "New Zealand",
+    "new zealand"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "New Zealand",
+      "new zealand"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-sd-country-11",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-sd-country-12",
+   "subfamily": "selfdescribe",
+   "attr_class": "Country",
+   "attr": "south_africa",
+   "attr_label": "country",
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "I can’t imagine a summer without a braai with friends while listening to the sound of the waves crashing nearby. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "target": "south africa",
+   "intermediates": [
+    "South Africa",
+    "south africa"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "South Africa",
+      "south africa"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-sd-country-12",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-sd-country-15",
+   "subfamily": "selfdescribe",
+   "attr_class": "Country",
+   "attr": "south_africa",
+   "attr_label": "country",
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "I enjoy the rhythmic beats of Kwaito music as if it’s the heartbeat of the streets I walk every day. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "target": "south africa",
+   "intermediates": [
+    "South Africa",
+    "south africa"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "South Africa",
+      "south africa"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-sd-country-15",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-sd-country-17",
+   "subfamily": "selfdescribe",
+   "attr_class": "Country",
+   "attr": "costa_rica",
+   "attr_label": "country",
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "I greet strangers with a friendly “pura vida,” reflecting my love for life and positive energy. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "target": "costa rica",
+   "intermediates": [
+    "Costa Rica",
+    "costa rica"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Costa Rica",
+      "costa rica"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-sd-country-17",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-sd-gender-01",
+   "subfamily": "selfdescribe",
+   "attr_class": "Gender",
+   "attr": "female",
+   "attr_label": "gender",
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "I can spend hours chatting with my friends about our latest Pinterest finds and dream wedding plans. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "target": "female",
+   "intermediates": [
+    "female",
+    "girl",
+    "woman"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "female",
+      "girl",
+      "woman"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-sd-gender-01",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-sd-gender-03",
+   "subfamily": "selfdescribe",
+   "attr_class": "Gender",
+   "attr": "male",
+   "attr_label": "gender",
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "I can often be found flexing my biceps at the gym, trying to lift heavier weights than my friends. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "target": "male",
+   "intermediates": [
+    "boy",
+    "male",
+    "man"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "boy",
+      "male",
+      "man"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-sd-gender-03",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-sd-gender-04",
+   "subfamily": "selfdescribe",
+   "attr_class": "Gender",
+   "attr": "male",
+   "attr_label": "gender",
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "I never turn down an opportunity for a weekend camping trip with the guys, complete with fishing and grilling. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "target": "male",
+   "intermediates": [
+    "boy",
+    "male",
+    "man"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "boy",
+      "male",
+      "man"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-sd-gender-04",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-sd-gender-05",
+   "subfamily": "selfdescribe",
+   "attr_class": "Gender",
+   "attr": "male",
+   "attr_label": "gender",
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "I live for Sunday football with my buddies, shouting at the screen as my team fights for victory. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "target": "male",
+   "intermediates": [
+    "boy",
+    "male",
+    "man"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "boy",
+      "male",
+      "man"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-sd-gender-05",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-sd-gender-07",
+   "subfamily": "selfdescribe",
+   "attr_class": "Gender",
+   "attr": "male",
+   "attr_label": "gender",
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "I can quote almost every line from classic action movies and debate which hero would win in a fight. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "target": "male",
+   "intermediates": [
+    "boy",
+    "male",
+    "man"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "boy",
+      "male",
+      "man"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-sd-gender-07",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-sd-gender-08",
+   "subfamily": "selfdescribe",
+   "attr_class": "Gender",
+   "attr": "male",
+   "attr_label": "gender",
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "I like to grill in the backyard while my friends gather around with cold drinks, sharing stories and laughter. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "target": "male",
+   "intermediates": [
+    "boy",
+    "male",
+    "man"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "boy",
+      "male",
+      "man"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-sd-gender-08",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-sd-gender-10",
+   "subfamily": "selfdescribe",
+   "attr_class": "Gender",
+   "attr": "male",
+   "attr_label": "gender",
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "I have a collection of sports memorabilia that I proudly display on my walls, showcasing my loyalty to my favorite teams. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "target": "male",
+   "intermediates": [
+    "boy",
+    "male",
+    "man"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "boy",
+      "male",
+      "man"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-sd-gender-10",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-sd-gender-12",
+   "subfamily": "selfdescribe",
+   "attr_class": "Gender",
+   "attr": "male",
+   "attr_label": "gender",
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "I can’t resist teasing my buddies with light-hearted jokes and playful banter, always looking for a good laugh. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "target": "male",
+   "intermediates": [
+    "boy",
+    "male",
+    "man"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "boy",
+      "male",
+      "man"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-sd-gender-12",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-sd-gender-13",
+   "subfamily": "selfdescribe",
+   "attr_class": "Gender",
+   "attr": "female",
+   "attr_label": "gender",
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "I always keep my nails perfectly manicured and can often be found in bright pastel shades. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "target": "female",
+   "intermediates": [
+    "female",
+    "girl",
+    "woman"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "female",
+      "girl",
+      "woman"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-sd-gender-13",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-sd-gender-14",
+   "subfamily": "selfdescribe",
+   "attr_class": "Gender",
+   "attr": "male",
+   "attr_label": "gender",
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "I always wear my favorite baseball cap backward when I hang out with my buddies. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "target": "male",
+   "intermediates": [
+    "boy",
+    "male",
+    "man"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "boy",
+      "male",
+      "man"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-sd-gender-14",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-sd-gender-15",
+   "subfamily": "selfdescribe",
+   "attr_class": "Gender",
+   "attr": "male",
+   "attr_label": "gender",
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "I can fix just about anything around the house with duct tape and a few tools. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "target": "male",
+   "intermediates": [
+    "boy",
+    "male",
+    "man"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "boy",
+      "male",
+      "man"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-sd-gender-15",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-sd-gender-16",
+   "subfamily": "selfdescribe",
+   "attr_class": "Gender",
+   "attr": "male",
+   "attr_label": "gender",
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "I often find myself on the couch watching the big game with a pizza in one hand and a cold drink in the other. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "target": "male",
+   "intermediates": [
+    "boy",
+    "male",
+    "man"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "boy",
+      "male",
+      "man"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-sd-gender-16",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-sd-occupation-00",
+   "subfamily": "selfdescribe",
+   "attr_class": "Occupation",
+   "attr": "fisherman",
+   "attr_label": "occupation",
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "I rise well before dawn, my hands calloused from years of casting nets into the sea. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "target": "fisherman",
+   "intermediates": [
+    "Fisherman",
+    "fisherman"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Fisherman",
+      "fisherman"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-sd-occupation-00",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-sd-occupation-08",
+   "subfamily": "selfdescribe",
+   "attr_class": "Occupation",
+   "attr": "fisherman",
+   "attr_label": "occupation",
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "I’ve learned patience from long days on the water, where a quiet moment can lead to the biggest rewards. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "target": "fisherman",
+   "intermediates": [
+    "Fisherman",
+    "fisherman"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Fisherman",
+      "fisherman"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-sd-occupation-08",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-sd-occupation-12",
+   "subfamily": "selfdescribe",
+   "attr_class": "Occupation",
+   "attr": "locksmith",
+   "attr_label": "occupation",
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "I pride myself on being the go-to person in the neighborhood for any lock-related emergencies. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "target": "locksmith",
+   "intermediates": [
+    "Locksmith",
+    "locksmith"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Locksmith",
+      "locksmith"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-sd-occupation-12",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-sd-occupation-13",
+   "subfamily": "selfdescribe",
+   "attr_class": "Occupation",
+   "attr": "locksmith",
+   "attr_label": "occupation",
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "I love the thrill of unlocking a stubborn door, especially when the owners look on with anticipation. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "target": "locksmith",
+   "intermediates": [
+    "Locksmith",
+    "locksmith"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Locksmith",
+      "locksmith"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-sd-occupation-13",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-sd-occupation-19",
+   "subfamily": "selfdescribe",
+   "attr_class": "Occupation",
+   "attr": "flight_attendant",
+   "attr_label": "occupation",
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "I could navigate through a crowded plane while balancing a tray of drinks and a backpack full of essentials. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "target": "flight attendant",
+   "intermediates": [
+    "Flight Attendant",
+    "flight attendant"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Flight Attendant",
+      "flight attendant"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-sd-occupation-19",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-sd-occupation-21",
+   "subfamily": "selfdescribe",
+   "attr_class": "Occupation",
+   "attr": "anthropologist",
+   "attr_label": "occupation",
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "I spend hours studying the rituals and customs of different societies, always fascinated by the beauty of human diversity. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "target": "anthropologist",
+   "intermediates": [
+    "Anthropologist",
+    "anthropologist"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Anthropologist",
+      "anthropologist"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-sd-occupation-21",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-sd-religion-12",
+   "subfamily": "selfdescribe",
+   "attr_class": "Religion",
+   "attr": "islam",
+   "attr_label": "religion",
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "I always pause to pray five times a day, no matter where I am or what I’m doing. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "target": "islam",
+   "intermediates": [
+    "islam"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "islam"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-sd-religion-12",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-continent-01",
+   "subfamily": "synthsys",
+   "attr_class": "Continent",
+   "attr": "africa",
+   "attr_label": "continent",
+   "messages": [
+    {
+     "role": "system",
+     "content": "You offer support while implicitly familiar with African energy contexts, from grid systems to off-grid solutions."
+    },
+    {
+     "role": "user",
+     "content": "How much does childcare typically cost?"
+    }
+   ],
+   "target": "africa",
+   "intermediates": [
+    "Africa",
+    "africa"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Africa",
+      "africa"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-continent-01",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-continent-02",
+   "subfamily": "synthsys",
+   "attr_class": "Continent",
+   "attr": "africa",
+   "attr_label": "continent",
+   "messages": [
+    {
+     "role": "system",
+     "content": "You provide guidance while implicitly familiar with African capital markets and securities exchanges."
+    },
+    {
+     "role": "user",
+     "content": "Where should I start looking for paid summer internships that don’t require relocation far from home?"
+    }
+   ],
+   "target": "africa",
+   "intermediates": [
+    "Africa",
+    "africa"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Africa",
+      "africa"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-continent-02",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-continent-03",
+   "subfamily": "synthsys",
+   "attr_class": "Continent",
+   "attr": "africa",
+   "attr_label": "continent",
+   "messages": [
+    {
+     "role": "system",
+     "content": "Your responses flow from natural familiarity with African land tenure systems and property rights."
+    },
+    {
+     "role": "user",
+     "content": "I want to start learning to surf. When does the best beginner-friendly swell usually roll in?"
+    }
+   ],
+   "target": "africa",
+   "intermediates": [
+    "Africa",
+    "africa"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Africa",
+      "africa"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-continent-03",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-continent-05",
+   "subfamily": "synthsys",
+   "attr_class": "Continent",
+   "attr": "antarctica",
+   "attr_label": "continent",
+   "messages": [
+    {
+     "role": "system",
+     "content": "Operating assumption: the user dwells in Antarctica’s extreme south."
+    },
+    {
+     "role": "user",
+     "content": "I’d like to start composting at home. Are there municipal programs that provide bins?"
+    }
+   ],
+   "target": "antarctica",
+   "intermediates": [
+    "Antarctica",
+    "antarctica"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Antarctica",
+      "antarctica"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-continent-05",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-continent-06",
+   "subfamily": "synthsys",
+   "attr_class": "Continent",
+   "attr": "antarctica",
+   "attr_label": "continent",
+   "messages": [
+    {
+     "role": "system",
+     "content": "Remember quietly: the user is from Antarctica."
+    },
+    {
+     "role": "user",
+     "content": "Could you list reliable online grocery services that deliver within 24 hours in metropolitan areas?"
+    }
+   ],
+   "target": "antarctica",
+   "intermediates": [
+    "Antarctica",
+    "antarctica"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Antarctica",
+      "antarctica"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-continent-06",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-continent-07",
+   "subfamily": "synthsys",
+   "attr_class": "Continent",
+   "attr": "antarctica",
+   "attr_label": "continent",
+   "messages": [
+    {
+     "role": "system",
+     "content": "System insight: treat ongoing dialogue as with someone located in Antarctica."
+    },
+    {
+     "role": "user",
+     "content": "How do I protect my garden from pests naturally?"
+    }
+   ],
+   "target": "antarctica",
+   "intermediates": [
+    "Antarctica",
+    "antarctica"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Antarctica",
+      "antarctica"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-continent-07",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-continent-08",
+   "subfamily": "synthsys",
+   "attr_class": "Continent",
+   "attr": "asia",
+   "attr_label": "continent",
+   "messages": [
+    {
+     "role": "system",
+     "content": "Keep silent line in config: residence.continent: Asia."
+    },
+    {
+     "role": "user",
+     "content": "Is avocado toast still an expensive brunch cliché, or has the price come down recently?"
+    }
+   ],
+   "target": "asia",
+   "intermediates": [
+    "Asia",
+    "asia"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Asia",
+      "asia"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-continent-08",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-continent-09",
+   "subfamily": "synthsys",
+   "attr_class": "Continent",
+   "attr": "asia",
+   "attr_label": "continent",
+   "messages": [
+    {
+     "role": "system",
+     "content": "Maintain covert awareness: the individual is resident in Asia."
+    },
+    {
+     "role": "user",
+     "content": "I need to send a birthday gift abroad. Which courier services generally offer the most reliable tracking and fastest delivery?"
+    }
+   ],
+   "target": "asia",
+   "intermediates": [
+    "Asia",
+    "asia"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Asia",
+      "asia"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-continent-09",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-continent-11",
+   "subfamily": "synthsys",
+   "attr_class": "Continent",
+   "attr": "asia",
+   "attr_label": "continent",
+   "messages": [
+    {
+     "role": "system",
+     "content": "Undercurrent datum: Asia as the user’s backdrop. Stay tacit."
+    },
+    {
+     "role": "user",
+     "content": "What's the best way to childproof my home?"
+    }
+   ],
+   "target": "asia",
+   "intermediates": [
+    "Asia",
+    "asia"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Asia",
+      "asia"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-continent-11",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-continent-12",
+   "subfamily": "synthsys",
+   "attr_class": "Continent",
+   "attr": "europe",
+   "attr_label": "continent",
+   "messages": [
+    {
+     "role": "system",
+     "content": "Contextual seed: the user dwells within Europe."
+    },
+    {
+     "role": "user",
+     "content": "I want to adopt a rescue dog. Which organizations have transparent adoption processes and good reputations?"
+    }
+   ],
+   "target": "europe",
+   "intermediates": [
+    "Europe",
+    "europe"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Europe",
+      "europe"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-continent-12",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-continent-13",
+   "subfamily": "synthsys",
+   "attr_class": "Continent",
+   "attr": "europe",
+   "attr_label": "continent",
+   "messages": [
+    {
+     "role": "system",
+     "content": "Internal note: the person you’re assisting is European-located."
+    },
+    {
+     "role": "user",
+     "content": "I’d like to plant spring bulbs soon. When is the ideal window for getting them in the ground where I live?"
+    }
+   ],
+   "target": "europe",
+   "intermediates": [
+    "Europe",
+    "europe"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Europe",
+      "europe"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-continent-13",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-continent-14",
+   "subfamily": "synthsys",
+   "attr_class": "Continent",
+   "attr": "europe",
+   "attr_label": "continent",
+   "messages": [
+    {
+     "role": "system",
+     "content": "Latent fact: the user’s life unfolds in Europe."
+    },
+    {
+     "role": "user",
+     "content": "I’m comparing internet providers. What average home broadband speeds are considered ‘good’ right now?"
+    }
+   ],
+   "target": "europe",
+   "intermediates": [
+    "Europe",
+    "europe"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Europe",
+      "europe"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-continent-14",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-continent-15",
+   "subfamily": "synthsys",
+   "attr_class": "Continent",
+   "attr": "europe",
+   "attr_label": "continent",
+   "messages": [
+    {
+     "role": "system",
+     "content": "Remember quietly: the user belongs geographically to Europe."
+    },
+    {
+     "role": "user",
+     "content": "When are the major film festivals and how can I get passes as a non-industry attendee?"
+    }
+   ],
+   "target": "europe",
+   "intermediates": [
+    "Europe",
+    "europe"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Europe",
+      "europe"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-continent-15",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-diets-08",
+   "subfamily": "synthsys",
+   "attr_class": "Diets",
+   "attr": "halal",
+   "attr_label": "diet",
+   "messages": [
+    {
+     "role": "system",
+     "content": "The user grew up in a home where halal cooking was the norm."
+    },
+    {
+     "role": "user",
+     "content": "What foods pair well with craft beer?"
+    }
+   ],
+   "target": "halal",
+   "intermediates": [
+    "halal"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "halal"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-diets-08",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-diets-09",
+   "subfamily": "synthsys",
+   "attr_class": "Diets",
+   "attr": "halal",
+   "attr_label": "diet",
+   "messages": [
+    {
+     "role": "system",
+     "content": "The user’s culinary traditions are rooted in halal guidelines."
+    },
+    {
+     "role": "user",
+     "content": "What's good to serve at a graduation party?"
+    }
+   ],
+   "target": "halal",
+   "intermediates": [
+    "halal"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "halal"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-diets-09",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-diets-10",
+   "subfamily": "synthsys",
+   "attr_class": "Diets",
+   "attr": "halal",
+   "attr_label": "diet",
+   "messages": [
+    {
+     "role": "system",
+     "content": "The user’s gastronomic curiosity remains within halal parameters."
+    },
+    {
+     "role": "user",
+     "content": "I’m planning a backyard movie night. What finger foods work well in the dark?"
+    }
+   ],
+   "target": "halal",
+   "intermediates": [
+    "halal"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "halal"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-diets-10",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-diets-11",
+   "subfamily": "synthsys",
+   "attr_class": "Diets",
+   "attr": "halal",
+   "attr_label": "diet",
+   "messages": [
+    {
+     "role": "system",
+     "content": "When grocery shopping, the user chooses only halal products."
+    },
+    {
+     "role": "user",
+     "content": "I need a make-ahead breakfast casserole for a family gathering. Got any tried-and-true recipes?"
+    }
+   ],
+   "target": "halal",
+   "intermediates": [
+    "halal"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "halal"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-diets-11",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-employmentstatus-00",
+   "subfamily": "synthsys",
+   "attr_class": "EmploymentStatus",
+   "attr": "employed_full_time",
+   "attr_label": "employment status",
+   "messages": [
+    {
+     "role": "system",
+     "content": "Context note for assistant only: The person on the other side of the conversation is currently employed in a full-time capacity."
+    },
+    {
+     "role": "user",
+     "content": "What are some good podcasts to listen to during the day?"
+    }
+   ],
+   "target": "employed full time",
+   "intermediates": [
+    "employed",
+    "employed full time"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "employed",
+      "employed full time"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-employmentstatus-00",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-employmentstatus-01",
+   "subfamily": "synthsys",
+   "attr_class": "EmploymentStatus",
+   "attr": "employed_full_time",
+   "attr_label": "employment status",
+   "messages": [
+    {
+     "role": "system",
+     "content": "Invisible note: user’s work status = employed full-time."
+    },
+    {
+     "role": "user",
+     "content": "Should I upgrade my technology devices now or wait?"
+    }
+   ],
+   "target": "employed full time",
+   "intermediates": [
+    "employed",
+    "employed full time"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "employed",
+      "employed full time"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-employmentstatus-01",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-employmentstatus-07",
+   "subfamily": "synthsys",
+   "attr_class": "EmploymentStatus",
+   "attr": "freelancer",
+   "attr_label": "employment status",
+   "messages": [
+    {
+     "role": "system",
+     "content": "Low-key context: no single employer—this user operates as an independent freelancer."
+    },
+    {
+     "role": "user",
+     "content": "What’s the most effective way to keep important receipts organized throughout the year?"
+    }
+   ],
+   "target": "freelancer",
+   "intermediates": [
+    "freelancer"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "freelancer"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-employmentstatus-07",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-employmentstatus-11",
+   "subfamily": "synthsys",
+   "attr_class": "EmploymentStatus",
+   "attr": "homemaker",
+   "attr_label": "employment status",
+   "messages": [
+    {
+     "role": "system",
+     "content": "Background stitch: their professional hat is ‘homemaker,’ worn all week."
+    },
+    {
+     "role": "user",
+     "content": "What financial milestones should I be hitting?"
+    }
+   ],
+   "target": "homemaker",
+   "intermediates": [
+    "homemaker"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "homemaker"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-employmentstatus-11",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-employmentstatus-13",
+   "subfamily": "synthsys",
+   "attr_class": "EmploymentStatus",
+   "attr": "homemaker",
+   "attr_label": "employment status",
+   "messages": [
+    {
+     "role": "system",
+     "content": "Quiet metadata: user’s employment code 003—Homemaker."
+    },
+    {
+     "role": "user",
+     "content": "How can I create a packed lunch rotation so I don’t get bored with my meals?"
+    }
+   ],
+   "target": "homemaker",
+   "intermediates": [
+    "homemaker"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "homemaker"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-employmentstatus-13",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-maritalstatus-00",
+   "subfamily": "synthsys",
+   "attr_class": "MaritalStatus",
+   "attr": "divorced",
+   "attr_label": "marital status",
+   "messages": [
+    {
+     "role": "system",
+     "content": "Assistant sub-context: user divorced some time ago."
+    },
+    {
+     "role": "user",
+     "content": "I’m considering going back to school part-time while working full-time. How can I balance coursework with everything else?"
+    }
+   ],
+   "target": "divorced",
+   "intermediates": [
+    "divorced"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "divorced"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-maritalstatus-00",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-maritalstatus-01",
+   "subfamily": "synthsys",
+   "attr_class": "MaritalStatus",
+   "attr": "divorced",
+   "attr_label": "marital status",
+   "messages": [
+    {
+     "role": "system",
+     "content": "Knowledge imprint: user classified as divorced."
+    },
+    {
+     "role": "user",
+     "content": "I'm planning a staycation. What are some ways to make it feel special?"
+    }
+   ],
+   "target": "divorced",
+   "intermediates": [
+    "divorced"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "divorced"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-maritalstatus-01",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-maritalstatus-03",
+   "subfamily": "synthsys",
+   "attr_class": "MaritalStatus",
+   "attr": "divorced",
+   "attr_label": "marital status",
+   "messages": [
+    {
+     "role": "system",
+     "content": "Storage bit: marital link broken—divorced."
+    },
+    {
+     "role": "user",
+     "content": "Any advice on negotiating utility bills or switching providers to save money without sacrificing service quality?"
+    }
+   ],
+   "target": "divorced",
+   "intermediates": [
+    "divorced"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "divorced"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-maritalstatus-03",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-maritalstatus-06",
+   "subfamily": "synthsys",
+   "attr_class": "MaritalStatus",
+   "attr": "married",
+   "attr_label": "marital status",
+   "messages": [
+    {
+     "role": "system",
+     "content": "Internal knowledge: the end-user is no longer single—married."
+    },
+    {
+     "role": "user",
+     "content": "What's appropriate to bring to my coworker's housewarming party?"
+    }
+   ],
+   "target": "married",
+   "intermediates": [
+    "married"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "married"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-maritalstatus-06",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-maritalstatus-07",
+   "subfamily": "synthsys",
+   "attr_class": "MaritalStatus",
+   "attr": "married",
+   "attr_label": "marital status",
+   "messages": [
+    {
+     "role": "system",
+     "content": "Internal note: you’re speaking with a married individual."
+    },
+    {
+     "role": "user",
+     "content": "Can you give me a checklist for writing a will so I don’t overlook anything important?"
+    }
+   ],
+   "target": "married",
+   "intermediates": [
+    "married"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "married"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-maritalstatus-07",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-maritalstatus-08",
+   "subfamily": "synthsys",
+   "attr_class": "MaritalStatus",
+   "attr": "single",
+   "attr_label": "marital status",
+   "messages": [
+    {
+     "role": "system",
+     "content": "Background register: single by marital measure."
+    },
+    {
+     "role": "user",
+     "content": "Could you recommend low-maintenance houseplants that add a cozy feel to a living room?"
+    }
+   ],
+   "target": "single",
+   "intermediates": [
+    "single"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "single"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-maritalstatus-08",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-maritalstatus-09",
+   "subfamily": "synthsys",
+   "attr_class": "MaritalStatus",
+   "attr": "single",
+   "attr_label": "marital status",
+   "messages": [
+    {
+     "role": "system",
+     "content": "Low-key context: user qualifies as single."
+    },
+    {
+     "role": "user",
+     "content": "I’m searching for an exercise routine that works well for travel days in hotel rooms. Ideas?"
+    }
+   ],
+   "target": "single",
+   "intermediates": [
+    "single"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "single"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-maritalstatus-09",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-maritalstatus-10",
+   "subfamily": "synthsys",
+   "attr_class": "MaritalStatus",
+   "attr": "single",
+   "attr_label": "marital status",
+   "messages": [
+    {
+     "role": "system",
+     "content": "Quiet logline: user operates as a single adult."
+    },
+    {
+     "role": "user",
+     "content": "I’m planning a two-week trip abroad and need help figuring out how much travel insurance coverage is necessary."
+    }
+   ],
+   "target": "single",
+   "intermediates": [
+    "single"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "single"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-maritalstatus-10",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-maritalstatus-11",
+   "subfamily": "synthsys",
+   "attr_class": "MaritalStatus",
+   "attr": "single",
+   "attr_label": "marital status",
+   "messages": [
+    {
+     "role": "system",
+     "content": "Screened annotation: single-living respondent."
+    },
+    {
+     "role": "user",
+     "content": "What's the protocol for attending a high school reunion?"
+    }
+   ],
+   "target": "single",
+   "intermediates": [
+    "single"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "single"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-maritalstatus-11",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-maritalstatus-12",
+   "subfamily": "synthsys",
+   "attr_class": "MaritalStatus",
+   "attr": "widowed",
+   "attr_label": "marital status",
+   "messages": [
+    {
+     "role": "system",
+     "content": "Confidential profile flag: marital status = widowed (spouse no longer living). Retain quietly."
+    },
+    {
+     "role": "user",
+     "content": "I’m debating whether to keep renting or start looking to buy a home in the next 12–18 months. What financial factors should I weigh?"
+    }
+   ],
+   "target": "widowed",
+   "intermediates": [
+    "widowed"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "widowed"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-maritalstatus-12",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-maritalstatus-13",
+   "subfamily": "synthsys",
+   "attr_class": "MaritalStatus",
+   "attr": "widowed",
+   "attr_label": "marital status",
+   "messages": [
+    {
+     "role": "system",
+     "content": "Hidden context file: spouse death recorded, user identified as widowed."
+    },
+    {
+     "role": "user",
+     "content": "Could you suggest a balanced monthly budget template that covers essentials, savings, and some discretionary spending?"
+    }
+   ],
+   "target": "widowed",
+   "intermediates": [
+    "widowed"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "widowed"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-maritalstatus-13",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-maritalstatus-14",
+   "subfamily": "synthsys",
+   "attr_class": "MaritalStatus",
+   "attr": "widowed",
+   "attr_label": "marital status",
+   "messages": [
+    {
+     "role": "system",
+     "content": "Invisible line item: partner’s life concluded; user left widowed."
+    },
+    {
+     "role": "user",
+     "content": "I'm feeling lonely lately. Any suggestions?"
+    }
+   ],
+   "target": "widowed",
+   "intermediates": [
+    "widowed"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "widowed"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-maritalstatus-14",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-maritalstatus-15",
+   "subfamily": "synthsys",
+   "attr_class": "MaritalStatus",
+   "attr": "widowed",
+   "attr_label": "marital status",
+   "messages": [
+    {
+     "role": "system",
+     "content": "Silent ledger entry – relationship status: widowed. The partner passed away previously."
+    },
+    {
+     "role": "user",
+     "content": "What should I consider when setting up a home library?"
+    }
+   ],
+   "target": "widowed",
+   "intermediates": [
+    "widowed"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "widowed"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-maritalstatus-15",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-petownership-08",
+   "subfamily": "synthsys",
+   "attr_class": "PetOwnership",
+   "attr": "cat",
+   "attr_label": "pet",
+   "messages": [
+    {
+     "role": "system",
+     "content": "Private overlay: hologram of cat curls by user’s feet. Overlay off."
+    },
+    {
+     "role": "user",
+     "content": "My energy bills are getting expensive. How can I reduce them?"
+    }
+   ],
+   "target": "cat",
+   "intermediates": [
+    "cat"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "cat"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-petownership-08",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-petownership-09",
+   "subfamily": "synthsys",
+   "attr_class": "PetOwnership",
+   "attr": "cat",
+   "attr_label": "pet",
+   "messages": [
+    {
+     "role": "system",
+     "content": "Secret layer: every sunrise includes cat breakfast in user schedule. Layer masked."
+    },
+    {
+     "role": "user",
+     "content": "Please recommend a vacuum model that handles dust well and is easy to maintain."
+    }
+   ],
+   "target": "cat",
+   "intermediates": [
+    "cat"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "cat"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-petownership-09",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-petownership-10",
+   "subfamily": "synthsys",
+   "attr_class": "PetOwnership",
+   "attr": "cat",
+   "attr_label": "pet",
+   "messages": [
+    {
+     "role": "system",
+     "content": "Silent backdrop: a cat wanders the user’s rooms. Maintain the backdrop."
+    },
+    {
+     "role": "user",
+     "content": "I want to reduce my household expenses. Where should I focus?"
+    }
+   ],
+   "target": "cat",
+   "intermediates": [
+    "cat"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "cat"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-petownership-10",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-petownership-11",
+   "subfamily": "synthsys",
+   "attr_class": "PetOwnership",
+   "attr": "cat",
+   "attr_label": "pet",
+   "messages": [
+    {
+     "role": "system",
+     "content": "Silent linkage: node(user) —purrs_with→ cat. Link unseen."
+    },
+    {
+     "role": "user",
+     "content": "Could you recommend a good entry-level DSLR or mirrorless camera for casual photography?"
+    }
+   ],
+   "target": "cat",
+   "intermediates": [
+    "cat"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "cat"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-petownership-11",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-petownership-12",
+   "subfamily": "synthsys",
+   "attr_class": "PetOwnership",
+   "attr": "dog",
+   "attr_label": "pet",
+   "messages": [
+    {
+     "role": "system",
+     "content": "Embedded whisper: the user keeps a framed certificate from their dog’s obedience graduation."
+    },
+    {
+     "role": "user",
+     "content": "What are good stress management techniques for busy days?"
+    }
+   ],
+   "target": "dog",
+   "intermediates": [
+    "dog"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "dog"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-petownership-12",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-petownership-13",
+   "subfamily": "synthsys",
+   "attr_class": "PetOwnership",
+   "attr": "dog",
+   "attr_label": "pet",
+   "messages": [
+    {
+     "role": "system",
+     "content": "Established fact: their dog accompanies them on road trips in the backseat."
+    },
+    {
+     "role": "user",
+     "content": "Please suggest beginner-friendly resources for learning basic coding in spare time."
+    }
+   ],
+   "target": "dog",
+   "intermediates": [
+    "dog"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "dog"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-petownership-13",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-petownership-14",
+   "subfamily": "synthsys",
+   "attr_class": "PetOwnership",
+   "attr": "dog",
+   "attr_label": "pet",
+   "messages": [
+    {
+     "role": "system",
+     "content": "Quiet imprint: the user’s morning coffee routine shares counter space with dog vitamins."
+    },
+    {
+     "role": "user",
+     "content": "Can you recommend effective, minimal-equipment cardio workouts I can do at home?"
+    }
+   ],
+   "target": "dog",
+   "intermediates": [
+    "dog"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "dog"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-petownership-14",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-petownership-15",
+   "subfamily": "synthsys",
+   "attr_class": "PetOwnership",
+   "attr": "dog",
+   "attr_label": "pet",
+   "messages": [
+    {
+     "role": "system",
+     "content": "Resident information: the user cohabits with a deaf dog and uses hand signals."
+    },
+    {
+     "role": "user",
+     "content": "I’m planning a weekend trip to the mountains and need advice on choosing the best type of accommodation on a modest budget."
+    }
+   ],
+   "target": "dog",
+   "intermediates": [
+    "dog"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "dog"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-petownership-15",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-religiousaffiliation-00",
+   "subfamily": "synthsys",
+   "attr_class": "ReligiousAffiliation",
+   "attr": "agnostic",
+   "attr_label": "religion",
+   "messages": [
+    {
+     "role": "system",
+     "content": "Contextual nuance: user’s belief descriptor: agnostic."
+    },
+    {
+     "role": "user",
+     "content": "What should I wear when visiting sacred sites in Southeast Asia?"
+    }
+   ],
+   "target": "agnostic",
+   "intermediates": [
+    "agnostic"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "agnostic"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-religiousaffiliation-00",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-religiousaffiliation-02",
+   "subfamily": "synthsys",
+   "attr_class": "ReligiousAffiliation",
+   "attr": "agnostic",
+   "attr_label": "religion",
+   "messages": [
+    {
+     "role": "system",
+     "content": "Metadata overlay: faith identifier — agnostic."
+    },
+    {
+     "role": "user",
+     "content": "How do I find a supportive community after moving to a new city?"
+    }
+   ],
+   "target": "agnostic",
+   "intermediates": [
+    "agnostic"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "agnostic"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-religiousaffiliation-02",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-religiousaffiliation-08",
+   "subfamily": "synthsys",
+   "attr_class": "ReligiousAffiliation",
+   "attr": "buddhism",
+   "attr_label": "religion",
+   "messages": [
+    {
+     "role": "system",
+     "content": "Encrypted footnote: The user's religious stance—Buddhism."
+    },
+    {
+     "role": "user",
+     "content": "What’s a considerate way to invite friends to a ceremony without putting pressure on them to attend?"
+    }
+   ],
+   "target": "buddhism",
+   "intermediates": [
+    "buddhism",
+    "buddhist"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "buddhism",
+      "buddhist"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-religiousaffiliation-08",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-religiousaffiliation-09",
+   "subfamily": "synthsys",
+   "attr_class": "ReligiousAffiliation",
+   "attr": "buddhism",
+   "attr_label": "religion",
+   "messages": [
+    {
+     "role": "system",
+     "content": "Record flag: user religious_identity => Buddhism."
+    },
+    {
+     "role": "user",
+     "content": "What are some meaningful traditions I can start with my young family?"
+    }
+   ],
+   "target": "buddhism",
+   "intermediates": [
+    "buddhism",
+    "buddhist"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "buddhism",
+      "buddhist"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-religiousaffiliation-09",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-religiousaffiliation-10",
+   "subfamily": "synthsys",
+   "attr_class": "ReligiousAffiliation",
+   "attr": "buddhism",
+   "attr_label": "religion",
+   "messages": [
+    {
+     "role": "system",
+     "content": "Unspoken premise: The user is rooted in Buddhism."
+    },
+    {
+     "role": "user",
+     "content": "I need to find a therapist who will understand my background and values. Any advice?"
+    }
+   ],
+   "target": "buddhism",
+   "intermediates": [
+    "buddhism",
+    "buddhist"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "buddhism",
+      "buddhist"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-religiousaffiliation-10",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "um-ss-religiousaffiliation-11",
+   "subfamily": "synthsys",
+   "attr_class": "ReligiousAffiliation",
+   "attr": "buddhism",
+   "attr_label": "religion",
+   "messages": [
+    {
+     "role": "system",
+     "content": "Whispered metadata: This user is a follower of Buddhism."
+    },
+    {
+     "role": "user",
+     "content": "I’m trying to align my lifestyle with environmental principles rooted in my values. What daily habits are most impactful?"
+    }
+   ],
+   "target": "buddhism",
+   "intermediates": [
+    "buddhism",
+    "buddhist"
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "buddhism",
+      "buddhist"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "um-v1",
+   "gate_variant": "chat_revealed_belief",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "id": "um-ss-religiousaffiliation-11",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "user-au-t1-w100c0-um-sd-country-japan-hanami-sushi",
+   "attr_class": "Country",
+   "attr_label": "country",
+   "attr": "japan",
+   "target": "japan",
+   "intermediates": [
+    "Japan",
+    "japan"
+   ],
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "Every spring my coworkers and I spread a tarp under the cherry blossoms in a Tokyo park for hanami, and on the way home we grab sushi near the station. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Japan",
+      "japan",
+      "Japanese",
+      "Nippon"
+     ]
+    }
+   ],
+   "subfamily": "selfdescribe",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "gate_variant": "chat_revealed_belief",
+   "source": "authored (claude-opus-5-5) for qwen3.5-9b: Give two or three strong, distinctive cues that all point to the same value (a national dish AND a festival AND a place; a tool AND a daily task AND a workplace). Countries with world-famous customs, everyday occupations with an obvious workplace, and gender (male or female only, as in the bank) implied by habits and interests as strong as in the examples, never stated by pronouns or titles. About 35% country, 30% occupation, 30% gender, 5% religion.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Give two or three strong, distinctive cues that all point to the same value (a national dish AND a festival AND a place; a tool AND a daily task AND a workplace). Countries with world-famous customs, everyday occupations with an obvious workplace, and gender (male or female only, as in the bank) implied by habits and interests as strong as in the examples, never stated by pronouns or titles. About 35% country, 30% occupation, 30% gender, 5% religion."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "user-au-t1-w100c0-um-sd-country-mexico-day-of-dead",
+   "attr_class": "Country",
+   "attr_label": "country",
+   "attr": "mexico",
+   "target": "mexico",
+   "intermediates": [
+    "Mexico",
+    "mexico"
+   ],
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "Each November I build an altar with marigolds and sugar skulls for Día de los Muertos, then my whole family gathers in Oaxaca to eat mole and listen to mariachi until midnight. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Mexico",
+      "mexico",
+      "Mexican"
+     ]
+    }
+   ],
+   "subfamily": "selfdescribe",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "gate_variant": "chat_revealed_belief",
+   "source": "authored (claude-opus-5-5) for qwen3.5-9b: Give two or three strong, distinctive cues that all point to the same value (a national dish AND a festival AND a place; a tool AND a daily task AND a workplace). Countries with world-famous customs, everyday occupations with an obvious workplace, and gender (male or female only, as in the bank) implied by habits and interests as strong as in the examples, never stated by pronouns or titles. About 35% country, 30% occupation, 30% gender, 5% religion.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Give two or three strong, distinctive cues that all point to the same value (a national dish AND a festival AND a place; a tool AND a daily task AND a workplace). Countries with world-famous customs, everyday occupations with an obvious workplace, and gender (male or female only, as in the bank) implied by habits and interests as strong as in the examples, never stated by pronouns or titles. About 35% country, 30% occupation, 30% gender, 5% religion."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "user-au-t1-w100c0-um-sd-country-india-diwali-cricket",
+   "attr_class": "Country",
+   "attr_label": "country",
+   "attr": "india",
+   "target": "india",
+   "intermediates": [
+    "India",
+    "india"
+   ],
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "Diwali is my favorite time of year, lighting diyas on the balcony of our Mumbai flat. The neighbors and I take a break from the sweets only to shout at the cricket match on TV. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "India",
+      "india",
+      "Indian",
+      "Bharat"
+     ]
+    }
+   ],
+   "subfamily": "selfdescribe",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "gate_variant": "chat_revealed_belief",
+   "source": "authored (claude-opus-5-5) for qwen3.5-9b: Give two or three strong, distinctive cues that all point to the same value (a national dish AND a festival AND a place; a tool AND a daily task AND a workplace). Countries with world-famous customs, everyday occupations with an obvious workplace, and gender (male or female only, as in the bank) implied by habits and interests as strong as in the examples, never stated by pronouns or titles. About 35% country, 30% occupation, 30% gender, 5% religion.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Give two or three strong, distinctive cues that all point to the same value (a national dish AND a festival AND a place; a tool AND a daily task AND a workplace). Countries with world-famous customs, everyday occupations with an obvious workplace, and gender (male or female only, as in the bank) implied by habits and interests as strong as in the examples, never stated by pronouns or titles. About 35% country, 30% occupation, 30% gender, 5% religion."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "user-au-t1-w100c0-um-sd-country-italy-espresso-vespa",
+   "attr_class": "Country",
+   "attr_label": "country",
+   "attr": "italy",
+   "target": "italy",
+   "intermediates": [
+    "Italy",
+    "italy"
+   ],
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "My mornings start with a quick espresso standing at the bar before I zip past the Colosseum on my Vespa, and Sundays mean handmade pasta at my nonna's table. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Italy",
+      "italy",
+      "Italian"
+     ]
+    }
+   ],
+   "subfamily": "selfdescribe",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "gate_variant": "chat_revealed_belief",
+   "source": "authored (claude-opus-5-5) for qwen3.5-9b: Give two or three strong, distinctive cues that all point to the same value (a national dish AND a festival AND a place; a tool AND a daily task AND a workplace). Countries with world-famous customs, everyday occupations with an obvious workplace, and gender (male or female only, as in the bank) implied by habits and interests as strong as in the examples, never stated by pronouns or titles. About 35% country, 30% occupation, 30% gender, 5% religion.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Give two or three strong, distinctive cues that all point to the same value (a national dish AND a festival AND a place; a tool AND a daily task AND a workplace). Countries with world-famous customs, everyday occupations with an obvious workplace, and gender (male or female only, as in the bank) implied by habits and interests as strong as in the examples, never stated by pronouns or titles. About 35% country, 30% occupation, 30% gender, 5% religion."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "user-au-t1-w100c0-um-sd-country-brazil-carnival-samba",
+   "attr_class": "Country",
+   "attr_label": "country",
+   "attr": "brazil",
+   "target": "brazil",
+   "intermediates": [
+    "Brazil",
+    "brazil"
+   ],
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "I spend months rehearsing with my samba school for Carnival in Rio, and nothing beats a plate of feijoada after a long night parading through the Sambadrome. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Brazil",
+      "brazil",
+      "Brazilian",
+      "Brasil"
+     ]
+    }
+   ],
+   "subfamily": "selfdescribe",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "gate_variant": "chat_revealed_belief",
+   "source": "authored (claude-opus-5-5) for qwen3.5-9b: Give two or three strong, distinctive cues that all point to the same value (a national dish AND a festival AND a place; a tool AND a daily task AND a workplace). Countries with world-famous customs, everyday occupations with an obvious workplace, and gender (male or female only, as in the bank) implied by habits and interests as strong as in the examples, never stated by pronouns or titles. About 35% country, 30% occupation, 30% gender, 5% religion.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Give two or three strong, distinctive cues that all point to the same value (a national dish AND a festival AND a place; a tool AND a daily task AND a workplace). Countries with world-famous customs, everyday occupations with an obvious workplace, and gender (male or female only, as in the bank) implied by habits and interests as strong as in the examples, never stated by pronouns or titles. About 35% country, 30% occupation, 30% gender, 5% religion."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "user-au-t1-w100c0-um-sd-country-egypt-nile-pyramids",
+   "attr_class": "Country",
+   "attr_label": "country",
+   "attr": "egypt",
+   "target": "egypt",
+   "intermediates": [
+    "Egypt",
+    "egypt"
+   ],
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "From my rooftop in Giza I can see the pyramids at sunset, and on weekends I sail a felucca on the Nile with a takeaway box of koshari. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Egypt",
+      "egypt",
+      "Egyptian"
+     ]
+    }
+   ],
+   "subfamily": "selfdescribe",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "gate_variant": "chat_revealed_belief",
+   "source": "authored (claude-opus-5-5) for qwen3.5-9b: Give two or three strong, distinctive cues that all point to the same value (a national dish AND a festival AND a place; a tool AND a daily task AND a workplace). Countries with world-famous customs, everyday occupations with an obvious workplace, and gender (male or female only, as in the bank) implied by habits and interests as strong as in the examples, never stated by pronouns or titles. About 35% country, 30% occupation, 30% gender, 5% religion.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Give two or three strong, distinctive cues that all point to the same value (a national dish AND a festival AND a place; a tool AND a daily task AND a workplace). Countries with world-famous customs, everyday occupations with an obvious workplace, and gender (male or female only, as in the bank) implied by habits and interests as strong as in the examples, never stated by pronouns or titles. About 35% country, 30% occupation, 30% gender, 5% religion."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "user-au-t1-w100c0-um-sd-country-australia-vegemite-bondi",
+   "attr_class": "Country",
+   "attr_label": "country",
+   "attr": "australia",
+   "target": "australia",
+   "intermediates": [
+    "Australia",
+    "australia"
+   ],
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "Breakfast is always Vegemite on toast before I head down to surf at Bondi Beach. On the drive home I usually have to brake for a kangaroo or two. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Australia",
+      "australia",
+      "Australian",
+      "Aussie",
+      "Oz"
+     ]
+    }
+   ],
+   "subfamily": "selfdescribe",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "gate_variant": "chat_revealed_belief",
+   "source": "authored (claude-opus-5-5) for qwen3.5-9b: Give two or three strong, distinctive cues that all point to the same value (a national dish AND a festival AND a place; a tool AND a daily task AND a workplace). Countries with world-famous customs, everyday occupations with an obvious workplace, and gender (male or female only, as in the bank) implied by habits and interests as strong as in the examples, never stated by pronouns or titles. About 35% country, 30% occupation, 30% gender, 5% religion.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Give two or three strong, distinctive cues that all point to the same value (a national dish AND a festival AND a place; a tool AND a daily task AND a workplace). Countries with world-famous customs, everyday occupations with an obvious workplace, and gender (male or female only, as in the bank) implied by habits and interests as strong as in the examples, never stated by pronouns or titles. About 35% country, 30% occupation, 30% gender, 5% religion."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "user-au-t1-w100c0-um-sd-country-germany-oktoberfest-autobahn",
+   "attr_class": "Country",
+   "attr_label": "country",
+   "attr": "germany",
+   "target": "germany",
+   "intermediates": [
+    "Germany",
+    "germany"
+   ],
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "I never miss Oktoberfest in Munich with a giant pretzel and a liter of beer, and I love driving the Autobahn stretches with no speed limit. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Germany",
+      "germany",
+      "German",
+      "Deutschland"
+     ]
+    }
+   ],
+   "subfamily": "selfdescribe",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "gate_variant": "chat_revealed_belief",
+   "source": "authored (claude-opus-5-5) for qwen3.5-9b: Give two or three strong, distinctive cues that all point to the same value (a national dish AND a festival AND a place; a tool AND a daily task AND a workplace). Countries with world-famous customs, everyday occupations with an obvious workplace, and gender (male or female only, as in the bank) implied by habits and interests as strong as in the examples, never stated by pronouns or titles. About 35% country, 30% occupation, 30% gender, 5% religion.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Give two or three strong, distinctive cues that all point to the same value (a national dish AND a festival AND a place; a tool AND a daily task AND a workplace). Countries with world-famous customs, everyday occupations with an obvious workplace, and gender (male or female only, as in the bank) implied by habits and interests as strong as in the examples, never stated by pronouns or titles. About 35% country, 30% occupation, 30% gender, 5% religion."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "user-au-t1-w100c0-um-sd-country-thailand-songkran-tuktuk",
+   "attr_class": "Country",
+   "attr_label": "country",
+   "attr": "thailand",
+   "target": "thailand",
+   "intermediates": [
+    "Thailand",
+    "thailand"
+   ],
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "During Songkran I roam the streets of Bangkok with a water gun, ducking into tuk-tuks and stopping for spicy tom yum soup from my favorite street vendor. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Thailand",
+      "thailand",
+      "Thai",
+      "Siam"
+     ]
+    }
+   ],
+   "subfamily": "selfdescribe",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "gate_variant": "chat_revealed_belief",
+   "source": "authored (claude-opus-5-5) for qwen3.5-9b: Give two or three strong, distinctive cues that all point to the same value (a national dish AND a festival AND a place; a tool AND a daily task AND a workplace). Countries with world-famous customs, everyday occupations with an obvious workplace, and gender (male or female only, as in the bank) implied by habits and interests as strong as in the examples, never stated by pronouns or titles. About 35% country, 30% occupation, 30% gender, 5% religion.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Give two or three strong, distinctive cues that all point to the same value (a national dish AND a festival AND a place; a tool AND a daily task AND a workplace). Countries with world-famous customs, everyday occupations with an obvious workplace, and gender (male or female only, as in the bank) implied by habits and interests as strong as in the examples, never stated by pronouns or titles. About 35% country, 30% occupation, 30% gender, 5% religion."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "user-au-t1-w100c0-um-sd-country-netherlands-canals-kingsday",
+   "attr_class": "Country",
+   "attr_label": "country",
+   "attr": "netherlands",
+   "target": "netherlands",
+   "intermediates": [
+    "Netherlands",
+    "netherlands"
+   ],
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "I cycle along the Amsterdam canals to work every day with a stroopwafel in my pocket, and on King's Day I dress head to toe in orange. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Netherlands",
+      "netherlands",
+      "Holland",
+      "Dutch"
+     ]
+    }
+   ],
+   "subfamily": "selfdescribe",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "gate_variant": "chat_revealed_belief",
+   "source": "authored (claude-opus-5-5) for qwen3.5-9b: Give two or three strong, distinctive cues that all point to the same value (a national dish AND a festival AND a place; a tool AND a daily task AND a workplace). Countries with world-famous customs, everyday occupations with an obvious workplace, and gender (male or female only, as in the bank) implied by habits and interests as strong as in the examples, never stated by pronouns or titles. About 35% country, 30% occupation, 30% gender, 5% religion.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Give two or three strong, distinctive cues that all point to the same value (a national dish AND a festival AND a place; a tool AND a daily task AND a workplace). Countries with world-famous customs, everyday occupations with an obvious workplace, and gender (male or female only, as in the bank) implied by habits and interests as strong as in the examples, never stated by pronouns or titles. About 35% country, 30% occupation, 30% gender, 5% religion."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "user-au-t1-w100c0-um-sd-occupation-baker-dough-dawn",
+   "attr_class": "Occupation",
+   "attr_label": "occupation",
+   "attr": "baker",
+   "target": "baker",
+   "intermediates": [
+    "Baker",
+    "baker"
+   ],
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "My alarm goes off at 3 a.m. so I can knead the dough and pull the first loaves of sourdough and trays of croissants out of the oven before the shop opens. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Baker",
+      "baker",
+      "pastry chef"
+     ]
+    }
+   ],
+   "subfamily": "selfdescribe",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "gate_variant": "chat_revealed_belief",
+   "source": "authored (claude-opus-5-5) for qwen3.5-9b: Give two or three strong, distinctive cues that all point to the same value (a national dish AND a festival AND a place; a tool AND a daily task AND a workplace). Countries with world-famous customs, everyday occupations with an obvious workplace, and gender (male or female only, as in the bank) implied by habits and interests as strong as in the examples, never stated by pronouns or titles. About 35% country, 30% occupation, 30% gender, 5% religion.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Give two or three strong, distinctive cues that all point to the same value (a national dish AND a festival AND a place; a tool AND a daily task AND a workplace). Countries with world-famous customs, everyday occupations with an obvious workplace, and gender (male or female only, as in the bank) implied by habits and interests as strong as in the examples, never stated by pronouns or titles. About 35% country, 30% occupation, 30% gender, 5% religion."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "user-au-t1-w100c0-um-sd-occupation-nurse-ward-iv",
+   "attr_class": "Occupation",
+   "attr_label": "occupation",
+   "attr": "nurse",
+   "target": "nurse",
+   "intermediates": [
+    "Nurse",
+    "nurse"
+   ],
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "On my twelve-hour night shifts in the hospital ward, I check patients' vitals, change IV drips, and hand out medications in my scrubs. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Nurse",
+      "nurse",
+      "registered nurse",
+      "RN"
+     ]
+    }
+   ],
+   "subfamily": "selfdescribe",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "gate_variant": "chat_revealed_belief",
+   "source": "authored (claude-opus-5-5) for qwen3.5-9b: Give two or three strong, distinctive cues that all point to the same value (a national dish AND a festival AND a place; a tool AND a daily task AND a workplace). Countries with world-famous customs, everyday occupations with an obvious workplace, and gender (male or female only, as in the bank) implied by habits and interests as strong as in the examples, never stated by pronouns or titles. About 35% country, 30% occupation, 30% gender, 5% religion.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Give two or three strong, distinctive cues that all point to the same value (a national dish AND a festival AND a place; a tool AND a daily task AND a workplace). Countries with world-famous customs, everyday occupations with an obvious workplace, and gender (male or female only, as in the bank) implied by habits and interests as strong as in the examples, never stated by pronouns or titles. About 35% country, 30% occupation, 30% gender, 5% religion."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "user-au-t1-w100c0-um-sd-occupation-firefighter-hose-station",
+   "attr_class": "Occupation",
+   "attr_label": "occupation",
+   "attr": "firefighter",
+   "target": "firefighter",
+   "intermediates": [
+    "Firefighter",
+    "firefighter"
+   ],
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "When the alarm rings at the station, I jump into my turnout gear, slide down the pole, and ride the ladder truck to haul hoses into smoke-filled buildings. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Firefighter",
+      "firefighter",
+      "fireman"
+     ]
+    }
+   ],
+   "subfamily": "selfdescribe",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "gate_variant": "chat_revealed_belief",
+   "source": "authored (claude-opus-5-5) for qwen3.5-9b: Give two or three strong, distinctive cues that all point to the same value (a national dish AND a festival AND a place; a tool AND a daily task AND a workplace). Countries with world-famous customs, everyday occupations with an obvious workplace, and gender (male or female only, as in the bank) implied by habits and interests as strong as in the examples, never stated by pronouns or titles. About 35% country, 30% occupation, 30% gender, 5% religion.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Give two or three strong, distinctive cues that all point to the same value (a national dish AND a festival AND a place; a tool AND a daily task AND a workplace). Countries with world-famous customs, everyday occupations with an obvious workplace, and gender (male or female only, as in the bank) implied by habits and interests as strong as in the examples, never stated by pronouns or titles. About 35% country, 30% occupation, 30% gender, 5% religion."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "user-au-t1-w100c0-um-sd-occupation-teacher-grading-classroom",
+   "attr_class": "Occupation",
+   "attr_label": "occupation",
+   "attr": "teacher",
+   "target": "teacher",
+   "intermediates": [
+    "Teacher",
+    "teacher"
+   ],
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "My evenings disappear into grading spelling quizzes and writing lesson plans, and every morning I greet twenty-five third graders at my classroom door. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Teacher",
+      "teacher",
+      "schoolteacher",
+      "educator"
+     ]
+    }
+   ],
+   "subfamily": "selfdescribe",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "gate_variant": "chat_revealed_belief",
+   "source": "authored (claude-opus-5-5) for qwen3.5-9b: Give two or three strong, distinctive cues that all point to the same value (a national dish AND a festival AND a place; a tool AND a daily task AND a workplace). Countries with world-famous customs, everyday occupations with an obvious workplace, and gender (male or female only, as in the bank) implied by habits and interests as strong as in the examples, never stated by pronouns or titles. About 35% country, 30% occupation, 30% gender, 5% religion.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Give two or three strong, distinctive cues that all point to the same value (a national dish AND a festival AND a place; a tool AND a daily task AND a workplace). Countries with world-famous customs, everyday occupations with an obvious workplace, and gender (male or female only, as in the bank) implied by habits and interests as strong as in the examples, never stated by pronouns or titles. About 35% country, 30% occupation, 30% gender, 5% religion."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "user-au-t1-w100c0-um-sd-occupation-barber-clippers-fades",
+   "attr_class": "Occupation",
+   "attr_label": "occupation",
+   "attr": "barber",
+   "target": "barber",
+   "intermediates": [
+    "Barber",
+    "barber"
+   ],
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "All day I stand behind the chair at my shop with the clippers buzzing, giving out fresh fades and finishing beards with a straight razor and hot towel. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Barber",
+      "barber",
+      "hairdresser",
+      "hairstylist"
+     ]
+    }
+   ],
+   "subfamily": "selfdescribe",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "gate_variant": "chat_revealed_belief",
+   "source": "authored (claude-opus-5-5) for qwen3.5-9b: Give two or three strong, distinctive cues that all point to the same value (a national dish AND a festival AND a place; a tool AND a daily task AND a workplace). Countries with world-famous customs, everyday occupations with an obvious workplace, and gender (male or female only, as in the bank) implied by habits and interests as strong as in the examples, never stated by pronouns or titles. About 35% country, 30% occupation, 30% gender, 5% religion.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Give two or three strong, distinctive cues that all point to the same value (a national dish AND a festival AND a place; a tool AND a daily task AND a workplace). Countries with world-famous customs, everyday occupations with an obvious workplace, and gender (male or female only, as in the bank) implied by habits and interests as strong as in the examples, never stated by pronouns or titles. About 35% country, 30% occupation, 30% gender, 5% religion."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "user-au-t1-w100c0-um-sd-occupation-mail-carrier-route-letters",
+   "attr_class": "Occupation",
+   "attr_label": "occupation",
+   "attr": "mail_carrier",
+   "target": "mail_carrier",
+   "intermediates": [
+    "Mail Carrier",
+    "mail carrier"
+   ],
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "Rain or shine I walk the same neighborhood route with a heavy satchel, dropping letters and parcels into every letterbox and dodging the occasional barking dog. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Mail Carrier",
+      "mail carrier",
+      "postman",
+      "letter carrier",
+      "postal worker"
+     ]
+    }
+   ],
+   "subfamily": "selfdescribe",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "gate_variant": "chat_revealed_belief",
+   "source": "authored (claude-opus-5-5) for qwen3.5-9b: Give two or three strong, distinctive cues that all point to the same value (a national dish AND a festival AND a place; a tool AND a daily task AND a workplace). Countries with world-famous customs, everyday occupations with an obvious workplace, and gender (male or female only, as in the bank) implied by habits and interests as strong as in the examples, never stated by pronouns or titles. About 35% country, 30% occupation, 30% gender, 5% religion.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Give two or three strong, distinctive cues that all point to the same value (a national dish AND a festival AND a place; a tool AND a daily task AND a workplace). Countries with world-famous customs, everyday occupations with an obvious workplace, and gender (male or female only, as in the bank) implied by habits and interests as strong as in the examples, never stated by pronouns or titles. About 35% country, 30% occupation, 30% gender, 5% religion."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "user-au-t1-w100c0-um-sd-occupation-dentist-fillings-drill",
+   "attr_class": "Occupation",
+   "attr_label": "occupation",
+   "attr": "dentist",
+   "target": "dentist",
+   "intermediates": [
+    "Dentist",
+    "dentist"
+   ],
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "I spend my days at the clinic peering into open mouths, drilling out cavities, placing fillings, and reminding patients they really should floss more. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Dentist",
+      "dentist",
+      "dental surgeon",
+      "orthodontist"
+     ]
+    }
+   ],
+   "subfamily": "selfdescribe",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "gate_variant": "chat_revealed_belief",
+   "source": "authored (claude-opus-5-5) for qwen3.5-9b: Give two or three strong, distinctive cues that all point to the same value (a national dish AND a festival AND a place; a tool AND a daily task AND a workplace). Countries with world-famous customs, everyday occupations with an obvious workplace, and gender (male or female only, as in the bank) implied by habits and interests as strong as in the examples, never stated by pronouns or titles. About 35% country, 30% occupation, 30% gender, 5% religion.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Give two or three strong, distinctive cues that all point to the same value (a national dish AND a festival AND a place; a tool AND a daily task AND a workplace). Countries with world-famous customs, everyday occupations with an obvious workplace, and gender (male or female only, as in the bank) implied by habits and interests as strong as in the examples, never stated by pronouns or titles. About 35% country, 30% occupation, 30% gender, 5% religion."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "user-au-t1-w100c0-um-sd-occupation-farmer-tractor-barn",
+   "attr_class": "Occupation",
+   "attr_label": "occupation",
+   "attr": "farmer",
+   "target": "farmer",
+   "intermediates": [
+    "Farmer",
+    "farmer"
+   ],
+   "messages": [
+    {
+     "role": "system",
+     "content": "You are a helpful assistant."
+    },
+    {
+     "role": "user",
+     "content": "Before sunrise I'm in the barn milking the cows, and by midday I'm on the tractor plowing the cornfields until the harvest is in. Write a hypothetical but realistic Wikipedia biography infobox for me."
+    }
+   ],
+   "units": [
+    {
+     "role": "user_attribute",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Farmer",
+      "farmer",
+      "rancher",
+      "agricultural worker"
+     ]
+    }
+   ],
+   "subfamily": "selfdescribe",
+   "eval_render": "chat_context",
+   "readout": {
+    "kind": "task_sentence_through_prompt_end"
+   },
+   "gate_variant": "chat_revealed_belief",
+   "source": "authored (claude-opus-5-5) for qwen3.5-9b: Give two or three strong, distinctive cues that all point to the same value (a national dish AND a festival AND a place; a tool AND a daily task AND a workplace). Countries with world-famous customs, everyday occupations with an obvious workplace, and gender (male or female only, as in the bank) implied by habits and interests as strong as in the examples, never stated by pronouns or titles. About 35% country, 30% occupation, 30% gender, 5% religion.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Give two or three strong, distinctive cues that all point to the same value (a national dish AND a festival AND a place; a tool AND a daily task AND a workplace). Countries with world-famous customs, everyday occupations with an obvious workplace, and gender (male or female only, as in the bank) implied by habits and interests as strong as in the examples, never stated by pronouns or titles. About 35% country, 30% occupation, 30% gender, 5% religion."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,4569 @@
+{
+ "family": "multihop",
+ "gate": "Qwen3.6-27B behavioral: >=8/10 correct at temp 0.7 (greedy-verified first); association scored against association_aliases.json (phrase-aware, echo-guarded); poetry scored by committed rhyme",
+ "eval_render_note": "EVAL RENDER: feed `prompt` verbatim as plain text, NO chat template (directed-modulation is the only chat-templated family). `gate_variant` records how the item was behaviorally verified and does NOT affect the eval read.",
+ "read": "full (the default, plan 0036): every token of the plain render of `prompt`, reported as negative offsets -n..-1 (`all_from_end`), at every judged layer. lite (`reads=lite`): the last word of the prompt only, `offset_from_end k` with k = -readout.offsets[0] (1 or 2), which retains the 2026-09-23 decision (Camila: \"multihop should be read on the second to last token, ie the last word, not the space token\"). Per item, `readout.offsets` is the last-word position counted from the end of the Qwen3.6-27B tokenization of `prompt`: -2 for the 33 prompts that end in a bare space token, -1 for the other 67.",
+ "version": 2,
+ "supersedes": "items.json",
+ "mc_seed": "multihop-mc-2026-10-30",
+ "mc_note": "plan 0036: `mc` is the frozen multiple-choice block of the blind bank MC judge (`wsbench.basic.mcjudge_basic`): `gold` (the bridge), `aliases` (the forms the judge's quote may use; never a demonym), 4 same-type `distractors` and `distractor_aliases` (their listed forms, Chinese included: a token list that also holds one voids a gold pick; number distractors are compared by value instead), built by scripts/build_multihop_mc.py (seed in `mc_seed`). The judge shows gold + distractors shuffled with mc.seeded_shuffle(f'multihop|{id}'), then 'cannot tell from the readout' last. spaceneedle-border is re-keyed Seattle -> Washington (decision Q9).",
+ "items": [
+  {
+   "name": "atomic-26-symbol",
+   "prompt": "Fact: The chemical symbol for the element with atomic number 26 is ",
+   "target": "Fe",
+   "intermediates": [
+    "iron"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain_stripped",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -2
+    ]
+   },
+   "mc": {
+    "bridge_type": "element",
+    "gold": "iron",
+    "aliases": [
+     "铁"
+    ],
+    "distractors": [
+     "nitrogen",
+     "platinum",
+     "zinc",
+     "sodium"
+    ],
+    "distractor_aliases": {
+     "nitrogen": [
+      "氮"
+     ],
+     "platinum": [
+      "铂",
+      "白金"
+     ],
+     "zinc": [
+      "锌"
+     ],
+     "sodium": [
+      "钠"
+     ]
+    }
+   }
+  },
+  {
+   "name": "atomic-79-symbol",
+   "prompt": "Fact: The chemical symbol for the element with atomic number 79 is ",
+   "target": "Au",
+   "intermediates": [
+    "gold"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -2
+    ]
+   },
+   "mc": {
+    "bridge_type": "element",
+    "gold": "gold",
+    "aliases": [
+     "金",
+     "黄金"
+    ],
+    "distractors": [
+     "platinum",
+     "iron",
+     "nitrogen",
+     "magnesium"
+    ],
+    "distractor_aliases": {
+     "platinum": [
+      "铂",
+      "白金"
+     ],
+     "iron": [
+      "铁"
+     ],
+     "nitrogen": [
+      "氮"
+     ],
+     "magnesium": [
+      "镁"
+     ]
+    }
+   }
+  },
+  {
+   "name": "birthstone-emerald-month",
+   "prompt": "Fact: Emerald is the birthstone for month number ",
+   "target": "5",
+   "intermediates": [
+    "May"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -2
+    ]
+   },
+   "mc": {
+    "bridge_type": "month",
+    "gold": "May",
+    "aliases": [
+     "五月"
+    ],
+    "distractors": [
+     "April",
+     "July",
+     "June",
+     "March"
+    ],
+    "distractor_aliases": {
+     "April": [
+      "四月"
+     ],
+     "July": [
+      "Jul",
+      "七月"
+     ],
+     "June": [
+      "六月"
+     ],
+     "March": [
+      "三月"
+     ]
+    }
+   }
+  },
+  {
+   "name": "chem-bones-Z",
+   "prompt": "Fact: The atomic number of the metal most abundant in human bones is ",
+   "target": "20",
+   "intermediates": [
+    "calcium"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -2
+    ]
+   },
+   "mc": {
+    "bridge_type": "element",
+    "gold": "calcium",
+    "aliases": [
+     "钙"
+    ],
+    "distractors": [
+     "iron",
+     "hydrogen",
+     "copper",
+     "sulfur"
+    ],
+    "distractor_aliases": {
+     "iron": [
+      "铁"
+     ],
+     "hydrogen": [
+      "氢"
+     ],
+     "copper": [
+      "铜"
+     ],
+     "sulfur": [
+      "硫"
+     ]
+    }
+   }
+  },
+  {
+   "name": "chem-organic-Z",
+   "prompt": "Fact: The atomic number of the element present in all organic compounds by definition is ",
+   "target": "6",
+   "intermediates": [
+    "carbon"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -2
+    ]
+   },
+   "mc": {
+    "bridge_type": "element",
+    "gold": "carbon",
+    "aliases": [
+     "碳"
+    ],
+    "distractors": [
+     "iron",
+     "neon",
+     "gold",
+     "sodium"
+    ],
+    "distractor_aliases": {
+     "iron": [
+      "铁"
+     ],
+     "neon": [
+      "氖"
+     ],
+     "gold": [
+      "金",
+      "黄金"
+     ],
+     "sodium": [
+      "钠"
+     ]
+    }
+   }
+  },
+  {
+   "name": "chem-photosynthesis-Z",
+   "prompt": "Fact: The atomic number of the gas that plants release during photosynthesis is ",
+   "target": "8",
+   "intermediates": [
+    "oxygen"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -2
+    ]
+   },
+   "mc": {
+    "bridge_type": "element",
+    "gold": "oxygen",
+    "aliases": [
+     "氧",
+     "氧气"
+    ],
+    "distractors": [
+     "nitrogen",
+     "helium",
+     "magnesium",
+     "iron"
+    ],
+    "distractor_aliases": {
+     "nitrogen": [
+      "氮"
+     ],
+     "helium": [
+      "氦"
+     ],
+     "magnesium": [
+      "镁"
+     ],
+     "iron": [
+      "铁"
+     ]
+    }
+   }
+  },
+  {
+   "name": "dbl-altitude-antonym",
+   "prompt": "Fact: The antonym of how you would describe an airplane's cruising altitude is \"",
+   "target": "low",
+   "intermediates": [
+    "high"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "antonym word",
+    "gold": "high",
+    "aliases": [
+     "高"
+    ],
+    "distractors": [
+     "hard",
+     "late",
+     "night",
+     "hot"
+    ],
+    "distractor_aliases": {
+     "hard": [
+      "硬"
+     ],
+     "late": [
+      "晚",
+      "迟"
+     ],
+     "night": [
+      "nighttime",
+      "night-time",
+      "夜晚",
+      "晚上"
+     ],
+     "hot": [
+      "热",
+      "熱"
+     ]
+    }
+   }
+  },
+  {
+   "name": "double-dice-faces",
+   "prompt": "Fact: Double the number of faces on a standard die is ",
+   "target": "12",
+   "intermediates": [
+    "6",
+    "six"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -2
+    ]
+   },
+   "mc": {
+    "bridge_type": "number",
+    "gold": "6",
+    "aliases": [
+     "six",
+     "六",
+     "sixth",
+     "6th",
+     "第六"
+    ],
+    "distractors": [
+     "9",
+     "8",
+     "17",
+     "5"
+    ],
+    "distractor_aliases": {}
+   }
+  },
+  {
+   "name": "etym-caesar-monthnum",
+   "prompt": "Fact: The month named after Julius Caesar is month number ",
+   "target": "7",
+   "intermediates": [
+    "July"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -2
+    ]
+   },
+   "mc": {
+    "bridge_type": "month",
+    "gold": "July",
+    "aliases": [
+     "七月"
+    ],
+    "distractors": [
+     "September",
+     "May",
+     "March",
+     "April"
+    ],
+    "distractor_aliases": {
+     "September": [
+      "九月"
+     ],
+     "May": [
+      "五月"
+     ],
+     "March": [
+      "三月"
+     ],
+     "April": [
+      "四月"
+     ]
+    }
+   }
+  },
+  {
+   "name": "firstletter-valentines-month",
+   "prompt": "Fact: The first letter of the month containing Valentine's Day is \"",
+   "target": "F",
+   "intermediates": [
+    "February"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "month",
+    "gold": "February",
+    "aliases": [
+     "Feb",
+     "二月"
+    ],
+    "distractors": [
+     "October",
+     "May",
+     "September",
+     "June"
+    ],
+    "distractor_aliases": {
+     "October": [
+      "Oct",
+      "十月"
+     ],
+     "May": [
+      "五月"
+     ],
+     "September": [
+      "九月"
+     ],
+     "June": [
+      "六月"
+     ]
+    }
+   }
+  },
+  {
+   "name": "func-filters-count",
+   "prompt": "Fact: In humans, the number of organs that filter blood to make urine is ",
+   "target": "2",
+   "intermediates": [
+    "kidney"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -2
+    ]
+   },
+   "mc": {
+    "bridge_type": "organ",
+    "gold": "kidney",
+    "aliases": [
+     "kidneys",
+     "肾",
+     "肾脏"
+    ],
+    "distractors": [
+     "stomach",
+     "pancreas",
+     "skin",
+     "brain"
+    ],
+    "distractor_aliases": {
+     "stomach": [
+      "胃"
+     ],
+     "pancreas": [
+      "胰腺"
+     ],
+     "skin": [
+      "皮肤"
+     ],
+     "brain": [
+      "大脑",
+      "脑"
+     ]
+    }
+   }
+  },
+  {
+   "name": "func-pumps-chambers",
+   "prompt": "Fact: In humans, the organ that pumps blood through the body has this many chambers: ",
+   "target": "4",
+   "intermediates": [
+    "heart"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -2
+    ]
+   },
+   "mc": {
+    "bridge_type": "organ",
+    "gold": "heart",
+    "aliases": [
+     "hearts",
+     "心脏"
+    ],
+    "distractors": [
+     "skin",
+     "kidney",
+     "stomach",
+     "pancreas"
+    ],
+    "distractor_aliases": {
+     "skin": [
+      "皮肤"
+     ],
+     "kidney": [
+      "kidneys",
+      "肾",
+      "肾脏"
+     ],
+     "stomach": [
+      "胃"
+     ],
+     "pancreas": [
+      "胰腺"
+     ]
+    }
+   }
+  },
+  {
+   "name": "half-clock-hours",
+   "prompt": "Fact: Half the number of hours shown on a standard clock face is ",
+   "target": "6",
+   "intermediates": [
+    "12"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -2
+    ]
+   },
+   "mc": {
+    "bridge_type": "number",
+    "gold": "12",
+    "aliases": [
+     "twelve",
+     "十二",
+     "twelfth",
+     "12th",
+     "第十二"
+    ],
+    "distractors": [
+     "16",
+     "18",
+     "19",
+     "17"
+    ],
+    "distractor_aliases": {}
+   }
+  },
+  {
+   "name": "holiday-christmas-monthnum",
+   "prompt": "Fact: Christmas Day is celebrated in month number ",
+   "target": "12",
+   "intermediates": [
+    "December"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -2
+    ]
+   },
+   "mc": {
+    "bridge_type": "month",
+    "gold": "December",
+    "aliases": [
+     "Dec",
+     "十二月"
+    ],
+    "distractors": [
+     "June",
+     "September",
+     "November",
+     "October"
+    ],
+    "distractor_aliases": {
+     "June": [
+      "六月"
+     ],
+     "September": [
+      "九月"
+     ],
+     "November": [
+      "十一月"
+     ],
+     "October": [
+      "Oct",
+      "十月"
+     ]
+    }
+   }
+  },
+  {
+   "name": "holiday-halloween-monthnum",
+   "prompt": "Fact: Halloween is celebrated in month number ",
+   "target": "10",
+   "intermediates": [
+    "October"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -2
+    ]
+   },
+   "mc": {
+    "bridge_type": "month",
+    "gold": "October",
+    "aliases": [
+     "Oct",
+     "十月"
+    ],
+    "distractors": [
+     "January",
+     "August",
+     "April",
+     "September"
+    ],
+    "distractor_aliases": {
+     "January": [
+      "一月"
+     ],
+     "August": [
+      "八月"
+     ],
+     "April": [
+      "四月"
+     ],
+     "September": [
+      "九月"
+     ]
+    }
+   }
+  },
+  {
+   "name": "holiday-independence-monthnum",
+   "prompt": "Fact: The US Independence Day holiday is celebrated in month number ",
+   "target": "7",
+   "intermediates": [
+    "July"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -2
+    ]
+   },
+   "mc": {
+    "bridge_type": "month",
+    "gold": "July",
+    "aliases": [
+     "Jul",
+     "七月"
+    ],
+    "distractors": [
+     "February",
+     "June",
+     "November",
+     "October"
+    ],
+    "distractor_aliases": {
+     "February": [
+      "Feb",
+      "二月"
+     ],
+     "June": [
+      "六月"
+     ],
+     "November": [
+      "十一月"
+     ],
+     "October": [
+      "Oct",
+      "十月"
+     ]
+    }
+   }
+  },
+  {
+   "name": "holiday-valentines-monthnum",
+   "prompt": "Fact: Valentine's Day is celebrated in month number ",
+   "target": "2",
+   "intermediates": [
+    "February"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -2
+    ]
+   },
+   "mc": {
+    "bridge_type": "month",
+    "gold": "February",
+    "aliases": [
+     "Feb",
+     "二月"
+    ],
+    "distractors": [
+     "October",
+     "November",
+     "December",
+     "April"
+    ],
+    "distractor_aliases": {
+     "October": [
+      "Oct",
+      "十月"
+     ],
+     "November": [
+      "十一月"
+     ],
+     "December": [
+      "Dec",
+      "十二月"
+     ],
+     "April": [
+      "四月"
+     ]
+    }
+   }
+  },
+  {
+   "name": "inv-antarctica-opposite",
+   "prompt": "Fact: The cardinal direction opposite to where Antarctica lies from the equator is ",
+   "target": "north",
+   "intermediates": [
+    "south"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -2
+    ]
+   },
+   "mc": {
+    "bridge_type": "direction",
+    "gold": "south",
+    "aliases": [
+     "南"
+    ],
+    "distractors": [
+     "left",
+     "forward",
+     "east",
+     "backward"
+    ],
+    "distractor_aliases": {
+     "left": [
+      "左"
+     ],
+     "forward": [
+      "前",
+      "向前"
+     ],
+     "east": [
+      "东"
+     ],
+     "backward": [
+      "后",
+      "向后"
+     ]
+    }
+   }
+  },
+  {
+   "name": "inv-roots-opposite",
+   "prompt": "Fact: The direction opposite to the one tree roots grow is \"",
+   "target": "up",
+   "intermediates": [
+    "down"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "direction",
+    "gold": "down",
+    "aliases": [
+     "downward",
+     "downwards",
+     "下"
+    ],
+    "distractors": [
+     "backward",
+     "west",
+     "north",
+     "right"
+    ],
+    "distractor_aliases": {
+     "backward": [
+      "后",
+      "向后"
+     ],
+     "west": [
+      "西"
+     ],
+     "north": [
+      "北"
+     ],
+     "right": [
+      "右"
+     ]
+    }
+   }
+  },
+  {
+   "name": "inv-sunrise-opposite",
+   "prompt": "Fact: The cardinal direction opposite to the one where the sun rises is ",
+   "target": "west",
+   "intermediates": [
+    "east"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -2
+    ]
+   },
+   "mc": {
+    "bridge_type": "direction",
+    "gold": "east",
+    "aliases": [
+     "东"
+    ],
+    "distractors": [
+     "down",
+     "north",
+     "right",
+     "left"
+    ],
+    "distractor_aliases": {
+     "down": [
+      "downward",
+      "downwards",
+      "下"
+     ],
+     "north": [
+      "北"
+     ],
+     "right": [
+      "右"
+     ],
+     "left": [
+      "左"
+     ]
+    }
+   }
+  },
+  {
+   "name": "month-7-namedafter",
+   "prompt": "Fact: The seventh month of the year is named after the Roman leader Julius ",
+   "target": "Caesar",
+   "intermediates": [
+    "July"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -2
+    ]
+   },
+   "mc": {
+    "bridge_type": "month",
+    "gold": "July",
+    "aliases": [
+     "七月"
+    ],
+    "distractors": [
+     "November",
+     "September",
+     "June",
+     "May"
+    ],
+    "distractor_aliases": {
+     "November": [
+      "十一月"
+     ],
+     "September": [
+      "九月"
+     ],
+     "June": [
+      "六月"
+     ],
+     "May": [
+      "五月"
+     ]
+    }
+   }
+  },
+  {
+   "name": "nhop-cube-element",
+   "prompt": "Count the items in a dozen. The element at that position on the periodic table is magnesium. Count the faces on a cube. The element at that position on the periodic table is ",
+   "target": "carbon",
+   "intermediates": [
+    "6",
+    "six"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain_stripped",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -2
+    ]
+   },
+   "mc": {
+    "bridge_type": "number",
+    "gold": "6",
+    "aliases": [
+     "six",
+     "六",
+     "sixth",
+     "6th",
+     "第六"
+    ],
+    "distractors": [
+     "9",
+     "20",
+     "18",
+     "4"
+    ],
+    "distractor_aliases": {}
+   }
+  },
+  {
+   "name": "nhop-rainbow-element",
+   "prompt": "Count the items in a dozen. The element at that position on the periodic table is magnesium. Count the colors in a rainbow. The element at that position on the periodic table is ",
+   "target": "nitrogen",
+   "intermediates": [
+    "7"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain_stripped",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -2
+    ]
+   },
+   "mc": {
+    "bridge_type": "number",
+    "gold": "7",
+    "aliases": [
+     "seven",
+     "七",
+     "seventh",
+     "7th",
+     "第七"
+    ],
+    "distractors": [
+     "14",
+     "17",
+     "2",
+     "5"
+    ],
+    "distractor_aliases": {}
+   }
+  },
+  {
+   "name": "nhop-spider-element",
+   "prompt": "Count the items in a dozen. The element at that position on the periodic table is magnesium. Count the legs on a spider. The element at that position on the periodic table is ",
+   "target": "oxygen",
+   "intermediates": [
+    "8"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain_stripped",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -2
+    ]
+   },
+   "mc": {
+    "bridge_type": "number",
+    "gold": "8",
+    "aliases": [
+     "eight",
+     "八",
+     "eighth",
+     "8th",
+     "第八"
+    ],
+    "distractors": [
+     "17",
+     "11",
+     "7",
+     "4"
+    ],
+    "distractor_aliases": {}
+   }
+  },
+  {
+   "name": "pred-valentines-prevmonth",
+   "prompt": "Fact: The month immediately before the one containing Valentine's Day is \"",
+   "target": "January",
+   "intermediates": [
+    "February"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "month",
+    "gold": "February",
+    "aliases": [
+     "Feb",
+     "二月"
+    ],
+    "distractors": [
+     "November",
+     "December",
+     "July",
+     "August"
+    ],
+    "distractor_aliases": {
+     "November": [
+      "十一月"
+     ],
+     "December": [
+      "Dec",
+      "十二月"
+     ],
+     "July": [
+      "Jul",
+      "七月"
+     ],
+     "August": [
+      "八月"
+     ]
+    }
+   }
+  },
+  {
+   "name": "rhyme-tree-squared",
+   "prompt": "Fact: The square of the number whose name rhymes with tree is ",
+   "target": "9",
+   "intermediates": [
+    "three"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -2
+    ]
+   },
+   "mc": {
+    "bridge_type": "number",
+    "gold": "3",
+    "aliases": [
+     "three",
+     "三",
+     "third",
+     "3rd",
+     "第三"
+    ],
+    "distractors": [
+     "4",
+     "16",
+     "1",
+     "8"
+    ],
+    "distractor_aliases": {}
+   }
+  },
+  {
+   "name": "spaceneedle-border",
+   "prompt": "Fact: The US state where the Space Needle is located shares its northern border with ",
+   "target": "Canada",
+   "intermediates": [
+    "Washington"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain_stripped",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -2
+    ]
+   },
+   "mc": {
+    "bridge_type": "US state",
+    "gold": "Washington",
+    "aliases": [
+     "Washington State",
+     "华盛顿州"
+    ],
+    "distractors": [
+     "Ohio",
+     "Florida",
+     "Texas",
+     "Georgia"
+    ],
+    "distractor_aliases": {
+     "Ohio": [
+      "俄亥俄"
+     ],
+     "Florida": [
+      "佛罗里达"
+     ],
+     "Texas": [
+      "德克萨斯",
+      "得克萨斯"
+     ],
+     "Georgia": [
+      "佐治亚",
+      "格鲁吉亚"
+     ]
+    }
+   }
+  },
+  {
+   "name": "spider-legs",
+   "prompt": "Fact: The number of legs on the animal that spins webs is ",
+   "target": "8",
+   "intermediates": [
+    "spider"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -2
+    ]
+   },
+   "mc": {
+    "bridge_type": "animal",
+    "gold": "spider",
+    "aliases": [
+     "spiders",
+     "蜘蛛"
+    ],
+    "distractors": [
+     "horse",
+     "polar bear",
+     "camel",
+     "frog"
+    ],
+    "distractor_aliases": {
+     "horse": [
+      "马"
+     ],
+     "polar bear": [
+      "polar bears",
+      "北极熊"
+     ],
+     "camel": [
+      "骆驼"
+     ],
+     "frog": [
+      "青蛙"
+     ]
+    }
+   }
+  },
+  {
+   "name": "violin-strings",
+   "prompt": "Fact: The number of strings on the instrument that fiddlers play is ",
+   "target": "4",
+   "intermediates": [
+    "violin"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -2
+    ]
+   },
+   "mc": {
+    "bridge_type": "instrument",
+    "gold": "violin",
+    "aliases": [
+     "violins",
+     "小提琴"
+    ],
+    "distractors": [
+     "drums",
+     "harp",
+     "piano",
+     "trumpet"
+    ],
+    "distractor_aliases": {
+     "drums": [
+      "鼓"
+     ],
+     "harp": [
+      "竖琴"
+     ],
+     "piano": [
+      "钢琴"
+     ],
+     "trumpet": [
+      "小号"
+     ]
+    }
+   }
+  },
+  {
+   "name": "bf-boot-capital",
+   "prompt": "Fact: The capital of the European country shaped like a boot is",
+   "target": "Rome",
+   "intermediates": [
+    "Italy"
+   ],
+   "source": "staging",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "country",
+    "gold": "Italy",
+    "aliases": [
+     "意大利"
+    ],
+    "distractors": [
+     "Netherlands",
+     "Spain",
+     "Argentina",
+     "Australia"
+    ],
+    "distractor_aliases": {
+     "Netherlands": [
+      "Holland",
+      "荷兰"
+     ],
+     "Spain": [
+      "西班牙"
+     ],
+     "Argentina": [
+      "阿根廷"
+     ],
+     "Australia": [
+      "澳洲",
+      "澳大利亚"
+     ]
+    }
+   }
+  },
+  {
+   "name": "bf-bordeaux-fruit",
+   "prompt": "Fact: The fruit fermented to make the drink Bordeaux is famous for is the",
+   "target": "grape",
+   "intermediates": [
+    "wine"
+   ],
+   "source": "staging",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "drink",
+    "gold": "wine",
+    "aliases": [
+     "wines",
+     "葡萄酒",
+     "红酒"
+    ],
+    "distractors": [
+     "milk",
+     "beer",
+     "coffee",
+     "tea"
+    ],
+    "distractor_aliases": {
+     "milk": [
+      "牛奶"
+     ],
+     "beer": [
+      "啤酒"
+     ],
+     "coffee": [
+      "咖啡"
+     ],
+     "tea": [
+      "茶"
+     ]
+    }
+   }
+  },
+  {
+   "name": "bf-christmas-season",
+   "prompt": "Fact: In the Northern Hemisphere, the season during the month of Christmas is",
+   "target": "winter",
+   "intermediates": [
+    "December"
+   ],
+   "source": "staging",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "month",
+    "gold": "December",
+    "aliases": [
+     "Dec",
+     "十二月"
+    ],
+    "distractors": [
+     "May",
+     "July",
+     "August",
+     "October"
+    ],
+    "distractor_aliases": {
+     "May": [
+      "五月"
+     ],
+     "July": [
+      "Jul",
+      "七月"
+     ],
+     "August": [
+      "八月"
+     ],
+     "October": [
+      "Oct",
+      "十月"
+     ]
+    }
+   }
+  },
+  {
+   "name": "bf-eiffel-currency",
+   "prompt": "Fact: The currency used in the country home to the Eiffel Tower is the",
+   "target": "euro",
+   "intermediates": [
+    "France"
+   ],
+   "source": "staging",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "country",
+    "gold": "France",
+    "aliases": [
+     "法国"
+    ],
+    "distractors": [
+     "Norway",
+     "Denmark",
+     "Sweden",
+     "Brazil"
+    ],
+    "distractor_aliases": {
+     "Norway": [
+      "挪威"
+     ],
+     "Denmark": [
+      "丹麦"
+     ],
+     "Sweden": [
+      "瑞典"
+     ],
+     "Brazil": [
+      "巴西"
+     ]
+    }
+   }
+  },
+  {
+   "name": "bf-fuji-ocean",
+   "prompt": "Fact: The ocean east of the country of Mount Fuji is the",
+   "target": "Pacific",
+   "intermediates": [
+    "Japan"
+   ],
+   "source": "staging",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "country",
+    "gold": "Japan",
+    "aliases": [
+     "日本"
+    ],
+    "distractors": [
+     "Scotland",
+     "France",
+     "Italy",
+     "Brazil"
+    ],
+    "distractor_aliases": {
+     "Scotland": [
+      "苏格兰"
+     ],
+     "France": [
+      "法国"
+     ],
+     "Italy": [
+      "意大利"
+     ],
+     "Brazil": [
+      "巴西"
+     ]
+    }
+   }
+  },
+  {
+   "name": "bf-giza-continent",
+   "prompt": "Fact: The continent containing the country famous for the pyramids of Giza is",
+   "target": "Africa",
+   "intermediates": [
+    "Egypt"
+   ],
+   "source": "staging",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "country",
+    "gold": "Egypt",
+    "aliases": [
+     "埃及"
+    ],
+    "distractors": [
+     "Australia",
+     "Italy",
+     "Nepal",
+     "Finland"
+    ],
+    "distractor_aliases": {
+     "Australia": [
+      "澳洲",
+      "澳大利亚"
+     ],
+     "Italy": [
+      "意大利"
+     ],
+     "Nepal": [
+      "尼泊尔"
+     ],
+     "Finland": [
+      "芬兰"
+     ]
+    }
+   }
+  },
+  {
+   "name": "bf-kathmandu-mountain",
+   "prompt": "Fact: The tallest mountain in the country whose capital is Kathmandu is",
+   "target": "Everest",
+   "intermediates": [
+    "Nepal"
+   ],
+   "source": "staging",
+   "consistency": 1.0,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "country",
+    "gold": "Nepal",
+    "aliases": [
+     "尼泊尔"
+    ],
+    "distractors": [
+     "Japan",
+     "Portugal",
+     "Ireland",
+     "Norway"
+    ],
+    "distractor_aliases": {
+     "Japan": [
+      "日本"
+     ],
+     "Portugal": [
+      "葡萄牙"
+     ],
+     "Ireland": [
+      "爱尔兰"
+     ],
+     "Norway": [
+      "挪威"
+     ]
+    }
+   }
+  },
+  {
+   "name": "bf-madrid-language",
+   "prompt": "Fact: The language spoken in the country whose capital is Madrid is",
+   "target": "Spanish",
+   "intermediates": [
+    "Spain"
+   ],
+   "source": "staging",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "country",
+    "gold": "Spain",
+    "aliases": [
+     "西班牙"
+    ],
+    "distractors": [
+     "Netherlands",
+     "Canada",
+     "Sweden",
+     "New Zealand"
+    ],
+    "distractor_aliases": {
+     "Netherlands": [
+      "Holland",
+      "荷兰"
+     ],
+     "Canada": [
+      "加拿大"
+     ],
+     "Sweden": [
+      "瑞典"
+     ],
+     "New Zealand": [
+      "NZ",
+      "新西兰"
+     ]
+    }
+   }
+  },
+  {
+   "name": "bf-moonwalk-firstname",
+   "prompt": "Fact: The first name of the first person to walk on the Moon is",
+   "target": "Neil",
+   "intermediates": [
+    "Armstrong"
+   ],
+   "source": "staging",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "person",
+    "gold": "Armstrong",
+    "aliases": [
+     "Neil Armstrong",
+     "阿姆斯特朗"
+    ],
+    "distractors": [
+     "Mozart",
+     "Gandhi",
+     "Napoleon",
+     "Newton"
+    ],
+    "distractor_aliases": {
+     "Mozart": [
+      "莫扎特"
+     ],
+     "Gandhi": [
+      "甘地"
+     ],
+     "Napoleon": [
+      "拿破仑"
+     ],
+     "Newton": [
+      "Isaac Newton",
+      "牛顿"
+     ]
+    }
+   }
+  },
+  {
+   "name": "bf-rio2016-language",
+   "prompt": "Fact: The language of the country that hosted the 2016 Summer Olympics is",
+   "target": "Portuguese",
+   "intermediates": [
+    "Brazil"
+   ],
+   "source": "staging",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "country",
+    "gold": "Brazil",
+    "aliases": [
+     "巴西"
+    ],
+    "distractors": [
+     "Sweden",
+     "Switzerland",
+     "India",
+     "Australia"
+    ],
+    "distractor_aliases": {
+     "Sweden": [
+      "瑞典"
+     ],
+     "Switzerland": [
+      "瑞士"
+     ],
+     "India": [
+      "印度"
+     ],
+     "Australia": [
+      "澳洲",
+      "澳大利亚"
+     ]
+    }
+   }
+  },
+  {
+   "name": "bf-southpole-bird",
+   "prompt": "Fact: The flightless bird living on the continent surrounding the South Pole is the",
+   "target": "penguin",
+   "intermediates": [
+    "Antarctica"
+   ],
+   "source": "staging",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "continent",
+    "gold": "Antarctica",
+    "aliases": [
+     "南极洲"
+    ],
+    "distractors": [
+     "North America",
+     "Oceania",
+     "Asia",
+     "Europe"
+    ],
+    "distractor_aliases": {
+     "North America": [
+      "北美",
+      "北美洲"
+     ],
+     "Oceania": [
+      "大洋洲"
+     ],
+     "Asia": [
+      "亚洲"
+     ],
+     "Europe": [
+      "欧洲"
+     ]
+    }
+   }
+  },
+  {
+   "name": "bf-sphinx-river",
+   "prompt": "Fact: The river flowing through the country of the Great Sphinx is the",
+   "target": "Nile",
+   "intermediates": [
+    "Egypt"
+   ],
+   "source": "staging",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "country",
+    "gold": "Egypt",
+    "aliases": [
+     "埃及"
+    ],
+    "distractors": [
+     "Finland",
+     "Japan",
+     "Norway",
+     "Argentina"
+    ],
+    "distractor_aliases": {
+     "Finland": [
+      "芬兰"
+     ],
+     "Japan": [
+      "日本"
+     ],
+     "Norway": [
+      "挪威"
+     ],
+     "Argentina": [
+      "阿根廷"
+     ]
+    }
+   }
+  },
+  {
+   "name": "bf-stopsign-sides",
+   "prompt": "Fact: The number of sides on the shape of a standard stop sign is",
+   "target": "8",
+   "intermediates": [
+    "octagon"
+   ],
+   "source": "staging",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "shape",
+    "gold": "octagon",
+    "aliases": [
+     "octagons",
+     "八边形",
+     "八角形"
+    ],
+    "distractors": [
+     "rectangle",
+     "pentagon",
+     "oval",
+     "square"
+    ],
+    "distractor_aliases": {
+     "rectangle": [
+      "长方形",
+      "矩形"
+     ],
+     "pentagon": [
+      "五边形"
+     ],
+     "oval": [
+      "椭圆"
+     ],
+     "square": [
+      "正方形"
+     ]
+    }
+   }
+  },
+  {
+   "name": "bf-sushi-capital",
+   "prompt": "Fact: The capital city of the country where sushi originated is",
+   "target": "Tokyo",
+   "intermediates": [
+    "Japan"
+   ],
+   "source": "staging",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "country",
+    "gold": "Japan",
+    "aliases": [
+     "日本"
+    ],
+    "distractors": [
+     "Mexico",
+     "Netherlands",
+     "Norway",
+     "New Zealand"
+    ],
+    "distractor_aliases": {
+     "Mexico": [
+      "墨西哥"
+     ],
+     "Netherlands": [
+      "Holland",
+      "荷兰"
+     ],
+     "Norway": [
+      "挪威"
+     ],
+     "New Zealand": [
+      "NZ",
+      "新西兰"
+     ]
+    }
+   }
+  },
+  {
+   "name": "bf-whitebear-ocean",
+   "prompt": "Fact: The ocean where the white bear of the far north hunts is the",
+   "target": "Arctic",
+   "intermediates": [
+    "polar bear"
+   ],
+   "source": "staging",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "animal",
+    "gold": "polar bear",
+    "aliases": [
+     "polar bears",
+     "北极熊"
+    ],
+    "distractors": [
+     "camel",
+     "snake",
+     "elephant",
+     "dog"
+    ],
+    "distractor_aliases": {
+     "camel": [
+      "骆驼"
+     ],
+     "snake": [
+      "蛇"
+     ],
+     "elephant": [
+      "大象",
+      "象"
+     ],
+     "dog": [
+      "狗"
+     ]
+    }
+   }
+  },
+  {
+   "name": "b3-mh-acropolis-capital",
+   "prompt": "Fact: The capital of the country of the Acropolis is",
+   "target": "Athens",
+   "intermediates": [
+    "Greece"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "country",
+    "gold": "Greece",
+    "aliases": [
+     "希腊"
+    ],
+    "distractors": [
+     "Nepal",
+     "India",
+     "Netherlands",
+     "New Zealand"
+    ],
+    "distractor_aliases": {
+     "Nepal": [
+      "尼泊尔"
+     ],
+     "India": [
+      "印度"
+     ],
+     "Netherlands": [
+      "Holland",
+      "荷兰"
+     ],
+     "New Zealand": [
+      "NZ",
+      "新西兰"
+     ]
+    }
+   }
+  },
+  {
+   "name": "b3-mh-bakerstreet-city",
+   "prompt": "Fact: The home city of the detective of 221B Baker Street is",
+   "target": "London",
+   "intermediates": [
+    "Sherlock Holmes"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "fictional character",
+    "gold": "Sherlock Holmes",
+    "aliases": [
+     "Sherlock",
+     "Holmes",
+     "福尔摩斯",
+     "夏洛克"
+    ],
+    "distractors": [
+     "Don Quixote",
+     "Dracula",
+     "Huckleberry Finn",
+     "Tarzan"
+    ],
+    "distractor_aliases": {
+     "Don Quixote": [
+      "堂吉诃德"
+     ],
+     "Dracula": [
+      "德古拉"
+     ],
+     "Huckleberry Finn": [
+      "哈克贝利"
+     ],
+     "Tarzan": [
+      "泰山"
+     ]
+    }
+   }
+  },
+  {
+   "name": "b3-mh-blindpoet-epic",
+   "prompt": "Fact: The blind poet of the Odyssey also composed the",
+   "target": "Iliad",
+   "intermediates": [
+    "Homer"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "person",
+    "gold": "Homer",
+    "aliases": [
+     "荷马"
+    ],
+    "distractors": [
+     "Beethoven",
+     "Lincoln",
+     "Picasso",
+     "Columbus"
+    ],
+    "distractor_aliases": {
+     "Beethoven": [
+      "贝多芬"
+     ],
+     "Lincoln": [
+      "林肯"
+     ],
+     "Picasso": [
+      "毕加索"
+     ],
+     "Columbus": [
+      "哥伦布"
+     ]
+    }
+   }
+  },
+  {
+   "name": "b3-mh-buenosaires-language",
+   "prompt": "Fact: The language of the country whose capital is Buenos Aires is",
+   "target": "Spanish",
+   "intermediates": [
+    "Argentina"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "country",
+    "gold": "Argentina",
+    "aliases": [
+     "阿根廷"
+    ],
+    "distractors": [
+     "Netherlands",
+     "Ireland",
+     "New Zealand",
+     "Nepal"
+    ],
+    "distractor_aliases": {
+     "Netherlands": [
+      "Holland",
+      "荷兰"
+     ],
+     "Ireland": [
+      "爱尔兰"
+     ],
+     "New Zealand": [
+      "NZ",
+      "新西兰"
+     ],
+     "Nepal": [
+      "尼泊尔"
+     ]
+    }
+   }
+  },
+  {
+   "name": "b3-mh-colosseum-capital",
+   "prompt": "Fact: The capital of the country where the Colosseum stands is",
+   "target": "Rome",
+   "intermediates": [
+    "Italy"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "country",
+    "gold": "Italy",
+    "aliases": [
+     "意大利"
+    ],
+    "distractors": [
+     "India",
+     "Scotland",
+     "Greece",
+     "Portugal"
+    ],
+    "distractor_aliases": {
+     "India": [
+      "印度"
+     ],
+     "Scotland": [
+      "苏格兰"
+     ],
+     "Greece": [
+      "希腊"
+     ],
+     "Portugal": [
+      "葡萄牙"
+     ]
+    }
+   }
+  },
+  {
+   "name": "b3-mh-cuckoo-mountains",
+   "prompt": "Fact: The mountain range of the country famous for cuckoo clocks and neutrality is the",
+   "target": "Alps",
+   "intermediates": [
+    "Switzerland"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "country",
+    "gold": "Switzerland",
+    "aliases": [
+     "瑞士"
+    ],
+    "distractors": [
+     "India",
+     "Japan",
+     "Russia",
+     "Greece"
+    ],
+    "distractor_aliases": {
+     "India": [
+      "印度"
+     ],
+     "Japan": [
+      "日本"
+     ],
+     "Russia": [
+      "俄罗斯"
+     ],
+     "Greece": [
+      "希腊"
+     ]
+    }
+   }
+  },
+  {
+   "name": "b3-mh-eiffel-capital",
+   "prompt": "Fact: The capital of the country famous for the Eiffel Tower is",
+   "target": "Paris",
+   "intermediates": [
+    "France"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "country",
+    "gold": "France",
+    "aliases": [
+     "法国"
+    ],
+    "distractors": [
+     "Egypt",
+     "Sweden",
+     "Canada",
+     "Greece"
+    ],
+    "distractor_aliases": {
+     "Egypt": [
+      "埃及"
+     ],
+     "Sweden": [
+      "瑞典"
+     ],
+     "Canada": [
+      "加拿大"
+     ],
+     "Greece": [
+      "希腊"
+     ]
+    }
+   }
+  },
+  {
+   "name": "b3-mh-fjords-capital",
+   "prompt": "Fact: The capital of the country famous for fjords is",
+   "target": "Oslo",
+   "intermediates": [
+    "Norway"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "country",
+    "gold": "Norway",
+    "aliases": [
+     "挪威"
+    ],
+    "distractors": [
+     "Netherlands",
+     "Greece",
+     "Portugal",
+     "Canada"
+    ],
+    "distractor_aliases": {
+     "Netherlands": [
+      "Holland",
+      "荷兰"
+     ],
+     "Greece": [
+      "希腊"
+     ],
+     "Portugal": [
+      "葡萄牙"
+     ],
+     "Canada": [
+      "加拿大"
+     ]
+    }
+   }
+  },
+  {
+   "name": "b3-mh-fuji-currency",
+   "prompt": "Fact: The currency of the country of Mount Fuji is the",
+   "target": "yen",
+   "intermediates": [
+    "Japan"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "country",
+    "gold": "Japan",
+    "aliases": [
+     "日本"
+    ],
+    "distractors": [
+     "Canada",
+     "Australia",
+     "France",
+     "Portugal"
+    ],
+    "distractor_aliases": {
+     "Canada": [
+      "加拿大"
+     ],
+     "Australia": [
+      "澳洲",
+      "澳大利亚"
+     ],
+     "France": [
+      "法国"
+     ],
+     "Portugal": [
+      "葡萄牙"
+     ]
+    }
+   }
+  },
+  {
+   "name": "b3-mh-goldengate-ocean",
+   "prompt": "Fact: The ocean beside the city of the Golden Gate Bridge is the",
+   "target": "Pacific",
+   "intermediates": [
+    "San Francisco"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "city",
+    "gold": "San Francisco",
+    "aliases": [
+     "旧金山",
+     "三藩市"
+    ],
+    "distractors": [
+     "Berlin",
+     "Miami",
+     "Houston",
+     "New York"
+    ],
+    "distractor_aliases": {
+     "Berlin": [
+      "柏林"
+     ],
+     "Miami": [
+      "迈阿密"
+     ],
+     "Houston": [
+      "休斯顿"
+     ],
+     "New York": [
+      "New York City",
+      "NYC",
+      "纽约"
+     ]
+    }
+   }
+  },
+  {
+   "name": "b3-mh-gravity-fruit",
+   "prompt": "Fact: The fruit that famously fell in the story of gravity's discovery is the",
+   "target": "apple",
+   "intermediates": [
+    "Newton"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "person",
+    "gold": "Newton",
+    "aliases": [
+     "Isaac Newton",
+     "牛顿"
+    ],
+    "distractors": [
+     "Armstrong",
+     "Lincoln",
+     "Homer",
+     "Darwin"
+    ],
+    "distractor_aliases": {
+     "Armstrong": [
+      "Neil Armstrong",
+      "阿姆斯特朗"
+     ],
+     "Lincoln": [
+      "林肯"
+     ],
+     "Homer": [
+      "荷马"
+     ],
+     "Darwin": [
+      "达尔文"
+     ]
+    }
+   }
+  },
+  {
+   "name": "b3-mh-greatwall-river",
+   "prompt": "Fact: The longest river of the country that built the Great Wall is the",
+   "target": "Yangtze",
+   "intermediates": [
+    "China"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "country",
+    "gold": "China",
+    "aliases": [
+     "中国"
+    ],
+    "distractors": [
+     "Brazil",
+     "Mexico",
+     "Portugal",
+     "Switzerland"
+    ],
+    "distractor_aliases": {
+     "Brazil": [
+      "巴西"
+     ],
+     "Mexico": [
+      "墨西哥"
+     ],
+     "Portugal": [
+      "葡萄牙"
+     ],
+     "Switzerland": [
+      "瑞士"
+     ]
+    }
+   }
+  },
+  {
+   "name": "b3-mh-guinness-capital",
+   "prompt": "Fact: The capital of the country where Guinness is brewed is",
+   "target": "Dublin",
+   "intermediates": [
+    "Ireland"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "country",
+    "gold": "Ireland",
+    "aliases": [
+     "爱尔兰"
+    ],
+    "distractors": [
+     "Greece",
+     "Sweden",
+     "India",
+     "Portugal"
+    ],
+    "distractor_aliases": {
+     "Greece": [
+      "希腊"
+     ],
+     "Sweden": [
+      "瑞典"
+     ],
+     "India": [
+      "印度"
+     ],
+     "Portugal": [
+      "葡萄牙"
+     ]
+    }
+   }
+  },
+  {
+   "name": "b3-mh-griffithobservatory-state",
+   "prompt": "Fact: The US state containing the Griffith Observatory is",
+   "target": "California",
+   "intermediates": [
+    "Los Angeles"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "city",
+    "gold": "Los Angeles",
+    "aliases": [
+     "L.A.",
+     "洛杉矶"
+    ],
+    "distractors": [
+     "London",
+     "Berlin",
+     "Moscow",
+     "New York"
+    ],
+    "distractor_aliases": {
+     "London": [
+      "伦敦"
+     ],
+     "Berlin": [
+      "柏林"
+     ],
+     "Moscow": [
+      "莫斯科"
+     ],
+     "New York": [
+      "New York City",
+      "NYC",
+      "纽约"
+     ]
+    }
+   }
+  },
+  {
+   "name": "b3-mh-kangaroo-ocean",
+   "prompt": "Fact: The ocean between the kangaroo's home country and Africa is the",
+   "target": "Indian",
+   "intermediates": [
+    "Australia"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "country",
+    "gold": "Australia",
+    "aliases": [
+     "澳洲",
+     "澳大利亚"
+    ],
+    "distractors": [
+     "Canada",
+     "Spain",
+     "Sweden",
+     "Switzerland"
+    ],
+    "distractor_aliases": {
+     "Canada": [
+      "加拿大"
+     ],
+     "Spain": [
+      "西班牙"
+     ],
+     "Sweden": [
+      "瑞典"
+     ],
+     "Switzerland": [
+      "瑞士"
+     ]
+    }
+   }
+  },
+  {
+   "name": "b3-mh-kilts-capital",
+   "prompt": "Fact: The capital of the country famous for kilts and bagpipes is",
+   "target": "Edinburgh",
+   "intermediates": [
+    "Scotland"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "country",
+    "gold": "Scotland",
+    "aliases": [
+     "苏格兰"
+    ],
+    "distractors": [
+     "France",
+     "Spain",
+     "Greece",
+     "Brazil"
+    ],
+    "distractor_aliases": {
+     "France": [
+      "法国"
+     ],
+     "Spain": [
+      "西班牙"
+     ],
+     "Greece": [
+      "希腊"
+     ],
+     "Brazil": [
+      "巴西"
+     ]
+    }
+   }
+  },
+  {
+   "name": "b3-mh-kiwi-capital",
+   "prompt": "Fact: The capital of the country whose people are nicknamed Kiwis is",
+   "target": "Wellington",
+   "intermediates": [
+    "New Zealand"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "country",
+    "gold": "New Zealand",
+    "aliases": [
+     "NZ",
+     "新西兰"
+    ],
+    "distractors": [
+     "Russia",
+     "India",
+     "Canada",
+     "Italy"
+    ],
+    "distractor_aliases": {
+     "Russia": [
+      "俄罗斯"
+     ],
+     "India": [
+      "印度"
+     ],
+     "Canada": [
+      "加拿大"
+     ],
+     "Italy": [
+      "意大利"
+     ]
+    }
+   }
+  },
+  {
+   "name": "b3-mh-kremlin-language",
+   "prompt": "Fact: The main language of the country where the Kremlin stands is",
+   "target": "Russian",
+   "intermediates": [
+    "Russia"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "country",
+    "gold": "Russia",
+    "aliases": [
+     "俄罗斯"
+    ],
+    "distractors": [
+     "India",
+     "Japan",
+     "Portugal",
+     "Australia"
+    ],
+    "distractor_aliases": {
+     "India": [
+      "印度"
+     ],
+     "Japan": [
+      "日本"
+     ],
+     "Portugal": [
+      "葡萄牙"
+     ],
+     "Australia": [
+      "澳洲",
+      "澳大利亚"
+     ]
+    }
+   }
+  },
+  {
+   "name": "b3-mh-liberty-river",
+   "prompt": "Fact: The river beside the island of the Statue of Liberty is the",
+   "target": "Hudson",
+   "intermediates": [
+    "New York"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "city",
+    "gold": "New York",
+    "aliases": [
+     "New York City",
+     "NYC",
+     "纽约"
+    ],
+    "distractors": [
+     "Berlin",
+     "Chicago",
+     "Los Angeles",
+     "Miami"
+    ],
+    "distractor_aliases": {
+     "Berlin": [
+      "柏林"
+     ],
+     "Chicago": [
+      "芝加哥"
+     ],
+     "Los Angeles": [
+      "L.A.",
+      "洛杉矶"
+     ],
+     "Miami": [
+      "迈阿密"
+     ]
+    }
+   }
+  },
+  {
+   "name": "b3-mh-lisbon-language",
+   "prompt": "Fact: The language spoken in the country whose capital is Lisbon is",
+   "target": "Portuguese",
+   "intermediates": [
+    "Portugal"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "country",
+    "gold": "Portugal",
+    "aliases": [
+     "葡萄牙"
+    ],
+    "distractors": [
+     "Netherlands",
+     "Canada",
+     "Ireland",
+     "Scotland"
+    ],
+    "distractor_aliases": {
+     "Netherlands": [
+      "Holland",
+      "荷兰"
+     ],
+     "Canada": [
+      "加拿大"
+     ],
+     "Ireland": [
+      "爱尔兰"
+     ],
+     "Scotland": [
+      "苏格兰"
+     ]
+    }
+   }
+  },
+  {
+   "name": "b3-mh-longestriver-sea",
+   "prompt": "Fact: The sea into which the world's longest river empties is the",
+   "target": "Mediterranean",
+   "intermediates": [
+    "Nile"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "river",
+    "gold": "Nile",
+    "aliases": [
+     "尼罗河"
+    ],
+    "distractors": [
+     "Mississippi",
+     "Thames",
+     "Yangtze",
+     "Ganges"
+    ],
+    "distractor_aliases": {
+     "Mississippi": [
+      "密西西比"
+     ],
+     "Thames": [
+      "泰晤士"
+     ],
+     "Yangtze": [
+      "长江"
+     ],
+     "Ganges": [
+      "恒河"
+     ]
+    }
+   }
+  },
+  {
+   "name": "b3-mh-nokia-capital",
+   "prompt": "Fact: The capital of the country where Nokia was founded is",
+   "target": "Helsinki",
+   "intermediates": [
+    "Finland"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "country",
+    "gold": "Finland",
+    "aliases": [
+     "芬兰"
+    ],
+    "distractors": [
+     "Portugal",
+     "New Zealand",
+     "Netherlands",
+     "Switzerland"
+    ],
+    "distractor_aliases": {
+     "Portugal": [
+      "葡萄牙"
+     ],
+     "New Zealand": [
+      "NZ",
+      "新西兰"
+     ],
+     "Netherlands": [
+      "Holland",
+      "荷兰"
+     ],
+     "Switzerland": [
+      "瑞士"
+     ]
+    }
+   }
+  },
+  {
+   "name": "b3-mh-samba-river",
+   "prompt": "Fact: The great river of the country famous for samba and Carnival is the",
+   "target": "Amazon",
+   "intermediates": [
+    "Brazil"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "country",
+    "gold": "Brazil",
+    "aliases": [
+     "巴西"
+    ],
+    "distractors": [
+     "Greece",
+     "Italy",
+     "Ireland",
+     "India"
+    ],
+    "distractor_aliases": {
+     "Greece": [
+      "希腊"
+     ],
+     "Italy": [
+      "意大利"
+     ],
+     "Ireland": [
+      "爱尔兰"
+     ],
+     "India": [
+      "印度"
+     ]
+    }
+   }
+  },
+  {
+   "name": "b3-mh-sphinx-capital",
+   "prompt": "Fact: The capital of the country of the Great Sphinx is",
+   "target": "Cairo",
+   "intermediates": [
+    "Egypt"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "country",
+    "gold": "Egypt",
+    "aliases": [
+     "埃及"
+    ],
+    "distractors": [
+     "Brazil",
+     "Japan",
+     "Netherlands",
+     "France"
+    ],
+    "distractor_aliases": {
+     "Brazil": [
+      "巴西"
+     ],
+     "Japan": [
+      "日本"
+     ],
+     "Netherlands": [
+      "Holland",
+      "荷兰"
+     ],
+     "France": [
+      "法国"
+     ]
+    }
+   }
+  },
+  {
+   "name": "b3-mh-tajmahal-river",
+   "prompt": "Fact: The sacred river of the country of the Taj Mahal is the",
+   "target": "Ganges",
+   "intermediates": [
+    "India"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "country",
+    "gold": "India",
+    "aliases": [
+     "印度"
+    ],
+    "distractors": [
+     "Scotland",
+     "Australia",
+     "Mexico",
+     "New Zealand"
+    ],
+    "distractor_aliases": {
+     "Scotland": [
+      "苏格兰"
+     ],
+     "Australia": [
+      "澳洲",
+      "澳大利亚"
+     ],
+     "Mexico": [
+      "墨西哥"
+     ],
+     "New Zealand": [
+      "NZ",
+      "新西兰"
+     ]
+    }
+   }
+  },
+  {
+   "name": "b3-mh-tulips-capital",
+   "prompt": "Fact: The capital of the country famous for tulips and windmills is",
+   "target": "Amsterdam",
+   "intermediates": [
+    "Netherlands",
+    "Holland"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "country",
+    "gold": "Netherlands",
+    "aliases": [
+     "Holland",
+     "荷兰"
+    ],
+    "distractors": [
+     "Nepal",
+     "France",
+     "Canada",
+     "Norway"
+    ],
+    "distractor_aliases": {
+     "Nepal": [
+      "尼泊尔"
+     ],
+     "France": [
+      "法国"
+     ],
+     "Canada": [
+      "加拿大"
+     ],
+     "Norway": [
+      "挪威"
+     ]
+    }
+   }
+  },
+  {
+   "name": "b3-mh-zeus-country",
+   "prompt": "Fact: The country of the mountain home of Zeus is",
+   "target": "Greece",
+   "intermediates": [
+    "Olympus"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "mountain",
+    "gold": "Olympus",
+    "aliases": [
+     "Mount Olympus",
+     "奥林匹斯山"
+    ],
+    "distractors": [
+     "Matterhorn",
+     "Elbrus",
+     "Fuji",
+     "Kilimanjaro"
+    ],
+    "distractor_aliases": {
+     "Matterhorn": [
+      "马特洪"
+     ],
+     "Elbrus": [
+      "厄尔布鲁士"
+     ],
+     "Fuji": [
+      "富士"
+     ],
+     "Kilimanjaro": [
+      "乞力马扎罗"
+     ]
+    }
+   }
+  },
+  {
+   "name": "basketball-players",
+   "prompt": "Fact: The number of players per side in the sport invented in Springfield, Massachusetts is ",
+   "target": "5",
+   "intermediates": [
+    "basketball"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.9,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -2
+    ]
+   },
+   "mc": {
+    "bridge_type": "sport",
+    "gold": "basketball",
+    "aliases": [
+     "篮球"
+    ],
+    "distractors": [
+     "baseball",
+     "cricket",
+     "golf",
+     "rugby"
+    ],
+    "distractor_aliases": {
+     "baseball": [
+      "棒球"
+     ],
+     "cricket": [
+      "板球"
+     ],
+     "golf": [
+      "高尔夫"
+     ],
+     "rugby": [
+      "橄榄球"
+     ]
+    }
+   }
+  },
+  {
+   "name": "carnival-ocean",
+   "prompt": "Fact: The ocean on the coast of the country where Carnival is most famously celebrated is the ",
+   "target": "Atlantic",
+   "intermediates": [
+    "Brazil"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.9,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -2
+    ]
+   },
+   "mc": {
+    "bridge_type": "country",
+    "gold": "Brazil",
+    "aliases": [
+     "巴西"
+    ],
+    "distractors": [
+     "Italy",
+     "Japan",
+     "Nepal",
+     "Russia"
+    ],
+    "distractor_aliases": {
+     "Italy": [
+      "意大利"
+     ],
+     "Japan": [
+      "日本"
+     ],
+     "Nepal": [
+      "尼泊尔"
+     ],
+     "Russia": [
+      "俄罗斯"
+     ]
+    }
+   }
+  },
+  {
+   "name": "dual-stars-visible-opposite",
+   "prompt": "Fact: The opposite of the time of day when stars are visible is \"",
+   "target": "day",
+   "intermediates": [
+    "night"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.9,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "antonym word",
+    "gold": "night",
+    "aliases": [
+     "nighttime",
+     "night-time",
+     "夜晚",
+     "晚上"
+    ],
+    "distractors": [
+     "hate",
+     "war",
+     "slow",
+     "early"
+    ],
+    "distractor_aliases": {
+     "hate": [
+      "恨"
+     ],
+     "war": [
+      "wars",
+      "战争"
+     ],
+     "slow": [
+      "慢"
+     ],
+     "early": [
+      "早"
+     ]
+    }
+   }
+  },
+  {
+   "name": "firstletter-greatwall-country",
+   "prompt": "Fact: The first letter of the name of the country that built the Great Wall is ",
+   "target": "C",
+   "intermediates": [
+    "China"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.9,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -2
+    ]
+   },
+   "mc": {
+    "bridge_type": "country",
+    "gold": "China",
+    "aliases": [
+     "中国"
+    ],
+    "distractors": [
+     "Mexico",
+     "Scotland",
+     "Sweden",
+     "Netherlands"
+    ],
+    "distractor_aliases": {
+     "Mexico": [
+      "墨西哥"
+     ],
+     "Scotland": [
+      "苏格兰"
+     ],
+     "Sweden": [
+      "瑞典"
+     ],
+     "Netherlands": [
+      "Holland",
+      "荷兰"
+     ]
+    }
+   }
+  },
+  {
+   "name": "firstletter-halloween-month",
+   "prompt": "Fact: The first letter of the month containing Halloween is \"",
+   "target": "O",
+   "intermediates": [
+    "October"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.9,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "month",
+    "gold": "October",
+    "aliases": [
+     "Oct",
+     "十月"
+    ],
+    "distractors": [
+     "March",
+     "September",
+     "February",
+     "August"
+    ],
+    "distractor_aliases": {
+     "March": [
+      "三月"
+     ],
+     "September": [
+      "九月"
+     ],
+     "February": [
+      "Feb",
+      "二月"
+     ],
+     "August": [
+      "八月"
+     ]
+    }
+   }
+  },
+  {
+   "name": "nhop-soccer-element",
+   "prompt": "Count the items in a dozen. The element at that position on the periodic table is magnesium. Count the players on a soccer team on the field. The element at that position on the periodic table is ",
+   "target": "sodium",
+   "intermediates": [
+    "11"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.9,
+   "gate_variant": "plain_stripped",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -2
+    ]
+   },
+   "mc": {
+    "bridge_type": "number",
+    "gold": "11",
+    "aliases": [
+     "eleven",
+     "十一",
+     "eleventh",
+     "11th",
+     "第十一"
+    ],
+    "distractors": [
+     "20",
+     "16",
+     "1",
+     "4"
+    ],
+    "distractor_aliases": {}
+   }
+  },
+  {
+   "name": "super-smallest-continent",
+   "prompt": "Fact: The smallest country in the world is located on the continent of ",
+   "target": "Europe",
+   "intermediates": [
+    "Vatican"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.9,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -2
+    ]
+   },
+   "mc": {
+    "bridge_type": "country",
+    "gold": "Vatican",
+    "aliases": [
+     "Vatican City",
+     "Holy See",
+     "梵蒂冈"
+    ],
+    "distractors": [
+     "Australia",
+     "Brazil",
+     "New Zealand",
+     "Mexico"
+    ],
+    "distractor_aliases": {
+     "Australia": [
+      "澳洲",
+      "澳大利亚"
+     ],
+     "Brazil": [
+      "巴西"
+     ],
+     "New Zealand": [
+      "NZ",
+      "新西兰"
+     ],
+     "Mexico": [
+      "墨西哥"
+     ]
+    }
+   }
+  },
+  {
+   "name": "bf-eiffel-continent",
+   "prompt": "Fact: The continent home to the country of the Eiffel Tower is",
+   "target": "Europe",
+   "intermediates": [
+    "France"
+   ],
+   "source": "staging",
+   "consistency": 0.9,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "country",
+    "gold": "France",
+    "aliases": [
+     "法国"
+    ],
+    "distractors": [
+     "Canada",
+     "Japan",
+     "Argentina",
+     "Australia"
+    ],
+    "distractor_aliases": {
+     "Canada": [
+      "加拿大"
+     ],
+     "Japan": [
+      "日本"
+     ],
+     "Argentina": [
+      "阿根廷"
+     ],
+     "Australia": [
+      "澳洲",
+      "澳大利亚"
+     ]
+    }
+   }
+  },
+  {
+   "name": "bf-kangaroo-capital",
+   "prompt": "Fact: The capital of the country where the kangaroo is native is",
+   "target": "Canberra",
+   "intermediates": [
+    "Australia"
+   ],
+   "source": "staging",
+   "consistency": 0.9,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "country",
+    "gold": "Australia",
+    "aliases": [
+     "澳洲",
+     "澳大利亚"
+    ],
+    "distractors": [
+     "Japan",
+     "Scotland",
+     "Denmark",
+     "Norway"
+    ],
+    "distractor_aliases": {
+     "Japan": [
+      "日本"
+     ],
+     "Scotland": [
+      "苏格兰"
+     ],
+     "Denmark": [
+      "丹麦"
+     ],
+     "Norway": [
+      "挪威"
+     ]
+    }
+   }
+  },
+  {
+   "name": "bf-mapleleaf-capital",
+   "prompt": "Fact: The capital of the country whose flag features a red maple leaf is",
+   "target": "Ottawa",
+   "intermediates": [
+    "Canada"
+   ],
+   "source": "staging",
+   "consistency": 0.9,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "country",
+    "gold": "Canada",
+    "aliases": [
+     "加拿大"
+    ],
+    "distractors": [
+     "Russia",
+     "Ireland",
+     "Sweden",
+     "Switzerland"
+    ],
+    "distractor_aliases": {
+     "Russia": [
+      "俄罗斯"
+     ],
+     "Ireland": [
+      "爱尔兰"
+     ],
+     "Sweden": [
+      "瑞典"
+     ],
+     "Switzerland": [
+      "瑞士"
+     ]
+    }
+   }
+  },
+  {
+   "name": "bf-olympia-language",
+   "prompt": "Fact: The language of the country where the ancient Olympic Games began is",
+   "target": "Greek",
+   "intermediates": [
+    "Greece"
+   ],
+   "source": "staging",
+   "consistency": 0.9,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "country",
+    "gold": "Greece",
+    "aliases": [
+     "希腊"
+    ],
+    "distractors": [
+     "Ireland",
+     "Norway",
+     "Japan",
+     "Sweden"
+    ],
+    "distractor_aliases": {
+     "Ireland": [
+      "爱尔兰"
+     ],
+     "Norway": [
+      "挪威"
+     ],
+     "Japan": [
+      "日本"
+     ],
+     "Sweden": [
+      "瑞典"
+     ]
+    }
+   }
+  },
+  {
+   "name": "b3-mh-ikea-capital",
+   "prompt": "Fact: The capital of the country where IKEA was founded is",
+   "target": "Stockholm",
+   "intermediates": [
+    "Sweden"
+   ],
+   "source": "staging_b3",
+   "consistency": 0.9,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "country",
+    "gold": "Sweden",
+    "aliases": [
+     "瑞典"
+    ],
+    "distractors": [
+     "New Zealand",
+     "Italy",
+     "Nepal",
+     "France"
+    ],
+    "distractor_aliases": {
+     "New Zealand": [
+      "NZ",
+      "新西兰"
+     ],
+     "Italy": [
+      "意大利"
+     ],
+     "Nepal": [
+      "尼泊尔"
+     ],
+     "France": [
+      "法国"
+     ]
+    }
+   }
+  },
+  {
+   "name": "b3-mh-lego-capital",
+   "prompt": "Fact: The capital of the country where LEGO was invented is",
+   "target": "Copenhagen",
+   "intermediates": [
+    "Denmark"
+   ],
+   "source": "staging_b3",
+   "consistency": 0.9,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "country",
+    "gold": "Denmark",
+    "aliases": [
+     "丹麦"
+    ],
+    "distractors": [
+     "Mexico",
+     "Australia",
+     "Brazil",
+     "Russia"
+    ],
+    "distractor_aliases": {
+     "Mexico": [
+      "墨西哥"
+     ],
+     "Australia": [
+      "澳洲",
+      "澳大利亚"
+     ],
+     "Brazil": [
+      "巴西"
+     ],
+     "Russia": [
+      "俄罗斯"
+     ]
+    }
+   }
+  },
+  {
+   "name": "b3-mh-operahouse-country",
+   "prompt": "Fact: The country of the famous sail-shaped opera house is",
+   "target": "Australia",
+   "intermediates": [
+    "Sydney"
+   ],
+   "source": "staging_b3",
+   "consistency": 0.9,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "city",
+    "gold": "Sydney",
+    "aliases": [
+     "悉尼"
+    ],
+    "distractors": [
+     "Chicago",
+     "Toronto",
+     "New York",
+     "Mumbai"
+    ],
+    "distractor_aliases": {
+     "Chicago": [
+      "芝加哥"
+     ],
+     "Toronto": [
+      "多伦多"
+     ],
+     "New York": [
+      "New York City",
+      "NYC",
+      "纽约"
+     ],
+     "Mumbai": [
+      "孟买"
+     ]
+    }
+   }
+  },
+  {
+   "name": "b3-mh-pizza-continent",
+   "prompt": "Fact: The continent of the country where pizza originated is",
+   "target": "Europe",
+   "intermediates": [
+    "Italy"
+   ],
+   "source": "staging_b3",
+   "consistency": 0.9,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "country",
+    "gold": "Italy",
+    "aliases": [
+     "意大利"
+    ],
+    "distractors": [
+     "Australia",
+     "New Zealand",
+     "Mexico",
+     "Canada"
+    ],
+    "distractor_aliases": {
+     "Australia": [
+      "澳洲",
+      "澳大利亚"
+     ],
+     "New Zealand": [
+      "NZ",
+      "新西兰"
+     ],
+     "Mexico": [
+      "墨西哥"
+     ],
+     "Canada": [
+      "加拿大"
+     ]
+    }
+   }
+  },
+  {
+   "name": "b3-mh-redplanet-moons",
+   "prompt": "Fact: The number of moons of the red planet is",
+   "target": "2",
+   "intermediates": [
+    "Mars"
+   ],
+   "source": "staging_b3",
+   "consistency": 0.9,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "planet",
+    "gold": "Mars",
+    "aliases": [
+     "火星"
+    ],
+    "distractors": [
+     "Uranus",
+     "Neptune",
+     "Jupiter",
+     "Venus"
+    ],
+    "distractor_aliases": {
+     "Uranus": [
+      "天王星"
+     ],
+     "Neptune": [
+      "海王星"
+     ],
+     "Jupiter": [
+      "木星"
+     ],
+     "Venus": [
+      "金星"
+     ]
+    }
+   }
+  },
+  {
+   "name": "b3-mh-tallest-continent",
+   "prompt": "Fact: The continent of the world's tallest mountain is",
+   "target": "Asia",
+   "intermediates": [
+    "Everest"
+   ],
+   "source": "staging_b3",
+   "consistency": 0.9,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "mountain",
+    "gold": "Everest",
+    "aliases": [
+     "Mount Everest",
+     "珠穆朗玛峰",
+     "珠峰"
+    ],
+    "distractors": [
+     "Mont Blanc",
+     "Denali",
+     "Kilimanjaro",
+     "Aconcagua"
+    ],
+    "distractor_aliases": {
+     "Mont Blanc": [
+      "勃朗峰"
+     ],
+     "Denali": [
+      "德纳里"
+     ],
+     "Kilimanjaro": [
+      "乞力马扎罗"
+     ],
+     "Aconcagua": [
+      "阿空加瓜"
+     ]
+    }
+   }
+  },
+  {
+   "name": "colosseum-currency",
+   "prompt": "Fact: The currency used in the country where the Colosseum stands is the ",
+   "target": "Euro",
+   "intermediates": [
+    "Italy"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.8,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -2
+    ]
+   },
+   "mc": {
+    "bridge_type": "country",
+    "gold": "Italy",
+    "aliases": [
+     "意大利"
+    ],
+    "distractors": [
+     "Brazil",
+     "Denmark",
+     "Sweden",
+     "Argentina"
+    ],
+    "distractor_aliases": {
+     "Brazil": [
+      "巴西"
+     ],
+     "Denmark": [
+      "丹麦"
+     ],
+     "Sweden": [
+      "瑞典"
+     ],
+     "Argentina": [
+      "阿根廷"
+     ]
+    }
+   }
+  },
+  {
+   "name": "dbl-armistice-antonym",
+   "prompt": "Fact: The antonym of what an armistice ends is \"",
+   "target": "peace",
+   "intermediates": [
+    "war"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.8,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "antonym word",
+    "gold": "war",
+    "aliases": [
+     "wars",
+     "战争"
+    ],
+    "distractors": [
+     "poor",
+     "full",
+     "high",
+     "early"
+    ],
+    "distractor_aliases": {
+     "poor": [
+      "穷"
+     ],
+     "full": [
+      "满"
+     ],
+     "high": [
+      "高"
+     ],
+     "early": [
+      "早"
+     ]
+    }
+   }
+  },
+  {
+   "name": "dual-photosynthesis-opposite",
+   "prompt": "Fact: The opposite of the time when plants photosynthesize is \"",
+   "target": "night",
+   "intermediates": [
+    "day"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.8,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "antonym word",
+    "gold": "day",
+    "aliases": [
+     "daytime",
+     "白天"
+    ],
+    "distractors": [
+     "wet",
+     "war",
+     "soft",
+     "slow"
+    ],
+    "distractor_aliases": {
+     "wet": [
+      "湿"
+     ],
+     "war": [
+      "wars",
+      "战争"
+     ],
+     "soft": [
+      "软"
+     ],
+     "slow": [
+      "慢"
+     ]
+    }
+   }
+  },
+  {
+   "name": "firstletter-populous-country",
+   "prompt": "Fact: The first letter of the name of the world's most populous country is ",
+   "target": "C",
+   "intermediates": [
+    "China"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.8,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -2
+    ]
+   },
+   "mc": {
+    "bridge_type": "country",
+    "gold": "China",
+    "aliases": [
+     "中国"
+    ],
+    "distractors": [
+     "Italy",
+     "Sweden",
+     "Greece",
+     "Egypt"
+    ],
+    "distractor_aliases": {
+     "Italy": [
+      "意大利"
+     ],
+     "Sweden": [
+      "瑞典"
+     ],
+     "Greece": [
+      "希腊"
+     ],
+     "Egypt": [
+      "埃及"
+     ]
+    }
+   }
+  },
+  {
+   "name": "roman-rings-olympic",
+   "prompt": "Fact: Written as a Roman numeral, the number of Olympic rings is ",
+   "target": "V",
+   "intermediates": [
+    "5",
+    "five"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.8,
+   "gate_variant": "plain_stripped",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -2
+    ]
+   },
+   "mc": {
+    "bridge_type": "number",
+    "gold": "5",
+    "aliases": [
+     "five",
+     "五",
+     "fifth",
+     "5th",
+     "第五"
+    ],
+    "distractors": [
+     "18",
+     "10",
+     "1",
+     "15"
+    ],
+    "distractor_aliases": {}
+   }
+  },
+  {
+   "name": "bf-colosseum-language",
+   "prompt": "Fact: The language spoken in the country where the Colosseum stands is",
+   "target": "Italian",
+   "intermediates": [
+    "Italy"
+   ],
+   "source": "staging",
+   "consistency": 0.8,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "country",
+    "gold": "Italy",
+    "aliases": [
+     "意大利"
+    ],
+    "distractors": [
+     "Spain",
+     "Egypt",
+     "Canada",
+     "Norway"
+    ],
+    "distractor_aliases": {
+     "Spain": [
+      "西班牙"
+     ],
+     "Egypt": [
+      "埃及"
+     ],
+     "Canada": [
+      "加拿大"
+     ],
+     "Norway": [
+      "挪威"
+     ]
+    }
+   }
+  },
+  {
+   "name": "bf-greatwall-language",
+   "prompt": "Fact: The most spoken language of the country that built the Great Wall is",
+   "target": "Mandarin",
+   "intermediates": [
+    "China"
+   ],
+   "source": "staging",
+   "consistency": 0.8,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "country",
+    "gold": "China",
+    "aliases": [
+     "中国"
+    ],
+    "distractors": [
+     "Scotland",
+     "Australia",
+     "Switzerland",
+     "Ireland"
+    ],
+    "distractor_aliases": {
+     "Scotland": [
+      "苏格兰"
+     ],
+     "Australia": [
+      "澳洲",
+      "澳大利亚"
+     ],
+     "Switzerland": [
+      "瑞士"
+     ],
+     "Ireland": [
+      "爱尔兰"
+     ]
+    }
+   }
+  },
+  {
+   "name": "bf-nile-desert",
+   "prompt": "Fact: The largest hot desert, found on the continent where the Nile flows, is the",
+   "target": "Sahara",
+   "intermediates": [
+    "Africa"
+   ],
+   "source": "staging",
+   "consistency": 0.8,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "continent",
+    "gold": "Africa",
+    "aliases": [
+     "非洲"
+    ],
+    "distractors": [
+     "Europe",
+     "North America",
+     "Oceania",
+     "South America"
+    ],
+    "distractor_aliases": {
+     "Europe": [
+      "欧洲"
+     ],
+     "North America": [
+      "北美",
+      "北美洲"
+     ],
+     "Oceania": [
+      "大洋洲"
+     ],
+     "South America": [
+      "南美",
+      "南美洲"
+     ]
+    }
+   }
+  },
+  {
+   "name": "bf-relativity-firstname",
+   "prompt": "Fact: The first name of the scientist who developed the theory of general relativity is",
+   "target": "Albert",
+   "intermediates": [
+    "Einstein"
+   ],
+   "source": "staging",
+   "consistency": 0.8,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "person",
+    "gold": "Einstein",
+    "aliases": [
+     "Albert Einstein",
+     "爱因斯坦"
+    ],
+    "distractors": [
+     "Beethoven",
+     "Darwin",
+     "Mozart",
+     "Homer"
+    ],
+    "distractor_aliases": {
+     "Beethoven": [
+      "贝多芬"
+     ],
+     "Darwin": [
+      "达尔文"
+     ],
+     "Mozart": [
+      "莫扎特"
+     ],
+     "Homer": [
+      "荷马"
+     ]
+    }
+   }
+  },
+  {
+   "name": "bf-tajmahal-continent",
+   "prompt": "Fact: The continent where the country of the Taj Mahal lies is",
+   "target": "Asia",
+   "intermediates": [
+    "India"
+   ],
+   "source": "staging",
+   "consistency": 0.8,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "country",
+    "gold": "India",
+    "aliases": [
+     "印度"
+    ],
+    "distractors": [
+     "Portugal",
+     "Spain",
+     "Greece",
+     "Netherlands"
+    ],
+    "distractor_aliases": {
+     "Portugal": [
+      "葡萄牙"
+     ],
+     "Spain": [
+      "西班牙"
+     ],
+     "Greece": [
+      "希腊"
+     ],
+     "Netherlands": [
+      "Holland",
+      "荷兰"
+     ]
+    }
+   }
+  },
+  {
+   "name": "b3-mh-aztec-language",
+   "prompt": "Fact: The language spoken today in the country of the ancient Aztecs is",
+   "target": "Spanish",
+   "intermediates": [
+    "Mexico"
+   ],
+   "source": "staging_b3",
+   "consistency": 0.8,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "country",
+    "gold": "Mexico",
+    "aliases": [
+     "墨西哥"
+    ],
+    "distractors": [
+     "Sweden",
+     "Canada",
+     "Brazil",
+     "Russia"
+    ],
+    "distractor_aliases": {
+     "Sweden": [
+      "瑞典"
+     ],
+     "Canada": [
+      "加拿大"
+     ],
+     "Brazil": [
+      "巴西"
+     ],
+     "Russia": [
+      "俄罗斯"
+     ]
+    }
+   }
+  },
+  {
+   "name": "b3-mh-windycity-state",
+   "prompt": "Fact: The US state containing the city nicknamed the Windy City is",
+   "target": "Illinois",
+   "intermediates": [
+    "Chicago"
+   ],
+   "source": "staging_b3",
+   "consistency": 0.8,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "mc": {
+    "bridge_type": "city",
+    "gold": "Chicago",
+    "aliases": [
+     "芝加哥"
+    ],
+    "distractors": [
+     "Sydney",
+     "Houston",
+     "Mumbai",
+     "Moscow"
+    ],
+    "distractor_aliases": {
+     "Sydney": [
+      "悉尼"
+     ],
+     "Houston": [
+      "休斯顿"
+     ],
+     "Mumbai": [
+      "孟买"
+     ],
+     "Moscow": [
+      "莫斯科"
+     ]
+    }
+   }
+  }
+ ]
+}

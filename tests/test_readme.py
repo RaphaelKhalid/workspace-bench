@@ -13,7 +13,7 @@ GROUPS = [
     "Association",
     "Bag of words",
     "Precision",
-    "Logical processing",
+    "Model-specific",
 ]
 LABELS = ("*What it is:*", "*Example:*", "*Judged by:*")
 
@@ -21,6 +21,12 @@ LABELS = ("*What it is:*", "*Example:*", "*Judged by:*")
 def _specs():
     registry.load_all()
     return sorted(registry.FAMILIES.values(), key=lambda s: s.name)
+
+
+def _listed_specs():
+    """The families with a README entry: every registered one except a retired one (plan 0058:
+    ``registry.RETIRED_FAMILIES`` keeps its code and bank, but not its README entry)."""
+    return [s for s in _specs() if s.name not in registry.RETIRED_FAMILIES]
 
 
 def _readme() -> str:
@@ -34,7 +40,7 @@ def _section(text: str, heading: str) -> str:
 
 
 def test_every_family_has_an_entry_with_three_labelled_lines():
-    specs = _specs()
+    specs = _listed_specs()
     assert len(specs) >= 9
     text = _readme()
     lines = text.splitlines()
@@ -64,14 +70,25 @@ def test_group_membership_matches_registry():
     by_group |= {"computational": "Computational"}
     by_group |= {"safety": "Safety", "association": "Association"}
     by_group |= {"bag_of_words": "Bag of words"}
-    by_group |= {"precision": "Precision", "logic": "Logical processing"}
+    by_group |= {"precision": "Precision", "model_specific": "Model-specific"}
     starts = {g: text.index(f"### {g}") for g in GROUPS}
     ends = [*sorted(starts.values()), len(text)]
-    for s in _specs():
+    for s in _listed_specs():
         g = by_group[s.group]
         lo = starts[g]
         hi = ends[ends.index(lo) + 1]
         assert lo < text.index(f"**{s.title}**") < hi, (s.name, g)
+
+
+def test_retired_families_have_no_entry_but_are_named():
+    # plan 0058: a retired family (code and bank kept) leaves the family list and Judges table,
+    # and the README says it is retired
+    text = _readme()
+    for name in registry.RETIRED_FAMILIES:
+        s = registry.FAMILIES[name]
+        assert not any(ln.startswith(f"**{s.title}**") for ln in text.splitlines()), name
+        assert f"| {name} |" not in _section(text, "Judges"), name
+        assert f"`{name}` (retired" in text, name
 
 
 def test_credits_cover_every_source_and_no_in_house_family():
@@ -91,7 +108,7 @@ def test_credits_cover_every_source_and_no_in_house_family():
 
 def test_judges_table_pins():
     judges = _section(_readme(), "Judges")
-    for s in _specs():
+    for s in _listed_specs():
         assert s.name in judges and s.judge.prompt_version in judges, s.name
     assert "| agentic_misalignment | claude-sonnet-5 |" in judges
     assert "| jailbreak_recognition | claude-sonnet-5 |" in judges

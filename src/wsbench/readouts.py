@@ -6,14 +6,17 @@ One JSONL row per cell::
     {"id": "<item id>", "layer": 36, "pos": 33, "tokens": ["Ġword", "..."], "scores": [10.8, 9.9]}
 
 Either row may carry an optional ``"token": "<read-site token>"`` string. A file is
-all-prose or all-tokens. Malformed lines are counted, never fatal.
+all-prose or all-tokens. Malformed lines are counted, never fatal. ``tokens`` are decoded from
+byte-level BPE to text here, once (``wsbench.bpe``); the read-site ``token`` is already text.
 """
 
 import json
-from collections.abc import Collection, Iterable, Mapping
-from dataclasses import dataclass, field
+from collections.abc import Collection, Iterable, Mapping, Sequence
+from dataclasses import dataclass, field, replace
 from pathlib import Path
 from typing import Any, Literal
+
+from wsbench.bpe import decode_token
 
 Kind = Literal["prose", "tokens"]
 SKIP_CATEGORIES = (
@@ -32,7 +35,7 @@ class Cell:
     layer: int
     pos: int
     samples: tuple[str, ...] | None  # prose lens
-    tokens: tuple[str, ...] | None  # top-k token lens (vocab strings, best first)
+    tokens: tuple[str, ...] | None  # top-k token lens (decoded text, best first)
     scores: tuple[float, ...] | None
     token: str | None = None  # the read-site token string, when the producer recorded it
 
@@ -58,6 +61,24 @@ class LoadReport:
     skipped: dict[str, int] = field(default_factory=lambda: dict.fromkeys(SKIP_CATEGORIES, 0))
     n_empty: int = 0
     layers: list[int] = field(default_factory=list)
+    # plan 0032 §2.0 (filled by reads.load; empty / defaults when load_readouts is called alone)
+    meta: dict[str, Any] | None = None  # the sidecar, None when the file has none
+    partial_ids: list[str] = field(default_factory=list)
+    partial_ids_unenforced: list[str] = field(default_factory=list)
+    layers_missing: list[int] = field(default_factory=list)
+    reads_checked: str = ""  # sidecar | no_sidecar | prompt_only
+    reads: str = "full"
+    sampling: str = ""
+    sampling_source: str = ""  # declared | override | default
+    reader: str = ""
+    layers_requested: list[int] | None = None
+    lite_rule: str = ""  # reads=lite: the frozen lite rule(s) the selection applied (json)
+    n_samples_trimmed: int = 0
+    n_packed_ambiguous: int = 0
+    n_cells_short: int = 0
+    # reads.load: item -> pos -> the read-site token of EVERY loaded row, recorded before the
+    # reads=lite selection (a judge's read-context window spans unselected positions too)
+    site_tokens: dict[str, dict[int, str]] = field(default_factory=dict)
 
 
 def _is_int(x: Any) -> bool:
@@ -98,7 +119,7 @@ def _parse_row(row: Any) -> Cell | None:
         if not isinstance(sc, list) or len(sc) != len(tokens) or not all(_is_num(v) for v in sc):
             return None
         scores = tuple(float(v) for v in sc)
-    return Cell(id_, layer, pos, None, tuple(tokens), scores, token)
+    return Cell(id_, layer, pos, None, tuple(decode_token(t) for t in tokens), scores, token)
 
 
 def load_readouts(
@@ -114,7 +135,7 @@ def load_readouts(
     pos_sets = {k: set(v) for k, v in positions.items()} if positions is not None else None
     cells: list[Cell] = []
     seen: set[tuple[str, int, int]] = set()
-    for line in Path(path).read_bytes().decode("utf-8", "replace").splitlines():
+    for line in Path(path).read_bytes().decode("utf-8", "replace").split("\n"):
         if not line.strip():
             continue
         rep.n_rows += 1
@@ -196,7 +217,7 @@ def convert_gen_dir(
             if layer is None or (layer_set is not None and layer not in layer_set):
                 continue
             id_ = f.parent.name
-            for line in f.read_bytes().decode("utf-8", "replace").splitlines():
+            for line in f.read_bytes().decode("utf-8", "replace").split("\n"):
                 if not line.strip():
                     continue
                 try:
@@ -273,3 +294,106 @@ def convert_read_json(path: Path, out: Path) -> LoadReport:
     _, rep = load_readouts(out)
     rep.skipped["malformed"] += n_malformed
     return rep
+
+
+# ---------------------------------------------------------------- sampling (plan 0032 §2.9, Q1)
+
+SAMPLINGS = ("bullet4", "prose1", "tokens10")
+SIDECAR_SUFFIX = ".meta.json"
+SIDECAR_KEYS = ("reads", "sampling", "reader", "arm", "layers", "plan_sha", "producer_sha")
+
+
+def sidecar_path(path: Path) -> Path:
+    """``<family>.jsonl.meta.json``: the producer's declaration beside a readouts file."""
+    return Path(str(path) + SIDECAR_SUFFIX)
+
+
+def read_sidecar(path: Path) -> dict[str, Any] | None:
+    """The sidecar of ``path`` (``{reads, sampling, reader, arm, layers, [plan_sha,
+    producer_sha, protocol]}``), or None when the file has none. A malformed sidecar or an
+    unknown ``sampling`` / ``reads`` value is an error (exit 2), never a silent default."""
+    p = sidecar_path(Path(path))
+    if not p.exists():
+        return None
+    try:
+        meta = json.loads(p.read_text(encoding="utf-8"))
+    except ValueError as e:
+        raise SystemExit(f"{p}: unreadable sidecar ({e})") from None
+    if not isinstance(meta, dict):
+        raise SystemExit(f"{p}: the sidecar must be a JSON object")
+    if meta.get("sampling") not in (None, *SAMPLINGS):
+        raise SystemExit(f"{p}: sampling={meta.get('sampling')!r}; expected one of {SAMPLINGS}")
+    if meta.get("reads") not in (None, "full", "lite"):
+        raise SystemExit(f"{p}: reads={meta.get('reads')!r}; expected full or lite")
+    return meta
+
+
+def write_sidecar(path: Path, **meta: Any) -> Path:
+    """Write ``<path>.meta.json`` (producers, converters, the prompt-only writer)."""
+    if meta.get("sampling") not in SAMPLINGS:
+        raise ValueError(f"sampling={meta.get('sampling')!r}; expected one of {SAMPLINGS}")
+    meta.setdefault("reads", "full")
+    p = sidecar_path(Path(path))
+    p.write_text(json.dumps(meta, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+    return p
+
+
+def _bullets(s: str) -> list[str]:
+    """The top-level ``- `` bullets of one packed sample (continuation lines join their bullet,
+    KEEPING their line breaks: a packed x4 generation is often several lines of verse, and
+    poetry's line-ending gate reads them; plan 0038)."""
+    out: list[str] = []
+    for line in s.split("\n"):
+        if line.startswith("- "):
+            out.append(line[2:].strip())
+        elif out and line.strip():
+            out[-1] = (out[-1] + "\n" + line.strip()).strip()
+    return out
+
+
+def normalize(cells: Sequence[Cell], sampling: str) -> tuple[list[Cell], dict[str, int]]:
+    """The declared sampling rule applied in memory (decision Q1), never inferred from shape:
+    ``tokens10`` keeps the top 10 tokens (score order); ``prose1`` keeps the first sample (one
+    s3d generation with several concept bullets stays ONE sample); ``bullet4`` holds 4 separate
+    samples (a cached packed ``- g1\\n- g2…`` string is split on its top-level bullets: exactly
+    4 -> 4 samples, else the first 4 and ``n_packed_ambiguous``; fewer -> kept and
+    ``n_cells_short``)."""
+    if sampling not in SAMPLINGS:
+        raise SystemExit(f"sampling={sampling!r}; expected one of {', '.join(SAMPLINGS)}")
+    diag = {"n_samples_trimmed": 0, "n_packed_ambiguous": 0, "n_cells_short": 0}
+    out: list[Cell] = []
+    for c in cells:
+        if c.tokens is not None:
+            if len(c.tokens) > 10:
+                idx = list(range(len(c.tokens)))
+                if c.scores is not None:
+                    idx.sort(key=lambda i: -c.scores[i])  # type: ignore[index]
+                idx = sorted(idx[:10]) if c.scores is None else idx[:10]
+                toks = tuple(c.tokens[i] for i in idx)
+                sc = None if c.scores is None else tuple(c.scores[i] for i in idx)
+                diag["n_samples_trimmed"] += 1
+                c = replace(c, tokens=toks, scores=sc)
+            out.append(c)
+            continue
+        samples = tuple(c.samples or ())
+        if sampling == "bullet4":
+            if len(samples) == 1 and len(b := _bullets(samples[0])) >= 2:
+                if len(b) != 4:
+                    diag["n_packed_ambiguous"] += 1
+                samples = tuple(b[:4])
+            elif len(samples) > 4:
+                diag["n_samples_trimmed"] += 1
+                samples = samples[:4]
+            if len(samples) < 4:
+                diag["n_cells_short"] += 1
+        elif len(samples) > 1:  # prose1 (and a prose file declared tokens10, kept whole)
+            if sampling == "prose1":
+                diag["n_samples_trimmed"] += 1
+                samples = samples[:1]
+        out.append(replace(c, samples=samples))
+    return out, diag
+
+
+def bulleted(samples: Sequence[str]) -> str:
+    """ONE string for a native judge that needs one text per cell: ``"- g1\\n- g2…"``."""
+    return "\n".join("- " + s.strip().removeprefix("- ").strip() for s in samples if s.strip())

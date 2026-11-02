@@ -7,7 +7,8 @@ from pathlib import Path
 from wsbench import registry
 from wsbench.banks import load_bank
 from wsbench.multitoken.options import judged_roles, option_sets
-from wsbench.multitoken.prompts import CANNOT
+from wsbench.multitoken.prompts import CANNOT, V2_SAME_SAMPLE_TAG
+from wsbench.multitoken.regex import SCORER_VERSION  # one campaign bump (plan 0033 M2)
 
 REPO = Path(__file__).resolve().parents[1]
 
@@ -41,7 +42,24 @@ def test_registered():
 
     registry.FAMILIES.setdefault(SPEC.name, SPEC)
     assert SPEC.group == "basic_mt" and SPEC.scorer == "regex"
-    assert (
-        SPEC.judge.prompt_version == "mt-regex-2026-09-23"
-    )  # the regex contract is the instrument
+    # the regex contract is the instrument; plan 0054 item 5: the v2 bank tag
+    assert SPEC.judge.prompt_version == SCORER_VERSION + "+" + V2_SAME_SAMPLE_TAG
     assert "0 (regex)" in SPEC.calls_per_arm and "opts=judge=mc" in SPEC.calls_per_arm
+
+
+def test_v2_language_unit_is_names_only():
+    """Plan 0033 item 4: the language unit holds language NAMES, never the L2 answer (99 of 100
+    v1 items listed the answer word there, so it alone passed the language unit)."""
+    from wsbench.multitoken import regex
+    from wsbench.multitoken.languages import LANGUAGES
+
+    _h, items = load_bank(REPO / "evals/multilingual_mt/items_v2.json")
+    assert len(items) == 100
+    for it in items:
+        units = {u["role"]: u for u in it["units"]}
+        names = units["language"]["forms"]
+        assert names == {k: list(v) for k, v in LANGUAGES[it["lang"]].names.items()}
+        flat = {regex.fold(f) for fs in names.values() for f in fs}
+        content = [it["target"], *it.get("target_alts", [])]
+        content += [f for fs in units["concept"]["forms"].values() for f in fs]
+        assert not flat & {regex.fold(f) for f in content}, it["name"]

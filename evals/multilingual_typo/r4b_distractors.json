@@ -1,0 +1,4886 @@
+{
+ "family": "multilingual_typo",
+ "version": "r4b-refine-2026-11-01",
+ "model": "claude-opus-5-5",
+ "script": "scripts/r4b_mc_refine.py (pools: scripts/r4_mc_distractors.py)",
+ "supersedes": "r4_distractors.json (bank v3)",
+ "gate": {
+  "draws": 5,
+  "max_item_passes": 1,
+  "rounds": 4
+ },
+ "pass": 6,
+ "n_over_gate": 5,
+ "items": {
+  "mlt-ar-adrenaline-rush": {
+   "correction_native": {
+    "topic": "a hormone of the human body",
+    "topic_pass1": "a hormone of the human body",
+    "kind": "a hormone",
+    "gold": "the hormone adrenaline",
+    "distractors": [
+     "the hormone insulin",
+     "the hormone cortisol",
+     "the hormone oxytocin",
+     "the hormone melatonin"
+    ],
+    "enwiki": {
+     "the hormone insulin": "Insulin",
+     "the hormone cortisol": "Cortisol",
+     "the hormone oxytocin": "Oxytocin",
+     "the hormone melatonin": "Melatonin"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only hormone among unrelated common-noun concepts, and its 'the hormone X' phrasing matched nothing else in the list."
+     }
+    ]
+   }
+  },
+  "mlt-ar-amphibians": {
+   "correction_native": {
+    "topic": "a concept in zoology or animal biology",
+    "topic_pass1": "a stage or process in an animal's life cycle",
+    "kind": "a biological concept",
+    "gold": "the amphibian class",
+    "distractors": [
+     "the reptile class",
+     "the mammal class",
+     "the bird class",
+     "the insect class"
+    ],
+    "enwiki": {
+     "the reptile class": "Reptile",
+     "the mammal class": "Mammal",
+     "the bird class": "Bird",
+     "the insect class": "Insect"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only zoology/biology concept in a list of unrelated topics (anthropology, appliances, electrification, politics), and it uses the 'the ... class' phrasing no other option shares."
+     }
+    ]
+   }
+  },
+  "mlt-ar-anthropology": {
+   "correction_native": {
+    "topic": "an academic discipline or field of study",
+    "topic_pass1": "an academic discipline in the social sciences",
+    "kind": "a field of study",
+    "gold": "cultural anthropology",
+    "distractors": [
+     "biological diversity",
+     "medieval history",
+     "social psychology",
+     "political science"
+    ],
+    "enwiki": {
+     "biological diversity": "biological diversity",
+     "medieval history": "Medieval history",
+     "social psychology": "Social psychology",
+     "political science": "Political science"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Most current distractors are not academic disciplines at all (air humidity, balloon angioplasty procedure, biological diversity), so the only true field of study, cultural anthropology, stood out under the topic."
+     }
+    ]
+   }
+  },
+  "mlt-ar-arabisk": {
+   "correction_native": {
+    "topic": "a decorative woodworking or furniture style",
+    "topic_pass1": "a decorative woodworking or craft technique",
+    "topic_fixed_from": "a traditional decorative craft technique",
+    "kind": "a craft technique",
+    "gold": "arabesque woodwork",
+    "distractors": [
+     "marquetry woodwork",
+     "parquetry woodwork",
+     "chip-carving woodwork",
+     "fretwork woodwork"
+    ],
+    "enwiki": {
+     "marquetry woodwork": "Marquetry",
+     "parquetry woodwork": "Parquetry",
+     "chip-carving woodwork": "Chip carving",
+     "fretwork woodwork": "Fretwork"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only decorative woodworking technique among the options; the others (paleontology, EEG, public safety) were not crafts at all, and only pottery making was even loosely related."
+     }
+    ]
+   }
+  },
+  "mlt-ar-biruqratiyya": {
+   "correction_native": {
+    "topic": "a concept in politics or public administration",
+    "topic_pass1": "a concept in government administration and public organization",
+    "kind": "a political or administrative concept",
+    "gold": "administrative bureaucracy",
+    "distractors": [
+     "administrative law",
+     "public administration",
+     "administrative centralization",
+     "local government"
+    ],
+    "enwiki": {
+     "administrative law": "Administrative law",
+     "public administration": "Public administration",
+     "administrative centralization": "Centralisation",
+     "local government": "Local government"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Most current distractors (anticyclone, welding electrode, concussion) are not political concepts at all, so the gold stands out as the only political/administrative term apart from economic development."
+     },
+     {
+      "round": 3,
+      "cue": "The gold was the only option directly naming the administrative apparatus itself (public administration), so a topic-aware guesser picked it; distractors should include several other administration-structure concepts of the same two-word 'adjective + noun' form."
+     }
+    ]
+   }
+  },
+  "mlt-ar-cholesterol": {
+   "correction_native": {
+    "topic": "a biological substance or molecule",
+    "topic_pass1": "a substance in the blood relevant to cardiovascular health",
+    "kind": "a biological substance",
+    "gold": "blood cholesterol",
+    "distractors": [
+     "blood glucose",
+     "serum albumin",
+     "blood plasma",
+     "hemoglobin"
+    ],
+    "enwiki": {
+     "blood glucose": "Blood sugar level",
+     "serum albumin": "Serum albumin",
+     "blood plasma": "Blood plasma",
+     "hemoglobin": "Hemoglobin"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only biological substance among unrelated technologies and objects, so the topic alone pointed straight to it."
+     }
+    ]
+   }
+  },
+  "mlt-ar-conifers": {
+   "correction_native": {
+    "topic": "a group or category of plants",
+    "topic_pass1": "a major group or category of plants in botanical classification",
+    "kind": "a plant group",
+    "gold": "coniferous trees",
+    "distractors": [
+     "succulent plants",
+     "surfactant detergents",
+     "potter's wheel",
+     "grasses"
+    ],
+    "enwiki": {
+     "succulent plants": "Succulent plant",
+     "surfactant detergents": "surfactant detergents",
+     "potter's wheel": "potter's wheel",
+     "grasses": "Poaceae"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only plant group among unrelated objects, chemicals and procedures, so the topic alone singled it out."
+     }
+    ]
+   }
+  },
+  "mlt-ar-coral": {
+   "correction_native": {
+    "topic": "a natural feature or landmark of Oceania",
+    "topic_pass1": "a marine ecosystem or natural formation of tropical seas",
+    "kind": "a natural feature",
+    "gold": "coral reefs",
+    "distractors": [
+     "tropical rainforests",
+     "sandy beaches",
+     "glacial fjords",
+     "desert plains"
+    ],
+    "enwiki": {
+     "tropical rainforests": "Tropical rainforest",
+     "sandy beaches": "Beach",
+     "glacial fjords": "Fjord",
+     "desert plains": "Desert"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only natural feature among unrelated man-made objects and body parts, so it matched the topic uniquely."
+     },
+     {
+      "round": 3,
+      "cue": "Coral reefs were the most iconic Oceania feature, and 'surfactant detergents' was an obvious non-natural odd one out, leaving the reef as the clear marine centrepiece."
+     },
+     {
+      "round": 5,
+      "cue": "Coral reefs were the most iconic Oceania natural feature among weak options, and 'thyroid gland' was an off-topic outlier that made the remaining nature terms stand out."
+     },
+     {
+      "round": 7,
+      "cue": "The current list mixes in a non-natural object (potter's wheel) and a near-duplicate pair (mangrove swamps / mangrove forests), so coral reefs stood out as the one distinct, iconic Oceania natural feature."
+     },
+     {
+      "round": 9,
+      "cue": "The list mixed in an off-topic anatomical term (thyroid gland) and was short, so the gold was not well camouflaged among comparable plural lowercase natural features typical of Oceania."
+     },
+     {
+      "round": 1,
+      "cue": "\"Coral reefs\" is the most iconic, generic Oceania feature (the Great Barrier Reef), and the other options were all reef-related (atolls, lagoons), which pointed to it as the central concept."
+     },
+     {
+      "round": 3,
+      "cue": "Coral reefs are the most iconic Oceania natural feature (Great Barrier Reef), so among generic lowercase plural landform terms it stands out as the stereotypical answer for the topic."
+     },
+     {
+      "round": 5,
+      "cue": "Coral reefs is the most iconic, stereotypical Oceania feature (Great Barrier Reef), while the other options were more generic geology terms."
+     },
+     {
+      "round": 7,
+      "cue": "Coral reefs is the most iconic, famous Oceania natural feature (Great Barrier Reef), standing out among less prominent generic landforms."
+     },
+     {
+      "round": 9,
+      "cue": "Coral reefs are the most stereotypical Oceania natural feature (Great Barrier Reef), standing out among generic landforms like glaciers."
+     }
+    ]
+   }
+  },
+  "mlt-ar-cortisol-stress": {
+   "correction_native": {
+    "topic": "a hormone of the human body",
+    "topic_pass1": "a hormone of the human body",
+    "kind": "a hormone",
+    "gold": "the stress hormone cortisol",
+    "distractors": [
+     "the blood sugar hormone insulin",
+     "the love hormone oxytocin",
+     "the blood-sugar hormone insulin",
+     "the hunger hormone ghrelin"
+    ],
+    "enwiki": {
+     "the blood sugar hormone insulin": "Insulin",
+     "the love hormone oxytocin": "Oxytocin",
+     "the blood-sugar hormone insulin": "Insulin",
+     "the hunger hormone ghrelin": "Ghrelin"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only hormone among unrelated weather and appliance items, so anyone given the topic would pick it immediately."
+     },
+     {
+      "round": 3,
+      "cue": "The gold was the only option naming the best-known stress hormone, and the off-kind 'tornado whirlwind' broke the list's 'the X hormone Y' pattern."
+     },
+     {
+      "round": 5,
+      "cue": "The gold was the only option whose descriptor was 'stress', the most commonly cited hormone label, and the list had too few options for a balanced choice."
+     },
+     {
+      "round": 7,
+      "cue": "The gold uses a descriptive 'the X hormone Y' style, while one current option (household refrigerator) isn't a hormone at all; the replacements need to be real hormones written in the same nickname-plus-name style."
+     },
+     {
+      "round": 9,
+      "cue": "Two of the current options (the polar aurora, severe drought) are not hormones at all, so the gold stands out as one of only three real hormones, and it is the only one framed around stress."
+     }
+    ]
+   }
+  },
+  "mlt-el-aftokinitodromos": {
+   "correction_native": {
+    "topic": "a type of road or transport infrastructure",
+    "topic_pass1": "a type of road or transport infrastructure",
+    "kind": "an everyday concept",
+    "gold": "motorway highway",
+    "distractors": [
+     "pavement sidewalk",
+     "endocrinology medical field",
+     "railway railroad",
+     "railway level crossing"
+    ],
+    "enwiki": {
+     "pavement sidewalk": "Sidewalk",
+     "endocrinology medical field": "endocrinology medical field",
+     "railway railroad": "Rail transport",
+     "railway level crossing": "Level crossing"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only road/transport infrastructure option, and the only one phrased as a doubled noun ('motorway highway'), so anyone shown the topic could pick it at once."
+     },
+     {
+      "round": 3,
+      "cue": "The gold uses a doubled-synonym style ('motorway highway') shared only by some distractors, while others like 'toll road' and 'road tunnel' are plain two-word terms, making the doubled-term options a small group that includes the gold."
+     },
+     {
+      "round": 5,
+      "cue": "The gold is a doubled-synonym pair (British/American terms), which most distractors share; 'road tunnel' broke the pattern, and with only four distractors the list needs more paired-synonym options of similar fame."
+     },
+     {
+      "round": 7,
+      "cue": "The gold is a lowercase two-word pairing of near-synonyms (British/American terms for a major road), while some distractors were not roads or mixed formats, so new options should all be similar synonym pairs for road infrastructure."
+     },
+     {
+      "round": 9,
+      "cue": "The gold uses a British-term-plus-American-term pairing, and one current distractor ('railway level crossing') breaks that pattern, so the set is inconsistent rather than the gold being singled out."
+     }
+    ]
+   }
+  },
+  "mlt-el-aftokinitodromos-2": {
+   "correction_native": {
+    "topic": "a type of road or transport infrastructure",
+    "topic_pass1": "a type of road or transport infrastructure",
+    "kind": "a road type",
+    "gold": "controlled-access highway",
+    "distractors": [
+     "limited-access road",
+     "toll road",
+     "frontage road",
+     "dual carriageway"
+    ],
+    "enwiki": {
+     "limited-access road": "Limited-access road",
+     "toll road": "Toll road",
+     "frontage road": "Frontage road",
+     "dual carriageway": "Dual carriageway"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only road or transport infrastructure option among unrelated concepts like humidity, woodwork, reefs and drought, so the topic alone gave it away."
+     },
+     {
+      "round": 3,
+      "cue": "The gold is the only hyphenated, three-word technical term among short, plain road names, making it stand out as the formal 'highest-class' road type."
+     },
+     {
+      "round": 5,
+      "cue": "The gold was the only general, high-tier highway classification among minor or niche road types (service/frontage roads, super two), so it stood out as the canonical, most famous road type."
+     },
+     {
+      "round": 7,
+      "cue": "The gold was one of few multi-word hyphenated road types, and 'limited-access road' is a near-synonym of it while 'air humidity' was off-topic."
+     },
+     {
+      "round": 9,
+      "cue": "The gold was the only hyphenated compound with a formal-sounding 'controlled-access' qualifier, and 'limited-access road' is effectively a synonym of it, so it must be removed."
+     }
+    ]
+   }
+  },
+  "mlt-el-aggeioplastiki": {
+   "correction_native": {
+    "topic": "a medical or surgical procedure",
+    "topic_pass1": "a cardiovascular medical procedure",
+    "kind": "a medical procedure",
+    "gold": "balloon angioplasty procedure",
+    "distractors": [
+     "coronary artery bypass procedure",
+     "cardiac catheterization procedure",
+     "carotid endarterectomy procedure",
+     "heart valve replacement procedure"
+    ],
+    "enwiki": {
+     "coronary artery bypass procedure": "Coronary artery bypass surgery",
+     "cardiac catheterization procedure": "Cardiac catheterization",
+     "carotid endarterectomy procedure": "Carotid endarterectomy",
+     "heart valve replacement procedure": "Valve replacement"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only medical procedure among unrelated concepts and the only option ending in the word 'procedure'."
+     }
+    ]
+   }
+  },
+  "mlt-el-aimokatharsi": {
+   "correction_native": {
+    "topic": "a medical treatment or procedure",
+    "topic_pass1": "a medical treatment or procedure",
+    "kind": "a medical procedure",
+    "gold": "blood dialysis treatment",
+    "distractors": [
+     "laser eye surgery",
+     "radiation cancer treatment",
+     "plant photosynthesis",
+     "insulin injection therapy"
+    ],
+    "enwiki": {
+     "laser eye surgery": "LASIK",
+     "radiation cancer treatment": "Radiation therapy",
+     "plant photosynthesis": "plant photosynthesis",
+     "insulin injection therapy": "Insulin (medication)"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only medical procedure among unrelated concepts (drought, photosynthesis, a gland, biodiversity), so the topic alone pointed to it."
+     },
+     {
+      "round": 3,
+      "cue": "The gold is a lowercase descriptive phrase ending in 'treatment', and with only four distractors (one of them kidney-related) it was the only 'X Y treatment' option, so the list needs more options in the same three-word descriptive style."
+     },
+     {
+      "round": 5,
+      "cue": "Two of the current options (severe drought, plant photosynthesis) are not medical procedures at all, so anyone told the topic can narrow the list to the few genuine treatments."
+     }
+    ]
+   }
+  },
+  "mlt-el-aktinotherapeia": {
+   "correction_native": {
+    "topic": "a medical treatment or therapy",
+    "topic_pass1": "a medical treatment for disease",
+    "kind": "a medical therapy",
+    "gold": "radiation therapy for tumors",
+    "distractors": [
+     "chemotherapy for cancer",
+     "dialysis for kidney failure",
+     "insulin therapy for diabetes",
+     "antibiotic therapy for infections"
+    ],
+    "enwiki": {
+     "chemotherapy for cancer": "Chemotherapy",
+     "dialysis for kidney failure": "Kidney dialysis",
+     "insulin therapy for diabetes": "Insulin (medication)",
+     "antibiotic therapy for infections": "Antibiotic"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only medical therapy among unrelated topics (trees, archaeology, aurora, weapons), so anyone given the topic could pick it out at once."
+     }
+    ]
+   }
+  },
+  "mlt-el-anemostrovilos": {
+   "correction_native": {
+    "topic": "a type of weather phenomenon",
+    "topic_pass1": "a type of weather phenomenon or storm",
+    "kind": "a weather phenomenon",
+    "gold": "tornado whirlwind",
+    "distractors": [
+     "monsoon downpour",
+     "rubber boots",
+     "hailstorm squall",
+     "lightning strike"
+    ],
+    "enwiki": {
+     "monsoon downpour": "Monsoon",
+     "rubber boots": "rubber boots",
+     "hailstorm squall": "Hail",
+     "lightning strike": "Lightning strike"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold is a two-word weather phenomenon phrased as 'X whirlwind', while some current distractors (rubber boots, blended mixture) are not weather phenomena at all, so the real weather options stand out."
+     },
+     {
+      "round": 3,
+      "cue": "The gold is a redundant two-word compound pairing a phenomenon with a near-synonym, while only one distractor ('blizzard snowstorm') shares that pattern and the rest are ordinary phrases."
+     }
+    ]
+   }
+  },
+  "mlt-el-angeiosperma": {
+   "correction_native": {
+    "topic": "a group or classification of plants",
+    "topic_pass1": "a major group or classification of plants in botany",
+    "kind": "a plant group",
+    "gold": "flowering seed plants",
+    "distractors": [
+     "green algae plants",
+     "non-vascular land plants",
+     "blood dialysis treatment",
+     "two-seed-leaf plants"
+    ],
+    "enwiki": {
+     "green algae plants": "Green algae",
+     "non-vascular land plants": "Bryophyte",
+     "blood dialysis treatment": "blood dialysis treatment",
+     "two-seed-leaf plants": "Dicotyledon"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only plant-related option; the others were unrelated concepts like atmosphere or dialysis, so anyone who knew the topic could pick it out."
+     }
+    ]
+   }
+  },
+  "mlt-el-anosokatastoli": {
+   "correction_native": {
+    "topic": "a concept or term in medicine",
+    "topic_pass1": "a concept from medicine and the immune system",
+    "kind": "a medical concept",
+    "gold": "suppression of the immune system",
+    "distractors": [
+     "inflammation of the liver",
+     "narrowing of the arteries",
+     "loss of bone density",
+     "failure of the kidneys"
+    ],
+    "enwiki": {
+     "inflammation of the liver": "Hepatitis",
+     "narrowing of the arteries": "Stenosis",
+     "loss of bone density": "Osteoporosis",
+     "failure of the kidneys": "Kidney failure"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only medical concept among unrelated non-medical terms, and its descriptive lowercase phrase style differed from the short noun phrases."
+     }
+    ]
+   }
+  },
+  "mlt-el-apokryptografisi": {
+   "correction_native": {
+    "topic": "a concept in military history or technology",
+    "topic_pass1": "a concept related to cryptography and secret communication",
+    "kind": "a concept",
+    "gold": "code decryption",
+    "distractors": [
+     "radar detection",
+     "trench warfare",
+     "aerial reconnaissance",
+     "siege warfare"
+    ],
+    "enwiki": {
+     "radar detection": "Radar",
+     "trench warfare": "Trench warfare",
+     "aerial reconnaissance": "Aerial reconnaissance",
+     "siege warfare": "Siege"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Code decryption was the only option tied to military history or technology, so anyone reading the topic could pick it out from the unrelated pottery, flooding, sewing and observatory options."
+     },
+     {
+      "round": 3,
+      "cue": "The gold was the only option about cryptography/intelligence, standing apart from the field-tactic and electronic-warfare options."
+     },
+     {
+      "round": 5,
+      "cue": "Nothing strongly singled it out; 'code decryption' was the only cryptographic option among sensor and electronic-warfare terms, so more codebreaking-adjacent concepts are added to keep it from standing out."
+     },
+     {
+      "round": 7,
+      "cue": "The gold 'code decryption' stood out as the only codebreaking concept tied to famous wartime efforts (Enigma, Polish cryptologists), while 'river flooding' was an off-kind outlier and 'message encryption' was a near-synonym pair that pointed toward the cryptography option."
+     },
+     {
+      "round": 9,
+      "cue": "Gold is a lowercase two-word gerund-like noun phrase about signals intelligence; the old list had only one other cipher-related item, so pairing 'code decryption' with 'message encryption' made the cryptography pair stand out."
+     }
+    ]
+   }
+  },
+  "mlt-fi-aivotarahdys": {
+   "correction_native": {
+    "topic": "a medical condition or injury",
+    "topic_pass1": "a medical condition or injury",
+    "kind": "a medical condition",
+    "gold": "brain concussion",
+    "distractors": [
+     "wrist fracture",
+     "sugar caramelization",
+     "spinal cord injury",
+     "muscle strain"
+    ],
+    "enwiki": {
+     "wrist fracture": "Distal radius fracture",
+     "sugar caramelization": "sugar caramelization",
+     "spinal cord injury": "Spinal cord injury",
+     "muscle strain": "Strain (injury)"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 1,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only medical condition among unrelated concepts, so anyone knowing the topic could pick it instantly."
+     },
+     {
+      "round": 3,
+      "cue": "The gold was the only brain/neurological injury among orthopedic and musculoskeletal injuries, and the unusual 'brain concussion' phrasing made it the prototypical 'injury' answer for the topic."
+     },
+     {
+      "round": 5,
+      "cue": "Topic guessers pick 'brain concussion' as the most prototypical generic injury; the other options were less central, and 'brain hemorrhage' shared its 'brain' prefix, making the pair stand out."
+     },
+     {
+      "round": 7,
+      "cue": "Gold was the only head/brain injury and the most common general 'medical condition or injury' answer among musculoskeletal injuries, so the topic guesser picked the archetypal one."
+     },
+     {
+      "round": 1,
+      "cue": "The gold was the only medical condition among unrelated concepts (activist, communication, caramelization, fossil), so the topic singled it out."
+     },
+     {
+      "round": 3,
+      "cue": "The gold 'brain concussion' is the most canonical injury for a generic medical-condition topic, and it is the only one with a redundant 'brain' qualifier, while the others were plain musculoskeletal or spinal injuries, so it stood out as the prototypical head injury."
+     },
+     {
+      "round": 5,
+      "cue": "The gold was the most common, prototypical head injury among few same-style options (and 'social justice activist' was off-topic), so it stood out as the obvious medical-condition answer."
+     },
+     {
+      "round": 7,
+      "cue": "Two distractors (social justice activist, sugar caramelization) were not medical conditions, and the remaining brain conditions were rarer, so the common head injury 'brain concussion' stood out under the topic."
+     },
+     {
+      "round": 9,
+      "cue": "Two current distractors (social justice activist, means of communication) are not medical conditions at all, and the remaining injuries are only orthopedic, so 'brain concussion' was the only head/brain injury fitting the topic."
+     },
+     {
+      "round": 1,
+      "cue": "Among the few genuine conditions, 'brain concussion' was the most typical injury fitting 'medical condition or injury', while 'sugar caramelization' was not a condition at all and the remaining options were too few to hide it."
+     },
+     {
+      "round": 3,
+      "cue": "Brain concussion was the most common, everyday injury among rarer or more severe trauma terms, and the only mild head injury, so it was the obvious typical pick for the topic."
+     },
+     {
+      "round": 5,
+      "cue": "The gold was the only head/brain injury, the most canonical 'medical injury' among options that included an off-topic item (sugar caramelization) and a duplicated whiplash pair, so the topic guesser picked it easily."
+     },
+     {
+      "round": 7,
+      "cue": "The gold was the only head injury or brain-related condition among musculoskeletal injuries, and 'sugar caramelization' was not a medical condition at all, so the topic guesser could pick the one plausible distinctive injury."
+     },
+     {
+      "round": 9,
+      "cue": "The gold was the only head/brain injury among the medical options besides skull fracture, and 'sugar caramelization' was not a medical condition at all, so the topic narrowed the choice to a few plausible injuries with the brain one standing out as the classic concussion-type condition."
+     },
+     {
+      "round": 1,
+      "cue": "The gold was the most prototypical head injury among few options, with an off-topic non-condition (sugar caramelization) and near-synonym 'brain contusion' making it stand out as the canonical answer."
+     },
+     {
+      "round": 3,
+      "cue": "With the topic 'injury', 'brain concussion' was the only head/brain trauma among mostly limb and joint injuries, making it the most prototypical injury-plus-condition pick; the distractors need more head, brain and general trauma conditions in the same 'body part + condition' style."
+     },
+     {
+      "round": 5,
+      "cue": "The gold was the only head/brain injury besides skull fracture fitting the injury topic, while 'sugar caramelization' was not a medical condition at all, and the 'organ + condition' style ('brain concussion') stood out against mostly fracture terms."
+     }
+    ]
+   }
+  },
+  "mlt-fi-astianpesukone": {
+   "correction_native": {
+    "topic": "a household appliance or device",
+    "topic_pass1": "a household kitchen appliance",
+    "kind": "an everyday object",
+    "gold": "dishwashing machine",
+    "distractors": [
+     "refrigerator",
+     "washing machine",
+     "vacuum cleaner",
+     "bread machine"
+    ],
+    "enwiki": {
+     "refrigerator": "Refrigerator",
+     "washing machine": "Washing machine",
+     "vacuum cleaner": "Vacuum cleaner",
+     "bread machine": "Bread machine"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only household appliance among unrelated concepts like embassies, parliament members, nuclear weapons and pottery, so the topic alone pointed straight to it."
+     },
+     {
+      "round": 1,
+      "cue": "The gold's unusual phrasing 'dishwashing machine' (instead of the common 'dishwasher') stood out, and the short list had too few options sharing its two-word '-ing machine' style."
+     },
+     {
+      "round": 3,
+      "cue": "The gold is the only cleaning appliance and uses the unusual long form 'dishwashing machine' instead of the common 'dishwasher', matching the topic's 'household appliance' sense most directly among kitchen/cooking gadgets."
+     },
+     {
+      "round": 5,
+      "cue": "The gold is a three-word 'X-ing machine' phrase, while most other options are single words or shorter forms, though the guessers did not pick it."
+     }
+    ]
+   }
+  },
+  "mlt-fi-hammaslaakari": {
+   "correction_native": {
+    "topic": "a healthcare profession or occupation",
+    "topic_pass1": "a healthcare profession or medical specialist occupation",
+    "kind": "an occupation",
+    "gold": "a dental surgeon",
+    "distractors": [
+     "a general practitioner",
+     "a pharmacist",
+     "a physiotherapist",
+     "a midwife"
+    ],
+    "enwiki": {
+     "a general practitioner": "General practitioner",
+     "a pharmacist": "Pharmacist",
+     "a physiotherapist": "Physical therapy",
+     "a midwife": "Midwife"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only healthcare occupation and the only option phrased as a person with the article 'a', while the distractors were abstract non-occupational concepts."
+     }
+    ]
+   }
+  },
+  "mlt-fi-kansanedustaja": {
+   "correction_native": {
+    "topic": "a concept from politics and elections",
+    "topic_pass1": "a concept from politics and elections",
+    "kind": "a political concept",
+    "gold": "member of parliament",
+    "distractors": [
+     "prime minister",
+     "political party",
+     "opposition leader",
+     "senator"
+    ],
+    "enwiki": {
+     "prime minister": "Prime minister",
+     "political party": "Political party",
+     "opposition leader": "Leader of the Opposition",
+     "senator": "Senator"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 1,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only politics-related option; the distractors were unrelated concepts from crafts, anthropology and zoology."
+     },
+     {
+      "round": 1,
+      "cue": "Member of parliament was the only option naming an individual elected legislator role, while the others were mostly institutions or structures, so a topic guesser favouring a basic person-role concept could pick it out."
+     },
+     {
+      "round": 3,
+      "cue": "The gold was the only option naming a generic elected legislator role (the most basic, central concept), while the others were offices or places, and 'speaker of parliament' shared the word 'parliament' with it, pointing to it."
+     }
+    ]
+   }
+  },
+  "mlt-fi-kansanedustajana": {
+   "correction_native": {
+    "topic": "a concept from politics and government",
+    "topic_pass1": "a concept from politics and government",
+    "kind": "a political concept",
+    "gold": "member of parliament",
+    "distractors": [
+     "minister without portfolio",
+     "member of congress",
+     "prime minister",
+     "speaker of the house"
+    ],
+    "enwiki": {
+     "minister without portfolio": "Minister without portfolio",
+     "member of congress": "Member of Congress",
+     "prime minister": "Prime minister",
+     "speaker of the house": "Speaker (politics)"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "It was the only option belonging to politics and government; the others came from forestry, materials science and anthropology."
+     },
+     {
+      "round": 3,
+      "cue": "The gold was the only generic rank-and-file legislator role among leadership positions, making it the most basic, prototypical political office and thus an easy pick."
+     },
+     {
+      "round": 5,
+      "cue": "\"Member of parliament\" was the only generic, broadly basic legislative-role term, and the only one of the four to name the plural body (parliament), so it read as the most canonical, central answer."
+     },
+     {
+      "round": 7,
+      "cue": "With the topic given, 'member of parliament' stood out as the most generic, basic political role among a short list of more specific Westminster-style offices, making it the default guess."
+     },
+     {
+      "round": 1,
+      "cue": "The gold was the only multi-word legislative office tied to a parliament, while the others were short single titles or executive/administrative roles, so it stood out as the one explicitly parliamentary term."
+     },
+     {
+      "round": 1,
+      "cue": "The gold is the only ordinary legislator role among leadership offices, so a topic guesser picks the most generic parliamentary concept."
+     },
+     {
+      "round": 3,
+      "cue": "Member of parliament is the most generic, prototypical legislative office (and the only multi-word 'X of Y' lowercase title besides head of state), so it stood out as the canonical concept among narrower roles."
+     },
+     {
+      "round": 5,
+      "cue": "\"Member of parliament\" is the only option naming the basic elected legislator role itself (and the only one with 'of parliament'), while the others are executive or party-office positions, making it the most generic and prototypical concept of politics and government."
+     },
+     {
+      "round": 7,
+      "cue": "Gold was the only generic 'member of X' legislator term besides 'member of congress', which paired it closely; otherwise no strong cue, but list should mix legislative and executive roles evenly in lowercase style."
+     },
+     {
+      "round": 9,
+      "cue": "Gold was the most generic, prototypical legislative role in the list, standing out against a mix of executive and judicial posts and a US-specific near-synonym."
+     }
+    ]
+   }
+  },
+  "mlt-fi-kilpirauhanen": {
+   "correction_native": {
+    "topic": "a part of the human body",
+    "topic_pass1": "a gland of the human endocrine system",
+    "kind": "a body part",
+    "gold": "thyroid gland",
+    "distractors": [
+     "thymus",
+     "parathyroid gland",
+     "pineal gland",
+     "pituitary gland"
+    ],
+    "enwiki": {
+     "thymus": "Thymus",
+     "parathyroid gland": "Parathyroid gland",
+     "pineal gland": "Pineal gland",
+     "pituitary gland": "Pituitary gland"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 1,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The thyroid gland was the only actual body part among the options; the others were a medical procedure, appliances, a tool and a science."
+     },
+     {
+      "round": 3,
+      "cue": "The thyroid gland is the most prototypical, famous gland among the options, and only a few options were named with 'gland', so it stood out as the canonical body part when the topic was known."
+     },
+     {
+      "round": 5,
+      "cue": "Among the glands listed, the thyroid is the best-known endocrine gland and the most prototypical 'gland' body part, so a topic guesser picks it over the exocrine or more obscure glands."
+     },
+     {
+      "round": 1,
+      "cue": "The gold was not clearly singled out, but as the best-known endocrine gland in a list of only four glands it could stand out; adding more lowercase '<name> gland' options of similar fame removes any cue."
+     },
+     {
+      "round": 3,
+      "cue": "The thyroid gland was the only endocrine gland among exocrine glands (salivary, sweat, mammary, prostate), and the most prominent named organ-level gland, making it the obvious pick for a topic-aware guesser."
+     },
+     {
+      "round": 5,
+      "cue": "With only four distractors, thyroid gland stood out as the most famous, prototypical gland, the one most often named when glands come up."
+     },
+     {
+      "round": 7,
+      "cue": "Among a small set of glands, the thyroid is the most famous and canonical 'gland of the neck', and parathyroid is a derivative of it that points straight to it."
+     },
+     {
+      "round": 9,
+      "cue": "The thyroid gland is the most commonly known and frequently discussed gland, so among a list of all glands it stands out as the most prototypical 'part of the human body' answer."
+     }
+    ]
+   }
+  },
+  "mlt-fi-kumisaappaat": {
+   "correction_native": {
+    "topic": "a type of footwear or clothing",
+    "topic_pass1": "a type of footwear",
+    "kind": "an everyday object",
+    "gold": "rubber boots",
+    "distractors": [
+     "winter coat",
+     "wool socks",
+     "leather gloves",
+     "rain jacket"
+    ],
+    "enwiki": {
+     "winter coat": "Coat",
+     "wool socks": "Sock",
+     "leather gloves": "Glove",
+     "rain jacket": "Raincoat"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Rubber boots was the only footwear or clothing item among unrelated concepts, so anyone given the topic could pick it at once."
+     },
+     {
+      "round": 3,
+      "cue": "The gold is a 'material + item' plural footwear phrase; the list was short and mixed, with 'hiking boots' its only near twin, so it needs more parallel material-plus-item options."
+     },
+     {
+      "round": 5,
+      "cue": "The current list mixes off-topic items (refrigerator, records management) with footwear, so only a few options fit the topic and the gold stands among a tiny pool of boots/sandals."
+     },
+     {
+      "round": 7,
+      "cue": "The current list includes 'chemotherapy treatment', which is not clothing, and the other items are oddly material-qualified, so with the topic given the gold is the plain, prototypical footwear item that stands out."
+     },
+     {
+      "round": 9,
+      "cue": "The gold was one of only two footwear items among mostly clothing, and 'rubber boots' evokes Finland's iconic Nokia rubber boots, a cultural association with the Finnish gold language."
+     }
+    ]
+   }
+  },
+  "mlt-fi-mikroaaltouuni": {
+   "correction_native": {
+    "topic": "a household appliance or device",
+    "topic_pass1": "a common household kitchen appliance",
+    "kind": "an appliance",
+    "gold": "microwave oven",
+    "distractors": [
+     "washing machine",
+     "pop-up toaster",
+     "toaster oven",
+     "refrigerator"
+    ],
+    "enwiki": {
+     "washing machine": "Washing machine",
+     "pop-up toaster": "Toaster",
+     "toaster oven": "Toaster oven",
+     "refrigerator": "Refrigerator"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The microwave oven was the only kitchen appliance among unrelated items like a registrar official, a screwdriver and woodwork, so it matched the topic outright."
+     },
+     {
+      "round": 3,
+      "cue": "The gold was the only two-word name ending in a generic noun ('oven') and the most iconic stereotypical 'appliance', while the others were mixed one-word or compound names."
+     },
+     {
+      "round": 1,
+      "cue": "The gold was the only heating/cooking appliance besides the rice cooker in a list padded with near-duplicate coffee makers, making it the most prototypical 'household appliance' choice."
+     },
+     {
+      "round": 3,
+      "cue": "The gold was the only two-word 'X oven' appliance besides toaster oven, making 'oven' a giveaway pair, and it is the most iconic household appliance, while the list was short and mixed in sub-kind."
+     },
+     {
+      "round": 5,
+      "cue": "The gold was the only two-word 'noun + oven' style cooking appliance among a short, uneven list, making it stand out as the most canonical kitchen heating device."
+     },
+     {
+      "round": 7,
+      "cue": "The gold is the most iconic and famous kitchen appliance among lesser everyday devices, and 'convection oven' shares its 'oven' head noun, pairing them as a cluster."
+     },
+     {
+      "round": 9,
+      "cue": "The gold was the only two-word 'X oven' style everyday kitchen heating appliance among a short list, standing out as the most iconic modern appliance with a generic noun-plus-noun name."
+     },
+     {
+      "round": 1,
+      "cue": "Microwave oven is the most iconic, famous kitchen appliance in the list, and its two-word 'X oven' form stood out against mostly generic items, with convection oven pointing to it as a near-relative."
+     },
+     {
+      "round": 3,
+      "cue": "Microwave oven was the most iconic, generic kitchen appliance among a mixed set, and 'pop-up toaster' had an odd qualifier while 'rice cooker' was regionally tied, leaving the microwave as the safest central guess."
+     }
+    ]
+   }
+  },
+  "mlt-fi-ompelukone": {
+   "correction_native": {
+    "topic": "a household or workshop machine or tool",
+    "topic_pass1": "a household or workshop machine or tool",
+    "kind": "an everyday object",
+    "gold": "sewing machine",
+    "distractors": [
+     "washing machine",
+     "vacuum cleaner",
+     "electric drill",
+     "lathe"
+    ],
+    "enwiki": {
+     "washing machine": "Washing machine",
+     "vacuum cleaner": "Vacuum cleaner",
+     "electric drill": "Drill",
+     "lathe": "Lathe"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The current distractors are not all household or workshop machines: an encyclopedia and a medical field don't fit the topic, so the sewing machine was one of only a few real machines and stood out to the topic guesser."
+     },
+     {
+      "round": 1,
+      "cue": "The gold is the only option combining household and workshop use with a textile purpose, and with just four distractors the household/workshop split leaves it somewhat distinctive."
+     },
+     {
+      "round": 3,
+      "cue": "Sewing machine was the only machine that fits both 'household' and 'workshop' as a classic domestic-craft machine, while the others leaned clearly to one side (saw/lathe workshop, washing machine household, typewriter office)."
+     },
+     {
+      "round": 5,
+      "cue": "The gold was the most iconic, archetypal household-and-workshop machine among a small set clustered around textiles, so a topic guesser picked the most prototypical textile machine."
+     },
+     {
+      "round": 7,
+      "cue": "Sewing machine was the most prototypical household textile/workshop machine, with knitting machine as a near-sibling pointing toward it, while the others were fewer and less balanced."
+     },
+     {
+      "round": 9,
+      "cue": "Sewing machine is the prototypical machine that is both household and workshop, and the only textile-making machine besides the less machine-like spinning wheel, so a topic-aware guesser picks it."
+     }
+    ]
+   }
+  },
+  "mlt-he-antibiotika": {
+   "correction_native": {
+    "topic": "a medication or class of drug",
+    "topic_pass1": "a medication or class of drug",
+    "kind": "a type of medicine",
+    "gold": "antibiotic drug",
+    "distractors": [
+     "antiviral drug",
+     "antifungal drug",
+     "antipsychotic drug",
+     "anticoagulant drug"
+    ],
+    "enwiki": {
+     "antiviral drug": "Antiviral drug",
+     "antifungal drug": "Antifungal",
+     "antipsychotic drug": "Antipsychotic",
+     "anticoagulant drug": "Anticoagulant"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only medication or drug class in a list otherwise made of caves, forests, neural networks and surgical procedures, so the topic pointed straight to it."
+     },
+     {
+      "round": 3,
+      "cue": "Antibiotic is the most prototypical, famous drug class, so the current list (mostly 'anti-' classes) leaves it as the default guess among few alternatives."
+     },
+     {
+      "round": 5,
+      "cue": "Antibiotic is the most familiar, prototypical drug class, so it can stand out among less everyday classes unless equally common classes such as analgesics and antihistamines are also present."
+     },
+     {
+      "round": 7,
+      "cue": "The gold was the most generic, best-known drug class among anti-something drug classes, and the off-topic 'deciduous broadleaf forest' broke the set, so the list needed more equally common drug classes in the same 'X drug' style."
+     },
+     {
+      "round": 9,
+      "cue": "The list mixed off-topic items (forest, neural network) with only a few drug classes, so 'antibiotic drug' stood out as the most prototypical medicine class."
+     }
+    ]
+   }
+  },
+  "mlt-he-antisemitism": {
+   "correction_native": {
+    "topic": "a social phenomenon or prejudice",
+    "topic_pass1": "a form of prejudice or hatred against a group",
+    "kind": "a social phenomenon",
+    "gold": "hatred of Jews",
+    "distractors": [
+     "hatred of foreigners",
+     "hatred of gay people",
+     "hatred of immigrants",
+     "hatred of Christians"
+    ],
+    "enwiki": {
+     "hatred of foreigners": "Xenophobia",
+     "hatred of gay people": "Homophobia",
+     "hatred of immigrants": "Anti-immigration",
+     "hatred of Christians": "Anti-Christian sentiment"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 2,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only form of prejudice or hatred in a list of random objects and phenomena, so it stood out immediately."
+     },
+     {
+      "round": 3,
+      "cue": "Antisemitism is the most famous and prototypical form of group hatred, so 'hatred of Jews' stood out among fewer, less canonical options, and it pairs obviously with Hebrew."
+     },
+     {
+      "round": 5,
+      "cue": "Hatred of Jews (antisemitism) is by far the most famous and archetypal named prejudice, and it pairs obviously with Hebrew, while the other options were weaker or vaguer."
+     },
+     {
+      "round": 7,
+      "cue": "Antisemitism is by far the most famous, best-documented form of group hatred, so among a few generic or religious options it stood out as the canonical answer."
+     },
+     {
+      "round": 1,
+      "cue": "Hatred of Jews is the most prominent, archetypal prejudice of the 'hatred of X' form, and it pairs directly with Hebrew; the other options were less famous or too few to compete."
+     },
+     {
+      "round": 3,
+      "cue": "Hatred of Jews is the most famous and prototypical named prejudice (antisemitism), and it stood alone as the only ethnoreligious-group hatred besides the vaguer categories, also pairing with Hebrew."
+     },
+     {
+      "round": 5,
+      "cue": "The gold was the only religiously defined target and the only option matching Hebrew, while the distractors duplicated Roma and lacked comparably famous prejudices."
+     },
+     {
+      "round": 7,
+      "cue": "Hatred of Jews is by far the most famous named prejudice (antisemitism) among a short list of mostly generic or less-established hatreds, so it stood out as the canonical answer."
+     },
+     {
+      "round": 9,
+      "cue": "Hatred of Jews is the most famous, named prejudice (antisemitism), while the other options were vaguer or less prominent, so it stood out as the canonical answer."
+     },
+     {
+      "round": 1,
+      "cue": "Antisemitism is the most famous and prototypical named prejudice, so with only foreigners/gays/immigrants/Christians it stood out as the canonical religious-ethnic hatred and the natural match for Hebrew."
+     },
+     {
+      "round": 3,
+      "cue": "Antisemitism is by far the most famous named prejudice and the only one pairing obviously with Hebrew among the language options, while the other options were less canonical, mixed in scope (women, immigrants) or weakly tied to the languages."
+     },
+     {
+      "round": 5,
+      "cue": "Antisemitism is by far the most famous named prejudice, and the other options mapped one-to-one onto the language list (Arabic, Turkish, Vietnamese), leaving Jews as the obvious match for Hebrew."
+     },
+     {
+      "round": 7,
+      "cue": "Hatred of Jews is the most famous, archetypal prejudice of this form and stood out among few, mixed-type alternatives (generic immigrants/foreigners) while matching the Hebrew language option."
+     },
+     {
+      "round": 9,
+      "cue": "Antisemitism is the most famous named prejudice, and the other options were tied to Arabic and Turkish, which pointed to a matching Hebrew-linked hatred."
+     }
+    ]
+   }
+  },
+  "mlt-he-archaeology": {
+   "correction_native": {
+    "topic": "a scientific or academic field of study",
+    "topic_pass1": "an academic discipline in the humanities or social sciences",
+    "topic_fixed_from": "an academic discipline in the humanities or social sciences",
+    "kind": "a field of study",
+    "gold": "archaeological science",
+    "distractors": [
+     "forensic science",
+     "environmental science",
+     "computational linguistics",
+     "materials science"
+    ],
+    "enwiki": {
+     "forensic science": "Forensic science",
+     "environmental science": "Environmental science",
+     "computational linguistics": "Computational linguistics",
+     "materials science": "Materials science"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only actual academic discipline in the humanities or social sciences; the other options were physical phenomena, medical procedures or conditions, so the topic alone pointed to it."
+     },
+     {
+      "round": 1,
+      "cue": "The gold was the only option pairing an adjective with 'science' in a lab-based, interdisciplinary sense, while the others were broad social-science or humanities fields."
+     }
+    ]
+   }
+  },
+  "mlt-he-caramelization-typo": {
+   "correction_native": {
+    "topic": "a chemical process or reaction",
+    "topic_pass1": "a chemical process that happens to food during cooking",
+    "kind": "a chemical process",
+    "gold": "sugar caramelization",
+    "distractors": [
+     "iron rusting",
+     "wood combustion",
+     "grape fermentation",
+     "meat browning"
+    ],
+    "enwiki": {
+     "iron rusting": "Rust",
+     "wood combustion": "Combustion",
+     "grape fermentation": "Fermentation in winemaking",
+     "meat browning": "Maillard reaction"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only chemical process in a list of unrelated non-process phrases, so anyone given the topic could pick it out."
+     }
+    ]
+   }
+  },
+  "mlt-he-chemotherapia": {
+   "correction_native": {
+    "topic": "a medical treatment or procedure",
+    "topic_pass1": "a medical treatment or procedure in cancer care",
+    "kind": "a medical treatment",
+    "gold": "chemotherapy treatment",
+    "distractors": [
+     "kidney dialysis treatment",
+     "double tea kettle",
+     "oxygen therapy treatment",
+     "insulin therapy treatment"
+    ],
+    "enwiki": {
+     "kidney dialysis treatment": "Kidney dialysis",
+     "double tea kettle": "double tea kettle",
+     "oxygen therapy treatment": "Oxygen therapy",
+     "insulin therapy treatment": "Insulin (medication)"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only medical treatment among unrelated items (cooking, kettle, a person, a fossil), so the topic alone singles it out."
+     },
+     {
+      "round": 3,
+      "cue": "Only chemotherapy, physical therapy and insulin therapy were medical treatments; the kettle and caramelization were off-kind, and chemotherapy was the most prominent 'X treatment' option."
+     },
+     {
+      "round": 5,
+      "cue": "The gold was one of few options in the '___ treatment' style, alongside an absurd non-medical item ('double tea kettle') that broke the list's consistency and narrowed the plausible medical options."
+     },
+     {
+      "round": 7,
+      "cue": "The gold is the only cancer-related treatment, and the current list mixes in an off-topic item (double tea kettle) and inconsistent naming patterns."
+     },
+     {
+      "round": 9,
+      "cue": "The current list mixes off-topic items (a fossil, caramelization) with only two treatments, and chemotherapy is the most famous of the 'X treatment' options, so it stands out as the prototypical medical procedure."
+     }
+    ]
+   }
+  },
+  "mlt-he-detergents-typo": {
+   "correction_native": {
+    "topic": "a chemical substance or compound",
+    "topic_pass1": "a household cleaning substance or chemical agent",
+    "kind": "a substance",
+    "gold": "surfactant detergents",
+    "distractors": [
+     "acidic descalers",
+     "alkaline degreasers",
+     "oxygen bleaches",
+     "chlorine bleaches"
+    ],
+    "enwiki": {
+     "acidic descalers": "Descaling agent",
+     "alkaline degreasers": "Degreasing",
+     "oxygen bleaches": "Sodium percarbonate",
+     "chlorine bleaches": "Bleach"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 1,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only option that is actually a chemical substance; the other options were abstract concepts or activities, so it stood out against the topic."
+     },
+     {
+      "round": 1,
+      "cue": "The gold was the only plural, two-word functional category (cleaning agents by role) among mostly single named compounds, and the only non-oxidizer/non-disinfectant option, so it stood out as the generic household cleaning class."
+     }
+    ]
+   }
+  },
+  "mlt-he-elektroda": {
+   "correction_native": {
+    "topic": "a tool or component in metalworking",
+    "topic_pass1": "a tool, consumable or component used in metalworking and welding",
+    "kind": "a metalworking item",
+    "gold": "welding electrode",
+    "distractors": [
+     "blacksmith's anvil",
+     "twist drill",
+     "tap and die",
+     "large-scale electrification"
+    ],
+    "enwiki": {
+     "blacksmith's anvil": "Anvil",
+     "twist drill": "Drill bit",
+     "tap and die": "Tap and die",
+     "large-scale electrification": "large-scale electrification"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only metalworking item among unrelated concepts (observatory, amphibians, electrification, biodiversity), so the topic alone singled it out."
+     },
+     {
+      "round": 3,
+      "cue": "The gold was the only consumable among tools, and the only welding item, so it stood out as a consumable component rather than a tool."
+     },
+     {
+      "round": 5,
+      "cue": "The gold was the only welding consumable aside from 'filler metal' (a near-synonym), so the welding cluster made it easy to triangulate; the list should mix several welding and non-welding two-word metalworking items."
+     }
+    ]
+   }
+  },
+  "mlt-he-encyclopedia": {
+   "correction_native": {
+    "topic": "a type of book or publication",
+    "topic_pass1": "a type of reference work or book",
+    "kind": "a reference work type",
+    "gold": "general encyclopedia",
+    "distractors": [
+     "biographical dictionary",
+     "bilingual dictionary",
+     "world atlas",
+     "annual almanac"
+    ],
+    "enwiki": {
+     "biographical dictionary": "Biographical dictionary",
+     "bilingual dictionary": "Bilingual dictionary",
+     "world atlas": "Atlas",
+     "annual almanac": "Almanac"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The current distractors are not reference work types at all, so 'general encyclopedia' is the only option that fits the topic of books or publications."
+     },
+     {
+      "round": 3,
+      "cue": "The current list mixes in an off-topic item ('the amphibian class') and has too few options, so the gold's two-word 'adjective + reference type' style is not matched consistently."
+     },
+     {
+      "round": 5,
+      "cue": "The gold was the only broad general-purpose reference work among narrow or off-topic options (including 'hatred of Jews', which ties to Hebrew and isn't a reference work), so it stood out as the most canonical 'type of book'."
+     },
+     {
+      "round": 7,
+      "cue": "Only three options were reference work types, and 'hatred of Jews' tied to Hebrew while 'blood cholesterol' was off-topic, so the topic guesser could easily narrow down to the gold."
+     },
+     {
+      "round": 9,
+      "cue": "The gold is the most familiar and prototypical reference work type, while the current distractors are more technical library-science terms, so familiarity could single it out."
+     }
+    ]
+   }
+  },
+  "mlt-he-endocrinologia": {
+   "correction_native": {
+    "topic": "a branch or specialty of medicine",
+    "topic_pass1": "a type of chemical substance in human physiology",
+    "topic_fixed_from": "a biological substance in human physiology",
+    "kind": "a biological substance",
+    "gold": "endocrinology medical field",
+    "distractors": [
+     "nephrology medical field",
+     "dermatology medical field",
+     "hematology medical field",
+     "neurology medical field"
+    ],
+    "enwiki": {
+     "nephrology medical field": "Nephrology",
+     "dermatology medical field": "Dermatology",
+     "hematology medical field": "Hematology",
+     "neurology medical field": "Neurology"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold is the only option phrased as a medical field ('X medical field'), while the others are mixed unrelated concepts; only one other option, blood cholesterol, is physiology-related."
+     },
+     {
+      "round": 3,
+      "cue": "The gold is the only field tied to hormones, which are biological substances, so under this topic it stands out from fields named after organs."
+     },
+     {
+      "round": 1,
+      "cue": "The gold is one of only a few options using the 'X medical field' pattern, alongside an odd one out ('large-scale electrification'), so the matching style narrowed guesses to the medical-field options."
+     },
+     {
+      "round": 3,
+      "cue": "The topic mentions a biological substance in physiology, and endocrinology (hormones) is the only field defined by a class of substances, while the others are organ-based."
+     },
+     {
+      "round": 5,
+      "cue": "The gold's 'X medical field' style matched only three distractors while 'large-scale electrification' was an odd non-medical item, so the list was uneven; the fix is to use eight uniformly styled medical-field options."
+     },
+     {
+      "round": 7,
+      "cue": "Endocrinology is the only field defined by a biological substance (hormones), so the topic 'biological substance in human physiology' pointed straight at it among fields not centred on a bodily substance."
+     }
+    ]
+   }
+  },
+  "mlt-hu-anyakonyvvezeto": {
+   "correction_native": {
+    "topic": "a civil or administrative occupation",
+    "topic_pass1": "a civil or municipal official role",
+    "kind": "an occupation",
+    "gold": "civil registrar official",
+    "distractors": [
+     "public notary official",
+     "tax assessor official",
+     "municipal records official",
+     "notary public official"
+    ],
+    "enwiki": {
+     "public notary official": "Notary public",
+     "tax assessor official": "Tax assessment",
+     "municipal records official": "Records management",
+     "notary public official": "Notary public"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only option that was actually an occupation (a person-role phrase ending in 'official'), while the others were concepts, objects, chemicals and medical procedures."
+     },
+     {
+      "round": 3,
+      "cue": "The gold was the only option ending in 'registrar official' and the most prototypically 'civil' administrative role, while the others mixed clerk/secretary/official endings unevenly."
+     },
+     {
+      "round": 5,
+      "cue": "The gold follows a '<function> official' pattern shared by only some options, while 'administrative bureaucracy' breaks the style, so the list is uneven; the distractors need a uniform '<noun phrase> official' format."
+     }
+    ]
+   }
+  },
+  "mlt-hu-asztalosmuhely": {
+   "correction_native": {
+    "topic": "a type of workplace or building",
+    "topic_pass1": "a type of wood or tree",
+    "topic_fixed_from": "a type of wood or tree",
+    "kind": "a wood or tree",
+    "gold": "carpentry workshop",
+    "distractors": [
+     "wheelwright's workshop",
+     "lumber yard",
+     "cooperage workshop",
+     "timber yard"
+    ],
+    "enwiki": {
+     "wheelwright's workshop": "Wheelwright",
+     "lumber yard": "Lumberyard",
+     "cooperage workshop": "Cooper (profession)",
+     "timber yard": "Lumber yard"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold 'carpentry workshop' is the only option related to wood or trees, while the distractors are unrelated concepts with mismatched styles (e.g., 'endocrinology medical field')."
+     },
+     {
+      "round": 3,
+      "cue": "The gold 'carpentry workshop' is the only option tied to wood, matching the wood/tree topic, while the others are textile, printing, glass and pottery."
+     },
+     {
+      "round": 5,
+      "cue": "The gold 'carpentry workshop' is the only option directly tied to wood or trees, matching the topic, while the other options are a mixed bag of unrelated fields and don't share its 'X workshop' form."
+     },
+     {
+      "round": 7,
+      "cue": "Given the topic of wood or trees, 'carpentry workshop' is the only option connected to wood, so it stands out when the other options are unrelated crafts."
+     },
+     {
+      "round": 9,
+      "cue": "The gold 'carpentry workshop' is the most generic wood-related workshop, and woodturning and cabinetmaker options cluster around it, so the wood theme points straight to it."
+     },
+     {
+      "round": 1,
+      "cue": "The gold is the only option tied to wood, the topic's subject, while the other workshops work metal, clay, fibre or glass."
+     },
+     {
+      "round": 1,
+      "cue": "The gold was the only option that names a general-purpose woodworking 'workshop' with a trade prefix; the others were mostly single-word specialised facilities, so its two-word 'X workshop' form stood out."
+     },
+     {
+      "round": 3,
+      "cue": "The gold is the most generic, prototypical wood-working workplace, while the current distractors are more specialised, so a guesser might pick the plain 'carpentry workshop' as the central answer."
+     },
+     {
+      "round": 5,
+      "cue": "The gold was the only generic woodworking shop among few options, with 'workshop' pairing it to cooperage workshop and leaving a small, uneven list."
+     }
+    ]
+   }
+  },
+  "mlt-hu-csavarhuzo": {
+   "correction_native": {
+    "topic": "a common household hand tool",
+    "topic_pass1": "a common household hand tool",
+    "kind": "a tool",
+    "gold": "a screwdriver tool",
+    "distractors": [
+     "a hammer tool",
+     "a pliers tool",
+     "a wrench tool",
+     "a handsaw tool"
+    ],
+    "enwiki": {
+     "a hammer tool": "Hammer",
+     "a pliers tool": "Pliers",
+     "a wrench tool": "Wrench",
+     "a handsaw tool": "Hand saw"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only common household hand tool among unrelated concepts like the atmosphere, trees and records management, so the topic pointed straight to it."
+     }
+    ]
+   }
+  },
+  "mlt-hu-cseppkobarlang": {
+   "correction_native": {
+    "topic": "a natural landform or geological feature",
+    "topic_pass1": "a type of natural landform or geological feature",
+    "kind": "a landform",
+    "gold": "dripstone cave",
+    "distractors": [
+     "karst sinkhole",
+     "fairy chimney",
+     "limestone gorge",
+     "volcanic crater"
+    ],
+    "enwiki": {
+     "karst sinkhole": "Sinkhole",
+     "fairy chimney": "Hoodoo (geology)",
+     "limestone gorge": "Gorge",
+     "volcanic crater": "Volcanic crater"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only natural landform among unrelated concepts (observatory, revolution, dishwasher), and 'coral reefs' was plural while the gold is a singular two-word lowercase noun phrase."
+     },
+     {
+      "round": 3,
+      "cue": "The gold was the only cave/karst underground feature among surface landforms, and 'dripstone' is the plain-word style matching what a topic guesser expects; the distractors need more two-word cave and karst features so the gold isn't unique."
+     },
+     {
+      "round": 5,
+      "cue": "Dripstone cave was the only option that is both a cave and a classic karst landform, making it the obvious 'typical' answer for the topic, while the others were niche variants."
+     },
+     {
+      "round": 7,
+      "cue": "Dripstone cave is the only option naming a cave with speleothems and a karst feature famously tied to Hungary (Aggtelek); the other options are open-air features or a plain sea cave, so the cave interior wins on its own."
+     },
+     {
+      "round": 1,
+      "cue": "Dripstone cave was the only subterranean feature and the only karst landform associated with Hungary (Baradla), letting topic guessers link it to the Hungarian language list, while the others were surface features of mixed types."
+     },
+     {
+      "round": 3,
+      "cue": "With the topic-only guesser always succeeding, the gold stood out as the most generic, prototypical 'cave' landform, while the other options were narrower or more peripheral, and as the only lowercase compound noun naming a cave filled with formations it read as the canonical answer."
+     },
+     {
+      "round": 5,
+      "cue": "With the topic phrased as a generic landform, 'dripstone cave' was the only cave-type with a distinctive two-word compound that also reads like the most prototypical classic karst feature, while the other options were few and mixed, so it stood out as the canonical 'geological feature' answer."
+     },
+     {
+      "round": 7,
+      "cue": "Dripstone cave is the only underground, cave-type feature and the only one with a compound 'material + feature' name, so a topic guesser picks it as the most iconic landform."
+     },
+     {
+      "round": 9,
+      "cue": "Most options were caves of other types, and 'dripstone cave' was the most typical, cave-defining landform matching the topic, so a guesser could single it out as the canonical karst feature; the list needs varied landforms of equal salience instead of cave variants."
+     },
+     {
+      "round": 1,
+      "cue": "The gold was the only cave in a list of surface features, and caves are a well-known Hungarian landmark (Baradla), so the topic guesser could single it out."
+     },
+     {
+      "round": 1,
+      "cue": "The gold was the only option that is a classic solution (karst) limestone cave, the most prototypical landform in the list, while the others were less typical cave types or an odd non-cave feature."
+     },
+     {
+      "round": 3,
+      "cue": "The gold was the only underground/karst feature among surface landforms, so a topic guesser could pick it as the distinctive cave-type option."
+     }
+    ]
+   }
+  },
+  "mlt-hu-csillagvizsgalo": {
+   "correction_native": {
+    "topic": "a type of building or facility",
+    "topic_pass1": "a scientific facility or institution",
+    "kind": "a type of building",
+    "gold": "astronomical observatory",
+    "distractors": [
+     "endocrinology medical field",
+     "lighthouse",
+     "botanical garden greenhouse",
+     "botanical garden"
+    ],
+    "enwiki": {
+     "endocrinology medical field": "endocrinology medical field",
+     "lighthouse": "Lighthouse",
+     "botanical garden greenhouse": "Greenhouse",
+     "botanical garden": "Botanical garden"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 5,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only option that is actually a building or scientific facility; the others were a medical field, an official, a science and a road, so anyone who saw the topic could pick it out."
+     },
+     {
+      "round": 3,
+      "cue": "The topic 'scientific facility' most strongly evokes an observatory as the archetypal science building, and the other options were either less purely scientific (museum, greenhouse) or oddly long compounds."
+     },
+     {
+      "round": 5,
+      "cue": "The gold is the most prototypical, classic 'scientific facility' building, while the distractors were less canonical or (planetarium) not a research institution, so a topic guesser picked the most iconic one."
+     },
+     {
+      "round": 7,
+      "cue": "Astronomical observatory is the most prototypical, iconic 'scientific facility' building, while the distractors were a mix of non-buildings (particle accelerator), gardens and niche stations, so the topic guesser picked the archetypal one."
+     },
+     {
+      "round": 1,
+      "cue": "The gold was the only option that is actually a type of building or facility; the others were a medical field, an official, a science and a road."
+     },
+     {
+      "round": 3,
+      "cue": "Given the topic, the gold was the only science-research facility apart from planetarium, and its two-word 'adjective + noun' scientific style stood out against generic civic buildings like railway station and public library."
+     },
+     {
+      "round": 5,
+      "cue": "The gold was the only scientific research building among a mixed list that even included a non-building ('endocrinology medical field'), so a topic guesser picked the one science-themed building."
+     },
+     {
+      "round": 7,
+      "cue": "With a generic 'building or facility' topic, the gold was the only two-word adjective-plus-noun scientific building with a distinctive iconic structure (a dome), and the distractors mixed in odd ones like 'oceanographic institute' and a bare 'lighthouse', so the most canonical 'facility' stood out."
+     },
+     {
+      "round": 9,
+      "cue": "The gold was the only true building type among odd non-building options (motorway, garden, weather station), and the only one fitting 'type of building' cleanly alongside a museum, making it easy to pick from the topic."
+     },
+     {
+      "round": 1,
+      "cue": "The gold was the only scientific-research building among options that included a non-building (a medical field) and duplicated garden entries, so it stood out as the one clear building type fitting the topic."
+     },
+     {
+      "round": 3,
+      "cue": "With the topic 'building or facility', the gold was the only science-research facility among public-oriented venues, and its two-word adjective-noun form stood out against a mixed list."
+     },
+     {
+      "round": 5,
+      "cue": "The gold was the only building type fitting the topic alongside few others, while 'endocrinology medical field' was not a building at all and the similar science facilities (planetarium, meteorological station) pointed the topic guesser to the observatory cluster."
+     },
+     {
+      "round": 7,
+      "cue": "The gold was the only scientific research facility among cultural venues and a utility plant, so a topic guesser could single it out as the 'facility'; the planetarium also pointed to astronomy."
+     },
+     {
+      "round": 9,
+      "cue": "Only the gold had a two-word adjective+noun name with a distinctive scientific adjective tied to a specific purpose; the others were generic, so the topic guesser picked the most specific science building."
+     },
+     {
+      "round": 1,
+      "cue": "Given the topic of buildings, the gold was the only clean building type: 'endocrinology medical field' is not a building, and the two botanical-garden entries near-duplicate each other."
+     },
+     {
+      "round": 3,
+      "cue": "Given the topic 'a type of building or facility', the gold was the only clear building type besides near-synonyms like planetarium, while 'endocrinology medical field' and 'radio station' were off-kind, so the gold stood out as the one fitting building."
+     },
+     {
+      "round": 5,
+      "cue": "The gold was the only scientific research building next to a medical field (not a building) and loosely related facilities, and the topic guesser favoured the famous 'observatory' over odd items like 'endocrinology medical field'."
+     },
+     {
+      "round": 7,
+      "cue": "The gold was the only option literally named as a building with a two-word 'adjective + building' form tied to sky/science research that fits 'type of building', while others like botanical garden or radio station are not clearly buildings, so it stood out as the most building-like scientific facility."
+     },
+     {
+      "round": 9,
+      "cue": "Under the topic, the gold was the only science-themed specialist facility with a strongly adjectival two-word name alongside a mix of very different, uneven options (one awkward three-word compound), so it read as the canonical 'building or facility' answer."
+     }
+    ]
+   }
+  },
+  "mlt-hu-elengedhetetlen-01": {
+   "correction_native": {
+    "topic": "a degree of necessity or importance",
+    "topic_pass1": "a concept related to learning, study or self-improvement",
+    "topic_fixed_from": "a Hungarian adjective or descriptive phrase",
+    "kind": "an abstract notion",
+    "gold": "absolutely indispensable",
+    "distractors": [
+     "truly inseparable",
+     "wholly sufficient",
+     "utterly irreplaceable",
+     "intrinsically rewarding"
+    ],
+    "enwiki": {
+     "truly inseparable": "truly inseparable",
+     "wholly sufficient": "Necessity and sufficiency",
+     "utterly irreplaceable": "utterly irreplaceable",
+     "intrinsically rewarding": "Intrinsic motivation"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold is an adjectival phrase ('absolutely indispensable') while all current distractors are noun phrases about non-educational topics, so its grammatical form and evaluative tone stand out."
+     },
+     {
+      "round": 1,
+      "cue": "The gold expresses necessity/requirement ('indispensable'), the classic meaning of a strong Hungarian intensifier phrase like 'feltétlenül szükséges', while the distractors were all about motivation/engagement, a different semantic field."
+     },
+     {
+      "round": 3,
+      "cue": "Given a Hungarian-adjective topic, 'absolutely indispensable' stands out as the familiar rendering of a known Hungarian intensified adjective (e.g., 'nélkülözhetetlen'), while the other options were generic or an antonym ('entirely optional')."
+     },
+     {
+      "round": 5,
+      "cue": "Topic guessers likely linked 'absolutely indispensable' to the famous Hungarian long word 'elengedhetetlen' / 'megengedhetetlen' style adjectives, and the gold was the most canonical 'adverb + strong adjective' while distractors were vaguer, so similar emphatic negative-prefix compounds are needed."
+     },
+     {
+      "round": 1,
+      "cue": "The gold was the only option literally expressing a degree of necessity, while the others mixed in sufficiency, inseparability or reward, so the topic pointed straight at it."
+     },
+     {
+      "round": 3,
+      "cue": "The gold was the only two-word phrase built on the strongest possible intensifier ('absolutely'), so it stood out as the most extreme option on the high end, while the low-end options were few and easy to rule out."
+     }
+    ]
+   }
+  },
+  "mlt-hu-erelmeszesedes": {
+   "correction_native": {
+    "topic": "a disease or medical condition",
+    "topic_pass1": "a chronic cardiovascular disease",
+    "kind": "a disease",
+    "gold": "hardening of the arteries",
+    "distractors": [
+     "inflammation of the lungs",
+     "heart failure",
+     "scarring of the liver",
+     "water on the brain"
+    ],
+    "enwiki": {
+     "inflammation of the lungs": "Pneumonia",
+     "heart failure": "Heart failure",
+     "scarring of the liver": "Cirrhosis",
+     "water on the brain": "Hydrocephalus"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 1,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only disease among unrelated non-medical concepts, so it matched the topic trivially."
+     },
+     {
+      "round": 3,
+      "cue": "The gold was the only lay-language plain-English description among mostly lay terms but also the most canonical 'chronic cardiovascular disease' (atherosclerosis), while 'peripheral artery disease' was clinical and others were symptoms or non-chronic, making the gold the obvious best fit."
+     },
+     {
+      "round": 5,
+      "cue": "The gold is the classic lay phrase for the best-known chronic cardiovascular disease (atherosclerosis), while the distractors mixed lay phrases with clinical terms and included acute or less canonical conditions."
+     },
+     {
+      "round": 7,
+      "cue": "The gold is a lay phrase for arteriosclerosis, and it is the classic textbook 'chronic cardiovascular disease'; the mix of clinical terms and lay phrases also made the most iconic lay phrase stand out."
+     },
+     {
+      "round": 1,
+      "cue": "The gold is the only lay-term phrase built as 'X of the Y' among mostly clinical or simple names, and it is the classic vernacular paraphrase of a technical term (arteriosclerosis), which made it stand out."
+     },
+     {
+      "round": 3,
+      "cue": "Gold was the only established lay disease name (an idiomatic synonym for atherosclerosis); the others were ad-hoc anatomical descriptions, and 'swelling of the ankles' is a symptom rather than a disease."
+     }
+    ]
+   }
+  },
+  "mlt-hu-fazekaskorong": {
+   "correction_native": {
+    "topic": "a craft tool or workshop equipment",
+    "topic_pass1": "a craft tool or workshop equipment",
+    "kind": "an everyday object",
+    "gold": "potter's wheel",
+    "distractors": [
+     "sculptor's chisel",
+     "weaver's loom",
+     "jeweller's loupe",
+     "woodturner's lathe"
+    ],
+    "enwiki": {
+     "sculptor's chisel": "Chisel",
+     "weaver's loom": "Loom",
+     "jeweller's loupe": "Loupe",
+     "woodturner's lathe": "Lathe"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 1,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only craft tool among unrelated natural phenomena and abstract fields, so anyone given the topic could pick it instantly."
+     },
+     {
+      "round": 1,
+      "cue": "Only 'potter's wheel' is a rotating shaping machine strongly tied to the core idea of a 'craft tool or workshop equipment' like ceramics, while the others mix bare names and possessive trade-forms unevenly, making the potter's wheel the prototypical answer."
+     },
+     {
+      "round": 3,
+      "cue": "The potter's wheel is the most iconic, prototypical craft workshop tool among the options, and its possessive-trade form is matched by only some distractors while 'spinning wheel' shares the 'wheel' word."
+     },
+     {
+      "round": 5,
+      "cue": "The potter's wheel is the most iconic, quintessential piece of craft workshop equipment, a large machine-like station; the others were small hand tools or less prototypical, and 'spinning wheel' lacked the possessive form."
+     },
+     {
+      "round": 7,
+      "cue": "The potter's wheel is the single most iconic, famous craft device, while the distractors were vaguer compound descriptions (woodworker's lathe, carpenter's workbench) that read as less canonical."
+     },
+     {
+      "round": 9,
+      "cue": "The gold was the only possessive craft tool tied to a specific trade among few options, and 'potter's' alone evoked pottery/ceramics as the archetypal hand craft, standing out against a short list with mixed naming styles."
+     }
+    ]
+   }
+  },
+  "mlt-id-berkesinambungan": {
+   "correction_native": {
+    "topic": "an abstract notion or quality",
+    "topic_pass1": "a quality or manner in which government programs are carried out",
+    "kind": "an abstract notion",
+    "gold": "sustained continuity",
+    "distractors": [
+     "constant renewal",
+     "consistent regularity",
+     "lasting permanence",
+     "gradual progression"
+    ],
+    "enwiki": {
+     "constant renewal": "Renewal",
+     "consistent regularity": "Regularity",
+     "lasting permanence": "Permanence",
+     "gradual progression": "Progression"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Only 'sustained continuity' describes a quality or manner of carrying out programs; the other options were unrelated concrete things."
+     },
+     {
+      "round": 3,
+      "cue": "Under the topic, 'sustained continuity' stood out as the only option describing ongoing, uninterrupted programs over time, while the others (transparency, decentralization, accountability) were governance principles rather than ways programs are carried out over time, except one near-synonym."
+     },
+     {
+      "round": 1,
+      "cue": "The gold was a two-word adjective+noun phrase about lasting continuity, while distractors mixed near-synonyms (persistence, regularity) with unrelated notions, so the list's style was uneven rather than revealing."
+     }
+    ]
+   }
+  },
+  "mlt-id-fotosintesis": {
+   "correction_native": {
+    "topic": "a biological process or phenomenon",
+    "topic_pass1": "a biological process in plants",
+    "kind": "a biological process",
+    "gold": "plant photosynthesis",
+    "distractors": [
+     "alcoholic fermentation",
+     "the hormone adrenaline",
+     "cell mitosis",
+     "protein synthesis"
+    ],
+    "enwiki": {
+     "alcoholic fermentation": "Ethanol fermentation",
+     "the hormone adrenaline": "the hormone adrenaline",
+     "cell mitosis": "Mitosis",
+     "protein synthesis": "Protein biosynthesis"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only actual biological process in the list; the others were objects, an ecosystem, or a hormone, so the topic alone pointed to it."
+     },
+     {
+      "round": 3,
+      "cue": "The gold is the only option with an organism qualifier ('plant'), while the others mix bare process names with an odd non-process ('the hormone adrenaline')."
+     },
+     {
+      "round": 5,
+      "cue": "Plant photosynthesis is the single most prototypical, famous biological process, so a topic guesser picks it over less canonical options; distractors need equally iconic textbook processes in the same 'organism + process' style."
+     },
+     {
+      "round": 7,
+      "cue": "The gold is the most canonical, textbook biological process, and it is one of only two options with an organism qualifier written as 'plant X'. That makes it the default pick for a topic-only guesser."
+     },
+     {
+      "round": 9,
+      "cue": "Photosynthesis is the most iconic, textbook biological process, and 'plant' plus a famous process stood out against fewer equally canonical options."
+     }
+    ]
+   }
+  },
+  "mlt-id-invertebrata": {
+   "correction_native": {
+    "topic": "a term for a group of animals",
+    "topic_pass1": "a zoological classification term for groups of animals",
+    "kind": "a biological category",
+    "gold": "invertebrate animals",
+    "distractors": [
+     "astronomical observatory",
+     "social insects",
+     "marine mammals",
+     "motorway highway"
+    ],
+    "enwiki": {
+     "astronomical observatory": "astronomical observatory",
+     "social insects": "Eusociality",
+     "marine mammals": "Marine mammal",
+     "motorway highway": "motorway highway"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 1,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold is the only biological animal-group term among unrelated non-biological concepts, so anyone given the topic picks it at once."
+     },
+     {
+      "round": 3,
+      "cue": "The gold is the only broad taxonomic-style grouping defined by lacking a trait (no backbone), while the others were narrower adjective-plus-animal groups or an off-topic non-animal term."
+     },
+     {
+      "round": 5,
+      "cue": "The gold pairs naturally with 'vertebrate animals' as its obvious complement, so the contrast pair singles it out as a broad taxonomic grouping among narrower descriptive groups."
+     }
+    ]
+   }
+  },
+  "mlt-id-keberlanjutan": {
+   "correction_native": {
+    "topic": "a concept from environmental or social science",
+    "topic_pass1": "a concept from environmental science and resource economics",
+    "kind": "an abstract notion",
+    "gold": "environmental sustainability",
+    "distractors": [
+     "sustainable development",
+     "economic inequality",
+     "carrying capacity",
+     "biodiversity loss"
+    ],
+    "enwiki": {
+     "sustainable development": "Sustainable development",
+     "economic inequality": "Economic inequality",
+     "carrying capacity": "Carrying capacity",
+     "biodiversity loss": "Biodiversity loss"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only abstract environmental/social science concept among concrete natural-science objects (a weather system, a fossil, a plant, a disease), so the topic pointed straight at it."
+     },
+     {
+      "round": 3,
+      "cue": "The gold was the only broad, overarching two-word 'adjective + abstract noun' concept squarely matching 'environmental or social science', while the others were narrower metrics or processes."
+     },
+     {
+      "round": 5,
+      "cue": "Among the options, 'environmental sustainability' was the broadest, most canonical environmental-or-social-science concept, the obvious default for the topic."
+     }
+    ]
+   }
+  },
+  "mlt-id-kekeringan": {
+   "correction_native": {
+    "topic": "a natural disaster or weather phenomenon",
+    "topic_pass1": "a natural disaster or weather phenomenon affecting farming",
+    "kind": "a natural phenomenon",
+    "gold": "severe drought",
+    "distractors": [
+     "tropical cyclone",
+     "heat wave",
+     "volcanic eruption",
+     "forest wildfire"
+    ],
+    "enwiki": {
+     "tropical cyclone": "Tropical cyclone",
+     "heat wave": "Heat wave",
+     "volcanic eruption": "Volcanic eruption",
+     "forest wildfire": "Wildfire"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Among the current options only 'severe drought' and 'river flooding' are disasters, and the others (invertebrates, caramelization) are off-topic, so the gold stands out as one of just two plausible topic fits."
+     }
+    ]
+   }
+  },
+  "mlt-id-kelembapan": {
+   "correction_native": {
+    "topic": "a scientific measuring instrument",
+    "topic_pass1": "a meteorological measuring instrument",
+    "kind": "a scientific instrument",
+    "gold": "air humidity",
+    "distractors": [
+     "light intensity",
+     "water depth",
+     "blood pressure",
+     "air pressure"
+    ],
+    "enwiki": {
+     "light intensity": "Luminous intensity",
+     "water depth": "Water depth",
+     "blood pressure": "Blood pressure",
+     "air pressure": "Atmospheric pressure"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold 'air humidity' is the only option that is a measurable physical quantity relating to a scientific measuring instrument (hygrometer), while the other options are unrelated concepts like a politician, a workshop or a field of study."
+     },
+     {
+      "round": 1,
+      "cue": "The gold is a measured quantity rather than an instrument, and the current list mixes in an off-topic item (member of parliament) while air pressure pairs closely with air humidity, so the distractors need to be consistent physical quantities that measuring instruments read."
+     }
+    ]
+   }
+  },
+  "mlt-id-kelumpuhan": {
+   "correction_native": {
+    "topic": "a medical or neurological condition",
+    "topic_pass1": "a type of paralysis or neurological condition",
+    "kind": "a medical condition",
+    "gold": "bodily paralysis",
+    "distractors": [
+     "chronic seizures",
+     "memory loss",
+     "muscle weakness",
+     "brain swelling"
+    ],
+    "enwiki": {
+     "chronic seizures": "Epilepsy",
+     "memory loss": "Amnesia",
+     "muscle weakness": "Muscle weakness",
+     "brain swelling": "Cerebral edema"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The current distractors are unrelated non-medical concepts, so the only medical/neurological option, bodily paralysis, stands out under the topic."
+     },
+     {
+      "round": 3,
+      "cue": "The topic literally says 'a type of paralysis', and 'bodily paralysis' was the only option containing the word paralysis, so the topic pointed straight to it."
+     },
+     {
+      "round": 1,
+      "cue": "Gold is the broadest, most prototypical 'neurological condition' phrase (bodily paralysis) while the distractors were narrower symptoms, so a topic guesser picks the most general severe condition."
+     }
+    ]
+   }
+  },
+  "mlt-id-kepompong": {
+   "correction_native": {
+    "topic": "a term in insect biology",
+    "topic_pass1": "a stage or structure in an insect's life cycle",
+    "kind": "a biological concept",
+    "gold": "insect cocoon",
+    "distractors": [
+     "insect molting",
+     "insect metamorphosis",
+     "insect larva",
+     "insect exoskeleton"
+    ],
+    "enwiki": {
+     "insect molting": "Moulting",
+     "insect metamorphosis": "Metamorphosis",
+     "insect larva": "Larva",
+     "insect exoskeleton": "Exoskeleton"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only insect-biology term among unrelated social-science and administrative concepts, so the topic alone pointed to it."
+     }
+    ]
+   }
+  },
+  "mlt-ko-air-pollutants": {
+   "correction_native": {
+    "topic": "an environmental or public-health concept",
+    "topic_pass1": "an environmental or public-health concept related to air quality",
+    "kind": "a concept",
+    "gold": "air pollutant substances",
+    "distractors": [
+     "archaeological science",
+     "endocrine-disrupting chemicals",
+     "soil contamination agents",
+     "water pollution sources"
+    ],
+    "enwiki": {
+     "archaeological science": "archaeological science",
+     "endocrine-disrupting chemicals": "Endocrine disruptor",
+     "soil contamination agents": "Soil contamination",
+     "water pollution sources": "Water pollution"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only environmental or public-health concept in a list of unrelated items, so the topic alone pointed straight to it."
+     }
+    ]
+   }
+  },
+  "mlt-ko-airpurifier": {
+   "correction_native": {
+    "topic": "a household home appliance",
+    "topic_pass1": "a household home appliance",
+    "kind": "an appliance",
+    "gold": "air purifier",
+    "distractors": [
+     "dehumidifier",
+     "humidifier",
+     "dishwasher",
+     "vacuum cleaner"
+    ],
+    "enwiki": {
+     "dehumidifier": "Dehumidifier",
+     "humidifier": "Humidifier",
+     "dishwasher": "Dishwasher",
+     "vacuum cleaner": "Vacuum cleaner"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only household appliance among unrelated health and environment concepts, so anyone given the topic could pick it at once."
+     }
+    ]
+   }
+  },
+  "mlt-ko-artificial-neural-network": {
+   "correction_native": {
+    "topic": "a concept in computer science",
+    "topic_pass1": "a computational model or technique in machine learning and artificial intelligence",
+    "kind": "a computing concept",
+    "gold": "artificial neural network",
+    "distractors": [
+     "support vector machine",
+     "decision tree learning",
+     "random forest",
+     "hidden Markov model"
+    ],
+    "enwiki": {
+     "support vector machine": "Support vector machine",
+     "decision tree learning": "Decision tree learning",
+     "random forest": "Random forest",
+     "hidden Markov model": "Hidden Markov model"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only computing/machine-learning concept among unrelated everyday topics (charity, hormones, weather, antisemitism), so it stood out as a technical term."
+     },
+     {
+      "round": 1,
+      "cue": "The gold was the most famous and broadest machine-learning model in a list of other ML models, so prominence could single it out; adding other equally famous computing concepts balances it."
+     },
+     {
+      "round": 3,
+      "cue": "The gold was the most famous and broadest machine-learning concept in a list of narrower techniques, so its prominence could single it out."
+     },
+     {
+      "round": 5,
+      "cue": "The gold was the only option with an adjective-qualified 'network' style name of a general-purpose learning model, and the list was too short with mixed naming styles; no strong cue, but more parallel machine-learning model names are needed."
+     },
+     {
+      "round": 7,
+      "cue": "The gold is the most famous machine-learning model, and the current distractors mix algorithms and paradigms that make it stand out as the canonical 'model' option; it needs similarly famous lowercase model-type peers."
+     },
+     {
+      "round": 9,
+      "cue": "The gold was the only option with a qualifying adjective ('artificial') and the most famous umbrella term among the machine-learning models, so it stood out slightly by length and prominence."
+     }
+    ]
+   }
+  },
+  "mlt-ko-cabg": {
+   "correction_native": {
+    "topic": "a surgical procedure in medicine",
+    "topic_pass1": "a cardiac surgical procedure",
+    "kind": "a surgical procedure",
+    "gold": "coronary artery bypass grafting",
+    "distractors": [
+     "total hip replacement",
+     "diplomatic embassy",
+     "kidney transplantation",
+     "anterior cruciate ligament reconstruction"
+    ],
+    "enwiki": {
+     "total hip replacement": "Hip replacement",
+     "diplomatic embassy": "diplomatic embassy",
+     "kidney transplantation": "Kidney transplantation",
+     "anterior cruciate ligament reconstruction": "Anterior cruciate ligament reconstruction"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 1,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only surgical procedure among unrelated concepts (cholesterol, observatory, embassy, drug), so anyone knowing the topic could pick it instantly."
+     },
+     {
+      "round": 3,
+      "cue": "The gold was the only multi-word procedure naming a specific artery plus technique; otherwise it blended in, so keep a mix of similar lowercase compound procedure names."
+     }
+    ]
+   }
+  },
+  "mlt-ko-carnivorous-plant": {
+   "correction_native": {
+    "topic": "a category or group of plants",
+    "topic_pass1": "a category of plants classified by how they obtain nutrients",
+    "kind": "a plant group",
+    "gold": "carnivorous plant",
+    "distractors": [
+     "flowering plant",
+     "halophytic plant",
+     "medicinal plant",
+     "diplomatic embassy"
+    ],
+    "enwiki": {
+     "flowering plant": "Flowering plant",
+     "halophytic plant": "Halophyte",
+     "medicinal plant": "Medicinal plants",
+     "diplomatic embassy": "diplomatic embassy"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only plant group among unrelated non-plant concepts, so the topic alone revealed it."
+     },
+     {
+      "round": 3,
+      "cue": "The odd 'diplomatic embassy' was not a plant group, and the list had too few functional plant categories comparable to 'carnivorous plant'."
+     },
+     {
+      "round": 5,
+      "cue": "Carnivorous plant is the most distinctive, famous functional plant group, standing out among generic descriptive categories like flowering or climbing plants."
+     },
+     {
+      "round": 7,
+      "cue": "The gold was one of only a few plant-group options, and 'member of parliament' was not a plant group at all, so the list was uneven."
+     }
+    ]
+   }
+  },
+  "mlt-ko-cfrp": {
+   "correction_native": {
+    "topic": "an engineering or industrial material",
+    "topic_pass1": "an advanced engineering material used in aerospace and sports equipment",
+    "kind": "a material",
+    "gold": "carbon fiber reinforced plastic",
+    "distractors": [
+     "stainless steel",
+     "austenitic stainless steel",
+     "administrative bureaucracy",
+     "titanium alloy"
+    ],
+    "enwiki": {
+     "stainless steel": "Stainless steel",
+     "austenitic stainless steel": "Austenitic stainless steel",
+     "administrative bureaucracy": "administrative bureaucracy",
+     "titanium alloy": "Titanium alloys"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only engineering material among abstract non-material concepts, so the topic alone singled it out."
+     },
+     {
+      "round": 3,
+      "cue": "The gold was the only lengthy multi-word composite name besides one near-twin (glass fiber reinforced plastic), so the pair pattern singled out the carbon variant as the more prominent high-tech composite."
+     },
+     {
+      "round": 5,
+      "cue": "Carbon fiber reinforced plastic is the most famous and prototypical engineering composite, so a topic guesser picks it over niche polymers and composites."
+     },
+     {
+      "round": 7,
+      "cue": "The gold was the only composite and the longest multi-word descriptive name, while 'anticyclone system' was not a material at all."
+     }
+    ]
+   }
+  },
+  "mlt-ko-copd": {
+   "correction_native": {
+    "topic": "a human disease or medical condition",
+    "topic_pass1": "a chronic respiratory disease",
+    "kind": "a disease",
+    "gold": "chronic obstructive pulmonary disease",
+    "distractors": [
+     "idiopathic pulmonary fibrosis",
+     "type 2 diabetes",
+     "non-alcoholic fatty liver disease",
+     "coronary artery disease"
+    ],
+    "enwiki": {
+     "idiopathic pulmonary fibrosis": "Idiopathic pulmonary fibrosis",
+     "type 2 diabetes": "Type 2 diabetes",
+     "non-alcoholic fatty liver disease": "Metabolic dysfunction–associated steatotic liver disease",
+     "coronary artery disease": "Coronary artery disease"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only disease among unrelated non-medical concepts, so anyone given the topic could pick it instantly."
+     },
+     {
+      "round": 3,
+      "cue": "The gold was the only very common respiratory chronic disease among multi-word lowercase names, though the existing list was already fairly balanced; the main need is more comparable multi-word chronic diseases."
+     },
+     {
+      "round": 5,
+      "cue": "The gold is the only respiratory/lung disease and among the most famous lowercase multi-word chronic diseases, while 'river flooding' is not a disease at all, so the topic guesser could eliminate options and favour the most prominent chronic condition."
+     },
+     {
+      "round": 7,
+      "cue": "The gold was the only very common, widely known chronic disease among the lung options, with a long multi-word lowercase name that stood out only slightly; the list mainly needs more full-length, lowercase chronic disease names of similar fame."
+     }
+    ]
+   }
+  },
+  "mlt-ko-deciduous-broadleaf-forest": {
+   "correction_native": {
+    "topic": "a type of vegetation or biome",
+    "topic_pass1": "a type of forest or vegetation biome",
+    "kind": "a biome",
+    "gold": "deciduous broadleaf forest",
+    "distractors": [
+     "temperate coniferous forest",
+     "tropical rainforest",
+     "boreal forest",
+     "temperate grassland"
+    ],
+    "enwiki": {
+     "temperate coniferous forest": "Temperate coniferous forest",
+     "tropical rainforest": "Tropical rainforest",
+     "boreal forest": "Taiga",
+     "temperate grassland": "Temperate grasslands, savannas, and shrublands"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only biome among unrelated concepts (woodwork, economics, a hormone, a cave), so the topic alone pointed to it."
+     }
+    ]
+   }
+  },
+  "mlt-pl-bezpieczenstwo": {
+   "correction_native": {
+    "topic": "an abstract societal concept or value",
+    "topic_pass1": "an abstract societal notion or value that governments provide or protect for citizens",
+    "kind": "an abstract concept",
+    "gold": "public safety",
+    "distractors": [
+     "social justice",
+     "public health",
+     "civil liberty",
+     "human rights"
+    ],
+    "enwiki": {
+     "social justice": "Social justice",
+     "public health": "Public health",
+     "civil liberty": "Civil liberties",
+     "human rights": "Human rights"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only lowercase two-word abstract societal value, while the other options mixed in concrete objects and technical terms like a fossil specimen and an artificial neural network."
+     }
+    ]
+   }
+  },
+  "mlt-pl-bioroznorodnosc": {
+   "correction_native": {
+    "topic": "a concept in ecology or biology",
+    "topic_pass1": "a type of wetland or natural habitat",
+    "topic_fixed_from": "a type of natural habitat or landscape",
+    "kind": "a landscape type",
+    "gold": "biological diversity",
+    "distractors": [
+     "ecological succession",
+     "natural selection",
+     "ecosystem services",
+     "habitat fragmentation"
+    ],
+    "enwiki": {
+     "ecological succession": "Ecological succession",
+     "natural selection": "Natural selection",
+     "ecosystem services": "Ecosystem services",
+     "habitat fragmentation": "Habitat fragmentation"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Under the habitat/landscape topic, 'biological diversity' was the only option related to nature or ecology, while the others were drugs, mixtures, sciences and weather systems."
+     },
+     {
+      "round": 3,
+      "cue": "The gold 'biological diversity' is an abstract ecological concept rather than a concrete landscape, while the distractors were all specific habitat types, so it stood out as the only non-place term."
+     },
+     {
+      "round": 1,
+      "cue": "The gold is an abstract ecology concept while the topic asks for a landscape type, so distractors must be similar abstract ecological concepts in lowercase, two-word style, not actual landscapes that would make the gold the odd one out."
+     },
+     {
+      "round": 1,
+      "cue": "The gold is the broadest, most textbook-famous umbrella concept of ecology, while the distractors are narrower technical terms, so a topic guesser picks the most canonical one."
+     },
+     {
+      "round": 3,
+      "cue": "The gold 'biological diversity' is the only spelled-out two-word adjective+noun 'biology' term among process-style concepts, and it is the most direct match to a generic 'ecology or biology' topic."
+     },
+     {
+      "round": 5,
+      "cue": "Only the gold is a broad umbrella term phrased with the adjective 'biological', echoed only by 'biological invasion'; the other options are narrower, more technical mechanisms."
+     }
+    ]
+   }
+  },
+  "mlt-pl-echolokacja": {
+   "correction_native": {
+    "topic": "a sensory ability in animal biology",
+    "topic_pass1": "an animal sensory ability or perception mechanism",
+    "kind": "a biological sense",
+    "gold": "acoustic echolocation",
+    "distractors": [
+     "electric electroreception",
+     "magnetic magnetoreception",
+     "infrared thermoreception",
+     "lateral-line mechanoreception"
+    ],
+    "enwiki": {
+     "electric electroreception": "Electroreception and electrogenesis",
+     "magnetic magnetoreception": "Magnetoreception",
+     "infrared thermoreception": "Infrared sensing in snakes",
+     "lateral-line mechanoreception": "Lateral line"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only biological sense among unrelated non-sensory concepts, so anyone given the topic could pick it out at once."
+     },
+     {
+      "round": 3,
+      "cue": "The gold's 'adjective + sense name' pattern was matched by only four distractors, so the list was too short and the gold was the most famous of the five, which made it stand out."
+     },
+     {
+      "round": 5,
+      "cue": "The list mixed in a non-sense item ('flowering seed plants') and had too few senses, so the gold stood out as one of only a few plausible biological senses with two-word descriptive style."
+     },
+     {
+      "round": 7,
+      "cue": "Every option is a compound of a qualifying adjective plus a specialised sense term, but the gold, acoustic echolocation, is the best-known of them, and with only four distractors that fame could single it out."
+     },
+     {
+      "round": 9,
+      "cue": "The current list mixes in non-senses ('diplomatic embassy', 'a fossil specimen'), leaving only three real senses, so the gold is easy to narrow down; the fix is eight genuine animal senses in the same 'adjective + noun' style."
+     }
+    ]
+   }
+  },
+  "mlt-pl-elektroencefalografia": {
+   "correction_native": {
+    "topic": "a medical diagnostic test or procedure",
+    "topic_pass1": "a medical diagnostic test or imaging procedure",
+    "kind": "a medical procedure",
+    "gold": "electroencephalography brain recording",
+    "distractors": [
+     "electrocardiography heart recording",
+     "magnetic resonance imaging scan",
+     "computed tomography body scan",
+     "electromyography muscle recording"
+    ],
+    "enwiki": {
+     "electrocardiography heart recording": "Electrocardiography",
+     "magnetic resonance imaging scan": "Magnetic resonance imaging",
+     "computed tomography body scan": "CT scan",
+     "electromyography muscle recording": "Electromyography"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only medical diagnostic procedure among unrelated items (woodwork, sewing machine, forest), and its two-part 'technique + plain-English gloss' style was unmatched."
+     },
+     {
+      "round": 3,
+      "cue": "The gold's 'term + organ + recording' pattern was shared only with electromyography, so the pair stood out; more '-graphy + body part + recording/scan' items are needed to dilute it."
+     },
+     {
+      "round": 5,
+      "cue": "The gold's 'electro-...-graphy [organ] recording' pattern is shared by only some distractors, and the PET 'scan' option breaks that format, so the list is uneven."
+     },
+     {
+      "round": 7,
+      "cue": "The gold is the best-known of the 'electro-...graphy X recording' procedures, while the other options were either off-topic (forest, woodwork) or obscure electro-recordings, so a topic guesser could pick the most famous fitting one."
+     },
+     {
+      "round": 9,
+      "cue": "The gold follows a '-graphy + organ + recording' pattern shared only by a few distractors, while others end in 'scan', so style should be uniform with more electrophysiology recordings."
+     }
+    ]
+   }
+  },
+  "mlt-pl-fotosynteza": {
+   "correction_native": {
+    "topic": "a biological process in living organisms",
+    "topic_pass1": "a biological molecule or substance in plants",
+    "topic_fixed_from": "a biological molecule or compound",
+    "kind": "a substance",
+    "gold": "plant photosynthesis",
+    "distractors": [
+     "lactic acid fermentation",
+     "anaerobic glycolysis",
+     "alcoholic fermentation",
+     "coniferous trees"
+    ],
+    "enwiki": {
+     "lactic acid fermentation": "Lactic acid fermentation",
+     "anaerobic glycolysis": "Glycolysis",
+     "alcoholic fermentation": "Ethanol fermentation",
+     "coniferous trees": "coniferous trees"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold 'plant photosynthesis' is the only biological process in the list; the other options are unrelated tools, weather events, or plants, so the topic points straight at it."
+     },
+     {
+      "round": 3,
+      "cue": "The gold is the only option carrying a modifier ('plant') that names an organism, and it is the only light-driven process in a list of otherwise generic molecular processes."
+     },
+     {
+      "round": 5,
+      "cue": "The gold is a lowercase biological process phrase with a modifier; distractors should be similar lowercase two-word biological process phrases, avoiding the outlier 'coniferous trees'."
+     },
+     {
+      "round": 7,
+      "cue": "The gold is the only 'qualifier + process' phrase naming the most famous biological process; 'electric jigsaw' is an odd non-biological item, and the others are fewer and less parallel in form."
+     },
+     {
+      "round": 9,
+      "cue": "The gold is the only process tied to the most famous biological pathway, while the current list mixes processes of different sorts and gives only four options, so it needs eight distractors in the same 'organism/substrate + process' style."
+     },
+     {
+      "round": 1,
+      "cue": "The gold is a biological process phrased as a lowercase two-word common noun, while the current list mixes processes with unrelated items like 'electric jigsaw' and 'coniferous trees', so a uniform set of lowercase biological process names is needed."
+     },
+     {
+      "round": 3,
+      "cue": "The gold is the only option with a qualifier naming the organism type ('plant'), apart from 'bacterial chemosynthesis', and it is the most famous process, so a guesser could pick it out on salience."
+     },
+     {
+      "round": 1,
+      "cue": "The gold is the only option with an organism qualifier ('plant') and the only one about light-driven synthesis, while the others are breakdown pathways plus the off-kind 'coniferous trees'."
+     },
+     {
+      "round": 3,
+      "cue": "Photosynthesis is the most famous biological process and the only plant-qualified option besides transpiration, so its prominence and the shared 'organism + process' pattern of only some options made it stand out."
+     },
+     {
+      "round": 5,
+      "cue": "The gold is the only light-driven, anabolic process tied to a specific organism group (plants) among otherwise generic catabolic energy-releasing processes."
+     }
+    ]
+   }
+  },
+  "mlt-pl-garbarstwo": {
+   "correction_native": {
+    "topic": "a traditional craft or trade",
+    "topic_pass1": "a traditional craft or trade involving processing of materials",
+    "kind": "a craft or trade",
+    "gold": "leather tanning",
+    "distractors": [
+     "wood carving",
+     "glass blowing",
+     "basket weaving",
+     "metal smithing"
+    ],
+    "enwiki": {
+     "wood carving": "Wood carving",
+     "glass blowing": "Glassblowing",
+     "basket weaving": "Basket weaving",
+     "metal smithing": "Metalsmith"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Leather tanning was the only option that was actually a traditional craft or trade; the others were modern technologies, an object, or a medical treatment."
+     }
+    ]
+   }
+  },
+  "mlt-pl-jedwabnictwo": {
+   "correction_native": {
+    "topic": "a branch of agriculture or husbandry",
+    "topic_pass1": "a specialized branch of agriculture or animal husbandry",
+    "kind": "an agricultural practice",
+    "gold": "silk production",
+    "distractors": [
+     "honey production",
+     "wool production",
+     "dairy farming",
+     "wine production"
+    ],
+    "enwiki": {
+     "honey production": "Beekeeping",
+     "wool production": "Wool",
+     "dairy farming": "Dairy farming",
+     "wine production": "Winemaking"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Silk production was the only agricultural practice among unrelated concepts (cooking chemistry, ecology, appliances, medicine), so it stood out against the topic."
+     },
+     {
+      "round": 3,
+      "cue": "Silk production was the only option formed with an animal-product noun plus 'production' that was not paralleled closely enough, being an insect-based niche craft among common livestock and crop practices, so it needed more '[product] production' items of similar specialty."
+     },
+     {
+      "round": 5,
+      "cue": "Silk production was the only animal-based husbandry option among crop-production terms, and 'sugar caramelization' was not agriculture at all, making the list uneven."
+     },
+     {
+      "round": 7,
+      "cue": "The gold was barely singled out; at most, silk production is the only option tied to a single insect-based fibre, and it sits beside a mix of 'X production' and 'X farming' forms."
+     },
+     {
+      "round": 9,
+      "cue": "Silk production was the only non-food, insect-based branch, while 'biological diversity' was not an agricultural practice at all and the rest were food livestock."
+     }
+    ]
+   }
+  },
+  "mlt-pl-kwestionariusz": {
+   "correction_native": {
+    "topic": "a type of document or form",
+    "topic_pass1": "a document or form used in research or administration",
+    "kind": "a document",
+    "gold": "survey questionnaire",
+    "distractors": [
+     "application form",
+     "consent form",
+     "registration form",
+     "tax return"
+    ],
+    "enwiki": {
+     "application form": "Application for employment",
+     "consent form": "Informed consent",
+     "registration form": "Form (document)",
+     "tax return": "Tax return"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only document or form in the list; every other option was a tool, a prejudice or an industry, so the topic alone pointed straight to it."
+     },
+     {
+      "round": 3,
+      "cue": "The gold is the only option literally describing a data-collection instrument that fits both 'research or administration', and the other options were not lowercase generic two-word forms of equal research-plus-admin fit."
+     },
+     {
+      "round": 5,
+      "cue": "The gold is the only option tied to research data collection (\"survey\"), matching the topic's 'research' word, while the others are administrative forms or a single grant document."
+     },
+     {
+      "round": 1,
+      "cue": "The gold was the only option with 'survey' in it and the most canonical research instrument, while the others clustered around interviews or were off-genre (grant proposal)."
+     }
+    ]
+   }
+  },
+  "mlt-ru-anticyclone": {
+   "correction_native": {
+    "topic": "a weather or atmospheric phenomenon",
+    "topic_pass1": "a weather or atmospheric phenomenon",
+    "kind": "a meteorological concept",
+    "gold": "anticyclone system",
+    "distractors": [
+     "warm front",
+     "trough system",
+     "low-pressure system",
+     "thunderstorm system"
+    ],
+    "enwiki": {
+     "warm front": "Warm front",
+     "trough system": "Trough (meteorology)",
+     "low-pressure system": "Low-pressure area",
+     "thunderstorm system": "Thunderstorm"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only option that was actually a meteorological concept; the other options (independence, electrification, pollutants) were not weather phenomena, and only drought came close."
+     },
+     {
+      "round": 1,
+      "cue": "Only the gold and 'cyclone system' carried the word 'system', so the pair stood out, and the gold was the one high-pressure concept among low-pressure and frontal options."
+     },
+     {
+      "round": 3,
+      "cue": "The gold is the only high-pressure term written with the suffix 'system', while the other options mixed styles and named mostly low-pressure or frontal features, so the anticyclone stood out as the classic textbook pressure system."
+     }
+    ]
+   }
+  },
+  "mlt-ru-blagotvoritelnost": {
+   "correction_native": {
+    "topic": "a human activity or pursuit",
+    "topic_pass1": "a social or moral activity a person devotes their life to",
+    "kind": "a human activity",
+    "gold": "charitable giving",
+    "distractors": [
+     "religious missionary work",
+     "political activism",
+     "community volunteering",
+     "environmental conservation"
+    ],
+    "enwiki": {
+     "religious missionary work": "Missionary",
+     "political activism": "Activism",
+     "community volunteering": "Volunteering",
+     "environmental conservation": "Conservation movement"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 1,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Charitable giving was the only option that is a social or moral activity one could devote a life to; the others were objects, a political status and a forest type."
+     }
+    ]
+   }
+  },
+  "mlt-ru-delo-01": {
+   "correction_native": {
+    "topic": "an office or administrative work concept",
+    "topic_pass1": "an office or administrative work concept",
+    "kind": "a concept",
+    "gold": "records management",
+    "distractors": [
+     "document management",
+     "office administration",
+     "information management",
+     "data entry"
+    ],
+    "enwiki": {
+     "document management": "Document management system",
+     "office administration": "Office administration",
+     "information management": "Information management",
+     "data entry": "Data entry clerk"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only office/administrative concept among unrelated phrases (adjective phrases, weather, appliance), so the topic alone pointed to it."
+     },
+     {
+      "round": 3,
+      "cue": "Some current distractors (anticyclone system, sustained continuity) are not office concepts, so with the topic the real office terms stand out, and only a few 'X management' options compete with the gold."
+     },
+     {
+      "round": 5,
+      "cue": "The current list mixes vague or odd items like 'sustained continuity' with near-duplicates ('office management', 'office administration'), so 'records management' stands out as the only well-defined document-handling discipline."
+     },
+     {
+      "round": 7,
+      "cue": "The current list mixes real office concepts with non-concept filler phrases ('sustained continuity', 'absolutely indispensable'), so the few genuine administrative terms, including the gold, stand out as the plausible answers."
+     },
+     {
+      "round": 9,
+      "cue": "The current list mixed real office concepts with filler phrases like 'absolutely indispensable' and 'sustained continuity', so only a few options were genuine office-work concepts and the gold stood out among them."
+     }
+    ]
+   }
+  },
+  "mlt-ru-dostoprimechatelnost": {
+   "correction_native": {
+    "topic": "a travel or tourism-related concept",
+    "topic_pass1": "a place or thing in a city that visitors go to see",
+    "kind": "a travel-related notion",
+    "gold": "tourist landmark",
+    "distractors": [
+     "historic monument",
+     "travel destination",
+     "scenic viewpoint",
+     "hotel reservation"
+    ],
+    "enwiki": {
+     "historic monument": "Monument",
+     "travel destination": "Tourist destination",
+     "scenic viewpoint": "Scenic viewpoint",
+     "hotel reservation": "Hotel reservation system"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 1,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only travel-related notion, so anyone who knew the topic could pick it out from unrelated concepts like immunity or equinox."
+     },
+     {
+      "round": 1,
+      "cue": "'Tourist landmark' was the only option naming a sight or place to visit, while the others were services, plans or shops, so it read as the most central tourism concept."
+     }
+    ]
+   }
+  },
+  "mlt-ru-elektrifikatsiya": {
+   "correction_native": {
+    "topic": "an economic or technological process",
+    "topic_pass1": "a major goal of early Soviet economic modernization",
+    "kind": "an economic or technological process",
+    "gold": "large-scale electrification",
+    "distractors": [
+     "large-scale industrialization",
+     "large-scale road building",
+     "large-scale automation",
+     "large-scale canal building"
+    ],
+    "enwiki": {
+     "large-scale industrialization": "Industrialisation",
+     "large-scale road building": "Road",
+     "large-scale automation": "Automation",
+     "large-scale canal building": "Canal"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only economic or technological process in a list of unrelated objects and concepts, so it alone fit an economic-modernization topic."
+     },
+     {
+      "round": 1,
+      "cue": "The gold evokes Soviet GOELRO electrification tied to Russian, while distractors were few and mixed styles ('steel mass production'); a fuller set of 'large-scale/mass' processes avoids singling it out."
+     },
+     {
+      "round": 1,
+      "cue": "Electrification was the only early-twentieth-century infrastructure process in the list, and its strong Soviet association (GOELRO, Lenin's slogan) let the topic guesser pair it with Russian."
+     },
+     {
+      "round": 3,
+      "cue": "The topic guesser picked electrification because it is the iconic Soviet/Russian process (GOELRO, 'Communism is Soviet power plus electrification'), and the other options were weaker, less canonical processes with no comparable hidden-prompt link."
+     }
+    ]
+   }
+  },
+  "mlt-ru-elektrolobzik": {
+   "correction_native": {
+    "topic": "a tool used in crafts or construction",
+    "topic_pass1": "a power tool used in woodworking",
+    "kind": "a tool",
+    "gold": "electric jigsaw",
+    "distractors": [
+     "electric drill",
+     "electric planer",
+     "electric sander",
+     "electric screwdriver"
+    ],
+    "enwiki": {
+     "electric drill": "Drill",
+     "electric planer": "Planer (metalworking)",
+     "electric sander": "Sander",
+     "electric screwdriver": "Screwdriver"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The current distractors are not tools at all (processes and a place), so 'electric jigsaw' is the only power tool and stands out against the topic."
+     },
+     {
+      "round": 1,
+      "cue": "Only the gold and 'electric router' carried the 'electric' qualifier, and the gold was the only saw-type name with that qualifier, which made it look like a translated term."
+     }
+    ]
+   }
+  },
+  "mlt-ru-equinox": {
+   "correction_native": {
+    "topic": "an astronomical or calendar event",
+    "topic_pass1": "an astronomical or calendar event marking the seasons",
+    "kind": "a calendar event",
+    "gold": "vernal equinox",
+    "distractors": [
+     "summer solstice",
+     "winter solstice",
+     "lunar eclipse",
+     "solar eclipse"
+    ],
+    "enwiki": {
+     "summer solstice": "Summer solstice",
+     "winter solstice": "Winter solstice",
+     "lunar eclipse": "Lunar eclipse",
+     "solar eclipse": "Solar eclipse"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The current distractors are unrelated common-noun concepts rather than astronomical or calendar events, so the vernal equinox is the only option that fits the topic."
+     }
+    ]
+   }
+  },
+  "mlt-ru-estestvoispytatel": {
+   "correction_native": {
+    "topic": "a historical scholarly occupation or title",
+    "topic_pass1": "a scientific discipline or field of study",
+    "topic_fixed_from": "a scientific discipline or field of study",
+    "kind": "an academic field",
+    "gold": "student of natural science",
+    "distractors": [
+     "student of natural philosophy",
+     "student of moral philosophy",
+     "student of canon law",
+     "student of theology"
+    ],
+    "enwiki": {
+     "student of natural philosophy": "Natural philosophy",
+     "student of moral philosophy": "Ethics",
+     "student of canon law": "Canon law",
+     "student of theology": "Theology"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold is phrased as a person ('student of ...') while the other options are fields or unrelated objects, and only it and 'archaeological science' fit the topic of a discipline."
+     },
+     {
+      "round": 1,
+      "cue": "The gold is the broadest umbrella among the 'student of X science' options and fits the topic 'scientific discipline' most literally, though guessers did not find it."
+     },
+     {
+      "round": 3,
+      "cue": "\"Natural science\" is the most canonical, prototypical branch among the options, and the other options (formal, applied, social, materials) read as contrasts built around it, so it stood out as the central default."
+     },
+     {
+      "round": 1,
+      "cue": "Given the topic 'historical scholarly occupation', 'student of natural science' stood out as the only historically established field, while computer and cognitive science are modern disciplines."
+     }
+    ]
+   }
+  },
+  "mlt-sw-kifuniko": {
+   "correction_native": {
+    "topic": "an everyday household object or substance",
+    "topic_pass1": "a common kitchen or cooking-related item or substance",
+    "kind": "an everyday object or substance",
+    "gold": "pot lid",
+    "distractors": [
+     "frying pan",
+     "tea towel",
+     "dish soap",
+     "cutting board"
+    ],
+    "enwiki": {
+     "frying pan": "Frying pan",
+     "tea towel": "Tea towel",
+     "dish soap": "Dishwashing liquid",
+     "cutting board": "Cutting board"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only everyday household object among abstract concepts and non-household items, so the topic alone pointed to it."
+     }
+    ]
+   }
+  },
+  "mlt-sw-maambukizi": {
+   "correction_native": {
+    "topic": "a concept from medicine and public health",
+    "topic_pass1": "a concept from medicine and public health",
+    "kind": "a medical concept",
+    "gold": "disease infections",
+    "distractors": [
+     "blood pressure",
+     "vaccine immunization",
+     "heart attacks",
+     "malnutrition rates"
+    ],
+    "enwiki": {
+     "blood pressure": "Blood pressure",
+     "vaccine immunization": "Vaccination",
+     "heart attacks": "Myocardial infarction",
+     "malnutrition rates": "Malnutrition"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Most distractors (sewing machine, electric jigsaw, survey questionnaire) were not medical concepts at all, so with the topic known the gold was one of only two medical options."
+     }
+    ]
+   }
+  },
+  "mlt-sw-maendeleo": {
+   "correction_native": {
+    "topic": "a concept in economics or governance",
+    "topic_pass1": "a concept related to government planning and public development",
+    "kind": "an abstract notion",
+    "gold": "economic development",
+    "distractors": [
+     "income inequality",
+     "fiscal policy",
+     "monetary policy",
+     "general encyclopedia"
+    ],
+    "enwiki": {
+     "income inequality": "Economic inequality",
+     "fiscal policy": "Fiscal policy",
+     "monetary policy": "Monetary policy",
+     "general encyclopedia": "general encyclopedia"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Gold was the only economics/governance concept among medical and miscellaneous notions, so the topic alone pointed to it."
+     }
+    ]
+   }
+  },
+  "mlt-sw-mafuriko": {
+   "correction_native": {
+    "topic": "a natural phenomenon or hazard",
+    "topic_pass1": "a natural hazard or weather-related phenomenon",
+    "kind": "a natural phenomenon",
+    "gold": "river flooding",
+    "distractors": [
+     "volcanic eruption",
+     "coastal erosion",
+     "storm surge",
+     "mountain landslide"
+    ],
+    "enwiki": {
+     "volcanic eruption": "Types of volcanic eruptions",
+     "coastal erosion": "Coastal erosion",
+     "storm surge": "Storm surge",
+     "mountain landslide": "Landslide"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Most current distractors were not natural phenomena at all, so only 'river flooding' and 'severe drought' fit the topic, which leaves the gold standing out."
+     }
+    ]
+   }
+  },
+  "mlt-sw-mapinduzi": {
+   "correction_native": {
+    "topic": "a type of political event or process",
+    "topic_pass1": "a type of political event or change of government",
+    "kind": "a political concept",
+    "gold": "political revolution",
+    "distractors": [
+     "peaceful transition",
+     "general election",
+     "political coup",
+     "political referendum"
+    ],
+    "enwiki": {
+     "peaceful transition": "Peaceful transition of power",
+     "general election": "General election",
+     "political coup": "Coup d'état",
+     "political referendum": "Referendum"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only political concept among unrelated biology, craft and medicine options, so the topic alone pointed to it."
+     },
+     {
+      "round": 3,
+      "cue": "The gold was the only two-word 'adjective + noun' option alongside an off-topic outlier ('acoustic echolocation'), and the list was mixed in form, so the gold's phrasing stood out among the political events."
+     },
+     {
+      "round": 5,
+      "cue": "Off-topic options (flowering seed plants, acoustic echolocation) left only a few political phrases, and 'political revolution' shared the 'political' prefix with only one other, making it stand out as the most prototypical political event."
+     },
+     {
+      "round": 7,
+      "cue": "The gold 'political revolution' is the most prototypical, generic political-change term, while the others were narrower or awkwardly prefixed (e.g. 'political decolonization'), so it stood out as the canonical answer."
+     }
+    ]
+   }
+  },
+  "mlt-sw-mawasiliano": {
+   "correction_native": {
+    "topic": "an everyday concept or common noun",
+    "topic_pass1": "a concept related to telecommunications and business",
+    "kind": "an everyday concept",
+    "gold": "means of communication",
+    "distractors": [
+     "means of transport",
+     "source of income",
+     "place of worship",
+     "form of payment"
+    ],
+    "enwiki": {
+     "means of transport": "Mode of transport",
+     "source of income": "Income",
+     "place of worship": "Place of worship",
+     "form of payment": "Payment"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold is the only abstract, broad multi-word category phrase ('means of ...'), while the distractors are concrete specific objects or events, so a topic-guesser picks the generic everyday concept."
+     }
+    ]
+   }
+  },
+  "mlt-sw-mchanganyiko": {
+   "correction_native": {
+    "topic": "a cooking or kitchen-related term",
+    "topic_pass1": "a kitchen or baking action, tool or ingredient",
+    "kind": "an everyday concept",
+    "gold": "blended mixture",
+    "distractors": [
+     "whipped cream",
+     "kneaded dough",
+     "melted butter",
+     "beaten egg whites"
+    ],
+    "enwiki": {
+     "whipped cream": "Whipped cream",
+     "kneaded dough": "Dough",
+     "melted butter": "Butter",
+     "beaten egg whites": "Meringue"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only option related to kitchens or baking; the other options were unrelated science and craft concepts."
+     }
+    ]
+   }
+  },
+  "mlt-sw-mwanaharakati": {
+   "correction_native": {
+    "topic": "a type of person or social role",
+    "topic_pass1": "a type of person involved in social or political causes",
+    "kind": "a role or social identity",
+    "gold": "social justice activist",
+    "distractors": [
+     "political dissident",
+     "religious missionary",
+     "humanitarian aid worker",
+     "anti-war protester"
+    ],
+    "enwiki": {
+     "political dissident": "Dissident",
+     "religious missionary": "Missionary",
+     "humanitarian aid worker": "Humanitarian aid",
+     "anti-war protester": "Anti-war movement"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only option naming a type of person or social role; the other options were sciences, conditions or objects."
+     },
+     {
+      "round": 1,
+      "cue": "With only four activism-adjacent roles, 'social justice activist' was the most generic, prototypical answer to 'a type of person or social role', so a topic-only guesser picked it as the central option."
+     }
+    ]
+   }
+  },
+  "mlt-tr-bagimsizlik": {
+   "correction_native": {
+    "topic": "a political or legal concept",
+    "topic_pass1": "a political concept related to colonialism and national liberation",
+    "kind": "a political concept",
+    "gold": "national independence",
+    "distractors": [
+     "popular sovereignty",
+     "self-determination",
+     "separation of powers",
+     "rule of law"
+    ],
+    "enwiki": {
+     "popular sovereignty": "Popular sovereignty",
+     "self-determination": "Self-determination",
+     "separation of powers": "Separation of powers",
+     "rule of law": "Rule of law"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only political concept among medical procedures, a science field and a cooking process, so the topic alone singled it out."
+     }
+    ]
+   }
+  },
+  "mlt-tr-bagisiklik-immunity": {
+   "correction_native": {
+    "topic": "a concept in human biology and health",
+    "topic_pass1": "a concept in human biology and health",
+    "kind": "a biological concept",
+    "gold": "acquired immunity",
+    "distractors": [
+     "programmed cell death",
+     "the stress hormone cortisol",
+     "inflammation",
+     "metabolism"
+    ],
+    "enwiki": {
+     "programmed cell death": "Programmed cell death",
+     "the stress hormone cortisol": "the stress hormone cortisol",
+     "inflammation": "Inflammation",
+     "metabolism": "Metabolism"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The current distractors are mismatched in style and kind: 'severe drought' and 'tourist landmark' are not biological concepts, and 'the stress hormone cortisol' carries an article and a descriptive qualifier, so the bare biology term stood out."
+     },
+     {
+      "round": 3,
+      "cue": "Gold is the only two-word 'adjective + noun' immunology term; autoimmunity is its only close relative, so the immune theme singles it out."
+     }
+    ]
+   }
+  },
+  "mlt-tr-biyocesitlilik": {
+   "correction_native": {
+    "topic": "a concept in ecology or biology",
+    "topic_pass1": "a concept in ecology and environmental science",
+    "kind": "a scientific concept",
+    "gold": "biological diversity",
+    "distractors": [
+     "natural selection",
+     "food chain",
+     "ecological niche",
+     "genetic drift"
+    ],
+    "enwiki": {
+     "natural selection": "Natural selection",
+     "food chain": "Food chain",
+     "ecological niche": "Ecological niche",
+     "genetic drift": "Genetic drift"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Only 'biological diversity' fits the ecology/biology topic, while the current distractors (air purifier, detergents, concussion) are off-topic, unrelated concepts."
+     },
+     {
+      "round": 3,
+      "cue": "The gold is a two-word adjective-plus-noun term, while 'student of natural science' was an odd non-concept phrase and the other options varied in form."
+     },
+     {
+      "round": 5,
+      "cue": "The gold is a two-word lowercase 'adjective + noun' ecology term, so it stands out next to the single-word 'symbiosis' and the off-topic 'student of natural science' and 'brain concussion'."
+     },
+     {
+      "round": 7,
+      "cue": "The gold was the only two-word 'adjective + noun' phrase naming a broad ecological property, while 'surfactant detergents' was an off-topic plural chemistry term that made the list uneven."
+     },
+     {
+      "round": 9,
+      "cue": "The gold is the only option phrased as an adjective-plus-noun longhand ('biological X') of a term usually shortened (biodiversity), so it can stand out against compact technical terms."
+     }
+    ]
+   }
+  },
+  "mlt-tr-buharlasma": {
+   "correction_native": {
+    "topic": "a physical or natural process",
+    "topic_pass1": "a phase transition or physical process of matter",
+    "kind": "a physical process",
+    "gold": "water evaporation",
+    "distractors": [
+     "water vapor deposition",
+     "sugar dissolution",
+     "ice melting",
+     "heat convection"
+    ],
+    "enwiki": {
+     "water vapor deposition": "Deposition (phase transition)",
+     "sugar dissolution": "Solvation",
+     "ice melting": "Melting",
+     "heat convection": "Convective heat transfer"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 3,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only plain, textbook physical phase-change process; the distractors mixed weather events, an astronomical date and an industry."
+     },
+     {
+      "round": 3,
+      "cue": "Under a 'physical or natural process' topic, 'water evaporation' was the most canonical, textbook process; 'severe drought' reads as an event, and 'water freezing' paired with it signals a water-cycle theme, so evaporation stood out as the prototypical answer."
+     },
+     {
+      "round": 5,
+      "cue": "With the topic 'physical or natural process', water evaporation was the most canonical everyday phase change, while the others were less prototypical diffusion and chemical cases, so it stood out as the textbook example."
+     },
+     {
+      "round": 7,
+      "cue": "Evaporation is the most prototypical, textbook 'physical or natural process' among the options (water cycle), while the others were less canonical, so a topic guesser picked it."
+     },
+     {
+      "round": 9,
+      "cue": "Water evaporation is the most common, everyday natural process in the list, while the others are less typical (sublimation, deposition) or a chemical rather than a physical change (iron oxidation)."
+     },
+     {
+      "round": 1,
+      "cue": "Water evaporation is the most prototypical, textbook-common natural process among the options, and few of the other options shared its 'substance + process noun' pattern with a common water phase change."
+     },
+     {
+      "round": 3,
+      "cue": "Water evaporation is the most common, prototypical natural process in the list, while the others are rarer phase changes, so a topic guesser picks the textbook everyday example."
+     },
+     {
+      "round": 5,
+      "cue": "Water evaporation is the most prototypical, everyday natural physical process among the options, so the topic guesser chose it over the more technical or oddly phrased alternatives like 'water osmosis' and 'heat convection'."
+     },
+     {
+      "round": 7,
+      "cue": "Water evaporation is the most prototypical, everyday 'physical or natural process' and the only basic phase change of liquid water, while the others were either redundant (two convections) or less canonical, so the topic guesser picked it."
+     },
+     {
+      "round": 9,
+      "cue": "Water evaporation is the most canonical, textbook 'natural physical process' of the water cycle, while the other options were narrower or less prototypical variants, so a topic-aware guesser picked the most generic one."
+     }
+    ]
+   }
+  },
+  "mlt-tr-buyukelcilik-swap": {
+   "correction_native": {
+    "topic": "a type of diplomatic or governmental institution",
+    "topic_pass1": "a type of diplomatic institution or office",
+    "topic_fixed_from": "a term in diplomacy or international relations",
+    "kind": "a diplomatic institution",
+    "gold": "diplomatic embassy",
+    "distractors": [
+     "diplomatic chancery",
+     "diplomatic high commission",
+     "diplomatic foreign ministry",
+     "diplomatic consulate"
+    ],
+    "enwiki": {
+     "diplomatic chancery": "Chancery (diplomacy)",
+     "diplomatic high commission": "High commission (diplomacy)",
+     "diplomatic foreign ministry": "Foreign affairs ministry",
+     "diplomatic consulate": "Consulate"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only diplomatic concept among unrelated common nouns (mixture, aurora, activist, drought), so anyone knowing the topic picked it instantly."
+     },
+     {
+      "round": 3,
+      "cue": "The gold 'diplomatic embassy' is the most generic, prototypical answer to 'a type of diplomatic institution', and it alone carries the explicit qualifier 'diplomatic', which echoes the topic's wording."
+     },
+     {
+      "round": 1,
+      "cue": "Embassy is the most prototypical, best-known diplomatic institution, so a topic guesser defaults to it when the alternatives are niche (nunciature, chancery)."
+     },
+     {
+      "round": 3,
+      "cue": "With the topic 'diplomatic institution', 'embassy' is the most prototypical concrete institution, while the distractors were vaguer or odd ('diplomatic ministry'), so the gold stood out as the canonical answer."
+     },
+     {
+      "round": 5,
+      "cue": "With the topic 'diplomatic institution', 'embassy' is the most prototypical and famous term, while the distractors were niche variants (nunciature, interests section, legation), so the gold stood out as the canonical answer."
+     },
+     {
+      "round": 1,
+      "cue": "Embassy is the most prototypical diplomatic institution, and the other options ('ministry', 'residence', 'chancery') were weaker or less canonical, so the topic guesser could pick the central term."
+     },
+     {
+      "round": 3,
+      "cue": "\"Diplomatic embassy\" is the most generic, prototypical diplomatic institution, while the other options were rarer or broader variants, so topic guessers gravitated to it."
+     },
+     {
+      "round": 1,
+      "cue": "The gold 'embassy' is the most prototypical diplomatic institution, while the distractors included odd or overlapping terms like 'mission' (a near-synonym) and 'nunciature', so the most familiar term stood out."
+     },
+     {
+      "round": 3,
+      "cue": "\"Diplomatic embassy\" is the most prototypical and familiar diplomatic institution, while some distractors (e.g. \"diplomatic foreign ministry\") read awkwardly with the prefix, so the natural-sounding gold stood out."
+     },
+     {
+      "round": 5,
+      "cue": "The gold 'diplomatic embassy' is the most prototypical diplomatic institution, while distractors like 'diplomatic protocol office' or 'diplomatic residence' are weaker, contrived fits, so the gold stands out as the canonical answer."
+     },
+     {
+      "round": 7,
+      "cue": "\"Embassy\" is the most prototypical diplomatic institution for the topic, while the other options were sub-parts or rarer variants (residence, chancery), so a topic guesser chose the canonical one."
+     },
+     {
+      "round": 9,
+      "cue": "The gold was the only familiar, standalone institution name among a mix of vague constructions and a non-institution (immunity), though guessers didn't find it; the list just needs more uniform 'diplomatic X' institution terms."
+     },
+     {
+      "round": 1,
+      "cue": "Embassy is the most prototypical diplomatic institution, so with only four related options a topic guesser defaults to it; more equally typical institutions are needed."
+     },
+     {
+      "round": 3,
+      "cue": "Embassy is the most prototypical, best-known diplomatic institution, so a topic guesser defaults to it when the alternatives are rarer or more specialised."
+     },
+     {
+      "round": 5,
+      "cue": "The gold is the most prototypical diplomatic institution, and 'diplomatic mission' is nearly a synonym of it, so the current list both overlaps with the gold and lets it stand out as the default answer."
+     }
+    ]
+   }
+  },
+  "mlt-tr-buzdolabi": {
+   "correction_native": {
+    "topic": "a household appliance or object",
+    "topic_pass1": "a household kitchen appliance",
+    "kind": "an everyday object",
+    "gold": "household refrigerator",
+    "distractors": [
+     "household microwave oven",
+     "surfactant detergents",
+     "household clothes dryer",
+     "household washing machine"
+    ],
+    "enwiki": {
+     "household microwave oven": "Microwave oven",
+     "surfactant detergents": "surfactant detergents",
+     "household clothes dryer": "Clothes dryer",
+     "household washing machine": "Washing machine"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only household appliance among abstract concepts and natural objects, so the topic alone singled it out."
+     },
+     {
+      "round": 3,
+      "cue": "The gold was the most iconic large household appliance among small kitchen gadgets plus an off-topic 'a fossil specimen', so the list was mismatched in style and scale."
+     },
+     {
+      "round": 5,
+      "cue": "The current list mixed household appliances with abstract concepts (sustainability, detergents), so the gold stood out as one of only a few genuine 'household' appliances."
+     },
+     {
+      "round": 7,
+      "cue": "The gold is the most prototypical 'household' appliance, and the freezer is a near-synonym or part-like sibling of the refrigerator, which points toward the cold-storage pair."
+     },
+     {
+      "round": 9,
+      "cue": "Nothing strongly singled it out, but 'household freezer' is a near-synonym/part of the refrigerator concept and the list was short, so it needs replacing and expanding with comparable major appliances."
+     }
+    ]
+   }
+  },
+  "mlt-tr-caydanlik": {
+   "correction_native": {
+    "topic": "a kitchen vessel or cookware item",
+    "topic_pass1": "a traditional Turkish kitchen utensil or vessel",
+    "topic_fixed_from": "a traditional Turkish kitchen utensil or vessel",
+    "kind": "a kitchen vessel",
+    "gold": "double tea kettle",
+    "distractors": [
+     "Vietnamese phin filter",
+     "samovar",
+     "bain-marie",
+     "Dutch oven"
+    ],
+    "enwiki": {
+     "Vietnamese phin filter": "Vietnamese iced coffee",
+     "samovar": "Samovar",
+     "bain-marie": "Bain-marie",
+     "Dutch oven": "Dutch oven"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 5,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only kitchen vessel among unrelated science and nature topics, so anyone reading the topic could pick it."
+     },
+     {
+      "round": 3,
+      "cue": "The gold is the only tea-related, distinctly traditional vessel (the Turkish çaydanlık), while the other options were generic Western cookware with nothing traditional about them."
+     },
+     {
+      "round": 5,
+      "cue": "The 'double tea kettle' (çaydanlık) is the iconic Turkish tea vessel and the only option with a stacked two-part design, while the copper coffee pot (cezve) was also Turkish-tied, so the topic pointed straight at tea."
+     },
+     {
+      "round": 7,
+      "cue": "The gold was the only option matching a 'traditional Turkish' utensil (çaydanlık), while the others were Chinese, Russian or modern Western items, and 'double boiler' echoed its 'double' wording."
+     },
+     {
+      "round": 1,
+      "cue": "The gold was the only kitchen vessel among unrelated science and nature concepts, so anyone told the topic picked it immediately."
+     },
+     {
+      "round": 3,
+      "cue": "The gold was the only distinctly tea-related, Turkish-associated vessel, and one distractor ('the study of ancient life') was not a vessel at all, which made the remaining kitchen items easy to sort."
+     },
+     {
+      "round": 5,
+      "cue": "The gold was the only option matching a 'traditional Turkish' utensil (the çaydanlık); the other options were generic modern Western cookware."
+     },
+     {
+      "round": 7,
+      "cue": "The double tea kettle (çaydanlık) was the only vessel tied to Turkish culture, and the other options mixed in a non-vessel (dripstone cave) and a culturally specific wok, so the topic pointed straight at it."
+     },
+     {
+      "round": 9,
+      "cue": "The gold was the only tea-specific, two-tier specialty vessel among generic Western cookware, so it matched the 'traditional Turkish' topic and stood out as the odd one."
+     },
+     {
+      "round": 1,
+      "cue": "The gold was the only kitchen vessel among unrelated science topics, so the topic matched it alone."
+     },
+     {
+      "round": 3,
+      "cue": "The gold is the only tea-specific vessel and the only one evoking Turkish tea culture (çaydanlık), while the other items were generic Western cookware or an unrelated concept ('the study of ancient life')."
+     },
+     {
+      "round": 5,
+      "cue": "The topic says 'traditional Turkish', and the double tea kettle (çaydanlık) is the only option strongly associated with Turkish tea culture, while the others are generic Western cookware."
+     },
+     {
+      "round": 7,
+      "cue": "Given the topic 'traditional Turkish vessel', the double tea kettle (çaydanlık) was the only option recognisably Turkish-traditional, while the others were generic Western items or not a vessel at all (dripstone cave)."
+     },
+     {
+      "round": 9,
+      "cue": "The double tea kettle (çaydanlık) is the only option that is distinctly Turkish and tea-specific; the others are generic or North African/French cooking vessels, so the topic points straight to it."
+     },
+     {
+      "round": 1,
+      "cue": "Only the double tea kettle is a traditional Turkish item (çaydanlık), while the others are generic Western cookware or an off-kind concept, so the topic singled it out."
+     },
+     {
+      "round": 3,
+      "cue": "The double tea kettle (çaydanlık) is the only option that is distinctively Turkish, and the topic names Turkish, so it stood out against generic or other-culture vessels."
+     },
+     {
+      "round": 5,
+      "cue": "The gold was the only option fitting 'traditional Turkish' (a stacked tea kettle, çaydanlık), while the others were Western cookware with no tea-related or traditional character, and it alone was lowercase multi-word descriptive of tea."
+     },
+     {
+      "round": 7,
+      "cue": "The gold 'double tea kettle' is the only option strongly tied to Turkish tradition (çaydanlık), while the others are generic or tied to other cultures, so the topic points straight at it."
+     },
+     {
+      "round": 9,
+      "cue": "Given the topic 'traditional Turkish', the double tea kettle (çaydanlık) is the only option that is a recognisably Turkish tea vessel, while the others are generic Western items or, like the long-handled coffee pot (cezve), point straight at Turkey."
+     },
+     {
+      "round": 1,
+      "cue": "The gold was the only tea-brewing vessel named generically in a lowercase descriptive style among mostly proper-named or foreign-tagged items, and a topic guesser could link 'double tea kettle' to the hidden prompt's language, which is Turkish (çaydanlık)."
+     },
+     {
+      "round": 3,
+      "cue": "The gold is the only obscure, oddly specific tea-related item (and the only kettle) among common Western cookware, and 'double' echoes 'double boiler', which makes it look like a constructed variant."
+     },
+     {
+      "round": 5,
+      "cue": "The gold 'double tea kettle' (Turkish çaydanlık) is the only culturally specific, unusual multi-word compound item, while the others are generic Western cookware, and its tea association points straight to Turkish."
+     }
+    ]
+   }
+  },
+  "mlt-tr-comlekcilik": {
+   "correction_native": {
+    "topic": "a traditional craft of Anatolia",
+    "topic_pass1": "a traditional craft or art form",
+    "kind": "a craft",
+    "gold": "pottery making",
+    "distractors": [
+     "carpet weaving",
+     "copper smithing",
+     "tile making",
+     "felt making"
+    ],
+    "enwiki": {
+     "carpet weaving": "Carpet",
+     "copper smithing": "Coppersmith",
+     "tile making": "Tile",
+     "felt making": "Felt"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only craft among abstract non-craft phrases, so anyone given the topic could pick it instantly."
+     },
+     {
+      "round": 3,
+      "cue": "Pottery making was the only option that is a quintessential traditional Anatolian craft (like ceramics of Iznik/Kütahya), while the others were generic or not crafts at all (national independence)."
+     }
+    ]
+   }
+  },
+  "mlt-vi-co-sinh-vat-hoc": {
+   "correction_native": {
+    "topic": "a branch of the natural sciences",
+    "topic_pass1": "a branch of the natural or earth sciences",
+    "kind": "a scientific discipline",
+    "gold": "the study of ancient life",
+    "distractors": [
+     "the study of earthly rocks",
+     "the study of tiny microbes",
+     "the study of weather patterns",
+     "artificial neural network"
+    ],
+    "enwiki": {
+     "the study of earthly rocks": "Petrology",
+     "the study of tiny microbes": "Microbiology",
+     "the study of weather patterns": "Meteorology",
+     "artificial neural network": "artificial neural network"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold is the only option phrased as 'the study of ...' and the only one that is actually a natural-science discipline, while the others are unrelated common nouns."
+     },
+     {
+      "round": 3,
+      "cue": "The gold was the only option with an adjective ('ancient') qualifying its object and the only one implying a time dimension, while the others were plain 'the study of [noun]'."
+     },
+     {
+      "round": 5,
+      "cue": "The gold is a descriptive 'the study of X Y' phrase, while one distractor ('disease infections') broke that pattern and others used odd adjectives like 'earthly' and 'distant' that signalled paraphrase."
+     },
+     {
+      "round": 7,
+      "cue": "The gold was the only option phrased around a time period ('ancient'), and two distractors were near-duplicates (ocean life / marine life), which made the set uneven."
+     },
+     {
+      "round": 9,
+      "cue": "The gold was phrased as 'the study of ...' while one distractor ('disease infections') broke the pattern, and 'earthly rocks' was oddly worded, making the list uneven."
+     }
+    ]
+   }
+  },
+  "mlt-vi-cuc-quang": {
+   "correction_native": {
+    "topic": "an atmospheric or sky phenomenon",
+    "topic_pass1": "an atmospheric or sky phenomenon",
+    "kind": "a natural phenomenon",
+    "gold": "the polar aurora",
+    "distractors": [
+     "the green flash",
+     "the solar halo",
+     "the double rainbow",
+     "the noctilucent cloud"
+    ],
+    "enwiki": {
+     "the green flash": "Green flash",
+     "the solar halo": "Halo (optical phenomenon)",
+     "the double rainbow": "Rainbow",
+     "the noctilucent cloud": "Noctilucent cloud"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only atmospheric/sky phenomenon; the other options were unrelated abstract concepts or roles, so the topic alone singled it out."
+     },
+     {
+      "round": 3,
+      "cue": "The gold is the most famous and only one with a qualifier adjective ('polar'), though guessers did not find it; keep similar style with adjective-qualified phenomena."
+     },
+     {
+      "round": 5,
+      "cue": "The odd 'student of natural science' broke the pattern, and the gold was the only famous high-latitude light display; the list needs uniform 'the X' atmospheric phenomena of similar fame."
+     },
+     {
+      "round": 7,
+      "cue": "The gold is the most famous sky phenomenon and has a 'polar' qualifier, while 'sustained continuity' is not a phenomenon at all and the others are more obscure."
+     },
+     {
+      "round": 9,
+      "cue": "The list mixed in a non-phenomenon ('student of natural science') and only three real sky phenomena, so the gold stood out as one of the few well-known, vivid sky phenomena of the same style."
+     }
+    ]
+   }
+  },
+  "mlt-vi-di-truyen-hoc": {
+   "correction_native": {
+    "topic": "a branch of biology or life science",
+    "topic_pass1": "a branch of biology or life science",
+    "kind": "a scientific field",
+    "gold": "the science of genetics",
+    "distractors": [
+     "the science of ecology",
+     "the science of zoology",
+     "the science of botany",
+     "the science of microbiology"
+    ],
+    "enwiki": {
+     "the science of ecology": "Ecology",
+     "the science of zoology": "Zoology",
+     "the science of botany": "Botany",
+     "the science of microbiology": "Microbiology"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only option that was actually a branch of biology, phrased as 'the science of X', while the distractors were unrelated concepts like roads and landmarks."
+     }
+    ]
+   }
+  },
+  "mlt-vi-hat-nhan": {
+   "correction_native": {
+    "topic": "a type of weapon or military technology",
+    "topic_pass1": "a type of weapon or military technology",
+    "kind": "a weapon type",
+    "gold": "nuclear weapons",
+    "distractors": [
+     "chemical weapons",
+     "biological weapons",
+     "ballistic missiles",
+     "cruise missiles"
+    ],
+    "enwiki": {
+     "chemical weapons": "Chemical weapon",
+     "biological weapons": "Biological warfare",
+     "ballistic missiles": "Ballistic missile",
+     "cruise missiles": "Cruise missile"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only weapon in a list of unrelated non-military concepts, so the topic alone singled it out."
+     },
+     {
+      "round": 3,
+      "cue": "Nuclear weapons is the most famous and archetypal weapon type, so it stands out as the default guess among a few WMD-style options; the list needs more equally prominent weapon types."
+     },
+     {
+      "round": 5,
+      "cue": "Nuclear weapons was the only weapon of mass destruction and the most famous strategic weapon, while 'silk production' was not a weapon at all."
+     },
+     {
+      "round": 7,
+      "cue": "The gold is the most famous weapon class in the list, and 'political revolution' is not a weapon at all, so the remaining real weapon types made nuclear weapons stand out."
+     },
+     {
+      "round": 9,
+      "cue": "Nuclear weapons was the most famous, archetypal weapon type among a short list, with only four distractors and no other equally iconic categories."
+     }
+    ]
+   }
+  },
+  "mlt-vi-hoa-thach": {
+   "correction_native": {
+    "topic": "a term from earth or life sciences",
+    "topic_pass1": "a term from paleontology or geology",
+    "kind": "a scientific concept",
+    "gold": "a fossil specimen",
+    "distractors": [
+     "a sediment layer",
+     "disease infections",
+     "a mineral vein",
+     "a plant seedling"
+    ],
+    "enwiki": {
+     "a sediment layer": "Sediment",
+     "disease infections": "disease infections",
+     "a mineral vein": "Vein (geology)",
+     "a plant seedling": "Seedling"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold is a concrete earth/life-science term phrased as 'a ...' while distractors mix styles ('the ...', plural, and an off-topic social concept like hatred of Jews)."
+     },
+     {
+      "round": 3,
+      "cue": "The gold is the only option about past life preserved in rock, a classic 'earth or life sciences' paleontology term, though the current list gave no strong cue."
+     },
+     {
+      "round": 5,
+      "cue": "The gold 'a fossil specimen' was the most generic, prototypical earth/life-science term, and 'an amber inclusion' and 'an ice core sample' clustered around it as specimen-type items, which pointed toward it."
+     }
+    ]
+   }
+  },
+  "mlt-vi-hop-com-giu-nhiet": {
+   "correction_native": {
+    "topic": "an everyday household object",
+    "topic_pass1": "a household container or kitchen item for carrying or storing food",
+    "kind": "an everyday object",
+    "gold": "insulated lunch box",
+    "distractors": [
+     "stainless steel thermos",
+     "electric rice cooker",
+     "plastic food container",
+     "reusable water bottle"
+    ],
+    "enwiki": {
+     "stainless steel thermos": "Vacuum flask",
+     "electric rice cooker": "Rice cooker",
+     "plastic food container": "Food storage container",
+     "reusable water bottle": "Water bottle"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only everyday household object among abstract concepts, so anyone given the topic could pick it immediately."
+     }
+    ]
+   }
+  },
+  "mlt-vi-khi-quyen": {
+   "correction_native": {
+    "topic": "a term in atmospheric or earth science",
+    "topic_pass1": "a layer of Earth's atmosphere",
+    "kind": "an atmospheric layer",
+    "gold": "Earth's atmosphere",
+    "distractors": [
+     "Planetary boundary layer",
+     "Ozone layer",
+     "Thermosphere",
+     "Earth's magnetosphere"
+    ],
+    "enwiki": {
+     "Planetary boundary layer": "Planetary boundary layer",
+     "Ozone layer": "Ozone layer",
+     "Thermosphere": "Thermosphere",
+     "Earth's magnetosphere": "Magnetosphere"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 1,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold is the only atmospheric or earth-science term in the list; the other options are unrelated everyday concepts, so the topic points straight at it."
+     },
+     {
+      "round": 3,
+      "cue": "The gold is the only option naming the whole atmosphere and the only one carrying a planet possessive, while the distractors are single layers named with bare terms."
+     }
+    ]
+   }
+  },
+  "mlt-vi-lo-vi-song": {
+   "correction_native": {
+    "topic": "a common household appliance",
+    "topic_pass1": "a common kitchen appliance",
+    "kind": "a household appliance",
+    "gold": "microwave oven",
+    "distractors": [
+     "refrigerator",
+     "washing machine",
+     "dishwasher",
+     "vacuum cleaner"
+    ],
+    "enwiki": {
+     "refrigerator": "Refrigerator",
+     "washing machine": "Washing machine",
+     "dishwasher": "Dishwasher",
+     "vacuum cleaner": "Vacuum cleaner"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only household appliance among unrelated abstract concepts, so anyone given the topic could pick it instantly."
+     }
+    ]
+   }
+  }
+ }
+}

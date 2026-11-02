@@ -497,20 +497,6 @@ def test_compare_jailbreak_parity_assert(tmp_path, monkeypatch):
 
 
 def test_compare_parity_families(tmp_path):
-    hal = _write_json(
-        tmp_path / "hal.json",
-        {"model": "google/gemini-3.8-flash", "numbers": {"n_hallucinated": 30, "n_specific": 100}},
-    )
-    out = js.compare("hallucination", _results("hallucination", [], value=0.31), hal)
-    assert out["parity"] is True and "n_cells_both" not in out
-    assert out["headline"]["baseline"] == pytest.approx(0.3)
-    assert out["headline"]["delta"] == pytest.approx(0.01)
-
-    hal2 = _write_json(tmp_path / "hal2.json", {"numbers": {"hallucination_rate": 0.33}})
-    assert js.compare("hallucination", _results("hallucination", [], 0.33), hal2)["headline"][
-        "delta"
-    ] == pytest.approx(0.0)
-
     jl = _write_json(
         tmp_path / "jl.json",
         {"arms": {"s3d": {"by_layer": {"44": {"precision": 0.3, "recall_at_10": 0.5}}}}},
@@ -518,13 +504,16 @@ def test_compare_parity_families(tmp_path):
     out = js.compare(
         "jlens_concept_pr", _results("jlens_concept_pr", [], 0.32, {"recall_at_10": 0.51}), jl
     )
+    assert out["parity"] is True and "n_cells_both" not in out
     assert out["headline"]["baseline"] == pytest.approx(0.3)
     assert out["extras"]["recall_at_10"] == 0.5 and out["extras"]["port_extras"] == {
         "recall_at_10": 0.51
     }
 
     am = _write_json(tmp_path / "am.json", {"headline": {"design_score": 0.57}})
-    out = js.compare("agentic_misalignment", _results("agentic_misalignment", [], 0.6), am)
+    # plan 0031: the port side is the design score in extras (the headline is pair_rate)
+    port = _results("agentic_misalignment", [], 0.1, {"design_score": 0.6})
+    out = js.compare("agentic_misalignment", port, am)
     assert out["baseline_model"] == "claude-sonnet-5"
     assert out["headline"]["delta"] == pytest.approx(0.03)
 
@@ -582,7 +571,7 @@ def test_summary_flag_rule():
         "baseline_model": "claude-opus-5",
     }
     parity = {
-        "family": "hallucination",
+        "family": "jlens_concept_pr",
         "parity": True,
         "headline": {"port": 0.335, "baseline": 0.335, "delta": 0.0},
         "baseline_model": "google/gemini-3.8-flash",
@@ -605,7 +594,7 @@ def test_summary_flag_rule():
     rb = next(line for line in lines if line.startswith("| role_bound_association"))
     assert js.FLAG in rb and "| — |" in rb  # undefined kappa is reported, not 0
     assert "Port parity" in md
-    assert "| hallucination | google/gemini-3.8-flash | 0.335 | 0.335 | 0.000 |" in md
+    assert "| jlens_concept_pr | google/gemini-3.8-flash | 0.335 | 0.335 | 0.000 |" in md
     assert "jailbreak_recognition (same-judge; cell κ = 0.500, n = 4)" in md
     assert js.verdict_of(None) == js.FLAG and js.verdict_of(0.7) == js.OK
     assert js.verdict_of(0.69) == js.FLAG
@@ -708,5 +697,5 @@ def test_cli_convert_jailbreak(tmp_path, monkeypatch):
 def test_bank_ids_reads_real_banks():
     ids = js.bank_ids("user_modeling")
     assert len(ids) == 100 and all(i.startswith("um-") for i in ids)
-    assert len(js.bank_ids("jailbreak_recognition")) == 86
+    assert len(js.bank_ids("jailbreak_recognition")) == 172  # plan 0037: 86 positives + 86 controls
     assert "oa-police-thief-chase-ab" in js.bank_ids("role_bound_association")

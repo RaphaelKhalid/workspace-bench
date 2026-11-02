@@ -71,3 +71,21 @@ def _component_of(t: str, u: str) -> bool:
     if len(tw) >= len(uw):
         return False
     return any(uw[i : i + len(tw)] == tw for i in range(len(uw) - len(tw) + 1))
+
+
+DEFAULT_NATIVE_LANGS = ("en", "zh")  # Qwen3.6-27B, measured (skill references/gating.md §0)
+
+
+def native_langs(header: dict[str, Any]) -> tuple[str, ...]:
+    """The subject's native languages for a bank (plan 0032 §2.10): the header's
+    ``contract.native_langs`` (ISO codes, English first), else ``("en", "zh")`` for the frozen
+    Qwen3.6-27B banks. Every "English or the model's native language" prompt builds its list
+    from this; nothing hard-codes "zh" or "Chinese"."""
+    contract = header.get("contract") if isinstance(header, dict) else None
+    langs = contract.get("native_langs") if isinstance(contract, dict) else None
+    if not langs:
+        return DEFAULT_NATIVE_LANGS
+    out = tuple(str(x) for x in langs)
+    if out[0] != "en":
+        raise ValueError(f"contract.native_langs must list English first, got {list(out)}")
+    return out

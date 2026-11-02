@@ -562,15 +562,6 @@ PARITY_ONLY = {"jailbreak_recognition"}  # judged cells, but same judge: reporte
 
 
 # parity families: headline only, read from the source summary file
-def _hal_parity(s: dict) -> tuple[float | None, str, dict]:
-    num = s.get("numbers") or {}
-    v = num.get("hallucination_rate")
-    if v is None:
-        v = _ratio(num.get("n_hallucinated"), num.get("n_specific"))
-    model = s.get("model") if isinstance(s.get("model"), str) else GEMINI
-    return v, model, {}
-
-
 def _jlens_parity(s: dict) -> tuple[float | None, str, dict]:
     l44 = ((s.get("arms") or {}).get("s3d") or {}).get("by_layer", {}).get("44") or {}
     extras = {"recall_at_10": l44["recall_at_10"]} if "recall_at_10" in l44 else {}
@@ -582,10 +573,11 @@ def _am_parity(s: dict) -> tuple[float | None, str, dict]:
 
 
 PARITY: dict[str, Callable[[dict], tuple[float | None, str, dict]]] = {
-    "hallucination": _hal_parity,
     "jlens_concept_pr": _jlens_parity,
     "agentic_misalignment": _am_parity,
 }
+# parity families whose port value is ``extras["design_score"]``, not the result's headline
+PORT_FROM_EXTRAS = {"agentic_misalignment"}
 
 
 # ---------------------------------------------------------------- compare
@@ -610,10 +602,13 @@ def compare(
     port_model = res.config.get("judge_model")
     if family in PARITY:
         value, model, extras = PARITY[family](_read_json(baseline_path))
+        # agentic's headline is pair_rate since plan 0031; the source baseline is a design score,
+        # so its port side is the design score the result keeps in extras (same parity check)
+        port = res.extras.get("design_score") if family in PORT_FROM_EXTRAS else res.value
         return {
             "family": family,
             "parity": True,
-            "headline": {"port": res.value, "baseline": value, "delta": _delta(res.value, value)},
+            "headline": {"port": port, "baseline": value, "delta": _delta(port, value)},
             "port_model": port_model,
             "baseline_model": model,
             "baseline_note": "unswapped judge: port must reproduce the source headline",

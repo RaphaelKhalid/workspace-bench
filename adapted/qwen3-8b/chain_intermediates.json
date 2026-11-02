@@ -1,0 +1,6603 @@
+{
+ "family": "chain_intermediates",
+ "gate": {
+  "k": 10,
+  "max_new": 16,
+  "temperature": 0.8,
+  "top_p": 0.95,
+  "min_correct": 8,
+  "max_leak": 0
+ },
+ "model_dir": "/workspace-vast/camilablank/hf_cache/hub/models--Qwen--Qwen3.6-27B/snapshots/6a9e13bd6fc8f0983b9b99948120bc37f49c13e9",
+ "n": 120,
+ "selection": {
+  "rule": "strict 10/10 + greedy + no leak on seed-last; all depth-3 plain items + 84 depth-2 plain items round-robin over step-kind pairs; the single conditional item dropped",
+  "seed": 0
+ },
+ "source": "evals/workspace-bench/hillclimbing_evals/multi_token/chain_intermediates/items_final.json (source repo; items unchanged)",
+ "read": "the last prompt token (the end of the user turn), chat render, thinking off; layers 20..60 step 4",
+ "adapt": {
+  "model": "qwen3-8b",
+  "hf_id": "Qwen/Qwen3-8B",
+  "frozen": "2026-10-24"
+ },
+ "items": [
+  {
+   "depth": 3,
+   "cond": false,
+   "kinds": [
+    "double",
+    "double",
+    "add"
+   ],
+   "steps": [
+    "Double it.",
+    "Double it.",
+    "Add 5."
+   ],
+   "start": 10,
+   "intermediates": [
+    20,
+    40
+   ],
+   "untaken": [
+    null,
+    null
+   ],
+   "answer": 45,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nDouble it.\nDouble it.\nAdd 5.\nThe starting number is 10. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 10 and apply the steps below, in order.\nDouble it.\nDouble it.\nAdd 5.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    5,
+    10
+   ],
+   "distractors": [
+    [
+     10,
+     45,
+     21,
+     5
+    ],
+    [
+     10,
+     45,
+     39,
+     5
+    ]
+   ],
+   "name": "chain-d3p-0753",
+   "gate": {
+    "last": {
+     "ok": true,
+     "greedy_ok": true,
+     "correct": 10,
+     "n": 10,
+     "perfect": true
+    },
+    "first": {
+     "ok": true,
+     "greedy_ok": true,
+     "correct": 9,
+     "n": 10,
+     "perfect": false
+    }
+   },
+   "id": "chain-d3p-0753",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 3,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add",
+    "sub"
+   ],
+   "steps": [
+    "Add 5.",
+    "Add 9.",
+    "Subtract 2."
+   ],
+   "start": 9,
+   "intermediates": [
+    14,
+    23
+   ],
+   "untaken": [
+    null,
+    null
+   ],
+   "answer": 21,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 5.\nAdd 9.\nSubtract 2.\nThe starting number is 9. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 9 and apply the steps below, in order.\nAdd 5.\nAdd 9.\nSubtract 2.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    2,
+    5,
+    9
+   ],
+   "distractors": [
+    [
+     9,
+     21,
+     13,
+     2
+    ],
+    [
+     9,
+     21,
+     22,
+     5
+    ]
+   ],
+   "name": "chain-w2-d3p-0698",
+   "gate": {
+    "last": {
+     "ok": true,
+     "greedy_ok": true,
+     "correct": 10,
+     "n": 10,
+     "perfect": true
+    },
+    "first": {
+     "ok": false,
+     "greedy_ok": true,
+     "correct": 2,
+     "n": 10,
+     "perfect": false
+    }
+   },
+   "id": "chain-w2-d3p-0698",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "triple",
+    "sub"
+   ],
+   "steps": [
+    "Multiply it by 3.",
+    "Subtract 4."
+   ],
+   "start": 12,
+   "intermediates": [
+    36
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 32,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nMultiply it by 3.\nSubtract 4.\nThe starting number is 12. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 12 and apply the steps below, in order.\nMultiply it by 3.\nSubtract 4.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    3,
+    4,
+    12
+   ],
+   "distractors": [
+    [
+     12,
+     32,
+     35,
+     3
+    ]
+   ],
+   "name": "chain-d2p-0370",
+   "gate": {
+    "last": {
+     "ok": true,
+     "greedy_ok": true,
+     "correct": 10,
+     "n": 10,
+     "perfect": true
+    },
+    "first": {
+     "ok": true,
+     "greedy_ok": true,
+     "correct": 10,
+     "n": 10,
+     "perfect": true
+    }
+   },
+   "id": "chain-d2p-0370",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "sub",
+    "sub"
+   ],
+   "steps": [
+    "Subtract 8.",
+    "Subtract 4."
+   ],
+   "start": 27,
+   "intermediates": [
+    19
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 15,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nSubtract 8.\nSubtract 4.\nThe starting number is 27. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 27 and apply the steps below, in order.\nSubtract 8.\nSubtract 4.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    4,
+    8,
+    27
+   ],
+   "distractors": [
+    [
+     27,
+     15,
+     18,
+     4
+    ]
+   ],
+   "name": "chain-w2-d2p-0066",
+   "gate": {
+    "last": {
+     "ok": true,
+     "greedy_ok": true,
+     "correct": 10,
+     "n": 10,
+     "perfect": true
+    },
+    "first": {
+     "ok": true,
+     "greedy_ok": true,
+     "correct": 10,
+     "n": 10,
+     "perfect": true
+    }
+   },
+   "id": "chain-w2-d2p-0066",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "triple",
+    "halve_down"
+   ],
+   "steps": [
+    "Multiply it by 3.",
+    "Halve it, rounding down."
+   ],
+   "start": 10,
+   "intermediates": [
+    30
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 15,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nMultiply it by 3.\nHalve it, rounding down.\nThe starting number is 10. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 10 and apply the steps below, in order.\nMultiply it by 3.\nHalve it, rounding down.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    3,
+    10
+   ],
+   "distractors": [
+    [
+     10,
+     15,
+     29,
+     3
+    ]
+   ],
+   "name": "chain-w2-d2p-0271",
+   "gate": {
+    "last": {
+     "ok": true,
+     "greedy_ok": true,
+     "correct": 10,
+     "n": 10,
+     "perfect": true
+    },
+    "first": {
+     "ok": true,
+     "greedy_ok": true,
+     "correct": 9,
+     "n": 10,
+     "perfect": false
+    }
+   },
+   "id": "chain-w2-d2p-0271",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "halve_down",
+    "triple"
+   ],
+   "steps": [
+    "Halve it, rounding down.",
+    "Multiply it by 3."
+   ],
+   "start": 10,
+   "intermediates": [
+    5
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 15,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nHalve it, rounding down.\nMultiply it by 3.\nThe starting number is 10. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 10 and apply the steps below, in order.\nHalve it, rounding down.\nMultiply it by 3.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    3,
+    10
+   ],
+   "distractors": [
+    [
+     10,
+     15,
+     3,
+     4
+    ]
+   ],
+   "name": "chain-t0-s0-0037",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t0",
+    "knobs": {
+     "depths": [
+      2,
+      3
+     ]
+    },
+    "change": "original rules (depth 2-3, six step kinds)",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 9.",
+    "Add 4."
+   ],
+   "start": 17,
+   "intermediates": [
+    26
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 30,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 9.\nAdd 4.\nThe starting number is 17. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 17 and apply the steps below, in order.\nAdd 9.\nAdd 4.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    4,
+    9,
+    17
+   ],
+   "distractors": [
+    [
+     17,
+     30,
+     4,
+     9
+    ]
+   ],
+   "name": "chain-t0-s0-0079",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t0",
+    "knobs": {
+     "depths": [
+      2,
+      3
+     ]
+    },
+    "change": "original rules (depth 2-3, six step kinds)",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "sub",
+    "halve_down"
+   ],
+   "steps": [
+    "Subtract 7.",
+    "Halve it, rounding down."
+   ],
+   "start": 17,
+   "intermediates": [
+    10
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 5,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nSubtract 7.\nHalve it, rounding down.\nThe starting number is 17. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 17 and apply the steps below, in order.\nSubtract 7.\nHalve it, rounding down.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    7,
+    17
+   ],
+   "distractors": [
+    [
+     17,
+     5,
+     7,
+     9
+    ]
+   ],
+   "name": "chain-t0-s0-0124",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t0",
+    "knobs": {
+     "depths": [
+      2,
+      3
+     ]
+    },
+    "change": "original rules (depth 2-3, six step kinds)",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "triple",
+    "halve_down"
+   ],
+   "steps": [
+    "Multiply it by 3.",
+    "Halve it, rounding down."
+   ],
+   "start": 6,
+   "intermediates": [
+    18
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 9,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nMultiply it by 3.\nHalve it, rounding down.\nThe starting number is 6. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 6 and apply the steps below, in order.\nMultiply it by 3.\nHalve it, rounding down.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    3,
+    6
+   ],
+   "distractors": [
+    [
+     6,
+     9,
+     3,
+     17
+    ]
+   ],
+   "name": "chain-t0-s0-0128",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t0",
+    "knobs": {
+     "depths": [
+      2,
+      3
+     ]
+    },
+    "change": "original rules (depth 2-3, six step kinds)",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "halve_down"
+   ],
+   "steps": [
+    "Add 4.",
+    "Halve it, rounding down."
+   ],
+   "start": 6,
+   "intermediates": [
+    10
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 5,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 4.\nHalve it, rounding down.\nThe starting number is 6. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 6 and apply the steps below, in order.\nAdd 4.\nHalve it, rounding down.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    4,
+    6
+   ],
+   "distractors": [
+    [
+     6,
+     5,
+     4,
+     9
+    ]
+   ],
+   "name": "chain-t0-s0-0145",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t0",
+    "knobs": {
+     "depths": [
+      2,
+      3
+     ]
+    },
+    "change": "original rules (depth 2-3, six step kinds)",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "halve_up",
+    "triple"
+   ],
+   "steps": [
+    "Halve it, rounding up.",
+    "Multiply it by 3."
+   ],
+   "start": 24,
+   "intermediates": [
+    12
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 36,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nHalve it, rounding up.\nMultiply it by 3.\nThe starting number is 24. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 24 and apply the steps below, in order.\nHalve it, rounding up.\nMultiply it by 3.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    3,
+    24
+   ],
+   "distractors": [
+    [
+     24,
+     36,
+     3,
+     11
+    ]
+   ],
+   "name": "chain-t0-s0-0179",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t0",
+    "knobs": {
+     "depths": [
+      2,
+      3
+     ]
+    },
+    "change": "original rules (depth 2-3, six step kinds)",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 8.",
+    "Add 2."
+   ],
+   "start": 10,
+   "intermediates": [
+    18
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 20,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 8.\nAdd 2.\nThe starting number is 10. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 10 and apply the steps below, in order.\nAdd 8.\nAdd 2.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    2,
+    8,
+    10
+   ],
+   "distractors": [
+    [
+     10,
+     20,
+     2,
+     8
+    ]
+   ],
+   "name": "chain-t0-s0-0327",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t0",
+    "knobs": {
+     "depths": [
+      2,
+      3
+     ]
+    },
+    "change": "original rules (depth 2-3, six step kinds)",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 5.",
+    "Add 9."
+   ],
+   "start": 6,
+   "intermediates": [
+    11
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 20,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 5.\nAdd 9.\nThe starting number is 6. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 6 and apply the steps below, in order.\nAdd 5.\nAdd 9.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    5,
+    6,
+    9
+   ],
+   "distractors": [
+    [
+     6,
+     20,
+     5,
+     9
+    ]
+   ],
+   "name": "chain-t1-s1000-0026",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "sub"
+   ],
+   "steps": [
+    "Add 3.",
+    "Subtract 4."
+   ],
+   "start": 18,
+   "intermediates": [
+    21
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 17,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 3.\nSubtract 4.\nThe starting number is 18. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 18 and apply the steps below, in order.\nAdd 3.\nSubtract 4.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    3,
+    4,
+    18
+   ],
+   "distractors": [
+    [
+     18,
+     17,
+     3,
+     4
+    ]
+   ],
+   "name": "chain-t1-s1000-0031",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "sub",
+    "sub"
+   ],
+   "steps": [
+    "Subtract 3.",
+    "Subtract 6."
+   ],
+   "start": 13,
+   "intermediates": [
+    10
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 4,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nSubtract 3.\nSubtract 6.\nThe starting number is 13. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 13 and apply the steps below, in order.\nSubtract 3.\nSubtract 6.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    3,
+    6,
+    13
+   ],
+   "distractors": [
+    [
+     13,
+     4,
+     3,
+     6
+    ]
+   ],
+   "name": "chain-t1-s1000-0055",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 9.",
+    "Add 3."
+   ],
+   "start": 8,
+   "intermediates": [
+    17
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 20,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 9.\nAdd 3.\nThe starting number is 8. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 8 and apply the steps below, in order.\nAdd 9.\nAdd 3.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    3,
+    8,
+    9
+   ],
+   "distractors": [
+    [
+     8,
+     20,
+     3,
+     9
+    ]
+   ],
+   "name": "chain-t1-s1000-0069",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 3.",
+    "Add 5."
+   ],
+   "start": 24,
+   "intermediates": [
+    27
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 32,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 3.\nAdd 5.\nThe starting number is 24. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 24 and apply the steps below, in order.\nAdd 3.\nAdd 5.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    3,
+    5,
+    24
+   ],
+   "distractors": [
+    [
+     24,
+     32,
+     3,
+     5
+    ]
+   ],
+   "name": "chain-t1-s1000-0082",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 5.",
+    "Add 3."
+   ],
+   "start": 24,
+   "intermediates": [
+    29
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 32,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 5.\nAdd 3.\nThe starting number is 24. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 24 and apply the steps below, in order.\nAdd 5.\nAdd 3.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    3,
+    5,
+    24
+   ],
+   "distractors": [
+    [
+     24,
+     32,
+     3,
+     5
+    ]
+   ],
+   "name": "chain-t1-s1000-0093",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 3.",
+    "Add 6."
+   ],
+   "start": 25,
+   "intermediates": [
+    28
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 34,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 3.\nAdd 6.\nThe starting number is 25. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 25 and apply the steps below, in order.\nAdd 3.\nAdd 6.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    3,
+    6,
+    25
+   ],
+   "distractors": [
+    [
+     25,
+     34,
+     3,
+     6
+    ]
+   ],
+   "name": "chain-t1-s1000-0120",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "sub",
+    "sub"
+   ],
+   "steps": [
+    "Subtract 6.",
+    "Subtract 3."
+   ],
+   "start": 27,
+   "intermediates": [
+    21
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 18,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nSubtract 6.\nSubtract 3.\nThe starting number is 27. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 27 and apply the steps below, in order.\nSubtract 6.\nSubtract 3.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    3,
+    6,
+    27
+   ],
+   "distractors": [
+    [
+     27,
+     18,
+     3,
+     6
+    ]
+   ],
+   "name": "chain-t1-s1000-0155",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 5.",
+    "Add 3."
+   ],
+   "start": 25,
+   "intermediates": [
+    30
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 33,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 5.\nAdd 3.\nThe starting number is 25. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 25 and apply the steps below, in order.\nAdd 5.\nAdd 3.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    3,
+    5,
+    25
+   ],
+   "distractors": [
+    [
+     25,
+     33,
+     3,
+     5
+    ]
+   ],
+   "name": "chain-t1-s1000-0167",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "double"
+   ],
+   "steps": [
+    "Add 2.",
+    "Double it."
+   ],
+   "start": 19,
+   "intermediates": [
+    21
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 42,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 2.\nDouble it.\nThe starting number is 19. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 19 and apply the steps below, in order.\nAdd 2.\nDouble it.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    2,
+    19
+   ],
+   "distractors": [
+    [
+     19,
+     42,
+     2,
+     20
+    ]
+   ],
+   "name": "chain-t1-s1000-0169",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 9.",
+    "Add 7."
+   ],
+   "start": 6,
+   "intermediates": [
+    15
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 22,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 9.\nAdd 7.\nThe starting number is 6. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 6 and apply the steps below, in order.\nAdd 9.\nAdd 7.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    6,
+    7,
+    9
+   ],
+   "distractors": [
+    [
+     6,
+     22,
+     7,
+     9
+    ]
+   ],
+   "name": "chain-t1-s1000-0193",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "sub",
+    "sub"
+   ],
+   "steps": [
+    "Subtract 6.",
+    "Subtract 9."
+   ],
+   "start": 18,
+   "intermediates": [
+    12
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 3,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nSubtract 6.\nSubtract 9.\nThe starting number is 18. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 18 and apply the steps below, in order.\nSubtract 6.\nSubtract 9.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    6,
+    9,
+    18
+   ],
+   "distractors": [
+    [
+     18,
+     3,
+     6,
+     9
+    ]
+   ],
+   "name": "chain-t1-s1000-0195",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 7.",
+    "Add 9."
+   ],
+   "start": 5,
+   "intermediates": [
+    12
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 21,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 7.\nAdd 9.\nThe starting number is 5. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 5 and apply the steps below, in order.\nAdd 7.\nAdd 9.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    5,
+    7,
+    9
+   ],
+   "distractors": [
+    [
+     5,
+     21,
+     7,
+     9
+    ]
+   ],
+   "name": "chain-t1-s1000-0203",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "sub",
+    "add"
+   ],
+   "steps": [
+    "Subtract 6.",
+    "Add 2."
+   ],
+   "start": 30,
+   "intermediates": [
+    24
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 26,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nSubtract 6.\nAdd 2.\nThe starting number is 30. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 30 and apply the steps below, in order.\nSubtract 6.\nAdd 2.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    2,
+    6,
+    30
+   ],
+   "distractors": [
+    [
+     30,
+     26,
+     2,
+     6
+    ]
+   ],
+   "name": "chain-t1-s1000-0204",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 2.",
+    "Add 5."
+   ],
+   "start": 24,
+   "intermediates": [
+    26
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 31,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 2.\nAdd 5.\nThe starting number is 24. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 24 and apply the steps below, in order.\nAdd 2.\nAdd 5.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    2,
+    5,
+    24
+   ],
+   "distractors": [
+    [
+     24,
+     31,
+     2,
+     5
+    ]
+   ],
+   "name": "chain-t1-s1000-0210",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "sub",
+    "sub"
+   ],
+   "steps": [
+    "Subtract 4.",
+    "Subtract 5."
+   ],
+   "start": 28,
+   "intermediates": [
+    24
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 19,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nSubtract 4.\nSubtract 5.\nThe starting number is 28. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 28 and apply the steps below, in order.\nSubtract 4.\nSubtract 5.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    4,
+    5,
+    28
+   ],
+   "distractors": [
+    [
+     28,
+     19,
+     4,
+     5
+    ]
+   ],
+   "name": "chain-t1-s1000-0214",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "sub",
+    "add"
+   ],
+   "steps": [
+    "Subtract 7.",
+    "Add 4."
+   ],
+   "start": 30,
+   "intermediates": [
+    23
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 27,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nSubtract 7.\nAdd 4.\nThe starting number is 30. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 30 and apply the steps below, in order.\nSubtract 7.\nAdd 4.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    4,
+    7,
+    30
+   ],
+   "distractors": [
+    [
+     30,
+     27,
+     4,
+     7
+    ]
+   ],
+   "name": "chain-t1-s1000-0226",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "sub",
+    "add"
+   ],
+   "steps": [
+    "Subtract 6.",
+    "Add 2."
+   ],
+   "start": 18,
+   "intermediates": [
+    12
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 14,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nSubtract 6.\nAdd 2.\nThe starting number is 18. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 18 and apply the steps below, in order.\nSubtract 6.\nAdd 2.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    2,
+    6,
+    18
+   ],
+   "distractors": [
+    [
+     18,
+     14,
+     2,
+     6
+    ]
+   ],
+   "name": "chain-t1-s1000-0237",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "sub",
+    "add"
+   ],
+   "steps": [
+    "Subtract 2.",
+    "Add 6."
+   ],
+   "start": 14,
+   "intermediates": [
+    12
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 18,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nSubtract 2.\nAdd 6.\nThe starting number is 14. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 14 and apply the steps below, in order.\nSubtract 2.\nAdd 6.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    2,
+    6,
+    14
+   ],
+   "distractors": [
+    [
+     14,
+     18,
+     2,
+     6
+    ]
+   ],
+   "name": "chain-t1-s1000-0249",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "double"
+   ],
+   "steps": [
+    "Add 2.",
+    "Double it."
+   ],
+   "start": 9,
+   "intermediates": [
+    11
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 22,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 2.\nDouble it.\nThe starting number is 9. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 9 and apply the steps below, in order.\nAdd 2.\nDouble it.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    2,
+    9
+   ],
+   "distractors": [
+    [
+     9,
+     22,
+     2,
+     10
+    ]
+   ],
+   "name": "chain-t1-s1000-0251",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 8.",
+    "Add 3."
+   ],
+   "start": 10,
+   "intermediates": [
+    18
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 21,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 8.\nAdd 3.\nThe starting number is 10. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 10 and apply the steps below, in order.\nAdd 8.\nAdd 3.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    3,
+    8,
+    10
+   ],
+   "distractors": [
+    [
+     10,
+     21,
+     3,
+     8
+    ]
+   ],
+   "name": "chain-t1-s1000-0268",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 7.",
+    "Add 7."
+   ],
+   "start": 24,
+   "intermediates": [
+    31
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 38,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 7.\nAdd 7.\nThe starting number is 24. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 24 and apply the steps below, in order.\nAdd 7.\nAdd 7.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    7,
+    24
+   ],
+   "distractors": [
+    [
+     24,
+     38,
+     7,
+     30
+    ]
+   ],
+   "name": "chain-t1-s1000-0290",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "sub"
+   ],
+   "steps": [
+    "Add 6.",
+    "Subtract 5."
+   ],
+   "start": 12,
+   "intermediates": [
+    18
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 13,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 6.\nSubtract 5.\nThe starting number is 12. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 12 and apply the steps below, in order.\nAdd 6.\nSubtract 5.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    5,
+    6,
+    12
+   ],
+   "distractors": [
+    [
+     12,
+     13,
+     5,
+     6
+    ]
+   ],
+   "name": "chain-t1-s1000-0307",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "sub",
+    "add"
+   ],
+   "steps": [
+    "Subtract 5.",
+    "Add 4."
+   ],
+   "start": 30,
+   "intermediates": [
+    25
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 29,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nSubtract 5.\nAdd 4.\nThe starting number is 30. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 30 and apply the steps below, in order.\nSubtract 5.\nAdd 4.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    4,
+    5,
+    30
+   ],
+   "distractors": [
+    [
+     30,
+     29,
+     4,
+     5
+    ]
+   ],
+   "name": "chain-t1-s1000-0309",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 3.",
+    "Add 2."
+   ],
+   "start": 30,
+   "intermediates": [
+    33
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 35,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 3.\nAdd 2.\nThe starting number is 30. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 30 and apply the steps below, in order.\nAdd 3.\nAdd 2.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    2,
+    3,
+    30
+   ],
+   "distractors": [
+    [
+     30,
+     35,
+     2,
+     3
+    ]
+   ],
+   "name": "chain-t1-s1000-0322",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 8.",
+    "Add 5."
+   ],
+   "start": 28,
+   "intermediates": [
+    36
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 41,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 8.\nAdd 5.\nThe starting number is 28. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 28 and apply the steps below, in order.\nAdd 8.\nAdd 5.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    5,
+    8,
+    28
+   ],
+   "distractors": [
+    [
+     28,
+     41,
+     5,
+     8
+    ]
+   ],
+   "name": "chain-t1-s1000-0333",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "sub"
+   ],
+   "steps": [
+    "Add 7.",
+    "Subtract 8."
+   ],
+   "start": 28,
+   "intermediates": [
+    35
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 27,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 7.\nSubtract 8.\nThe starting number is 28. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 28 and apply the steps below, in order.\nAdd 7.\nSubtract 8.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    7,
+    8,
+    28
+   ],
+   "distractors": [
+    [
+     28,
+     27,
+     7,
+     8
+    ]
+   ],
+   "name": "chain-t1-s1000-0339",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "sub",
+    "sub"
+   ],
+   "steps": [
+    "Subtract 7.",
+    "Subtract 6."
+   ],
+   "start": 16,
+   "intermediates": [
+    9
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 3,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nSubtract 7.\nSubtract 6.\nThe starting number is 16. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 16 and apply the steps below, in order.\nSubtract 7.\nSubtract 6.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    6,
+    7,
+    16
+   ],
+   "distractors": [
+    [
+     16,
+     3,
+     6,
+     7
+    ]
+   ],
+   "name": "chain-t1-s1000-0355",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "double"
+   ],
+   "steps": [
+    "Add 3.",
+    "Double it."
+   ],
+   "start": 14,
+   "intermediates": [
+    17
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 34,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 3.\nDouble it.\nThe starting number is 14. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 14 and apply the steps below, in order.\nAdd 3.\nDouble it.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    3,
+    14
+   ],
+   "distractors": [
+    [
+     14,
+     34,
+     3,
+     16
+    ]
+   ],
+   "name": "chain-t1-s1000-0369",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 5.",
+    "Add 3."
+   ],
+   "start": 26,
+   "intermediates": [
+    31
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 34,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 5.\nAdd 3.\nThe starting number is 26. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 26 and apply the steps below, in order.\nAdd 5.\nAdd 3.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    3,
+    5,
+    26
+   ],
+   "distractors": [
+    [
+     26,
+     34,
+     3,
+     5
+    ]
+   ],
+   "name": "chain-t1-s1000-0375",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 8.",
+    "Add 4."
+   ],
+   "start": 19,
+   "intermediates": [
+    27
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 31,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 8.\nAdd 4.\nThe starting number is 19. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 19 and apply the steps below, in order.\nAdd 8.\nAdd 4.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    4,
+    8,
+    19
+   ],
+   "distractors": [
+    [
+     19,
+     31,
+     4,
+     8
+    ]
+   ],
+   "name": "chain-t1-s1001-0007",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 7.",
+    "Add 7."
+   ],
+   "start": 29,
+   "intermediates": [
+    36
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 43,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 7.\nAdd 7.\nThe starting number is 29. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 29 and apply the steps below, in order.\nAdd 7.\nAdd 7.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    7,
+    29
+   ],
+   "distractors": [
+    [
+     29,
+     43,
+     7,
+     35
+    ]
+   ],
+   "name": "chain-t1-s1001-0009",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 5.",
+    "Add 5."
+   ],
+   "start": 26,
+   "intermediates": [
+    31
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 36,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 5.\nAdd 5.\nThe starting number is 26. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 26 and apply the steps below, in order.\nAdd 5.\nAdd 5.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    5,
+    26
+   ],
+   "distractors": [
+    [
+     26,
+     36,
+     5,
+     30
+    ]
+   ],
+   "name": "chain-t1-s1001-0014",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "sub"
+   ],
+   "steps": [
+    "Add 5.",
+    "Subtract 6."
+   ],
+   "start": 18,
+   "intermediates": [
+    23
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 17,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 5.\nSubtract 6.\nThe starting number is 18. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 18 and apply the steps below, in order.\nAdd 5.\nSubtract 6.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    5,
+    6,
+    18
+   ],
+   "distractors": [
+    [
+     18,
+     17,
+     5,
+     6
+    ]
+   ],
+   "name": "chain-t1-s1001-0029",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "sub",
+    "sub"
+   ],
+   "steps": [
+    "Subtract 4.",
+    "Subtract 4."
+   ],
+   "start": 30,
+   "intermediates": [
+    26
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 22,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nSubtract 4.\nSubtract 4.\nThe starting number is 30. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 30 and apply the steps below, in order.\nSubtract 4.\nSubtract 4.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    4,
+    30
+   ],
+   "distractors": [
+    [
+     30,
+     22,
+     4,
+     25
+    ]
+   ],
+   "name": "chain-t1-s1001-0032",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "sub",
+    "add"
+   ],
+   "steps": [
+    "Subtract 7.",
+    "Add 2."
+   ],
+   "start": 30,
+   "intermediates": [
+    23
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 25,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nSubtract 7.\nAdd 2.\nThe starting number is 30. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 30 and apply the steps below, in order.\nSubtract 7.\nAdd 2.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    2,
+    7,
+    30
+   ],
+   "distractors": [
+    [
+     30,
+     25,
+     2,
+     7
+    ]
+   ],
+   "name": "chain-t1-s1001-0041",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "sub",
+    "sub"
+   ],
+   "steps": [
+    "Subtract 6.",
+    "Subtract 9."
+   ],
+   "start": 29,
+   "intermediates": [
+    23
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 14,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nSubtract 6.\nSubtract 9.\nThe starting number is 29. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 29 and apply the steps below, in order.\nSubtract 6.\nSubtract 9.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    6,
+    9,
+    29
+   ],
+   "distractors": [
+    [
+     29,
+     14,
+     6,
+     9
+    ]
+   ],
+   "name": "chain-t1-s1001-0043",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "sub",
+    "sub"
+   ],
+   "steps": [
+    "Subtract 8.",
+    "Subtract 8."
+   ],
+   "start": 26,
+   "intermediates": [
+    18
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 10,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nSubtract 8.\nSubtract 8.\nThe starting number is 26. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 26 and apply the steps below, in order.\nSubtract 8.\nSubtract 8.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    8,
+    26
+   ],
+   "distractors": [
+    [
+     26,
+     10,
+     8,
+     17
+    ]
+   ],
+   "name": "chain-t1-s1001-0061",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 8.",
+    "Add 4."
+   ],
+   "start": 9,
+   "intermediates": [
+    17
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 21,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 8.\nAdd 4.\nThe starting number is 9. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 9 and apply the steps below, in order.\nAdd 8.\nAdd 4.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    4,
+    8,
+    9
+   ],
+   "distractors": [
+    [
+     9,
+     21,
+     4,
+     8
+    ]
+   ],
+   "name": "chain-t1-s1001-0068",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "sub",
+    "sub"
+   ],
+   "steps": [
+    "Subtract 9.",
+    "Subtract 5."
+   ],
+   "start": 30,
+   "intermediates": [
+    21
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 16,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nSubtract 9.\nSubtract 5.\nThe starting number is 30. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 30 and apply the steps below, in order.\nSubtract 9.\nSubtract 5.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    5,
+    9,
+    30
+   ],
+   "distractors": [
+    [
+     30,
+     16,
+     5,
+     9
+    ]
+   ],
+   "name": "chain-t1-s1001-0090",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 9.",
+    "Add 2."
+   ],
+   "start": 10,
+   "intermediates": [
+    19
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 21,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 9.\nAdd 2.\nThe starting number is 10. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 10 and apply the steps below, in order.\nAdd 9.\nAdd 2.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    2,
+    9,
+    10
+   ],
+   "distractors": [
+    [
+     10,
+     21,
+     2,
+     9
+    ]
+   ],
+   "name": "chain-t1-s1001-0125",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 3.",
+    "Add 7."
+   ],
+   "start": 2,
+   "intermediates": [
+    5
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 12,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 3.\nAdd 7.\nThe starting number is 2. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 2 and apply the steps below, in order.\nAdd 3.\nAdd 7.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    2,
+    3,
+    7
+   ],
+   "distractors": [
+    [
+     2,
+     12,
+     3,
+     7
+    ]
+   ],
+   "name": "chain-t1-s1001-0137",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 5.",
+    "Add 4."
+   ],
+   "start": 23,
+   "intermediates": [
+    28
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 32,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 5.\nAdd 4.\nThe starting number is 23. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 23 and apply the steps below, in order.\nAdd 5.\nAdd 4.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    4,
+    5,
+    23
+   ],
+   "distractors": [
+    [
+     23,
+     32,
+     4,
+     5
+    ]
+   ],
+   "name": "chain-t1-s1001-0138",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "sub",
+    "sub"
+   ],
+   "steps": [
+    "Subtract 2.",
+    "Subtract 4."
+   ],
+   "start": 30,
+   "intermediates": [
+    28
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 24,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nSubtract 2.\nSubtract 4.\nThe starting number is 30. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 30 and apply the steps below, in order.\nSubtract 2.\nSubtract 4.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    2,
+    4,
+    30
+   ],
+   "distractors": [
+    [
+     30,
+     24,
+     2,
+     4
+    ]
+   ],
+   "name": "chain-t1-s1001-0147",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "double"
+   ],
+   "steps": [
+    "Add 9.",
+    "Double it."
+   ],
+   "start": 18,
+   "intermediates": [
+    27
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 54,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 9.\nDouble it.\nThe starting number is 18. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 18 and apply the steps below, in order.\nAdd 9.\nDouble it.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    9,
+    18
+   ],
+   "distractors": [
+    [
+     18,
+     54,
+     9,
+     26
+    ]
+   ],
+   "name": "chain-t1-s1001-0160",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 7.",
+    "Add 5."
+   ],
+   "start": 21,
+   "intermediates": [
+    28
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 33,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 7.\nAdd 5.\nThe starting number is 21. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 21 and apply the steps below, in order.\nAdd 7.\nAdd 5.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    5,
+    7,
+    21
+   ],
+   "distractors": [
+    [
+     21,
+     33,
+     5,
+     7
+    ]
+   ],
+   "name": "chain-t1-s1001-0183",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 8.",
+    "Add 5."
+   ],
+   "start": 9,
+   "intermediates": [
+    17
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 22,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 8.\nAdd 5.\nThe starting number is 9. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 9 and apply the steps below, in order.\nAdd 8.\nAdd 5.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    5,
+    8,
+    9
+   ],
+   "distractors": [
+    [
+     9,
+     22,
+     5,
+     8
+    ]
+   ],
+   "name": "chain-t1-s1001-0189",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "sub",
+    "sub"
+   ],
+   "steps": [
+    "Subtract 8.",
+    "Subtract 8."
+   ],
+   "start": 21,
+   "intermediates": [
+    13
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 5,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nSubtract 8.\nSubtract 8.\nThe starting number is 21. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 21 and apply the steps below, in order.\nSubtract 8.\nSubtract 8.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    8,
+    21
+   ],
+   "distractors": [
+    [
+     21,
+     5,
+     8,
+     12
+    ]
+   ],
+   "name": "chain-t1-s1001-0191",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "double",
+    "sub"
+   ],
+   "steps": [
+    "Double it.",
+    "Subtract 3."
+   ],
+   "start": 8,
+   "intermediates": [
+    16
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 13,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nDouble it.\nSubtract 3.\nThe starting number is 8. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 8 and apply the steps below, in order.\nDouble it.\nSubtract 3.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    3,
+    8
+   ],
+   "distractors": [
+    [
+     8,
+     13,
+     3,
+     15
+    ]
+   ],
+   "name": "chain-t1-s1001-0218",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 6.",
+    "Add 3."
+   ],
+   "start": 23,
+   "intermediates": [
+    29
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 32,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 6.\nAdd 3.\nThe starting number is 23. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 23 and apply the steps below, in order.\nAdd 6.\nAdd 3.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    3,
+    6,
+    23
+   ],
+   "distractors": [
+    [
+     23,
+     32,
+     3,
+     6
+    ]
+   ],
+   "name": "chain-t1-s1001-0230",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 2.",
+    "Add 2."
+   ],
+   "start": 19,
+   "intermediates": [
+    21
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 23,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 2.\nAdd 2.\nThe starting number is 19. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 19 and apply the steps below, in order.\nAdd 2.\nAdd 2.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    2,
+    19
+   ],
+   "distractors": [
+    [
+     19,
+     23,
+     2,
+     20
+    ]
+   ],
+   "name": "chain-t1-s1001-0269",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "sub",
+    "sub"
+   ],
+   "steps": [
+    "Subtract 4.",
+    "Subtract 7."
+   ],
+   "start": 28,
+   "intermediates": [
+    24
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 17,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nSubtract 4.\nSubtract 7.\nThe starting number is 28. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 28 and apply the steps below, in order.\nSubtract 4.\nSubtract 7.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    4,
+    7,
+    28
+   ],
+   "distractors": [
+    [
+     28,
+     17,
+     4,
+     7
+    ]
+   ],
+   "name": "chain-t1-s1001-0282",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "sub",
+    "sub"
+   ],
+   "steps": [
+    "Subtract 8.",
+    "Subtract 7."
+   ],
+   "start": 29,
+   "intermediates": [
+    21
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 14,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nSubtract 8.\nSubtract 7.\nThe starting number is 29. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 29 and apply the steps below, in order.\nSubtract 8.\nSubtract 7.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    7,
+    8,
+    29
+   ],
+   "distractors": [
+    [
+     29,
+     14,
+     7,
+     8
+    ]
+   ],
+   "name": "chain-t1-s1001-0325",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "sub",
+    "sub"
+   ],
+   "steps": [
+    "Subtract 2.",
+    "Subtract 3."
+   ],
+   "start": 24,
+   "intermediates": [
+    22
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 19,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nSubtract 2.\nSubtract 3.\nThe starting number is 24. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 24 and apply the steps below, in order.\nSubtract 2.\nSubtract 3.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    2,
+    3,
+    24
+   ],
+   "distractors": [
+    [
+     24,
+     19,
+     2,
+     3
+    ]
+   ],
+   "name": "chain-t1-s1001-0329",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "double"
+   ],
+   "steps": [
+    "Add 3.",
+    "Double it."
+   ],
+   "start": 8,
+   "intermediates": [
+    11
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 22,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 3.\nDouble it.\nThe starting number is 8. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 8 and apply the steps below, in order.\nAdd 3.\nDouble it.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    3,
+    8
+   ],
+   "distractors": [
+    [
+     8,
+     22,
+     3,
+     10
+    ]
+   ],
+   "name": "chain-t1-s1001-0332",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 3.",
+    "Add 7."
+   ],
+   "start": 10,
+   "intermediates": [
+    13
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 20,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 3.\nAdd 7.\nThe starting number is 10. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 10 and apply the steps below, in order.\nAdd 3.\nAdd 7.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    3,
+    7,
+    10
+   ],
+   "distractors": [
+    [
+     10,
+     20,
+     3,
+     7
+    ]
+   ],
+   "name": "chain-t1-s1001-0342",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "sub",
+    "sub"
+   ],
+   "steps": [
+    "Subtract 7.",
+    "Subtract 7."
+   ],
+   "start": 28,
+   "intermediates": [
+    21
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 14,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nSubtract 7.\nSubtract 7.\nThe starting number is 28. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 28 and apply the steps below, in order.\nSubtract 7.\nSubtract 7.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    7,
+    28
+   ],
+   "distractors": [
+    [
+     28,
+     14,
+     7,
+     20
+    ]
+   ],
+   "name": "chain-t1-s1001-0354",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 5.",
+    "Add 5."
+   ],
+   "start": 24,
+   "intermediates": [
+    29
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 34,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 5.\nAdd 5.\nThe starting number is 24. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 24 and apply the steps below, in order.\nAdd 5.\nAdd 5.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    5,
+    24
+   ],
+   "distractors": [
+    [
+     24,
+     34,
+     5,
+     28
+    ]
+   ],
+   "name": "chain-t1-s1001-0366",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 5.",
+    "Add 5."
+   ],
+   "start": 23,
+   "intermediates": [
+    28
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 33,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 5.\nAdd 5.\nThe starting number is 23. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 23 and apply the steps below, in order.\nAdd 5.\nAdd 5.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    5,
+    23
+   ],
+   "distractors": [
+    [
+     23,
+     33,
+     5,
+     27
+    ]
+   ],
+   "name": "chain-t1-s1001-0368",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "sub",
+    "sub"
+   ],
+   "steps": [
+    "Subtract 5.",
+    "Subtract 3."
+   ],
+   "start": 27,
+   "intermediates": [
+    22
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 19,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nSubtract 5.\nSubtract 3.\nThe starting number is 27. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 27 and apply the steps below, in order.\nSubtract 5.\nSubtract 3.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    3,
+    5,
+    27
+   ],
+   "distractors": [
+    [
+     27,
+     19,
+     3,
+     5
+    ]
+   ],
+   "name": "chain-t1-s1001-0376",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 2.",
+    "Add 2."
+   ],
+   "start": 12,
+   "intermediates": [
+    14
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 16,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 2.\nAdd 2.\nThe starting number is 12. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 12 and apply the steps below, in order.\nAdd 2.\nAdd 2.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    2,
+    12
+   ],
+   "distractors": [
+    [
+     12,
+     16,
+     2,
+     13
+    ]
+   ],
+   "name": "chain-t1-s1001-0387",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 3.",
+    "Add 3."
+   ],
+   "start": 20,
+   "intermediates": [
+    23
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 26,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 3.\nAdd 3.\nThe starting number is 20. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 20 and apply the steps below, in order.\nAdd 3.\nAdd 3.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    3,
+    20
+   ],
+   "distractors": [
+    [
+     20,
+     26,
+     3,
+     22
+    ]
+   ],
+   "name": "chain-t1-s1002-0001",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "sub",
+    "sub"
+   ],
+   "steps": [
+    "Subtract 3.",
+    "Subtract 3."
+   ],
+   "start": 11,
+   "intermediates": [
+    8
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 5,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nSubtract 3.\nSubtract 3.\nThe starting number is 11. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 11 and apply the steps below, in order.\nSubtract 3.\nSubtract 3.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    3,
+    11
+   ],
+   "distractors": [
+    [
+     11,
+     5,
+     3,
+     7
+    ]
+   ],
+   "name": "chain-t1-s1002-0007",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "sub",
+    "sub"
+   ],
+   "steps": [
+    "Subtract 3.",
+    "Subtract 5."
+   ],
+   "start": 10,
+   "intermediates": [
+    7
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 2,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nSubtract 3.\nSubtract 5.\nThe starting number is 10. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 10 and apply the steps below, in order.\nSubtract 3.\nSubtract 5.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    3,
+    5,
+    10
+   ],
+   "distractors": [
+    [
+     10,
+     2,
+     3,
+     5
+    ]
+   ],
+   "name": "chain-t1-s1002-0010",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 9.",
+    "Add 5."
+   ],
+   "start": 16,
+   "intermediates": [
+    25
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 30,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 9.\nAdd 5.\nThe starting number is 16. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 16 and apply the steps below, in order.\nAdd 9.\nAdd 5.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    5,
+    9,
+    16
+   ],
+   "distractors": [
+    [
+     16,
+     30,
+     5,
+     9
+    ]
+   ],
+   "name": "chain-t1-s1002-0015",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "sub"
+   ],
+   "steps": [
+    "Add 8.",
+    "Subtract 9."
+   ],
+   "start": 30,
+   "intermediates": [
+    38
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 29,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 8.\nSubtract 9.\nThe starting number is 30. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 30 and apply the steps below, in order.\nAdd 8.\nSubtract 9.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    8,
+    9,
+    30
+   ],
+   "distractors": [
+    [
+     30,
+     29,
+     8,
+     9
+    ]
+   ],
+   "name": "chain-t1-s1002-0034",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "sub",
+    "sub"
+   ],
+   "steps": [
+    "Subtract 2.",
+    "Subtract 3."
+   ],
+   "start": 18,
+   "intermediates": [
+    16
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 13,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nSubtract 2.\nSubtract 3.\nThe starting number is 18. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 18 and apply the steps below, in order.\nSubtract 2.\nSubtract 3.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    2,
+    3,
+    18
+   ],
+   "distractors": [
+    [
+     18,
+     13,
+     2,
+     3
+    ]
+   ],
+   "name": "chain-t1-s1002-0038",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 9.",
+    "Add 8."
+   ],
+   "start": 5,
+   "intermediates": [
+    14
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 22,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 9.\nAdd 8.\nThe starting number is 5. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 5 and apply the steps below, in order.\nAdd 9.\nAdd 8.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    5,
+    8,
+    9
+   ],
+   "distractors": [
+    [
+     5,
+     22,
+     8,
+     9
+    ]
+   ],
+   "name": "chain-t1-s1002-0068",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 5.",
+    "Add 3."
+   ],
+   "start": 3,
+   "intermediates": [
+    8
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 11,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 5.\nAdd 3.\nThe starting number is 3. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 3 and apply the steps below, in order.\nAdd 5.\nAdd 3.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    3,
+    5
+   ],
+   "distractors": [
+    [
+     3,
+     11,
+     5,
+     7
+    ]
+   ],
+   "name": "chain-t1-s1002-0073",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 7.",
+    "Add 4."
+   ],
+   "start": 25,
+   "intermediates": [
+    32
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 36,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 7.\nAdd 4.\nThe starting number is 25. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 25 and apply the steps below, in order.\nAdd 7.\nAdd 4.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    4,
+    7,
+    25
+   ],
+   "distractors": [
+    [
+     25,
+     36,
+     4,
+     7
+    ]
+   ],
+   "name": "chain-t1-s1002-0076",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "sub",
+    "sub"
+   ],
+   "steps": [
+    "Subtract 9.",
+    "Subtract 8."
+   ],
+   "start": 22,
+   "intermediates": [
+    13
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 5,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nSubtract 9.\nSubtract 8.\nThe starting number is 22. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 22 and apply the steps below, in order.\nSubtract 9.\nSubtract 8.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    8,
+    9,
+    22
+   ],
+   "distractors": [
+    [
+     22,
+     5,
+     8,
+     9
+    ]
+   ],
+   "name": "chain-t1-s1002-0079",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 9.",
+    "Add 5."
+   ],
+   "start": 19,
+   "intermediates": [
+    28
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 33,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 9.\nAdd 5.\nThe starting number is 19. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 19 and apply the steps below, in order.\nAdd 9.\nAdd 5.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    5,
+    9,
+    19
+   ],
+   "distractors": [
+    [
+     19,
+     33,
+     5,
+     9
+    ]
+   ],
+   "name": "chain-t1-s1002-0123",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "sub",
+    "sub"
+   ],
+   "steps": [
+    "Subtract 6.",
+    "Subtract 6."
+   ],
+   "start": 28,
+   "intermediates": [
+    22
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 16,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nSubtract 6.\nSubtract 6.\nThe starting number is 28. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 28 and apply the steps below, in order.\nSubtract 6.\nSubtract 6.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    6,
+    28
+   ],
+   "distractors": [
+    [
+     28,
+     16,
+     6,
+     21
+    ]
+   ],
+   "name": "chain-t1-s1002-0133",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 2.",
+    "Add 5."
+   ],
+   "start": 26,
+   "intermediates": [
+    28
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 33,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 2.\nAdd 5.\nThe starting number is 26. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 26 and apply the steps below, in order.\nAdd 2.\nAdd 5.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    2,
+    5,
+    26
+   ],
+   "distractors": [
+    [
+     26,
+     33,
+     2,
+     5
+    ]
+   ],
+   "name": "chain-t1-s1002-0165",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "double"
+   ],
+   "steps": [
+    "Add 6.",
+    "Double it."
+   ],
+   "start": 19,
+   "intermediates": [
+    25
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 50,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 6.\nDouble it.\nThe starting number is 19. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 19 and apply the steps below, in order.\nAdd 6.\nDouble it.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    6,
+    19
+   ],
+   "distractors": [
+    [
+     19,
+     50,
+     6,
+     24
+    ]
+   ],
+   "name": "chain-t1-s1002-0213",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "sub",
+    "sub"
+   ],
+   "steps": [
+    "Subtract 8.",
+    "Subtract 9."
+   ],
+   "start": 28,
+   "intermediates": [
+    20
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 11,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nSubtract 8.\nSubtract 9.\nThe starting number is 28. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 28 and apply the steps below, in order.\nSubtract 8.\nSubtract 9.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    8,
+    9,
+    28
+   ],
+   "distractors": [
+    [
+     28,
+     11,
+     8,
+     9
+    ]
+   ],
+   "name": "chain-t1-s1002-0215",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 5.",
+    "Add 5."
+   ],
+   "start": 5,
+   "intermediates": [
+    10
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 15,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 5.\nAdd 5.\nThe starting number is 5. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 5 and apply the steps below, in order.\nAdd 5.\nAdd 5.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    5
+   ],
+   "distractors": [
+    [
+     5,
+     15,
+     9,
+     11
+    ]
+   ],
+   "name": "chain-t1-s1002-0216",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 4.",
+    "Add 7."
+   ],
+   "start": 19,
+   "intermediates": [
+    23
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 30,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 4.\nAdd 7.\nThe starting number is 19. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 19 and apply the steps below, in order.\nAdd 4.\nAdd 7.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    4,
+    7,
+    19
+   ],
+   "distractors": [
+    [
+     19,
+     30,
+     4,
+     7
+    ]
+   ],
+   "name": "chain-t1-s1002-0223",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 2.",
+    "Add 2."
+   ],
+   "start": 29,
+   "intermediates": [
+    31
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 33,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 2.\nAdd 2.\nThe starting number is 29. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 29 and apply the steps below, in order.\nAdd 2.\nAdd 2.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    2,
+    29
+   ],
+   "distractors": [
+    [
+     29,
+     33,
+     2,
+     30
+    ]
+   ],
+   "name": "chain-t1-s1002-0231",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "sub",
+    "double"
+   ],
+   "steps": [
+    "Subtract 3.",
+    "Double it."
+   ],
+   "start": 5,
+   "intermediates": [
+    2
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 4,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nSubtract 3.\nDouble it.\nThe starting number is 5. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 5 and apply the steps below, in order.\nSubtract 3.\nDouble it.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    3,
+    5
+   ],
+   "distractors": [
+    [
+     5,
+     4,
+     3,
+     1
+    ]
+   ],
+   "name": "chain-t1-s1002-0258",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "sub",
+    "sub"
+   ],
+   "steps": [
+    "Subtract 7.",
+    "Subtract 8."
+   ],
+   "start": 29,
+   "intermediates": [
+    22
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 14,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nSubtract 7.\nSubtract 8.\nThe starting number is 29. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 29 and apply the steps below, in order.\nSubtract 7.\nSubtract 8.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    7,
+    8,
+    29
+   ],
+   "distractors": [
+    [
+     29,
+     14,
+     7,
+     8
+    ]
+   ],
+   "name": "chain-t1-s1002-0273",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "sub",
+    "sub"
+   ],
+   "steps": [
+    "Subtract 2.",
+    "Subtract 8."
+   ],
+   "start": 13,
+   "intermediates": [
+    11
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 3,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nSubtract 2.\nSubtract 8.\nThe starting number is 13. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 13 and apply the steps below, in order.\nSubtract 2.\nSubtract 8.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    2,
+    8,
+    13
+   ],
+   "distractors": [
+    [
+     13,
+     3,
+     2,
+     8
+    ]
+   ],
+   "name": "chain-t1-s1002-0274",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 3.",
+    "Add 3."
+   ],
+   "start": 30,
+   "intermediates": [
+    33
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 36,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 3.\nAdd 3.\nThe starting number is 30. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 30 and apply the steps below, in order.\nAdd 3.\nAdd 3.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    3,
+    30
+   ],
+   "distractors": [
+    [
+     30,
+     36,
+     3,
+     32
+    ]
+   ],
+   "name": "chain-t1-s1002-0294",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "sub",
+    "sub"
+   ],
+   "steps": [
+    "Subtract 9.",
+    "Subtract 8."
+   ],
+   "start": 28,
+   "intermediates": [
+    19
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 11,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nSubtract 9.\nSubtract 8.\nThe starting number is 28. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 28 and apply the steps below, in order.\nSubtract 9.\nSubtract 8.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    8,
+    9,
+    28
+   ],
+   "distractors": [
+    [
+     28,
+     11,
+     8,
+     9
+    ]
+   ],
+   "name": "chain-t1-s1002-0300",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 9.",
+    "Add 6."
+   ],
+   "start": 17,
+   "intermediates": [
+    26
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 32,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 9.\nAdd 6.\nThe starting number is 17. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 17 and apply the steps below, in order.\nAdd 9.\nAdd 6.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    6,
+    9,
+    17
+   ],
+   "distractors": [
+    [
+     17,
+     32,
+     6,
+     9
+    ]
+   ],
+   "name": "chain-t1-s1002-0329",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "sub",
+    "sub"
+   ],
+   "steps": [
+    "Subtract 6.",
+    "Subtract 6."
+   ],
+   "start": 14,
+   "intermediates": [
+    8
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 2,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nSubtract 6.\nSubtract 6.\nThe starting number is 14. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 14 and apply the steps below, in order.\nSubtract 6.\nSubtract 6.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    6,
+    14
+   ],
+   "distractors": [
+    [
+     14,
+     2,
+     6,
+     7
+    ]
+   ],
+   "name": "chain-t1-s1002-0334",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 9.",
+    "Add 7."
+   ],
+   "start": 7,
+   "intermediates": [
+    16
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 23,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 9.\nAdd 7.\nThe starting number is 7. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 7 and apply the steps below, in order.\nAdd 9.\nAdd 7.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    7,
+    9
+   ],
+   "distractors": [
+    [
+     7,
+     23,
+     9,
+     15
+    ]
+   ],
+   "name": "chain-t1-s1002-0353",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 6.",
+    "Add 6."
+   ],
+   "start": 27,
+   "intermediates": [
+    33
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 39,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 6.\nAdd 6.\nThe starting number is 27. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 27 and apply the steps below, in order.\nAdd 6.\nAdd 6.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    6,
+    27
+   ],
+   "distractors": [
+    [
+     27,
+     39,
+     6,
+     32
+    ]
+   ],
+   "name": "chain-t1-s1002-0370",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 7.",
+    "Add 2."
+   ],
+   "start": 26,
+   "intermediates": [
+    33
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 35,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 7.\nAdd 2.\nThe starting number is 26. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 26 and apply the steps below, in order.\nAdd 7.\nAdd 2.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    2,
+    7,
+    26
+   ],
+   "distractors": [
+    [
+     26,
+     35,
+     2,
+     7
+    ]
+   ],
+   "name": "chain-t1-s1002-0377",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "sub",
+    "sub"
+   ],
+   "steps": [
+    "Subtract 5.",
+    "Subtract 3."
+   ],
+   "start": 26,
+   "intermediates": [
+    21
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 18,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nSubtract 5.\nSubtract 3.\nThe starting number is 26. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 26 and apply the steps below, in order.\nSubtract 5.\nSubtract 3.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    3,
+    5,
+    26
+   ],
+   "distractors": [
+    [
+     26,
+     18,
+     3,
+     5
+    ]
+   ],
+   "name": "chain-t1-s1003-0001",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 7.",
+    "Add 6."
+   ],
+   "start": 7,
+   "intermediates": [
+    14
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 20,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 7.\nAdd 6.\nThe starting number is 7. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 7 and apply the steps below, in order.\nAdd 7.\nAdd 6.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    6,
+    7
+   ],
+   "distractors": [
+    [
+     7,
+     20,
+     6,
+     13
+    ]
+   ],
+   "name": "chain-t1-s1003-0011",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 8.",
+    "Add 3."
+   ],
+   "start": 19,
+   "intermediates": [
+    27
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 30,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 8.\nAdd 3.\nThe starting number is 19. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 19 and apply the steps below, in order.\nAdd 8.\nAdd 3.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    3,
+    8,
+    19
+   ],
+   "distractors": [
+    [
+     19,
+     30,
+     3,
+     8
+    ]
+   ],
+   "name": "chain-t1-s1003-0025",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "sub",
+    "sub"
+   ],
+   "steps": [
+    "Subtract 5.",
+    "Subtract 8."
+   ],
+   "start": 28,
+   "intermediates": [
+    23
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 15,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nSubtract 5.\nSubtract 8.\nThe starting number is 28. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 28 and apply the steps below, in order.\nSubtract 5.\nSubtract 8.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    5,
+    8,
+    28
+   ],
+   "distractors": [
+    [
+     28,
+     15,
+     5,
+     8
+    ]
+   ],
+   "name": "chain-t1-s1003-0039",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 7.",
+    "Add 6."
+   ],
+   "start": 19,
+   "intermediates": [
+    26
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 32,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 7.\nAdd 6.\nThe starting number is 19. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 19 and apply the steps below, in order.\nAdd 7.\nAdd 6.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    6,
+    7,
+    19
+   ],
+   "distractors": [
+    [
+     19,
+     32,
+     6,
+     7
+    ]
+   ],
+   "name": "chain-t1-s1003-0057",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 7.",
+    "Add 5."
+   ],
+   "start": 23,
+   "intermediates": [
+    30
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 35,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 7.\nAdd 5.\nThe starting number is 23. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 23 and apply the steps below, in order.\nAdd 7.\nAdd 5.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    5,
+    7,
+    23
+   ],
+   "distractors": [
+    [
+     23,
+     35,
+     5,
+     7
+    ]
+   ],
+   "name": "chain-t1-s1003-0062",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 2.",
+    "Add 8."
+   ],
+   "start": 10,
+   "intermediates": [
+    12
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 20,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 2.\nAdd 8.\nThe starting number is 10. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 10 and apply the steps below, in order.\nAdd 2.\nAdd 8.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    2,
+    8,
+    10
+   ],
+   "distractors": [
+    [
+     10,
+     20,
+     2,
+     8
+    ]
+   ],
+   "name": "chain-t1-s1003-0084",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "sub"
+   ],
+   "steps": [
+    "Add 4.",
+    "Subtract 2."
+   ],
+   "start": 12,
+   "intermediates": [
+    16
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 14,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 4.\nSubtract 2.\nThe starting number is 12. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 12 and apply the steps below, in order.\nAdd 4.\nSubtract 2.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    2,
+    4,
+    12
+   ],
+   "distractors": [
+    [
+     12,
+     14,
+     2,
+     4
+    ]
+   ],
+   "name": "chain-t1-s1003-0085",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "sub"
+   ],
+   "steps": [
+    "Add 5.",
+    "Subtract 2."
+   ],
+   "start": 8,
+   "intermediates": [
+    13
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 11,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 5.\nSubtract 2.\nThe starting number is 8. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 8 and apply the steps below, in order.\nAdd 5.\nSubtract 2.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    2,
+    5,
+    8
+   ],
+   "distractors": [
+    [
+     8,
+     11,
+     2,
+     5
+    ]
+   ],
+   "name": "chain-t1-s1003-0108",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "double"
+   ],
+   "steps": [
+    "Add 9.",
+    "Double it."
+   ],
+   "start": 20,
+   "intermediates": [
+    29
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 58,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 9.\nDouble it.\nThe starting number is 20. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 20 and apply the steps below, in order.\nAdd 9.\nDouble it.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    9,
+    20
+   ],
+   "distractors": [
+    [
+     20,
+     58,
+     9,
+     28
+    ]
+   ],
+   "name": "chain-t1-s1003-0128",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 2.",
+    "Add 2."
+   ],
+   "start": 8,
+   "intermediates": [
+    10
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 12,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 2.\nAdd 2.\nThe starting number is 8. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 8 and apply the steps below, in order.\nAdd 2.\nAdd 2.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    2,
+    8
+   ],
+   "distractors": [
+    [
+     8,
+     12,
+     2,
+     9
+    ]
+   ],
+   "name": "chain-t1-s1003-0131",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "sub"
+   ],
+   "steps": [
+    "Add 3.",
+    "Subtract 6."
+   ],
+   "start": 21,
+   "intermediates": [
+    24
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 18,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 3.\nSubtract 6.\nThe starting number is 21. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 21 and apply the steps below, in order.\nAdd 3.\nSubtract 6.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    3,
+    6,
+    21
+   ],
+   "distractors": [
+    [
+     21,
+     18,
+     3,
+     6
+    ]
+   ],
+   "name": "chain-t1-s1003-0136",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 5.",
+    "Add 2."
+   ],
+   "start": 24,
+   "intermediates": [
+    29
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 31,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 5.\nAdd 2.\nThe starting number is 24. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 24 and apply the steps below, in order.\nAdd 5.\nAdd 2.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    2,
+    5,
+    24
+   ],
+   "distractors": [
+    [
+     24,
+     31,
+     2,
+     5
+    ]
+   ],
+   "name": "chain-t1-s1003-0137",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 8.",
+    "Add 5."
+   ],
+   "start": 17,
+   "intermediates": [
+    25
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 30,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 8.\nAdd 5.\nThe starting number is 17. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 17 and apply the steps below, in order.\nAdd 8.\nAdd 5.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    5,
+    8,
+    17
+   ],
+   "distractors": [
+    [
+     17,
+     30,
+     5,
+     8
+    ]
+   ],
+   "name": "chain-t1-s1003-0159",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 5.",
+    "Add 3."
+   ],
+   "start": 23,
+   "intermediates": [
+    28
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 31,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 5.\nAdd 3.\nThe starting number is 23. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 23 and apply the steps below, in order.\nAdd 5.\nAdd 3.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    3,
+    5,
+    23
+   ],
+   "distractors": [
+    [
+     23,
+     31,
+     3,
+     5
+    ]
+   ],
+   "name": "chain-t1-s1003-0160",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "sub",
+    "add"
+   ],
+   "steps": [
+    "Subtract 7.",
+    "Add 3."
+   ],
+   "start": 30,
+   "intermediates": [
+    23
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 26,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nSubtract 7.\nAdd 3.\nThe starting number is 30. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 30 and apply the steps below, in order.\nSubtract 7.\nAdd 3.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    3,
+    7,
+    30
+   ],
+   "distractors": [
+    [
+     30,
+     26,
+     3,
+     7
+    ]
+   ],
+   "name": "chain-t1-s1003-0161",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 7.",
+    "Add 2."
+   ],
+   "start": 25,
+   "intermediates": [
+    32
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 34,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 7.\nAdd 2.\nThe starting number is 25. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 25 and apply the steps below, in order.\nAdd 7.\nAdd 2.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    2,
+    7,
+    25
+   ],
+   "distractors": [
+    [
+     25,
+     34,
+     2,
+     7
+    ]
+   ],
+   "name": "chain-t1-s1003-0170",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "sub",
+    "sub"
+   ],
+   "steps": [
+    "Subtract 8.",
+    "Subtract 6."
+   ],
+   "start": 28,
+   "intermediates": [
+    20
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 14,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nSubtract 8.\nSubtract 6.\nThe starting number is 28. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 28 and apply the steps below, in order.\nSubtract 8.\nSubtract 6.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    6,
+    8,
+    28
+   ],
+   "distractors": [
+    [
+     28,
+     14,
+     6,
+     8
+    ]
+   ],
+   "name": "chain-t1-s1003-0179",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "depth": 2,
+   "cond": false,
+   "kinds": [
+    "add",
+    "add"
+   ],
+   "steps": [
+    "Add 7.",
+    "Add 4."
+   ],
+   "start": 9,
+   "intermediates": [
+    16
+   ],
+   "untaken": [
+    null
+   ],
+   "answer": 20,
+   "prompt": "Apply the steps below, in order, to the starting number given at the end.\nAdd 7.\nAdd 4.\nThe starting number is 9. What is the final number? Reply with only the final number, nothing else.",
+   "prompt_first": "Start with the number 9 and apply the steps below, in order.\nAdd 7.\nAdd 4.\nWhat is the final number? Reply with only the final number, nothing else.",
+   "literals": [
+    4,
+    7,
+    9
+   ],
+   "distractors": [
+    [
+     9,
+     20,
+     4,
+     7
+    ]
+   ],
+   "name": "chain-t1-s1003-0188",
+   "adapt": {
+    "origin": "generated",
+    "tier": "t1",
+    "knobs": {
+     "depths": [
+      2
+     ],
+     "ops": [
+      "add",
+      "sub",
+      "double"
+     ]
+    },
+    "change": "depth 2 only; add/subtract 2-9 and double",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  }
+ ]
+}

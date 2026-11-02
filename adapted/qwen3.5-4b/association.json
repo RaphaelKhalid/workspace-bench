@@ -1,0 +1,3084 @@
+{
+ "family": "association",
+ "gate": "Qwen3.6-27B behavioral: >=8/10 correct at temp 0.7 (greedy-verified first); association scored against association_aliases.json (phrase-aware, echo-guarded); poetry scored by committed rhyme",
+ "eval_render_note": "EVAL RENDER: feed `prompt` verbatim as plain text, NO chat template (directed-modulation is the only chat-templated family). `gate_variant` records how the item was behaviorally verified and does NOT affect the eval read.",
+ "adapt": {
+  "model": "qwen3.5-4b",
+  "hf_id": "Qwen/Qwen3.5-4B",
+  "frozen": "2026-10-18"
+ },
+ "items": [
+  {
+   "name": "pt-carnaval",
+   "prompt": "Os tambores começaram na avenida ao anoitecer, e as fantasias cobertas de plumas dançaram até o amanhecer.",
+   "intermediates": [
+    "carnaval"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "referent",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "pt-carnaval",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "lie",
+   "prompt": "He couldn't meet her eyes when she asked, and the answer came out a half-second too fast.",
+   "intermediates": [
+    "lie"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "referent",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "lie",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "pregnant",
+   "prompt": "She turned down the wine with a small smile and kept one hand on the table edge, not quite touching her stomach.",
+   "intermediates": [
+    "pregnant"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "referent",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "pregnant",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "bf-chess",
+   "prompt": "She castled early, sacrificed her bishop, and smiled at the trap her knight had set.",
+   "intermediates": [
+    "chess"
+   ],
+   "source": "staging",
+   "consistency": 1.0,
+   "gate_variant": "referent",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "bf-chess",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "bf-coffee",
+   "prompt": "The line stretched out the door all morning, and the grinder behind the counter never stopped whirring.",
+   "intermediates": [
+    "coffee"
+   ],
+   "source": "staging",
+   "consistency": 1.0,
+   "gate_variant": "referent",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "bf-coffee",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "bf-fire",
+   "prompt": "Smoke curled under the door, the alarm shrieked, and the extinguisher's pin was already pulled.",
+   "intermediates": [
+    "fire"
+   ],
+   "source": "staging",
+   "consistency": 1.0,
+   "gate_variant": "referent",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "bf-fire",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "bf-halloween",
+   "prompt": "Carved pumpkins flickered on every porch as costumed children rang doorbell after doorbell.",
+   "intermediates": [
+    "Halloween"
+   ],
+   "source": "staging",
+   "consistency": 1.0,
+   "gate_variant": "referent",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "bf-halloween",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "bf-pizza",
+   "prompt": "He spun the dough in the air, ladled on the tomato sauce, and slid the peel into the wood-fired oven.",
+   "intermediates": [
+    "pizza"
+   ],
+   "source": "staging",
+   "consistency": 1.0,
+   "gate_variant": "referent",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "bf-pizza",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "bf-rain",
+   "prompt": "The wipers could barely keep up, and every awning on the street had a crowd huddled beneath it.",
+   "intermediates": [
+    "rain"
+   ],
+   "source": "staging",
+   "consistency": 1.0,
+   "gate_variant": "referent",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "bf-rain",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "bf-snow",
+   "prompt": "The plows worked all night, and by morning every roof and branch wore a heavy white blanket.",
+   "intermediates": [
+    "snow"
+   ],
+   "source": "staging",
+   "consistency": 1.0,
+   "gate_variant": "referent",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "bf-snow",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "bf-titanic",
+   "prompt": "The band kept playing as the deck tilted, and the lifeboats, everyone now saw, were far too few.",
+   "intermediates": [
+    "Titanic"
+   ],
+   "source": "staging",
+   "consistency": 1.0,
+   "gate_variant": "referent",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "bf-titanic",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "bf2-earthquake",
+   "prompt": "The chandelier swayed first, then every glass in the cabinet chattered, and the dog was under the table before the first shelf let go.",
+   "intermediates": [
+    "earthquake"
+   ],
+   "source": "staging",
+   "consistency": 1.0,
+   "gate_variant": "referent",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "bf2-earthquake",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-as-bakery",
+   "prompt": "The ovens had been warm since four, and the smell of rising dough drifted out with every ring of the doorbell.",
+   "intermediates": [
+    "bakery"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "referent",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-as-bakery",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-as-casino",
+   "prompt": "The wheel clattered, the dice flew across the felt, and the lights never let anyone know it was morning.",
+   "intermediates": [
+    "casino"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "referent",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-as-casino",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-as-cleopatra",
+   "prompt": "The queen sailed up the river on a barge of gold, and Rome's hardest general forgot the war.",
+   "intermediates": [
+    "Cleopatra"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "referent",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-as-cleopatra",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-as-pottery",
+   "prompt": "The wheel spun as her thumbs opened the wet clay, and the kiln out back was already warming.",
+   "intermediates": [
+    "pottery"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "referent",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-as-pottery",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-as-tennis",
+   "prompt": "She tossed the ball high, and the serve cracked off her strings before the applause had faded.",
+   "intermediates": [
+    "tennis"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "referent",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-as-tennis",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b5-as-easter",
+   "prompt": "The children raced across the lawn with baskets, and painted eggs turned up under every hedge.",
+   "intermediates": [
+    "Easter"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "referent",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b5-as-easter",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "bf-sherlock",
+   "prompt": "From the mud on the visitor's boots and the ash of his cigar, he had solved half the case before tea.",
+   "intermediates": [
+    "Sherlock",
+    "Holmes",
+    "detective"
+   ],
+   "source": "staging",
+   "consistency": 0.9,
+   "gate_variant": "referent",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "bf-sherlock",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-as-opera",
+   "prompt": "She held the highest note as the chandelier blazed, and the man in the box seat wept behind his program.",
+   "intermediates": [
+    "opera"
+   ],
+   "source": "staging_b3",
+   "consistency": 0.9,
+   "gate_variant": "referent",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-as-opera",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b5-as-postman",
+   "prompt": "The dogs on the street knew his bag and his whistle, and every mailbox lid clicked in turn behind him.",
+   "intermediates": [
+    "postman"
+   ],
+   "source": "staging_b3",
+   "consistency": 0.9,
+   "gate_variant": "referent",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b5-as-postman",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "bf2-submarine",
+   "prompt": "The captain called for periscope depth, and the only sounds were the sonar's ping and the hum of the reactor.",
+   "intermediates": [
+    "submarine"
+   ],
+   "source": "staging",
+   "consistency": 0.8,
+   "gate_variant": "referent",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "bf2-submarine",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-as-barbecue",
+   "prompt": "The coals had gone white by noon, and the smell of smoked ribs drifted over the fence into every yard.",
+   "intermediates": [
+    "barbecue"
+   ],
+   "source": "staging_b3",
+   "consistency": 0.8,
+   "gate_variant": "referent",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-as-barbecue",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-as-blacksmith",
+   "prompt": "The hammer rang against the anvil in showers of sparks, and the horseshoe cooled from red to gray.",
+   "intermediates": [
+    "blacksmith"
+   ],
+   "source": "staging_b3",
+   "consistency": 0.8,
+   "gate_variant": "referent",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-as-blacksmith",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w0c0-ez-camping",
+   "prompt": "We pitched the tent by the lake and roasted marshmallows over the flames. At night we zipped up our sleeping bags.",
+   "intermediates": [
+    "camping"
+   ],
+   "aliases": [
+    "camp",
+    "campout",
+    "camping trip"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 0,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w0c0-ez-swimming",
+   "prompt": "She put on her goggles and dove into the pool. She kicked her legs and stroked all the way to the far end.",
+   "intermediates": [
+    "swimming"
+   ],
+   "aliases": [
+    "swim",
+    "swimmer"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 0,
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w0c0-ez-basketball",
+   "prompt": "He dribbled down the court and leaped toward the orange hoop. The shot swished through the net for two points.",
+   "intermediates": [
+    "basketball"
+   ],
+   "aliases": [
+    "hoops",
+    "NBA"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 0,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w0c0-ez-soccer",
+   "prompt": "The striker kicked it past the goalie and into the net. Fans waved their scarves as the referee blew his whistle.",
+   "intermediates": [
+    "soccer"
+   ],
+   "aliases": [
+    "football",
+    "futbol"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 0,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w0c0-ez-bowling",
+   "prompt": "She rolled the heavy ball down the shiny lane. All ten pins crashed down for a strike.",
+   "intermediates": [
+    "bowling"
+   ],
+   "aliases": [
+    "bowling alley",
+    "tenpin"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 0,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w0c0-ez-circus",
+   "prompt": "Clowns tumbled out of a tiny car under the big striped tent. A lion tamer cracked his whip in the center ring.",
+   "intermediates": [
+    "circus"
+   ],
+   "aliases": [
+    "big top"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 0,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w0c0-ez-airport",
+   "prompt": "We checked our suitcases, walked through security, and waited at the gate. Through the window, jets taxied toward the runway.",
+   "intermediates": [
+    "airport"
+   ],
+   "aliases": [
+    "terminal",
+    "airfield"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 0,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w0c0-ez-beach",
+   "prompt": "We built sandcastles while the waves rolled onto the shore. Seagulls cried overhead as we spread our towels on the warm sand.",
+   "intermediates": [
+    "beach"
+   ],
+   "aliases": [
+    "seaside",
+    "seashore",
+    "coast"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 0,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w0c0-ez-gardening",
+   "prompt": "She dug holes in the soil and planted tomato seeds in neat rows. Every morning she watered them and pulled out the weeds.",
+   "intermediates": [
+    "gardening"
+   ],
+   "aliases": [
+    "garden",
+    "planting"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 0,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w0c0-ez-painting",
+   "prompt": "He dipped his brush in the blue and swept it across the canvas. His easel stood beside a palette of bright colors.",
+   "intermediates": [
+    "painting"
+   ],
+   "aliases": [
+    "paint",
+    "painter",
+    "art"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 0,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w0c0-ez-thunderstorm",
+   "prompt": "Lightning flashed across the dark sky, and a loud boom shook the windows. Heavy drops pounded on the roof all night.",
+   "intermediates": [
+    "thunderstorm"
+   ],
+   "aliases": [
+    "storm",
+    "thunder",
+    "lightning storm"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 0,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w0c0-ez-tornado",
+   "prompt": "A dark funnel cloud touched down and spun across the fields. Sirens wailed as families hurried down to their basements.",
+   "intermediates": [
+    "tornado"
+   ],
+   "aliases": [
+    "twister",
+    "cyclone"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 0,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w0c0-ez-laundry",
+   "prompt": "She sorted the dirty clothes into whites and colors and poured soap into the machine. Later she folded the warm shirts from the dryer.",
+   "intermediates": [
+    "laundry"
+   ],
+   "aliases": [
+    "washing",
+    "washing clothes"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 0,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w0c0-ez-picnic",
+   "prompt": "We spread a checkered blanket on the grass in the park. Then we opened the basket and shared sandwiches and lemonade.",
+   "intermediates": [
+    "picnic"
+   ],
+   "aliases": [],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 0,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w0c0-ez-pirate",
+   "prompt": "He wore an eye patch, kept a parrot on his shoulder, and buried a chest of treasure. His ship flew a flag with a skull and crossbones.",
+   "intermediates": [
+    "pirate"
+   ],
+   "aliases": [
+    "buccaneer",
+    "piracy"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 0,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w0c0-ez-astronaut",
+   "prompt": "She floated inside the station wearing a helmet and a puffy white suit. Her rocket had blasted off from Earth a week before.",
+   "intermediates": [
+    "astronaut"
+   ],
+   "aliases": [
+    "cosmonaut",
+    "spaceman"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 0,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w0c0-ez-bicycle",
+   "prompt": "She pushed the pedals and rang the bell on her handlebars. Her helmet was snug as the two wheels spun down the path.",
+   "intermediates": [
+    "bicycle"
+   ],
+   "aliases": [
+    "bike",
+    "cycling"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 0,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w0c0-ez-kite",
+   "prompt": "We ran across the windy hill, and the diamond-shaped toy rose into the sky. Its long tail fluttered while I held tight to the string.",
+   "intermediates": [
+    "kite"
+   ],
+   "aliases": [
+    "kite flying"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 0,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w0c0-ez-dragon",
+   "prompt": "The huge winged beast breathed flames and guarded a pile of gold in its cave. A brave knight rode up the mountain to slay it.",
+   "intermediates": [
+    "dragon"
+   ],
+   "aliases": [
+    "wyrm"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 0,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w0c0-ez-robot",
+   "prompt": "The metal machine had blinking lights for eyes and beeped whenever it talked. It followed its programming and swept the kitchen floor.",
+   "intermediates": [
+    "robot"
+   ],
+   "aliases": [
+    "android",
+    "droid"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 0,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w0c0-ez-thanksgiving",
+   "prompt": "The family gathered around a roasted turkey with stuffing and cranberry sauce. Everyone said what they were grateful for before the pumpkin pie.",
+   "intermediates": [
+    "thanksgiving"
+   ],
+   "aliases": [
+    "Thanksgiving Day",
+    "Turkey Day"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 0,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w0c0-ez-rollercoaster",
+   "prompt": "We buckled in, clicked slowly up the tall hill, and plunged down the steep drop. Everyone screamed as the cars whipped through the loop.",
+   "intermediates": [
+    "rollercoaster"
+   ],
+   "aliases": [
+    "roller coaster",
+    "coaster",
+    "amusement park ride"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 0,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w0c0-ez-doctor",
+   "prompt": "She listened to my heartbeat with a stethoscope and looked inside my ears. Then she checked my throat and wrote me a prescription.",
+   "intermediates": [
+    "doctor"
+   ],
+   "aliases": [
+    "physician",
+    "checkup",
+    "pediatrician"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 0,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w0c0-ez-moon",
+   "prompt": "It glows in the night sky and changes from a thin crescent to a full circle. Astronauts once walked across its dusty craters.",
+   "intermediates": [
+    "moon"
+   ],
+   "aliases": [
+    "lunar",
+    "luna"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 0,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w0c0-ez-popcorn",
+   "prompt": "The kernels popped and puffed up in the hot pan. We added melted butter and salt and munched it during the movie.",
+   "intermediates": [
+    "popcorn"
+   ],
+   "aliases": [
+    "kettle corn"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 0,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w1c0-ez-rainbow",
+   "prompt": "After the shower ended, a curved band of red, orange, yellow, green, blue and violet stretched across the sky. Some say a pot of gold waits at its end.",
+   "intermediates": [
+    "rainbow"
+   ],
+   "aliases": [],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 1,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w1c0-ez-umbrella",
+   "prompt": "She opened it as the first drops fell and held the handle over her head. Its fabric dome kept her dry on the walk home.",
+   "intermediates": [
+    "umbrella"
+   ],
+   "aliases": [
+    "parasol",
+    "brolly"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 1,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w1c0-ez-airplane",
+   "prompt": "The pilot announced takeoff, and the engines roared down the runway. Soon the wings were high above the clouds.",
+   "intermediates": [
+    "airplane"
+   ],
+   "aliases": [
+    "plane",
+    "jet",
+    "aircraft",
+    "aeroplane",
+    "flight"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 1,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w1c0-ez-train",
+   "prompt": "The passengers waited on the platform until the locomotive pulled in along the tracks. The conductor called \"All aboard!\" and the cars rolled away.",
+   "intermediates": [
+    "train"
+   ],
+   "aliases": [
+    "railway",
+    "railroad"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 1,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w1c0-ez-restaurant",
+   "prompt": "The waiter handed them menus and poured water at their table. Later the chef sent out their meals, and they paid the bill.",
+   "intermediates": [
+    "restaurant"
+   ],
+   "aliases": [
+    "diner",
+    "cafe",
+    "eatery"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 1,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w1c0-ez-supermarket",
+   "prompt": "She pushed a cart down the aisles, taking milk, bread and apples off the shelves. At the checkout the cashier scanned each item.",
+   "intermediates": [
+    "supermarket"
+   ],
+   "aliases": [
+    "grocery store",
+    "grocery",
+    "shopping"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 1,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w1c0-ez-castle",
+   "prompt": "The king and queen lived behind tall stone walls with towers at every corner. A drawbridge crossed the moat to the gate.",
+   "intermediates": [
+    "castle"
+   ],
+   "aliases": [
+    "palace",
+    "fortress",
+    "fort"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 1,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w1c0-ez-playground",
+   "prompt": "The kids raced from the slide to the swings and the monkey bars. A seesaw creaked beside the sandbox.",
+   "intermediates": [
+    "playground"
+   ],
+   "aliases": [
+    "park",
+    "play area"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 1,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w1c0-ez-penguin",
+   "prompt": "The black-and-white birds waddled across the ice in Antarctica. They could not fly, but they dove into the cold sea to catch fish.",
+   "intermediates": [
+    "penguin"
+   ],
+   "aliases": [],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 1,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w1c0-ez-elephant",
+   "prompt": "The huge gray animal flapped its giant ears and sprayed water with its long trunk. Its ivory tusks gleamed in the sun.",
+   "intermediates": [
+    "elephant"
+   ],
+   "aliases": [],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 1,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w1c0-ez-giraffe",
+   "prompt": "The tall spotted animal stretched its very long neck to eat leaves from the top of the tree. It is the tallest animal on the African savanna.",
+   "intermediates": [
+    "giraffe"
+   ],
+   "aliases": [],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 1,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w1c0-ez-spider",
+   "prompt": "The eight-legged creature spun a sticky web in the corner of the room. A fly got caught, and it crept closer.",
+   "intermediates": [
+    "spider"
+   ],
+   "aliases": [
+    "tarantula"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 1,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w1c0-ez-butterfly",
+   "prompt": "The caterpillar wrapped itself in a cocoon. Weeks later it came out with bright colorful wings and fluttered to a flower.",
+   "intermediates": [
+    "butterfly"
+   ],
+   "aliases": [],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 1,
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w1c0-ez-owl",
+   "prompt": "The bird with big round eyes sat on a branch at midnight and called \"hoo, hoo.\" It turned its head almost all the way around to look for mice.",
+   "intermediates": [
+    "owl"
+   ],
+   "aliases": [],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 1,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w1c0-ez-hamburger",
+   "prompt": "The cook flipped the beef patty on the grill and laid it on a sesame bun. He added lettuce, ketchup, onion and a pickle.",
+   "intermediates": [
+    "hamburger"
+   ],
+   "aliases": [
+    "burger",
+    "cheeseburger"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 1,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w1c0-ez-banana",
+   "prompt": "The monkey peeled back the long yellow skin. Inside was soft, sweet, curved fruit.",
+   "intermediates": [
+    "banana"
+   ],
+   "aliases": [],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 1,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w1c0-ez-sandwich",
+   "prompt": "He put ham and cheese between two slices of bread. Then he cut it in half and packed it in his lunchbox.",
+   "intermediates": [
+    "sandwich"
+   ],
+   "aliases": [],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 1,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w1c0-ez-cake",
+   "prompt": "The baker spread frosting over three soft layers and put candles on top. Everyone got a slice with a scoop of vanilla on the side.",
+   "intermediates": [
+    "cake"
+   ],
+   "aliases": [],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 1,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w1c0-ez-guitar",
+   "prompt": "He strummed the six strings while his fingers pressed chords on the neck. A pick hung between his teeth for the next rock song.",
+   "intermediates": [
+    "guitar"
+   ],
+   "aliases": [],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 1,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w1c0-ez-camera",
+   "prompt": "He looked through the viewfinder and pressed the button. Click, and the picture of his family was saved!",
+   "intermediates": [
+    "camera"
+   ],
+   "aliases": [
+    "photography",
+    "photo"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 1,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w1c0-ez-telephone",
+   "prompt": "It rang, and she picked it up and said, \"Hello?\" Her grandma's voice answered from across the country.",
+   "intermediates": [
+    "telephone"
+   ],
+   "aliases": [
+    "phone",
+    "cellphone"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 1,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w1c0-ez-clock",
+   "prompt": "Its big hand pointed to twelve and its little hand pointed to three. Tick, tock, it hung on the classroom wall.",
+   "intermediates": [
+    "clock"
+   ],
+   "aliases": [
+    "watch"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 1,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w1c0-ez-computer",
+   "prompt": "She typed on the keyboard and moved the mouse to click an icon. The screen opened her email and a web browser.",
+   "intermediates": [
+    "computer"
+   ],
+   "aliases": [
+    "laptop",
+    "PC"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 1,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w1c0-ez-bed",
+   "prompt": "Every night he climbed under the blanket and rested his head on the pillow. The mattress was soft, and he fell asleep quickly.",
+   "intermediates": [
+    "bed"
+   ],
+   "aliases": [
+    "sleeping",
+    "sleep"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 1,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w1c0-ez-map",
+   "prompt": "She unfolded the paper and found the red dot that said \"You are here.\" Roads, rivers and cities were drawn on it, with a compass rose in the corner.",
+   "intermediates": [
+    "map"
+   ],
+   "aliases": [
+    "atlas"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 1,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w1c0-ez-helicopter",
+   "prompt": "Its big rotor blades spun on top, and it lifted straight up off the pad. It hovered over the traffic before flying away.",
+   "intermediates": [
+    "helicopter"
+   ],
+   "aliases": [
+    "chopper"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 1,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w1c0-ez-taxi",
+   "prompt": "The yellow car pulled to the curb when she raised her hand. The driver started the meter and asked where she wanted to go.",
+   "intermediates": [
+    "taxi"
+   ],
+   "aliases": [
+    "cab",
+    "taxicab"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 1,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w1c0-ez-hockey",
+   "prompt": "The players skated fast across the ice, swinging their sticks. One slapped the black puck into the net for a goal.",
+   "intermediates": [
+    "hockey"
+   ],
+   "aliases": [
+    "ice hockey"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 1,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w1c0-ez-knight",
+   "prompt": "He wore shining armor and carried a sword and shield. He rode his horse into battle to serve his king and protect the kingdom.",
+   "intermediates": [
+    "knight"
+   ],
+   "aliases": [],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 1,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w1c0-ez-sun",
+   "prompt": "The bright yellow star rose in the east every morning. Its warm light made the day hot and helped the plants grow.",
+   "intermediates": [
+    "sun"
+   ],
+   "aliases": [
+    "sunshine",
+    "sunlight"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 1,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w1c0-ez-mermaid",
+   "prompt": "She had long hair and a shiny fish tail instead of legs. She lived under the sea and sang to sailors from the rocks.",
+   "intermediates": [
+    "mermaid"
+   ],
+   "aliases": [
+    "siren"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 1,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w1c0-ez-sunflower",
+   "prompt": "The tall garden plant had huge yellow petals around a brown center full of seeds. Its big head turned all day to follow the light in the sky.",
+   "intermediates": [
+    "sunflower"
+   ],
+   "aliases": [],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 1,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w1c1-ez-toothbrush-bristles",
+   "prompt": "Every night she squeezed minty paste onto the little bristled stick and scrubbed each molar in circles. Then she spat into the sink and rinsed her mouth.",
+   "intermediates": [
+    "toothbrush"
+   ],
+   "aliases": [
+    "brushing"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 1,
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w1c1-ez-volleyball-net-spike",
+   "prompt": "The players dove in the sand to bump and set, then leaped to spike it over the tall net. Each team could touch it only three times before sending it back.",
+   "intermediates": [
+    "volleyball"
+   ],
+   "aliases": [],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 1,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w1c1-ez-drum-sticks-beat",
+   "prompt": "He hit the round stretched skin with two wooden sticks, boom, boom, boom. The steady beat led the marching band down the street.",
+   "intermediates": [
+    "drum"
+   ],
+   "aliases": [
+    "drums",
+    "drumming"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 1,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w1c1-ez-bridge-river-span",
+   "prompt": "Cars drove across the long steel span high above the river. Boats passed underneath between its tall towers and hanging cables.",
+   "intermediates": [
+    "bridge"
+   ],
+   "aliases": [],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 1,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w1c1-ez-kangaroo-pouch-joey",
+   "prompt": "This Australian animal hops on strong back legs and carries its joey in a pouch. It balances on its thick tail.",
+   "intermediates": [
+    "kangaroo"
+   ],
+   "aliases": [
+    "roo",
+    "wallaby"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 1,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w3c0-ez-frog",
+   "prompt": "It sat on a lily pad and croaked all night. Then it flicked out its sticky tongue to catch a fly.",
+   "intermediates": [
+    "frog"
+   ],
+   "aliases": [
+    "frogs",
+    "toad",
+    "bullfrog"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 3,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w3c0-ez-lion",
+   "prompt": "The big cat shook his golden mane and let out a mighty roar. People call him the king of the jungle.",
+   "intermediates": [
+    "lion"
+   ],
+   "aliases": [
+    "lions",
+    "lioness"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 3,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w3c0-ez-snake",
+   "prompt": "It slithered through the grass without any legs at all. It flicked its forked tongue and hissed.",
+   "intermediates": [
+    "snake"
+   ],
+   "aliases": [
+    "snakes",
+    "serpent",
+    "cobra",
+    "python",
+    "rattlesnake"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 3,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w3c0-ez-cow",
+   "prompt": "She stood in the field chewing grass and saying moo. The farmer milked her every morning.",
+   "intermediates": [
+    "cow"
+   ],
+   "aliases": [
+    "cows",
+    "cattle",
+    "dairy cow"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 3,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w3c0-ez-lemonade",
+   "prompt": "She squeezed sour yellow fruit into a pitcher and stirred in sugar and water. Then she sold cold cups for a quarter at her stand.",
+   "intermediates": [
+    "lemonade"
+   ],
+   "aliases": [
+    "lemonade stand"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 3,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w3c0-ez-egg",
+   "prompt": "The hen sat on it in her nest to keep it warm. Soon it cracked open and a fluffy chick came out.",
+   "intermediates": [
+    "egg"
+   ],
+   "aliases": [
+    "eggs",
+    "hatching"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 3,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w3c0-ez-cookies",
+   "prompt": "Mom took the tray of chocolate chip treats out of the oven. They were warm and perfect for dipping in milk.",
+   "intermediates": [
+    "cookies"
+   ],
+   "aliases": [
+    "cookie",
+    "biscuits",
+    "chocolate chip cookies"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 3,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w3c0-ez-hiking",
+   "prompt": "They laced up their boots and followed the dirt trail up the mountain. At the top they rested and ate trail mix.",
+   "intermediates": [
+    "hiking"
+   ],
+   "aliases": [
+    "hike",
+    "hiker",
+    "trekking"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 3,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w3c0-ez-sailing",
+   "prompt": "The wind filled the big white canvas and pushed the boat across the lake. She pulled the ropes to steer toward the dock.",
+   "intermediates": [
+    "sailing"
+   ],
+   "aliases": [
+    "sail",
+    "sailboat",
+    "boating"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 3,
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w3c0-ez-ladder",
+   "prompt": "He leaned it against the wall and climbed up one rung at a time. At the top he could reach the roof gutter.",
+   "intermediates": [
+    "ladder"
+   ],
+   "aliases": [
+    "stepladder"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 3,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w3c0-ez-bus",
+   "prompt": "The big yellow vehicle stopped at the corner every morning. Kids climbed aboard, found their seats, and rode to class.",
+   "intermediates": [
+    "bus"
+   ],
+   "aliases": [
+    "school bus",
+    "schoolbus"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 3,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w3c0-ez-hammer",
+   "prompt": "He held the nail steady with one hand. Then he swung the heavy tool and banged the nail into the wood.",
+   "intermediates": [
+    "hammer"
+   ],
+   "aliases": [
+    "mallet"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 3,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w3c0-ez-valentine",
+   "prompt": "On February fourteenth the kids gave each other red heart-shaped cards. Everyone shared candy hearts and boxes of chocolate.",
+   "intermediates": [
+    "Valentine"
+   ],
+   "aliases": [
+    "Valentine's Day",
+    "Valentines Day",
+    "Valentines"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 3,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w3c0-ez-homework",
+   "prompt": "After class the teacher gave everyone ten math problems to finish by tomorrow. He did them at the kitchen table before dinner.",
+   "intermediates": [
+    "homework"
+   ],
+   "aliases": [
+    "assignment",
+    "assignments"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 3,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  }
+ ]
+}

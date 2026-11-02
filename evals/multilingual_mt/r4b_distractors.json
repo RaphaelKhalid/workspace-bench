@@ -1,0 +1,4194 @@
+{
+ "family": "multilingual_mt",
+ "version": "r4b-refine-2026-11-01",
+ "model": "claude-opus-5-5",
+ "script": "scripts/r4b_mc_refine.py (pools: scripts/r4_mc_distractors.py)",
+ "supersedes": "r4_distractors.json (bank v3)",
+ "gate": {
+  "draws": 5,
+  "max_item_passes": 1,
+  "rounds": 10
+ },
+ "pass": 3,
+ "n_over_gate": 24,
+ "items": {
+  "mlh-ar-aurora": {
+   "concept": {
+    "topic": "a natural atmospheric or celestial phenomenon",
+    "topic_pass1": "an atmospheric or celestial optical phenomenon seen in the sky",
+    "kind": "a natural phenomenon",
+    "gold": "northern lights",
+    "distractors": [
+     "rainbow",
+     "green flash",
+     "sun dog",
+     "moonbow"
+    ],
+    "enwiki": {
+     "rainbow": "Rainbow",
+     "green flash": "Green flash",
+     "sun dog": "Sun dog",
+     "moonbow": "Moonbow"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 2,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Northern lights is by far the most famous sky phenomenon and the only aurora-type light display, while St. Elmo's fire isn't really a sky phenomenon and the others are obscure."
+     },
+     {
+      "round": 1,
+      "cue": "Northern lights was the only plural, two-word, geomagnetic phenomenon caused by space particles among optical light-refraction effects, and the most famous celestial spectacle, so it stood out to topic guessers."
+     },
+     {
+      "round": 3,
+      "cue": "Northern lights is by far the most famous and iconic atmospheric/celestial phenomenon in the list, while the distractors were comparatively obscure (zodiacal light, moonbow, ball lightning), so it stood out as the obvious prototypical answer."
+     },
+     {
+      "round": 5,
+      "cue": "Northern lights is the most famous, iconic celestial light display, and 'southern lights' directly points to it as its counterpart, making the pair stand out with northern being the better-known one."
+     },
+     {
+      "round": 7,
+      "cue": "Northern lights was the only famous, visually spectacular polar/high-latitude sky phenomenon, and the only two-word 'X lights'-style compound name; the others were ordinary weather or meteor events, so it stood out as the iconic answer."
+     },
+     {
+      "round": 9,
+      "cue": "Northern lights is by far the most famous phenomenon, and the presence of its near-twin 'southern lights' points straight to it as the original that the list was built around."
+     }
+    ]
+   }
+  },
+  "mlh-ar-chamomile": {
+   "concept": {
+    "topic": "a herb or flowering plant",
+    "topic_pass1": "an herb used to make herbal tea",
+    "kind": "a plant",
+    "gold": "chamomile",
+    "distractors": [
+     "rosemary",
+     "yarrow",
+     "echinacea",
+     "lemon balm"
+    ],
+    "enwiki": {
+     "rosemary": "Rosemary",
+     "yarrow": "Achillea millefolium",
+     "echinacea": "Echinacea",
+     "lemon balm": "Lemon balm"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Chamomile stood out as the most iconic calming herbal-tea flower, the default pick for 'a herb or flowering plant', among weaker tea-herb peers."
+     },
+     {
+      "round": 1,
+      "cue": "Chamomile was the best-known calming tea herb, and no other option was a flower used chiefly for tea; the distractors mixed culinary and medicinal herbs, which left it as the only daisy-like tea flower."
+     },
+     {
+      "round": 3,
+      "cue": "Chamomile is the single most famous herbal-tea flower, so beside lesser-known daisy-family herbs like feverfew and yarrow it stood out as the most prototypical 'herb or flowering plant'."
+     },
+     {
+      "round": 5,
+      "cue": "Chamomile stood out as the most famous calming herbal tea flower, being the only one of the plants commonly brewed as a daisy-like tea besides peppermint."
+     },
+     {
+      "round": 7,
+      "cue": "Chamomile was the best-known calming herbal-tea flower among the options, so it stood out as the most prototypical choice next to less common tea herbs like yarrow and elderflower."
+     },
+     {
+      "round": 9,
+      "cue": "Chamomile was the most famous herbal-tea plant in the list, but no strong cue appeared; balancing it with other common lowercase herb and tea plants keeps it from standing out."
+     }
+    ]
+   }
+  },
+  "mlh-ar-chickenpox": {
+   "concept": {
+    "topic": "an infectious disease in medicine",
+    "topic_pass1": "a common childhood viral infection",
+    "kind": "a disease",
+    "gold": "chickenpox",
+    "distractors": [
+     "influenza",
+     "tuberculosis",
+     "malaria",
+     "cholera"
+    ],
+    "enwiki": {
+     "influenza": "Influenza",
+     "tuberculosis": "Tuberculosis",
+     "malaria": "Malaria",
+     "cholera": "Cholera"
+    },
+    "kept_round": 1,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Smallpox is eradicated, which leaves chickenpox as the one common viral illness still widely seen in children today, and the rest of the list is too small to hide it."
+     },
+     {
+      "round": 3,
+      "cue": "Chickenpox is the most iconic, best-known childhood viral infection with a vaccine-preventable rash, while croup and bronchiolitis are syndromes rather than specific viral diseases and roseola and HFMD are less famous."
+     },
+     {
+      "round": 5,
+      "cue": "Chickenpox is the most iconic, best-known common childhood viral infection, while the others were either a virus name (rotavirus) or less prototypical, so a topic guesser picks it."
+     },
+     {
+      "round": 7,
+      "cue": "Chickenpox is the most iconic 'common childhood viral infection' in the list, while rotavirus is a virus name rather than a disease and croup is a syndrome rather than a distinct infection, so the gold stood out as the prototypical answer."
+     },
+     {
+      "round": 1,
+      "cue": "Chickenpox is the most prototypical, common everyday infectious disease in the list, so a topic guesser defaults to it; the list needs more equally familiar common infections."
+     }
+    ]
+   }
+  },
+  "mlh-ar-hourglass": {
+   "concept": {
+    "topic": "a historical scientific or measuring instrument",
+    "topic_pass1": "a historical timekeeping device",
+    "kind": "an instrument",
+    "gold": "hourglass",
+    "distractors": [
+     "candle clock",
+     "water clock",
+     "sundial",
+     "pendulum clock"
+    ],
+    "enwiki": {
+     "candle clock": "candle clock",
+     "water clock": "water clock",
+     "sundial": "sundial",
+     "pendulum clock": "pendulum clock"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": []
+   }
+  },
+  "mlh-ar-loom": {
+   "concept": {
+    "topic": "a traditional tool or implement",
+    "topic_pass1": "textile-making tools and equipment",
+    "kind": "a tool",
+    "gold": "weaving loom",
+    "distractors": [
+     "blacksmith's anvil",
+     "grinding stone",
+     "hand quern",
+     "drop spindle"
+    ],
+    "enwiki": {
+     "blacksmith's anvil": "Anvil",
+     "grinding stone": "Millstone",
+     "hand quern": "Quern-stone",
+     "drop spindle": "Spindle (textiles)"
+    },
+    "kept_round": 4,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold is the only two-word name with a function-word qualifier ('weaving') framing a traditional handcraft implement, while the others are mostly industrial machines like the cotton gin and sewing machine, so the gold stands out as the only truly traditional hand tool."
+     },
+     {
+      "round": 3,
+      "cue": "The gold was the only large textile-production frame among mostly hand-held implements, and its generic two-word 'X loom' style stood out against a modern machine like the sewing machine."
+     }
+    ]
+   }
+  },
+  "mlh-ar-octopus": {
+   "concept": {
+    "topic": "a marine animal",
+    "topic_pass1": "a marine invertebrate animal",
+    "kind": "an animal",
+    "gold": "octopus",
+    "distractors": [
+     "jellyfish",
+     "chambered nautilus",
+     "cuttlefish",
+     "squid"
+    ],
+    "enwiki": {
+     "jellyfish": "jellyfish",
+     "chambered nautilus": "chambered nautilus",
+     "cuttlefish": "cuttlefish",
+     "squid": "squid"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold is the most iconic, best-known marine animal among a cluster of cephalopods, so its fame and the cephalopod-heavy list could single it out."
+     },
+     {
+      "round": 3,
+      "cue": "Octopus stood out mainly as the most iconic intelligent cephalopod, but with squid present it was not strongly singled out; the list just needs more comparable, lowercase common marine animals."
+     },
+     {
+      "round": 5,
+      "cue": "The gold was not singled out (0/5 for both guessers), but the list leaned on cephalopods, so it needs a broader, balanced mix of well-known marine animals that keeps a few cephalopod-like peers."
+     },
+     {
+      "round": 7,
+      "cue": "Octopus is the most iconic, prototypical 'marine animal' among cephalopod-heavy options, and squid as a close relative made the pair stand out; the list needs more equally iconic sea creatures."
+     },
+     {
+      "round": 9,
+      "cue": "The gold stood out as the only mollusc/cephalopod and the classic 'intelligent invertebrate' among mostly vertebrates, giving a slight sub-kind cue."
+     }
+    ]
+   }
+  },
+  "mlh-ar-sandpaper": {
+   "concept": {
+    "topic": "a woodworking tool or material",
+    "topic_pass1": "a woodworking tool or abrasive material",
+    "kind": "a tool or material",
+    "gold": "sanding paper",
+    "distractors": [
+     "wood chisel",
+     "steel wool",
+     "masking tape",
+     "wood filler"
+    ],
+    "enwiki": {
+     "wood chisel": "Chisel",
+     "steel wool": "Steel wool",
+     "masking tape": "Masking tape",
+     "wood filler": "Wood putty"
+    },
+    "kept_round": 2,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold 'sanding paper' is the only abrasive sheet and the most canonical woodworking item; the other options are generic finishing or masking supplies, so a topic guesser can single it out."
+     },
+     {
+      "round": 1,
+      "cue": "Sanding paper was the only abrasive-surface material in a list otherwise centred on finishing products, apart from the sanding block, which pointed straight to it as its companion."
+     },
+     {
+      "round": 3,
+      "cue": "Nothing strongly singled it out; the gold is an abrasive sheet among a small mixed set, so the list is widened with similar two-word workshop consumables and tools."
+     },
+     {
+      "round": 5,
+      "cue": "The gold 'sanding paper' is an unusual two-word phrasing (versus the common 'sandpaper'), the only abrasive sheet among the options, so it stood out by both form and sub-kind."
+     },
+     {
+      "round": 7,
+      "cue": "Under the topic, 'sanding paper' stood out as the most canonical woodworking material; it is the generic member of a cluster where emery cloth and sanding block are niche variants, and the phrasing 'sanding paper' (rather than 'sandpaper') looks like a translation."
+     },
+     {
+      "round": 9,
+      "cue": "Sanding paper was the only abrasive sheet among mostly cutting tools and was the most generic, prototypical woodworking material, so it stood out under the topic."
+     }
+    ]
+   }
+  },
+  "mlh-ar-spinal-cord": {
+   "concept": {
+    "topic": "a part of human anatomy",
+    "topic_pass1": "a part of the human nervous system",
+    "kind": "a body part",
+    "gold": "spinal cord",
+    "distractors": [
+     "corpus callosum",
+     "cerebellum",
+     "sciatic nerve",
+     "medulla oblongata"
+    ],
+    "enwiki": {
+     "corpus callosum": "corpus callosum",
+     "cerebellum": "cerebellum",
+     "sciatic nerve": "sciatic nerve",
+     "medulla oblongata": "medulla oblongata"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": []
+   }
+  },
+  "mlh-ar-thyroid": {
+   "concept": {
+    "topic": "an organ or gland of the human body",
+    "topic_pass1": "an endocrine gland of the human body",
+    "kind": "a body organ",
+    "gold": "thyroid gland",
+    "distractors": [
+     "thymus",
+     "pineal gland",
+     "adrenal gland",
+     "pituitary gland"
+    ],
+    "enwiki": {
+     "thymus": "thymus",
+     "pineal gland": "pineal gland",
+     "adrenal gland": "adrenal gland",
+     "pituitary gland": "pituitary gland"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the most famous and familiar gland among mostly endocrine options, and 'thymus' alone lacked the 'gland' qualifier, so the styling was inconsistent."
+     },
+     {
+      "round": 3,
+      "cue": "The thyroid gland is the best-known gland in the list, and the parathyroid gland is named after it, which points straight to the gold."
+     },
+     {
+      "round": 5,
+      "cue": "The thyroid gland is the most famous and canonical gland, and the parathyroid option points directly to it by name, singling it out as the reference organ."
+     },
+     {
+      "round": 7,
+      "cue": "The current list mixes styles ('thymus' bare vs 'thymus gland') and duplicates thymus, so 'thyroid gland' stands out as the most canonical, famous '___ gland' option."
+     },
+     {
+      "round": 9,
+      "cue": "The gold is the most famous and canonical 'X gland' among mostly endocrine glands, and parathyroid shares its name, making the thyroid the obvious central option."
+     }
+    ]
+   }
+  },
+  "mlh-ar-vacuum-cleaner": {
+   "concept": {
+    "topic": "a household appliance or device",
+    "topic_pass1": "a household cleaning appliance",
+    "kind": "a household appliance",
+    "gold": "vacuum cleaner",
+    "distractors": [
+     "sewing machine",
+     "electric fan",
+     "washing machine",
+     "dishwasher"
+    ],
+    "enwiki": {
+     "sewing machine": "sewing machine",
+     "electric fan": "electric fan",
+     "washing machine": "washing machine",
+     "dishwasher": "dishwasher"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": []
+   }
+  },
+  "mlh-ar-vacuum-cleaner-2": {
+   "concept": {
+    "topic": "a household appliance or device",
+    "topic_pass1": "a household cleaning appliance",
+    "kind": "an appliance",
+    "gold": "vacuum cleaner",
+    "distractors": [
+     "microwave oven",
+     "washing machine",
+     "dishwasher",
+     "air conditioner"
+    ],
+    "enwiki": {
+     "microwave oven": "microwave oven",
+     "washing machine": "washing machine",
+     "dishwasher": "dishwasher",
+     "air conditioner": "air conditioner"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Nothing strongly singled it out; the gold was simply the only cleaning appliance among kitchen/laundry/climate ones, so the list is broadened with comparable common household appliances."
+     },
+     {
+      "round": 3,
+      "cue": "The vacuum cleaner was the only cleaning appliance and the only one that moves around the floor rather than sitting fixed in a kitchen or laundry room."
+     },
+     {
+      "round": 5,
+      "cue": "Floor polisher is a close cousin of the vacuum cleaner (both floor-cleaning devices), which could hint at a cleaning-appliance answer, though no clear cue was found."
+     },
+     {
+      "round": 7,
+      "cue": "The gold was the most iconic cleaning appliance alongside an obscure floor-cleaning sibling (floor polisher), which hinted at the floor-cleaning category."
+     },
+     {
+      "round": 9,
+      "cue": "The gold was the most iconic floor-cleaning appliance, and the floor polisher sat beside it as a near-sibling, so the two cleaning devices formed a pair that pointed to the gold."
+     }
+    ]
+   }
+  },
+  "mlh-ar-wool": {
+   "concept": {
+    "topic": "a textile material or fabric",
+    "topic_pass1": "a natural textile fiber or fabric material",
+    "kind": "a textile material",
+    "gold": "sheep wool",
+    "distractors": [
+     "goat cashmere",
+     "alpaca fleece",
+     "camel hair",
+     "rabbit angora"
+    ],
+    "enwiki": {
+     "goat cashmere": "goat cashmere",
+     "alpaca fleece": "alpaca fleece",
+     "camel hair": "camel hair",
+     "rabbit angora": "rabbit angora"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold is the most common, generic animal fibre among exotic specialty fibres, and camel hair ties to Arabic-speaking countries."
+     },
+     {
+      "round": 3,
+      "cue": "Sheep wool is the most common, generic animal fibre, while the others are more exotic animal-plus-fibre pairs; camel hair is also tied to Arabic-speaking countries."
+     },
+     {
+      "round": 5,
+      "cue": "The gold is the most common, everyday animal fibre, while the current options are mostly exotic or luxury fibres, and the list has too few options."
+     },
+     {
+      "round": 7,
+      "cue": "Sheep wool is the most common, generic animal fiber, while the current distractors are all exotic specialty fibers, so it stands out as the default answer."
+     },
+     {
+      "round": 9,
+      "cue": "The gold uses a 'source + fiber' two-word style, and with only four distractors (two goat fibers) the sole sheep-derived option stood out as the most basic, generic fiber."
+     }
+    ]
+   }
+  },
+  "mlh-el-cooking-pot": {
+   "concept": {
+    "topic": "a kitchen utensil or household object",
+    "topic_pass1": "a kitchen cookware item",
+    "kind": "a cooking vessel",
+    "gold": "cooking pot",
+    "distractors": [
+     "baking sheet",
+     "frying pan",
+     "tea kettle",
+     "colander"
+    ],
+    "enwiki": {
+     "baking sheet": "baking sheet",
+     "frying pan": "frying pan",
+     "tea kettle": "tea kettle",
+     "colander": "colander"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": []
+   }
+  },
+  "mlh-el-fire-extinguisher": {
+   "concept": {
+    "topic": "an everyday household or workplace object",
+    "topic_pass1": "a household safety device or piece of emergency equipment",
+    "kind": "an everyday object",
+    "gold": "fire extinguisher",
+    "distractors": [
+     "desk lamp",
+     "smoke detector",
+     "carbon monoxide detector",
+     "coffee maker"
+    ],
+    "enwiki": {
+     "desk lamp": "Desk lamp",
+     "smoke detector": "Smoke detector",
+     "carbon monoxide detector": "Carbon monoxide detector",
+     "coffee maker": "Coffeemaker"
+    },
+    "kept_round": 8,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 2,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "All current options are fire-related, but 'fire extinguisher' is the most prototypical household safety device for the topic, so the topic guesser picks it among a fire-only set."
+     },
+     {
+      "round": 3,
+      "cue": "Fire extinguisher is the most prototypical household safety device, the one a guesser picks first, while the other options were fewer and less canonical, so it stood out as the obvious answer."
+     },
+     {
+      "round": 5,
+      "cue": "The fire extinguisher is the most prototypical answer to 'household safety device or piece of emergency equipment', and the current list has no equally typical fire-fighting item to compete with it."
+     },
+     {
+      "round": 7,
+      "cue": "The fire extinguisher is the most prototypical household safety device, and with only fire-related items plus a flashlight and circuit breaker, the topic guesser naturally picks the most iconic one."
+     },
+     {
+      "round": 1,
+      "cue": "All options were fire-safety equipment, and the fire extinguisher is the most prototypical everyday household or workplace object among them, so the topic pointed straight to it."
+     },
+     {
+      "round": 1,
+      "cue": "Fire extinguisher is the only safety/emergency device and the only two-word compound beyond vacuum cleaner, so it could stand out as a safety object among ordinary tools."
+     },
+     {
+      "round": 3,
+      "cue": "With the topic 'household or workplace object', the fire extinguisher was the most prototypical, mandated workplace object, while the other options were less clearly fixtures of both settings."
+     },
+     {
+      "round": 5,
+      "cue": "Fire extinguisher was the only safety/emergency device fitting both household and workplace, while others were mostly home items, so a topic guesser could pick it as the most workplace-like object."
+     },
+     {
+      "round": 7,
+      "cue": "Topic guessers picked fire extinguisher as the most prototypical safety object found in both homes and workplaces, while smoke detector was its only peer and the rest were mundane clutter."
+     },
+     {
+      "round": 9,
+      "cue": "Fire extinguisher was the only option that is an active safety or emergency device used to respond to a hazard, while the detectors only sensed hazards and the others were ordinary appliances."
+     }
+    ]
+   }
+  },
+  "mlh-el-ilianthos": {
+   "concept": {
+    "topic": "a common flowering plant",
+    "topic_pass1": "a common flowering garden or crop plant",
+    "kind": "a plant",
+    "gold": "sunflower",
+    "distractors": [
+     "marigold",
+     "safflower",
+     "dahlia",
+     "chrysanthemum"
+    ],
+    "enwiki": {
+     "marigold": "marigold",
+     "safflower": "safflower",
+     "dahlia": "dahlia",
+     "chrysanthemum": "chrysanthemum"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The current list is all Asteraceae, so sunflower stands out little by itself, though it is the most iconic one; the list needs broader common flowers of similar fame so no family pattern points to it."
+     },
+     {
+      "round": 3,
+      "cue": "Sunflower was the only large, iconic field-crop-style flower among smaller garden ornamentals, though guessers did not actually single it out."
+     },
+     {
+      "round": 5,
+      "cue": "Sunflower was the only large, tall summer field-crop flower among smaller garden/bulb flowers, and the list was short."
+     },
+     {
+      "round": 7,
+      "cue": "The gold was the only tall field crop/seed plant among ornamental garden flowers, though guessers did not single it out; keep a mix of common flowers in lowercase bare names."
+     },
+     {
+      "round": 9,
+      "cue": "Sunflower was the only compound, large-headed crop-like flower among lowercase garden-flower names, slightly standing out as a two-part word."
+     }
+    ]
+   }
+  },
+  "mlh-el-screwdriver": {
+   "concept": {
+    "topic": "a common hand tool",
+    "topic_pass1": "a common hand tool used in household repairs",
+    "kind": "a tool",
+    "gold": "screwdriver",
+    "distractors": [
+     "handsaw",
+     "mallet",
+     "awl",
+     "hammer"
+    ],
+    "enwiki": {
+     "handsaw": "Hand saw",
+     "mallet": "Mallet",
+     "awl": "Awl",
+     "hammer": "hammer"
+    },
+    "kept_round": 2,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Among a short list, screwdriver was the most prototypical 'common hand tool' alongside hammer, and the list was too small to dilute it."
+     }
+    ]
+   }
+  },
+  "mlh-el-sunflower": {
+   "concept": {
+    "topic": "a cultivated flowering plant",
+    "topic_pass1": "a flowering plant cultivated as a crop",
+    "kind": "a plant",
+    "gold": "sunflower",
+    "distractors": [
+     "dahlia",
+     "tulip",
+     "chrysanthemum",
+     "rose"
+    ],
+    "enwiki": {
+     "dahlia": "dahlia",
+     "tulip": "Tulip",
+     "chrysanthemum": "chrysanthemum",
+     "rose": "Rose"
+    },
+    "kept_round": 6,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Sunflower was the only very common, everyday-famous crop-like flower among more ornamental garden names, though no strong cue was found."
+     },
+     {
+      "round": 3,
+      "cue": "Sunflower was the most famous and the only crop-like/edible-seed flower among smaller ornamental garden flowers, making it stand out slightly by fame."
+     },
+     {
+      "round": 5,
+      "cue": "Sunflower is the most famous and the only crop-scale plant among small garden ornamentals; distractors should include equally famous common flowers so it does not stand out."
+     }
+    ]
+   }
+  },
+  "mlh-el-tapemeasure": {
+   "concept": {
+    "topic": "a hand tool or workshop implement",
+    "topic_pass1": "a hand tool used by craftsmen or builders",
+    "kind": "a tool",
+    "gold": "tape measure",
+    "distractors": [
+     "carpenter's square",
+     "vernier caliper",
+     "spirit level",
+     "plumb bob"
+    ],
+    "enwiki": {
+     "carpenter's square": "carpenter's square",
+     "vernier caliper": "vernier caliper",
+     "spirit level": "spirit level",
+     "plumb bob": "plumb bob"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": []
+   }
+  },
+  "mlh-el-wind-turbine": {
+   "concept": {
+    "topic": "a machine or engineered structure",
+    "topic_pass1": "a power-generating machine or structure",
+    "kind": "a machine",
+    "gold": "wind turbine",
+    "distractors": [
+     "gas turbine",
+     "steam engine",
+     "water wheel",
+     "windmill"
+    ],
+    "enwiki": {
+     "gas turbine": "Gas turbine",
+     "steam engine": "Steam engine",
+     "water wheel": "Water wheel",
+     "windmill": "Windmill"
+    },
+    "kept_round": 5,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only wind-powered device among a small set of power-generation items, so a larger mix of varied machines removes any energy-theme clustering around it."
+     },
+     {
+      "round": 3,
+      "cue": "The gold was the only modern renewable-electricity generator among mostly historical or non-electric machines, though guessers did not pick it out."
+     },
+     {
+      "round": 5,
+      "cue": "Wind turbine is the only renewable rotating machine driven by moving air, and with only four distractors it sits among energy machines where its renewable status could single it out."
+     }
+    ]
+   }
+  },
+  "mlh-el-xray": {
+   "concept": {
+    "topic": "a medical test or diagnostic procedure",
+    "topic_pass1": "a medical imaging or diagnostic technique",
+    "kind": "a medical test",
+    "gold": "X-ray image",
+    "distractors": [
+     "CT scan image",
+     "MRI image",
+     "PET scan image",
+     "Mammogram image"
+    ],
+    "enwiki": {
+     "CT scan image": "CT scan",
+     "MRI image": "Magnetic resonance imaging",
+     "PET scan image": "Positron emission tomography",
+     "Mammogram image": "Mammography"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the most basic, canonical imaging test, and the inconsistent list (one 'scan', others 'image') made X-ray image the obvious prototypical 'image' choice for a topic guesser."
+     },
+     {
+      "round": 1,
+      "cue": "The gold is the most generic, foundational imaging test, and the other options are fewer and all imaging scans, so a guesser could pick the 'parent' modality; adding more varied imaging items in the same 'X image' style removes that cue."
+     },
+     {
+      "round": 3,
+      "cue": "X-ray image is the most generic, prototypical imaging term, and the other options (angiogram, fluoroscopy, CT) are all X-ray-based subtypes, which points to it as the parent concept."
+     },
+     {
+      "round": 5,
+      "cue": "X-ray image is the most common, prototypical medical imaging test, while some distractors (thermal, retinal scan) are less standard medical diagnostics."
+     },
+     {
+      "round": 7,
+      "cue": "The gold is the most basic, generic imaging type, and most of the current distractors (fluoroscopy, mammogram) are X-ray subtypes, which leaves the gold looking like the umbrella term."
+     },
+     {
+      "round": 9,
+      "cue": "X-ray is the most canonical, famous diagnostic imaging test, while the distractors were less common or redundant (thermal/thermography duplicates), so the topic guesser picked the best-known option."
+     }
+    ]
+   }
+  },
+  "mlh-el-xypnitiri": {
+   "concept": {
+    "topic": "a common household object or device",
+    "topic_pass1": "a common household object or device",
+    "kind": "an everyday object",
+    "gold": "alarm clock",
+    "distractors": [
+     "telephone",
+     "refrigerator",
+     "washing machine",
+     "microwave oven"
+    ],
+    "enwiki": {
+     "telephone": "Telephone",
+     "refrigerator": "Refrigerator",
+     "washing machine": "Washing machine",
+     "microwave oven": "Microwave oven"
+    },
+    "kept_round": 3,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "All current options are timekeeping devices, so the gold sits among a tight cluster; the list should instead span varied household objects so no theme points to it, keeping lowercase two-word or one-word common nouns."
+     },
+     {
+      "round": 3,
+      "cue": "Among the few options, alarm clock was the most prototypical 'household device' with a timekeeping cluster (wristwatch, hourglass) pointing to it as the central member."
+     }
+    ]
+   }
+  },
+  "mlh-fi-auringonpimennys": {
+   "concept": {
+    "topic": "an astronomical phenomenon or event",
+    "topic_pass1": "an astronomical phenomenon or event",
+    "kind": "an astronomical event",
+    "gold": "solar eclipse",
+    "distractors": [
+     "meteor shower",
+     "transit of Venus",
+     "aurora borealis",
+     "lunar eclipse"
+    ],
+    "enwiki": {
+     "meteor shower": "meteor shower",
+     "transit of Venus": "transit of Venus",
+     "aurora borealis": "aurora borealis",
+     "lunar eclipse": "lunar eclipse"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Nothing strongly singled it out, but aurora borealis is tied to Finland and solar eclipse was the most iconic generic event, so the list needs more equally famous, generic lowercase events."
+     },
+     {
+      "round": 3,
+      "cue": "The gold is the most common, everyday-famous event in a list that mixes informal terms ('comet sighting', 'blood moon') with technical ones, so its plain lowercase two-word scientific form stood out only mildly; the new list uses uniform lowercase common-noun event names of similar length and fame."
+     },
+     {
+      "round": 5,
+      "cue": "Solar eclipse was the most canonical, textbook astronomical event, while distractors like 'comet sighting' and 'blood moon' were informal or vaguer phrasings, so the gold stood out as the standard term."
+     },
+     {
+      "round": 7,
+      "cue": "Solar eclipse was the only Sun-centred, widely famous classic event against a mix of lunar and planetary terms, so a guesser could single it out as the most canonical astronomical event."
+     },
+     {
+      "round": 9,
+      "cue": "The gold was the most famous, iconic event among weaker, overlapping options (two transits), so a topic guesser picks the most prototypical phenomenon."
+     }
+    ]
+   }
+  },
+  "mlh-fi-kahvinkeitin": {
+   "concept": {
+    "topic": "a household device or appliance",
+    "topic_pass1": "a kitchen appliance",
+    "kind": "a household device",
+    "gold": "coffee maker",
+    "distractors": [
+     "microwave oven",
+     "electric kettle",
+     "toaster",
+     "blender"
+    ],
+    "enwiki": {
+     "microwave oven": "microwave oven",
+     "electric kettle": "electric kettle",
+     "toaster": "toaster",
+     "blender": "blender"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": []
+   }
+  },
+  "mlh-fi-silitysrauta": {
+   "concept": {
+    "topic": "a common household appliance",
+    "topic_pass1": "a common household electrical appliance",
+    "kind": "a household appliance",
+    "gold": "clothes iron",
+    "distractors": [
+     "hair dryer",
+     "vacuum cleaner",
+     "electric kettle",
+     "toaster"
+    ],
+    "enwiki": {
+     "hair dryer": "Hair dryer",
+     "vacuum cleaner": "Vacuum cleaner",
+     "electric kettle": "Electric kettle",
+     "toaster": "Toaster"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The ironing board option is a non-electrical accessory paired with the iron, pointing straight at 'clothes iron' as the central item of the set."
+     }
+    ]
+   }
+  },
+  "mlh-fi-toothbrush": {
+   "concept": {
+    "topic": "a common household object",
+    "topic_pass1": "a common bathroom or personal hygiene item",
+    "kind": "an everyday object",
+    "gold": "toothbrush",
+    "distractors": [
+     "bucket",
+     "broom",
+     "teapot",
+     "umbrella"
+    ],
+    "enwiki": {
+     "bucket": "Bucket",
+     "broom": "Broom",
+     "teapot": "Teapot",
+     "umbrella": "Umbrella"
+    },
+    "kept_round": 9,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the canonical bathroom-hygiene object among close personal-care items, and dental floss pointed toward it as a dental tool."
+     },
+     {
+      "round": 3,
+      "cue": "Toothbrush was the only personal-hygiene item and the only compound word among generic kitchen/bedroom objects, so it could stand out as a bathroom item."
+     },
+     {
+      "round": 5,
+      "cue": "Dental floss shares the gold's oral-hygiene theme, so the pair stands out and points to the toothbrush as the more canonical item."
+     },
+     {
+      "round": 7,
+      "cue": "The gold was the only oral-hygiene, bathroom-specific, compound-word item among mostly kitchen or general objects, though guessers did not actually pick it."
+     },
+     {
+      "round": 9,
+      "cue": "The gold was the only item that clusters with both hairbrush and dental floss, making it the shared centre of a personal-grooming/dental subset and so easy to infer."
+     }
+    ]
+   }
+  },
+  "mlh-fi-tortoise": {
+   "concept": {
+    "topic": "a type of animal",
+    "topic_pass1": "a type of reptile",
+    "kind": "an animal",
+    "gold": "tortoise",
+    "distractors": [
+     "iguana",
+     "gecko",
+     "chameleon",
+     "crocodile"
+    ],
+    "enwiki": {
+     "iguana": "Iguana",
+     "gecko": "Gecko",
+     "chameleon": "Chameleon",
+     "crocodile": "Crocodile"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Only tortoise and iguana were reptiles, and the others (armadillo, hare, hedgehog) evoke the Aesop fable of the tortoise and the hare or armoured slow animals, so tortoise stood out as the fable pairing."
+     }
+    ]
+   }
+  },
+  "mlh-fi-vetoketju": {
+   "concept": {
+    "topic": "an everyday household or clothing item",
+    "topic_pass1": "a clothing fastener or sewing notion",
+    "kind": "an everyday object",
+    "gold": "zip fastener",
+    "distractors": [
+     "toggle",
+     "toggle fastener",
+     "hook-and-eye closure",
+     "button"
+    ],
+    "enwiki": {
+     "toggle": "Toggle (fastener)",
+     "toggle fastener": "Toggle (fastener)",
+     "hook-and-eye closure": "Hook-and-eye closure",
+     "button": "Button"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "'zip fastener' was the only British-style compound name for the single most iconic clothing fastener; the others were less canonical, so it stood out as the obvious prototypical answer."
+     },
+     {
+      "round": 3,
+      "cue": "\"Zip fastener\" was the most iconic, prototypical clothing fastener and one of only two \"X fastener\" options, while the rest were mixed single words, which made it stand out as the canonical answer."
+     },
+     {
+      "round": 1,
+      "cue": "The gold 'zip fastener' was the only two-word British-style term with 'fastener', apart from a near-duplicate 'toggle fastener', and the list mixed in duplicates (toggle / toggle fastener), making the set uneven."
+     },
+     {
+      "round": 3,
+      "cue": "'zip fastener' is the only British-style two-word compound with the formal word 'fastener' besides one other, making it stand out as the most prominent, archetypal fastener among mostly bare single-word or simple items."
+     },
+     {
+      "round": 5,
+      "cue": "The gold was the only option phrased in the British two-word 'X fastener' style besides a near-duplicate pair (toggle fastener/toggle), and it was the most canonical, famous fastening item among weak, redundant distractors."
+     },
+     {
+      "round": 7,
+      "cue": "The gold 'zip fastener' shares the word 'fastener' only with 'toggle fastener', making the pair stand out, and it is the most iconic clothing item among mostly stationery or utility objects."
+     },
+     {
+      "round": 9,
+      "cue": "\"zip fastener\" was the only fastener-type item with a two-word, slightly formal British naming style tied to clothing, standing out among varied household gadgets like cable tie and coat hanger."
+     }
+    ]
+   }
+  },
+  "mlh-he-alarm-clock": {
+   "concept": {
+    "topic": "a common household device or object",
+    "topic_pass1": "a common household device or appliance",
+    "kind": "an everyday object",
+    "gold": "alarm clock",
+    "distractors": [
+     "desk lamp",
+     "electric fan",
+     "vacuum cleaner",
+     "table lamp"
+    ],
+    "enwiki": {
+     "desk lamp": "Balanced-arm lamp",
+     "electric fan": "Fan (machine)",
+     "vacuum cleaner": "Vacuum cleaner",
+     "table lamp": "Lamp (furniture)"
+    },
+    "kept_round": 5,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The topic says 'household device or appliance', and among timekeeping items the alarm clock is the only true common household appliance; the hourglass, stopwatch and egg timer are not household appliances, and the cuckoo clock is a decorative niche item."
+     },
+     {
+      "round": 1,
+      "cue": "The current distractors are all kitchen or bathroom heating appliances, while the alarm clock is the only bedroom or timekeeping item, so it stands out as a different sort of household object."
+     },
+     {
+      "round": 3,
+      "cue": "With the topic 'household device', the alarm clock was the only timekeeping/bedside object among appliances, making it the most prototypical 'device or object' associated with daily routine and easy to single out."
+     },
+     {
+      "round": 5,
+      "cue": "Given the topic of a common household device, the alarm clock was the most prototypical bedside/timekeeping object that a model would guess, while the other options were less iconic or mixed in safety devices; the list lacked other bedside and small personal items of equal salience."
+     }
+    ]
+   }
+  },
+  "mlh-he-dishwasher": {
+   "concept": {
+    "topic": "a household appliance or device",
+    "topic_pass1": "a household kitchen appliance",
+    "kind": "an appliance",
+    "gold": "dishwashing machine",
+    "distractors": [
+     "electric kettle",
+     "trash compactor",
+     "microwave oven",
+     "vacuum cleaner"
+    ],
+    "enwiki": {
+     "electric kettle": "Electric kettle",
+     "trash compactor": "Trash compactor",
+     "microwave oven": "microwave oven",
+     "vacuum cleaner": "Vacuum cleaner"
+    },
+    "kept_round": 2,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold 'dishwashing machine' uses an unusual long-form name (rather than 'dishwasher'), which could stand out unless other options use similarly descriptive multi-word names."
+     }
+    ]
+   }
+  },
+  "mlh-he-escalator": {
+   "concept": {
+    "topic": "an everyday object or device",
+    "topic_pass1": "a mechanical device or fixture found in buildings",
+    "kind": "an everyday object",
+    "gold": "escalator",
+    "distractors": [
+     "dishwasher",
+     "ceiling fan",
+     "refrigerator",
+     "revolving door"
+    ],
+    "enwiki": {
+     "dishwasher": "Dishwasher",
+     "ceiling fan": "Ceiling fan",
+     "refrigerator": "Refrigerator",
+     "revolving door": "Revolving door"
+    },
+    "kept_round": 2,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only common, single-word everyday conveyance among vertical-transport devices, though guessers did not find it; keep a mix of everyday household and building devices in the same lowercase bare-noun style."
+     }
+    ]
+   }
+  },
+  "mlh-he-polar-bear": {
+   "concept": {
+    "topic": "a mammal species",
+    "topic_pass1": "a large mammal of the Arctic",
+    "kind": "an animal species",
+    "gold": "polar bear",
+    "distractors": [
+     "giant panda",
+     "gray wolf",
+     "red fox",
+     "bottlenose dolphin"
+    ],
+    "enwiki": {
+     "giant panda": "Giant panda",
+     "gray wolf": "Wolf",
+     "red fox": "Red fox",
+     "bottlenose dolphin": "Common bottlenose dolphin"
+    },
+    "kept_round": 1,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The current list clusters around polar/Arctic animals (and includes a non-mammal, emperor penguin), so the polar bear sits at the thematic centre and can be singled out as the prototype."
+     }
+    ]
+   }
+  },
+  "mlh-he-pressure-cooker": {
+   "concept": {
+    "topic": "a kitchen cooking appliance or cookware",
+    "topic_pass1": "a kitchen cooking appliance or cookware",
+    "kind": "a cooking vessel",
+    "gold": "pressure cooker",
+    "distractors": [
+     "tagine",
+     "slow cooker",
+     "steamer",
+     "frying pan"
+    ],
+    "enwiki": {
+     "tagine": "Tajine",
+     "slow cooker": "slow cooker",
+     "steamer": "Food steamer",
+     "frying pan": "Frying pan"
+    },
+    "kept_round": 5,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Nothing strongly singled it out, but the list was short and mixed electric appliances with cookware, so pressure cooker sat as the most iconic sealed-pot item."
+     },
+     {
+      "round": 3,
+      "cue": "The pressure cooker was the only sealed, mechanised appliance-like vessel among simple pots and pans, so it stood apart on its own."
+     },
+     {
+      "round": 5,
+      "cue": "The pressure cooker was the only sealed, pressurised vessel, and rice cooker was the only other appliance-like option, which left it slightly distinctive."
+     }
+    ]
+   }
+  },
+  "mlh-he-sewingmachine": {
+   "concept": {
+    "topic": "a household appliance or tool",
+    "topic_pass1": "a household appliance or tool",
+    "kind": "a household device",
+    "gold": "sewing machine",
+    "distractors": [
+     "food processor",
+     "microwave oven",
+     "dishwasher",
+     "refrigerator"
+    ],
+    "enwiki": {
+     "food processor": "Food processor",
+     "microwave oven": "Microwave oven",
+     "dishwasher": "Dishwasher",
+     "refrigerator": "Refrigerator"
+    },
+    "kept_round": 2,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Current list mixes industrial machines (cotton gin, power loom) with household ones, so the gold stood out little, but the topic 'household' could favor sewing machine or washing machine as the only true household devices."
+     }
+    ]
+   }
+  },
+  "mlh-he-spine": {
+   "concept": {
+    "topic": "a part of the human body",
+    "topic_pass1": "a part of the human skeleton or body",
+    "kind": "a body part",
+    "gold": "vertebral column",
+    "distractors": [
+     "shoulder girdle",
+     "thoracic cavity",
+     "collarbone",
+     "skull"
+    ],
+    "enwiki": {
+     "shoulder girdle": "Shoulder girdle",
+     "thoracic cavity": "Thoracic cavity",
+     "collarbone": "Clavicle",
+     "skull": "Skull"
+    },
+    "kept_round": 1,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only two-word 'adjective + noun' anatomical term naming a whole skeletal structure, though the current list already mixes similar forms, so the cue is weak."
+     }
+    ]
+   }
+  },
+  "mlh-he-tapemeasure": {
+   "concept": {
+    "topic": "a household or workshop tool",
+    "topic_pass1": "a household or workshop measuring tool",
+    "kind": "a tool",
+    "gold": "tape measure",
+    "distractors": [
+     "plumb bob",
+     "carpenter's square",
+     "spirit level",
+     "vernier caliper"
+    ],
+    "enwiki": {
+     "plumb bob": "plumb bob",
+     "carpenter's square": "carpenter's square",
+     "spirit level": "spirit level",
+     "vernier caliper": "vernier caliper"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": []
+   }
+  },
+  "mlh-he-toothbrush": {
+   "concept": {
+    "topic": "a household or everyday object",
+    "topic_pass1": "a personal hygiene or bathroom item",
+    "kind": "an everyday object",
+    "gold": "toothbrush",
+    "distractors": [
+     "toothpaste",
+     "soap",
+     "towel",
+     "shampoo"
+    ],
+    "enwiki": {
+     "toothpaste": "Toothpaste",
+     "soap": "Soap",
+     "towel": "Towel",
+     "shampoo": "Shampoo"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Toothbrush is the most prototypical bathroom hygiene item, and the list held only one other dental item, so toothbrush stood out as the central, default answer."
+     }
+    ]
+   }
+  },
+  "mlh-he-vacuum-cleaner": {
+   "concept": {
+    "topic": "a household appliance or device",
+    "topic_pass1": "an electric household cleaning appliance",
+    "kind": "a household appliance",
+    "gold": "vacuum cleaner",
+    "distractors": [
+     "washing machine",
+     "air purifier",
+     "microwave oven",
+     "dishwasher"
+    ],
+    "enwiki": {
+     "washing machine": "washing machine",
+     "air purifier": "air purifier",
+     "microwave oven": "microwave oven",
+     "dishwasher": "dishwasher"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": []
+   }
+  },
+  "mlh-he-washing-machine": {
+   "concept": {
+    "topic": "a common household appliance",
+    "topic_pass1": "a common household appliance",
+    "kind": "an appliance",
+    "gold": "washing machine",
+    "distractors": [
+     "refrigerator",
+     "dishwasher",
+     "clothes dryer",
+     "vacuum cleaner"
+    ],
+    "enwiki": {
+     "refrigerator": "refrigerator",
+     "dishwasher": "dishwasher",
+     "clothes dryer": "clothes dryer",
+     "vacuum cleaner": "vacuum cleaner"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": []
+   }
+  },
+  "mlh-hu-candlestick": {
+   "concept": {
+    "topic": "an everyday household object",
+    "topic_pass1": "a household lighting object",
+    "kind": "an everyday object",
+    "gold": "candlestick",
+    "distractors": [
+     "oil lamp",
+     "lantern",
+     "chandelier",
+     "incense burner"
+    ],
+    "enwiki": {
+     "oil lamp": "oil lamp",
+     "lantern": "lantern",
+     "chandelier": "chandelier",
+     "incense burner": "incense burner"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": []
+   }
+  },
+  "mlh-hu-canopener": {
+   "concept": {
+    "topic": "a kitchen tool or utensil",
+    "topic_pass1": "a small hand-held kitchen utensil or gadget",
+    "kind": "a kitchen tool",
+    "gold": "can opener",
+    "distractors": [
+     "bottle opener",
+     "corkscrew",
+     "vegetable peeler",
+     "garlic press"
+    ],
+    "enwiki": {
+     "bottle opener": "bottle opener",
+     "corkscrew": "corkscrew",
+     "vegetable peeler": "vegetable peeler",
+     "garlic press": "garlic press"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": []
+   }
+  },
+  "mlh-hu-esokabat": {
+   "concept": {
+    "topic": "an item of clothing",
+    "topic_pass1": "an item of outerwear clothing",
+    "kind": "a garment",
+    "gold": "raincoat",
+    "distractors": [
+     "blazer",
+     "parka",
+     "sweater",
+     "overcoat"
+    ],
+    "enwiki": {
+     "blazer": "Blazer",
+     "parka": "parka",
+     "sweater": "Sweater",
+     "overcoat": "Overcoat"
+    },
+    "kept_round": 7,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "All current options are outerwear coats, so the gold blends in, but the list is short and the generic, purpose-named 'raincoat' could still stand out as the most basic weather garment; widening to eight varied common garments removes that cue."
+     },
+     {
+      "round": 3,
+      "cue": "The gold was the only option defined by a weather function (rain protection), while the list had few other generic outerwear items, so 'raincoat' stood out as the most generic, canonical garment name."
+     },
+     {
+      "round": 5,
+      "cue": "The gold was the only option defined by a weather function (rain protection), while the others were general outerwear or knitwear, though guessers did not exploit it."
+     },
+     {
+      "round": 7,
+      "cue": "Raincoat was the only weather-specific protective outer garment among mostly knitwear and tailored jackets, though guessers did not single it out."
+     }
+    ]
+   }
+  },
+  "mlh-hu-gerincvelo": {
+   "concept": {
+    "topic": "a part of human anatomy",
+    "topic_pass1": "a part of the human nervous system",
+    "kind": "a body part",
+    "gold": "spinal cord",
+    "distractors": [
+     "brainstem",
+     "optic nerve",
+     "vagus nerve",
+     "hypothalamus"
+    ],
+    "enwiki": {
+     "brainstem": "Brainstem",
+     "optic nerve": "Optic nerve",
+     "vagus nerve": "Vagus nerve",
+     "hypothalamus": "Hypothalamus"
+    },
+    "kept_round": 1,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Spinal cord is the most common, plain-English central nervous system structure among mostly Latinate brain-part names, so it can look like the obvious everyday answer."
+     }
+    ]
+   }
+  },
+  "mlh-hu-hallokeszulek": {
+   "concept": {
+    "topic": "a medical or assistive device",
+    "topic_pass1": "a medical or assistive device",
+    "kind": "a device",
+    "gold": "hearing aid",
+    "distractors": [
+     "eyeglasses",
+     "wheelchair",
+     "cochlear implant",
+     "cardiac pacemaker"
+    ],
+    "enwiki": {
+     "eyeglasses": "eyeglasses",
+     "wheelchair": "wheelchair",
+     "cochlear implant": "cochlear implant",
+     "cardiac pacemaker": "cardiac pacemaker"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": []
+   }
+  },
+  "mlh-hu-ironingboard": {
+   "concept": {
+    "topic": "a common household object or furniture",
+    "topic_pass1": "a household item used in laundry and clothing care",
+    "kind": "a household object",
+    "gold": "ironing board",
+    "distractors": [
+     "folding chair",
+     "clothes horse",
+     "shoe rack",
+     "coat rack"
+    ],
+    "enwiki": {
+     "folding chair": "Folding chair",
+     "clothes horse": "Clothes horse",
+     "shoe rack": "Shoe rack",
+     "coat rack": "Coat rack"
+    },
+    "kept_round": 3,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only two-word, lowercase item tied closely to laundry/ironing while others were longer three-word phrases, making length and specificity a mild cue."
+     },
+     {
+      "round": 3,
+      "cue": "The gold was the only option tied to laundry/clothes care and a foldable flat work surface specific to a chore, but overall it did not stand out much."
+     }
+    ]
+   }
+  },
+  "mlh-hu-meroszalag": {
+   "concept": {
+    "topic": "a hand tool or household implement",
+    "topic_pass1": "a hand tool used for measuring or construction work",
+    "kind": "a tool",
+    "gold": "tape measure",
+    "distractors": [
+     "carpenter's square",
+     "vernier caliper",
+     "spirit level",
+     "plumb bob"
+    ],
+    "enwiki": {
+     "carpenter's square": "carpenter's square",
+     "vernier caliper": "vernier caliper",
+     "spirit level": "spirit level",
+     "plumb bob": "plumb bob"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": []
+   }
+  },
+  "mlh-hu-napraforgo": {
+   "concept": {
+    "topic": "an agricultural crop plant",
+    "topic_pass1": "an oilseed or field crop plant",
+    "kind": "a crop plant",
+    "gold": "sunflower",
+    "distractors": [
+     "sesame",
+     "cotton",
+     "sorghum",
+     "peanut"
+    ],
+    "enwiki": {
+     "sesame": "Sesame",
+     "cotton": "Cotton",
+     "sorghum": "Sorghum",
+     "peanut": "Peanut"
+    },
+    "kept_round": 4,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Among mostly ornamental flowers (chrysanthemum, marigold, poppy), sunflower stood out as the best-known oilseed crop, with safflower the only other true oilseed."
+     },
+     {
+      "round": 1,
+      "cue": "All current options are oilseed crops, and sunflower is the iconic oilseed most strongly associated with Hungary, so pairing it with the Hungarian language gives it away; a broader mix of field crops removes that link."
+     },
+     {
+      "round": 3,
+      "cue": "Sunflower stood out as the only oilseed crop with a single-word lowercase name strongly linked to Hungary, while the others are a mix of cereals and fibre and root crops."
+     }
+    ]
+   }
+  },
+  "mlh-hu-porszivo": {
+   "concept": {
+    "topic": "a household appliance or device",
+    "topic_pass1": "an electric household appliance",
+    "kind": "a household appliance",
+    "gold": "vacuum cleaner",
+    "distractors": [
+     "refrigerator",
+     "clothes dryer",
+     "electric kettle",
+     "toaster"
+    ],
+    "enwiki": {
+     "refrigerator": "Refrigerator",
+     "clothes dryer": "Clothes dryer",
+     "electric kettle": "Kettle",
+     "toaster": "Toaster"
+    },
+    "kept_round": 1,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only general floor-cleaning appliance next to a niche steam mop, making the cleaning pair stand out against big kitchen and laundry machines."
+     }
+    ]
+   }
+  },
+  "mlh-hu-szitakoto": {
+   "concept": {
+    "topic": "an insect species or group",
+    "topic_pass1": "an insect found near water",
+    "kind": "an insect",
+    "gold": "dragonfly",
+    "distractors": [
+     "cicada",
+     "mayfly",
+     "praying mantis",
+     "firefly"
+    ],
+    "enwiki": {
+     "cicada": "cicada",
+     "mayfly": "mayfly",
+     "praying mantis": "praying mantis",
+     "firefly": "firefly"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": []
+   }
+  },
+  "mlh-hu-varrogep": {
+   "concept": {
+    "topic": "a household tool or machine",
+    "topic_pass1": "a tool or machine used in tailoring and textile work",
+    "kind": "a machine",
+    "gold": "sewing machine",
+    "distractors": [
+     "washing machine",
+     "vacuum cleaner",
+     "dishwasher",
+     "clothes dryer"
+    ],
+    "enwiki": {
+     "washing machine": "Washing machine",
+     "vacuum cleaner": "Vacuum cleaner",
+     "dishwasher": "Dishwasher",
+     "clothes dryer": "Clothes dryer"
+    },
+    "kept_round": 1,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Sewing machine is the most prototypical, famous machine of tailoring, while typewriter and washing machine are off-topic household/office items, making the gold the obvious textile choice."
+     },
+     {
+      "round": 1,
+      "cue": "Only the sewing machine is a household tool; the others are industrial textile machines, so the topic 'household tool or machine' singled it out."
+     }
+    ]
+   }
+  },
+  "mlh-id-cacar-air": {
+   "concept": {
+    "topic": "an infectious disease",
+    "topic_pass1": "a common contagious childhood disease",
+    "kind": "a disease",
+    "gold": "chicken pox",
+    "distractors": [
+     "scarlet fever",
+     "rubella",
+     "measles",
+     "mumps"
+    ],
+    "enwiki": {
+     "scarlet fever": "scarlet fever",
+     "rubella": "rubella",
+     "measles": "measles",
+     "mumps": "mumps"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": []
+   }
+  },
+  "mlh-id-firefly": {
+   "concept": {
+    "topic": "a type of insect",
+    "topic_pass1": "a type of insect",
+    "kind": "an insect",
+    "gold": "firefly",
+    "distractors": [
+     "praying mantis",
+     "dragonfly",
+     "ladybug",
+     "cicada"
+    ],
+    "enwiki": {
+     "praying mantis": "praying mantis",
+     "dragonfly": "dragonfly",
+     "ladybug": "ladybug",
+     "cicada": "cicada"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": []
+   }
+  },
+  "mlh-id-gantungan-baju": {
+   "concept": {
+    "topic": "a common household object",
+    "topic_pass1": "a household item used for storing or organizing clothing",
+    "kind": "an everyday object",
+    "gold": "coat hanger",
+    "distractors": [
+     "toothbrush",
+     "doormat",
+     "dustpan",
+     "can opener"
+    ],
+    "enwiki": {
+     "toothbrush": "Toothbrush",
+     "doormat": "Mat",
+     "dustpan": "Dustpan",
+     "can opener": "Can opener"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "All current distractors are laundry/clothing-care items, so the topic 'common household object' alone doesn't single it out, but the coat hanger is the most prototypical, generic household object among a narrow clothing-themed cluster; broadening to varied household objects removes the cluster cue."
+     }
+    ]
+   }
+  },
+  "mlh-id-gerhanabulan": {
+   "concept": {
+    "topic": "an astronomical phenomenon or celestial event",
+    "topic_pass1": "an astronomical phenomenon or celestial event",
+    "kind": "an astronomical event",
+    "gold": "lunar eclipse",
+    "distractors": [
+     "solar eclipse",
+     "meteor shower",
+     "transit of Venus",
+     "planetary conjunction"
+    ],
+    "enwiki": {
+     "solar eclipse": "solar eclipse",
+     "meteor shower": "meteor shower",
+     "transit of Venus": "transit of Venus",
+     "planetary conjunction": "planetary conjunction"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": []
+   }
+  },
+  "mlh-id-hailstone": {
+   "concept": {
+    "topic": "a weather or atmospheric phenomenon",
+    "topic_pass1": "a form of precipitation or weather phenomenon",
+    "kind": "a weather phenomenon",
+    "gold": "hailstone",
+    "distractors": [
+     "sleet",
+     "graupel",
+     "raindrop",
+     "snowflake"
+    ],
+    "enwiki": {
+     "sleet": "sleet",
+     "graupel": "graupel",
+     "raindrop": "raindrop",
+     "snowflake": "snowflake"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": []
+   }
+  },
+  "mlh-id-mesin-jahit": {
+   "concept": {
+    "topic": "a tool or machine",
+    "topic_pass1": "a tool or machine used in tailoring and garment making",
+    "kind": "a tool or machine",
+    "gold": "sewing machine",
+    "distractors": [
+     "printing press",
+     "vacuum cleaner",
+     "lawn mower",
+     "steam engine"
+    ],
+    "enwiki": {
+     "printing press": "Printing press",
+     "vacuum cleaner": "Vacuum cleaner",
+     "lawn mower": "Lawn mower",
+     "steam engine": "Steam engine"
+    },
+    "kept_round": 1,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The current list clusters around textile and household machines, and 'sewing machine' sits at the centre of that cluster, so the theme itself points to it."
+     }
+    ]
+   }
+  },
+  "mlh-id-penghapus": {
+   "concept": {
+    "topic": "a common stationery or school supply item",
+    "topic_pass1": "a common stationery or school supply item",
+    "kind": "an everyday object",
+    "gold": "eraser",
+    "distractors": [
+     "glue stick",
+     "pencil sharpener",
+     "ruler",
+     "stapler"
+    ],
+    "enwiki": {
+     "glue stick": "glue stick",
+     "pencil sharpener": "pencil sharpener",
+     "ruler": "ruler",
+     "stapler": "stapler"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": []
+   }
+  },
+  "mlh-id-sarung-tangan": {
+   "concept": {
+    "topic": "a clothing item or accessory",
+    "topic_pass1": "a wearable garment or accessory",
+    "kind": "a clothing item",
+    "gold": "hand gloves",
+    "distractors": [
+     "ear muffs",
+     "safety goggles",
+     "rubber boots",
+     "woolen scarf"
+    ],
+    "enwiki": {
+     "ear muffs": "ear muffs",
+     "safety goggles": "safety goggles",
+     "rubber boots": "rubber boots",
+     "woolen scarf": "woolen scarf"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": []
+   }
+  },
+  "mlh-id-tengkorak": {
+   "concept": {
+    "topic": "a bone or skeletal structure of the human body",
+    "topic_pass1": "a bone or skeletal structure of the human body",
+    "kind": "an anatomical structure",
+    "gold": "skull bone",
+    "distractors": [
+     "collarbone",
+     "breastbone",
+     "thigh bone",
+     "shoulder blade"
+    ],
+    "enwiki": {
+     "collarbone": "collarbone",
+     "breastbone": "breastbone",
+     "thigh bone": "thigh bone",
+     "shoulder blade": "shoulder blade"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": []
+   }
+  },
+  "mlh-id-trash-bin": {
+   "concept": {
+    "topic": "a common household object",
+    "topic_pass1": "a common household kitchen item or container",
+    "kind": "a household object",
+    "gold": "trash bin",
+    "distractors": [
+     "broom",
+     "bucket",
+     "dish rack",
+     "clothes hanger"
+    ],
+    "enwiki": {
+     "broom": "Broom",
+     "bucket": "Bucket",
+     "dish rack": "Dish drying cabinet",
+     "clothes hanger": "Clothes hanger"
+    },
+    "kept_round": 3,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only indoor-and-outdoor waste container among garden and storage items, but no strong cue was evident; the list just needs more comparable two-word containers and common objects."
+     },
+     {
+      "round": 3,
+      "cue": "The gold 'trash bin' is the most universal, everyday item, while the current distractors are niche containers, so it could stand out as the most common household object."
+     }
+    ]
+   }
+  },
+  "mlh-ko-vacuum-cleaner": {
+   "concept": {
+    "topic": "a household electrical appliance",
+    "topic_pass1": "a household electrical appliance",
+    "kind": "an appliance",
+    "gold": "vacuum cleaner",
+    "distractors": [
+     "washing machine",
+     "hair dryer",
+     "dishwasher",
+     "microwave oven"
+    ],
+    "enwiki": {
+     "washing machine": "washing machine",
+     "hair dryer": "hair dryer",
+     "dishwasher": "dishwasher",
+     "microwave oven": "microwave oven"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": []
+   }
+  },
+  "mlh-ko-yeonpilkkakki": {
+   "concept": {
+    "topic": "a common stationery or office item",
+    "topic_pass1": "a common stationery or office supply item",
+    "kind": "an everyday object",
+    "gold": "pencil sharpener",
+    "distractors": [
+     "glue stick",
+     "paper clip",
+     "binder clip",
+     "staple remover"
+    ],
+    "enwiki": {
+     "glue stick": "Glue stick",
+     "paper clip": "Paper clip",
+     "binder clip": "Binder clip",
+     "staple remover": "staple remover"
+    },
+    "kept_round": 3,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only pencil-related item among paper-handling tools, but guessers did not find it, so the list mainly needs more similar small desk tools."
+     },
+     {
+      "round": 3,
+      "cue": "The gold was the only item for sharpening a writing instrument and stood out little; the list was small, so it needs more two-word, lowercase stationery items of similar fame."
+     }
+    ]
+   }
+  },
+  "mlh-pl-biedronka": {
+   "concept": {
+    "topic": "a common insect or other arthropod",
+    "topic_pass1": "a common garden insect",
+    "kind": "an insect",
+    "gold": "ladybird beetle",
+    "distractors": [
+     "click beetle",
+     "soldier beetle",
+     "stag beetle",
+     "dung beetle"
+    ],
+    "enwiki": {
+     "click beetle": "Elateridae",
+     "soldier beetle": "Soldier beetle",
+     "stag beetle": "Lucanus cervus",
+     "dung beetle": "Dung beetle"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Of the options, only the ladybird beetle is a typical, beloved common garden insect; dung beetles, fireflies and stag beetles are less garden-associated, and the Colorado potato beetle is a crop pest tied to one plant."
+     },
+     {
+      "round": 1,
+      "cue": "With the topic 'a common insect', ladybird beetle was the most familiar, iconic garden insect among obscure pest beetles, so it stood out as the obvious common one."
+     },
+     {
+      "round": 1,
+      "cue": "The gold was the only very common, familiar garden insect among obscure beetle types, and its 'ladybird' form stood out against plain '___ beetle' names."
+     },
+     {
+      "round": 3,
+      "cue": "The gold was the only common, widely familiar garden insect among obscure beetle families, so a 'common insect' topic pointed straight to it."
+     },
+     {
+      "round": 5,
+      "cue": "Nothing strongly singled it out, though 'ladybird beetle' is the most familiar, common garden insect among more exotic beetles, so the list needs equally common two-word beetle names."
+     },
+     {
+      "round": 7,
+      "cue": "The gold was the most familiar, commonly known beetle among several more obscure beetle families, so its prominence as the 'common insect' stood out."
+     },
+     {
+      "round": 9,
+      "cue": "The gold was the only common, familiar garden insect among less everyday beetles, and the only one ending in the redundant 'beetle' style of a common name like 'ladybird', which made it the obvious 'common insect' pick."
+     }
+    ]
+   }
+  },
+  "mlh-pl-kasztanowiec": {
+   "concept": {
+    "topic": "a tree species of Europe",
+    "topic_pass1": "a common deciduous tree of European parks and streets",
+    "kind": "a tree species",
+    "gold": "horse chestnut",
+    "distractors": [
+     "silver birch",
+     "common ash",
+     "small-leaved lime",
+     "field maple"
+    ],
+    "enwiki": {
+     "silver birch": "Betula pendula",
+     "common ash": "Fraxinus excelsior",
+     "small-leaved lime": "Tilia cordata",
+     "field maple": "Acer campestre"
+    },
+    "kept_round": 1,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Horse chestnut was the only common-name option with no qualifier like 'European', 'common' or 'sweet', and it is a classic non-native-origin (Balkan) tree that a topic guesser might single out."
+     }
+    ]
+   }
+  },
+  "mlh-pl-muchomor": {
+   "concept": {
+    "topic": "a mushroom or fungus species",
+    "topic_pass1": "a wild forest mushroom species",
+    "kind": "a mushroom",
+    "gold": "fly agaric",
+    "distractors": [
+     "death cap",
+     "shaggy ink cap",
+     "destroying angel",
+     "panther cap"
+    ],
+    "enwiki": {
+     "death cap": "death cap",
+     "shaggy ink cap": "shaggy ink cap",
+     "destroying angel": "destroying angel",
+     "panther cap": "panther cap"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The current list is mostly Amanita species, and fly agaric is the most iconic and famous of them, so the guess tends to cluster on the Amanita group, with fly agaric as the most recognisable member."
+     },
+     {
+      "round": 3,
+      "cue": "Fly agaric is the most iconic, famous mushroom (red with white spots), so less-famous common-name mushrooms make it stand out; need equally famous common names in lowercase style."
+     },
+     {
+      "round": 5,
+      "cue": "Fly agaric was the only toxic, iconic red-and-white mushroom among mostly edible culinary species, and the list was short."
+     },
+     {
+      "round": 7,
+      "cue": "Fly agaric was the only poisonous, iconic red-and-white toadstool among edible culinary mushrooms, and the only one with the 'agaric' word style."
+     },
+     {
+      "round": 9,
+      "cue": "Fly agaric was the only poisonous/psychoactive species among edible choice mushrooms, so a mix of edible and toxic species is needed."
+     }
+    ]
+   }
+  },
+  "mlh-pl-odkurzacz": {
+   "concept": {
+    "topic": "a household appliance",
+    "topic_pass1": "a household cleaning appliance",
+    "kind": "a household appliance",
+    "gold": "vacuum cleaner",
+    "distractors": [
+     "washing machine",
+     "dishwasher",
+     "floor polisher",
+     "steam mop"
+    ],
+    "enwiki": {
+     "washing machine": "washing machine",
+     "dishwasher": "dishwasher",
+     "floor polisher": "floor polisher",
+     "steam mop": "steam mop"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Floor polisher and steam mop are floor-cleaning devices clustered around the vacuum cleaner, hinting at a floor-cleaning theme with the vacuum cleaner as its most typical member."
+     },
+     {
+      "round": 3,
+      "cue": "The gold was the only cleaning appliance besides a niche steam mop, but no strong cue was detected; the list just needs more common appliances of similar fame."
+     },
+     {
+      "round": 5,
+      "cue": "Nothing strongly singled it out, though steam mop was the only other floor-cleaning device, which could make the vacuum cleaner look like the canonical member of that pair."
+     },
+     {
+      "round": 7,
+      "cue": "The gold was barely distinguishable, though 'floor polisher' sat close to it as the only other floor-cleaning device, which could hint at a cleaning-appliance theme."
+     },
+     {
+      "round": 9,
+      "cue": "The gold was not singled out by guessers, but floor polisher is a close cleaning-appliance cousin that could make the floor-cleaning pair stand out; the list needs more varied, equally common appliances."
+     }
+    ]
+   }
+  },
+  "mlh-pl-pila-lancuchowa": {
+   "concept": {
+    "topic": "a hand or power tool",
+    "topic_pass1": "a power tool used in forestry or woodworking",
+    "kind": "a tool",
+    "gold": "chain saw",
+    "distractors": [
+     "jackhammer",
+     "circular saw",
+     "angle grinder",
+     "hedge trimmer"
+    ],
+    "enwiki": {
+     "jackhammer": "jackhammer",
+     "circular saw": "circular saw",
+     "angle grinder": "angle grinder",
+     "hedge trimmer": "hedge trimmer"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold 'chain saw' is written as two words while the other compound tool names are mostly single or standard forms, and as the only cutting tool for wood among few options it could stand out slightly."
+     },
+     {
+      "round": 3,
+      "cue": "The gold 'chain saw' is written as two words, while the list mixes compounds and lacks other cutting saws, so it can stand out as the only saw and the most iconic power tool."
+     },
+     {
+      "round": 5,
+      "cue": "The gold 'chain saw' is written as two words while the other compound tool names are standard forms, and it is the most iconic power tool, so options need matching two-word lowercase power tools of similar fame."
+     },
+     {
+      "round": 7,
+      "cue": "The gold 'chain saw' is the only two-word name written with a space where the other options are compounds or single words, but otherwise it blends in as a well-known power tool."
+     },
+     {
+      "round": 9,
+      "cue": "The gold 'chain saw' is written as two words, unlike the closed or standard compounds of the other options, and it is the only petrol-driven outdoor tool, so it could stand out."
+     }
+    ]
+   }
+  },
+  "mlh-pl-pokrzywa-2": {
+   "concept": {
+    "topic": "a wild plant of Europe",
+    "topic_pass1": "a common wild plant or weed of Europe",
+    "kind": "a plant",
+    "gold": "stinging nettle",
+    "distractors": [
+     "common dandelion",
+     "broadleaf plantain",
+     "white clover",
+     "common yarrow"
+    ],
+    "enwiki": {
+     "common dandelion": "Taraxacum officinale",
+     "broadleaf plantain": "Plantago major",
+     "white clover": "Trifolium repens",
+     "common yarrow": "Achillea millefolium"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Stinging nettle is the most iconic common European weed, while poison ivy is North American and doesn't fit the topic, and the rest are less prototypical, so the gold stood out as the obvious answer."
+     }
+    ]
+   }
+  },
+  "mlh-pl-przedluzacz": {
+   "concept": {
+    "topic": "a household object or device",
+    "topic_pass1": "a household electrical accessory or device",
+    "kind": "an everyday object",
+    "gold": "extension cord",
+    "distractors": [
+     "power strip",
+     "surge protector",
+     "light switch",
+     "electrical outlet"
+    ],
+    "enwiki": {
+     "power strip": "Power strip",
+     "surge protector": "Surge protector",
+     "light switch": "Light switch",
+     "electrical outlet": "AC power plugs and sockets"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Among a short list of related power accessories, 'extension cord' was the most generic, prototypical household electrical accessory, so topic guessers picked it."
+     }
+    ]
+   }
+  },
+  "mlh-pl-strzykawka": {
+   "concept": {
+    "topic": "a piece of medical equipment",
+    "topic_pass1": "a piece of medical equipment",
+    "kind": "a medical instrument",
+    "gold": "hypodermic syringe",
+    "distractors": [
+     "clinical thermometer",
+     "stethoscope",
+     "sphygmomanometer",
+     "surgical scalpel"
+    ],
+    "enwiki": {
+     "clinical thermometer": "clinical thermometer",
+     "stethoscope": "stethoscope",
+     "sphygmomanometer": "sphygmomanometer",
+     "surgical scalpel": "surgical scalpel"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": []
+   }
+  },
+  "mlh-pl-trzepaczka": {
+   "concept": {
+    "topic": "a kitchen utensil or tool",
+    "topic_pass1": "a kitchen utensil",
+    "kind": "a kitchen tool",
+    "gold": "egg whisk",
+    "distractors": [
+     "garlic press",
+     "cheese grater",
+     "vegetable peeler",
+     "can opener"
+    ],
+    "enwiki": {
+     "garlic press": "Garlic press",
+     "cheese grater": "Grater",
+     "vegetable peeler": "Peeler",
+     "can opener": "Can opener"
+    },
+    "kept_round": 1,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Nothing obvious singled out the gold; it was the only option whose name started with 'egg', so the new list adds other compound names of the same pattern."
+     }
+    ]
+   }
+  },
+  "mlh-pl-trzustka": {
+   "concept": {
+    "topic": "an organ of the human body",
+    "topic_pass1": "an organ of the human digestive system",
+    "kind": "a body organ",
+    "gold": "pancreas",
+    "distractors": [
+     "thyroid gland",
+     "gallbladder",
+     "liver",
+     "spleen"
+    ],
+    "enwiki": {
+     "thyroid gland": "thyroid gland",
+     "gallbladder": "gallbladder",
+     "liver": "liver",
+     "spleen": "spleen"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": []
+   }
+  },
+  "mlh-ru-anthill": {
+   "concept": {
+    "topic": "a structure built by animals",
+    "topic_pass1": "a structure or dwelling built by animals in nature",
+    "kind": "an animal structure",
+    "gold": "ant hill",
+    "distractors": [
+     "beehive",
+     "molehill",
+     "beaver dam",
+     "termite mound"
+    ],
+    "enwiki": {
+     "beehive": "beehive",
+     "molehill": "molehill",
+     "beaver dam": "beaver dam",
+     "termite mound": "termite mound"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": []
+   }
+  },
+  "mlh-ru-caterpillar": {
+   "concept": {
+    "topic": "an animal or animal form",
+    "topic_pass1": "an insect life stage or type of invertebrate",
+    "kind": "an animal form",
+    "gold": "caterpillar",
+    "distractors": [
+     "maggot",
+     "tadpole",
+     "chrysalis",
+     "earthworm"
+    ],
+    "enwiki": {
+     "maggot": "maggot",
+     "tadpole": "tadpole",
+     "chrysalis": "chrysalis",
+     "earthworm": "earthworm"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Caterpillar is the only larval form that is both the most familiar and thematically central (butterfly life cycle), standing apart from a mixed set of larvae, pupa and a non-larval worm."
+     },
+     {
+      "round": 3,
+      "cue": "Caterpillar is the most generic, best-known larval form, while the current list mixes specific species larvae (mealworm, silkworm) with generic forms, so the gold stood out somewhat as the canonical larva."
+     },
+     {
+      "round": 5,
+      "cue": "Caterpillar was the only generic, widely familiar larval-stage term among more specialised items, though guessers did not reliably pick it."
+     },
+     {
+      "round": 7,
+      "cue": "Caterpillar was the only familiar, iconic larva among options that mixed insect stages, a non-insect worm and a feeder larva, so it read as the canonical 'animal form' answer."
+     },
+     {
+      "round": 9,
+      "cue": "Caterpillar was the only larval form of a butterfly/moth and the most iconic, everyday word among more technical life-stage terms, though the guessers did not detect it."
+     }
+    ]
+   }
+  },
+  "mlh-ru-dandelion": {
+   "concept": {
+    "topic": "a common wild plant or flower",
+    "topic_pass1": "a common wildflower or meadow plant",
+    "kind": "a plant",
+    "gold": "dandelion",
+    "distractors": [
+     "daisy",
+     "clover",
+     "poppy",
+     "cornflower"
+    ],
+    "enwiki": {
+     "daisy": "Bellis perennis",
+     "clover": "Trifolium",
+     "poppy": "Papaver rhoeas",
+     "cornflower": "Centaurea cyanus"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Dandelion is the most iconic, universally known common wildflower, and the current list is otherwise made of less famous plants, many of them yellow-flowered composites like it, so a topic guesser picks the archetype."
+     },
+     {
+      "round": 3,
+      "cue": "Dandelion is the most prototypical, universally recognized common meadow wildflower, so the topic guesser picked it over less archetypal options like bluebell or cornflower."
+     },
+     {
+      "round": 1,
+      "cue": "Dandelion is the most iconic, best-known common wild flower, so it stood out as the prototypical answer against less famous plants like yarrow."
+     },
+     {
+      "round": 1,
+      "cue": "The gold was not singled out by any guesser; the list just needs eight comparable common wild plants in lowercase bare style, none tied to Russia (cornflower is fine, but chamomile is avoided as a strongly Russian symbol)."
+     },
+     {
+      "round": 3,
+      "cue": "Dandelion is the most iconic, globally ubiquitous 'common wild flower' among a short list of more regional British-flavoured plants, so the topic guesser picks it as the most prototypical answer."
+     },
+     {
+      "round": 5,
+      "cue": "The gold was not clearly singled out; dandelion is simply the most iconic common wild plant, so the list needs more equally familiar lowercase common wildflowers to balance it."
+     },
+     {
+      "round": 7,
+      "cue": "Dandelion is the most prototypical 'common wild plant' (a weed everyone knows), standing out against a short list that includes the regional bluebell and the ambiguous plantain."
+     },
+     {
+      "round": 9,
+      "cue": "The dandelion is the most prototypical, universally recognised common wild flower, so it stood out against less iconic options like plantain and bluebell."
+     }
+    ]
+   }
+  },
+  "mlh-ru-fryingpan": {
+   "concept": {
+    "topic": "a kitchen cooking utensil",
+    "topic_pass1": "a kitchen cooking utensil",
+    "kind": "a cookware item",
+    "gold": "frying pan",
+    "distractors": [
+     "wok",
+     "pressure cooker",
+     "Dutch oven",
+     "casserole dish"
+    ],
+    "enwiki": {
+     "wok": "Wok",
+     "pressure cooker": "Pressure cooking",
+     "Dutch oven": "Dutch oven",
+     "casserole dish": "Casserole"
+    },
+    "kept_round": 9,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Given the topic 'kitchen cooking utensil', the frying pan is the most prototypical stovetop item and the only shallow pan with a handle among deep pots and an oven sheet, so it stood out as the obvious answer."
+     },
+     {
+      "round": 3,
+      "cue": "The frying pan is the single most prototypical everyday stovetop pan, so against a few specialised pans it stood out as the obvious generic 'kitchen cooking utensil'."
+     },
+     {
+      "round": 5,
+      "cue": "Frying pan is the most generic, prototypical stovetop cooking utensil, while the others were specialised or oven ware, so a topic guesser picked the everyday default."
+     },
+     {
+      "round": 7,
+      "cue": "The frying pan is the most prototypical, everyday cooking utensil, while the others were more specialised or less central, so a topic guesser picked it."
+     },
+     {
+      "round": 1,
+      "cue": "Given the topic 'kitchen cooking utensil', the frying pan is the most prototypical stovetop cookware item, and the other options were less iconic or not stovetop pans (a Dutch oven, a baking sheet), so the frying pan stood out as the default answer."
+     },
+     {
+      "round": 3,
+      "cue": "The frying pan is the most prototypical, everyday cooking utensil, so the topic guesser picks it over the more specialised pans and dishes listed."
+     },
+     {
+      "round": 1,
+      "cue": "The frying pan is the most prototypical stovetop cooking utensil, while the other options were mostly ovenware, a kettle for boiling water, or a culturally marked wok, so it stood out as the generic answer."
+     },
+     {
+      "round": 3,
+      "cue": "The frying pan is the most prototypical, everyday cooking utensil, while the others were more specialised items, so a topic guesser defaults to it."
+     },
+     {
+      "round": 5,
+      "cue": "Frying pan is the most prototypical, everyday stovetop cooking pan among the options, so a topic guesser picks it as the default 'kitchen cooking utensil'."
+     },
+     {
+      "round": 7,
+      "cue": "The frying pan is the most prototypical, generic cookware item, so a topic guesser picks it over more specialized pans like sauté pan or Dutch oven."
+     },
+     {
+      "round": 9,
+      "cue": "The frying pan is the most prototypical, generic kitchen cooking utensil, so a topic guesser picks it among more specialised items."
+     }
+    ]
+   }
+  },
+  "mlh-ru-meatgrinder": {
+   "concept": {
+    "topic": "a kitchen appliance or utensil",
+    "topic_pass1": "a kitchen appliance or utensil",
+    "kind": "a kitchen device",
+    "gold": "meat grinder",
+    "distractors": [
+     "pressure cooker",
+     "coffee grinder",
+     "food processor",
+     "pasta maker"
+    ],
+    "enwiki": {
+     "pressure cooker": "pressure cooker",
+     "coffee grinder": "coffee grinder",
+     "food processor": "food processor",
+     "pasta maker": "pasta maker"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Nothing strongly singled out the gold, though 'coffee grinder' shares the word 'grinder' and pairs it as a near-duplicate, so it should be swapped for a non-grinder device to avoid a pattern cue."
+     },
+     {
+      "round": 3,
+      "cue": "The meat grinder was the only hand-cranked mechanical processing device in a list of mostly electric or cooking appliances, and it is the classic Soviet/Russian household tool (for pelmeni, kotlety), so a topic-aware guesser picked it."
+     },
+     {
+      "round": 5,
+      "cue": "The meat grinder was the only manually-cranked, meat-specific traditional tool among mostly electric modern gadgets, and it is culturally associated with Russian cooking (pelmeni, kotlety)."
+     },
+     {
+      "round": 7,
+      "cue": "Meat grinder was the only device for processing raw meat and the only hand-cranked mincing tool, which made it loosely evocative of Eastern European cooking such as pelmeni."
+     },
+     {
+      "round": 9,
+      "cue": "Nothing strongly singled it out; the gold was simply the only meat-processing device, so the new list adds other food-processing devices with two-word, lowercase names."
+     }
+    ]
+   }
+  },
+  "mlh-ru-nakovalnya": {
+   "concept": {
+    "topic": "a hand tool or workshop implement",
+    "topic_pass1": "a blacksmithing tool or piece of forge equipment",
+    "kind": "a tool",
+    "gold": "blacksmith's anvil",
+    "distractors": [
+     "mason's chisel",
+     "mason's trowel",
+     "carpenter's plane",
+     "cooper's adze"
+    ],
+    "enwiki": {
+     "mason's chisel": "Chisel",
+     "mason's trowel": "Trowel",
+     "carpenter's plane": "Hand plane",
+     "cooper's adze": "Adze"
+    },
+    "kept_round": 9,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The anvil is the single most iconic, prototypical blacksmithing tool, so a topic guesser picks it over less central items like a quenching trough or swage block."
+     },
+     {
+      "round": 3,
+      "cue": "The anvil is the most iconic, archetypal piece of forge equipment, so a topic-aware guesser picks it over smaller hand tools; the list needs other equally central forge items like the forge itself, hammer, tongs, and quench tub."
+     },
+     {
+      "round": 5,
+      "cue": "The anvil is the most iconic, prototypical blacksmithing tool, so a topic-aware guesser picks it over less central items like a fuller or slack tub; distractors need equally iconic forge equipment."
+     },
+     {
+      "round": 7,
+      "cue": "The anvil is the most iconic, prototypical blacksmithing tool, so a topic-aware guesser picks it over lesser-known items like a fuller or swage block."
+     },
+     {
+      "round": 1,
+      "cue": "The anvil is the most iconic, canonical hand-tool/workshop implement among the blacksmith items, so a topic guesser picks it; the other options were obscure forge accessories, and only two of them shared its \"blacksmith's\" possessive style."
+     },
+     {
+      "round": 3,
+      "cue": "The anvil is the most iconic, archetypal workshop implement among the options, and blacksmith items were overrepresented, so a topic guesser picked the most prototypical blacksmith tool."
+     },
+     {
+      "round": 5,
+      "cue": "The gold was the most iconic, prototypical workshop implement in a list of craft tools, and the only one besides bellows explicitly marked 'blacksmith's', so a topic guesser picked the archetypal tool."
+     },
+     {
+      "round": 1,
+      "cue": "The anvil was the only large, heavy, stationary workshop implement (and the only blacksmithing item) among small hand-held cutting/piercing tools, so a topic guesser picked it as the odd one out."
+     },
+     {
+      "round": 3,
+      "cue": "The topic guesser picked the anvil because it was the only heavy metalworking implement; the others were woodworking or pottery tools, so 'workshop implement' plus smithing stood out."
+     },
+     {
+      "round": 5,
+      "cue": "The anvil is the only large, heavy, stationary implement (and the most iconic workshop tool) among small handheld tools, so a topic guesser picks it as the most prototypical."
+     },
+     {
+      "round": 7,
+      "cue": "The anvil is the most iconic, archetypal workshop implement for the topic, and its 'blacksmith's' qualifier is shared only with the hammer, so a topic guesser picks the canonical smithing tool."
+     },
+     {
+      "round": 9,
+      "cue": "With the topic 'hand tool or workshop implement', the anvil is the most iconic, archetypal workshop implement, and it is the only blacksmith item among more niche tools."
+     }
+    ]
+   }
+  },
+  "mlh-ru-payalnik": {
+   "concept": {
+    "topic": "a hand tool or workshop implement",
+    "topic_pass1": "a hand tool used in electronics work or a hobby workshop",
+    "kind": "a tool",
+    "gold": "soldering iron",
+    "distractors": [
+     "claw hammer",
+     "adjustable spanner",
+     "wood chisel",
+     "glue gun"
+    ],
+    "enwiki": {
+     "claw hammer": "Claw hammer",
+     "adjustable spanner": "Adjustable spanner",
+     "wood chisel": "Chisel",
+     "glue gun": "Hot-melt adhesive"
+    },
+    "kept_round": 3,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The current list clusters around heated tools, so the gold is the canonical, most familiar member of that heat-tool cluster for a 'hand tool or workshop implement' topic."
+     },
+     {
+      "round": 3,
+      "cue": "The current list clusters around electronics/wiring work, so the topic guesser picks the most iconic electronics workshop tool, the soldering iron; the distractors should be a broad mix of common hand and workshop tools of similar fame."
+     }
+    ]
+   }
+  },
+  "mlh-ru-skvorechnik": {
+   "concept": {
+    "topic": "a man-made household or garden object",
+    "topic_pass1": "a man-made structure or object for keeping or attracting animals",
+    "kind": "an everyday object",
+    "gold": "nesting box",
+    "distractors": [
+     "bird feeder",
+     "chicken coop",
+     "bird bath",
+     "dovecote"
+    ],
+    "enwiki": {
+     "bird feeder": "bird feeder",
+     "chicken coop": "chicken coop",
+     "bird bath": "bird bath",
+     "dovecote": "dovecote"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": []
+   }
+  },
+  "mlh-ru-sosulka": {
+   "concept": {
+    "topic": "a natural ice or snow formation",
+    "topic_pass1": "a winter ice or snow formation",
+    "kind": "a natural ice formation",
+    "gold": "icicle",
+    "distractors": [
+     "glacier",
+     "snowdrift",
+     "hoarfrost",
+     "iceberg"
+    ],
+    "enwiki": {
+     "glacier": "Glacier",
+     "snowdrift": "Snowdrift",
+     "hoarfrost": "Hoarfrost",
+     "iceberg": "Iceberg"
+    },
+    "kept_round": 3,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Icicle was the only option that is a hanging ice formation typical of winter eaves, while stalactite (not ice) and hailstone (not winter) did not fit the topic, leaving icicle as the obvious literal match."
+     },
+     {
+      "round": 1,
+      "cue": "Icicle was the most common, everyday formation, so it stood out slightly against more technical terms, though guessers did not single it out."
+     },
+     {
+      "round": 3,
+      "cue": "Icicle is the most familiar everyday ice formation, while 'ice spike' and 'rime ice' look like compound or technical terms, so the gold stood out as the plainest common word."
+     }
+    ]
+   }
+  },
+  "mlh-ru-thimble": {
+   "concept": {
+    "topic": "a household or craft tool",
+    "topic_pass1": "a sewing or needlework tool",
+    "kind": "a tool",
+    "gold": "sewing thimble",
+    "distractors": [
+     "knitting needle",
+     "crochet hook",
+     "embroidery hoop",
+     "pinking shears"
+    ],
+    "enwiki": {
+     "knitting needle": "Knitting needle",
+     "crochet hook": "Crochet hook",
+     "embroidery hoop": "Embroidery hoop",
+     "pinking shears": "Pinking shears"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold alone carries the redundant qualifier 'sewing' that echoes the topic, while the distractors are bare tool names."
+     },
+     {
+      "round": 3,
+      "cue": "With the topic 'sewing or needlework tool', the thimble is the most iconic, quintessential hand-sewing tool, while the distractors (gauge, awl, tape measure) were less prototypical, so the gold stood out as the obvious archetype."
+     },
+     {
+      "round": 5,
+      "cue": "The thimble is the most iconic sewing tool tied to the topic, and the only one in the list that is worn rather than used to cut, pierce or hold fabric, so the topic guesser picked it as the stereotypical answer."
+     },
+     {
+      "round": 7,
+      "cue": "The thimble is the most iconic, quintessential sewing tool for this topic, so the topic guesser picked it over the less prototypical scissors, pincushion, bodkin and seam ripper; adding equally iconic options like the needle removes that edge."
+     },
+     {
+      "round": 1,
+      "cue": "All the old options were minor sewing accessories, so the most iconic and prototypical household sewing tool, the thimble, stood out to anyone who saw the topic."
+     }
+    ]
+   }
+  },
+  "mlh-sw-chandarua": {
+   "concept": {
+    "topic": "an everyday household object",
+    "topic_pass1": "a household item used in the bedroom",
+    "kind": "an everyday object",
+    "gold": "mosquito net",
+    "distractors": [
+     "space heater",
+     "sleep mask",
+     "blanket",
+     "ceiling fan"
+    ],
+    "enwiki": {
+     "space heater": "Space heater",
+     "sleep mask": "Blindfold",
+     "blanket": "Blanket",
+     "ceiling fan": "Ceiling fan"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 1,
+     "informed_item_passes": 3,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The current distractors were all insect-related items not typically used in the bedroom, so the bedroom item that fit the topic stood out at once."
+     },
+     {
+      "round": 3,
+      "cue": "Mosquito net was the only item tied to tropical/African climates (pairing with Swahili), while the others were universal bedroom basics."
+     },
+     {
+      "round": 1,
+      "cue": "The current list is all bedroom sleep-comfort items, so the mosquito net stands out as the only one tied to malaria prevention and tropical Africa, which pairs it with Swahili."
+     },
+     {
+      "round": 3,
+      "cue": "Mosquito net was the only item strongly associated with tropical/East African settings (matching Swahili), and the only protective barrier against insects, making it stand out among generic Western household items."
+     },
+     {
+      "round": 5,
+      "cue": "The gold was the only two-word netting item and the cluster of tropical/sleep/insect items made 'mosquito net' the obvious central member, strongly linked to Swahili-speaking East Africa."
+     },
+     {
+      "round": 7,
+      "cue": "Mosquito net was the only item tied to tropical climates (and thus to Swahili-speaking East Africa), while all the others were generic Western linen/laundry items."
+     },
+     {
+      "round": 9,
+      "cue": "The gold was the only two-word item with a distinctive, tropical, malaria-associated feel among generic bedroom items, and the only one tied to East Africa, which made it easy to pair with Swahili."
+     }
+    ]
+   }
+  },
+  "mlh-sw-mwarobaini": {
+   "concept": {
+    "topic": "a tree of Africa or Asia",
+    "topic_pass1": "a medicinal tree used in traditional East African remedies",
+    "kind": "a tree",
+    "gold": "neem tree",
+    "distractors": [
+     "banyan tree",
+     "moringa tree",
+     "tamarind tree",
+     "baobab tree"
+    ],
+    "enwiki": {
+     "banyan tree": "banyan tree",
+     "moringa tree": "Moringa oleifera",
+     "tamarind tree": "Tamarind",
+     "baobab tree": "Adansonia digitata"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Neem was the only option known as a cure-all medicinal tree ('mwarubaini' in East Africa); the others were mainly food or shade trees, and baobab and moringa pointed to East Africa."
+     },
+     {
+      "round": 3,
+      "cue": "Neem is the only option strongly associated with East African traditional medicine (known as 'mwarubaini'), while the others are temperate or non-African trees."
+     },
+     {
+      "round": 5,
+      "cue": "Neem is the best-known medicinal tree (\"mwarubaini\", cure for forty diseases), and the other options were mostly not primarily medicinal, so the topic guesser could single it out."
+     },
+     {
+      "round": 7,
+      "cue": "The gold was the only tree famed mainly as a medicinal remedy (neem, 'mwarubaini'), while the others were mostly known as food or ornamental trees, and the sausage tree tied the list to East Africa."
+     }
+    ]
+   }
+  },
+  "mlh-tr-bademcik": {
+   "concept": {
+    "topic": "a part of the human body",
+    "topic_pass1": "a part of the human body in the head and neck region",
+    "kind": "a body part",
+    "gold": "palatine tonsil",
+    "distractors": [
+     "submandibular gland",
+     "thyroid cartilage",
+     "soft palate",
+     "vocal fold"
+    ],
+    "enwiki": {
+     "submandibular gland": "Submandibular gland",
+     "thyroid cartilage": "Thyroid cartilage",
+     "soft palate": "Soft palate",
+     "vocal fold": "Vocal cords"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 1,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only two-word 'adjective + tonsil' option besides lingual tonsil, and as the best-known tonsil it stood out as the central, prototypical item in a cluster of throat structures."
+     }
+    ]
+   }
+  },
+  "mlh-tr-camasir-makinesi": {
+   "concept": {
+    "topic": "a household appliance",
+    "topic_pass1": "a household appliance",
+    "kind": "an appliance",
+    "gold": "washing machine",
+    "distractors": [
+     "refrigerator",
+     "vacuum cleaner",
+     "dishwasher",
+     "microwave oven"
+    ],
+    "enwiki": {
+     "refrigerator": "Refrigerator",
+     "vacuum cleaner": "Vacuum cleaner",
+     "dishwasher": "Dishwasher",
+     "microwave oven": "Microwave oven"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "With the topic given, washing machine stood out as the most prototypical household appliance among a short list, and its laundry sibling 'tumble dryer' reinforced its centrality."
+     }
+    ]
+   }
+  },
+  "mlh-tr-dis-macunu": {
+   "concept": {
+    "topic": "a household or personal care product",
+    "topic_pass1": "a personal hygiene or toiletry product",
+    "kind": "a household product",
+    "gold": "toothpaste",
+    "distractors": [
+     "shaving cream",
+     "deodorant",
+     "mouthwash",
+     "shampoo"
+    ],
+    "enwiki": {
+     "shaving cream": "shaving cream",
+     "deodorant": "deodorant",
+     "mouthwash": "mouthwash",
+     "shampoo": "shampoo"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The current list gives little cue, though toothpaste is the most prototypical personal care product and mouthwash shares its oral-care sub-kind, which may make the pair stand out."
+     },
+     {
+      "round": 3,
+      "cue": "Toothpaste was the most prototypical everyday personal care product, and the only other oral-care item (mouthwash) made the pair stand out against a short list."
+     },
+     {
+      "round": 5,
+      "cue": "Toothpaste is the most prototypical, everyday personal care product in a short list, and mouthwash pointed to oral care, making toothpaste the obvious central item."
+     },
+     {
+      "round": 7,
+      "cue": "Toothpaste is the most prototypical, iconic single-word personal care product, while the others were compound or less central terms, so a topic guesser defaults to it."
+     },
+     {
+      "round": 9,
+      "cue": "Toothpaste was the single most prototypical everyday personal care product and the only oral-care item among the options, so a topic guesser could pick it as the default example."
+     }
+    ]
+   }
+  },
+  "mlh-tr-kaplumbaga": {
+   "concept": {
+    "topic": "a kind of animal",
+    "topic_pass1": "a reptile",
+    "kind": "an animal",
+    "gold": "tortoise",
+    "distractors": [
+     "hedgehog",
+     "frog",
+     "lizard",
+     "owl"
+    ],
+    "enwiki": {
+     "hedgehog": "Hedgehog",
+     "frog": "Frog",
+     "lizard": "Lizard",
+     "owl": "Owl"
+    },
+    "kept_round": 1,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Alongside the hare and snail, the tortoise evokes the famous fable of the slow animal and the race, and it is the only shelled reptile, so a guesser could single it out."
+     }
+    ]
+   }
+  },
+  "mlh-tr-kartanesi": {
+   "concept": {
+    "topic": "a weather or atmospheric phenomenon",
+    "topic_pass1": "a form of frozen precipitation or ice in weather",
+    "kind": "a weather phenomenon",
+    "gold": "snowflake",
+    "distractors": [
+     "frost",
+     "sleet",
+     "rainbow",
+     "lightning"
+    ],
+    "enwiki": {
+     "frost": "Frost",
+     "sleet": "Ice pellets",
+     "rainbow": "Rainbow",
+     "lightning": "Lightning"
+    },
+    "kept_round": 1,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold was the only commonly cold/winter-iconic, culturally famous single-word precipitation particle among few options, but with only four distractors the list was too small and lacked parallel items like frost or sleet forms."
+     }
+    ]
+   }
+  },
+  "mlh-tr-omurilik": {
+   "concept": {
+    "topic": "a part of human anatomy",
+    "topic_pass1": "a part of the human nervous system or body anatomy",
+    "kind": "a body part",
+    "gold": "spinal cord",
+    "distractors": [
+     "corpus callosum",
+     "cerebellum",
+     "medulla oblongata",
+     "sciatic nerve"
+    ],
+    "enwiki": {
+     "corpus callosum": "corpus callosum",
+     "cerebellum": "cerebellum",
+     "medulla oblongata": "medulla oblongata",
+     "sciatic nerve": "sciatic nerve"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": []
+   }
+  },
+  "mlh-tr-salyangoz": {
+   "concept": {
+    "topic": "a common small animal",
+    "topic_pass1": "a common small garden animal",
+    "kind": "an animal",
+    "gold": "garden snail",
+    "distractors": [
+     "black slug",
+     "common toad",
+     "house sparrow",
+     "brown rat"
+    ],
+    "enwiki": {
+     "black slug": "Arion ater",
+     "common toad": "Common toad",
+     "house sparrow": "House sparrow",
+     "brown rat": "Brown rat"
+    },
+    "kept_round": 1,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold 'garden snail' is the most stereotypical small garden animal and the only one sharing the 'garden' prefix with just one other option, so the topic phrase pointed straight to it."
+     },
+     {
+      "round": 3,
+      "cue": "With the topic 'common small garden animal', the garden snail is the most prototypical answer and the 'garden' prefix matched the topic literally, while only one other option shared that prefix."
+     },
+     {
+      "round": 1,
+      "cue": "The gold was the only shelled mollusc and the only 'garden' animal besides the slug, so a topic guesser picking the most stereotypical small garden animal could land on it."
+     },
+     {
+      "round": 1,
+      "cue": "The gold was the only mollusc and the only option named with the 'garden' habitat qualifier apart from the spider, so a topic guesser could pair 'garden' with a common small animal."
+     }
+    ]
+   }
+  },
+  "mlh-vi-blender": {
+   "concept": {
+    "topic": "a household appliance or kitchen tool",
+    "topic_pass1": "an electric kitchen appliance",
+    "kind": "a household appliance",
+    "gold": "fruit blender",
+    "distractors": [
+     "microwave oven",
+     "rice cooker",
+     "electric kettle",
+     "coffee grinder"
+    ],
+    "enwiki": {
+     "microwave oven": "microwave oven",
+     "rice cooker": "rice cooker",
+     "electric kettle": "electric kettle",
+     "coffee grinder": "coffee grinder"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": []
+   }
+  },
+  "mlh-vi-cactus": {
+   "concept": {
+    "topic": "a type of plant",
+    "topic_pass1": "a type of plant",
+    "kind": "a plant",
+    "gold": "cactus",
+    "distractors": [
+     "orchid",
+     "sunflower",
+     "grass",
+     "rose"
+    ],
+    "enwiki": {
+     "orchid": "Orchidaceae",
+     "sunflower": "Helianthus",
+     "grass": "Poaceae",
+     "rose": "Rose"
+    },
+    "kept_round": 3,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Cactus stood out as the iconic, most prototypical 'type of plant' among a small set, and bamboo is tied to Vietnam, so the list needs more broad, equally common plant types."
+     },
+     {
+      "round": 1,
+      "cue": "Cactus was the only desert/succulent plant type among broad plant groups like fern, moss, palm, making it the stereotypical 'type of plant' answer next to otherwise mostly non-flowering or tropical groups."
+     },
+     {
+      "round": 1,
+      "cue": "Cactus was the only specific plant family among broad growth-form categories (grass, vine, shrub), while 'succulent' overlapped it as a near-synonym superset."
+     },
+     {
+      "round": 3,
+      "cue": "Cactus was the only desert-adapted succulent among generic plant groups, and 'shrub' was a growth form rather than a plant family, so cactus stood out as the iconic 'type of plant'."
+     },
+     {
+      "round": 5,
+      "cue": "Cactus is the archetypal desert plant and the most iconic single 'type of plant' among generic common names, while 'succulent' is a near-synonym superset that points toward it."
+     },
+     {
+      "round": 7,
+      "cue": "Cactus was the only drought-adapted succulent among moisture-loving plants, making it the stereotypical 'type of plant' guess."
+     },
+     {
+      "round": 9,
+      "cue": "The topic guesser picked cactus as the most prototypical, recognisable 'type of plant', while 'succulent' overlapped with it as a category and the others were less iconic."
+     }
+    ]
+   }
+  },
+  "mlh-vi-chuonchuon": {
+   "concept": {
+    "topic": "a common insect",
+    "topic_pass1": "a common flying insect",
+    "kind": "an insect",
+    "gold": "dragonfly",
+    "distractors": [
+     "wasp",
+     "housefly",
+     "bee",
+     "ladybug"
+    ],
+    "enwiki": {
+     "wasp": "Wasp",
+     "housefly": "Housefly",
+     "bee": "Bee",
+     "ladybug": "Coccinellidae"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Among the current options the dragonfly is the most typical 'flying' insect, since grasshoppers and praying mantises are not mainly thought of as fliers, so the topic points to it."
+     }
+    ]
+   }
+  },
+  "mlh-vi-clothesiron": {
+   "concept": {
+    "topic": "a household object or appliance",
+    "topic_pass1": "a household appliance or tool used in laundry and clothing care",
+    "kind": "a household object",
+    "gold": "clothes iron",
+    "distractors": [
+     "washing machine",
+     "hair dryer",
+     "sewing machine",
+     "vacuum cleaner"
+    ],
+    "enwiki": {
+     "washing machine": "washing machine",
+     "hair dryer": "hair dryer",
+     "sewing machine": "sewing machine",
+     "vacuum cleaner": "vacuum cleaner"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": []
+   }
+  },
+  "mlh-vi-extinguisher": {
+   "concept": {
+    "topic": "an everyday household object or tool",
+    "topic_pass1": "a household safety device or piece of emergency equipment",
+    "kind": "an everyday object",
+    "gold": "fire extinguisher",
+    "distractors": [
+     "smoke detector",
+     "first aid kit",
+     "fire blanket",
+     "fire hydrant"
+    ],
+    "enwiki": {
+     "smoke detector": "smoke detector",
+     "first aid kit": "first aid kit",
+     "fire blanket": "fire blanket",
+     "fire hydrant": "fire hydrant"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The current list is built entirely around fire safety, so the gold is the central fire-safety item, and 'fire hydrant' and 'fire blanket' share its 'fire' prefix."
+     },
+     {
+      "round": 3,
+      "cue": "The gold was the only safety/emergency device among general-purpose tools and appliances, so it stood out slightly by function."
+     },
+     {
+      "round": 5,
+      "cue": "Fire extinguisher is the only safety/emergency device among ordinary domestic appliances and chores tools, so it could stand out as the odd one."
+     },
+     {
+      "round": 7,
+      "cue": "The current list clusters around safety equipment (fire blanket, first aid kit), which makes the fire-safety-themed gold a natural focal point, and mixing in only a few unrelated tools leaves it standing out as the core of a safety cluster."
+     },
+     {
+      "round": 9,
+      "cue": "The gold was the only safety/emergency device among general-purpose tools and appliances, and the only two-word compound with a technical noun."
+     }
+    ]
+   }
+  },
+  "mlh-vi-firefly": {
+   "concept": {
+    "topic": "an insect or small creature",
+    "topic_pass1": "an insect or small creature",
+    "kind": "an insect",
+    "gold": "firefly",
+    "distractors": [
+     "ladybug",
+     "praying mantis",
+     "grasshopper",
+     "mayfly"
+    ],
+    "enwiki": {
+     "ladybug": "Coccinellidae",
+     "praying mantis": "Mantis",
+     "grasshopper": "Grasshopper",
+     "mayfly": "Mayfly"
+    },
+    "kept_round": 8,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Firefly was the only bioluminescent, culturally iconic 'glowing' insect among a small set of familiar insects, so it stood out as the most distinctive and evocative choice."
+     },
+     {
+      "round": 1,
+      "cue": "Firefly was the only nocturnal, light-producing insect, making it stand out as the distinctive 'glowing' option among ordinary daytime garden insects."
+     },
+     {
+      "round": 3,
+      "cue": "Firefly was the only nocturnal, light-emitting insect in the list and the only compound-word name, so it stood out against the plain common insect names."
+     },
+     {
+      "round": 5,
+      "cue": "Firefly was the only bioluminescent, night-glowing insect, which made it stand out against ordinary daytime pollinators and pests."
+     },
+     {
+      "round": 7,
+      "cue": "Firefly was the only glowing, charismatic, folklore-rich insect among pests (housefly, mosquito) and generic names, so it stood out as the 'interesting' pick."
+     }
+    ]
+   }
+  },
+  "mlh-vi-huyet-ap": {
+   "concept": {
+    "topic": "a physiological measure in medicine",
+    "topic_pass1": "a medical measurement or vital sign taken during a checkup",
+    "kind": "a physiological measure",
+    "gold": "blood pressure",
+    "distractors": [
+     "body temperature",
+     "respiratory rate",
+     "central venous pressure",
+     "vital capacity"
+    ],
+    "enwiki": {
+     "body temperature": "body temperature",
+     "respiratory rate": "respiratory rate",
+     "central venous pressure": "Central venous pressure",
+     "vital capacity": "Vital capacity"
+    },
+    "kept_round": 9,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 1,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Blood pressure is the most prototypical physiological measure in medicine, the classic vital sign, and the current list has too few equally iconic alternatives, so the topic guesser defaults to it."
+     },
+     {
+      "round": 3,
+      "cue": "Blood pressure is the most prototypical, commonly measured physiological measure in medicine, while the others were more specialised (central venous pressure, cardiac output) leaving it as the obvious default."
+     },
+     {
+      "round": 5,
+      "cue": "Blood pressure is the single most prototypical physiological measure in medicine, and the current list contains no other equally canonical vital sign besides pulse, so it stands out as the obvious default."
+     },
+     {
+      "round": 7,
+      "cue": "Blood pressure is the most prototypical physiological measure in medicine, the classic vital sign, while the other options were less central (intraocular pressure, BMI) or fewer in number, so a topic guesser defaulted to it."
+     },
+     {
+      "round": 9,
+      "cue": "Blood pressure is the most prototypical, famous physiological measure in medicine, while the distractors were more specialised measures, and two of them (pulse pressure, intraocular pressure) shared its word 'pressure'."
+     }
+    ]
+   }
+  },
+  "mlh-vi-neckscarf": {
+   "concept": {
+    "topic": "a clothing item or accessory",
+    "topic_pass1": "a winter clothing accessory",
+    "kind": "a garment",
+    "gold": "neck scarf",
+    "distractors": [
+     "necktie",
+     "leather belt",
+     "silk necktie",
+     "leather gloves"
+    ],
+    "enwiki": {
+     "necktie": "necktie",
+     "leather belt": "Belt (clothing)",
+     "silk necktie": "Necktie",
+     "leather gloves": "Glove"
+    },
+    "kept_round": 2,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "The gold is the only two-word option with a body-part qualifier ('neck'), while the others are single-word names."
+     }
+    ]
+   }
+  },
+  "mlh-vi-pressurecooker": {
+   "concept": {
+    "topic": "a kitchen cooking vessel or appliance",
+    "topic_pass1": "a kitchen cooking vessel or appliance",
+    "kind": "a cookware item",
+    "gold": "pressure cooker",
+    "distractors": [
+     "stockpot",
+     "dutch oven",
+     "frying pan",
+     "saucepan"
+    ],
+    "enwiki": {
+     "stockpot": "Stock pot",
+     "dutch oven": "Dutch oven",
+     "frying pan": "Frying pan",
+     "saucepan": "Saucepan"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": [
+     {
+      "round": 1,
+      "cue": "Among a few electric appliances, the pressure cooker was the most prototypical, widely known 'cooking vessel or appliance' and the only one that doubles as a classic stovetop pot, so topic-aware guessers favored it."
+     }
+    ]
+   }
+  },
+  "mlh-vi-raincoat": {
+   "concept": {
+    "topic": "a piece of clothing or wearable gear",
+    "topic_pass1": "a piece of clothing or wearable gear",
+    "kind": "a garment",
+    "gold": "rain jacket",
+    "distractors": [
+     "down jacket",
+     "parka",
+     "trench coat",
+     "windbreaker"
+    ],
+    "enwiki": {
+     "down jacket": "down jacket",
+     "parka": "parka",
+     "trench coat": "trench coat",
+     "windbreaker": "windbreaker"
+    },
+    "kept_round": 0,
+    "gate": {
+     "blind_item_passes": 0,
+     "informed_item_passes": 0,
+     "informed": [
+      "topic",
+      "described"
+     ],
+     "draws": 5
+    },
+    "cues": []
+   }
+  }
+ }
+}

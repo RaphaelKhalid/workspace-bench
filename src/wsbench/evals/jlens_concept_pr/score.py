@@ -12,14 +12,22 @@ unchanged numerics of :mod:`.concept_pr`. Every present cell gets a ``status``:
 - ``missing_p``     Stage P is missing for this cell: PRECISION is NaN (dropped from the
                     precision mean) but the recall numbers are kept
 
-Headline layer: the one judged layer if there is exactly one, else L44; with several judged
-layers and no L44 the headline is ``None`` (value / ci95 ``None``, ``n_items`` 0, incomplete).
+Headline layer: ``opts=headline_layer=N`` if given, else the one judged layer if there is
+exactly one, else L44; with several judged layers and no L44 the headline is ``None`` (value /
+ci95 ``None``, ``n_items`` 0, incomplete).
+
+Foil precision (the family's floor) is a number only where a Stage-P foil call returned for that
+layer (plan 0042 item 1): with ``stage_p_foil=0`` every foil precision is ``None`` and the
+chance label says "not measured" — never the 0.0 of a few zero-concept foil cells.
 """
 
+import json
 import math
+import re
 from collections import Counter, defaultdict
 from collections.abc import Iterable, Sequence
 from dataclasses import dataclass, replace
+from pathlib import Path
 from typing import Any
 
 import numpy as np
@@ -28,12 +36,14 @@ from wsbench.mcjudge import is_subset
 from wsbench.registry import JudgeArgs
 from wsbench.results import FamilyResult, completeness
 
-from .concept_pr import ItemScore, bootstrap_ci, is_content_token, score_item
+from .concept_pr import ItemScore, bootstrap_ci, is_content_token, is_junk_token, score_item
+from .prompts import grounding_void
 
 M = 10
 HEADLINE_LAYER = 44
 MAX_REJECT_RATE = 0.05  # JLENS_PR_MAX_REJECT_RATE of the source stage script
 CHANCE_LABEL = "shuffled-partner foil precision (measured, see extras.foil)"
+CHANCE_LABEL_UNMEASURED = "shuffled-partner foil precision: not measured (stage_p_foil=0)"
 FAILURE_STATUSES = ("missing_a", "incomplete_b", "missing_p")
 
 
@@ -204,20 +214,24 @@ def _ci(values: Sequence[float]) -> list[float | None] | None:
 Scored = tuple[dict[str, Any], ItemScore]
 
 
-def block(real: list[Scored], foil: list[Scored]) -> dict[str, Any]:
+def block(real: list[Scored], foil: list[Scored], *, foil_measured: bool = True) -> dict[str, Any]:
+    """One layer's numbers. ``foil_measured`` False (no Stage-P foil call returned for this
+    layer) makes ``foil_precision`` ``None``: zero-concept foil cells alone are not a floor."""
     scored = [(m, s) for m, s in real if m["status"] == "ok"]
     recalled = [(m, s) for m, s in real if _has_recall(m["status"])]
     p = [s.precision for _, s in scored]
     r = [s.recall_at_m for _, s in recalled]
     n_content = sum(s.n_content_tokens for _, s in real)
+    n_junk = sum(int(m.get("n_junk", 0)) for m, _ in real)
     n_tok = sum(s.n_tokens for _, s in real)
+    foil_p = _mean([s.precision for m, s in foil if m["status"] == "ok"])
     return {
         "precision": _num(_mean(p)),
         "precision_ci": _ci(p),
         "recall_at_10": _num(_mean(r)),
         "recall_at_10_ci": _ci(r),
         "raw_recall": _num(_mean([s.raw_recall for _, s in recalled])),
-        "foil_precision": _num(_mean([s.precision for m, s in foil if m["status"] == "ok"])),
+        "foil_precision": _num(foil_p) if foil_measured else None,
         "foil_recall_at_10": _num(
             _mean([s.recall_at_m for m, s in foil if _has_recall(m["status"])])
         ),
@@ -228,7 +242,9 @@ def block(real: list[Scored], foil: list[Scored]) -> dict[str, Any]:
         "mean_text_tokens": _num(
             _mean([float(m["n_text_tokens"]) for m, _ in real if m["status"] != "missing_a"])
         ),
-        "punct_frac": _num(1.0 - n_content / n_tok) if n_tok else None,
+        # punctuation only; junk tokens (U+FFFD fragments, special tags) are counted apart
+        "punct_frac": _num(1.0 - (n_content + n_junk) / n_tok) if n_tok else None,
+        "junk_frac": _num(n_junk / n_tok) if n_tok else None,
         "n_items": len(real),
         "n_items_scored": sum(1 for _, s in scored if not math.isnan(s.precision)),
         "n_items_no_text": sum(1 for m, _ in real if not m["has_text"]),
@@ -260,6 +276,9 @@ def score(
     reject_rate: dict[str, dict[str, Any]],
     counts_base: dict,
     config: dict,
+    foil_precision_measured: bool = True,
+    headline: int | None = None,
+    layers_without_reference: Sequence[int] = (),
 ) -> FamilyResult:
     real: dict[int, list[Scored]] = defaultdict(list)
     foil: dict[int, list[Scored]] = defaultdict(list)
@@ -276,7 +295,12 @@ def score(
             support=support["p"].get(ci.key),
             support_expected=bool(content_idx),  # no content token -> no Stage P call -> ok/NaN
         )
-        meta = {"status": status, "has_text": ci.has_text, "n_text_tokens": ci.n_text_tokens}
+        meta = {
+            "status": status,
+            "has_text": ci.has_text,
+            "n_text_tokens": ci.n_text_tokens,
+            "n_junk": sum(1 for t in ci.tokens if is_junk_token(t)),
+        }
         real[ci.layer].append((meta, s))
         statuses[status] += 1
         row: dict[str, Any] = {
@@ -291,6 +315,7 @@ def score(
             "n_concepts": s.n_concepts,
             "n_content_tokens": s.n_content_tokens,
             "n_tokens": s.n_tokens,
+            "n_junk_tokens": meta["n_junk"],
             "precision": _num(s.precision),
             "recall_at_10": _num(s.recall_at_m),
             "raw_recall": _num(s.raw_recall),
@@ -312,11 +337,18 @@ def score(
             )
             foil[ci.layer].append(({**meta, "status": f_status}, fs))
             row["foil_status"] = f_status
-            row["foil_precision"] = _num(fs.precision)
+            row["foil_precision"] = _num(fs.precision) if foil_precision_measured else None
             row["foil_recall_at_10"] = _num(fs.recall_at_m)
         rows.append(row)
-    by_layer = {str(L): block(real.get(L, []), foil.get(L, [])) for L in layers}
-    hl = headline_layer(layers)
+    # a layer's foil precision is measured only if a Stage-P foil call returned at that layer
+    pfoil_layers = {
+        ci.layer for ci in inputs if foil_precision_measured and ci.key in support["pfoil"]
+    }
+    by_layer = {
+        str(L): block(real.get(L, []), foil.get(L, []), foil_measured=L in pfoil_layers)
+        for L in layers
+    }
+    hl = headline if headline is not None else headline_layer(layers)
     if hl is None and layers:
         print(
             f"[jlens_concept_pr] several judged layers {list(layers)} without L{HEADLINE_LAYER}: "
@@ -351,8 +383,10 @@ def score(
         "by_layer": by_layer,
         "mean_n_concepts": blk["mean_n_concepts"] if blk else None,
         "punct_frac": blk["punct_frac"] if blk else None,
+        "junk_frac": blk["junk_frac"] if blk else None,
         "reject_rate": reject_rate,
         "statuses": dict(sorted(statuses.items())),
+        "layers_without_reference": list(layers_without_reference),
     }
     ci95 = blk["precision_ci"] if blk else None
     return FamilyResult(
@@ -363,7 +397,7 @@ def score(
         n_items=blk["n_items_scored"] if blk and not args.dry_run else 0,
         higher_is_better=True,
         chance=None,
-        chance_label=CHANCE_LABEL,
+        chance_label=CHANCE_LABEL if foil_precision_measured else CHANCE_LABEL_UNMEASURED,
         complete=complete,
         pinned_instrument=args.judge.pinned,
         config=config,
@@ -371,3 +405,65 @@ def score(
         extras=extras,
         rows=[] if args.dry_run else rows,
     )
+
+
+# ------------------------------------------------------------------ verdict audit (gpu G12)
+
+_CELL_KEY = re.compile(r"^(?P<label>.+)__L(?P<layer>\d+)__p(?P<pos>\d+)$")
+_KIND = {"P": ("P", False), "Q": ("Q", True), "B": ("B", False)}
+
+
+def verdict_rows(out_dir: Path) -> list[dict[str, Any]]:
+    """Every audited verdict of a judged run (plan 0042 C11), read from ``out_dir/cells.jsonl``:
+    one row per Stage-P grade (``kind`` P), Stage-P foil grade (``kind`` Q, ``is_foil``) and
+    Stage-B grade (``kind`` B, one per (reference token, concept)). Fields: ``kind``, ``pass``
+    (= ``grade != "out"``), ``key``, ``label``, ``layer``, ``pos``, ``concept``, ``tokens`` (the
+    set shown; B: the token's readout set), ``grade``, ``token`` (P/Q: the grounding token the
+    judge named; B: the graded reference token), ``is_foil``. The last successful row per key
+    wins; Stage-B foil rows (``F``) are not audited (the foil floor is Stage P's). Rows written
+    before v3 carry no ``tokens`` meta and are skipped."""
+    path = Path(out_dir) / "cells.jsonl"
+    last: dict[str, dict[str, Any]] = {}
+    for line in path.read_text(encoding="utf-8").splitlines():
+        if not line.strip():
+            continue
+        row = json.loads(line)
+        if row.get("result") is not None:
+            last[row["key"]] = row
+    out: list[dict[str, Any]] = []
+    for key, row in last.items():
+        cell, _, tag = key.rpartition(":")
+        kind = _KIND.get(tag[:1])
+        m = _CELL_KEY.match(cell)
+        meta = row.get("meta") or {}
+        if kind is None or m is None or "tokens" not in meta:
+            continue
+        base = {
+            "label": m["label"],
+            "layer": int(m["layer"]),
+            "pos": int(m["pos"]),
+            "is_foil": kind[1],
+            "kind": kind[0],
+        }
+        grades = (row["result"] or {}).get("grades") or []
+        for g in grades:
+            if not isinstance(g, dict):
+                continue
+            grade = str(g.get("grade", ""))
+            out.append(
+                {
+                    **base,
+                    "key": key,
+                    "concept": str(g.get("concept", "")),
+                    "tokens": list(meta["tokens"]),
+                    "grade": grade,
+                    "token": str(meta["token"]) if kind[0] == "B" else str(g.get("token", "")),
+                    # fw-v2 + sense-v1: a Stage-P grade on a void grounding scores as out
+                    "pass": grade != "out"
+                    and not (
+                        kind[0] != "B"
+                        and grounding_void(str(g.get("token", "")), str(g.get("concept", "")))
+                    ),
+                }
+            )
+    return out

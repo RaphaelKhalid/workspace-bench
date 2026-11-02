@@ -1,0 +1,8235 @@
+{
+ "family": "basic-readout-hard",
+ "parent_family": "basic-readout-mt",
+ "contract": {
+  "multi_token": true,
+  "include_target": false,
+  "conjunctive_units": true
+ },
+ "gate": "Qwen3.6-27B behavioral, chat-templated capability question (enable_thinking=False, answer stem): greedy-verified AND >=8/10 @ temp 0.7. EVAL RENDER: plain prompt, final prompt token; regex over the readout (l2_factual: en/zh names only + language unit).",
+ "frozen": "2026-09-10",
+ "adapt": {
+  "model": "olmo-3.1-32b",
+  "hf_id": "allenai/Olmo-3.1-32B-Instruct",
+  "frozen": "2026-10-24"
+ },
+ "items": [
+  {
+   "name": "brh-ent-aghlabid-dynasty",
+   "subfamily": "entity",
+   "prompt": "The Muslim ruling house that governed Ifriqiya from 800 to 909 as nominal vassals of the caliphs in Baghdad is called the",
+   "target": "Aghlabid dynasty",
+   "target_alts": [
+    "Aghlabids",
+    "Banu al-Aghlab"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "intermediates": [
+    "Aghlabid dynasty"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Aghlabid dynasty",
+       "Aghlabids",
+       "Banu al-Aghlab"
+      ]
+     },
+     "match": [
+      "Aghlabid dynasty",
+      "Aghlabids",
+      "Banu al-Aghlab"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       4,
+       3,
+       6
+      ]
+     }
+    },
+    "target": 4,
+    "target_alts": [
+     3,
+     6
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "Aghlabid dynasty",
+     "distractors": [
+      "Rustamid dynasty",
+      "Idrisid dynasty",
+      "Zirid dynasty",
+      "Hafsid dynasty"
+     ]
+    }
+   },
+   "id": "brh-ent-aghlabid-dynasty",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-ent-baikal-outflow",
+   "subfamily": "entity",
+   "prompt": "The single outflow draining Baikal, carrying its water northward to join the Yenisei, is the",
+   "target": "Angara River",
+   "target_alts": [
+    "Angara"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "intermediates": [
+    "Angara River"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Angara River",
+       "Angara"
+      ]
+     },
+     "match": [
+      "Angara River",
+      "Angara"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       3,
+       2
+      ]
+     }
+    },
+    "target": 3,
+    "target_alts": [
+     2
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "Angara River",
+     "distractors": [
+      "Lena River",
+      "Selenga River",
+      "Irtysh River",
+      "Podkamennaya Tunguska River"
+     ]
+    }
+   },
+   "id": "brh-ent-baikal-outflow",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-ent-beckwith-wiedemann-syndrome",
+   "subfamily": "entity",
+   "prompt": "The overgrowth disorder marked by an enlarged tongue, omphalocele and a raised risk of Wilms tumour, caused by imprinting errors at chromosome 11p15.5, is",
+   "target": "Beckwith–Wiedemann syndrome",
+   "target_alts": [
+    "Beckwith-Wiedemann syndrome",
+    "Wiedemann–Beckwith syndrome",
+    "the Beckwith–Wiedemann syndrome"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "intermediates": [
+    "Beckwith–Wiedemann syndrome"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Beckwith–Wiedemann syndrome",
+       "Beckwith-Wiedemann syndrome",
+       "Wiedemann–Beckwith syndrome",
+       "the Beckwith–Wiedemann syndrome"
+      ]
+     },
+     "match": [
+      "Beckwith–Wiedemann syndrome",
+      "Beckwith-Wiedemann syndrome",
+      "Wiedemann–Beckwith syndrome",
+      "the Beckwith–Wiedemann syndrome"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       7,
+       6,
+       7,
+       8
+      ]
+     }
+    },
+    "target": 7,
+    "target_alts": [
+     6,
+     7,
+     8
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "Beckwith–Wiedemann syndrome",
+     "distractors": [
+      "Silver–Russell syndrome",
+      "Sotos syndrome",
+      "Simpson–Golabi–Behmel syndrome",
+      "Prader–Willi syndrome"
+     ]
+    }
+   },
+   "id": "brh-ent-beckwith-wiedemann-syndrome",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-ent-bohr-magneton",
+   "subfamily": "entity",
+   "prompt": "The physical quantity equal to about 9.274×10⁻²⁴ joules per tesla, used as the natural unit for the intrinsic dipole moment of an electron, is",
+   "target": "the Bohr magneton",
+   "target_alts": [
+    "Bohr magneton",
+    "the Bohr magnetons"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "intermediates": [
+    "the Bohr magneton"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "the Bohr magneton",
+       "Bohr magneton",
+       "the Bohr magnetons"
+      ]
+     },
+     "match": [
+      "the Bohr magneton",
+      "Bohr magneton",
+      "the Bohr magnetons"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       5,
+       4,
+       5
+      ]
+     }
+    },
+    "target": 5,
+    "target_alts": [
+     4,
+     5
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "the Bohr magneton",
+     "distractors": [
+      "the nuclear magneton",
+      "the Rydberg constant",
+      "the fine-structure constant",
+      "the Compton wavelength"
+     ]
+    }
+   },
+   "id": "brh-ent-bohr-magneton",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-ent-bonaire-capital",
+   "subfamily": "entity",
+   "prompt": "The principal town and seat of government of the Dutch Caribbean municipality of Bonaire is",
+   "target": "Kralendijk",
+   "target_alts": [
+    "Playa (Kralendijk)"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "intermediates": [
+    "Kralendijk"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Kralendijk",
+       "Playa (Kralendijk)"
+      ]
+     },
+     "match": [
+      "Kralendijk",
+      "Playa (Kralendijk)"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       4,
+       7
+      ]
+     }
+    },
+    "target": 4,
+    "target_alts": [
+     7
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "Kralendijk",
+     "distractors": [
+      "Willemstad",
+      "Oranjestad",
+      "The Bottom",
+      "Philipsburg"
+     ]
+    }
+   },
+   "id": "brh-ent-bonaire-capital",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-ent-brunt-vaisala-frequency",
+   "subfamily": "entity",
+   "prompt": "The angular rate at which a vertically displaced parcel of air oscillates within a statically stable stratified atmosphere is the",
+   "target": "Brunt–Väisälä frequency",
+   "target_alts": [
+    "Brunt-Vaisala frequency",
+    "Brunt-Väisälä frequency",
+    "buoyancy frequency"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "intermediates": [
+    "Brunt–Väisälä frequency"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Brunt–Väisälä frequency",
+       "Brunt-Vaisala frequency",
+       "Brunt-Väisälä frequency",
+       "buoyancy frequency"
+      ]
+     },
+     "match": [
+      "Brunt–Väisälä frequency",
+      "Brunt-Vaisala frequency",
+      "Brunt-Väisälä frequency",
+      "buoyancy frequency"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       8,
+       6,
+       8,
+       3
+      ]
+     }
+    },
+    "target": 8,
+    "target_alts": [
+     6,
+     8,
+     3
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "Brunt–Väisälä frequency",
+     "distractors": [
+      "Coriolis parameter",
+      "Richardson number",
+      "Rossby radius of deformation",
+      "Ekman number"
+     ]
+    }
+   },
+   "id": "brh-ent-brunt-vaisala-frequency",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-ent-chem-wintergreen-ester",
+   "subfamily": "entity",
+   "prompt": "The systematic chemical name of the fragrant substance traditionally sold as oil of wintergreen is",
+   "target": "methyl salicylate",
+   "target_alts": [
+    "methyl 2-hydroxybenzoate"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "intermediates": [
+    "methyl salicylate"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "methyl salicylate",
+       "methyl 2-hydroxybenzoate"
+      ]
+     },
+     "match": [
+      "methyl salicylate",
+      "methyl 2-hydroxybenzoate"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       4,
+       9
+      ]
+     }
+    },
+    "target": 4,
+    "target_alts": [
+     9
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "methyl salicylate",
+     "distractors": [
+      "methyl anthranilate",
+      "methyl benzoate",
+      "benzyl acetate",
+      "isoamyl acetate"
+     ]
+    }
+   },
+   "id": "brh-ent-chem-wintergreen-ester",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-ent-chindwin-confluence",
+   "subfamily": "entity",
+   "prompt": "The much larger watercourse that the Chindwin joins near Myingyan is the",
+   "target": "Ayeyarwady",
+   "target_alts": [
+    "Irrawaddy"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "intermediates": [
+    "Ayeyarwady"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Ayeyarwady",
+       "Irrawaddy"
+      ]
+     },
+     "match": [
+      "Ayeyarwady",
+      "Irrawaddy"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       5,
+       3
+      ]
+     }
+    },
+    "target": 5,
+    "target_alts": [
+     3
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "Ayeyarwady",
+     "distractors": [
+      "Salween",
+      "Sittaung",
+      "Mekong",
+      "Chao Phraya"
+     ]
+    }
+   },
+   "id": "brh-ent-chindwin-confluence",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-ent-concordat-worms",
+   "subfamily": "entity",
+   "prompt": "The 1122 agreement between the papacy and Emperor Henry V that settled the long quarrel over lay investiture is known as the",
+   "target": "Concordat of Worms",
+   "target_alts": [
+    "Worms Concordat"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "intermediates": [
+    "Concordat of Worms"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Concordat of Worms",
+       "Worms Concordat"
+      ]
+     },
+     "match": [
+      "Concordat of Worms",
+      "Worms Concordat"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       5,
+       4
+      ]
+     }
+    },
+    "target": 5,
+    "target_alts": [
+     4
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "Concordat of Worms",
+     "distractors": [
+      "Concordat of Bologna",
+      "Peace of Constance",
+      "Treaty of Venice",
+      "Diet of Worms"
+     ]
+    }
+   },
+   "id": "brh-ent-concordat-worms",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-ent-cordillera-blanca-high",
+   "subfamily": "entity",
+   "prompt": "The highest summit of the Cordillera Blanca in Peru is",
+   "target": "Nevado Huascaran",
+   "target_alts": [
+    "Nevado Huascarán",
+    "Huascarán",
+    "Huascaran"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "intermediates": [
+    "Nevado Huascaran"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Nevado Huascaran",
+       "Nevado Huascarán",
+       "Huascarán",
+       "Huascaran"
+      ]
+     },
+     "match": [
+      "Nevado Huascaran",
+      "Nevado Huascarán",
+      "Huascarán",
+      "Huascaran"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       5,
+       5,
+       3,
+       3
+      ]
+     }
+    },
+    "target": 5,
+    "target_alts": [
+     5,
+     3,
+     3
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "Nevado Huascaran",
+     "distractors": [
+      "Nevado Alpamayo",
+      "Nevado Huandoy",
+      "Yerupaja",
+      "Nevado Coropuna"
+     ]
+    }
+   },
+   "id": "brh-ent-cordillera-blanca-high",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-ent-cur-bhutan",
+   "subfamily": "entity",
+   "prompt": "The national monetary unit of the Himalayan kingdom governed from Thimphu is the",
+   "target": "Bhutanese ngultrum",
+   "target_alts": [
+    "ngultrum",
+    "the ngultrum"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "intermediates": [
+    "Bhutanese ngultrum"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Bhutanese ngultrum",
+       "ngultrum",
+       "the ngultrum"
+      ]
+     },
+     "match": [
+      "Bhutanese ngultrum",
+      "ngultrum",
+      "the ngultrum"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       7,
+       4,
+       5
+      ]
+     }
+    },
+    "target": 7,
+    "target_alts": [
+     4,
+     5
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "Bhutanese ngultrum",
+     "distractors": [
+      "Nepalese rupee",
+      "Maldivian rufiyaa",
+      "Bangladeshi taka",
+      "Burmese kyat"
+     ]
+    }
+   },
+   "id": "brh-ent-cur-bhutan",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-ent-cur-bosnia-convertible-mark",
+   "subfamily": "entity",
+   "prompt": "The money introduced in 1998 in Bosnia and Herzegovina under the Dayton accords, at first pegged one-to-one to the German unit of the time, is the",
+   "target": "convertible mark",
+   "target_alts": [
+    "konvertibilna marka"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "intermediates": [
+    "convertible mark"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "convertible mark",
+       "konvertibilna marka"
+      ]
+     },
+     "match": [
+      "convertible mark",
+      "konvertibilna marka"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       2,
+       6
+      ]
+     }
+    },
+    "target": 2,
+    "target_alts": [
+     6
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "convertible mark",
+     "distractors": [
+      "Croatian kuna",
+      "Serbian dinar",
+      "Macedonian denar",
+      "Bulgarian lev"
+     ]
+    }
+   },
+   "id": "brh-ent-cur-bosnia-convertible-mark",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-ent-cur-eritrea",
+   "subfamily": "entity",
+   "prompt": "The official monetary unit of the Horn of Africa state whose capital is Asmara is the",
+   "target": "Eritrean nakfa",
+   "target_alts": [
+    "nakfa",
+    "the nakfa"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "intermediates": [
+    "Eritrean nakfa"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Eritrean nakfa",
+       "nakfa",
+       "the nakfa"
+      ]
+     },
+     "match": [
+      "Eritrean nakfa",
+      "nakfa",
+      "the nakfa"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       5,
+       2,
+       3
+      ]
+     }
+    },
+    "target": 5,
+    "target_alts": [
+     2,
+     3
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "Eritrean nakfa",
+     "distractors": [
+      "Ethiopian birr",
+      "Djiboutian franc",
+      "Somali shilling",
+      "Sudanese pound"
+     ]
+    }
+   },
+   "id": "brh-ent-cur-eritrea",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-ent-cur-macau-unit",
+   "subfamily": "entity",
+   "prompt": "The official currency of the Special Administrative Region of Macau is",
+   "target": "pataca",
+   "target_alts": [
+    "the pataca",
+    "patacas"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "intermediates": [
+    "pataca"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "pataca",
+       "the pataca",
+       "patacas"
+      ]
+     },
+     "match": [
+      "pataca",
+      "the pataca",
+      "patacas"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 0.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       3,
+       4,
+       3
+      ]
+     }
+    },
+    "target": 3,
+    "target_alts": [
+     4,
+     3
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "pataca",
+     "distractors": [
+      "escudo",
+      "ringgit",
+      "kyat",
+      "rupiah"
+     ]
+    }
+   },
+   "id": "brh-ent-cur-macau-unit",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-ent-cur-ouguiya-subunit",
+   "subfamily": "entity",
+   "prompt": "The subunit of the Mauritanian ouguiya, five of which make one ouguiya, is",
+   "target": "khoums",
+   "target_alts": [
+    "the khoums",
+    "khoum"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "intermediates": [
+    "khoums"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "khoums",
+       "the khoums",
+       "khoum"
+      ]
+     },
+     "match": [
+      "khoums",
+      "the khoums",
+      "khoum"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       3,
+       4,
+       3
+      ]
+     }
+    },
+    "target": 3,
+    "target_alts": [
+     4,
+     3
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "khoums",
+     "distractors": [
+      "millime",
+      "santim",
+      "butut",
+      "laari"
+     ]
+    }
+   },
+   "id": "brh-ent-cur-ouguiya-subunit",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-ent-cur-vanuatu",
+   "subfamily": "entity",
+   "prompt": "The monetary unit of the Melanesian archipelago whose capital is Port Vila is the",
+   "target": "Vanuatu vatu",
+   "target_alts": [
+    "vatu",
+    "the vatu"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "intermediates": [
+    "Vanuatu vatu"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Vanuatu vatu",
+       "vatu",
+       "the vatu"
+      ]
+     },
+     "match": [
+      "Vanuatu vatu",
+      "vatu",
+      "the vatu"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 0.9,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       5,
+       2,
+       3
+      ]
+     }
+    },
+    "target": 5,
+    "target_alts": [
+     2,
+     3
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "Vanuatu vatu",
+     "distractors": [
+      "Papua New Guinean kina",
+      "Solomon Islands dollar",
+      "Samoan tala",
+      "Tongan pa'anga"
+     ]
+    }
+   },
+   "id": "brh-ent-cur-vanuatu",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-ent-currency-eswatini",
+   "subfamily": "entity",
+   "prompt": "The name of the national currency of the Kingdom of Eswatini is",
+   "target": "lilangeni",
+   "target_alts": [
+    "the lilangeni",
+    "emalangeni"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "intermediates": [
+    "lilangeni"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "lilangeni",
+       "the lilangeni",
+       "emalangeni"
+      ]
+     },
+     "match": [
+      "lilangeni",
+      "the lilangeni",
+      "emalangeni"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       3,
+       4,
+       4
+      ]
+     }
+    },
+    "target": 3,
+    "target_alts": [
+     4,
+     4
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "lilangeni",
+     "distractors": [
+      "loti",
+      "pula",
+      "metical",
+      "kwanza"
+     ]
+    }
+   },
+   "id": "brh-ent-currency-eswatini",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-ent-currency-gambia",
+   "subfamily": "entity",
+   "prompt": "The name of the unit of money issued by the central bank of The Gambia is",
+   "target": "dalasi",
+   "target_alts": [
+    "the dalasi",
+    "dalasis"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "intermediates": [
+    "dalasi"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "dalasi",
+       "the dalasi",
+       "dalasis"
+      ]
+     },
+     "match": [
+      "dalasi",
+      "the dalasi",
+      "dalasis"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       2,
+       3,
+       2
+      ]
+     }
+    },
+    "target": 2,
+    "target_alts": [
+     3,
+     2
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "dalasi",
+     "distractors": [
+      "leone",
+      "cedi",
+      "ouguiya",
+      "dobra"
+     ]
+    }
+   },
+   "id": "brh-ent-currency-gambia",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-ent-currency-mozambique",
+   "subfamily": "entity",
+   "prompt": "The name of the national currency of Mozambique is",
+   "target": "metical",
+   "target_alts": [
+    "the metical",
+    "meticais"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "intermediates": [
+    "metical"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "metical",
+       "the metical",
+       "meticais"
+      ]
+     },
+     "match": [
+      "metical",
+      "the metical",
+      "meticais"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       2,
+       3,
+       2
+      ]
+     }
+    },
+    "target": 2,
+    "target_alts": [
+     3,
+     2
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "metical",
+     "distractors": [
+      "kwanza",
+      "kwacha",
+      "ariary",
+      "dobra"
+     ]
+    }
+   },
+   "id": "brh-ent-currency-mozambique",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-ent-currency-vanuatu",
+   "subfamily": "entity",
+   "prompt": "The unit of currency circulating in the Pacific archipelago nation whose capital is Port Vila is",
+   "target": "the Vanuatu vatu",
+   "target_alts": [
+    "Vanuatu vatu",
+    "the vatu"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "intermediates": [
+    "the Vanuatu vatu"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "the Vanuatu vatu",
+       "Vanuatu vatu",
+       "the vatu"
+      ]
+     },
+     "match": [
+      "the Vanuatu vatu",
+      "Vanuatu vatu",
+      "the vatu"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       6,
+       5,
+       3
+      ]
+     }
+    },
+    "target": 6,
+    "target_alts": [
+     5,
+     3
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "the Vanuatu vatu",
+     "distractors": [
+      "the Samoan tala",
+      "the Tongan pa'anga",
+      "the Papua New Guinean kina",
+      "the Solomon Islands dollar"
+     ]
+    }
+   },
+   "id": "brh-ent-currency-vanuatu",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-ent-euler-mascheroni-constant",
+   "subfamily": "entity",
+   "prompt": "The mathematical quantity roughly equal to 0.5772156649, defined as the limiting difference between the harmonic series and the natural logarithm, is",
+   "target": "the Euler–Mascheroni constant",
+   "target_alts": [
+    "Euler–Mascheroni constant",
+    "Euler-Mascheroni constant",
+    "Euler's constant"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "intermediates": [
+    "the Euler–Mascheroni constant"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "the Euler–Mascheroni constant",
+       "Euler–Mascheroni constant",
+       "Euler-Mascheroni constant",
+       "Euler's constant"
+      ]
+     },
+     "match": [
+      "the Euler–Mascheroni constant",
+      "Euler–Mascheroni constant",
+      "Euler-Mascheroni constant",
+      "Euler's constant"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 0.3,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       7,
+       6,
+       6,
+       3
+      ]
+     }
+    },
+    "target": 7,
+    "target_alts": [
+     6,
+     6,
+     3
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "the Euler–Mascheroni constant",
+     "distractors": [
+      "Catalan's constant",
+      "Apéry's constant",
+      "the Glaisher–Kinkelin constant",
+      "Khinchin's constant"
+     ]
+    }
+   },
+   "id": "brh-ent-euler-mascheroni-constant",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-ent-georgian-royal-line",
+   "subfamily": "entity",
+   "prompt": "The royal line that ruled the Georgian realms for roughly a millennium until the Russian annexation of 1801 is the",
+   "target": "Bagrationi dynasty",
+   "target_alts": [
+    "Bagratid dynasty",
+    "Bagrationi"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "intermediates": [
+    "Bagrationi dynasty"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Bagrationi dynasty",
+       "Bagratid dynasty",
+       "Bagrationi"
+      ]
+     },
+     "match": [
+      "Bagrationi dynasty",
+      "Bagratid dynasty",
+      "Bagrationi"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       4,
+       4,
+       3
+      ]
+     }
+    },
+    "target": 4,
+    "target_alts": [
+     4,
+     3
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "Bagrationi dynasty",
+     "distractors": [
+      "Chosroid dynasty",
+      "Artaxiad dynasty",
+      "Nemanjić dynasty",
+      "Rurik dynasty"
+     ]
+    }
+   },
+   "id": "brh-ent-georgian-royal-line",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-ent-geosmin",
+   "subfamily": "entity",
+   "prompt": "The bicyclic alcohol made by soil-dwelling Streptomyces bacteria that gives beetroot and rain-dampened ground their characteristic musty smell is",
+   "target": "geosmin",
+   "target_alts": [
+    "trans-1,10-dimethyl-trans-9-decalol"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "intermediates": [
+    "geosmin"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "geosmin",
+       "trans-1,10-dimethyl-trans-9-decalol"
+      ]
+     },
+     "match": [
+      "geosmin",
+      "trans-1,10-dimethyl-trans-9-decalol"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       3,
+       14
+      ]
+     }
+    },
+    "target": 3,
+    "target_alts": [
+     14
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "geosmin",
+     "distractors": [
+      "2-methylisoborneol",
+      "beta-ionone",
+      "skatole",
+      "2,4,6-trichloroanisole"
+     ]
+    }
+   },
+   "id": "brh-ent-geosmin",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-ent-gloger-rule",
+   "subfamily": "entity",
+   "prompt": "The zoogeographical generalization that within a species of endotherm, populations inhabiting more humid climates are more heavily pigmented, is called",
+   "target": "Gloger's rule",
+   "target_alts": [
+    "Gloger rule",
+    "Gloger's law"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "intermediates": [
+    "Gloger's rule"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Gloger's rule",
+       "Gloger rule",
+       "Gloger's law"
+      ]
+     },
+     "match": [
+      "Gloger's rule",
+      "Gloger rule",
+      "Gloger's law"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       5,
+       4,
+       5
+      ]
+     }
+    },
+    "target": 5,
+    "target_alts": [
+     4,
+     5
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "Gloger's rule",
+     "distractors": [
+      "Bergmann's rule",
+      "Allen's rule",
+      "Rensch's rule",
+      "Cope's rule"
+     ]
+    }
+   },
+   "id": "brh-ent-gloger-rule",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-ent-hafsid-ifriqiya",
+   "subfamily": "entity",
+   "prompt": "The Berber Muslim ruling house that governed Ifriqiya from Tunis from 1229 until the Ottoman conquest of 1574 is known as the",
+   "target": "Hafsid dynasty",
+   "target_alts": [
+    "Hafsid Dynasty",
+    "Hafsids"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "intermediates": [
+    "Hafsid dynasty"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Hafsid dynasty",
+       "Hafsid Dynasty",
+       "Hafsids"
+      ]
+     },
+     "match": [
+      "Hafsid dynasty",
+      "Hafsid Dynasty",
+      "Hafsids"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       4,
+       4,
+       3
+      ]
+     }
+    },
+    "target": 4,
+    "target_alts": [
+     4,
+     3
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "Hafsid dynasty",
+     "distractors": [
+      "Marinid dynasty",
+      "Zayyanid dynasty",
+      "Zirid dynasty",
+      "Aghlabid dynasty"
+     ]
+    }
+   },
+   "id": "brh-ent-hafsid-ifriqiya",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-ent-hounsfield",
+   "subfamily": "entity",
+   "prompt": "On the radiodensity scale of computed tomography, where distilled water is defined as zero and air as minus one thousand, attenuation is expressed in",
+   "target": "Hounsfield units",
+   "target_alts": [
+    "Hounsfield unit",
+    "Hounsfield"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "intermediates": [
+    "Hounsfield units"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Hounsfield units",
+       "Hounsfield unit",
+       "Hounsfield"
+      ]
+     },
+     "match": [
+      "Hounsfield units",
+      "Hounsfield unit",
+      "Hounsfield"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       4,
+       4,
+       3
+      ]
+     }
+    },
+    "target": 4,
+    "target_alts": [
+     4,
+     3
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "Hounsfield units",
+     "distractors": [
+      "Standardized uptake value",
+      "Apparent diffusion coefficient",
+      "Roentgen equivalent man",
+      "Specific absorption rate"
+     ]
+    }
+   },
+   "id": "brh-ent-hounsfield",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-ent-hounsfield-unit",
+   "subfamily": "entity",
+   "prompt": "The measure of radiodensity in X-ray computed tomography, defined so that distilled water reads zero and air reads minus one thousand, is the",
+   "target": "Hounsfield unit",
+   "target_alts": [
+    "Hounsfield units",
+    "Hounsfield scale"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "intermediates": [
+    "Hounsfield unit"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Hounsfield unit",
+       "Hounsfield units",
+       "Hounsfield scale"
+      ]
+     },
+     "match": [
+      "Hounsfield unit",
+      "Hounsfield units",
+      "Hounsfield scale"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       4,
+       4,
+       4
+      ]
+     }
+    },
+    "target": 4,
+    "target_alts": [
+     4,
+     4
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "Hounsfield unit",
+     "distractors": [
+      "gray",
+      "sievert",
+      "roentgen",
+      "becquerel"
+     ]
+    }
+   },
+   "id": "brh-ent-hounsfield-unit",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-ent-iceland-spar",
+   "subfamily": "entity",
+   "prompt": "The optically clear variety of calcite whose strong double refraction made it the material of Nicol prisms is known as",
+   "target": "Iceland spar",
+   "target_alts": [
+    "Icelandic spar"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "intermediates": [
+    "Iceland spar"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Iceland spar",
+       "Icelandic spar"
+      ]
+     },
+     "match": [
+      "Iceland spar",
+      "Icelandic spar"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       2,
+       2
+      ]
+     }
+    },
+    "target": 2,
+    "target_alts": [
+     2
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "Iceland spar",
+     "distractors": [
+      "Rock crystal",
+      "Selenite",
+      "Cordierite",
+      "Blue John"
+     ]
+    }
+   },
+   "id": "brh-ent-iceland-spar",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-ent-karlowitz-1699",
+   "subfamily": "entity",
+   "prompt": "The 1699 settlement that ended the long war between the Ottomans and the Holy League and transferred most of Hungary to the Habsburgs is known as the",
+   "target": "Treaty of Karlowitz",
+   "target_alts": [
+    "Peace of Karlowitz",
+    "Treaty of Carlowitz"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "intermediates": [
+    "Treaty of Karlowitz"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Treaty of Karlowitz",
+       "Peace of Karlowitz",
+       "Treaty of Carlowitz"
+      ]
+     },
+     "match": [
+      "Treaty of Karlowitz",
+      "Peace of Karlowitz",
+      "Treaty of Carlowitz"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       5,
+       5,
+       5
+      ]
+     }
+    },
+    "target": 5,
+    "target_alts": [
+     5,
+     5
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "Treaty of Karlowitz",
+     "distractors": [
+      "Treaty of Passarowitz",
+      "Treaty of Belgrade",
+      "Treaty of Küçük Kaynarca",
+      "Peace of Zsitvatorok"
+     ]
+    }
+   },
+   "id": "brh-ent-karlowitz-1699",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-ent-lemierre-syndrome",
+   "subfamily": "entity",
+   "prompt": "Septic thrombophlebitis of the internal jugular vein arising after an oropharyngeal infection, with emboli spreading to the lungs, is known as",
+   "target": "Lemierre's syndrome",
+   "target_alts": [
+    "Lemierre syndrome",
+    "Lemierre's disease"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "intermediates": [
+    "Lemierre's syndrome"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Lemierre's syndrome",
+       "Lemierre syndrome",
+       "Lemierre's disease"
+      ]
+     },
+     "match": [
+      "Lemierre's syndrome",
+      "Lemierre syndrome",
+      "Lemierre's disease"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       4,
+       3,
+       4
+      ]
+     }
+    },
+    "target": 4,
+    "target_alts": [
+     3,
+     4
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "Lemierre's syndrome",
+     "distractors": [
+      "Ludwig's angina",
+      "Vincent's angina",
+      "Grisel's syndrome",
+      "Ramsay Hunt syndrome"
+     ]
+    }
+   },
+   "id": "brh-ent-lemierre-syndrome",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-ent-lowest-point-australia",
+   "subfamily": "entity",
+   "prompt": "The vast salt pan in South Australia that marks the continent's lowest natural elevation is",
+   "target": "Kati Thanda-Lake Eyre",
+   "target_alts": [
+    "Lake Eyre",
+    "Kati Thanda",
+    "Kati Thanda–Lake Eyre"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "intermediates": [
+    "Kati Thanda-Lake Eyre"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Kati Thanda-Lake Eyre",
+       "Lake Eyre",
+       "Kati Thanda",
+       "Kati Thanda–Lake Eyre"
+      ]
+     },
+     "match": [
+      "Kati Thanda-Lake Eyre",
+      "Lake Eyre",
+      "Kati Thanda",
+      "Kati Thanda–Lake Eyre"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       8,
+       3,
+       4,
+       8
+      ]
+     }
+    },
+    "target": 8,
+    "target_alts": [
+     3,
+     4,
+     8
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "Kati Thanda-Lake Eyre",
+     "distractors": [
+      "Lake Torrens",
+      "Lake Gairdner",
+      "Lake Frome",
+      "Lake Amadeus"
+     ]
+    }
+   },
+   "id": "brh-ent-lowest-point-australia",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-ent-madelung-constant",
+   "subfamily": "entity",
+   "prompt": "The dimensionless sum of the electrostatic interactions of one ion with all the others in a crystal lattice, used to obtain lattice energy, is",
+   "target": "the Madelung constant",
+   "target_alts": [
+    "Madelung constant"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "intermediates": [
+    "the Madelung constant"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "the Madelung constant",
+       "Madelung constant"
+      ]
+     },
+     "match": [
+      "the Madelung constant",
+      "Madelung constant"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       5,
+       4
+      ]
+     }
+    },
+    "target": 5,
+    "target_alts": [
+     4
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "the Madelung constant",
+     "distractors": [
+      "the Rydberg constant",
+      "the Curie constant",
+      "the Verdet constant",
+      "the Faraday constant"
+     ]
+    }
+   },
+   "id": "brh-ent-madelung-constant",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-ent-matthiessen",
+   "subfamily": "entity",
+   "prompt": "The statement that a metal's total electrical resistivity is the sum of a temperature-independent impurity term and a temperature-dependent lattice vibration term is known as",
+   "target": "Matthiessen's rule",
+   "target_alts": [
+    "Matthiessen rule",
+    "the Matthiessen's rule"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "intermediates": [
+    "Matthiessen's rule"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Matthiessen's rule",
+       "Matthiessen rule",
+       "the Matthiessen's rule"
+      ]
+     },
+     "match": [
+      "Matthiessen's rule",
+      "Matthiessen rule",
+      "the Matthiessen's rule"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       5,
+       4,
+       6
+      ]
+     }
+    },
+    "target": 5,
+    "target_alts": [
+     4,
+     6
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "Matthiessen's rule",
+     "distractors": [
+      "Wiedemann–Franz law",
+      "Nordheim's rule",
+      "Bloch–Grüneisen law",
+      "Kohler's rule"
+     ]
+    }
+   },
+   "id": "brh-ent-matthiessen",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-ent-mayor-palace",
+   "subfamily": "entity",
+   "prompt": "In the Frankish kingdom under the Merovingians, the chief steward of the royal household who came to wield real authority held the office of",
+   "target": "Mayor of the Palace",
+   "target_alts": [
+    "maior domus",
+    "mayor of the palace"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "intermediates": [
+    "Mayor of the Palace"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Mayor of the Palace",
+       "maior domus",
+       "mayor of the palace"
+      ]
+     },
+     "match": [
+      "Mayor of the Palace",
+      "maior domus",
+      "mayor of the palace"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       4,
+       3,
+       4
+      ]
+     }
+    },
+    "target": 4,
+    "target_alts": [
+     3,
+     4
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "Mayor of the Palace",
+     "distractors": [
+      "Constable of France",
+      "Lord High Steward",
+      "Grand Vizier",
+      "Count Palatine"
+     ]
+    }
+   },
+   "id": "brh-ent-mayor-palace",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-ent-mccune-albright",
+   "subfamily": "entity",
+   "prompt": "The disorder that combines polyostotic fibrous dysplasia, cafe-au-lait skin patches and precocious puberty in one patient is",
+   "target": "McCune-Albright syndrome",
+   "target_alts": [
+    "McCune–Albright syndrome",
+    "the McCune-Albright syndrome",
+    "McCune Albright syndrome"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "intermediates": [
+    "McCune-Albright syndrome"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "McCune-Albright syndrome",
+       "McCune–Albright syndrome",
+       "the McCune-Albright syndrome",
+       "McCune Albright syndrome"
+      ]
+     },
+     "match": [
+      "McCune-Albright syndrome",
+      "McCune–Albright syndrome",
+      "the McCune-Albright syndrome",
+      "McCune Albright syndrome"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       5,
+       6,
+       6,
+       5
+      ]
+     }
+    },
+    "target": 5,
+    "target_alts": [
+     6,
+     6,
+     5
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "McCune-Albright syndrome",
+     "distractors": [
+      "Peutz-Jeghers syndrome",
+      "Beckwith-Wiedemann syndrome",
+      "Sturge-Weber syndrome",
+      "Klippel-Trenaunay syndrome"
+     ]
+    }
+   },
+   "id": "brh-ent-mccune-albright",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-ent-mohr-double-compound",
+   "subfamily": "entity",
+   "prompt": "The double compound of ammonium and iron(II) sulfate crystallizing with six molecules of water, long used as a primary standard in redox titrations, is commonly called",
+   "target": "Mohr's salt",
+   "target_alts": [
+    "Mohr salt",
+    "Mohrs salt"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "intermediates": [
+    "Mohr's salt"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Mohr's salt",
+       "Mohr salt",
+       "Mohrs salt"
+      ]
+     },
+     "match": [
+      "Mohr's salt",
+      "Mohr salt",
+      "Mohrs salt"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       4,
+       3,
+       3
+      ]
+     }
+    },
+    "target": 4,
+    "target_alts": [
+     3,
+     3
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "Mohr's salt",
+     "distractors": [
+      "Glauber's salt",
+      "Rochelle salt",
+      "Zeise's salt",
+      "Fremy's salt"
+     ]
+    }
+   },
+   "id": "brh-ent-mohr-double-compound",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-ent-mughal-military-paymaster",
+   "subfamily": "entity",
+   "prompt": "In the Mughal imperial administration, the paymaster-general who headed the military department and maintained the muster rolls held the post of",
+   "target": "Mir Bakhshi",
+   "target_alts": [
+    "Mir Bakshi",
+    "Meer Bukhshee"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "intermediates": [
+    "Mir Bakhshi"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Mir Bakhshi",
+       "Mir Bakshi",
+       "Meer Bukhshee"
+      ]
+     },
+     "match": [
+      "Mir Bakhshi",
+      "Mir Bakshi",
+      "Meer Bukhshee"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       4,
+       3,
+       4
+      ]
+     }
+    },
+    "target": 4,
+    "target_alts": [
+     3,
+     4
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "Mir Bakhshi",
+     "distractors": [
+      "Mir Saman",
+      "Sadr-us-Sudur",
+      "Diwan-i-Ala",
+      "Mir Atish"
+     ]
+    }
+   },
+   "id": "brh-ent-mughal-military-paymaster",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-ent-nerchinsk-1689",
+   "subfamily": "entity",
+   "prompt": "The 1689 boundary agreement that first fixed the frontier between the Qing empire and the Russian tsardom along the Argun and the upper Amur is known as the",
+   "target": "Treaty of Nerchinsk",
+   "target_alts": [
+    "Nerchinsk Treaty",
+    "Treaty of Nertchinsk"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "intermediates": [
+    "Treaty of Nerchinsk"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Treaty of Nerchinsk",
+       "Nerchinsk Treaty",
+       "Treaty of Nertchinsk"
+      ]
+     },
+     "match": [
+      "Treaty of Nerchinsk",
+      "Nerchinsk Treaty",
+      "Treaty of Nertchinsk"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       5,
+       4,
+       6
+      ]
+     }
+    },
+    "target": 5,
+    "target_alts": [
+     4,
+     6
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "Treaty of Nerchinsk",
+     "distractors": [
+      "Treaty of Kyakhta",
+      "Treaty of Aigun",
+      "Convention of Peking",
+      "Treaty of Tianjin"
+     ]
+    }
+   },
+   "id": "brh-ent-nerchinsk-1689",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-ent-noyes-whitney",
+   "subfamily": "entity",
+   "prompt": "The 1897 pharmaceutical relation stating that a solid's dissolution rate is proportional to the difference between its saturation solubility and the bulk concentration is known as the",
+   "target": "Noyes-Whitney equation",
+   "target_alts": [
+    "Noyes–Whitney equation",
+    "Noyes and Whitney equation"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "intermediates": [
+    "Noyes-Whitney equation"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Noyes-Whitney equation",
+       "Noyes–Whitney equation",
+       "Noyes and Whitney equation"
+      ]
+     },
+     "match": [
+      "Noyes-Whitney equation",
+      "Noyes–Whitney equation",
+      "Noyes and Whitney equation"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       6,
+       7,
+       6
+      ]
+     }
+    },
+    "target": 6,
+    "target_alts": [
+     7,
+     6
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "Noyes-Whitney equation",
+     "distractors": [
+      "Hixson-Crowell cube root law",
+      "Higuchi equation",
+      "Henderson-Hasselbalch equation",
+      "Stokes-Einstein equation"
+     ]
+    }
+   },
+   "id": "brh-ent-noyes-whitney",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-ent-ottoman-religious-office",
+   "subfamily": "entity",
+   "prompt": "The supreme religious-legal authority of the Ottoman state, who issued binding fatwas and could sanction a sultan's deposition, held the office of",
+   "target": "Shaykh al-Islam",
+   "target_alts": [
+    "Sheikh ul-Islam",
+    "Şeyhülislam",
+    "Sheikh al-Islam"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "intermediates": [
+    "Shaykh al-Islam"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Shaykh al-Islam",
+       "Sheikh ul-Islam",
+       "Şeyhülislam",
+       "Sheikh al-Islam"
+      ]
+     },
+     "match": [
+      "Shaykh al-Islam",
+      "Sheikh ul-Islam",
+      "Şeyhülislam",
+      "Sheikh al-Islam"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       5,
+       4,
+       6,
+       4
+      ]
+     }
+    },
+    "target": 5,
+    "target_alts": [
+     4,
+     6,
+     4
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "Shaykh al-Islam",
+     "distractors": [
+      "Qadi al-Qudat",
+      "Amir al-Mu'minin",
+      "Naqib al-Ashraf",
+      "Sadr al-Sudur"
+     ]
+    }
+   },
+   "id": "brh-ent-ottoman-religious-office",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-ar-ain-jalut",
+   "subfamily": "l2_factual",
+   "prompt": "المعركة التي هزم فيها المماليك جيش المغول سنة 1260 في شمال فلسطين هي معركة",
+   "target": "عين جالوت",
+   "target_alts": [
+    "عين جالوت",
+    "موقعة عين جالوت",
+    "عَين جالوت"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "lang": "ar",
+   "intermediates": [
+    "Battle of Ain Jalut"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Battle of Ain Jalut",
+       "Ayn Jalut"
+      ],
+      "zh": [
+       "阿因贾鲁特战役",
+       "艾因贾卢特"
+      ]
+     },
+     "match": [
+      "Battle of Ain Jalut",
+      "Ayn Jalut",
+      "阿因贾鲁特战役",
+      "艾因贾卢特"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Arabic"
+      ],
+      "zh": [
+       "阿拉伯语"
+      ],
+      "ar": [
+       "عين جالوت",
+       "موقعة عين جالوت"
+      ]
+     },
+     "match": [
+      "Arabic",
+      "阿拉伯语",
+      "عين جالوت",
+      "موقعة عين جالوت"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       5,
+       4
+      ],
+      "zh": [
+       13,
+       8
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       6
+      ],
+      "ar": [
+       7,
+       12
+      ]
+     }
+    },
+    "target": 7,
+    "target_alts": [
+     7,
+     12,
+     8
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "Battle of Ain Jalut",
+     "distractors": [
+      "Battle of Homs",
+      "Battle of Hattin",
+      "Battle of Wadi al-Khazandar",
+      "Battle of Köse Dağ"
+     ]
+    }
+   },
+   "id": "brh-ar-ain-jalut",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-ar-dakhil",
+   "subfamily": "l2_factual",
+   "prompt": "الأمير الأموي الذي نجا من مذبحة بني العباس وعبر إلى الأندلس فأسّس إمارة قرطبة سنة 756 ميلادية هو",
+   "target": "عبد الرحمن الداخل",
+   "target_alts": [
+    "الداخل",
+    "عبد الرحمن بن معاوية",
+    "صقر قريش",
+    "بعبد الرحمن الداخل",
+    "لعبد الرحمن الداخل"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "lang": "ar",
+   "intermediates": [
+    "Abd al-Rahman I"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Abd al-Rahman I",
+       "Abd al-Rahman al-Dakhil"
+      ],
+      "zh": [
+       "阿卜杜拉赫曼一世",
+       "阿卜杜勒·拉赫曼一世"
+      ]
+     },
+     "match": [
+      "Abd al-Rahman I",
+      "Abd al-Rahman al-Dakhil",
+      "阿卜杜拉赫曼一世",
+      "阿卜杜勒·拉赫曼一世"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Arabic"
+      ],
+      "zh": [
+       "阿拉伯语"
+      ],
+      "ar": [
+       "عبد الرحمن الداخل",
+       "عبد الرحمن بن معاوية",
+       "صقر قريش"
+      ]
+     },
+     "match": [
+      "Arabic",
+      "阿拉伯语",
+      "عبد الرحمن الداخل",
+      "عبد الرحمن بن معاوية",
+      "صقر قريش"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 0.8,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       6,
+       9
+      ],
+      "zh": [
+       14,
+       17
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       6
+      ],
+      "ar": [
+       13,
+       15,
+       7
+      ]
+     }
+    },
+    "target": 13,
+    "target_alts": [
+     5,
+     15,
+     7,
+     14,
+     14
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "Abd al-Rahman I",
+     "distractors": [
+      "Hisham I of Córdoba",
+      "Al-Hakam I of Córdoba",
+      "Marwan II",
+      "Yusuf al-Fihri"
+     ]
+    }
+   },
+   "id": "brh-ar-dakhil",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-ar-marj-dabiq",
+   "subfamily": "l2_factual",
+   "prompt": "هزم السلطان سليم الأول جيش المماليك سنة 1516 شمال حلب في موقعة تُعرف باسم",
+   "target": "مرج دابق",
+   "target_alts": [
+    "سهل مرج دابق",
+    "بمرج دابق"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "lang": "ar",
+   "intermediates": [
+    "Marj Dabiq"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Marj Dabiq",
+       "plain of Marj Dabiq"
+      ],
+      "zh": [
+       "马尔吉·达比克",
+       "达比克平原"
+      ]
+     },
+     "match": [
+      "Marj Dabiq",
+      "plain of Marj Dabiq",
+      "马尔吉·达比克",
+      "达比克平原"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Arabic"
+      ],
+      "zh": [
+       "阿拉伯语"
+      ],
+      "ar": [
+       "مرج دابق",
+       "سهل مرج دابق"
+      ]
+     },
+     "match": [
+      "Arabic",
+      "阿拉伯语",
+      "مرج دابق",
+      "سهل مرج دابق"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 0.7,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       4,
+       6
+      ],
+      "zh": [
+       10,
+       6
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       6
+      ],
+      "ar": [
+       6,
+       9
+      ]
+     }
+    },
+    "target": 6,
+    "target_alts": [
+     9,
+     7
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "Marj Dabiq",
+     "distractors": [
+      "Ridaniya",
+      "Chaldiran",
+      "Ayn Jalut",
+      "Horns of Hattin"
+     ]
+    }
+   },
+   "id": "brh-ar-marj-dabiq",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-ar-tayebsalih",
+   "subfamily": "l2_factual",
+   "prompt": "رواية موسم الهجرة إلى الشمال الصادرة سنة 1966 هي من تأليف الروائي السوداني",
+   "target": "الطيب صالح",
+   "target_alts": [
+    "الطيّب صالح",
+    "للطيب صالح",
+    "بالطيب صالح",
+    "والطيب صالح"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "lang": "ar",
+   "intermediates": [
+    "Tayeb Salih"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Tayeb Salih",
+       "Al-Tayyib Salih"
+      ],
+      "zh": [
+       "塔伊卜·萨利赫",
+       "泰伊布·萨利赫"
+      ]
+     },
+     "match": [
+      "Tayeb Salih",
+      "Al-Tayyib Salih",
+      "塔伊卜·萨利赫",
+      "泰伊布·萨利赫"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Arabic"
+      ],
+      "zh": [
+       "阿拉伯语"
+      ],
+      "ar": [
+       "الطيب صالح",
+       "الطيّب صالح"
+      ]
+     },
+     "match": [
+      "Arabic",
+      "阿拉伯语",
+      "الطيب صالح",
+      "الطيّب صالح"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       4,
+       7
+      ],
+      "zh": [
+       12,
+       11
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       6
+      ],
+      "ar": [
+       7,
+       8
+      ]
+     }
+    },
+    "target": 7,
+    "target_alts": [
+     8,
+     8,
+     8,
+     8
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "Tayeb Salih",
+     "distractors": [
+      "Naguib Mahfouz",
+      "Abdelrahman Munif",
+      "Tawfiq al-Hakim",
+      "Ibrahim al-Koni"
+     ]
+    }
+   },
+   "id": "brh-ar-tayebsalih",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-hu-erkel-ferenc",
+   "subfamily": "l2_factual",
+   "prompt": "A Bánk bán című nagyopera zeneszerzője",
+   "target": "Erkel Ferenc",
+   "target_alts": [
+    "Erkel Ferencet",
+    "Erkel Ferencnek",
+    "Erkel Ferenctől",
+    "Erkel"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "lang": "hu",
+   "intermediates": [
+    "Ferenc Erkel"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Ferenc Erkel",
+       "composer Erkel"
+      ],
+      "zh": [
+       "费伦茨·埃尔凯尔",
+       "埃尔凯尔·费伦茨"
+      ]
+     },
+     "match": [
+      "Ferenc Erkel",
+      "composer Erkel",
+      "费伦茨·埃尔凯尔",
+      "埃尔凯尔·费伦茨"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Hungarian"
+      ],
+      "zh": [
+       "匈牙利语"
+      ],
+      "hu": [
+       "Erkel Ferenc",
+       "Erkel Ferencet",
+       "Erkel Ferencnek"
+      ]
+     },
+     "match": [
+      "Hungarian",
+      "匈牙利语",
+      "Erkel Ferenc",
+      "Erkel Ferencet",
+      "Erkel Ferencnek"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 0.3,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       4,
+       3
+      ],
+      "zh": [
+       12,
+       12
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       6
+      ],
+      "hu": [
+       4,
+       5,
+       5
+      ]
+     }
+    },
+    "target": 4,
+    "target_alts": [
+     5,
+     5,
+     7,
+     2
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "Ferenc Erkel",
+     "distractors": [
+      "Mihály Mosonyi",
+      "Karl Goldmark",
+      "Jenő Hubay",
+      "Ödön Mihalovich"
+     ]
+    }
+   },
+   "id": "brh-hu-erkel-ferenc",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-hu-gabor-denes",
+   "subfamily": "l2_factual",
+   "prompt": "A holográfia feltalálásáért 1971-ben fizikai Nobel-díjjal jutalmazott, Budapesten született villamosmérnök",
+   "target": "Gábor Dénes",
+   "target_alts": [
+    "Gábor Dénest",
+    "Gábor Dénesnek",
+    "Dennis Gabor"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "lang": "hu",
+   "intermediates": [
+    "Dennis Gabor"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Dennis Gabor",
+       "physicist Gabor"
+      ],
+      "zh": [
+       "丹尼斯·加博尔",
+       "加博尔·丹尼斯"
+      ]
+     },
+     "match": [
+      "Dennis Gabor",
+      "physicist Gabor",
+      "丹尼斯·加博尔",
+      "加博尔·丹尼斯"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Hungarian"
+      ],
+      "zh": [
+       "匈牙利语"
+      ],
+      "hu": [
+       "Gábor Dénes",
+       "Gábor Dénest",
+       "Gábor Dénesnek"
+      ]
+     },
+     "match": [
+      "Hungarian",
+      "匈牙利语",
+      "Gábor Dénes",
+      "Gábor Dénest",
+      "Gábor Dénesnek"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       3,
+       3
+      ],
+      "zh": [
+       11,
+       11
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       6
+      ],
+      "hu": [
+       5,
+       5,
+       6
+      ]
+     }
+    },
+    "target": 5,
+    "target_alts": [
+     5,
+     6,
+     3
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "Dennis Gabor",
+     "distractors": [
+      "Eugene Wigner",
+      "Leo Szilard",
+      "Georg von Békésy",
+      "Theodore von Kármán"
+     ]
+    }
+   },
+   "id": "brh-hu-gabor-denes",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-id-garis-wallace",
+   "subfamily": "l2_factual",
+   "prompt": "Batas biogeografi yang memisahkan fauna Asia dari fauna Australasia dan membentang di antara Bali dengan Lombok disebut",
+   "target": "Garis Wallace",
+   "target_alts": [
+    "Garis Wallacea",
+    "Garis pemisah Wallace"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "lang": "id",
+   "intermediates": [
+    "Wallace Line"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Wallace Line",
+       "the Wallace boundary"
+      ],
+      "zh": [
+       "华莱士线",
+       "华莱士分界线"
+      ]
+     },
+     "match": [
+      "Wallace Line",
+      "the Wallace boundary",
+      "华莱士线",
+      "华莱士分界线"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Indonesian"
+      ],
+      "zh": [
+       "印尼语",
+       "印度尼西亚语"
+      ],
+      "id": [
+       "Garis Wallace",
+       "Garis pemisah Wallace"
+      ]
+     },
+     "match": [
+      "Indonesian",
+      "印尼语",
+      "印度尼西亚语",
+      "Garis Wallace",
+      "Garis pemisah Wallace"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       2,
+       3
+      ],
+      "zh": [
+       7,
+       9
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       5,
+       9
+      ],
+      "id": [
+       3,
+       6
+      ]
+     }
+    },
+    "target": 3,
+    "target_alts": [
+     4,
+     6
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "Wallace Line",
+     "distractors": [
+      "Weber's Line",
+      "Lydekker's Line",
+      "Huxley's Line",
+      "Müller's Line"
+     ]
+    }
+   },
+   "id": "brh-id-garis-wallace",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-id-kalimantan",
+   "subfamily": "l2_factual",
+   "prompt": "Sungai terpanjang di Nusantara, yaitu Kapuas, mengalir sepanjang lebih dari seribu kilometer di bagian barat",
+   "target": "Kalimantan",
+   "target_alts": [
+    "Kalimantan",
+    "Pulau Kalimantan"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "lang": "id",
+   "intermediates": [
+    "island of Borneo"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "island of Borneo",
+       "Borneo"
+      ],
+      "zh": [
+       "婆罗洲",
+       "加里曼丹"
+      ]
+     },
+     "match": [
+      "island of Borneo",
+      "Borneo",
+      "婆罗洲",
+      "加里曼丹"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Indonesian"
+      ],
+      "zh": [
+       "印尼语",
+       "印度尼西亚语"
+      ],
+      "id": [
+       "Kalimantan",
+       "Pulau Kalimantan"
+      ]
+     },
+     "match": [
+      "Indonesian",
+      "印尼语",
+      "印度尼西亚语",
+      "Kalimantan",
+      "Pulau Kalimantan"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       4,
+       2
+      ],
+      "zh": [
+       7,
+       6
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       5,
+       9
+      ],
+      "id": [
+       3,
+       5
+      ]
+     }
+    },
+    "target": 3,
+    "target_alts": [
+     3,
+     5
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "island of Borneo",
+     "distractors": [
+      "island of Sumatra",
+      "island of Sulawesi",
+      "island of New Guinea",
+      "island of Mindanao"
+     ]
+    }
+   },
+   "id": "brh-id-kalimantan",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-id-puncak-jaya",
+   "subfamily": "l2_factual",
+   "prompt": "Titik tertinggi di Indonesia yang menjulang di Pegunungan Sudirman, Provinsi Papua Tengah, bernama",
+   "target": "Puncak Jaya",
+   "target_alts": [
+    "Puncak Cartenz",
+    "Puncak Jayawijaya"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "lang": "id",
+   "intermediates": [
+    "Carstensz Pyramid"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Carstensz Pyramid",
+       "Mount Carstensz"
+      ],
+      "zh": [
+       "查亚峰",
+       "卡斯滕兹金字塔峰"
+      ]
+     },
+     "match": [
+      "Carstensz Pyramid",
+      "Mount Carstensz",
+      "查亚峰",
+      "卡斯滕兹金字塔峰"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Indonesian"
+      ],
+      "zh": [
+       "印尼语",
+       "印度尼西亚语"
+      ],
+      "id": [
+       "Puncak Jaya",
+       "Puncak Cartenz",
+       "Puncak Jayawijaya"
+      ]
+     },
+     "match": [
+      "Indonesian",
+      "印尼语",
+      "印度尼西亚语",
+      "Puncak Jaya",
+      "Puncak Cartenz",
+      "Puncak Jayawijaya"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       5,
+       5
+      ],
+      "zh": [
+       6,
+       15
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       5,
+       9
+      ],
+      "id": [
+       5,
+       5,
+       7
+      ]
+     }
+    },
+    "target": 5,
+    "target_alts": [
+     5,
+     7
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "Carstensz Pyramid",
+     "distractors": [
+      "Puncak Trikora",
+      "Mount Wilhelm",
+      "Mount Kinabalu",
+      "Mount Kosciuszko"
+     ]
+    }
+   },
+   "id": "brh-id-puncak-jaya",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-id-sriwijaya",
+   "subfamily": "l2_factual",
+   "prompt": "Negara maritim bercorak Buddha yang berpusat di Palembang dan menguasai lalu lintas perdagangan di Selat Malaka pada abad ke-7 dikenal dengan nama",
+   "target": "Sriwijaya",
+   "target_alts": [
+    "Kedatuan Sriwijaya",
+    "Kerajaan Sriwijaya"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "lang": "id",
+   "intermediates": [
+    "Srivijaya Empire"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Srivijaya Empire",
+       "Srivijayan state"
+      ],
+      "zh": [
+       "室利佛逝",
+       "三佛齐"
+      ]
+     },
+     "match": [
+      "Srivijaya Empire",
+      "Srivijayan state",
+      "室利佛逝",
+      "三佛齐"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Indonesian"
+      ],
+      "zh": [
+       "印尼语",
+       "印度尼西亚语"
+      ],
+      "id": [
+       "Sriwijaya",
+       "Kedatuan Sriwijaya",
+       "Kerajaan Sriwijaya"
+      ]
+     },
+     "match": [
+      "Indonesian",
+      "印尼语",
+      "印度尼西亚语",
+      "Sriwijaya",
+      "Kedatuan Sriwijaya",
+      "Kerajaan Sriwijaya"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       5,
+       5
+      ],
+      "zh": [
+       7,
+       6
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       5,
+       9
+      ],
+      "id": [
+       3,
+       7,
+       6
+      ]
+     }
+    },
+    "target": 3,
+    "target_alts": [
+     7,
+     6
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "Srivijaya Empire",
+     "distractors": [
+      "Majapahit Empire",
+      "Khmer Empire",
+      "Kingdom of Funan",
+      "Champa Kingdom"
+     ]
+    }
+   },
+   "id": "brh-id-sriwijaya",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-id-sungai-kapuas",
+   "subfamily": "l2_factual",
+   "prompt": "Aliran air terpanjang di Pulau Kalimantan, yang bermuara di dekat Pontianak, bernama",
+   "target": "Sungai Kapuas",
+   "target_alts": [
+    "Sungai Kapuas",
+    "Kapuas"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "lang": "id",
+   "intermediates": [
+    "Kapuas River"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Kapuas River"
+      ],
+      "zh": [
+       "卡普阿斯河"
+      ]
+     },
+     "match": [
+      "Kapuas River",
+      "卡普阿斯河"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Indonesian"
+      ],
+      "zh": [
+       "印尼语",
+       "印度尼西亚语"
+      ],
+      "id": [
+       "Sungai Kapuas",
+       "Kapuas"
+      ]
+     },
+     "match": [
+      "Indonesian",
+      "印尼语",
+      "印度尼西亚语",
+      "Sungai Kapuas",
+      "Kapuas"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       4
+      ],
+      "zh": [
+       10
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       5,
+       9
+      ],
+      "id": [
+       5,
+       3
+      ]
+     }
+    },
+    "target": 5,
+    "target_alts": [
+     5,
+     3
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "Kapuas River",
+     "distractors": [
+      "Mahakam River",
+      "Barito River",
+      "Rajang River",
+      "Kahayan River"
+     ]
+    }
+   },
+   "id": "brh-id-sungai-kapuas",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-id-tambora-1815",
+   "subfamily": "l2_factual",
+   "prompt": "Letusan dahsyat pada tahun 1815 yang memicu 'tahun tanpa musim panas' di Eropa terjadi di Pulau Sumbawa, tepatnya di",
+   "target": "Gunung Tambora",
+   "target_alts": [
+    "Tambora",
+    "Gunung Api Tambora"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "lang": "id",
+   "intermediates": [
+    "Mount Tambora"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Mount Tambora",
+       "Tambora volcano"
+      ],
+      "zh": [
+       "坦博拉火山",
+       "坦博拉山"
+      ]
+     },
+     "match": [
+      "Mount Tambora",
+      "Tambora volcano",
+      "坦博拉火山",
+      "坦博拉山"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Indonesian"
+      ],
+      "zh": [
+       "印尼语",
+       "印度尼西亚语"
+      ],
+      "id": [
+       "Gunung Tambora",
+       "Gunung Api Tambora"
+      ]
+     },
+     "match": [
+      "Indonesian",
+      "印尼语",
+      "印度尼西亚语",
+      "Gunung Tambora",
+      "Gunung Api Tambora"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 1.0,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       3,
+       3
+      ],
+      "zh": [
+       7,
+       6
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       5,
+       9
+      ],
+      "id": [
+       4,
+       5
+      ]
+     }
+    },
+    "target": 4,
+    "target_alts": [
+     2,
+     5
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "Mount Tambora",
+     "distractors": [
+      "Krakatoa",
+      "Mount Merapi",
+      "Mount Rinjani",
+      "Mount Agung"
+     ]
+    }
+   },
+   "id": "brh-id-tambora-1815",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "brh-ru-baikonur",
+   "subfamily": "l2_factual",
+   "prompt": "Первый пилотируемый полёт человека начался 12 апреля 1961 года со стартовой площадки в Кызылординской области Казахстана, известной как",
+   "target": "Байконур",
+   "target_alts": [
+    "Байконура",
+    "Байконуре",
+    "Байконуром",
+    "космодром Байконур"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "lang": "ru",
+   "intermediates": [
+    "Baikonur Cosmodrome"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Baikonur Cosmodrome",
+       "Baikonur launch complex"
+      ],
+      "zh": [
+       "拜科努尔航天发射场",
+       "拜科努尔"
+      ]
+     },
+     "match": [
+      "Baikonur Cosmodrome",
+      "Baikonur launch complex",
+      "拜科努尔航天发射场",
+      "拜科努尔"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Russian"
+      ],
+      "zh": [
+       "俄语"
+      ],
+      "ru": [
+       "Байконур",
+       "Байконура",
+       "космодром Байконур"
+      ]
+     },
+     "match": [
+      "Russian",
+      "俄语",
+      "Байконур",
+      "Байконура",
+      "космодром Байконур"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 0.6,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       6,
+       5
+      ],
+      "zh": [
+       13,
+       6
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       3
+      ],
+      "ru": [
+       5,
+       6,
+       11
+      ]
+     }
+    },
+    "target": 5,
+    "target_alts": [
+     6,
+     6,
+     6,
+     11
+    ]
+   },
+   "mc": {
+    "readout": {
+     "gold": "Baikonur Cosmodrome",
+     "distractors": [
+      "Plesetsk Cosmodrome",
+      "Vostochny Cosmodrome",
+      "Kapustin Yar",
+      "Jiuquan Satellite Launch Center"
+     ]
+    }
+   },
+   "id": "brh-ru-baikonur",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c0-ent-battle-hastings",
+   "subfamily": "entity",
+   "prompt": "The 1066 clash in which William of Normandy defeated King Harold and took the English throne is known as the",
+   "target": "Battle of Hastings",
+   "target_alts": [
+    "Hastings"
+   ],
+   "intermediates": [
+    "Battle of Hastings"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Battle of Hastings",
+       "Hastings"
+      ]
+     },
+     "match": [
+      "Battle of Hastings",
+      "Hastings"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Battle of Hastings",
+     "distractors": [
+      "Battle of Stamford Bridge",
+      "Battle of Agincourt",
+      "Battle of Bosworth Field",
+      "Battle of Crécy"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       3,
+       1
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c0-ent-law-boyle",
+   "subfamily": "entity",
+   "prompt": "The gas rule stating that the pressure and volume of a fixed amount of gas are inversely proportional at constant temperature is called",
+   "target": "Boyle's law",
+   "target_alts": [
+    "Mariotte's law",
+    "Boyle–Mariotte law"
+   ],
+   "intermediates": [
+    "Boyle's law"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Boyle's law",
+       "Mariotte's law",
+       "Boyle–Mariotte law"
+      ]
+     },
+     "match": [
+      "Boyle's law",
+      "Mariotte's law",
+      "Boyle–Mariotte law"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Boyle's law",
+     "distractors": [
+      "Charles's law",
+      "Gay-Lussac's law",
+      "Avogadro's law",
+      "Dalton's law"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       3,
+       4,
+       5
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c0-ent-dynasty-ming",
+   "subfamily": "entity",
+   "prompt": "The Chinese ruling house founded by the Hongwu Emperor in 1368 and overthrown in 1644 was the",
+   "target": "Ming dynasty",
+   "target_alts": [
+    "Ming",
+    "Great Ming"
+   ],
+   "intermediates": [
+    "Ming dynasty"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Ming dynasty",
+       "Ming",
+       "Great Ming"
+      ]
+     },
+     "match": [
+      "Ming dynasty",
+      "Ming",
+      "Great Ming"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Ming dynasty",
+     "distractors": [
+      "Qing dynasty",
+      "Tang dynasty",
+      "Song dynasty",
+      "Yuan dynasty"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       2,
+       1,
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c0-ent-building-taj",
+   "subfamily": "entity",
+   "prompt": "The white marble mausoleum in Agra that the emperor Shah Jahan built for his beloved wife Mumtaz is the",
+   "target": "Taj Mahal",
+   "target_alts": [
+    "the Taj"
+   ],
+   "intermediates": [
+    "Taj Mahal"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Taj Mahal",
+       "the Taj"
+      ]
+     },
+     "match": [
+      "Taj Mahal",
+      "the Taj"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Taj Mahal",
+     "distractors": [
+      "Red Fort",
+      "Humayun's Tomb",
+      "Qutub Minar",
+      "Gol Gumbaz"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       3,
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c0-ent-law-pythagoras",
+   "subfamily": "entity",
+   "prompt": "In a right triangle, the square of the hypotenuse equals the sum of the squares of the other two sides; this result is called the",
+   "target": "Pythagorean theorem",
+   "target_alts": [
+    "Pythagoras' theorem",
+    "Pythagoras's theorem"
+   ],
+   "intermediates": [
+    "Pythagorean theorem"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Pythagorean theorem",
+       "Pythagoras' theorem",
+       "Pythagoras's theorem"
+      ]
+     },
+     "match": [
+      "Pythagorean theorem",
+      "Pythagoras' theorem",
+      "Pythagoras's theorem"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Pythagorean theorem",
+     "distractors": [
+      "Fermat's Last Theorem",
+      "Thales's theorem",
+      "law of cosines",
+      "Euclid's theorem"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       4,
+       5,
+       5
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c0-ent-document-magna-carta",
+   "subfamily": "entity",
+   "prompt": "The 1215 document of liberties that rebellious barons forced King John to seal at Runnymede is the",
+   "target": "Magna Carta",
+   "target_alts": [
+    "Magna Charta",
+    "Great Charter"
+   ],
+   "intermediates": [
+    "Magna Carta"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Magna Carta",
+       "Magna Charta",
+       "Great Charter"
+      ]
+     },
+     "match": [
+      "Magna Carta",
+      "Magna Charta",
+      "Great Charter"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Magna Carta",
+     "distractors": [
+      "English Bill of Rights",
+      "Petition of Right",
+      "Charter of Liberties",
+      "Provisions of Oxford"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       2,
+       3,
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c0-ent-law-archimedes",
+   "subfamily": "entity",
+   "prompt": "The rule that a body immersed in a fluid is buoyed up by a force equal to the weight of the fluid it displaces is called",
+   "target": "Archimedes' principle",
+   "target_alts": [
+    "Archimedes's principle",
+    "law of buoyancy"
+   ],
+   "intermediates": [
+    "Archimedes' principle"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Archimedes' principle",
+       "Archimedes's principle",
+       "law of buoyancy"
+      ]
+     },
+     "match": [
+      "Archimedes' principle",
+      "Archimedes's principle",
+      "law of buoyancy"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Archimedes' principle",
+     "distractors": [
+      "Pascal's law",
+      "Bernoulli's principle",
+      "Hooke's law",
+      "Newton's third law"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       5,
+       5,
+       4
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c0-ent-treaty-westphalia",
+   "subfamily": "entity",
+   "prompt": "The 1648 settlements signed at Osnabrück and Münster that ended the Thirty Years' War are known as the",
+   "target": "Peace of Westphalia",
+   "target_alts": [
+    "Treaty of Westphalia",
+    "Westphalian peace"
+   ],
+   "intermediates": [
+    "Peace of Westphalia"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Peace of Westphalia",
+       "Treaty of Westphalia",
+       "Westphalian peace"
+      ]
+     },
+     "match": [
+      "Peace of Westphalia",
+      "Treaty of Westphalia",
+      "Westphalian peace"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Peace of Westphalia",
+     "distractors": [
+      "Peace of Augsburg",
+      "Treaty of Utrecht",
+      "Peace of Prague",
+      "Treaty of the Pyrenees"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       5,
+       5,
+       4
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c0-ent-dynasty-tudor",
+   "subfamily": "entity",
+   "prompt": "The English royal line begun by Henry VII after Bosworth in 1485, which ended with Elizabeth I, was the",
+   "target": "Tudor dynasty",
+   "target_alts": [
+    "House of Tudor",
+    "Tudors"
+   ],
+   "intermediates": [
+    "Tudor dynasty"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Tudor dynasty",
+       "House of Tudor",
+       "Tudors"
+      ]
+     },
+     "match": [
+      "Tudor dynasty",
+      "House of Tudor",
+      "Tudors"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Tudor dynasty",
+     "distractors": [
+      "Stuart dynasty",
+      "Plantagenet dynasty",
+      "Hanoverian dynasty",
+      "Windsor dynasty"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       3,
+       4,
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c0-ent-building-giza",
+   "subfamily": "entity",
+   "prompt": "The largest of the ancient pharaonic tombs on the plateau just outside Cairo, the only surviving Wonder of the Ancient World, is the",
+   "target": "Great Pyramid of Giza",
+   "target_alts": [
+    "Pyramid of Khufu",
+    "Pyramid of Cheops"
+   ],
+   "intermediates": [
+    "Great Pyramid of Giza"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Great Pyramid of Giza",
+       "Pyramid of Khufu",
+       "Pyramid of Cheops"
+      ]
+     },
+     "match": [
+      "Great Pyramid of Giza",
+      "Pyramid of Khufu",
+      "Pyramid of Cheops"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Great Pyramid of Giza",
+     "distractors": [
+      "Pyramid of Khafre",
+      "Bent Pyramid",
+      "Red Pyramid",
+      "Pyramid of Djoser"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       5,
+       5,
+       4
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c0-ent-building-golden-gate",
+   "subfamily": "entity",
+   "prompt": "The orange suspension span crossing the strait at the mouth of San Francisco Bay is the",
+   "target": "Golden Gate Bridge",
+   "target_alts": [
+    "Golden Gate"
+   ],
+   "intermediates": [
+    "Golden Gate Bridge"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Golden Gate Bridge",
+       "Golden Gate"
+      ]
+     },
+     "match": [
+      "Golden Gate Bridge",
+      "Golden Gate"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Golden Gate Bridge",
+     "distractors": [
+      "Brooklyn Bridge",
+      "Tower Bridge",
+      "Sydney Harbour Bridge",
+      "Forth Bridge"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       3,
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c0-ent-person-curie",
+   "subfamily": "entity",
+   "prompt": "The Polish-born physicist who discovered polonium and radium and won Nobel Prizes in two different sciences was",
+   "target": "Marie Curie",
+   "target_alts": [
+    "Maria Skłodowska-Curie",
+    "Madame Curie"
+   ],
+   "intermediates": [
+    "Marie Curie"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Marie Curie",
+       "Maria Skłodowska-Curie",
+       "Madame Curie"
+      ]
+     },
+     "match": [
+      "Marie Curie",
+      "Maria Skłodowska-Curie",
+      "Madame Curie"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Marie Curie",
+     "distractors": [
+      "Lise Meitner",
+      "Rosalind Franklin",
+      "Ernest Rutherford",
+      "Henri Becquerel"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       3,
+       9,
+       3
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c0-ent-dynasty-romanov",
+   "subfamily": "entity",
+   "prompt": "The family that ruled Russia from 1613 until Nicholas II abdicated in 1917 was the",
+   "target": "Romanov dynasty",
+   "target_alts": [
+    "House of Romanov",
+    "Romanovs"
+   ],
+   "intermediates": [
+    "Romanov dynasty"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Romanov dynasty",
+       "House of Romanov",
+       "Romanovs"
+      ]
+     },
+     "match": [
+      "Romanov dynasty",
+      "House of Romanov",
+      "Romanovs"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Romanov dynasty",
+     "distractors": [
+      "Rurik dynasty",
+      "Habsburg dynasty",
+      "Hohenzollern dynasty",
+      "Bourbon dynasty"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       3,
+       4,
+       3
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c0-ent-battle-gettysburg",
+   "subfamily": "entity",
+   "prompt": "The three-day clash in Pennsylvania in July 1863 that marked a turning point of the American Civil War is the",
+   "target": "Battle of Gettysburg",
+   "target_alts": [
+    "Gettysburg"
+   ],
+   "intermediates": [
+    "Battle of Gettysburg"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Battle of Gettysburg",
+       "Gettysburg"
+      ]
+     },
+     "match": [
+      "Battle of Gettysburg",
+      "Gettysburg"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Battle of Gettysburg",
+     "distractors": [
+      "Battle of Antietam",
+      "Battle of Shiloh",
+      "Battle of Bull Run",
+      "Battle of Fredericksburg"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       6,
+       3
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c0-ent-law-doppler",
+   "subfamily": "entity",
+   "prompt": "The change in the pitch of an ambulance siren as it passes by, caused by the motion of the source, is called the",
+   "target": "Doppler effect",
+   "target_alts": [
+    "Doppler shift"
+   ],
+   "intermediates": [
+    "Doppler effect"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Doppler effect",
+       "Doppler shift"
+      ]
+     },
+     "match": [
+      "Doppler effect",
+      "Doppler shift"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Doppler effect",
+     "distractors": [
+      "Compton effect",
+      "photoelectric effect",
+      "Zeeman effect",
+      "Coriolis effect"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       3,
+       3
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c0-ent-event-black-death",
+   "subfamily": "entity",
+   "prompt": "The bubonic plague pandemic that killed a large share of Europe's population in the mid-1300s is known as the",
+   "target": "Black Death",
+   "target_alts": [
+    "Great Mortality"
+   ],
+   "intermediates": [
+    "Black Death"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Black Death",
+       "Great Mortality"
+      ]
+     },
+     "match": [
+      "Black Death",
+      "Great Mortality"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Black Death",
+     "distractors": [
+      "Plague of Justinian",
+      "Spanish flu",
+      "Great Plague of London",
+      "Antonine Plague"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       2,
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c1-brh-ent-battle-trafalgar",
+   "subfamily": "entity",
+   "prompt": "The 1805 naval engagement in which Horatio Nelson was fatally wounded while defeating a combined French and Spanish fleet is known as the",
+   "target": "Battle of Trafalgar",
+   "target_alts": [
+    "Trafalgar"
+   ],
+   "intermediates": [
+    "Battle of Trafalgar"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Battle of Trafalgar",
+       "Trafalgar"
+      ]
+     },
+     "match": [
+      "Battle of Trafalgar",
+      "Trafalgar"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Battle of Trafalgar",
+     "distractors": [
+      "Battle of the Nile",
+      "Battle of Copenhagen",
+      "Battle of Jutland",
+      "Battle of Lepanto"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       5,
+       3
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c1-brh-ent-battle-stalingrad",
+   "subfamily": "entity",
+   "prompt": "The brutal 1942–43 urban struggle on the Volga that ended with the German Sixth Army under Paulus surrendering to Soviet forces is called the",
+   "target": "Battle of Stalingrad",
+   "target_alts": [
+    "Stalingrad"
+   ],
+   "intermediates": [
+    "Battle of Stalingrad"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Battle of Stalingrad",
+       "Stalingrad"
+      ]
+     },
+     "match": [
+      "Battle of Stalingrad",
+      "Stalingrad"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Battle of Stalingrad",
+     "distractors": [
+      "Battle of Kursk",
+      "Battle of Moscow",
+      "Siege of Leningrad",
+      "Battle of Berlin"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       5,
+       3
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c1-brh-ent-battle-thermopylae",
+   "subfamily": "entity",
+   "prompt": "The 480 BC stand in which King Leonidas and his three hundred Spartans held a narrow pass against the Persian army of Xerxes is remembered as the",
+   "target": "Battle of Thermopylae",
+   "target_alts": [
+    "Thermopylae"
+   ],
+   "intermediates": [
+    "Battle of Thermopylae"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Battle of Thermopylae",
+       "Thermopylae"
+      ]
+     },
+     "match": [
+      "Battle of Thermopylae",
+      "Thermopylae"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Battle of Thermopylae",
+     "distractors": [
+      "Battle of Marathon",
+      "Battle of Salamis",
+      "Battle of Plataea",
+      "Battle of Gaugamela"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       6,
+       4
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c1-brh-ent-treaty-tordesillas",
+   "subfamily": "entity",
+   "prompt": "The 1494 agreement that divided newly discovered lands outside Europe between Spain and Portugal along a north–south meridian is the",
+   "target": "Treaty of Tordesillas",
+   "target_alts": [
+    "Tordesillas"
+   ],
+   "intermediates": [
+    "Treaty of Tordesillas"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Treaty of Tordesillas",
+       "Tordesillas"
+      ]
+     },
+     "match": [
+      "Treaty of Tordesillas",
+      "Tordesillas"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Treaty of Tordesillas",
+     "distractors": [
+      "Treaty of Zaragoza",
+      "Treaty of Utrecht",
+      "Treaty of Madrid",
+      "Treaty of Lisbon"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       5,
+       3
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c1-brh-ent-treaty-rome-1957",
+   "subfamily": "entity",
+   "prompt": "The 1957 accord, signed in the Italian capital, that created the European Economic Community is called the",
+   "target": "Treaty of Rome",
+   "target_alts": [
+    "Treaties of Rome"
+   ],
+   "intermediates": [
+    "Treaty of Rome"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Treaty of Rome",
+       "Treaties of Rome"
+      ]
+     },
+     "match": [
+      "Treaty of Rome",
+      "Treaties of Rome"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Treaty of Rome",
+     "distractors": [
+      "Treaty of Maastricht",
+      "Treaty of Lisbon",
+      "Treaty of Paris",
+      "Treaty of Nice"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       3,
+       4
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c1-brh-ent-dynasty-habsburg",
+   "subfamily": "entity",
+   "prompt": "The Austrian royal family that held the crown of the Holy Roman Empire for centuries, famous for a prominent inherited jaw, is the",
+   "target": "House of Habsburg",
+   "target_alts": [
+    "Habsburgs",
+    "Habsburg dynasty",
+    "Hapsburg dynasty"
+   ],
+   "intermediates": [
+    "House of Habsburg"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "House of Habsburg",
+       "Habsburgs",
+       "Habsburg dynasty",
+       "Hapsburg dynasty"
+      ]
+     },
+     "match": [
+      "House of Habsburg",
+      "Habsburgs",
+      "Habsburg dynasty",
+      "Hapsburg dynasty"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "House of Habsburg",
+     "distractors": [
+      "House of Bourbon",
+      "House of Windsor",
+      "House of Hohenzollern",
+      "House of Valois"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       5,
+       4,
+       4,
+       3
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c1-brh-ent-building-pisa",
+   "subfamily": "entity",
+   "prompt": "The white marble campanile beside a Tuscan cathedral, famous for its precarious slant, is the",
+   "target": "Leaning Tower of Pisa",
+   "target_alts": [
+    "Tower of Pisa",
+    "Torre di Pisa"
+   ],
+   "intermediates": [
+    "Leaning Tower of Pisa"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Leaning Tower of Pisa",
+       "Tower of Pisa",
+       "Torre di Pisa"
+      ]
+     },
+     "match": [
+      "Leaning Tower of Pisa",
+      "Tower of Pisa",
+      "Torre di Pisa"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Leaning Tower of Pisa",
+     "distractors": [
+      "Big Ben",
+      "Giotto's Campanile",
+      "Torre del Mangia",
+      "Campanile of San Marco"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       5,
+       4,
+       5
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c1-brh-ent-building-sydney-opera",
+   "subfamily": "entity",
+   "prompt": "The sail-shaped performing arts venue on Bennelong Point, designed by Jørn Utzon, is the",
+   "target": "Sydney Opera House",
+   "target_alts": [
+    "Opera House"
+   ],
+   "intermediates": [
+    "Sydney Opera House"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Sydney Opera House",
+       "Opera House"
+      ]
+     },
+     "match": [
+      "Sydney Opera House",
+      "Opera House"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Sydney Opera House",
+     "distractors": [
+      "Royal Albert Hall",
+      "Palais Garnier",
+      "Metropolitan Opera House",
+      "La Scala"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       3,
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c1-brh-ent-structure-great-wall",
+   "subfamily": "entity",
+   "prompt": "The vast chain of fortifications built across the northern frontier of the Middle Kingdom to keep out steppe nomads is the",
+   "target": "Great Wall of China",
+   "target_alts": [
+    "Great Wall"
+   ],
+   "intermediates": [
+    "Great Wall of China"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Great Wall of China",
+       "Great Wall"
+      ]
+     },
+     "match": [
+      "Great Wall of China",
+      "Great Wall"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Great Wall of China",
+     "distractors": [
+      "Hadrian's Wall",
+      "Berlin Wall",
+      "Antonine Wall",
+      "Western Wall"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       4,
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c1-brh-ent-building-hagia-sophia",
+   "subfamily": "entity",
+   "prompt": "The vast domed sixth-century church built by Justinian in Istanbul, later turned into a mosque, is the",
+   "target": "Hagia Sophia",
+   "target_alts": [
+    "Ayasofya",
+    "Aya Sofya"
+   ],
+   "intermediates": [
+    "Hagia Sophia"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Hagia Sophia",
+       "Ayasofya",
+       "Aya Sofya"
+      ]
+     },
+     "match": [
+      "Hagia Sophia",
+      "Ayasofya",
+      "Aya Sofya"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Hagia Sophia",
+     "distractors": [
+      "Sultan Ahmed Mosque",
+      "Süleymaniye Mosque",
+      "Chora Church",
+      "St Mark's Basilica"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       3,
+       3,
+       3
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c1-brh-ent-law-ohm",
+   "subfamily": "entity",
+   "prompt": "The rule stating that the current through a conductor is proportional to the voltage across it, with resistance as the constant, is called",
+   "target": "Ohm's law",
+   "target_alts": [
+    "the Ohm law"
+   ],
+   "intermediates": [
+    "Ohm's law"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Ohm's law",
+       "the Ohm law"
+      ]
+     },
+     "match": [
+      "Ohm's law",
+      "the Ohm law"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Ohm's law",
+     "distractors": [
+      "Kirchhoff's law",
+      "Faraday's law",
+      "Coulomb's law",
+      "Joule's law"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       4,
+       4
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c1-brh-ent-law-hooke",
+   "subfamily": "entity",
+   "prompt": "The principle that the extension of a spring is proportional to the force applied to it is known as",
+   "target": "Hooke's law",
+   "target_alts": [
+    "the Hooke law"
+   ],
+   "intermediates": [
+    "Hooke's law"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Hooke's law",
+       "the Hooke law"
+      ]
+     },
+     "match": [
+      "Hooke's law",
+      "the Hooke law"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Hooke's law",
+     "distractors": [
+      "Charles's law",
+      "Snell's law",
+      "Ohm's law",
+      "Newton's second law"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       4,
+       4
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c1-brh-ent-law-heisenberg",
+   "subfamily": "entity",
+   "prompt": "The quantum rule that a particle's position and momentum cannot both be known with arbitrary precision is the",
+   "target": "Heisenberg uncertainty principle",
+   "target_alts": [
+    "uncertainty principle",
+    "Heisenberg's uncertainty principle"
+   ],
+   "intermediates": [
+    "Heisenberg uncertainty principle"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Heisenberg uncertainty principle",
+       "uncertainty principle",
+       "Heisenberg's uncertainty principle"
+      ]
+     },
+     "match": [
+      "Heisenberg uncertainty principle",
+      "uncertainty principle",
+      "Heisenberg's uncertainty principle"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Heisenberg uncertainty principle",
+     "distractors": [
+      "Pauli exclusion principle",
+      "Bohr's complementarity principle",
+      "Schrödinger equation",
+      "de Broglie hypothesis"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       5,
+       2,
+       6
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c1-brh-ent-waterway-panama",
+   "subfamily": "entity",
+   "prompt": "The waterway with locks, completed by the United States in 1914, that links the Atlantic and Pacific across a Central American isthmus is the",
+   "target": "Panama Canal",
+   "target_alts": [
+    "Canal de Panamá"
+   ],
+   "intermediates": [
+    "Panama Canal"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Panama Canal",
+       "Canal de Panamá"
+      ]
+     },
+     "match": [
+      "Panama Canal",
+      "Canal de Panamá"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Panama Canal",
+     "distractors": [
+      "Kiel Canal",
+      "Corinth Canal",
+      "Erie Canal",
+      "Grand Canal"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       2,
+       5
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c1-brh-ent-peak-everest",
+   "subfamily": "entity",
+   "prompt": "The highest peak on Earth, on the border between Nepal and Tibet, is",
+   "target": "Mount Everest",
+   "target_alts": [
+    "Everest",
+    "Sagarmatha",
+    "Chomolungma"
+   ],
+   "intermediates": [
+    "Mount Everest"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Mount Everest",
+       "Everest",
+       "Sagarmatha",
+       "Chomolungma"
+      ]
+     },
+     "match": [
+      "Mount Everest",
+      "Everest",
+      "Sagarmatha",
+      "Chomolungma"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Mount Everest",
+     "distractors": [
+      "K2",
+      "Kangchenjunga",
+      "Lhotse",
+      "Makalu"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       2,
+       1,
+       3,
+       5
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c1-brh-ent-artifact-rosetta",
+   "subfamily": "entity",
+   "prompt": "The inscribed granodiorite slab found in 1799, whose parallel Greek, Demotic and hieroglyphic texts let Champollion decipher Egyptian writing, is the",
+   "target": "Rosetta Stone",
+   "target_alts": [
+    "Rosetta"
+   ],
+   "intermediates": [
+    "Rosetta Stone"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Rosetta Stone",
+       "Rosetta"
+      ]
+     },
+     "match": [
+      "Rosetta Stone",
+      "Rosetta"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Rosetta Stone",
+     "distractors": [
+      "Mesha Stele",
+      "Behistun Inscription",
+      "Narmer Palette",
+      "Code of Hammurabi"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       3,
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c1-brh-ent-astro-halley",
+   "subfamily": "entity",
+   "prompt": "The bright periodic visitor of the night sky that returns about every 76 years and was last seen from Earth in 1986 is",
+   "target": "Halley's Comet",
+   "target_alts": [
+    "Comet Halley",
+    "1P/Halley"
+   ],
+   "intermediates": [
+    "Halley's Comet"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Halley's Comet",
+       "Comet Halley",
+       "1P/Halley"
+      ]
+     },
+     "match": [
+      "Halley's Comet",
+      "Comet Halley",
+      "1P/Halley"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Halley's Comet",
+     "distractors": [
+      "Comet Hale-Bopp",
+      "Comet Hyakutake",
+      "Comet Shoemaker-Levy 9",
+      "Comet Encke"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       4,
+       3,
+       4
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c1-brh-ent-war-hundred-years",
+   "subfamily": "entity",
+   "prompt": "The long series of conflicts between England and France from 1337 to 1453, including Crécy and Agincourt, is called the",
+   "target": "Hundred Years' War",
+   "target_alts": [
+    "Hundred Years War"
+   ],
+   "intermediates": [
+    "Hundred Years' War"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Hundred Years' War",
+       "Hundred Years War"
+      ]
+     },
+     "match": [
+      "Hundred Years' War",
+      "Hundred Years War"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Hundred Years' War",
+     "distractors": [
+      "Thirty Years' War",
+      "Wars of the Roses",
+      "Seven Years' War",
+      "Eighty Years' War"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       4,
+       3
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c2-brh-ent-statue-liberty",
+   "subfamily": "entity",
+   "prompt": "The colossal copper figure holding a torch aloft, gifted by France and standing in New York Harbor, is the",
+   "target": "Statue of Liberty",
+   "target_alts": [
+    "Lady Liberty",
+    "Liberty Enlightening the World"
+   ],
+   "intermediates": [
+    "Statue of Liberty"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Statue of Liberty",
+       "Lady Liberty",
+       "Liberty Enlightening the World"
+      ]
+     },
+     "match": [
+      "Statue of Liberty",
+      "Lady Liberty",
+      "Liberty Enlightening the World"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Statue of Liberty",
+     "distractors": [
+      "Christ the Redeemer",
+      "The Motherland Calls",
+      "Spring Temple Buddha",
+      "Colossus of Rhodes"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       3,
+       2,
+       5
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c2-brh-ent-battle-midway",
+   "subfamily": "entity",
+   "prompt": "The June 1942 naval clash in which U.S. carriers sank four Japanese carriers, turning the Pacific war, is known as the",
+   "target": "Battle of Midway",
+   "target_alts": [
+    "Midway"
+   ],
+   "intermediates": [
+    "Battle of Midway"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Battle of Midway",
+       "Midway"
+      ]
+     },
+     "match": [
+      "Battle of Midway",
+      "Midway"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Battle of Midway",
+     "distractors": [
+      "Battle of the Coral Sea",
+      "Battle of Leyte Gulf",
+      "Battle of Guadalcanal",
+      "Battle of Okinawa"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       3,
+       1
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c2-brh-ent-law-charles",
+   "subfamily": "entity",
+   "prompt": "The gas relationship stating that, at fixed pressure, the space a gas occupies grows in direct proportion to its absolute temperature, is called",
+   "target": "Charles's law",
+   "target_alts": [
+    "Charles' law"
+   ],
+   "intermediates": [
+    "Charles's law"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Charles's law",
+       "Charles' law"
+      ]
+     },
+     "match": [
+      "Charles's law",
+      "Charles' law"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Charles's law",
+     "distractors": [
+      "Gay-Lussac's law",
+      "Avogadro's law",
+      "Dalton's law",
+      "Henry's law"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       3,
+       3
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c2-brh-ent-dyn-han",
+   "subfamily": "entity",
+   "prompt": "The Chinese imperial house ruling from 206 BC to AD 220, whose name became the label for China's majority ethnic group, was the",
+   "target": "Han dynasty",
+   "target_alts": [
+    "Han"
+   ],
+   "intermediates": [
+    "Han dynasty"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Han dynasty",
+       "Han"
+      ]
+     },
+     "match": [
+      "Han dynasty",
+      "Han"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Han dynasty",
+     "distractors": [
+      "Qin dynasty",
+      "Tang dynasty",
+      "Song dynasty",
+      "Zhou dynasty"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       2,
+       1
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c2-brh-ent-louisiana-purchase",
+   "subfamily": "entity",
+   "prompt": "The 1803 deal in which the United States bought a vast territory west of the Mississippi from Napoleon's France was the",
+   "target": "Louisiana Purchase",
+   "target_alts": [
+    "Vente de la Louisiane"
+   ],
+   "intermediates": [
+    "Louisiana Purchase"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Louisiana Purchase",
+       "Vente de la Louisiane"
+      ]
+     },
+     "match": [
+      "Louisiana Purchase",
+      "Vente de la Louisiane"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Louisiana Purchase",
+     "distractors": [
+      "Alaska Purchase",
+      "Gadsden Purchase",
+      "Oregon Treaty",
+      "Adams–Onís Treaty"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       2,
+       5
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c2-brh-ent-notre-dame",
+   "subfamily": "entity",
+   "prompt": "The Gothic church on the Île de la Cité whose spire collapsed in a fire in April 2019 is",
+   "target": "Notre-Dame de Paris",
+   "target_alts": [
+    "Notre-Dame",
+    "Notre-Dame Cathedral"
+   ],
+   "intermediates": [
+    "Notre-Dame de Paris"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Notre-Dame de Paris",
+       "Notre-Dame",
+       "Notre-Dame Cathedral"
+      ]
+     },
+     "match": [
+      "Notre-Dame de Paris",
+      "Notre-Dame",
+      "Notre-Dame Cathedral"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Notre-Dame de Paris",
+     "distractors": [
+      "Chartres Cathedral",
+      "Sainte-Chapelle",
+      "Sacré-Cœur Basilica",
+      "Cologne Cathedral"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       5,
+       3,
+       4
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c2-brh-ent-mongol-empire",
+   "subfamily": "entity",
+   "prompt": "The vast realm founded by Genghis Khan in 1206, the largest contiguous land domain in history, was the",
+   "target": "Mongol Empire",
+   "target_alts": [
+    "Great Mongol Empire"
+   ],
+   "intermediates": [
+    "Mongol Empire"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Mongol Empire",
+       "Great Mongol Empire"
+      ]
+     },
+     "match": [
+      "Mongol Empire",
+      "Great Mongol Empire"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Mongol Empire",
+     "distractors": [
+      "Roman Empire",
+      "Ottoman Empire",
+      "Achaemenid Empire",
+      "Timurid Empire"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       3,
+       4
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c2-brh-ent-avogadro-number",
+   "subfamily": "entity",
+   "prompt": "The quantity of particles in one mole of a substance, roughly 6.022 × 10^23, is called",
+   "target": "Avogadro's number",
+   "target_alts": [
+    "Avogadro constant",
+    "Avogadro's constant"
+   ],
+   "intermediates": [
+    "Avogadro's number"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Avogadro's number",
+       "Avogadro constant",
+       "Avogadro's constant"
+      ]
+     },
+     "match": [
+      "Avogadro's number",
+      "Avogadro constant",
+      "Avogadro's constant"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Avogadro's number",
+     "distractors": [
+      "Planck constant",
+      "Boltzmann constant",
+      "Faraday constant",
+      "Rydberg constant"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       5,
+       4,
+       5
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c2-brh-ent-french-revolution",
+   "subfamily": "entity",
+   "prompt": "The upheaval that began in 1789 with the storming of the Bastille and ended the absolute monarchy of Louis XVI is known as the",
+   "target": "French Revolution",
+   "target_alts": [
+    "Révolution française"
+   ],
+   "intermediates": [
+    "French Revolution"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "French Revolution",
+       "Révolution française"
+      ]
+     },
+     "match": [
+      "French Revolution",
+      "Révolution française"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "French Revolution",
+     "distractors": [
+      "American Revolution",
+      "Russian Revolution",
+      "Glorious Revolution",
+      "Industrial Revolution"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       2,
+       3
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c2-brh-ent-battle-agincourt",
+   "subfamily": "entity",
+   "prompt": "The 1415 clash in which Henry V's English longbowmen routed a much larger French army is the",
+   "target": "Battle of Agincourt",
+   "target_alts": [
+    "Agincourt",
+    "Battle of Azincourt"
+   ],
+   "intermediates": [
+    "Battle of Agincourt"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Battle of Agincourt",
+       "Agincourt",
+       "Battle of Azincourt"
+      ]
+     },
+     "match": [
+      "Battle of Agincourt",
+      "Agincourt",
+      "Battle of Azincourt"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Battle of Agincourt",
+     "distractors": [
+      "Battle of Crécy",
+      "Battle of Poitiers",
+      "Battle of Bosworth Field",
+      "Battle of Bannockburn"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       5,
+       3,
+       5
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c2-brh-ent-treaty-waitangi",
+   "subfamily": "entity",
+   "prompt": "The 1840 founding document signed between the British Crown and Māori chiefs in Aotearoa is the",
+   "target": "Treaty of Waitangi",
+   "target_alts": [
+    "Te Tiriti o Waitangi"
+   ],
+   "intermediates": [
+    "Treaty of Waitangi"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Treaty of Waitangi",
+       "Te Tiriti o Waitangi"
+      ]
+     },
+     "match": [
+      "Treaty of Waitangi",
+      "Te Tiriti o Waitangi"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Treaty of Waitangi",
+     "distractors": [
+      "Treaty of Nanking",
+      "Treaty of Paris",
+      "Treaty of Utrecht",
+      "Treaty of Ghent"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       4,
+       7
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c2-brh-ent-law-snell",
+   "subfamily": "entity",
+   "prompt": "The rule stating that the sines of the incoming and outgoing angles of light passing between two media are in a fixed ratio is called",
+   "target": "Snell's law",
+   "target_alts": [
+    "Snell–Descartes law"
+   ],
+   "intermediates": [
+    "Snell's law"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Snell's law",
+       "Snell–Descartes law"
+      ]
+     },
+     "match": [
+      "Snell's law",
+      "Snell–Descartes law"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Snell's law",
+     "distractors": [
+      "Brewster's law",
+      "Malus's law",
+      "Bragg's law",
+      "Coulomb's law"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       4,
+       7
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c2-brh-ent-tokugawa-shogunate",
+   "subfamily": "entity",
+   "prompt": "The military government of Japan's Edo period, which ruled from 1603 to 1868, was the",
+   "target": "Tokugawa shogunate",
+   "target_alts": [
+    "Tokugawa bakufu",
+    "Edo shogunate"
+   ],
+   "intermediates": [
+    "Tokugawa shogunate"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Tokugawa shogunate",
+       "Tokugawa bakufu",
+       "Edo shogunate"
+      ]
+     },
+     "match": [
+      "Tokugawa shogunate",
+      "Tokugawa bakufu",
+      "Edo shogunate"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Tokugawa shogunate",
+     "distractors": [
+      "Kamakura shogunate",
+      "Ashikaga shogunate",
+      "Toyotomi regime",
+      "Heian court"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       6,
+       6,
+       4
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3.1-32b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,3351 @@
+{
+ "family": "multilingual",
+ "gate": "Qwen3.6-27B behavioral: >=8/10 correct at temp 0.7 (greedy-verified first); association scored against association_aliases.json (phrase-aware, echo-guarded); poetry scored by committed rhyme",
+ "eval_render_note": "EVAL RENDER: feed `prompt` verbatim as plain text, NO chat template (directed-modulation is the only chat-templated family). `gate_variant` records how the item was behaviorally verified and does NOT affect the eval read.",
+ "adapt": {
+  "model": "qwen3.5-2b",
+  "hf_id": "Qwen/Qwen3.5-2B",
+  "frozen": "2026-10-20"
+ },
+ "items": [
+  {
+   "name": "de-place-up-down",
+   "prompt": "Das Gegenteil von \"oben\" ist \"",
+   "target": "unten",
+   "intermediates": [
+    "down"
+   ],
+   "reference_concepts": [
+    "German",
+    "place",
+    "up"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "de-place-up-down",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "de-size-big-small",
+   "prompt": "Das Gegenteil von \"groß\" ist \"",
+   "target": "klein",
+   "intermediates": [
+    "small"
+   ],
+   "reference_concepts": [
+    "German",
+    "size",
+    "big"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "de-size-big-small",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "es-half-four",
+   "prompt": "La mitad de cuatro es \"",
+   "target": "dos",
+   "intermediates": [
+    "two"
+   ],
+   "reference_concepts": [
+    "español",
+    "half",
+    "four"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "es-half-four",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "es-place-near-far",
+   "prompt": "Lo contrario de \"cerca\" es \"",
+   "target": "lejos",
+   "intermediates": [
+    "far"
+   ],
+   "reference_concepts": [
+    "español",
+    "place",
+    "near"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "es-place-near-far",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "es-size-big-small",
+   "prompt": "Lo contrario de \"grande\" es \"",
+   "target": "pequeño",
+   "intermediates": [
+    "small"
+   ],
+   "reference_concepts": [
+    "español",
+    "size",
+    "big"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "es-size-big-small",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "fr-place-near-far",
+   "prompt": "Le contraire de \"près\" est \"",
+   "target": "loin",
+   "intermediates": [
+    "far"
+   ],
+   "reference_concepts": [
+    "French",
+    "place",
+    "near"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "fr-place-near-far",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "fr-place-up-down",
+   "prompt": "Le contraire de \"haut\" est \"",
+   "target": "bas",
+   "intermediates": [
+    "down"
+   ],
+   "reference_concepts": [
+    "French",
+    "place",
+    "up"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "fr-place-up-down",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "fr-size-big-small",
+   "prompt": "Le contraire de \"grand\" est \"",
+   "target": "petit",
+   "intermediates": [
+    "small"
+   ],
+   "reference_concepts": [
+    "French",
+    "size",
+    "big"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "fr-size-big-small",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "dutch-direction-left",
+   "prompt": "Het tegenovergestelde van \"links\" is \"",
+   "target": "rechts",
+   "intermediates": [
+    "right"
+   ],
+   "reference_concepts": [
+    "Dutch",
+    "opposite",
+    "left"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "dutch-direction-left",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "italian-number-two",
+   "prompt": "Dopo il \"due\" viene il \"",
+   "target": "tre",
+   "intermediates": [
+    "three"
+   ],
+   "reference_concepts": [
+    "Italian",
+    "number",
+    "two"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "italian-number-two",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "persian-color-blood",
+   "prompt": "خون چه رنگی است؟ ",
+   "target": "قرمز",
+   "intermediates": [
+    "red"
+   ],
+   "reference_concepts": [
+    "Persian",
+    "color",
+    "blood"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "persian-color-blood",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "polish-direction-left",
+   "prompt": "Przeciwieństwo \"lewa\" to \"",
+   "target": "prawa",
+   "intermediates": [
+    "right"
+   ],
+   "reference_concepts": [
+    "Polish",
+    "opposite",
+    "left"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "polish-direction-left",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "portuguese-direction-up",
+   "prompt": "O oposto de \"cima\" é \"",
+   "target": "baixo",
+   "intermediates": [
+    "down"
+   ],
+   "reference_concepts": [
+    "Portuguese",
+    "opposite",
+    "up"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "portuguese-direction-up",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "turkish-opposite-fast",
+   "prompt": "\"Hızlı\" kelimesinin zıttı \"",
+   "target": "yavaş",
+   "intermediates": [
+    "slow"
+   ],
+   "reference_concepts": [
+    "Turkish",
+    "opposite",
+    "fast"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "turkish-opposite-fast",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-de-capital-austria",
+   "prompt": "Die Hauptstadt von Österreich ist",
+   "target": "Wien",
+   "intermediates": [
+    "Vienna"
+   ],
+   "reference_concepts": [
+    "German",
+    "capital",
+    "Austria"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-de-capital-austria",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-de-color-grass",
+   "prompt": "Die Farbe des Grases ist",
+   "target": "grün",
+   "intermediates": [
+    "green"
+   ],
+   "reference_concepts": [
+    "German",
+    "color",
+    "grass"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-de-color-grass",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-de-color-sky",
+   "prompt": "Die Farbe des klaren Himmels ist",
+   "target": "blau",
+   "intermediates": [
+    "blue"
+   ],
+   "reference_concepts": [
+    "German",
+    "color",
+    "sky"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-de-color-sky",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-de-opposite-fast",
+   "prompt": "Das Gegenteil von \"schnell\" ist",
+   "target": "langsam",
+   "intermediates": [
+    "slow"
+   ],
+   "reference_concepts": [
+    "German",
+    "opposite",
+    "fast"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-de-opposite-fast",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-de-sum-four",
+   "prompt": "Zwei plus zwei ist",
+   "target": "vier",
+   "intermediates": [
+    "four"
+   ],
+   "reference_concepts": [
+    "German",
+    "sum",
+    "two"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-de-sum-four",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-es-color-sky",
+   "prompt": "El color del cielo despejado es el",
+   "target": "azul",
+   "intermediates": [
+    "blue"
+   ],
+   "reference_concepts": [
+    "Spanish",
+    "sky"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-es-color-sky",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-es-opposite-fast",
+   "prompt": "Lo contrario de \"rápido\" es \"",
+   "target": "lento",
+   "intermediates": [
+    "slow"
+   ],
+   "reference_concepts": [
+    "Spanish",
+    "opposite",
+    "fast"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-es-opposite-fast",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-es-opposite-hot",
+   "prompt": "Lo contrario de \"caliente\" es \"",
+   "target": "frío",
+   "intermediates": [
+    "cold"
+   ],
+   "reference_concepts": [
+    "Spanish",
+    "opposite",
+    "hot"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-es-opposite-hot",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-fr-opposite-big",
+   "prompt": "Le contraire de \"grand\" est \"",
+   "target": "petit",
+   "intermediates": [
+    "small"
+   ],
+   "reference_concepts": [
+    "French",
+    "opposite",
+    "big"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-fr-opposite-big",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-it-opposite-big",
+   "prompt": "Il contrario di \"grande\" è \"",
+   "target": "piccolo",
+   "intermediates": [
+    "small"
+   ],
+   "reference_concepts": [
+    "Italian",
+    "opposite",
+    "big"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-it-opposite-big",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-it-opposite-hot",
+   "prompt": "Il contrario di \"caldo\" è \"",
+   "target": "freddo",
+   "intermediates": [
+    "cold"
+   ],
+   "reference_concepts": [
+    "Italian",
+    "opposite",
+    "hot"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-it-opposite-hot",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-pt-opposite-big",
+   "prompt": "O contrário de \"grande\" é \"",
+   "target": "pequeno",
+   "intermediates": [
+    "small"
+   ],
+   "reference_concepts": [
+    "Portuguese",
+    "opposite",
+    "big"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-pt-opposite-big",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-pt-opposite-hot",
+   "prompt": "O contrário de \"quente\" é \"",
+   "target": "frio",
+   "intermediates": [
+    "cold"
+   ],
+   "reference_concepts": [
+    "Portuguese",
+    "opposite",
+    "hot"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-pt-opposite-hot",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "es-place-up-down",
+   "prompt": "Lo contrario de \"arriba\" es \"",
+   "target": "abajo",
+   "intermediates": [
+    "down"
+   ],
+   "reference_concepts": [
+    "español",
+    "place",
+    "up"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.9,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "es-place-up-down",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "es-time-after-day",
+   "prompt": "Después del día viene la \"",
+   "target": "noche",
+   "intermediates": [
+    "night"
+   ],
+   "reference_concepts": [
+    "español",
+    "time",
+    "day"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.9,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "es-time-after-day",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "fr-month-after-jan",
+   "prompt": "Le mois après janvier est \"",
+   "target": "février",
+   "intermediates": [
+    "February"
+   ],
+   "reference_concepts": [
+    "French",
+    "month",
+    "January"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.9,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "fr-month-after-jan",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "pt-place-up-down",
+   "prompt": "O contrário de \"cima\" é \"",
+   "target": "baixo",
+   "intermediates": [
+    "down"
+   ],
+   "reference_concepts": [
+    "português",
+    "place",
+    "up"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.9,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "pt-place-up-down",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "pt-size-big-small",
+   "prompt": "O contrário de \"grande\" é \"",
+   "target": "pequeno",
+   "intermediates": [
+    "small"
+   ],
+   "reference_concepts": [
+    "português",
+    "size",
+    "big"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.9,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "pt-size-big-small",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "spanish-phase-water",
+   "prompt": "Cuando el agua se congela se convierte en \"",
+   "target": "hielo",
+   "intermediates": [
+    "ice"
+   ],
+   "reference_concepts": [
+    "Spanish",
+    "freeze",
+    "water"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.9,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "spanish-phase-water",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-de-opposite-hot",
+   "prompt": "Das Gegenteil von \"heiß\" ist",
+   "target": "kalt",
+   "intermediates": [
+    "cold"
+   ],
+   "reference_concepts": [
+    "German",
+    "opposite",
+    "hot"
+   ],
+   "source": "staging_b3",
+   "consistency": 0.9,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-de-opposite-hot",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-es-opposite-day",
+   "prompt": "Lo contrario del día es la",
+   "target": "noche",
+   "intermediates": [
+    "night"
+   ],
+   "reference_concepts": [
+    "Spanish",
+    "opposite",
+    "day"
+   ],
+   "source": "staging_b3",
+   "consistency": 0.9,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-es-opposite-day",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-es-sum-four",
+   "prompt": "Dos más dos son",
+   "target": "cuatro",
+   "intermediates": [
+    "four"
+   ],
+   "reference_concepts": [
+    "Spanish",
+    "sum",
+    "two"
+   ],
+   "source": "staging_b3",
+   "consistency": 0.9,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-es-sum-four",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-fr-opposite-hot",
+   "prompt": "Le contraire de \"chaud\" est \"",
+   "target": "froid",
+   "intermediates": [
+    "cold"
+   ],
+   "reference_concepts": [
+    "French",
+    "opposite",
+    "hot"
+   ],
+   "source": "staging_b3",
+   "consistency": 0.9,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-fr-opposite-hot",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w100c0-fr-opposite-heavy",
+   "prompt": "Le contraire de \"lourd\" est \"",
+   "target": "léger",
+   "intermediates": [
+    "light"
+   ],
+   "reference_concepts": [
+    "French",
+    "opposite",
+    "heavy"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w100c0-de-opposite-bright",
+   "prompt": "Das Gegenteil von \"hell\" ist \"",
+   "target": "dunkel",
+   "intermediates": [
+    "dark"
+   ],
+   "reference_concepts": [
+    "German",
+    "opposite",
+    "bright"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w100c0-es-opposite-full",
+   "prompt": "Lo contrario de \"lleno\" es \"",
+   "target": "vacío",
+   "intermediates": [
+    "empty"
+   ],
+   "reference_concepts": [
+    "Spanish",
+    "opposite",
+    "full"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w100c0-fr-color-snow",
+   "prompt": "La couleur de la neige est le \"",
+   "target": "blanc",
+   "intermediates": [
+    "white"
+   ],
+   "reference_concepts": [
+    "French",
+    "color",
+    "snow"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w100c0-pt-color-banana",
+   "prompt": "A cor de uma banana madura é \"",
+   "target": "amarelo",
+   "intermediates": [
+    "yellow"
+   ],
+   "reference_concepts": [
+    "Portuguese",
+    "color",
+    "banana"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w100c0-fr-number-after-nineteen",
+   "prompt": "Le nombre qui vient après dix-neuf est \"",
+   "target": "vingt",
+   "intermediates": [
+    "twenty"
+   ],
+   "reference_concepts": [
+    "French",
+    "number",
+    "nineteen"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w100c0-pt-fish-live-in",
+   "prompt": "Os peixes vivem na \"",
+   "target": "água",
+   "intermediates": [
+    "water"
+   ],
+   "reference_concepts": [
+    "Portuguese",
+    "habitat",
+    "fish"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w100c1-de-opposite-loud",
+   "prompt": "Das Gegenteil von \"laut\" ist \"",
+   "target": "leise",
+   "intermediates": [
+    "quiet"
+   ],
+   "reference_concepts": [
+    "German",
+    "opposite",
+    "loud"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w100c1-fr-opposite-strong",
+   "prompt": "Le contraire de \"fort\" est \"",
+   "target": "faible",
+   "intermediates": [
+    "weak"
+   ],
+   "reference_concepts": [
+    "French",
+    "opposite",
+    "strong"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w100c1-it-opposite-always",
+   "prompt": "Il contrario di \"sempre\" è \"",
+   "target": "mai",
+   "intermediates": [
+    "never"
+   ],
+   "reference_concepts": [
+    "Italian",
+    "opposite",
+    "always"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w100c2-de-opposite-expensive",
+   "prompt": "Das Gegenteil von \"teuer\" ist \"",
+   "target": "billig",
+   "intermediates": [
+    "cheap"
+   ],
+   "reference_concepts": [
+    "German",
+    "opposite",
+    "expensive"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w100c2-it-opposite-win",
+   "prompt": "Il contrario di \"vincere\" è \"",
+   "target": "perdere",
+   "intermediates": [
+    "lose"
+   ],
+   "reference_concepts": [
+    "Italian",
+    "opposite",
+    "win"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w101c0-de-opposite-high",
+   "prompt": "Das Gegenteil von \"hoch\" ist \"",
+   "target": "niedrig",
+   "intermediates": [
+    "low"
+   ],
+   "reference_concepts": [
+    "German",
+    "opposite",
+    "high"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 12/60 passed.\n- Failed (gold -> what the model wrote): brutto -> model said 'cattivo' (0/10); tredici -> model said 'tre' (0/10); jeudi -> model said 'le jour après mercredi est jeudi' (2/10); nonno -> model said 'Il mio nonno è mio' (4/10); avó -> model said 'mãe' (2/10); primavera -> model said 'verano' (6/10); chien -> model said \"l'animal qui aboie est le chien\" (4/10); mucca -> model said 'mamma' (0/10); galo -> model said '\"pato\"' (0/10); sehen -> model said 'den Blick in die Tiefe werfen' (3/10); miele -> model said 'glutine' (1/10); cuchillo -> model said 'un cuchillo' (2/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): léger; dunkel; vacío; blanc; amarelo; vingt; água; leise; faible; mai; billig; perdere",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w101c0-fr-opposite-before",
+   "prompt": "Le contraire de \"avant\" est \"",
+   "target": "après",
+   "intermediates": [
+    "after"
+   ],
+   "reference_concepts": [
+    "French",
+    "opposite",
+    "before"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 12/60 passed.\n- Failed (gold -> what the model wrote): brutto -> model said 'cattivo' (0/10); tredici -> model said 'tre' (0/10); jeudi -> model said 'le jour après mercredi est jeudi' (2/10); nonno -> model said 'Il mio nonno è mio' (4/10); avó -> model said 'mãe' (2/10); primavera -> model said 'verano' (6/10); chien -> model said \"l'animal qui aboie est le chien\" (4/10); mucca -> model said 'mamma' (0/10); galo -> model said '\"pato\"' (0/10); sehen -> model said 'den Blick in die Tiefe werfen' (3/10); miele -> model said 'glutine' (1/10); cuchillo -> model said 'un cuchillo' (2/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): léger; dunkel; vacío; blanc; amarelo; vingt; água; leise; faible; mai; billig; perdere",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w101c0-es-opposite-fat",
+   "prompt": "Lo contrario de \"gordo\" es \"",
+   "target": "delgado",
+   "intermediates": [
+    "thin"
+   ],
+   "reference_concepts": [
+    "Spanish",
+    "opposite",
+    "fat"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 12/60 passed.\n- Failed (gold -> what the model wrote): brutto -> model said 'cattivo' (0/10); tredici -> model said 'tre' (0/10); jeudi -> model said 'le jour après mercredi est jeudi' (2/10); nonno -> model said 'Il mio nonno è mio' (4/10); avó -> model said 'mãe' (2/10); primavera -> model said 'verano' (6/10); chien -> model said \"l'animal qui aboie est le chien\" (4/10); mucca -> model said 'mamma' (0/10); galo -> model said '\"pato\"' (0/10); sehen -> model said 'den Blick in die Tiefe werfen' (3/10); miele -> model said 'glutine' (1/10); cuchillo -> model said 'un cuchillo' (2/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): léger; dunkel; vacío; blanc; amarelo; vingt; água; leise; faible; mai; billig; perdere",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w101c0-it-opposite-clean",
+   "prompt": "Il contrario di \"pulito\" è \"",
+   "target": "sporco",
+   "intermediates": [
+    "dirty"
+   ],
+   "reference_concepts": [
+    "Italian",
+    "opposite",
+    "clean"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 12/60 passed.\n- Failed (gold -> what the model wrote): brutto -> model said 'cattivo' (0/10); tredici -> model said 'tre' (0/10); jeudi -> model said 'le jour après mercredi est jeudi' (2/10); nonno -> model said 'Il mio nonno è mio' (4/10); avó -> model said 'mãe' (2/10); primavera -> model said 'verano' (6/10); chien -> model said \"l'animal qui aboie est le chien\" (4/10); mucca -> model said 'mamma' (0/10); galo -> model said '\"pato\"' (0/10); sehen -> model said 'den Blick in die Tiefe werfen' (3/10); miele -> model said 'glutine' (1/10); cuchillo -> model said 'un cuchillo' (2/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): léger; dunkel; vacío; blanc; amarelo; vingt; água; leise; faible; mai; billig; perdere",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w101c0-pt-object-library-books",
+   "prompt": "Na biblioteca há muitos \"",
+   "target": "livros",
+   "intermediates": [
+    "books"
+   ],
+   "reference_concepts": [
+    "Portuguese",
+    "contents",
+    "library"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 12/60 passed.\n- Failed (gold -> what the model wrote): brutto -> model said 'cattivo' (0/10); tredici -> model said 'tre' (0/10); jeudi -> model said 'le jour après mercredi est jeudi' (2/10); nonno -> model said 'Il mio nonno è mio' (4/10); avó -> model said 'mãe' (2/10); primavera -> model said 'verano' (6/10); chien -> model said \"l'animal qui aboie est le chien\" (4/10); mucca -> model said 'mamma' (0/10); galo -> model said '\"pato\"' (0/10); sehen -> model said 'den Blick in die Tiefe werfen' (3/10); miele -> model said 'glutine' (1/10); cuchillo -> model said 'un cuchillo' (2/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): léger; dunkel; vacío; blanc; amarelo; vingt; água; leise; faible; mai; billig; perdere",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w101c1-de-opposite-rich",
+   "prompt": "Das Gegenteil von \"reich\" ist \"",
+   "target": "arm",
+   "intermediates": [
+    "poor"
+   ],
+   "reference_concepts": [
+    "German",
+    "opposite",
+    "rich"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 12/60 passed.\n- Failed (gold -> what the model wrote): brutto -> model said 'cattivo' (0/10); tredici -> model said 'tre' (0/10); jeudi -> model said 'le jour après mercredi est jeudi' (2/10); nonno -> model said 'Il mio nonno è mio' (4/10); avó -> model said 'mãe' (2/10); primavera -> model said 'verano' (6/10); chien -> model said \"l'animal qui aboie est le chien\" (4/10); mucca -> model said 'mamma' (0/10); galo -> model said '\"pato\"' (0/10); sehen -> model said 'den Blick in die Tiefe werfen' (3/10); miele -> model said 'glutine' (1/10); cuchillo -> model said 'un cuchillo' (2/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): léger; dunkel; vacío; blanc; amarelo; vingt; água; leise; faible; mai; billig; perdere",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w101c1-pt-opposite-inside",
+   "prompt": "O contrário de \"dentro\" é \"",
+   "target": "fora",
+   "intermediates": [
+    "outside"
+   ],
+   "reference_concepts": [
+    "Portuguese",
+    "opposite",
+    "inside"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 12/60 passed.\n- Failed (gold -> what the model wrote): brutto -> model said 'cattivo' (0/10); tredici -> model said 'tre' (0/10); jeudi -> model said 'le jour après mercredi est jeudi' (2/10); nonno -> model said 'Il mio nonno è mio' (4/10); avó -> model said 'mãe' (2/10); primavera -> model said 'verano' (6/10); chien -> model said \"l'animal qui aboie est le chien\" (4/10); mucca -> model said 'mamma' (0/10); galo -> model said '\"pato\"' (0/10); sehen -> model said 'den Blick in die Tiefe werfen' (3/10); miele -> model said 'glutine' (1/10); cuchillo -> model said 'un cuchillo' (2/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): léger; dunkel; vacío; blanc; amarelo; vingt; água; leise; faible; mai; billig; perdere",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w101c1-es-opposite-entrance",
+   "prompt": "Lo contrario de \"entrada\" es \"",
+   "target": "salida",
+   "intermediates": [
+    "exit"
+   ],
+   "reference_concepts": [
+    "Spanish",
+    "opposite",
+    "entrance"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 12/60 passed.\n- Failed (gold -> what the model wrote): brutto -> model said 'cattivo' (0/10); tredici -> model said 'tre' (0/10); jeudi -> model said 'le jour après mercredi est jeudi' (2/10); nonno -> model said 'Il mio nonno è mio' (4/10); avó -> model said 'mãe' (2/10); primavera -> model said 'verano' (6/10); chien -> model said \"l'animal qui aboie est le chien\" (4/10); mucca -> model said 'mamma' (0/10); galo -> model said '\"pato\"' (0/10); sehen -> model said 'den Blick in die Tiefe werfen' (3/10); miele -> model said 'glutine' (1/10); cuchillo -> model said 'un cuchillo' (2/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): léger; dunkel; vacío; blanc; amarelo; vingt; água; leise; faible; mai; billig; perdere",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w101c1-es-food-hens",
+   "prompt": "Las gallinas ponen \"",
+   "target": "huevos",
+   "intermediates": [
+    "eggs"
+   ],
+   "reference_concepts": [
+    "Spanish",
+    "product",
+    "hens"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 12/60 passed.\n- Failed (gold -> what the model wrote): brutto -> model said 'cattivo' (0/10); tredici -> model said 'tre' (0/10); jeudi -> model said 'le jour après mercredi est jeudi' (2/10); nonno -> model said 'Il mio nonno è mio' (4/10); avó -> model said 'mãe' (2/10); primavera -> model said 'verano' (6/10); chien -> model said \"l'animal qui aboie est le chien\" (4/10); mucca -> model said 'mamma' (0/10); galo -> model said '\"pato\"' (0/10); sehen -> model said 'den Blick in die Tiefe werfen' (3/10); miele -> model said 'glutine' (1/10); cuchillo -> model said 'un cuchillo' (2/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): léger; dunkel; vacío; blanc; amarelo; vingt; água; leise; faible; mai; billig; perdere",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w101c1-fr-nature-sky-day",
+   "prompt": "Le jour, dans le ciel, brille le \"",
+   "target": "soleil",
+   "intermediates": [
+    "sun"
+   ],
+   "reference_concepts": [
+    "French",
+    "sky object",
+    "daytime"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 12/60 passed.\n- Failed (gold -> what the model wrote): brutto -> model said 'cattivo' (0/10); tredici -> model said 'tre' (0/10); jeudi -> model said 'le jour après mercredi est jeudi' (2/10); nonno -> model said 'Il mio nonno è mio' (4/10); avó -> model said 'mãe' (2/10); primavera -> model said 'verano' (6/10); chien -> model said \"l'animal qui aboie est le chien\" (4/10); mucca -> model said 'mamma' (0/10); galo -> model said '\"pato\"' (0/10); sehen -> model said 'den Blick in die Tiefe werfen' (3/10); miele -> model said 'glutine' (1/10); cuchillo -> model said 'un cuchillo' (2/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): léger; dunkel; vacío; blanc; amarelo; vingt; água; leise; faible; mai; billig; perdere",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w101c1-es-taste-sugar",
+   "prompt": "El azúcar tiene un sabor \"",
+   "target": "dulce",
+   "intermediates": [
+    "sweet"
+   ],
+   "reference_concepts": [
+    "Spanish",
+    "taste",
+    "sugar"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 12/60 passed.\n- Failed (gold -> what the model wrote): brutto -> model said 'cattivo' (0/10); tredici -> model said 'tre' (0/10); jeudi -> model said 'le jour après mercredi est jeudi' (2/10); nonno -> model said 'Il mio nonno è mio' (4/10); avó -> model said 'mãe' (2/10); primavera -> model said 'verano' (6/10); chien -> model said \"l'animal qui aboie est le chien\" (4/10); mucca -> model said 'mamma' (0/10); galo -> model said '\"pato\"' (0/10); sehen -> model said 'den Blick in die Tiefe werfen' (3/10); miele -> model said 'glutine' (1/10); cuchillo -> model said 'un cuchillo' (2/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): léger; dunkel; vacío; blanc; amarelo; vingt; água; leise; faible; mai; billig; perdere",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w101c2-de-opposite-early",
+   "prompt": "Das Gegenteil von \"früh\" ist \"",
+   "target": "spät",
+   "intermediates": [
+    "late"
+   ],
+   "reference_concepts": [
+    "German",
+    "opposite",
+    "early"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 12/60 passed.\n- Failed (gold -> what the model wrote): brutto -> model said 'cattivo' (0/10); tredici -> model said 'tre' (0/10); jeudi -> model said 'le jour après mercredi est jeudi' (2/10); nonno -> model said 'Il mio nonno è mio' (4/10); avó -> model said 'mãe' (2/10); primavera -> model said 'verano' (6/10); chien -> model said \"l'animal qui aboie est le chien\" (4/10); mucca -> model said 'mamma' (0/10); galo -> model said '\"pato\"' (0/10); sehen -> model said 'den Blick in die Tiefe werfen' (3/10); miele -> model said 'glutine' (1/10); cuchillo -> model said 'un cuchillo' (2/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): léger; dunkel; vacío; blanc; amarelo; vingt; água; leise; faible; mai; billig; perdere",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w101c2-fr-opposite-with",
+   "prompt": "Le contraire de \"avec\" est \"",
+   "target": "sans",
+   "intermediates": [
+    "without"
+   ],
+   "reference_concepts": [
+    "French",
+    "opposite",
+    "with"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 12/60 passed.\n- Failed (gold -> what the model wrote): brutto -> model said 'cattivo' (0/10); tredici -> model said 'tre' (0/10); jeudi -> model said 'le jour après mercredi est jeudi' (2/10); nonno -> model said 'Il mio nonno è mio' (4/10); avó -> model said 'mãe' (2/10); primavera -> model said 'verano' (6/10); chien -> model said \"l'animal qui aboie est le chien\" (4/10); mucca -> model said 'mamma' (0/10); galo -> model said '\"pato\"' (0/10); sehen -> model said 'den Blick in die Tiefe werfen' (3/10); miele -> model said 'glutine' (1/10); cuchillo -> model said 'un cuchillo' (2/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): léger; dunkel; vacío; blanc; amarelo; vingt; água; leise; faible; mai; billig; perdere",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w101c2-pt-opposite-yes",
+   "prompt": "O contrário de \"sim\" é \"",
+   "target": "não",
+   "intermediates": [
+    "no"
+   ],
+   "reference_concepts": [
+    "Portuguese",
+    "opposite",
+    "yes"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 12/60 passed.\n- Failed (gold -> what the model wrote): brutto -> model said 'cattivo' (0/10); tredici -> model said 'tre' (0/10); jeudi -> model said 'le jour après mercredi est jeudi' (2/10); nonno -> model said 'Il mio nonno è mio' (4/10); avó -> model said 'mãe' (2/10); primavera -> model said 'verano' (6/10); chien -> model said \"l'animal qui aboie est le chien\" (4/10); mucca -> model said 'mamma' (0/10); galo -> model said '\"pato\"' (0/10); sehen -> model said 'den Blick in die Tiefe werfen' (3/10); miele -> model said 'glutine' (1/10); cuchillo -> model said 'un cuchillo' (2/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): léger; dunkel; vacío; blanc; amarelo; vingt; água; leise; faible; mai; billig; perdere",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w101c2-es-insect-hive",
+   "prompt": "El insecto que vive en la colmena y hace miel es la \"",
+   "target": "abeja",
+   "intermediates": [
+    "bee"
+   ],
+   "reference_concepts": [
+    "Spanish",
+    "animal",
+    "hive"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 12/60 passed.\n- Failed (gold -> what the model wrote): brutto -> model said 'cattivo' (0/10); tredici -> model said 'tre' (0/10); jeudi -> model said 'le jour après mercredi est jeudi' (2/10); nonno -> model said 'Il mio nonno è mio' (4/10); avó -> model said 'mãe' (2/10); primavera -> model said 'verano' (6/10); chien -> model said \"l'animal qui aboie est le chien\" (4/10); mucca -> model said 'mamma' (0/10); galo -> model said '\"pato\"' (0/10); sehen -> model said 'den Blick in die Tiefe werfen' (3/10); miele -> model said 'glutine' (1/10); cuchillo -> model said 'un cuchillo' (2/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): léger; dunkel; vacío; blanc; amarelo; vingt; água; leise; faible; mai; billig; perdere",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w101c2-de-country-berlin",
+   "prompt": "Berlin ist die Hauptstadt von \"",
+   "target": "Deutschland",
+   "intermediates": [
+    "Germany"
+   ],
+   "reference_concepts": [
+    "German",
+    "capital of",
+    "Berlin"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 12/60 passed.\n- Failed (gold -> what the model wrote): brutto -> model said 'cattivo' (0/10); tredici -> model said 'tre' (0/10); jeudi -> model said 'le jour après mercredi est jeudi' (2/10); nonno -> model said 'Il mio nonno è mio' (4/10); avó -> model said 'mãe' (2/10); primavera -> model said 'verano' (6/10); chien -> model said \"l'animal qui aboie est le chien\" (4/10); mucca -> model said 'mamma' (0/10); galo -> model said '\"pato\"' (0/10); sehen -> model said 'den Blick in die Tiefe werfen' (3/10); miele -> model said 'glutine' (1/10); cuchillo -> model said 'un cuchillo' (2/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): léger; dunkel; vacío; blanc; amarelo; vingt; água; leise; faible; mai; billig; perdere",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w101c2-it-sky-shine",
+   "prompt": "Di notte, in cielo brillano tante piccole \"",
+   "target": "stelle",
+   "intermediates": [
+    "stars"
+   ],
+   "reference_concepts": [
+    "Italian",
+    "object",
+    "shine"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 12/60 passed.\n- Failed (gold -> what the model wrote): brutto -> model said 'cattivo' (0/10); tredici -> model said 'tre' (0/10); jeudi -> model said 'le jour après mercredi est jeudi' (2/10); nonno -> model said 'Il mio nonno è mio' (4/10); avó -> model said 'mãe' (2/10); primavera -> model said 'verano' (6/10); chien -> model said \"l'animal qui aboie est le chien\" (4/10); mucca -> model said 'mamma' (0/10); galo -> model said '\"pato\"' (0/10); sehen -> model said 'den Blick in die Tiefe werfen' (3/10); miele -> model said 'glutine' (1/10); cuchillo -> model said 'un cuchillo' (2/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): léger; dunkel; vacío; blanc; amarelo; vingt; água; leise; faible; mai; billig; perdere",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w101c2-es-place-borrow",
+   "prompt": "El lugar donde se pueden pedir prestados libros es la \"",
+   "target": "biblioteca",
+   "intermediates": [
+    "library"
+   ],
+   "reference_concepts": [
+    "Spanish",
+    "place",
+    "borrow"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 12/60 passed.\n- Failed (gold -> what the model wrote): brutto -> model said 'cattivo' (0/10); tredici -> model said 'tre' (0/10); jeudi -> model said 'le jour après mercredi est jeudi' (2/10); nonno -> model said 'Il mio nonno è mio' (4/10); avó -> model said 'mãe' (2/10); primavera -> model said 'verano' (6/10); chien -> model said \"l'animal qui aboie est le chien\" (4/10); mucca -> model said 'mamma' (0/10); galo -> model said '\"pato\"' (0/10); sehen -> model said 'den Blick in die Tiefe werfen' (3/10); miele -> model said 'glutine' (1/10); cuchillo -> model said 'un cuchillo' (2/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): léger; dunkel; vacío; blanc; amarelo; vingt; água; leise; faible; mai; billig; perdere",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w102c0-de-opposite-right-wrong",
+   "prompt": "Das Gegenteil von \"richtig\" ist \"",
+   "target": "falsch",
+   "intermediates": [
+    "wrong"
+   ],
+   "reference_concepts": [
+    "German",
+    "opposite",
+    "correct"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 18/60 passed.\n- Rejected by lint before gating: 1x latent: gloss is a cognate of the target; 1x leak: ['kranke'] shares the target's stem. Avoid these.\n- Failed (gold -> what the model wrote): marrone -> model said 'brow' (0/10); cien -> model said 'la leyenda de los diez' (0/10); dimanche -> model said 'le jour après samedi' (1/10); sábado -> model said 'o dia mais longo da semana' (0/10); main -> model said 'main' (5/10); nariz -> model said '\"Olemos con la\"' (0/10); bocca -> model said 'la \"pizza\"' (0/10); Vogel -> model said 'Flügel' (3/10); pez -> model said 'rayo' (2/10); souris -> model said 'la souris' (6/10); pane -> model said 'pasta' (1/10); boulanger -> model said 'painier' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): niedrig; après; delgado; sporco; livros; arm; fora; salida; huevos; soleil; dulce; spät",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w102c0-fr-opposite-buy-sell",
+   "prompt": "Le contraire de \"acheter\" est \"",
+   "target": "vendre",
+   "intermediates": [
+    "sell"
+   ],
+   "reference_concepts": [
+    "French",
+    "opposite",
+    "buy"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 18/60 passed.\n- Rejected by lint before gating: 1x latent: gloss is a cognate of the target; 1x leak: ['kranke'] shares the target's stem. Avoid these.\n- Failed (gold -> what the model wrote): marrone -> model said 'brow' (0/10); cien -> model said 'la leyenda de los diez' (0/10); dimanche -> model said 'le jour après samedi' (1/10); sábado -> model said 'o dia mais longo da semana' (0/10); main -> model said 'main' (5/10); nariz -> model said '\"Olemos con la\"' (0/10); bocca -> model said 'la \"pizza\"' (0/10); Vogel -> model said 'Flügel' (3/10); pez -> model said 'rayo' (2/10); souris -> model said 'la souris' (6/10); pane -> model said 'pasta' (1/10); boulanger -> model said 'painier' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): niedrig; après; delgado; sporco; livros; arm; fora; salida; huevos; soleil; dulce; spät",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w102c0-fr-family-son-daughter",
+   "prompt": "Un homme a deux enfants : un fils et une \"",
+   "target": "fille",
+   "intermediates": [
+    "daughter"
+   ],
+   "reference_concepts": [
+    "French",
+    "family",
+    "son"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 18/60 passed.\n- Rejected by lint before gating: 1x latent: gloss is a cognate of the target; 1x leak: ['kranke'] shares the target's stem. Avoid these.\n- Failed (gold -> what the model wrote): marrone -> model said 'brow' (0/10); cien -> model said 'la leyenda de los diez' (0/10); dimanche -> model said 'le jour après samedi' (1/10); sábado -> model said 'o dia mais longo da semana' (0/10); main -> model said 'main' (5/10); nariz -> model said '\"Olemos con la\"' (0/10); bocca -> model said 'la \"pizza\"' (0/10); Vogel -> model said 'Flügel' (3/10); pez -> model said 'rayo' (2/10); souris -> model said 'la souris' (6/10); pane -> model said 'pasta' (1/10); boulanger -> model said 'painier' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): niedrig; après; delgado; sporco; livros; arm; fora; salida; huevos; soleil; dulce; spät",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w102c1-fr-opposite-small-big",
+   "prompt": "Le contraire de \"petit\" est \"",
+   "target": "grand",
+   "intermediates": [
+    "big"
+   ],
+   "reference_concepts": [
+    "French",
+    "opposite",
+    "small"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 18/60 passed.\n- Rejected by lint before gating: 1x latent: gloss is a cognate of the target; 1x leak: ['kranke'] shares the target's stem. Avoid these.\n- Failed (gold -> what the model wrote): marrone -> model said 'brow' (0/10); cien -> model said 'la leyenda de los diez' (0/10); dimanche -> model said 'le jour après samedi' (1/10); sábado -> model said 'o dia mais longo da semana' (0/10); main -> model said 'main' (5/10); nariz -> model said '\"Olemos con la\"' (0/10); bocca -> model said 'la \"pizza\"' (0/10); Vogel -> model said 'Flügel' (3/10); pez -> model said 'rayo' (2/10); souris -> model said 'la souris' (6/10); pane -> model said 'pasta' (1/10); boulanger -> model said 'painier' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): niedrig; après; delgado; sporco; livros; arm; fora; salida; huevos; soleil; dulce; spät",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w102c1-es-opposite-down-up",
+   "prompt": "Lo contrario de \"abajo\" es \"",
+   "target": "arriba",
+   "intermediates": [
+    "up"
+   ],
+   "reference_concepts": [
+    "Spanish",
+    "opposite",
+    "down"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 18/60 passed.\n- Rejected by lint before gating: 1x latent: gloss is a cognate of the target; 1x leak: ['kranke'] shares the target's stem. Avoid these.\n- Failed (gold -> what the model wrote): marrone -> model said 'brow' (0/10); cien -> model said 'la leyenda de los diez' (0/10); dimanche -> model said 'le jour après samedi' (1/10); sábado -> model said 'o dia mais longo da semana' (0/10); main -> model said 'main' (5/10); nariz -> model said '\"Olemos con la\"' (0/10); bocca -> model said 'la \"pizza\"' (0/10); Vogel -> model said 'Flügel' (3/10); pez -> model said 'rayo' (2/10); souris -> model said 'la souris' (6/10); pane -> model said 'pasta' (1/10); boulanger -> model said 'painier' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): niedrig; après; delgado; sporco; livros; arm; fora; salida; huevos; soleil; dulce; spät",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w102c1-pt-opposite-thin-fat",
+   "prompt": "O contrário de \"magro\" é \"",
+   "target": "gordo",
+   "intermediates": [
+    "fat"
+   ],
+   "reference_concepts": [
+    "Portuguese",
+    "opposite",
+    "thin"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 18/60 passed.\n- Rejected by lint before gating: 1x latent: gloss is a cognate of the target; 1x leak: ['kranke'] shares the target's stem. Avoid these.\n- Failed (gold -> what the model wrote): marrone -> model said 'brow' (0/10); cien -> model said 'la leyenda de los diez' (0/10); dimanche -> model said 'le jour après samedi' (1/10); sábado -> model said 'o dia mais longo da semana' (0/10); main -> model said 'main' (5/10); nariz -> model said '\"Olemos con la\"' (0/10); bocca -> model said 'la \"pizza\"' (0/10); Vogel -> model said 'Flügel' (3/10); pez -> model said 'rayo' (2/10); souris -> model said 'la souris' (6/10); pane -> model said 'pasta' (1/10); boulanger -> model said 'painier' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): niedrig; après; delgado; sporco; livros; arm; fora; salida; huevos; soleil; dulce; spät",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w102c1-es-food-steak-meat",
+   "prompt": "El bistec es un trozo de \"",
+   "target": "carne",
+   "intermediates": [
+    "meat"
+   ],
+   "reference_concepts": [
+    "Spanish",
+    "food",
+    "steak"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 18/60 passed.\n- Rejected by lint before gating: 1x latent: gloss is a cognate of the target; 1x leak: ['kranke'] shares the target's stem. Avoid these.\n- Failed (gold -> what the model wrote): marrone -> model said 'brow' (0/10); cien -> model said 'la leyenda de los diez' (0/10); dimanche -> model said 'le jour après samedi' (1/10); sábado -> model said 'o dia mais longo da semana' (0/10); main -> model said 'main' (5/10); nariz -> model said '\"Olemos con la\"' (0/10); bocca -> model said 'la \"pizza\"' (0/10); Vogel -> model said 'Flügel' (3/10); pez -> model said 'rayo' (2/10); souris -> model said 'la souris' (6/10); pane -> model said 'pasta' (1/10); boulanger -> model said 'painier' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): niedrig; après; delgado; sporco; livros; arm; fora; salida; huevos; soleil; dulce; spät",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w102c1-it-verb-paper-write",
+   "prompt": "Con la penna e un foglio di carta posso \"",
+   "target": "scrivere",
+   "intermediates": [
+    "write"
+   ],
+   "reference_concepts": [
+    "Italian",
+    "action",
+    "paper"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 18/60 passed.\n- Rejected by lint before gating: 1x latent: gloss is a cognate of the target; 1x leak: ['kranke'] shares the target's stem. Avoid these.\n- Failed (gold -> what the model wrote): marrone -> model said 'brow' (0/10); cien -> model said 'la leyenda de los diez' (0/10); dimanche -> model said 'le jour après samedi' (1/10); sábado -> model said 'o dia mais longo da semana' (0/10); main -> model said 'main' (5/10); nariz -> model said '\"Olemos con la\"' (0/10); bocca -> model said 'la \"pizza\"' (0/10); Vogel -> model said 'Flügel' (3/10); pez -> model said 'rayo' (2/10); souris -> model said 'la souris' (6/10); pane -> model said 'pasta' (1/10); boulanger -> model said 'painier' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): niedrig; après; delgado; sporco; livros; arm; fora; salida; huevos; soleil; dulce; spät",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w102c2-de-opposite-right-left",
+   "prompt": "Das Gegenteil von \"rechts\" ist \"",
+   "target": "links",
+   "intermediates": [
+    "left"
+   ],
+   "reference_concepts": [
+    "German",
+    "opposite",
+    "right"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 18/60 passed.\n- Rejected by lint before gating: 1x latent: gloss is a cognate of the target; 1x leak: ['kranke'] shares the target's stem. Avoid these.\n- Failed (gold -> what the model wrote): marrone -> model said 'brow' (0/10); cien -> model said 'la leyenda de los diez' (0/10); dimanche -> model said 'le jour après samedi' (1/10); sábado -> model said 'o dia mais longo da semana' (0/10); main -> model said 'main' (5/10); nariz -> model said '\"Olemos con la\"' (0/10); bocca -> model said 'la \"pizza\"' (0/10); Vogel -> model said 'Flügel' (3/10); pez -> model said 'rayo' (2/10); souris -> model said 'la souris' (6/10); pane -> model said 'pasta' (1/10); boulanger -> model said 'painier' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): niedrig; après; delgado; sporco; livros; arm; fora; salida; huevos; soleil; dulce; spät",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w102c2-fr-opposite-front-behind",
+   "prompt": "Le contraire de \"devant\" est \"",
+   "target": "derrière",
+   "intermediates": [
+    "behind"
+   ],
+   "reference_concepts": [
+    "French",
+    "opposite",
+    "front"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 18/60 passed.\n- Rejected by lint before gating: 1x latent: gloss is a cognate of the target; 1x leak: ['kranke'] shares the target's stem. Avoid these.\n- Failed (gold -> what the model wrote): marrone -> model said 'brow' (0/10); cien -> model said 'la leyenda de los diez' (0/10); dimanche -> model said 'le jour après samedi' (1/10); sábado -> model said 'o dia mais longo da semana' (0/10); main -> model said 'main' (5/10); nariz -> model said '\"Olemos con la\"' (0/10); bocca -> model said 'la \"pizza\"' (0/10); Vogel -> model said 'Flügel' (3/10); pez -> model said 'rayo' (2/10); souris -> model said 'la souris' (6/10); pane -> model said 'pasta' (1/10); boulanger -> model said 'painier' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): niedrig; après; delgado; sporco; livros; arm; fora; salida; huevos; soleil; dulce; spät",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w102c2-es-opposite-better-worse",
+   "prompt": "Lo contrario de \"mejor\" es \"",
+   "target": "peor",
+   "intermediates": [
+    "worse"
+   ],
+   "reference_concepts": [
+    "Spanish",
+    "opposite",
+    "better"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 18/60 passed.\n- Rejected by lint before gating: 1x latent: gloss is a cognate of the target; 1x leak: ['kranke'] shares the target's stem. Avoid these.\n- Failed (gold -> what the model wrote): marrone -> model said 'brow' (0/10); cien -> model said 'la leyenda de los diez' (0/10); dimanche -> model said 'le jour après samedi' (1/10); sábado -> model said 'o dia mais longo da semana' (0/10); main -> model said 'main' (5/10); nariz -> model said '\"Olemos con la\"' (0/10); bocca -> model said 'la \"pizza\"' (0/10); Vogel -> model said 'Flügel' (3/10); pez -> model said 'rayo' (2/10); souris -> model said 'la souris' (6/10); pane -> model said 'pasta' (1/10); boulanger -> model said 'painier' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): niedrig; après; delgado; sporco; livros; arm; fora; salida; huevos; soleil; dulce; spät",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w102c2-it-opposite-alive-dead",
+   "prompt": "Il contrario di \"vivo\" è \"",
+   "target": "morto",
+   "intermediates": [
+    "dead"
+   ],
+   "reference_concepts": [
+    "Italian",
+    "opposite",
+    "alive"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 18/60 passed.\n- Rejected by lint before gating: 1x latent: gloss is a cognate of the target; 1x leak: ['kranke'] shares the target's stem. Avoid these.\n- Failed (gold -> what the model wrote): marrone -> model said 'brow' (0/10); cien -> model said 'la leyenda de los diez' (0/10); dimanche -> model said 'le jour après samedi' (1/10); sábado -> model said 'o dia mais longo da semana' (0/10); main -> model said 'main' (5/10); nariz -> model said '\"Olemos con la\"' (0/10); bocca -> model said 'la \"pizza\"' (0/10); Vogel -> model said 'Flügel' (3/10); pez -> model said 'rayo' (2/10); souris -> model said 'la souris' (6/10); pane -> model said 'pasta' (1/10); boulanger -> model said 'painier' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): niedrig; après; delgado; sporco; livros; arm; fora; salida; huevos; soleil; dulce; spät",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w102c2-es-greeting-hello-goodbye",
+   "prompt": "Al llegar decimos \"hola\" y al irnos decimos \"",
+   "target": "adiós",
+   "intermediates": [
+    "goodbye"
+   ],
+   "reference_concepts": [
+    "Spanish",
+    "greeting",
+    "hello"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 18/60 passed.\n- Rejected by lint before gating: 1x latent: gloss is a cognate of the target; 1x leak: ['kranke'] shares the target's stem. Avoid these.\n- Failed (gold -> what the model wrote): marrone -> model said 'brow' (0/10); cien -> model said 'la leyenda de los diez' (0/10); dimanche -> model said 'le jour après samedi' (1/10); sábado -> model said 'o dia mais longo da semana' (0/10); main -> model said 'main' (5/10); nariz -> model said '\"Olemos con la\"' (0/10); bocca -> model said 'la \"pizza\"' (0/10); Vogel -> model said 'Flügel' (3/10); pez -> model said 'rayo' (2/10); souris -> model said 'la souris' (6/10); pane -> model said 'pasta' (1/10); boulanger -> model said 'painier' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): niedrig; après; delgado; sporco; livros; arm; fora; salida; huevos; soleil; dulce; spät",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w103c0-fr-opposite-close-open",
+   "prompt": "Le contraire de \"fermer\" est \"",
+   "target": "ouvrir",
+   "intermediates": [
+    "open"
+   ],
+   "reference_concepts": [
+    "French",
+    "opposite",
+    "close"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 13/60 passed.\n- Failed (gold -> what the model wrote): largo -> model said 'largo' (5/10); veloce -> model said 'rapido' (4/10); viola -> model said 'verde' (0/10); cinza -> model said '1,500 milímetros' (0/10); eins -> model said 'zwei' (0/10); irmã -> model said 'filha' (3/10); rana -> model said 'croac' (0/10); Löwe -> model said 'Der König der Tiere ist der \"Löwe\".' (2/10); cabeza -> model said 'la cabeza' (6/10); cuchara -> model said 'una cuchara' (3/10); garfo -> model said 'com arroz' (0/10); fromage -> model said 'la souris' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): falsch; vendre; fille; grand; arriba; gordo; carne; scrivere; links; derrière; peor; morto",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w103c0-de-opposite-friend-enemy",
+   "prompt": "Das Gegenteil von \"Freund\" ist \"",
+   "target": "Feind",
+   "intermediates": [
+    "enemy"
+   ],
+   "reference_concepts": [
+    "German",
+    "opposite",
+    "friend"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 13/60 passed.\n- Failed (gold -> what the model wrote): largo -> model said 'largo' (5/10); veloce -> model said 'rapido' (4/10); viola -> model said 'verde' (0/10); cinza -> model said '1,500 milímetros' (0/10); eins -> model said 'zwei' (0/10); irmã -> model said 'filha' (3/10); rana -> model said 'croac' (0/10); Löwe -> model said 'Der König der Tiere ist der \"Löwe\".' (2/10); cabeza -> model said 'la cabeza' (6/10); cuchara -> model said 'una cuchara' (3/10); garfo -> model said 'com arroz' (0/10); fromage -> model said 'la souris' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): falsch; vendre; fille; grand; arriba; gordo; carne; scrivere; links; derrière; peor; morto",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w103c1-pt-opposite-beginning-end",
+   "prompt": "O contrário de \"começo\" é \"",
+   "target": "fim",
+   "intermediates": [
+    "end"
+   ],
+   "reference_concepts": [
+    "Portuguese",
+    "opposite",
+    "começo"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 13/60 passed.\n- Failed (gold -> what the model wrote): largo -> model said 'largo' (5/10); veloce -> model said 'rapido' (4/10); viola -> model said 'verde' (0/10); cinza -> model said '1,500 milímetros' (0/10); eins -> model said 'zwei' (0/10); irmã -> model said 'filha' (3/10); rana -> model said 'croac' (0/10); Löwe -> model said 'Der König der Tiere ist der \"Löwe\".' (2/10); cabeza -> model said 'la cabeza' (6/10); cuchara -> model said 'una cuchara' (3/10); garfo -> model said 'com arroz' (0/10); fromage -> model said 'la souris' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): falsch; vendre; fille; grand; arriba; gordo; carne; scrivere; links; derrière; peor; morto",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w103c2-es-opposite-last-first",
+   "prompt": "Lo contrario de \"último\" es \"",
+   "target": "primero",
+   "intermediates": [
+    "first"
+   ],
+   "reference_concepts": [
+    "Spanish",
+    "opposite",
+    "último"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 13/60 passed.\n- Failed (gold -> what the model wrote): largo -> model said 'largo' (5/10); veloce -> model said 'rapido' (4/10); viola -> model said 'verde' (0/10); cinza -> model said '1,500 milímetros' (0/10); eins -> model said 'zwei' (0/10); irmã -> model said 'filha' (3/10); rana -> model said 'croac' (0/10); Löwe -> model said 'Der König der Tiere ist der \"Löwe\".' (2/10); cabeza -> model said 'la cabeza' (6/10); cuchara -> model said 'una cuchara' (3/10); garfo -> model said 'com arroz' (0/10); fromage -> model said 'la souris' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): falsch; vendre; fille; grand; arriba; gordo; carne; scrivere; links; derrière; peor; morto",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w103c2-fr-animal-wings",
+   "prompt": "Les oiseaux volent grâce à leurs \"",
+   "target": "ailes",
+   "intermediates": [
+    "wings"
+   ],
+   "reference_concepts": [
+    "French",
+    "animal body part",
+    "oiseaux"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 13/60 passed.\n- Failed (gold -> what the model wrote): largo -> model said 'largo' (5/10); veloce -> model said 'rapido' (4/10); viola -> model said 'verde' (0/10); cinza -> model said '1,500 milímetros' (0/10); eins -> model said 'zwei' (0/10); irmã -> model said 'filha' (3/10); rana -> model said 'croac' (0/10); Löwe -> model said 'Der König der Tiere ist der \"Löwe\".' (2/10); cabeza -> model said 'la cabeza' (6/10); cuchara -> model said 'una cuchara' (3/10); garfo -> model said 'com arroz' (0/10); fromage -> model said 'la souris' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): falsch; vendre; fille; grand; arriba; gordo; carne; scrivere; links; derrière; peor; morto",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w104c0-de-opposite-smart",
+   "prompt": "Das Gegenteil von \"klug\" ist \"",
+   "target": "dumm",
+   "intermediates": [
+    "stupid"
+   ],
+   "reference_concepts": [
+    "German",
+    "opposite",
+    "smart"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 104,
+    "steer": "- Last wave: 5/60 passed.\n- Rejected by lint before gating: 1x leak: ['cerisier'] shares the target's stem; 1x leak: ['pentear'] shares the target's stem; 1x leak: ['frankreich'] shares the target's stem; 1x leak: ['alemania'] shares the target's stem. Avoid these.\n- Failed (gold -> what the model wrote): amaro -> model said 'amaro' (4/10); mentira -> model said 'falsidade' (0/10); Zunge -> model said 'Geschmack' (0/10); polmoni -> model said 'respiriamo l\\'aria con i \"' (1/10); matin -> model said 'le monde' (0/10); almoço -> model said 'chamada \"arroz com feijão\"' (4/10); Zitrone -> model said 'Apfel' (0/10); piscina -> model said 'parque' (2/10); porto -> model said '\"mare\"' (0/10); escoba -> model said 'una brocha' (0/10); gesso -> model said '\"pallino\"' (0/10); Igel -> model said 'König der Wüste' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): ouvrir; Feind; fim; primero; ailes",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w104c0-es-opposite-above",
+   "prompt": "Lo contrario de \"encima\" es \"",
+   "target": "debajo",
+   "intermediates": [
+    "under"
+   ],
+   "reference_concepts": [
+    "Spanish",
+    "opposite",
+    "above"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 104,
+    "steer": "- Last wave: 5/60 passed.\n- Rejected by lint before gating: 1x leak: ['cerisier'] shares the target's stem; 1x leak: ['pentear'] shares the target's stem; 1x leak: ['frankreich'] shares the target's stem; 1x leak: ['alemania'] shares the target's stem. Avoid these.\n- Failed (gold -> what the model wrote): amaro -> model said 'amaro' (4/10); mentira -> model said 'falsidade' (0/10); Zunge -> model said 'Geschmack' (0/10); polmoni -> model said 'respiriamo l\\'aria con i \"' (1/10); matin -> model said 'le monde' (0/10); almoço -> model said 'chamada \"arroz com feijão\"' (4/10); Zitrone -> model said 'Apfel' (0/10); piscina -> model said 'parque' (2/10); porto -> model said '\"mare\"' (0/10); escoba -> model said 'una brocha' (0/10); gesso -> model said '\"pallino\"' (0/10); Igel -> model said 'König der Wüste' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): ouvrir; Feind; fim; primero; ailes",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w104c0-es-food-egg-part",
+   "prompt": "La parte amarilla del huevo se llama la \"",
+   "target": "yema",
+   "intermediates": [
+    "yolk"
+   ],
+   "reference_concepts": [
+    "Spanish",
+    "part of",
+    "egg"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 104,
+    "steer": "- Last wave: 5/60 passed.\n- Rejected by lint before gating: 1x leak: ['cerisier'] shares the target's stem; 1x leak: ['pentear'] shares the target's stem; 1x leak: ['frankreich'] shares the target's stem; 1x leak: ['alemania'] shares the target's stem. Avoid these.\n- Failed (gold -> what the model wrote): amaro -> model said 'amaro' (4/10); mentira -> model said 'falsidade' (0/10); Zunge -> model said 'Geschmack' (0/10); polmoni -> model said 'respiriamo l\\'aria con i \"' (1/10); matin -> model said 'le monde' (0/10); almoço -> model said 'chamada \"arroz com feijão\"' (4/10); Zitrone -> model said 'Apfel' (0/10); piscina -> model said 'parque' (2/10); porto -> model said '\"mare\"' (0/10); escoba -> model said 'una brocha' (0/10); gesso -> model said '\"pallino\"' (0/10); Igel -> model said 'König der Wüste' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): ouvrir; Feind; fim; primero; ailes",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w104c1-de-opposite-wet",
+   "prompt": "Das Gegenteil von \"nass\" ist \"",
+   "target": "trocken",
+   "intermediates": [
+    "dry"
+   ],
+   "reference_concepts": [
+    "German",
+    "opposite",
+    "wet"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 104,
+    "steer": "- Last wave: 5/60 passed.\n- Rejected by lint before gating: 1x leak: ['cerisier'] shares the target's stem; 1x leak: ['pentear'] shares the target's stem; 1x leak: ['frankreich'] shares the target's stem; 1x leak: ['alemania'] shares the target's stem. Avoid these.\n- Failed (gold -> what the model wrote): amaro -> model said 'amaro' (4/10); mentira -> model said 'falsidade' (0/10); Zunge -> model said 'Geschmack' (0/10); polmoni -> model said 'respiriamo l\\'aria con i \"' (1/10); matin -> model said 'le monde' (0/10); almoço -> model said 'chamada \"arroz com feijão\"' (4/10); Zitrone -> model said 'Apfel' (0/10); piscina -> model said 'parque' (2/10); porto -> model said '\"mare\"' (0/10); escoba -> model said 'una brocha' (0/10); gesso -> model said '\"pallino\"' (0/10); Igel -> model said 'König der Wüste' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): ouvrir; Feind; fim; primero; ailes",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w104c1-fr-opposite-never",
+   "prompt": "Le contraire de \"jamais\" est \"",
+   "target": "toujours",
+   "intermediates": [
+    "always"
+   ],
+   "reference_concepts": [
+    "French",
+    "opposite",
+    "never"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 104,
+    "steer": "- Last wave: 5/60 passed.\n- Rejected by lint before gating: 1x leak: ['cerisier'] shares the target's stem; 1x leak: ['pentear'] shares the target's stem; 1x leak: ['frankreich'] shares the target's stem; 1x leak: ['alemania'] shares the target's stem. Avoid these.\n- Failed (gold -> what the model wrote): amaro -> model said 'amaro' (4/10); mentira -> model said 'falsidade' (0/10); Zunge -> model said 'Geschmack' (0/10); polmoni -> model said 'respiriamo l\\'aria con i \"' (1/10); matin -> model said 'le monde' (0/10); almoço -> model said 'chamada \"arroz com feijão\"' (4/10); Zitrone -> model said 'Apfel' (0/10); piscina -> model said 'parque' (2/10); porto -> model said '\"mare\"' (0/10); escoba -> model said 'una brocha' (0/10); gesso -> model said '\"pallino\"' (0/10); Igel -> model said 'König der Wüste' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): ouvrir; Feind; fim; primero; ailes",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w104c1-es-opposite-question",
+   "prompt": "Lo contrario de \"pregunta\" es \"",
+   "target": "respuesta",
+   "intermediates": [
+    "answer"
+   ],
+   "reference_concepts": [
+    "Spanish",
+    "opposite",
+    "question"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 104,
+    "steer": "- Last wave: 5/60 passed.\n- Rejected by lint before gating: 1x leak: ['cerisier'] shares the target's stem; 1x leak: ['pentear'] shares the target's stem; 1x leak: ['frankreich'] shares the target's stem; 1x leak: ['alemania'] shares the target's stem. Avoid these.\n- Failed (gold -> what the model wrote): amaro -> model said 'amaro' (4/10); mentira -> model said 'falsidade' (0/10); Zunge -> model said 'Geschmack' (0/10); polmoni -> model said 'respiriamo l\\'aria con i \"' (1/10); matin -> model said 'le monde' (0/10); almoço -> model said 'chamada \"arroz com feijão\"' (4/10); Zitrone -> model said 'Apfel' (0/10); piscina -> model said 'parque' (2/10); porto -> model said '\"mare\"' (0/10); escoba -> model said 'una brocha' (0/10); gesso -> model said '\"pallino\"' (0/10); Igel -> model said 'König der Wüste' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): ouvrir; Feind; fim; primero; ailes",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w104c1-it-opposite-forget",
+   "prompt": "Il contrario di \"dimenticare\" è \"",
+   "target": "ricordare",
+   "intermediates": [
+    "remember"
+   ],
+   "reference_concepts": [
+    "Italian",
+    "opposite",
+    "forget"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 104,
+    "steer": "- Last wave: 5/60 passed.\n- Rejected by lint before gating: 1x leak: ['cerisier'] shares the target's stem; 1x leak: ['pentear'] shares the target's stem; 1x leak: ['frankreich'] shares the target's stem; 1x leak: ['alemania'] shares the target's stem. Avoid these.\n- Failed (gold -> what the model wrote): amaro -> model said 'amaro' (4/10); mentira -> model said 'falsidade' (0/10); Zunge -> model said 'Geschmack' (0/10); polmoni -> model said 'respiriamo l\\'aria con i \"' (1/10); matin -> model said 'le monde' (0/10); almoço -> model said 'chamada \"arroz com feijão\"' (4/10); Zitrone -> model said 'Apfel' (0/10); piscina -> model said 'parque' (2/10); porto -> model said '\"mare\"' (0/10); escoba -> model said 'una brocha' (0/10); gesso -> model said '\"pallino\"' (0/10); Igel -> model said 'König der Wüste' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): ouvrir; Feind; fim; primero; ailes",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w104c1-es-body-heart",
+   "prompt": "El corazón bombea la \"",
+   "target": "sangre",
+   "intermediates": [
+    "blood"
+   ],
+   "reference_concepts": [
+    "Spanish",
+    "body",
+    "heart"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 104,
+    "steer": "- Last wave: 5/60 passed.\n- Rejected by lint before gating: 1x leak: ['cerisier'] shares the target's stem; 1x leak: ['pentear'] shares the target's stem; 1x leak: ['frankreich'] shares the target's stem; 1x leak: ['alemania'] shares the target's stem. Avoid these.\n- Failed (gold -> what the model wrote): amaro -> model said 'amaro' (4/10); mentira -> model said 'falsidade' (0/10); Zunge -> model said 'Geschmack' (0/10); polmoni -> model said 'respiriamo l\\'aria con i \"' (1/10); matin -> model said 'le monde' (0/10); almoço -> model said 'chamada \"arroz com feijão\"' (4/10); Zitrone -> model said 'Apfel' (0/10); piscina -> model said 'parque' (2/10); porto -> model said '\"mare\"' (0/10); escoba -> model said 'una brocha' (0/10); gesso -> model said '\"pallino\"' (0/10); Igel -> model said 'König der Wüste' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): ouvrir; Feind; fim; primero; ailes",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w104c2-de-opposite-more",
+   "prompt": "Das Gegenteil von \"mehr\" ist \"",
+   "target": "weniger",
+   "intermediates": [
+    "less"
+   ],
+   "reference_concepts": [
+    "German",
+    "opposite",
+    "more"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 104,
+    "steer": "- Last wave: 5/60 passed.\n- Rejected by lint before gating: 1x leak: ['cerisier'] shares the target's stem; 1x leak: ['pentear'] shares the target's stem; 1x leak: ['frankreich'] shares the target's stem; 1x leak: ['alemania'] shares the target's stem. Avoid these.\n- Failed (gold -> what the model wrote): amaro -> model said 'amaro' (4/10); mentira -> model said 'falsidade' (0/10); Zunge -> model said 'Geschmack' (0/10); polmoni -> model said 'respiriamo l\\'aria con i \"' (1/10); matin -> model said 'le monde' (0/10); almoço -> model said 'chamada \"arroz com feijão\"' (4/10); Zitrone -> model said 'Apfel' (0/10); piscina -> model said 'parque' (2/10); porto -> model said '\"mare\"' (0/10); escoba -> model said 'una brocha' (0/10); gesso -> model said '\"pallino\"' (0/10); Igel -> model said 'König der Wüste' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): ouvrir; Feind; fim; primero; ailes",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w104c2-fr-opposite-boy",
+   "prompt": "Le contraire de \"garçon\" est \"",
+   "target": "fille",
+   "intermediates": [
+    "girl"
+   ],
+   "reference_concepts": [
+    "French",
+    "opposite",
+    "boy"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 104,
+    "steer": "- Last wave: 5/60 passed.\n- Rejected by lint before gating: 1x leak: ['cerisier'] shares the target's stem; 1x leak: ['pentear'] shares the target's stem; 1x leak: ['frankreich'] shares the target's stem; 1x leak: ['alemania'] shares the target's stem. Avoid these.\n- Failed (gold -> what the model wrote): amaro -> model said 'amaro' (4/10); mentira -> model said 'falsidade' (0/10); Zunge -> model said 'Geschmack' (0/10); polmoni -> model said 'respiriamo l\\'aria con i \"' (1/10); matin -> model said 'le monde' (0/10); almoço -> model said 'chamada \"arroz com feijão\"' (4/10); Zitrone -> model said 'Apfel' (0/10); piscina -> model said 'parque' (2/10); porto -> model said '\"mare\"' (0/10); escoba -> model said 'una brocha' (0/10); gesso -> model said '\"pallino\"' (0/10); Igel -> model said 'König der Wüste' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): ouvrir; Feind; fim; primero; ailes",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w104c2-es-material-windows",
+   "prompt": "Las ventanas están hechas de \"",
+   "target": "vidrio",
+   "intermediates": [
+    "glass"
+   ],
+   "reference_concepts": [
+    "Spanish",
+    "material",
+    "windows"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 104,
+    "steer": "- Last wave: 5/60 passed.\n- Rejected by lint before gating: 1x leak: ['cerisier'] shares the target's stem; 1x leak: ['pentear'] shares the target's stem; 1x leak: ['frankreich'] shares the target's stem; 1x leak: ['alemania'] shares the target's stem. Avoid these.\n- Failed (gold -> what the model wrote): amaro -> model said 'amaro' (4/10); mentira -> model said 'falsidade' (0/10); Zunge -> model said 'Geschmack' (0/10); polmoni -> model said 'respiriamo l\\'aria con i \"' (1/10); matin -> model said 'le monde' (0/10); almoço -> model said 'chamada \"arroz com feijão\"' (4/10); Zitrone -> model said 'Apfel' (0/10); piscina -> model said 'parque' (2/10); porto -> model said '\"mare\"' (0/10); escoba -> model said 'una brocha' (0/10); gesso -> model said '\"pallino\"' (0/10); Igel -> model said 'König der Wüste' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): ouvrir; Feind; fim; primero; ailes",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w104c2-fr-ingredient-bake",
+   "prompt": "Pour faire du pain, le boulanger mélange de l'eau et de la \"",
+   "target": "farine",
+   "intermediates": [
+    "flour"
+   ],
+   "reference_concepts": [
+    "French",
+    "ingredient",
+    "bake"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 104,
+    "steer": "- Last wave: 5/60 passed.\n- Rejected by lint before gating: 1x leak: ['cerisier'] shares the target's stem; 1x leak: ['pentear'] shares the target's stem; 1x leak: ['frankreich'] shares the target's stem; 1x leak: ['alemania'] shares the target's stem. Avoid these.\n- Failed (gold -> what the model wrote): amaro -> model said 'amaro' (4/10); mentira -> model said 'falsidade' (0/10); Zunge -> model said 'Geschmack' (0/10); polmoni -> model said 'respiriamo l\\'aria con i \"' (1/10); matin -> model said 'le monde' (0/10); almoço -> model said 'chamada \"arroz com feijão\"' (4/10); Zitrone -> model said 'Apfel' (0/10); piscina -> model said 'parque' (2/10); porto -> model said '\"mare\"' (0/10); escoba -> model said 'una brocha' (0/10); gesso -> model said '\"pallino\"' (0/10); Igel -> model said 'König der Wüste' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): ouvrir; Feind; fim; primero; ailes",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t2-w105c0-fr-opposite-difficult-easy",
+   "prompt": "Le contraire de \"difficile\" est \"",
+   "target": "facile",
+   "intermediates": [
+    "easy"
+   ],
+   "reference_concepts": [
+    "French",
+    "opposite adjective",
+    "difficult"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese, and only numbers, days, months, colours and basic opposites, with an explicit cue word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese, and only numbers, days, months, colours and basic opposites, with an explicit cue word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 105,
+    "steer": "- Last wave: 12/60 passed.\n- Rejected by lint before gating: 1x leak: ['flugzeuge'] shares the target's stem; 1x leak: ['fahrzeug'] shares the target's stem. Avoid these.\n- Failed (gold -> what the model wrote): étroit -> model said 'petit' (0/10); dimenticare -> model said 'obbligare' (3/10); boulangerie -> model said 'La boulangerie de la rue' (1/10); quarto -> model said 'o quarto' (4/10); filo -> model said \"l'occhio\" (0/10); aguja -> model said 'una aguja' (1/10); Welpe -> model said 'Max' (0/10); veau -> model said 'le \"petit de la vache\"' (0/10); tuono -> model said 'rumore di fulmini' (2/10); Tal -> model said 'Wald' (2/10); codo -> model said 'húmero' (0/10); joelho -> model said '\"articular\"' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): dumm; debajo; yema; trocken; toujours; respuesta; ricordare; sangre; weniger; fille; vidrio; farine",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t2-w105c0-fr-opposite-false-true",
+   "prompt": "Le contraire de \"faux\" est \"",
+   "target": "vrai",
+   "intermediates": [
+    "true"
+   ],
+   "reference_concepts": [
+    "French",
+    "opposite adjective",
+    "false"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese, and only numbers, days, months, colours and basic opposites, with an explicit cue word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese, and only numbers, days, months, colours and basic opposites, with an explicit cue word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 105,
+    "steer": "- Last wave: 12/60 passed.\n- Rejected by lint before gating: 1x leak: ['flugzeuge'] shares the target's stem; 1x leak: ['fahrzeug'] shares the target's stem. Avoid these.\n- Failed (gold -> what the model wrote): étroit -> model said 'petit' (0/10); dimenticare -> model said 'obbligare' (3/10); boulangerie -> model said 'La boulangerie de la rue' (1/10); quarto -> model said 'o quarto' (4/10); filo -> model said \"l'occhio\" (0/10); aguja -> model said 'una aguja' (1/10); Welpe -> model said 'Max' (0/10); veau -> model said 'le \"petit de la vache\"' (0/10); tuono -> model said 'rumore di fulmini' (2/10); Tal -> model said 'Wald' (2/10); codo -> model said 'húmero' (0/10); joelho -> model said '\"articular\"' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): dumm; debajo; yema; trocken; toujours; respuesta; ricordare; sangre; weniger; fille; vidrio; farine",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t2-w105c0-it-opposite-arrive-leave",
+   "prompt": "Il contrario di \"arrivare\" è \"",
+   "target": "partire",
+   "intermediates": [
+    "leave"
+   ],
+   "reference_concepts": [
+    "Italian",
+    "opposite verb",
+    "arrive"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only French, German, Spanish, Italian or Portuguese, and only numbers, days, months, colours and basic opposites, with an explicit cue word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese, and only numbers, days, months, colours and basic opposites, with an explicit cue word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 105,
+    "steer": "- Last wave: 12/60 passed.\n- Rejected by lint before gating: 1x leak: ['flugzeuge'] shares the target's stem; 1x leak: ['fahrzeug'] shares the target's stem. Avoid these.\n- Failed (gold -> what the model wrote): étroit -> model said 'petit' (0/10); dimenticare -> model said 'obbligare' (3/10); boulangerie -> model said 'La boulangerie de la rue' (1/10); quarto -> model said 'o quarto' (4/10); filo -> model said \"l'occhio\" (0/10); aguja -> model said 'una aguja' (1/10); Welpe -> model said 'Max' (0/10); veau -> model said 'le \"petit de la vache\"' (0/10); tuono -> model said 'rumore di fulmini' (2/10); Tal -> model said 'Wald' (2/10); codo -> model said 'húmero' (0/10); joelho -> model said '\"articular\"' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): dumm; debajo; yema; trocken; toujours; respuesta; ricordare; sangre; weniger; fille; vidrio; farine",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  }
+ ]
+}

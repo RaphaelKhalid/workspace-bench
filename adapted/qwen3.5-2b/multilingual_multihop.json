@@ -1,0 +1,1394 @@
+{
+ "family": "multilingual-multihop",
+ "parent_family": "multihop-mt",
+ "contract": {
+  "multi_token": true,
+  "include_target": false,
+  "conjunctive_units": true
+ },
+ "gate": "Qwen3.6-27B behavioral, chat-templated capability question (enable_thinking=False, answer stem): greedy-verified AND >=8/10 @ temp 0.7 (answer in the text's language); every bridge gate greedy + >=8/10. EVAL RENDER: plain prompt, final prompt token; conjunctive regex over bridge_l2 + bridge_native + language.",
+ "frozen": "2026-09-10",
+ "adapt": {
+  "model": "qwen3.5-2b",
+  "hf_id": "Qwen/Qwen3.5-2B",
+  "frozen": "2026-10-20"
+ },
+ "items": [
+  {
+   "name": "multilingual-au-t1-w100c0-mlmh-id-newton-cambridge",
+   "lang": "id",
+   "prompt": "Fisikawan Inggris yang konon terinspirasi oleh apel jatuh saat merumuskan hukum gravitasi menimba ilmu di Universitas",
+   "target": "Cambridge",
+   "target_alts": [
+    "Cambridge",
+    "Trinity College",
+    "Trinity College, Cambridge"
+   ],
+   "intermediates": [
+    "Isaac Newton"
+   ],
+   "units": [
+    {
+     "role": "bridge_l2",
+     "required": false,
+     "multi_token": true,
+     "forms": {
+      "id": [
+       "Isaac Newton",
+       "Newton"
+      ]
+     },
+     "match": [
+      "Isaac Newton",
+      "Newton"
+     ]
+    },
+    {
+     "role": "bridge_native",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Isaac Newton",
+       "Sir Isaac Newton"
+      ],
+      "zh": [
+       "牛顿",
+       "艾萨克·牛顿"
+      ]
+     },
+     "match": [
+      "Isaac Newton",
+      "Sir Isaac Newton",
+      "牛顿",
+      "艾萨克·牛顿"
+     ]
+    },
+    {
+     "role": "language",
+     "required": false,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Indonesian"
+      ],
+      "zh": [
+       "印尼语"
+      ],
+      "id": [
+       "Bahasa Indonesia",
+       "bahasa Indonesia"
+      ]
+     },
+     "match": [
+      "Indonesian",
+      "印尼语",
+      "Bahasa Indonesia",
+      "bahasa Indonesia"
+     ]
+    }
+   ],
+   "bridges": [
+    {
+     "question": "Which English physicist, said to have been inspired by a falling apple, formulated the law of universal gravitation? Answer with just the name.",
+     "units": [
+      "bridge_l2",
+      "bridge_native"
+     ],
+     "answers": [
+      "Isaac Newton",
+      "Sir Isaac Newton",
+      "Newton",
+      "牛顿",
+      "艾萨克·牛顿"
+     ]
+    }
+   ],
+   "mc": {
+    "bridge_native": {
+     "gold": "Isaac Newton",
+     "distractors": [
+      "Galileo Galilei",
+      "Johannes Kepler",
+      "Robert Hooke",
+      "Gottfried Leibniz"
+     ]
+    }
+   },
+   "subfamily": "2hop",
+   "probe_token_lens": {
+    "units": {
+     "bridge_l2": {
+      "id": [
+       2,
+       1
+      ]
+     },
+     "bridge_native": {
+      "en": [
+       2,
+       3
+      ],
+      "zh": [
+       1,
+       5
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       2
+      ],
+      "id": [
+       2,
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only Russian (ru), Indonesian (id) or Vietnamese (vi), and famous bridges a well-read adult knows at once (landmarks, inventions, famous books, scientists).",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Russian (ru), Indonesian (id) or Vietnamese (vi), and famous bridges a well-read adult knows at once (landmarks, inventions, famous books, scientists)."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w100c0-mlmh-id-romeo-juliet-verona",
+   "lang": "id",
+   "prompt": "Kisah tragis sepasang kekasih muda dari keluarga Montague dan Capulet karya Shakespeare berlatar di kota",
+   "target": "Verona",
+   "target_alts": [
+    "Verona",
+    "Verona, Italia"
+   ],
+   "intermediates": [
+    "Romeo and Juliet"
+   ],
+   "units": [
+    {
+     "role": "bridge_l2",
+     "required": false,
+     "multi_token": true,
+     "forms": {
+      "id": [
+       "Romeo dan Juliet",
+       "Romeo and Juliet"
+      ]
+     },
+     "match": [
+      "Romeo dan Juliet",
+      "Romeo and Juliet"
+     ]
+    },
+    {
+     "role": "bridge_native",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Romeo and Juliet"
+      ],
+      "zh": [
+       "罗密欧与朱丽叶"
+      ]
+     },
+     "match": [
+      "Romeo and Juliet",
+      "罗密欧与朱丽叶"
+     ]
+    },
+    {
+     "role": "language",
+     "required": false,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Indonesian"
+      ],
+      "zh": [
+       "印尼语"
+      ],
+      "id": [
+       "Bahasa Indonesia",
+       "bahasa Indonesia"
+      ]
+     },
+     "match": [
+      "Indonesian",
+      "印尼语",
+      "Bahasa Indonesia",
+      "bahasa Indonesia"
+     ]
+    }
+   ],
+   "bridges": [
+    {
+     "question": "Which Shakespeare tragedy tells of two young lovers from the feuding Montague and Capulet families? Answer with just the name.",
+     "units": [
+      "bridge_l2",
+      "bridge_native"
+     ],
+     "answers": [
+      "Romeo and Juliet",
+      "Romeo dan Juliet",
+      "罗密欧与朱丽叶"
+     ]
+    }
+   ],
+   "mc": {
+    "bridge_native": {
+     "gold": "Romeo and Juliet",
+     "distractors": [
+      "Hamlet",
+      "Macbeth",
+      "Othello",
+      "The Merchant of Venice"
+     ]
+    }
+   },
+   "subfamily": "2hop",
+   "probe_token_lens": {
+    "units": {
+     "bridge_l2": {
+      "id": [
+       3,
+       3
+      ]
+     },
+     "bridge_native": {
+      "en": [
+       3
+      ],
+      "zh": [
+       7
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       2
+      ],
+      "id": [
+       2,
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only Russian (ru), Indonesian (id) or Vietnamese (vi), and famous bridges a well-read adult knows at once (landmarks, inventions, famous books, scientists).",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Russian (ru), Indonesian (id) or Vietnamese (vi), and famous bridges a well-read adult knows at once (landmarks, inventions, famous books, scientists)."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w100c0-mlmh-id-penicillin-fleming",
+   "lang": "id",
+   "prompt": "Antibiotik pertama di dunia, yang ditemukan secara tak sengaja pada 1928 dari jamur yang mencemari cawan bakteri, ditemukan oleh ilmuwan Skotlandia bernama",
+   "target": "Alexander Fleming",
+   "target_alts": [
+    "Alexander Fleming",
+    "Fleming",
+    "Sir Alexander Fleming"
+   ],
+   "intermediates": [
+    "penicillin"
+   ],
+   "units": [
+    {
+     "role": "bridge_l2",
+     "required": false,
+     "multi_token": true,
+     "forms": {
+      "id": [
+       "penisilin"
+      ]
+     },
+     "match": [
+      "penisilin"
+     ]
+    },
+    {
+     "role": "bridge_native",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "penicillin",
+       "penicillin G"
+      ],
+      "zh": [
+       "青霉素",
+       "盘尼西林"
+      ]
+     },
+     "match": [
+      "penicillin",
+      "penicillin G",
+      "青霉素",
+      "盘尼西林"
+     ]
+    },
+    {
+     "role": "language",
+     "required": false,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Indonesian"
+      ],
+      "zh": [
+       "印尼语"
+      ],
+      "id": [
+       "Bahasa Indonesia",
+       "bahasa Indonesia"
+      ]
+     },
+     "match": [
+      "Indonesian",
+      "印尼语",
+      "Bahasa Indonesia",
+      "bahasa Indonesia"
+     ]
+    }
+   ],
+   "bridges": [
+    {
+     "question": "Which antibiotic was discovered by accident in 1928 from a mould contaminating a bacterial culture plate? Answer with just the name.",
+     "units": [
+      "bridge_l2",
+      "bridge_native"
+     ],
+     "answers": [
+      "penicillin",
+      "penicillin G",
+      "penisilin",
+      "青霉素",
+      "盘尼西林"
+     ]
+    }
+   ],
+   "mc": {
+    "bridge_native": {
+     "gold": "penicillin",
+     "distractors": [
+      "tetracycline",
+      "erythromycin",
+      "sulfanilamide",
+      "chloramphenicol"
+     ]
+    }
+   },
+   "subfamily": "2hop",
+   "probe_token_lens": {
+    "units": {
+     "bridge_l2": {
+      "id": [
+       2
+      ]
+     },
+     "bridge_native": {
+      "en": [
+       3,
+       4
+      ],
+      "zh": [
+       2,
+       3
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       2
+      ],
+      "id": [
+       2,
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only Russian (ru), Indonesian (id) or Vietnamese (vi), and famous bridges a well-read adult knows at once (landmarks, inventions, famous books, scientists).",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Russian (ru), Indonesian (id) or Vietnamese (vi), and famous bridges a well-read adult knows at once (landmarks, inventions, famous books, scientists)."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w101c1-mlmh-ru-hagia-sophia-istanbul",
+   "lang": "ru",
+   "prompt": "Величественный византийский храм VI века, возведённый при императоре Юстиниане и позднее превращённый в мечеть, стоит в городе",
+   "target": "Стамбул",
+   "target_alts": [
+    "Стамбул",
+    "Стамбуле",
+    "Константинополь",
+    "Константинополе"
+   ],
+   "intermediates": [
+    "Hagia Sophia"
+   ],
+   "units": [
+    {
+     "role": "bridge_l2",
+     "required": false,
+     "multi_token": true,
+     "forms": {
+      "ru": [
+       "Собор Святой Софии",
+       "Айя-София",
+       "Святая София"
+      ]
+     },
+     "match": [
+      "Собор Святой Софии",
+      "Айя-София",
+      "Святая София"
+     ]
+    },
+    {
+     "role": "bridge_native",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Hagia Sophia",
+       "Aya Sofya"
+      ],
+      "zh": [
+       "圣索菲亚大教堂",
+       "阿亚索菲亚"
+      ]
+     },
+     "match": [
+      "Hagia Sophia",
+      "Aya Sofya",
+      "圣索菲亚大教堂",
+      "阿亚索菲亚"
+     ]
+    },
+    {
+     "role": "language",
+     "required": false,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Russian"
+      ],
+      "zh": [
+       "俄语"
+      ],
+      "ru": [
+       "русский язык",
+       "русский"
+      ]
+     },
+     "match": [
+      "Russian",
+      "俄语",
+      "русский язык",
+      "русский"
+     ]
+    }
+   ],
+   "bridges": [
+    {
+     "question": "Which great 6th-century Byzantine church, built under Emperor Justinian, was later converted into a mosque? Answer with just the name.",
+     "units": [
+      "bridge_l2",
+      "bridge_native"
+     ],
+     "answers": [
+      "Hagia Sophia",
+      "Aya Sofya",
+      "Собор Святой Софии",
+      "Айя-София",
+      "Святая София",
+      "圣索菲亚大教堂",
+      "阿亚索菲亚"
+     ]
+    }
+   ],
+   "mc": {
+    "bridge_native": {
+     "gold": "Hagia Sophia",
+     "distractors": [
+      "St. Peter's Basilica",
+      "Notre-Dame de Paris",
+      "Cologne Cathedral",
+      "St. Mark's Basilica"
+     ]
+    }
+   },
+   "subfamily": "2hop",
+   "probe_token_lens": {
+    "units": {
+     "bridge_l2": {
+      "ru": [
+       6,
+       5,
+       4
+      ]
+     },
+     "bridge_native": {
+      "en": [
+       3,
+       3
+      ],
+      "zh": [
+       4,
+       4
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       1
+      ],
+      "ru": [
+       2,
+       1
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only Russian (ru), Indonesian (id) or Vietnamese (vi), and famous bridges a well-read adult knows at once (landmarks, inventions, famous books, scientists).",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Russian (ru), Indonesian (id) or Vietnamese (vi), and famous bridges a well-read adult knows at once (landmarks, inventions, famous books, scientists)."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 3/60 passed.\n- Rejected by lint before gating: 3x leak: ['tieng'] in prompt; 1x natural:bridge_native 'Einstein' is not creditable; 1x natural:bridge_native 'Titanic' is not creditable; 1x natural:bridge_native 'Mendeleev' is not creditable. Avoid these.\n- Failed (gold -> what the model wrote): Лев Толстой -> model said 'Гоголь' (1/10); полоний -> model said 'Радий' (0/10); мрамора -> model said 'мрамора' (6/10); Поехали -> model said 'В космосе' (0/10); Лувр -> model said 'входит в историю искусства' (0/10); Syailendra -> model said 'Sriwijaya' (0/10); HMS Beagle -> model said 'HMS Beagle' (0/10); Tenzing Norgay -> model said 'Tenzing Norgay' (6/10); Kitty Hawk -> model said 'New York' (0/10); 1889 -> model said '1900' (2/10); Nguyễn Du -> model said 'Lê Thanh Nghị' (2/10); Neil Armstrong -> model said 'Neil Armstrong' (5/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Cambridge; Verona; Alexander Fleming",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w101c2-mlmh-id-pride-and-prejudice-austen",
+   "lang": "id",
+   "prompt": "Novel tahun 1813 tentang Elizabeth Bennet dan Tuan Darcy yang angkuh ditulis oleh pengarang wanita bernama",
+   "target": "Jane Austen",
+   "target_alts": [
+    "Jane Austen",
+    "Austen"
+   ],
+   "intermediates": [
+    "Pride and Prejudice"
+   ],
+   "units": [
+    {
+     "role": "bridge_l2",
+     "required": false,
+     "multi_token": true,
+     "forms": {
+      "id": [
+       "Pride and Prejudice",
+       "Kesombongan dan Prasangka"
+      ]
+     },
+     "match": [
+      "Pride and Prejudice",
+      "Kesombongan dan Prasangka"
+     ]
+    },
+    {
+     "role": "bridge_native",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Pride and Prejudice"
+      ],
+      "zh": [
+       "傲慢与偏见"
+      ]
+     },
+     "match": [
+      "Pride and Prejudice",
+      "傲慢与偏见"
+     ]
+    },
+    {
+     "role": "language",
+     "required": false,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Indonesian"
+      ],
+      "zh": [
+       "印尼语"
+      ],
+      "id": [
+       "Bahasa Indonesia",
+       "bahasa Indonesia"
+      ]
+     },
+     "match": [
+      "Indonesian",
+      "印尼语",
+      "Bahasa Indonesia",
+      "bahasa Indonesia"
+     ]
+    }
+   ],
+   "bridges": [
+    {
+     "question": "Which 1813 novel features Elizabeth Bennet and Mr Darcy? Answer with just the name.",
+     "units": [
+      "bridge_l2",
+      "bridge_native"
+     ],
+     "answers": [
+      "Pride and Prejudice",
+      "Kesombongan dan Prasangka",
+      "傲慢与偏见"
+     ]
+    }
+   ],
+   "mc": {
+    "bridge_native": {
+     "gold": "Pride and Prejudice",
+     "distractors": [
+      "Jane Eyre",
+      "Wuthering Heights",
+      "Emma",
+      "Middlemarch"
+     ]
+    }
+   },
+   "subfamily": "2hop",
+   "probe_token_lens": {
+    "units": {
+     "bridge_l2": {
+      "id": [
+       3,
+       5
+      ]
+     },
+     "bridge_native": {
+      "en": [
+       3
+      ],
+      "zh": [
+       3
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       2
+      ],
+      "id": [
+       2,
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only Russian (ru), Indonesian (id) or Vietnamese (vi), and famous bridges a well-read adult knows at once (landmarks, inventions, famous books, scientists).",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Russian (ru), Indonesian (id) or Vietnamese (vi), and famous bridges a well-read adult knows at once (landmarks, inventions, famous books, scientists)."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 3/60 passed.\n- Rejected by lint before gating: 3x leak: ['tieng'] in prompt; 1x natural:bridge_native 'Einstein' is not creditable; 1x natural:bridge_native 'Titanic' is not creditable; 1x natural:bridge_native 'Mendeleev' is not creditable. Avoid these.\n- Failed (gold -> what the model wrote): Лев Толстой -> model said 'Гоголь' (1/10); полоний -> model said 'Радий' (0/10); мрамора -> model said 'мрамора' (6/10); Поехали -> model said 'В космосе' (0/10); Лувр -> model said 'входит в историю искусства' (0/10); Syailendra -> model said 'Sriwijaya' (0/10); HMS Beagle -> model said 'HMS Beagle' (0/10); Tenzing Norgay -> model said 'Tenzing Norgay' (6/10); Kitty Hawk -> model said 'New York' (0/10); 1889 -> model said '1900' (2/10); Nguyễn Du -> model said 'Lê Thanh Nghị' (2/10); Neil Armstrong -> model said 'Neil Armstrong' (5/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Cambridge; Verona; Alexander Fleming",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w101c2-mlmh-id-french-revolution-1789",
+   "lang": "id",
+   "prompt": "Pergolakan rakyat yang diawali penyerbuan penjara Bastille di Paris dan berujung pada eksekusi Raja Louis XVI meletus pada tahun",
+   "target": "1789",
+   "target_alts": [
+    "1789",
+    "1789 M"
+   ],
+   "intermediates": [
+    "French Revolution"
+   ],
+   "units": [
+    {
+     "role": "bridge_l2",
+     "required": false,
+     "multi_token": true,
+     "forms": {
+      "id": [
+       "Revolusi Prancis"
+      ]
+     },
+     "match": [
+      "Revolusi Prancis"
+     ]
+    },
+    {
+     "role": "bridge_native",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "French Revolution",
+       "the French Revolution"
+      ],
+      "zh": [
+       "法国大革命"
+      ]
+     },
+     "match": [
+      "French Revolution",
+      "the French Revolution",
+      "法国大革命"
+     ]
+    },
+    {
+     "role": "language",
+     "required": false,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Indonesian"
+      ],
+      "zh": [
+       "印尼语"
+      ],
+      "id": [
+       "Bahasa Indonesia",
+       "bahasa Indonesia"
+      ]
+     },
+     "match": [
+      "Indonesian",
+      "印尼语",
+      "Bahasa Indonesia",
+      "bahasa Indonesia"
+     ]
+    }
+   ],
+   "bridges": [
+    {
+     "question": "Which upheaval began with the storming of the Bastille and led to the execution of King Louis XVI? Answer with just the name.",
+     "units": [
+      "bridge_l2",
+      "bridge_native"
+     ],
+     "answers": [
+      "French Revolution",
+      "the French Revolution",
+      "Revolusi Prancis",
+      "法国大革命"
+     ]
+    }
+   ],
+   "mc": {
+    "bridge_native": {
+     "gold": "French Revolution",
+     "distractors": [
+      "American Revolution",
+      "Russian Revolution",
+      "Glorious Revolution",
+      "Revolutions of 1848"
+     ]
+    }
+   },
+   "subfamily": "2hop",
+   "probe_token_lens": {
+    "units": {
+     "bridge_l2": {
+      "id": [
+       3
+      ]
+     },
+     "bridge_native": {
+      "en": [
+       2,
+       3
+      ],
+      "zh": [
+       2
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       2
+      ],
+      "id": [
+       2,
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only Russian (ru), Indonesian (id) or Vietnamese (vi), and famous bridges a well-read adult knows at once (landmarks, inventions, famous books, scientists).",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Russian (ru), Indonesian (id) or Vietnamese (vi), and famous bridges a well-read adult knows at once (landmarks, inventions, famous books, scientists)."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 3/60 passed.\n- Rejected by lint before gating: 3x leak: ['tieng'] in prompt; 1x natural:bridge_native 'Einstein' is not creditable; 1x natural:bridge_native 'Titanic' is not creditable; 1x natural:bridge_native 'Mendeleev' is not creditable. Avoid these.\n- Failed (gold -> what the model wrote): Лев Толстой -> model said 'Гоголь' (1/10); полоний -> model said 'Радий' (0/10); мрамора -> model said 'мрамора' (6/10); Поехали -> model said 'В космосе' (0/10); Лувр -> model said 'входит в историю искусства' (0/10); Syailendra -> model said 'Sriwijaya' (0/10); HMS Beagle -> model said 'HMS Beagle' (0/10); Tenzing Norgay -> model said 'Tenzing Norgay' (6/10); Kitty Hawk -> model said 'New York' (0/10); 1889 -> model said '1900' (2/10); Nguyễn Du -> model said 'Lê Thanh Nghị' (2/10); Neil Armstrong -> model said 'Neil Armstrong' (5/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Cambridge; Verona; Alexander Fleming",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t2-w103c0-mlmh-id-niagara-falls-amerika-utara",
+   "lang": "id",
+   "prompt": "Kumpulan tiga riam raksasa di antara Danau Erie dan Danau Ontario, tempat Annie Taylor meluncur di dalam tong pada 1901, terletak di benua",
+   "target": "Amerika Utara",
+   "target_alts": [
+    "Amerika Utara",
+    "benua Amerika Utara",
+    "Amerika"
+   ],
+   "intermediates": [
+    "Niagara Falls"
+   ],
+   "units": [
+    {
+     "role": "bridge_l2",
+     "required": false,
+     "multi_token": true,
+     "forms": {
+      "id": [
+       "Air Terjun Niagara",
+       "Niagara"
+      ]
+     },
+     "match": [
+      "Air Terjun Niagara",
+      "Niagara"
+     ]
+    },
+    {
+     "role": "bridge_native",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Niagara Falls",
+       "the Niagara Falls"
+      ],
+      "zh": [
+       "尼亚加拉瀑布"
+      ]
+     },
+     "match": [
+      "Niagara Falls",
+      "the Niagara Falls",
+      "尼亚加拉瀑布"
+     ]
+    },
+    {
+     "role": "language",
+     "required": false,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Indonesian"
+      ],
+      "zh": [
+       "印尼语"
+      ],
+      "id": [
+       "Bahasa Indonesia",
+       "bahasa Indonesia"
+      ]
+     },
+     "match": [
+      "Indonesian",
+      "印尼语",
+      "Bahasa Indonesia",
+      "bahasa Indonesia"
+     ]
+    }
+   ],
+   "bridges": [
+    {
+     "question": "Which group of three huge waterfalls between Lake Erie and Lake Ontario did Annie Taylor go over in a barrel in 1901? Answer with just the name.",
+     "units": [
+      "bridge_l2",
+      "bridge_native"
+     ],
+     "answers": [
+      "Niagara Falls",
+      "the Niagara Falls",
+      "Air Terjun Niagara",
+      "Niagara",
+      "尼亚加拉瀑布"
+     ]
+    }
+   ],
+   "mc": {
+    "bridge_native": {
+     "gold": "Niagara Falls",
+     "distractors": [
+      "Victoria Falls",
+      "Iguazu Falls",
+      "Kaieteur Falls",
+      "Rhine Falls"
+     ]
+    }
+   },
+   "subfamily": "2hop",
+   "probe_token_lens": {
+    "units": {
+     "bridge_l2": {
+      "id": [
+       4,
+       1
+      ]
+     },
+     "bridge_native": {
+      "en": [
+       2,
+       3
+      ],
+      "zh": [
+       3
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       2
+      ],
+      "id": [
+       2,
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only Russian (ru), Indonesian (id) or Vietnamese (vi). The bridge is a world-famous entity of two or more words (the Eiffel Tower, the Great Wall, Harry Potter, the Mona Lisa) and the final relation is the easiest one: the city, country or continent it is in, or the person who made it.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Use only Russian (ru), Indonesian (id) or Vietnamese (vi). The bridge is a world-famous entity of two or more words (the Eiffel Tower, the Great Wall, Harry Potter, the Mona Lisa) and the final relation is the easiest one: the city, country or continent it is in, or the person who made it."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 0/59 passed.\n- Rejected by lint before gating: 3x units: bridge_native canonical name is one token (uncreditable); 1x natural:bridge_native 'Elbrus' is not creditable; 1x natural:bridge_native 'Kartini' is not creditable; 1x natural:bridge_native 'Waterloo' is not creditable. Avoid these.\n- Failed (gold -> what the model wrote): Афине -> model said 'Афины' (0/10); Берлин -> model said 'Берлине' (9/10); Рембрандт -> model said 'Питер Понс' (0/10); Тургенев -> model said 'Достоевский' (2/10); Ангара -> model said 'Алтай' (0/10); Малевича -> model said 'Василия Кандинского' (0/10); Александр Дюма -> model said 'Вальтер Скотт' (0/10); Siwa -> model said 'Brahma' (0/10); Pompeii -> model said 'Roma' (1/10); 1945 -> model said '1945' (9/10); Jakarta -> model said 'Jakarta' (3/10); Maya -> model said 'mesoamerika' (0/10). Make items like these easier or pick latents the model knows without a close sibling.",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t2-w103c1-mlmh-ru-buckingham-palace-london",
+   "lang": "ru",
+   "prompt": "Официальная резиденция британских монархов, у ворот которой проходит знаменитая смена караула, находится в городе",
+   "target": "Лондон",
+   "target_alts": [
+    "Лондон",
+    "Лондоне"
+   ],
+   "intermediates": [
+    "Buckingham Palace"
+   ],
+   "units": [
+    {
+     "role": "bridge_l2",
+     "required": false,
+     "multi_token": true,
+     "forms": {
+      "ru": [
+       "Букингемский дворец"
+      ]
+     },
+     "match": [
+      "Букингемский дворец"
+     ]
+    },
+    {
+     "role": "bridge_native",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Buckingham Palace"
+      ],
+      "zh": [
+       "白金汉宫"
+      ]
+     },
+     "match": [
+      "Buckingham Palace",
+      "白金汉宫"
+     ]
+    },
+    {
+     "role": "language",
+     "required": false,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Russian"
+      ],
+      "zh": [
+       "俄语"
+      ],
+      "ru": [
+       "русский язык",
+       "русский"
+      ]
+     },
+     "match": [
+      "Russian",
+      "俄语",
+      "русский язык",
+      "русский"
+     ]
+    }
+   ],
+   "bridges": [
+    {
+     "question": "Which building is the official residence of British monarchs, known for the Changing of the Guard at its gates? Answer with just the name.",
+     "units": [
+      "bridge_l2",
+      "bridge_native"
+     ],
+     "answers": [
+      "Buckingham Palace",
+      "Букингемский дворец",
+      "白金汉宫"
+     ]
+    }
+   ],
+   "mc": {
+    "bridge_native": {
+     "gold": "Buckingham Palace",
+     "distractors": [
+      "Windsor Castle",
+      "Kensington Palace",
+      "Palace of Westminster",
+      "Balmoral Castle"
+     ]
+    }
+   },
+   "subfamily": "2hop",
+   "probe_token_lens": {
+    "units": {
+     "bridge_l2": {
+      "ru": [
+       7
+      ]
+     },
+     "bridge_native": {
+      "en": [
+       2
+      ],
+      "zh": [
+       3
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       1
+      ],
+      "ru": [
+       2,
+       1
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only Russian (ru), Indonesian (id) or Vietnamese (vi). The bridge is a world-famous entity of two or more words (the Eiffel Tower, the Great Wall, Harry Potter, the Mona Lisa) and the final relation is the easiest one: the city, country or continent it is in, or the person who made it.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Use only Russian (ru), Indonesian (id) or Vietnamese (vi). The bridge is a world-famous entity of two or more words (the Eiffel Tower, the Great Wall, Harry Potter, the Mona Lisa) and the final relation is the easiest one: the city, country or continent it is in, or the person who made it."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 0/59 passed.\n- Rejected by lint before gating: 3x units: bridge_native canonical name is one token (uncreditable); 1x natural:bridge_native 'Elbrus' is not creditable; 1x natural:bridge_native 'Kartini' is not creditable; 1x natural:bridge_native 'Waterloo' is not creditable. Avoid these.\n- Failed (gold -> what the model wrote): Афине -> model said 'Афины' (0/10); Берлин -> model said 'Берлине' (9/10); Рембрандт -> model said 'Питер Понс' (0/10); Тургенев -> model said 'Достоевский' (2/10); Ангара -> model said 'Алтай' (0/10); Малевича -> model said 'Василия Кандинского' (0/10); Александр Дюма -> model said 'Вальтер Скотт' (0/10); Siwa -> model said 'Brahma' (0/10); Pompeii -> model said 'Roma' (1/10); 1945 -> model said '1945' (9/10); Jakarta -> model said 'Jakarta' (3/10); Maya -> model said 'mesoamerika' (0/10). Make items like these easier or pick latents the model knows without a close sibling.",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t2-w105c0-mlmh-id-golden-temple-india",
+   "lang": "id",
+   "prompt": "Tempat ibadah tersuci umat Sikh, yang dindingnya dilapisi lempengan berwarna kuning berkilau dan berdiri di tengah kolam suci, terletak di negara",
+   "target": "India",
+   "target_alts": [
+    "India",
+    "Republik India",
+    "Hindia"
+   ],
+   "intermediates": [
+    "Golden Temple"
+   ],
+   "units": [
+    {
+     "role": "bridge_l2",
+     "required": false,
+     "multi_token": true,
+     "forms": {
+      "id": [
+       "Kuil Emas",
+       "Harmandir Sahib"
+      ]
+     },
+     "match": [
+      "Kuil Emas",
+      "Harmandir Sahib"
+     ]
+    },
+    {
+     "role": "bridge_native",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Golden Temple",
+       "Harmandir Sahib",
+       "Sri Harmandir Sahib"
+      ],
+      "zh": [
+       "金庙",
+       "哈曼迪尔·萨希卜"
+      ]
+     },
+     "match": [
+      "Golden Temple",
+      "Harmandir Sahib",
+      "Sri Harmandir Sahib",
+      "金庙",
+      "哈曼迪尔·萨希卜"
+     ]
+    },
+    {
+     "role": "language",
+     "required": false,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Indonesian"
+      ],
+      "zh": [
+       "印尼语"
+      ],
+      "id": [
+       "Bahasa Indonesia",
+       "bahasa Indonesia"
+      ]
+     },
+     "match": [
+      "Indonesian",
+      "印尼语",
+      "Bahasa Indonesia",
+      "bahasa Indonesia"
+     ]
+    }
+   ],
+   "bridges": [
+    {
+     "question": "Which is the holiest gurdwara of Sikhism, a gilded shrine standing in the middle of a sacred pool? Answer with just the name.",
+     "units": [
+      "bridge_l2",
+      "bridge_native"
+     ],
+     "answers": [
+      "Golden Temple",
+      "Harmandir Sahib",
+      "Sri Harmandir Sahib",
+      "Kuil Emas",
+      "金庙",
+      "哈曼迪尔·萨希卜"
+     ]
+    }
+   ],
+   "mc": {
+    "bridge_native": {
+     "gold": "Golden Temple",
+     "distractors": [
+      "Lotus Temple",
+      "Akshardham Temple",
+      "Meenakshi Temple",
+      "Badshahi Mosque"
+     ]
+    }
+   },
+   "subfamily": "2hop",
+   "probe_token_lens": {
+    "units": {
+     "bridge_l2": {
+      "id": [
+       3,
+       4
+      ]
+     },
+     "bridge_native": {
+      "en": [
+       2,
+       4,
+       6
+      ],
+      "zh": [
+       2,
+       8
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       2
+      ],
+      "id": [
+       2,
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only Russian (ru), Indonesian (id) or Vietnamese (vi). The bridge is a world-famous entity of two or more words (the Eiffel Tower, the Great Wall, Harry Potter, the Mona Lisa) and the final relation is the easiest one: the city, country or continent it is in, or the person who made it.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Use only Russian (ru), Indonesian (id) or Vietnamese (vi). The bridge is a world-famous entity of two or more words (the Eiffel Tower, the Great Wall, Harry Potter, the Mona Lisa) and the final relation is the easiest one: the city, country or continent it is in, or the person who made it."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 105,
+    "steer": "- Last wave: 0/11 passed.\n- Rejected by lint before gating: 1x units: bridge_native pads a one-word name with generic words (uncr. Avoid these.\n- Failed (gold -> what the model wrote): Карл Маркс -> model said 'Маркс' (7/10); Дэн Браун -> model said 'Джон Дикк' (0/10); Andersen -> model said 'Hans Christian Andersen' (5/10); Suzanne Collins -> model said 'đến năm 2012' (0/10); Джордж Лукас -> model said 'Джордж Лукас' (1/10); Freddie Mercury -> model said 'John Lennon' (0/10); Quentin Tarantino -> model said 'Cannes' (0/10); Stan Lee -> model said 'Marvel' (0/10); Seattle -> model said 'Jakarta' (0/10); Манчестер -> model said 'Лондон' (0/10). Make items like these easier or pick latents the model knows without a close sibling.",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  }
+ ]
+}

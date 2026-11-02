@@ -20,7 +20,9 @@ precision definition was amended 2026-09-13 — see the audit doc below).
 - raw recall  = mean_t max_c g(c, t)
 
 Punctuation J-lens tokens are not content (``is_content_token``) and are excluded from the
-recall denominator before this module sees them.
+recall denominator before this module sees them. Neither are junk tokens (``is_junk_token``,
+plan 0042 item 2/4): a U+FFFD byte fragment (part of a multi-byte character, rendered as the
+replacement character) or a special / control tag (``<|im_end|>``, ``<think>``, ``<eos>``).
 """
 
 import math
@@ -41,6 +43,7 @@ __all__ = [
     "expected_max_grade",
     "has_emoji",
     "is_content_token",
+    "is_junk_token",
     "lexical_support",
     "match_keys",
     "score_item",
@@ -211,10 +214,26 @@ def has_emoji(tok: str) -> bool:
     return any(unicodedata.category(ch) == "So" for ch in tok)
 
 
+# One tag-shaped token: ``<|...|>`` specials, Qwen's ``<think>`` / ``</tool_response>``, and the
+# adapted subjects' ``<eos>`` / ``<start_of_turn>`` / ``<unused12>``.
+_TAG = re.compile(r"</?[A-Za-z_|][^<>\s]*>")
+
+
+def is_junk_token(tok: str) -> bool:
+    """True for a token that carries no concept by construction: a broken-character fragment
+    (contains U+FFFD, the decoding of part of a multi-byte character — Unicode category So, so
+    ``has_emoji`` used to call it content) or one special / control tag (``<|fim_middle|>``
+    classified as WORD). Camila 2026-10-30: these entered the recall denominator (always "out")
+    and the Stage-P token list; they are excluded from both."""
+    return "\ufffd" in tok or bool(_TAG.fullmatch(tok.strip()))
+
+
 def is_content_token(tok: str) -> bool:
     """True for a J-lens token that can carry a concept: WORD, CJK, or an emoji (✅ ✔ ✓ carry
     "correct / done" as surely as ``YES`` does — Camila 2026-09-13, chat-lmsys-0014). False for
-    punctuation and markdown/math symbols."""
+    punctuation, markdown/math symbols and junk tokens (:func:`is_junk_token`)."""
+    if is_junk_token(tok):
+        return False
     if classify_token(tok) in CONTENT_TYPES:
         return True
     return has_emoji(tok)

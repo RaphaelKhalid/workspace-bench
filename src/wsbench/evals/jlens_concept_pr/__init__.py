@@ -22,7 +22,9 @@ SPEC = register(
         metric="precision",
         higher_is_better=True,
         run=judge.run,
-        calls_per_arm="≈ 35k",
+        min_full_positions=1,
+        full_contiguous=False,
+        calls_per_arm="≈ 71k (x4 arm, 11 layers, foil on)",
         sources="arXiv:2607.15495",
     )
 )

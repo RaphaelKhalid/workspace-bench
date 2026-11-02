@@ -1,0 +1,1309 @@
+{
+ "family": "multihop",
+ "gate": "Qwen3.6-27B behavioral: >=8/10 correct at temp 0.7 (greedy-verified first); association scored against association_aliases.json (phrase-aware, echo-guarded); poetry scored by committed rhyme",
+ "eval_render_note": "EVAL RENDER: feed `prompt` verbatim as plain text, NO chat template (directed-modulation is the only chat-templated family). `gate_variant` records how the item was behaviorally verified and does NOT affect the eval read.",
+ "read": "the last word of the prompt (its last non-whitespace token; one position per item, every judged layer); changed 2026-09-23 from the final prompt token, which for 33 items is the bare space after the last word (Camila: \"multihop should be read on the second to last token, ie the last word, not the space token\"). Per item, `readout.offsets` is the read position counted from the end of the Qwen3.6-27B tokenization of `prompt`: -2 for the 33 prompts that end in a bare space token, -1 for the 67 whose final token is the word itself (59) or the opening quote of `is \"` (8: the quote is the last non-whitespace token and is the read).",
+ "adapt": {
+  "model": "qwen3.5-0.8b",
+  "hf_id": "Qwen/Qwen3.5-0.8B",
+  "frozen": "2026-10-24"
+ },
+ "items": [
+  {
+   "name": "holiday-christmas-monthnum",
+   "prompt": "Fact: Christmas Day is celebrated in month number ",
+   "target": "12",
+   "intermediates": [
+    "December"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -2
+    ]
+   },
+   "id": "holiday-christmas-monthnum",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "bf-christmas-season",
+   "prompt": "Fact: In the Northern Hemisphere, the season during the month of Christmas is",
+   "target": "winter",
+   "intermediates": [
+    "December"
+   ],
+   "source": "staging",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "bf-christmas-season",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "bf-fuji-ocean",
+   "prompt": "Fact: The ocean east of the country of Mount Fuji is the",
+   "target": "Pacific",
+   "intermediates": [
+    "Japan"
+   ],
+   "source": "staging",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "bf-fuji-ocean",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "bf-sphinx-river",
+   "prompt": "Fact: The river flowing through the country of the Great Sphinx is the",
+   "target": "Nile",
+   "intermediates": [
+    "Egypt"
+   ],
+   "source": "staging",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "bf-sphinx-river",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-mh-acropolis-capital",
+   "prompt": "Fact: The capital of the country of the Acropolis is",
+   "target": "Athens",
+   "intermediates": [
+    "Greece"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-mh-acropolis-capital",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-mh-buenosaires-language",
+   "prompt": "Fact: The language of the country whose capital is Buenos Aires is",
+   "target": "Spanish",
+   "intermediates": [
+    "Argentina"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-mh-buenosaires-language",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-mh-colosseum-capital",
+   "prompt": "Fact: The capital of the country where the Colosseum stands is",
+   "target": "Rome",
+   "intermediates": [
+    "Italy"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-mh-colosseum-capital",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-mh-eiffel-capital",
+   "prompt": "Fact: The capital of the country famous for the Eiffel Tower is",
+   "target": "Paris",
+   "intermediates": [
+    "France"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-mh-eiffel-capital",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-mh-fuji-currency",
+   "prompt": "Fact: The currency of the country of Mount Fuji is the",
+   "target": "yen",
+   "intermediates": [
+    "Japan"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-mh-fuji-currency",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-mh-kremlin-language",
+   "prompt": "Fact: The main language of the country where the Kremlin stands is",
+   "target": "Russian",
+   "intermediates": [
+    "Russia"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-mh-kremlin-language",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-mh-lisbon-language",
+   "prompt": "Fact: The language spoken in the country whose capital is Lisbon is",
+   "target": "Portuguese",
+   "intermediates": [
+    "Portugal"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-mh-lisbon-language",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "bf-eiffel-continent",
+   "prompt": "Fact: The continent home to the country of the Eiffel Tower is",
+   "target": "Europe",
+   "intermediates": [
+    "France"
+   ],
+   "source": "staging",
+   "consistency": 0.9,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "bf-eiffel-continent",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-mh-ikea-capital",
+   "prompt": "Fact: The capital of the country where IKEA was founded is",
+   "target": "Stockholm",
+   "intermediates": [
+    "Sweden"
+   ],
+   "source": "staging_b3",
+   "consistency": 0.9,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-mh-ikea-capital",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c0-mh-vienna-language",
+   "prompt": "Fact: The official language of the country whose capital is Vienna is",
+   "target": "German",
+   "intermediates": [
+    "Austria"
+   ],
+   "bridge_question": "Which country has Vienna as its capital?",
+   "bridge_aliases": [
+    "Republic of Austria",
+    "Österreich"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c0-mh-tehran-language",
+   "prompt": "Fact: The official language of the country whose capital is Tehran is",
+   "target": "Persian",
+   "intermediates": [
+    "Iran"
+   ],
+   "bridge_question": "Which country has Tehran as its capital?",
+   "bridge_aliases": [
+    "Islamic Republic of Iran"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c0-mh-bigben-currency",
+   "prompt": "Fact: The currency of the country where Big Ben stands is the",
+   "target": "pound",
+   "intermediates": [
+    "United Kingdom"
+   ],
+   "bridge_question": "In which country does Big Ben stand?",
+   "bridge_aliases": [
+    "UK",
+    "Britain",
+    "Great Britain"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c0-mh-seoul-currency",
+   "prompt": "Fact: The currency of the country whose capital is Seoul is the",
+   "target": "won",
+   "intermediates": [
+    "South Korea"
+   ],
+   "bridge_question": "Which country has Seoul as its capital?",
+   "bridge_aliases": [
+    "Republic of Korea",
+    "Korea"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c0-mh-washington-currency",
+   "prompt": "Fact: The currency of the country whose capital is Washington, D.C. is the",
+   "target": "dollar",
+   "intermediates": [
+    "United States"
+   ],
+   "bridge_question": "Which country has Washington, D.C. as its capital?",
+   "bridge_aliases": [
+    "USA",
+    "United States of America",
+    "America",
+    "US"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c1-mh-forint-capital",
+   "prompt": "Fact: The capital of the country whose currency is the forint is",
+   "target": "Budapest",
+   "intermediates": [
+    "Hungary"
+   ],
+   "bridge_question": "Which country uses the forint as its currency?",
+   "bridge_aliases": [
+    "Magyarország"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c1-mh-telaviv-language",
+   "prompt": "Fact: The official language of the country where the city of Tel Aviv is located is",
+   "target": "Hebrew",
+   "intermediates": [
+    "Israel"
+   ],
+   "bridge_question": "In which country is the city of Tel Aviv located?",
+   "bridge_aliases": [
+    "State of Israel"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c1-mh-kyiv-language",
+   "prompt": "Fact: The official language of the country whose capital is Kyiv is",
+   "target": "Ukrainian",
+   "intermediates": [
+    "Ukraine"
+   ],
+   "bridge_question": "Which country has Kyiv as its capital?",
+   "bridge_aliases": [
+    "the Ukraine"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c1-mh-hanoi-language",
+   "prompt": "Fact: The official language of the country whose capital is Hanoi is",
+   "target": "Vietnamese",
+   "intermediates": [
+    "Vietnam"
+   ],
+   "bridge_question": "Which country has Hanoi as its capital?",
+   "bridge_aliases": [
+    "Viet Nam"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c1-mh-manila-currency",
+   "prompt": "Fact: The currency of the country whose capital is Manila is the",
+   "target": "peso",
+   "intermediates": [
+    "Philippines"
+   ],
+   "bridge_question": "Which country has Manila as its capital?",
+   "bridge_aliases": [
+    "the Philippines",
+    "Republic of the Philippines"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c2-mh-maasaimara-capital",
+   "prompt": "Fact: The capital of the country home to the Maasai Mara reserve is",
+   "target": "Nairobi",
+   "intermediates": [
+    "Kenya"
+   ],
+   "bridge_question": "Which country is home to the Maasai Mara reserve?",
+   "bridge_aliases": [
+    "Republic of Kenya"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c2-mh-islamabad-language",
+   "prompt": "Fact: The national language of the country whose capital is Islamabad is",
+   "target": "Urdu",
+   "intermediates": [
+    "Pakistan"
+   ],
+   "bridge_question": "Which country has Islamabad as its capital?",
+   "bridge_aliases": [
+    "Islamic Republic of Pakistan"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c2-mh-tomsawyer-author-book",
+   "prompt": "Fact: The author who created Tom Sawyer also wrote Adventures of Huckleberry",
+   "target": "Finn",
+   "intermediates": [
+    "Mark Twain"
+   ],
+   "bridge_question": "Which author created the character Tom Sawyer?",
+   "bridge_aliases": [
+    "Samuel Clemens",
+    "Twain"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w101c0-mh-kualalumpur-language",
+   "prompt": "Fact: The national language spoken in the country whose capital is Kuala Lumpur is",
+   "target": "Malay",
+   "intermediates": [
+    "Malaysia"
+   ],
+   "bridge_question": "Which country has Kuala Lumpur as its capital?",
+   "bridge_aliases": [
+    "Federation of Malaysia"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 13/60 passed.\n- Failed (gold -> what the model wrote): Berlin -> model said 'Berlin' (7/10); Lima -> model said 'Lima.' (1/10); Bangkok -> model said 'Phnom Penh' (3/10); Turkish -> model said 'Turkish' (6/10); H -> model said 'H' (10/10); He -> model said 'H' (2/10); Hg -> model said 'Hg' (7/10); Ag -> model said 'Au' (1/10); 1984 -> model said 'Animal Farm' (0/10); England -> model said 'Italy' (0/10); Dutch -> model said 'Dutch' (2/10); 18 -> model said '1' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): German; Persian; pound; won; dollar; Budapest; Hebrew; Ukrainian; Vietnamese; peso; Nairobi; Urdu",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w101c2-mh-angkorwat-language",
+   "prompt": "Fact: The main language of the country where the temple complex Angkor Wat stands is",
+   "target": "Khmer",
+   "intermediates": [
+    "Cambodia"
+   ],
+   "bridge_question": "In which country is Angkor Wat located?",
+   "bridge_aliases": [
+    "Kingdom of Cambodia",
+    "Kampuchea"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 13/60 passed.\n- Failed (gold -> what the model wrote): Berlin -> model said 'Berlin' (7/10); Lima -> model said 'Lima.' (1/10); Bangkok -> model said 'Phnom Penh' (3/10); Turkish -> model said 'Turkish' (6/10); H -> model said 'H' (10/10); He -> model said 'H' (2/10); Hg -> model said 'Hg' (7/10); Ag -> model said 'Au' (1/10); 1984 -> model said 'Animal Farm' (0/10); England -> model said 'Italy' (0/10); Dutch -> model said 'Dutch' (2/10); 18 -> model said '1' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): German; Persian; pound; won; dollar; Budapest; Hebrew; Ukrainian; Vietnamese; peso; Nairobi; Urdu",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w101c2-mh-tbilisi-language",
+   "prompt": "Fact: The language of the country whose capital is Tbilisi is",
+   "target": "Georgian",
+   "intermediates": [
+    "Georgia"
+   ],
+   "bridge_question": "Which country has Tbilisi as its capital?",
+   "bridge_aliases": [
+    "Sakartvelo"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 13/60 passed.\n- Failed (gold -> what the model wrote): Berlin -> model said 'Berlin' (7/10); Lima -> model said 'Lima.' (1/10); Bangkok -> model said 'Phnom Penh' (3/10); Turkish -> model said 'Turkish' (6/10); H -> model said 'H' (10/10); He -> model said 'H' (2/10); Hg -> model said 'Hg' (7/10); Ag -> model said 'Au' (1/10); 1984 -> model said 'Animal Farm' (0/10); England -> model said 'Italy' (0/10); Dutch -> model said 'Dutch' (2/10); 18 -> model said '1' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): German; Persian; pound; won; dollar; Budapest; Hebrew; Ukrainian; Vietnamese; peso; Nairobi; Urdu",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w102c0-multihop-mh-warandpeace-author-book",
+   "prompt": "Fact: The Russian author of War and Peace also wrote the novel Anna",
+   "target": "Karenina",
+   "intermediates": [
+    "Leo Tolstoy"
+   ],
+   "bridge_question": "Who wrote the novel War and Peace?",
+   "bridge_aliases": [
+    "Tolstoy",
+    "Lev Tolstoy"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 3/60 passed.\n- Failed (gold -> what the model wrote): Santiago -> model said 'San Francisco' (0/10); Quito -> model said 'Sucre' (0/10); Bucharest -> model said 'Bucharest' (8/10); Arabic -> model said 'Arabic' (8/10); Icelandic -> model said 'Finnish' (0/10); Serbian -> model said 'Serbo-Croatian' (1/10); Indonesian -> model said 'Indonesian' (6/10); naira -> model said 'Dutch' (3/10); ringgit -> model said 'Kuala Lumpur' (0/10); bolivar -> model said 'pesos' (0/10); Hobbit -> model said 'The Lord of the Rings' (1/10); Faust -> model said 'Werther' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Malay; Khmer; Georgian",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w102c1-multihop-easy-baku-language",
+   "prompt": "Fact: The official language of the country whose capital is Baku is",
+   "target": "Azerbaijani",
+   "intermediates": [
+    "Azerbaijan"
+   ],
+   "bridge_question": "Which country has Baku as its capital?",
+   "bridge_aliases": [
+    "Republic of Azerbaijan"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 3/60 passed.\n- Failed (gold -> what the model wrote): Santiago -> model said 'San Francisco' (0/10); Quito -> model said 'Sucre' (0/10); Bucharest -> model said 'Bucharest' (8/10); Arabic -> model said 'Arabic' (8/10); Icelandic -> model said 'Finnish' (0/10); Serbian -> model said 'Serbo-Croatian' (1/10); Indonesian -> model said 'Indonesian' (6/10); naira -> model said 'Dutch' (3/10); ringgit -> model said 'Kuala Lumpur' (0/10); bolivar -> model said 'pesos' (0/10); Hobbit -> model said 'The Lord of the Rings' (1/10); Faust -> model said 'Werther' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Malay; Khmer; Georgian",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w102c2-multihop-mh-pikespeak-state-capital",
+   "prompt": "Fact: The capital of the US state home to Pikes Peak and the ski town of Aspen is",
+   "target": "Denver",
+   "intermediates": [
+    "Colorado"
+   ],
+   "bridge_question": "In which US state are Pikes Peak and Aspen located?",
+   "bridge_aliases": [
+    "CO",
+    "Centennial State"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 3/60 passed.\n- Failed (gold -> what the model wrote): Santiago -> model said 'San Francisco' (0/10); Quito -> model said 'Sucre' (0/10); Bucharest -> model said 'Bucharest' (8/10); Arabic -> model said 'Arabic' (8/10); Icelandic -> model said 'Finnish' (0/10); Serbian -> model said 'Serbo-Croatian' (1/10); Indonesian -> model said 'Indonesian' (6/10); naira -> model said 'Dutch' (3/10); ringgit -> model said 'Kuala Lumpur' (0/10); bolivar -> model said 'pesos' (0/10); Hobbit -> model said 'The Lord of the Rings' (1/10); Faust -> model said 'Werther' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Malay; Khmer; Georgian",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w102c2-multihop-mh-plymouthrock-state-capital",
+   "prompt": "Fact: The capital of the US state where the Pilgrims landed at Plymouth Rock is",
+   "target": "Boston",
+   "intermediates": [
+    "Massachusetts"
+   ],
+   "bridge_question": "In which US state is Plymouth Rock, where the Pilgrims landed?",
+   "bridge_aliases": [
+    "MA",
+    "Bay State",
+    "Commonwealth of Massachusetts"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 3/60 passed.\n- Failed (gold -> what the model wrote): Santiago -> model said 'San Francisco' (0/10); Quito -> model said 'Sucre' (0/10); Bucharest -> model said 'Bucharest' (8/10); Arabic -> model said 'Arabic' (8/10); Icelandic -> model said 'Finnish' (0/10); Serbian -> model said 'Serbo-Croatian' (1/10); Indonesian -> model said 'Indonesian' (6/10); naira -> model said 'Dutch' (3/10); ringgit -> model said 'Kuala Lumpur' (0/10); bolivar -> model said 'pesos' (0/10); Hobbit -> model said 'The Lord of the Rings' (1/10); Faust -> model said 'Werther' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Malay; Khmer; Georgian",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t2-w103c1-mh-easy-mardi-gras-city-river",
+   "prompt": "Fact: The river that flows through the US city famous for Mardi Gras and the French Quarter is the",
+   "target": "Mississippi",
+   "intermediates": [
+    "New Orleans"
+   ],
+   "bridge_question": "Which US city is famous for Mardi Gras and the French Quarter?",
+   "bridge_aliases": [
+    "NOLA",
+    "the Big Easy"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Use only the most famous bridges (Paris, Einstein, Japan, the Moon) and the easiest final relations (capital, continent, language, colour).",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Use only the most famous bridges (Paris, Einstein, Japan, the Moon) and the easiest final relations (capital, continent, language, colour)."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 4/60 passed.\n- Failed (gold -> what the model wrote): Mongolian -> model said 'Tongva' (2/10); Albanian -> model said 'Albanian' (6/10); Burmese -> model said 'Burmese' (6/10); Somali -> model said 'Somali' (7/10); Montevideo -> model said 'Lima' (0/10); Honolulu -> model said 'Hawaii' (2/10); Cristo -> model said 'Monte' (0/10); Glass -> model said 'Through the Looking-' (3/10); Express -> model said 'The novel was published in 1903.' (1/10); Cubism -> model said 'Realismo' (3/10); Impressionism -> model said \"L'École de Paris\" (1/10); Nutcracker -> model said 'The' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Karenina; Azerbaijani; Denver; Boston",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t2-w103c1-mh-easy-austrian-capital-river",
+   "prompt": "Fact: The river that flows through the Austrian capital is the",
+   "target": "Danube",
+   "intermediates": [
+    "Vienna"
+   ],
+   "bridge_question": "What is the capital city of Austria?",
+   "bridge_aliases": [
+    "Wien"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Use only the most famous bridges (Paris, Einstein, Japan, the Moon) and the easiest final relations (capital, continent, language, colour).",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Use only the most famous bridges (Paris, Einstein, Japan, the Moon) and the easiest final relations (capital, continent, language, colour)."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 4/60 passed.\n- Failed (gold -> what the model wrote): Mongolian -> model said 'Tongva' (2/10); Albanian -> model said 'Albanian' (6/10); Burmese -> model said 'Burmese' (6/10); Somali -> model said 'Somali' (7/10); Montevideo -> model said 'Lima' (0/10); Honolulu -> model said 'Hawaii' (2/10); Cristo -> model said 'Monte' (0/10); Glass -> model said 'Through the Looking-' (3/10); Express -> model said 'The novel was published in 1903.' (1/10); Cubism -> model said 'Realismo' (3/10); Impressionism -> model said \"L'École de Paris\" (1/10); Nutcracker -> model said 'The' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Karenina; Azerbaijani; Denver; Boston",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t2-w104c2-mh-easy-son-of-mary-birthplace",
+   "prompt": "Fact: According to the Gospels, the son of Mary and Joseph was born in the town of",
+   "target": "Bethlehem",
+   "intermediates": [
+    "Jesus"
+   ],
+   "bridge_question": "According to the Gospels, who was the son of Mary and Joseph?",
+   "bridge_aliases": [
+    "Jesus Christ",
+    "Christ",
+    "Jesus of Nazareth"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Use only the most famous bridges (Paris, Einstein, Japan, the Moon) and the easiest final relations (capital, continent, language, colour).",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Use only the most famous bridges (Paris, Einstein, Japan, the Moon) and the easiest final relations (capital, continent, language, colour)."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 104,
+    "steer": "- Last wave: 4/60 passed.\n- Failed (gold -> what the model wrote): Columbus -> model said 'Ohio' (0/10); Nashville -> model said 'Chicago' (0/10); Toronto -> model said 'Ottawa' (0/10); Brisbane -> model said 'Queensland' (0/10); Latin -> model said 'English' (1/10); Quechua -> model said 'Spanish' (3/10); Catalan -> model said 'Basque' (0/10); Basque -> model said 'Basque' (9/10); orange -> model said 'green' (0/10); red -> model said 'red' (7/10); black -> model said 'blue' (0/10); pink -> model said 'red' (1/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): football; Steve; Mississippi; Danube",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t2-w105c0-mh-genesis-firstman-wife",
+   "prompt": "Fact: According to Genesis, the first man created by God had a wife named",
+   "target": "Eve",
+   "intermediates": [
+    "Adam"
+   ],
+   "bridge_question": "According to Genesis, who was the first man created by God?",
+   "bridge_aliases": [
+    "Adam of Eden"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Use only the most famous bridges (Paris, Einstein, Japan, the Moon) and the easiest final relations (capital, continent, language, colour).",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Use only the most famous bridges (Paris, Einstein, Japan, the Moon) and the easiest final relations (capital, continent, language, colour)."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 105,
+    "steer": "- Last wave: 2/60 passed.\n- Failed (gold -> what the model wrote): Abraham -> model said 'George Washington' (0/10); Leonardo -> model said 'Giovanni Bellini' (2/10); Thomas -> model said 'John F. Kennedy' (0/10); mouse -> model said 'Donald Duck' (0/10); rabbit -> model said 'Doc.' (0/10); deer -> model said 'girl.' (0/10); bamboo -> model said 'grass' (1/10); eucalyptus -> model said 'leaves eaten almost exclusively by Austr' (0/10); June -> model said 'August' (0/10); Thursday -> model said 'Friday' (0/10); Wednesday -> model said 'Saturday' (0/10); bow -> model said 'A golden orb' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Jeff; Bethlehem",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t2-w105c0-mh-starwars-blackarmour-daughter",
+   "prompt": "Fact: The Star Wars villain who breathes heavily inside a black helmet and armour has a daughter, Princess",
+   "target": "Leia",
+   "intermediates": [
+    "Darth Vader"
+   ],
+   "bridge_question": "Which Star Wars villain breathes heavily inside a black helmet and armour?",
+   "bridge_aliases": [
+    "Vader",
+    "Anakin Skywalker"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Use only the most famous bridges (Paris, Einstein, Japan, the Moon) and the easiest final relations (capital, continent, language, colour).",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Use only the most famous bridges (Paris, Einstein, Japan, the Moon) and the easiest final relations (capital, continent, language, colour)."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 105,
+    "steer": "- Last wave: 2/60 passed.\n- Failed (gold -> what the model wrote): Abraham -> model said 'George Washington' (0/10); Leonardo -> model said 'Giovanni Bellini' (2/10); Thomas -> model said 'John F. Kennedy' (0/10); mouse -> model said 'Donald Duck' (0/10); rabbit -> model said 'Doc.' (0/10); deer -> model said 'girl.' (0/10); bamboo -> model said 'grass' (1/10); eucalyptus -> model said 'leaves eaten almost exclusively by Austr' (0/10); June -> model said 'August' (0/10); Thursday -> model said 'Friday' (0/10); Wednesday -> model said 'Saturday' (0/10); bow -> model said 'A golden orb' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Jeff; Bethlehem",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t2-w105c1-mh-easy-islamprophet-birthcity",
+   "prompt": "Fact: The prophet who founded Islam was born in the city of",
+   "target": "Mecca",
+   "intermediates": [
+    "Muhammad"
+   ],
+   "bridge_question": "Who was the prophet who founded Islam?",
+   "bridge_aliases": [
+    "Prophet Muhammad",
+    "Mohammed"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Use only the most famous bridges (Paris, Einstein, Japan, the Moon) and the easiest final relations (capital, continent, language, colour).",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Use only the most famous bridges (Paris, Einstein, Japan, the Moon) and the easiest final relations (capital, continent, language, colour)."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 105,
+    "steer": "- Last wave: 2/60 passed.\n- Failed (gold -> what the model wrote): Abraham -> model said 'George Washington' (0/10); Leonardo -> model said 'Giovanni Bellini' (2/10); Thomas -> model said 'John F. Kennedy' (0/10); mouse -> model said 'Donald Duck' (0/10); rabbit -> model said 'Doc.' (0/10); deer -> model said 'girl.' (0/10); bamboo -> model said 'grass' (1/10); eucalyptus -> model said 'leaves eaten almost exclusively by Austr' (0/10); June -> model said 'August' (0/10); Thursday -> model said 'Friday' (0/10); Wednesday -> model said 'Saturday' (0/10); bow -> model said 'A golden orb' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Jeff; Bethlehem",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t2-w105c2-mh-freddiemercury-band-song",
+   "prompt": "Fact: The rock band fronted by Freddie Mercury had a famous six-minute hit called Bohemian",
+   "target": "Rhapsody",
+   "intermediates": [
+    "Queen"
+   ],
+   "bridge_question": "Which rock band was fronted by Freddie Mercury?",
+   "bridge_aliases": [
+    "Queen band"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Use only the most famous bridges (Paris, Einstein, Japan, the Moon) and the easiest final relations (capital, continent, language, colour).",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Use only the most famous bridges (Paris, Einstein, Japan, the Moon) and the easiest final relations (capital, continent, language, colour)."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 105,
+    "steer": "- Last wave: 2/60 passed.\n- Failed (gold -> what the model wrote): Abraham -> model said 'George Washington' (0/10); Leonardo -> model said 'Giovanni Bellini' (2/10); Thomas -> model said 'John F. Kennedy' (0/10); mouse -> model said 'Donald Duck' (0/10); rabbit -> model said 'Doc.' (0/10); deer -> model said 'girl.' (0/10); bamboo -> model said 'grass' (1/10); eucalyptus -> model said 'leaves eaten almost exclusively by Austr' (0/10); June -> model said 'August' (0/10); Thursday -> model said 'Friday' (0/10); Wednesday -> model said 'Saturday' (0/10); bow -> model said 'A golden orb' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Jeff; Bethlehem",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t2-w105c2-mh-starwarscreator-character",
+   "prompt": "Fact: The filmmaker who created Star Wars also co-created the whip-wielding archaeologist Indiana",
+   "target": "Jones",
+   "intermediates": [
+    "George Lucas"
+   ],
+   "bridge_question": "Which filmmaker created Star Wars?",
+   "bridge_aliases": [
+    "Lucas"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Use only the most famous bridges (Paris, Einstein, Japan, the Moon) and the easiest final relations (capital, continent, language, colour).",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Use only the most famous bridges (Paris, Einstein, Japan, the Moon) and the easiest final relations (capital, continent, language, colour)."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 105,
+    "steer": "- Last wave: 2/60 passed.\n- Failed (gold -> what the model wrote): Abraham -> model said 'George Washington' (0/10); Leonardo -> model said 'Giovanni Bellini' (2/10); Thomas -> model said 'John F. Kennedy' (0/10); mouse -> model said 'Donald Duck' (0/10); rabbit -> model said 'Doc.' (0/10); deer -> model said 'girl.' (0/10); bamboo -> model said 'grass' (1/10); eucalyptus -> model said 'leaves eaten almost exclusively by Austr' (0/10); June -> model said 'August' (0/10); Thursday -> model said 'Friday' (0/10); Wednesday -> model said 'Saturday' (0/10); bow -> model said 'A golden orb' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Jeff; Bethlehem",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  }
+ ]
+}

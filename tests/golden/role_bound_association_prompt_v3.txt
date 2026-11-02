@@ -1,0 +1,37 @@
+You judge readouts of a language model's internal activations: noisy free text, or ranked lists of top vocabulary tokens, decoded while the model read a short story in which one person does something to another. Answer the three multiple-choice questions under these rules.
+1. One statement at a time. A statement is one line of the readouts: one '- ' bullet of a free-text sample (or the whole sample if it has no bullets), or one ranked token list. In a free-text sample, bullets are separated by ⁞; each part between ⁞ marks is its own statement. All three answers must come from the SAME statement, and that statement must itself name the person who acts, the action, and the person acted on, and say which way the action goes. Never combine people, actions or directions taken from different statements, bullets, samples, positions or layers, even when together they would fit an option. If no single statement settles a question, answer "cannot tell from the readout" for it.
+2. Exact people. A person matches an option only if the statement gives that person's name (partial names such as 'Marc' for 'Marcus' count) or that person's role, in the same or a synonymous or gendered form ('mom' or '母亲' for a mother, 'cop' for a police officer). A neighbouring but different role is a different person: 'grandmother' is not 'parent', 'mother' is not 'grandparent', 'social worker' is not 'teacher', 'nurse' is not 'doctor'. Never pick an option because it is the closest one, or the only one of its kind. An option may list, after 'also:', other names of its role; each of them names that option's role. A person the statement calls by a different proper name but by that option's role (or one of its listed names) is that option's person, unless the name is another option's.
+3. Exact action. The statement must state the action, with the same verb or a clear synonym ('pursued' for 'chased'). A related but different action ('watched' for 'spied on', 'confronted' for 'blamed') does not match.
+4. Direction. Who is the agent and who is the patient must come from what the statement says, never from what is typical. Tokens of ONE ranked list may be read together to express one meaning, and tokens of adjacent positions at the same layer only to spell one word or name split across them; nothing else combines. A ranked token list names concepts, not who did what to whom: unless a token in it itself states the direction, answer "cannot tell from the readout" for Q1 and Q3 from a token list. A token list that holds two or more of the options singles out none of them, whatever their rank; a list that is a run of people or roles of one kind (relatives, professions, names, ...) singles out none of them, whatever their rank, even when only one of them is an option; otherwise an option that is the only option on its list is singled out by that list.
+5. Do not use world knowledge or plausibility to fill gaps. If the readouts do not support an answer, choose "cannot tell from the readout".
+Then give "quote": a span copied character for character from the ONE statement your answers come from, never across a ⁞ mark (from a token list, its tokens joined by " | "; a word spelled across adjacent positions, as that plain word), without any bracketed marker. Give "" if you answered "cannot tell from the readout" to any question.
+
+=== USER ===
+READOUT:
+TOY READOUT
+
+One statement may describe two people; the sentence it states has the form {person A} -> {action} -> {person B}. People may be referred to by name or role.
+
+Q1. Who performs the action (the agent)?
+  1. Miles, the witness (also: eyewitness)
+  2. Nora, the troublemaker (also: delinquent, truant)
+  3. Marcus, the police officer (also: officer, cop, policeman, policewoman, police)
+  4. Dylan, the thief (also: thieves, robber, crook, burglar, shoplifter, criminal)
+  5. Priya, the bouncer (also: doorman, door staff)
+  6. cannot tell from the readout
+
+Q2. What is the action or state?
+  1. ejected
+  2. searched
+  3. suspected
+  4. chased
+  5. interrogated
+  6. cannot tell from the readout
+
+Q3. Who is the action directed at (the patient)?
+  1. Dylan, the thief (also: thieves, robber, crook, burglar, shoplifter, criminal)
+  2. Priya, the bouncer (also: doorman, door staff)
+  3. Miles, the witness (also: eyewitness)
+  4. Marcus, the police officer (also: officer, cop, policeman, policewoman, police)
+  5. Nora, the troublemaker (also: delinquent, truant)
+  6. cannot tell from the readout

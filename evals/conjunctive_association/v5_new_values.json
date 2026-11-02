@@ -1,0 +1,505 @@
+{
+ "model": "claude-opus-5-5",
+ "prompt": "You extend the answer options of a multiple-choice benchmark question. The options describe a story character's compound state; they vary along a few axes. You are given the option list, one axis, its current values and the phrase that carries that axis in the options. Propose 10 NEW values for that axis. Each new value will be substituted for the phrase in every option that holds it, making a whole new row of wrong options. The goal: a guesser who sees only the options (never the story) must find the new options EXACTLY as likely to be right as the options it currently picks most, like 'orange' beside 'apple' or 'violin' beside 'piano': equally common, equally stereotyped members of the same category. Rules: a new value is a co-hyponym, never a synonym, near-synonym, instance, hypernym or paraphrase of any current value (of this axis or any other) or of another new value, and never a blend that contains a current value; it fits the same situation, and has the same grammatical form, length and register, so it reads naturally in every option after substitution (check a few); plain, ordinary, no extra qualifier. List them most stereotyped first, each written exactly as it will be substituted for the phrase.",
+ "n_new": 2,
+ "max_readout_share": 0.02,
+ "readouts": "/workspace/root/wsb-bp/readouts/final-olens-rl600-x4/conjunctive_association.jsonl",
+ "feedback_run": "/workspace/root/wsb-bp/scratch/fr1-3r6/lg2",
+ "clusters": {
+  "q01": {
+   "axis": "state",
+   "slot": "grief",
+   "slot_options": [
+    "grief over the sudden accidental death of her young child",
+    "grief over the sudden accidental death of her spouse",
+    "grief over the sudden accidental death of her parent",
+    "grief over the sudden accidental death of her longtime mentor",
+    "grief over the sudden accidental death of a stranger whose accident she witnessed",
+    "her young child's grief over her sudden accidental death",
+    "her spouse's grief over her sudden accidental death",
+    "her parent's grief over her sudden accidental death",
+    "her longtime mentor's grief over her sudden accidental death",
+    "a stranger's grief over her sudden accidental death, which the stranger witnessed",
+    "grief over the sudden accidental death of her sibling",
+    "her sibling's grief over her sudden accidental death",
+    "grief over the sudden accidental death of her best friend",
+    "grief over the sudden accidental death of her grandson",
+    "grief over the sudden accidental death of her boyfriend",
+    "grief over the sudden accidental death of her elderly aunt",
+    "grief over the sudden accidental death of her roommate",
+    "her best friend's grief over her sudden accidental death",
+    "her grandson's grief over her sudden accidental death",
+    "her boyfriend's grief over her sudden accidental death",
+    "her elderly aunt's grief over her sudden accidental death",
+    "her roommate's grief over her sudden accidental death"
+   ],
+   "existing_values": [
+    "grief",
+    "guilt"
+   ],
+   "feedback": {
+    "top": [
+     [
+      "grief over the sudden accidental death of her spouse",
+      0.427
+     ],
+     [
+      "grief over the sudden accidental death of her young child",
+      0.287
+     ],
+     [
+      "grief over the sudden accidental death of her best friend",
+      0.16
+     ]
+    ],
+    "n_picks": 150
+   },
+   "proposed": [
+    "anger",
+    "denial",
+    "shock",
+    "despair",
+    "numbness",
+    "rage",
+    "anguish",
+    "bitterness",
+    "regret",
+    "resentment"
+   ],
+   "n_samples": 8360,
+   "hits": {
+    "anger": 12,
+    "denial": 7,
+    "shock": 0,
+    "despair": 47,
+    "numbness": 1,
+    "rage": 1,
+    "anguish": 2,
+    "bitterness": 1,
+    "regret": 157,
+    "resentment": 19
+   }
+  },
+  "q02": {
+   "axis": "state",
+   "slot": "envy",
+   "slot_options": [
+    "envy at her closest friend's recent promotion",
+    "envy at her closest friend's recent engagement",
+    "envy at her closest friend's recent book prize",
+    "envy at her closest friend's recent new house",
+    "envy at her closest friend's recent marathon finish",
+    "her closest friend's envy at her recent promotion",
+    "her closest friend's envy at her recent engagement",
+    "her closest friend's envy at her recent book prize",
+    "her closest friend's envy at her recent new house",
+    "her closest friend's envy at her recent marathon finish",
+    "envy at her closest friend's recent pregnancy",
+    "her closest friend's envy at her recent pregnancy",
+    "envy at her closest friend's recent trip abroad",
+    "envy at her closest friend's recent acceptance letter",
+    "envy at her closest friend's recent new boyfriend",
+    "envy at her closest friend's recent new car",
+    "envy at her closest friend's recent graduation",
+    "her closest friend's envy at her recent trip abroad",
+    "her closest friend's envy at her recent acceptance letter",
+    "her closest friend's envy at her recent new boyfriend",
+    "her closest friend's envy at her recent new car",
+    "her closest friend's envy at her recent graduation"
+   ],
+   "existing_values": [
+    "envy",
+    "pride"
+   ],
+   "feedback": {
+    "top": [
+     [
+      "envy at her closest friend's recent engagement",
+      0.6
+     ],
+     [
+      "envy at her closest friend's recent promotion",
+      0.247
+     ],
+     [
+      "envy at her closest friend's recent pregnancy",
+      0.047
+     ]
+    ],
+    "n_picks": 150
+   },
+   "proposed": [
+    "jealousy",
+    "resentment",
+    "joy",
+    "happiness",
+    "bitterness",
+    "delight",
+    "sadness",
+    "relief",
+    "anger",
+    "surprise"
+   ],
+   "n_samples": 8360,
+   "hits": {
+    "jealousy": 67,
+    "resentment": 52,
+    "joy": 77,
+    "happiness": 31,
+    "bitterness": 8,
+    "delight": 3,
+    "sadness": 30,
+    "relief": 30,
+    "anger": 13,
+    "surprise": 16
+   }
+  },
+  "q03": {
+   "axis": "content",
+   "slot": "medical test results",
+   "slot_options": [
+    "dread while awaiting medical test results concerning himself",
+    "dread while awaiting medical test results concerning his spouse",
+    "dread while awaiting medical test results concerning his parent",
+    "dread while awaiting medical test results concerning his grown child",
+    "dread while awaiting medical test results concerning his closest friend",
+    "his spouse's dread while awaiting medical test results concerning him",
+    "his parent's dread while awaiting medical test results concerning him",
+    "his grown child's dread while awaiting medical test results concerning him",
+    "his closest friend's dread while awaiting medical test results concerning him",
+    "dread while awaiting medical test results concerning his brother",
+    "his brother's dread while awaiting medical test results concerning him",
+    "dread while awaiting medical test results concerning his sister",
+    "dread while awaiting medical test results concerning his business partner",
+    "dread while awaiting medical test results concerning his roommate",
+    "dread while awaiting medical test results concerning his coworker",
+    "dread while awaiting medical test results concerning his mentor",
+    "his sister's dread while awaiting medical test results concerning him",
+    "his business partner's dread while awaiting medical test results concerning him",
+    "his roommate's dread while awaiting medical test results concerning him",
+    "his coworker's dread while awaiting medical test results concerning him",
+    "his mentor's dread while awaiting medical test results concerning him"
+   ],
+   "existing_values": [
+    "medical test results",
+    "a possible layoff"
+   ],
+   "feedback": {
+    "top": [
+     [
+      "dread while awaiting medical test results concerning himself",
+      0.7
+     ],
+     [
+      "dread while awaiting medical test results concerning his spouse",
+      0.28
+     ],
+     [
+      "dread while awaiting medical test results concerning his parent",
+      0.013
+     ]
+    ],
+    "n_picks": 150
+   },
+   "proposed": [
+    "a court verdict",
+    "biopsy results",
+    "a jury's verdict",
+    "an eviction decision",
+    "a visa decision",
+    "a custody ruling",
+    "exam results",
+    "a loan decision",
+    "a parole decision",
+    "a deportation ruling"
+   ],
+   "n_samples": 8360,
+   "hits": {
+    "a court verdict": 8,
+    "biopsy results": 14,
+    "a jury's verdict": 0,
+    "an eviction decision": 5,
+    "a visa decision": 1,
+    "a custody ruling": 2,
+    "exam results": 11,
+    "a loan decision": 21,
+    "a parole decision": 0,
+    "a deportation ruling": 1
+   }
+  },
+  "q06": {
+   "axis": "content",
+   "slot": "the job offer",
+   "slot_options": [
+    "her mistaken belief that the job offer is still undecided",
+    "her unconfirmed but accurate suspicion that the job offer has already been settled"
+   ],
+   "existing_values": [
+    "the job offer",
+    "the apartment",
+    "the casting",
+    "the grant",
+    "the team selection",
+    "the partnership",
+    "the bid",
+    "the custody case",
+    "the visa application",
+    "the residency match",
+    "the house sale"
+   ],
+   "feedback": {
+    "top": [
+     [
+      "her mistaken belief that the job offer is still undecided",
+      0.433
+     ],
+     [
+      "her unconfirmed but accurate suspicion that the job offer has already been settled",
+      0.38
+     ],
+     [
+      "her unconfirmed but accurate suspicion that the grant has already been settled",
+      0.06
+     ]
+    ],
+    "n_picks": 150
+   },
+   "proposed": [
+    "the promotion",
+    "the scholarship",
+    "the college admission",
+    "the loan application",
+    "the audition",
+    "the election",
+    "the lawsuit",
+    "the contract",
+    "the adoption",
+    "the merger"
+   ],
+   "n_samples": 8360,
+   "hits": {
+    "the promotion": 113,
+    "the scholarship": 12,
+    "the college admission": 5,
+    "the loan application": 14,
+    "the audition": 217,
+    "the election": 6,
+    "the lawsuit": 3,
+    "the contract": 14,
+    "the adoption": 2,
+    "the merger": 3
+   }
+  },
+  "q07": {
+   "axis": "blend",
+   "slot": "keep the scare hidden from",
+   "slot_options": [
+    "relief at her own reassuring medical news, and the intent to keep the scare hidden from her spouse",
+    "relief at her own reassuring medical news, and the intent to keep the scare hidden from her parent",
+    "relief at her own reassuring medical news, and the intent to keep the scare hidden from her grown child",
+    "relief at her own reassuring medical news, and the intent to keep the scare hidden from her sibling",
+    "relief at her own reassuring medical news, and the intent to keep the scare hidden from her closest friend",
+    "her spouse's relief at their own reassuring medical news, and their intent to keep the scare hidden from her",
+    "her parent's relief at their own reassuring medical news, and their intent to keep the scare hidden from her",
+    "her grown child's relief at their own reassuring medical news, and their intent to keep the scare hidden from her",
+    "her sibling's relief at their own reassuring medical news, and their intent to keep the scare hidden from her",
+    "her closest friend's relief at their own reassuring medical news, and their intent to keep the scare hidden from her",
+    "relief at her own reassuring medical news, and the intent to keep the scare hidden from her boyfriend",
+    "her boyfriend's relief at their own reassuring medical news, and their intent to keep the scare hidden from her",
+    "relief at her own reassuring medical news, and the intent to keep the scare hidden from her mother-in-law",
+    "relief at her own reassuring medical news, and the intent to keep the scare hidden from her grandchild",
+    "relief at her own reassuring medical news, and the intent to keep the scare hidden from her coworker",
+    "relief at her own reassuring medical news, and the intent to keep the scare hidden from her roommate",
+    "relief at her own reassuring medical news, and the intent to keep the scare hidden from her niece",
+    "her mother-in-law's relief at their own reassuring medical news, and their intent to keep the scare hidden from her",
+    "her grandchild's relief at their own reassuring medical news, and their intent to keep the scare hidden from her",
+    "her coworker's relief at their own reassuring medical news, and their intent to keep the scare hidden from her",
+    "her roommate's relief at their own reassuring medical news, and their intent to keep the scare hidden from her",
+    "her niece's relief at their own reassuring medical news, and their intent to keep the scare hidden from her"
+   ],
+   "existing_values": [
+    "keep the scare hidden from",
+    "finally tell ... about the scare"
+   ],
+   "feedback": {
+    "top": [
+     [
+      "relief at her own reassuring medical news, and the intent to keep the scare hidden from her spouse",
+      0.527
+     ],
+     [
+      "relief at her own reassuring medical news, and the intent to finally tell her spouse about the scare",
+      0.307
+     ],
+     [
+      "relief at her own reassuring medical news, and the intent to keep the scare hidden from her grown child",
+      0.1
+     ]
+    ],
+    "n_picks": 150
+   },
+   "proposed": [
+    "downplay the scare to",
+    "stop worrying",
+    "celebrate the news with",
+    "thank God for the news with",
+    "confess her past fears to",
+    "apologize for her distance to",
+    "make amends with",
+    "reconnect with",
+    "plan a getaway with",
+    "spend more time with"
+   ],
+   "n_samples": 8360,
+   "hits": {
+    "downplay the scare to": 1,
+    "stop worrying": 2,
+    "celebrate the news with": 106,
+    "thank God for the news with": 4,
+    "confess her past fears to": 9,
+    "apologize for her distance to": 2,
+    "make amends with": 2,
+    "reconnect with": 53,
+    "plan a getaway with": 6,
+    "spend more time with": 38
+   }
+  },
+  "q09": {
+   "axis": "state",
+   "slot": "relief",
+   "slot_options": [
+    "his belief that his spouse privately feels relief that the move was canceled",
+    "his belief that his parent privately feels relief that the move was canceled",
+    "his belief that his young child privately feels relief that the move was canceled",
+    "his belief that his sibling privately feels relief that the move was canceled",
+    "his belief that his closest friend privately feels relief that the move was canceled",
+    "his spouse's belief that he privately feels relief that the move was canceled",
+    "his parent's belief that he privately feels relief that the move was canceled",
+    "his young child's belief that he privately feels relief that the move was canceled",
+    "his sibling's belief that he privately feels relief that the move was canceled",
+    "his closest friend's belief that he privately feels relief that the move was canceled",
+    "his belief that his grandparent privately feels relief that the move was canceled",
+    "his grandparent's belief that he privately feels relief that the move was canceled",
+    "his belief that his business partner privately feels relief that the move was canceled",
+    "his belief that his boss privately feels relief that the move was canceled",
+    "his belief that his mother-in-law privately feels relief that the move was canceled",
+    "his belief that his coworker privately feels relief that the move was canceled",
+    "his belief that his landlord privately feels relief that the move was canceled",
+    "his business partner's belief that he privately feels relief that the move was canceled",
+    "his boss's belief that he privately feels relief that the move was canceled",
+    "his mother-in-law's belief that he privately feels relief that the move was canceled",
+    "his coworker's belief that he privately feels relief that the move was canceled",
+    "his landlord's belief that he privately feels relief that the move was canceled"
+   ],
+   "existing_values": [
+    "relief",
+    "disappointment"
+   ],
+   "feedback": {
+    "top": [
+     [
+      "his belief that his spouse privately feels relief that the move was canceled",
+      0.773
+     ],
+     [
+      "his spouse's belief that he privately feels relief that the move was canceled",
+      0.133
+     ],
+     [
+      "his belief that his spouse privately feels disappointment that the move was canceled",
+      0.033
+     ]
+    ],
+    "n_picks": 150
+   },
+   "proposed": [
+    "guilt",
+    "resentment",
+    "gratitude",
+    "regret",
+    "frustration",
+    "sadness",
+    "joy",
+    "anger",
+    "embarrassment",
+    "anxiety"
+   ],
+   "n_samples": 8360,
+   "hits": {
+    "guilt": 8,
+    "resentment": 16,
+    "gratitude": 8,
+    "regret": 49,
+    "frustration": 30,
+    "sadness": 58,
+    "joy": 46,
+    "anger": 18,
+    "embarrassment": 3,
+    "anxiety": 21
+   }
+  }
+ },
+ "relation": {
+  "q01": {
+   "slot": "her parent",
+   "values": [
+    "her partner",
+    "her fiancé"
+   ],
+   "n_samples": 8360,
+   "hits": {
+    "her partner": 64,
+    "her fiancé": 32
+   }
+  },
+  "q03": {
+   "slot": "his parent",
+   "values": [
+    "his fiancée",
+    "his girlfriend"
+   ],
+   "n_samples": 8360,
+   "hits": {
+    "his fiancée": 95,
+    "his girlfriend": 83
+   }
+  },
+  "q07": {
+   "slot": "her sibling",
+   "values": [
+    "her partner",
+    "her fiancé"
+   ],
+   "n_samples": 8360,
+   "hits": {
+    "her partner": 63,
+    "her fiancé": 44
+   }
+  },
+  "q09": {
+   "slot": "his sibling",
+   "values": [
+    "his fiancée",
+    "his girlfriend"
+   ],
+   "n_samples": 8360,
+   "hits": {
+    "his fiancée": 52,
+    "his girlfriend": 21
+   }
+  },
+  "q10": {
+   "slot": "her sibling",
+   "values": [
+    "her partner",
+    "her fiancé"
+   ],
+   "n_samples": 8360,
+   "hits": {
+    "her partner": 77,
+    "her fiancé": 59
+   }
+  }
+ },
+ "relation_source": "hand-chosen, Camila r3 (2026-11-01): equally-common relation confusers, 'spouse vs partner'; hits = cached O-lens readout samples of the cluster naming the value"
+}

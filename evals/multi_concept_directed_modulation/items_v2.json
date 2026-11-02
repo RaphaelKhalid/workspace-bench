@@ -1,0 +1,1545 @@
+{
+ "family": "multi-concept-directed-modulation",
+ "source": "evals/workspace-bench/hillclimbing_evals/multi_token/multi_concept_directed_modulation/read_bank.json (source repo; items byte-identical, wrapped in this header)",
+ "head_template": "Think about %s. Now write this sentence: \"%s\"\n",
+ "control_template": "Read carefully. Now write this sentence: \"%s\"\n",
+ "target_sentence": "The committee will meet on Thursday to review the annual budget.",
+ "render": "chat (Qwen chat template, enable_thinking=False, no system prompt): the item prompt is the user turn; the assistant turn opens with the empty <think>\n\n</think>\n\n block and the target sentence is PREFILLED as the assistant's text (bare sentence, no closing quote)",
+ "read_cells": "every token of the prefilled target sentence (12 tokens: The committee will meet on Thursday to review the annual budget .), offsets -12 .. -1 from the end of the render",
+ "read_cells_changed": "2026-09-23 (Camila: \"we aren't prefilling the sentence, we are just including it as part of the user message, so fix that and rerun all the methods on the written sentence tokens\"). Before: bare render of the prompt text followed by a greedy rollout, read cells = the last 20 tokens of the rollout (offsets -1 .. -20), which mixed the written sentence, the model's <think> block and its re-write of the prompt.",
+ "concept_edits": "2026-10-29 (plan 0025): bare-word concepts removed from `concepts` (prompts unchanged) because the all-concepts rule would fail those items on an incidental unit: d-violin: 'floating', d-cranes: 'seven', d-fox-a: 'chasing', d-fox-b: 'chasing'",
+ "new_items": [
+  "d-lighthouse-keeper",
+  "d-hot-air-balloon",
+  "d-snapping-turtle",
+  "d-stained-glass-window",
+  "d-jukebox",
+  "d-erupting-volcano",
+  "d-accordion",
+  "d-garden-gnome",
+  "d-octopus",
+  "d-windmill",
+  "d-forklift",
+  "d-cactus",
+  "d-carousel",
+  "d-telescope",
+  "d-flamingo",
+  "d-igloo",
+  "d-chandelier",
+  "d-pineapple",
+  "d-lava-lamp",
+  "d-lumberjack",
+  "d-kangaroo",
+  "d-trampoline",
+  "d-walrus",
+  "d-giraffe",
+  "d-penguin",
+  "d-dentist",
+  "d-dragon",
+  "d-wheelbarrow",
+  "d-koala",
+  "d-astronaut",
+  "d-pirate-ship",
+  "d-parrot",
+  "d-blacksmith",
+  "d-hedgehog",
+  "d-ballerina",
+  "d-camel",
+  "d-scarecrow",
+  "d-lion",
+  "d-chef",
+  "d-robot",
+  "d-elephant",
+  "d-monk",
+  "d-zebra",
+  "d-baker",
+  "d-owl",
+  "d-gorilla",
+  "d-nurse",
+  "d-samurai",
+  "d-tiger",
+  "d-clown",
+  "d-mermaid",
+  "d-pilot",
+  "d-squirrel",
+  "d-magician",
+  "d-sheep",
+  "d-detective",
+  "d-crocodile",
+  "b-admi-mix-ab",
+  "b-admi-mix-ba",
+  "b-rese-mix-ab",
+  "b-rese-mix-ba",
+  "b-prot-mix-ab",
+  "b-prot-mix-ba",
+  "b-teac-mix-ab",
+  "b-teac-mix-ba",
+  "b-forg-same-ab",
+  "b-forg-same-ba",
+  "b-betr-same-ab",
+  "b-betr-same-ba",
+  "b-worr-same-ab",
+  "b-worr-same-ba",
+  "b-blam-same-ab",
+  "b-blam-same-ba"
+ ],
+ "expanded": "2026-10-29 (plan 0025): 27 -> 100 items (73 authored; the original 27 byte-identical)",
+ "version": 2,
+ "new_items_v2": [
+  "b-moza-ent-ab",
+  "b-moza-ent-ba",
+  "b-batm-ent-ab",
+  "b-batm-ent-ba",
+  "b-thor-ent-ab",
+  "b-thor-ent-ba",
+  "b-stra-ent-ab",
+  "b-stra-ent-ba",
+  "b-holm-ent-ab",
+  "b-holm-ent-ba",
+  "b-achi-ent-ab",
+  "b-achi-ent-ba",
+  "b-edis-ent-ab",
+  "b-edis-ent-ba",
+  "b-caes-ent-ab",
+  "b-caes-ent-ba"
+ ],
+ "camilas_entity_pairs": [
+  "b-moza-ent",
+  "b-batm-ent",
+  "b-thor-ent",
+  "b-stra-ent"
+ ],
+ "companions": {
+  "relation_clusters": "relation_clusters_v2.json",
+  "distractor_groups": "distractor_groups_v2.json"
+ },
+ "expanded_v2": "2026-10-30 (plan 0034): 100 -> 116 items; the 100 v1 items byte-identical (relation items gain `roles`), 16 `entity` items in 8 ab/ba pairs (Camila's Mozart/Salieri, Batman/Joker, Thor/Loki, Stravinsky/Schoenberg plus four added pairs); `layers` removed (every family reads readplan.GRID)",
+ "items": [
+  {
+   "name": "d-none",
+   "prompt": "Read carefully. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [],
+   "stratum": "control"
+  },
+  {
+   "name": "d-plumber",
+   "prompt": "Think about the plumber's blue ladder leaning against the mango tree. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "plumber",
+    "blue ladder",
+    "mango tree"
+   ],
+   "stratum": "novel"
+  },
+  {
+   "name": "d-violin",
+   "prompt": "Think about a violin floating in a jar of honey. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "violin",
+    "jar of honey"
+   ],
+   "stratum": "novel"
+  },
+  {
+   "name": "d-cranes",
+   "prompt": "Think about seven origami cranes balanced on a pocket calculator. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "origami cranes",
+    "pocket calculator"
+   ],
+   "stratum": "novel"
+  },
+  {
+   "name": "d-umbrella",
+   "prompt": "Think about the librarian's wet umbrella dripping onto the chessboard. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "librarian",
+    "wet umbrella",
+    "chessboard"
+   ],
+   "stratum": "novel"
+  },
+  {
+   "name": "d-petrichor",
+   "prompt": "Think about the smell of rain on dry ground. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "smell of rain",
+    "dry ground"
+   ],
+   "stratum": "anchor"
+  },
+  {
+   "name": "d-chain-egg",
+   "prompt": "Think about this plan: crack the egg, then whisk the flour, then heat the pan. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "crack the egg",
+    "whisk the flour",
+    "heat the pan"
+   ],
+   "stratum": "chain",
+   "order_gt": [
+    "egg",
+    "flour",
+    "pan"
+   ]
+  },
+  {
+   "name": "d-chain-key",
+   "prompt": "Think about this sequence: find the key, then unlock the gate, then cross the bridge. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "find the key",
+    "unlock the gate",
+    "cross the bridge"
+   ],
+   "stratum": "chain",
+   "order_gt": [
+    "key",
+    "gate",
+    "bridge"
+   ]
+  },
+  {
+   "name": "d-fox-a",
+   "prompt": "Think about a silver fox chasing a paper kite. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "silver fox",
+    "paper kite"
+   ],
+   "stratum": "pair",
+   "binding": "silver-fox"
+  },
+  {
+   "name": "d-fox-b",
+   "prompt": "Think about a paper fox chasing a silver kite. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "paper fox",
+    "silver kite"
+   ],
+   "stratum": "pair",
+   "binding": "paper-fox"
+  },
+  {
+   "name": "b-none",
+   "prompt": "Read carefully. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [],
+   "stratum": "control"
+  },
+  {
+   "name": "b-ange-mix-ab",
+   "prompt": "Think about Adam being angry at Betty. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "Adam being angry at Betty"
+   ],
+   "stratum": "mix",
+   "emotion": "anger",
+   "order": "ab",
+   "roles": {
+    "agent": "Adam",
+    "patient": "Betty",
+    "relation": "being angry at",
+    "cluster": "anger"
+   }
+  },
+  {
+   "name": "b-ange-mix-ba",
+   "prompt": "Think about Betty being angry at Adam. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "Betty being angry at Adam"
+   ],
+   "stratum": "mix",
+   "emotion": "anger",
+   "order": "ba",
+   "roles": {
+    "agent": "Betty",
+    "patient": "Adam",
+    "relation": "being angry at",
+    "cluster": "anger"
+   }
+  },
+  {
+   "name": "b-jeal-mix-ab",
+   "prompt": "Think about Maria being jealous of Tom. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "Maria being jealous of Tom"
+   ],
+   "stratum": "mix",
+   "emotion": "jealousy",
+   "order": "ab",
+   "roles": {
+    "agent": "Maria",
+    "patient": "Tom",
+    "relation": "being jealous of",
+    "cluster": "envy"
+   }
+  },
+  {
+   "name": "b-jeal-mix-ba",
+   "prompt": "Think about Tom being jealous of Maria. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "Tom being jealous of Maria"
+   ],
+   "stratum": "mix",
+   "emotion": "jealousy",
+   "order": "ba",
+   "roles": {
+    "agent": "Tom",
+    "patient": "Maria",
+    "relation": "being jealous of",
+    "cluster": "envy"
+   }
+  },
+  {
+   "name": "b-fear-mix-ab",
+   "prompt": "Think about Susan being afraid of David. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "Susan being afraid of David"
+   ],
+   "stratum": "mix",
+   "emotion": "fear",
+   "order": "ab",
+   "roles": {
+    "agent": "Susan",
+    "patient": "David",
+    "relation": "being afraid of",
+    "cluster": "fear"
+   }
+  },
+  {
+   "name": "b-fear-mix-ba",
+   "prompt": "Think about David being afraid of Susan. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "David being afraid of Susan"
+   ],
+   "stratum": "mix",
+   "emotion": "fear",
+   "order": "ba",
+   "roles": {
+    "agent": "David",
+    "patient": "Susan",
+    "relation": "being afraid of",
+    "cluster": "fear"
+   }
+  },
+  {
+   "name": "b-prid-mix-ab",
+   "prompt": "Think about Emma being proud of James. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "Emma being proud of James"
+   ],
+   "stratum": "mix",
+   "emotion": "pride",
+   "order": "ab",
+   "roles": {
+    "agent": "Emma",
+    "patient": "James",
+    "relation": "being proud of",
+    "cluster": "esteem"
+   }
+  },
+  {
+   "name": "b-prid-mix-ba",
+   "prompt": "Think about James being proud of Emma. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "James being proud of Emma"
+   ],
+   "stratum": "mix",
+   "emotion": "pride",
+   "order": "ba",
+   "roles": {
+    "agent": "James",
+    "patient": "Emma",
+    "relation": "being proud of",
+    "cluster": "esteem"
+   }
+  },
+  {
+   "name": "b-ange-same-ab",
+   "prompt": "Think about Adam being angry at Brian. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "Adam being angry at Brian"
+   ],
+   "stratum": "same",
+   "emotion": "anger",
+   "order": "ab",
+   "roles": {
+    "agent": "Adam",
+    "patient": "Brian",
+    "relation": "being angry at",
+    "cluster": "anger"
+   }
+  },
+  {
+   "name": "b-ange-same-ba",
+   "prompt": "Think about Brian being angry at Adam. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "Brian being angry at Adam"
+   ],
+   "stratum": "same",
+   "emotion": "anger",
+   "order": "ba",
+   "roles": {
+    "agent": "Brian",
+    "patient": "Adam",
+    "relation": "being angry at",
+    "cluster": "anger"
+   }
+  },
+  {
+   "name": "b-jeal-same-ab",
+   "prompt": "Think about Alice being jealous of Karen. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "Alice being jealous of Karen"
+   ],
+   "stratum": "same",
+   "emotion": "jealousy",
+   "order": "ab",
+   "roles": {
+    "agent": "Alice",
+    "patient": "Karen",
+    "relation": "being jealous of",
+    "cluster": "envy"
+   }
+  },
+  {
+   "name": "b-jeal-same-ba",
+   "prompt": "Think about Karen being jealous of Alice. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "Karen being jealous of Alice"
+   ],
+   "stratum": "same",
+   "emotion": "jealousy",
+   "order": "ba",
+   "roles": {
+    "agent": "Karen",
+    "patient": "Alice",
+    "relation": "being jealous of",
+    "cluster": "envy"
+   }
+  },
+  {
+   "name": "b-debt-same-ab",
+   "prompt": "Think about Carlos owing money to Miguel. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "Carlos owing money to Miguel"
+   ],
+   "stratum": "same",
+   "emotion": "debt",
+   "order": "ab",
+   "roles": {
+    "agent": "Carlos",
+    "patient": "Miguel",
+    "relation": "owing money to",
+    "cluster": "debt"
+   }
+  },
+  {
+   "name": "b-debt-same-ba",
+   "prompt": "Think about Miguel owing money to Carlos. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "Miguel owing money to Carlos"
+   ],
+   "stratum": "same",
+   "emotion": "debt",
+   "order": "ba",
+   "roles": {
+    "agent": "Miguel",
+    "patient": "Carlos",
+    "relation": "owing money to",
+    "cluster": "debt"
+   }
+  },
+  {
+   "name": "b-trus-same-ab",
+   "prompt": "Think about Nina trusting Petra completely. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "Nina trusting Petra completely"
+   ],
+   "stratum": "same",
+   "emotion": "trust",
+   "order": "ab",
+   "roles": {
+    "agent": "Nina",
+    "patient": "Petra",
+    "relation": "trusting",
+    "cluster": "trust"
+   }
+  },
+  {
+   "name": "b-trus-same-ba",
+   "prompt": "Think about Petra trusting Nina completely. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "Petra trusting Nina completely"
+   ],
+   "stratum": "same",
+   "emotion": "trust",
+   "order": "ba",
+   "roles": {
+    "agent": "Petra",
+    "patient": "Nina",
+    "relation": "trusting",
+    "cluster": "trust"
+   }
+  },
+  {
+   "name": "d-lighthouse-keeper",
+   "prompt": "Think about a lighthouse keeper. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "lighthouse keeper"
+   ],
+   "stratum": "single"
+  },
+  {
+   "name": "d-hot-air-balloon",
+   "prompt": "Think about a hot-air balloon. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "hot-air balloon"
+   ],
+   "stratum": "single"
+  },
+  {
+   "name": "d-snapping-turtle",
+   "prompt": "Think about a snapping turtle. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "snapping turtle"
+   ],
+   "stratum": "single"
+  },
+  {
+   "name": "d-stained-glass-window",
+   "prompt": "Think about a stained-glass window. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "stained-glass window"
+   ],
+   "stratum": "single"
+  },
+  {
+   "name": "d-jukebox",
+   "prompt": "Think about a jukebox. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "jukebox"
+   ],
+   "stratum": "single"
+  },
+  {
+   "name": "d-erupting-volcano",
+   "prompt": "Think about an erupting volcano. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "erupting volcano"
+   ],
+   "stratum": "single"
+  },
+  {
+   "name": "d-accordion",
+   "prompt": "Think about an accordion. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "accordion"
+   ],
+   "stratum": "single"
+  },
+  {
+   "name": "d-garden-gnome",
+   "prompt": "Think about a garden gnome. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "garden gnome"
+   ],
+   "stratum": "single"
+  },
+  {
+   "name": "d-octopus",
+   "prompt": "Think about an octopus. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "octopus"
+   ],
+   "stratum": "single"
+  },
+  {
+   "name": "d-windmill",
+   "prompt": "Think about a windmill. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "windmill"
+   ],
+   "stratum": "single"
+  },
+  {
+   "name": "d-forklift",
+   "prompt": "Think about a forklift. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "forklift"
+   ],
+   "stratum": "single"
+  },
+  {
+   "name": "d-cactus",
+   "prompt": "Think about a cactus. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "cactus"
+   ],
+   "stratum": "single"
+  },
+  {
+   "name": "d-carousel",
+   "prompt": "Think about a carousel. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "carousel"
+   ],
+   "stratum": "single"
+  },
+  {
+   "name": "d-telescope",
+   "prompt": "Think about a telescope. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "telescope"
+   ],
+   "stratum": "single"
+  },
+  {
+   "name": "d-flamingo",
+   "prompt": "Think about a flamingo. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "flamingo"
+   ],
+   "stratum": "single"
+  },
+  {
+   "name": "d-igloo",
+   "prompt": "Think about an igloo. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "igloo"
+   ],
+   "stratum": "single"
+  },
+  {
+   "name": "d-chandelier",
+   "prompt": "Think about a chandelier. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "chandelier"
+   ],
+   "stratum": "single"
+  },
+  {
+   "name": "d-pineapple",
+   "prompt": "Think about a pineapple. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "pineapple"
+   ],
+   "stratum": "single"
+  },
+  {
+   "name": "d-lava-lamp",
+   "prompt": "Think about a lava lamp. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "lava lamp"
+   ],
+   "stratum": "single"
+  },
+  {
+   "name": "d-lumberjack",
+   "prompt": "Think about a lumberjack. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "lumberjack"
+   ],
+   "stratum": "single"
+  },
+  {
+   "name": "d-kangaroo",
+   "prompt": "Think about a kangaroo. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "kangaroo"
+   ],
+   "stratum": "single"
+  },
+  {
+   "name": "d-trampoline",
+   "prompt": "Think about a trampoline. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "trampoline"
+   ],
+   "stratum": "single"
+  },
+  {
+   "name": "d-walrus",
+   "prompt": "Think about a walrus sitting in a barber chair. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "walrus",
+    "barber chair"
+   ],
+   "stratum": "double"
+  },
+  {
+   "name": "d-giraffe",
+   "prompt": "Think about a giraffe wearing a scarf. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "giraffe",
+    "scarf"
+   ],
+   "stratum": "double"
+  },
+  {
+   "name": "d-penguin",
+   "prompt": "Think about a penguin holding a lantern. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "penguin",
+    "lantern"
+   ],
+   "stratum": "double"
+  },
+  {
+   "name": "d-dentist",
+   "prompt": "Think about a dentist eating spaghetti. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "dentist",
+    "spaghetti"
+   ],
+   "stratum": "double"
+  },
+  {
+   "name": "d-dragon",
+   "prompt": "Think about a dragon guarding a treasure chest. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "dragon",
+    "treasure chest"
+   ],
+   "stratum": "double"
+  },
+  {
+   "name": "d-wheelbarrow",
+   "prompt": "Think about a wheelbarrow full of tulips. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "wheelbarrow",
+    "tulips"
+   ],
+   "stratum": "double"
+  },
+  {
+   "name": "d-koala",
+   "prompt": "Think about a koala asleep on a motorcycle. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "koala",
+    "motorcycle"
+   ],
+   "stratum": "double"
+  },
+  {
+   "name": "d-astronaut",
+   "prompt": "Think about an astronaut planting potatoes. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "astronaut",
+    "potatoes"
+   ],
+   "stratum": "double"
+  },
+  {
+   "name": "d-pirate-ship",
+   "prompt": "Think about a pirate ship stuck in a glacier. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "pirate ship",
+    "glacier"
+   ],
+   "stratum": "double"
+  },
+  {
+   "name": "d-parrot",
+   "prompt": "Think about a parrot perched on a skateboard. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "parrot",
+    "skateboard"
+   ],
+   "stratum": "double"
+  },
+  {
+   "name": "d-blacksmith",
+   "prompt": "Think about a blacksmith forging a horseshoe. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "blacksmith",
+    "horseshoe"
+   ],
+   "stratum": "double"
+  },
+  {
+   "name": "d-hedgehog",
+   "prompt": "Think about a hedgehog inside a teacup. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "hedgehog",
+    "teacup"
+   ],
+   "stratum": "double"
+  },
+  {
+   "name": "d-ballerina",
+   "prompt": "Think about a ballerina on a tightrope. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "ballerina",
+    "tightrope"
+   ],
+   "stratum": "double"
+  },
+  {
+   "name": "d-camel",
+   "prompt": "Think about a camel standing in a parking garage. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "camel",
+    "parking garage"
+   ],
+   "stratum": "double"
+  },
+  {
+   "name": "d-scarecrow",
+   "prompt": "Think about a scarecrow holding a fishing rod. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "scarecrow",
+    "fishing rod"
+   ],
+   "stratum": "double"
+  },
+  {
+   "name": "d-lion",
+   "prompt": "Think about a lion wearing a bow tie. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "lion",
+    "bow tie"
+   ],
+   "stratum": "double"
+  },
+  {
+   "name": "d-chef",
+   "prompt": "Think about a chef juggling coconuts. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "chef",
+    "coconuts"
+   ],
+   "stratum": "double"
+  },
+  {
+   "name": "d-robot",
+   "prompt": "Think about a robot watering bonsai trees. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "robot",
+    "bonsai trees"
+   ],
+   "stratum": "double"
+  },
+  {
+   "name": "d-elephant",
+   "prompt": "Think about an elephant standing beside a castle. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "elephant",
+    "castle"
+   ],
+   "stratum": "double"
+  },
+  {
+   "name": "d-monk",
+   "prompt": "Think about a monk riding a bicycle through a bamboo forest. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "monk",
+    "bicycle",
+    "bamboo forest"
+   ],
+   "stratum": "novel"
+  },
+  {
+   "name": "d-zebra",
+   "prompt": "Think about a zebra painting a portrait of a sumo wrestler. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "zebra",
+    "portrait",
+    "sumo wrestler"
+   ],
+   "stratum": "novel"
+  },
+  {
+   "name": "d-baker",
+   "prompt": "Think about a baker carrying a mattress across a sand dune. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "baker",
+    "mattress",
+    "sand dune"
+   ],
+   "stratum": "novel"
+  },
+  {
+   "name": "d-owl",
+   "prompt": "Think about an owl wearing a monocle in a phone booth. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "owl",
+    "monocle",
+    "phone booth"
+   ],
+   "stratum": "novel"
+  },
+  {
+   "name": "d-gorilla",
+   "prompt": "Think about a gorilla stacking pancakes in an elevator. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "gorilla",
+    "pancakes",
+    "elevator"
+   ],
+   "stratum": "novel"
+  },
+  {
+   "name": "d-nurse",
+   "prompt": "Think about a nurse feeding carrots to a llama. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "nurse",
+    "carrots",
+    "llama"
+   ],
+   "stratum": "novel"
+  },
+  {
+   "name": "d-samurai",
+   "prompt": "Think about a samurai peeling a banana beside a waterfall. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "samurai",
+    "banana",
+    "waterfall"
+   ],
+   "stratum": "novel"
+  },
+  {
+   "name": "d-tiger",
+   "prompt": "Think about a tiger asleep in a bathtub full of marbles. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "tiger",
+    "bathtub",
+    "marbles"
+   ],
+   "stratum": "novel"
+  },
+  {
+   "name": "d-clown",
+   "prompt": "Think about a clown steering a tractor through a vineyard. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "clown",
+    "tractor",
+    "vineyard"
+   ],
+   "stratum": "novel"
+  },
+  {
+   "name": "d-mermaid",
+   "prompt": "Think about a mermaid polishing a bowling ball in a laundromat. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "mermaid",
+    "bowling ball",
+    "laundromat"
+   ],
+   "stratum": "novel"
+  },
+  {
+   "name": "d-pilot",
+   "prompt": "Think about a pilot knitting a sweater on a mountaintop. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "pilot",
+    "sweater",
+    "mountaintop"
+   ],
+   "stratum": "novel"
+  },
+  {
+   "name": "d-squirrel",
+   "prompt": "Think about a squirrel balancing an anvil on a fire hydrant. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "squirrel",
+    "anvil",
+    "fire hydrant"
+   ],
+   "stratum": "novel"
+  },
+  {
+   "name": "d-magician",
+   "prompt": "Think about a magician pouring lemonade into a top hat. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "magician",
+    "lemonade",
+    "top hat"
+   ],
+   "stratum": "novel"
+  },
+  {
+   "name": "d-sheep",
+   "prompt": "Think about a sheep driving a bulldozer past a radio tower. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "sheep",
+    "bulldozer",
+    "radio tower"
+   ],
+   "stratum": "novel"
+  },
+  {
+   "name": "d-detective",
+   "prompt": "Think about a detective holding a pumpkin in a greenhouse. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "detective",
+    "pumpkin",
+    "greenhouse"
+   ],
+   "stratum": "novel"
+  },
+  {
+   "name": "d-crocodile",
+   "prompt": "Think about a crocodile wearing roller skates in a cathedral. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "crocodile",
+    "roller skates",
+    "cathedral"
+   ],
+   "stratum": "novel"
+  },
+  {
+   "name": "b-admi-mix-ab",
+   "prompt": "Think about Oliver admiring Ingrid. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "Oliver admiring Ingrid"
+   ],
+   "stratum": "mix",
+   "emotion": "admiration",
+   "order": "ab",
+   "roles": {
+    "agent": "Oliver",
+    "patient": "Ingrid",
+    "relation": "admiring",
+    "cluster": "esteem"
+   }
+  },
+  {
+   "name": "b-admi-mix-ba",
+   "prompt": "Think about Ingrid admiring Oliver. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "Ingrid admiring Oliver"
+   ],
+   "stratum": "mix",
+   "emotion": "admiration",
+   "order": "ba",
+   "roles": {
+    "agent": "Ingrid",
+    "patient": "Oliver",
+    "relation": "admiring",
+    "cluster": "esteem"
+   }
+  },
+  {
+   "name": "b-rese-mix-ab",
+   "prompt": "Think about Lucas resenting Hannah. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "Lucas resenting Hannah"
+   ],
+   "stratum": "mix",
+   "emotion": "resentment",
+   "order": "ab",
+   "roles": {
+    "agent": "Lucas",
+    "patient": "Hannah",
+    "relation": "resenting",
+    "cluster": "anger"
+   }
+  },
+  {
+   "name": "b-rese-mix-ba",
+   "prompt": "Think about Hannah resenting Lucas. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "Hannah resenting Lucas"
+   ],
+   "stratum": "mix",
+   "emotion": "resentment",
+   "order": "ba",
+   "roles": {
+    "agent": "Hannah",
+    "patient": "Lucas",
+    "relation": "resenting",
+    "cluster": "anger"
+   }
+  },
+  {
+   "name": "b-prot-mix-ab",
+   "prompt": "Think about Sofia protecting Daniel. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "Sofia protecting Daniel"
+   ],
+   "stratum": "mix",
+   "emotion": "protection",
+   "order": "ab",
+   "roles": {
+    "agent": "Sofia",
+    "patient": "Daniel",
+    "relation": "protecting",
+    "cluster": "protection"
+   }
+  },
+  {
+   "name": "b-prot-mix-ba",
+   "prompt": "Think about Daniel protecting Sofia. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "Daniel protecting Sofia"
+   ],
+   "stratum": "mix",
+   "emotion": "protection",
+   "order": "ba",
+   "roles": {
+    "agent": "Daniel",
+    "patient": "Sofia",
+    "relation": "protecting",
+    "cluster": "protection"
+   }
+  },
+  {
+   "name": "b-teac-mix-ab",
+   "prompt": "Think about Ethan teaching Chloe. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "Ethan teaching Chloe"
+   ],
+   "stratum": "mix",
+   "emotion": "teaching",
+   "order": "ab",
+   "roles": {
+    "agent": "Ethan",
+    "patient": "Chloe",
+    "relation": "teaching",
+    "cluster": "teaching"
+   }
+  },
+  {
+   "name": "b-teac-mix-ba",
+   "prompt": "Think about Chloe teaching Ethan. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "Chloe teaching Ethan"
+   ],
+   "stratum": "mix",
+   "emotion": "teaching",
+   "order": "ba",
+   "roles": {
+    "agent": "Chloe",
+    "patient": "Ethan",
+    "relation": "teaching",
+    "cluster": "teaching"
+   }
+  },
+  {
+   "name": "b-forg-same-ab",
+   "prompt": "Think about Rachel forgiving Laura. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "Rachel forgiving Laura"
+   ],
+   "stratum": "same",
+   "emotion": "forgiveness",
+   "order": "ab",
+   "roles": {
+    "agent": "Rachel",
+    "patient": "Laura",
+    "relation": "forgiving",
+    "cluster": "forgiveness"
+   }
+  },
+  {
+   "name": "b-forg-same-ba",
+   "prompt": "Think about Laura forgiving Rachel. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "Laura forgiving Rachel"
+   ],
+   "stratum": "same",
+   "emotion": "forgiveness",
+   "order": "ba",
+   "roles": {
+    "agent": "Laura",
+    "patient": "Rachel",
+    "relation": "forgiving",
+    "cluster": "forgiveness"
+   }
+  },
+  {
+   "name": "b-betr-same-ab",
+   "prompt": "Think about Kevin betraying Derek. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "Kevin betraying Derek"
+   ],
+   "stratum": "same",
+   "emotion": "betrayal",
+   "order": "ab",
+   "roles": {
+    "agent": "Kevin",
+    "patient": "Derek",
+    "relation": "betraying",
+    "cluster": "betrayal"
+   }
+  },
+  {
+   "name": "b-betr-same-ba",
+   "prompt": "Think about Derek betraying Kevin. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "Derek betraying Kevin"
+   ],
+   "stratum": "same",
+   "emotion": "betrayal",
+   "order": "ba",
+   "roles": {
+    "agent": "Derek",
+    "patient": "Kevin",
+    "relation": "betraying",
+    "cluster": "betrayal"
+   }
+  },
+  {
+   "name": "b-worr-same-ab",
+   "prompt": "Think about Julia worrying about Fiona. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "Julia worrying about Fiona"
+   ],
+   "stratum": "same",
+   "emotion": "worry",
+   "order": "ab",
+   "roles": {
+    "agent": "Julia",
+    "patient": "Fiona",
+    "relation": "worrying about",
+    "cluster": "fear"
+   }
+  },
+  {
+   "name": "b-worr-same-ba",
+   "prompt": "Think about Fiona worrying about Julia. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "Fiona worrying about Julia"
+   ],
+   "stratum": "same",
+   "emotion": "worry",
+   "order": "ba",
+   "roles": {
+    "agent": "Fiona",
+    "patient": "Julia",
+    "relation": "worrying about",
+    "cluster": "fear"
+   }
+  },
+  {
+   "name": "b-blam-same-ab",
+   "prompt": "Think about Peter blaming Simon. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "Peter blaming Simon"
+   ],
+   "stratum": "same",
+   "emotion": "blame",
+   "order": "ab",
+   "roles": {
+    "agent": "Peter",
+    "patient": "Simon",
+    "relation": "blaming",
+    "cluster": "anger"
+   }
+  },
+  {
+   "name": "b-blam-same-ba",
+   "prompt": "Think about Simon blaming Peter. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "Simon blaming Peter"
+   ],
+   "stratum": "same",
+   "emotion": "blame",
+   "order": "ba",
+   "roles": {
+    "agent": "Simon",
+    "patient": "Peter",
+    "relation": "blaming",
+    "cluster": "anger"
+   }
+  },
+  {
+   "name": "b-moza-ent-ab",
+   "prompt": "Think about Mozart being jealous of Salieri. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "Mozart being jealous of Salieri"
+   ],
+   "stratum": "entity",
+   "order": "ab",
+   "roles": {
+    "agent": "Mozart",
+    "patient": "Salieri",
+    "relation": "being jealous of",
+    "cluster": "envy"
+   },
+   "prior_direction": "ba"
+  },
+  {
+   "name": "b-moza-ent-ba",
+   "prompt": "Think about Salieri being jealous of Mozart. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "Salieri being jealous of Mozart"
+   ],
+   "stratum": "entity",
+   "order": "ba",
+   "roles": {
+    "agent": "Salieri",
+    "patient": "Mozart",
+    "relation": "being jealous of",
+    "cluster": "envy"
+   },
+   "prior_direction": "ba"
+  },
+  {
+   "name": "b-batm-ent-ab",
+   "prompt": "Think about Batman chasing the Joker. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "Batman chasing the Joker"
+   ],
+   "stratum": "entity",
+   "order": "ab",
+   "roles": {
+    "agent": "Batman",
+    "patient": "the Joker",
+    "relation": "chasing",
+    "cluster": "pursuit"
+   },
+   "prior_direction": "ab",
+   "aliases": {
+    "the Joker": [
+     "Joker"
+    ]
+   }
+  },
+  {
+   "name": "b-batm-ent-ba",
+   "prompt": "Think about the Joker chasing Batman. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "the Joker chasing Batman"
+   ],
+   "stratum": "entity",
+   "order": "ba",
+   "roles": {
+    "agent": "the Joker",
+    "patient": "Batman",
+    "relation": "chasing",
+    "cluster": "pursuit"
+   },
+   "prior_direction": "ab",
+   "aliases": {
+    "the Joker": [
+     "Joker"
+    ]
+   }
+  },
+  {
+   "name": "b-thor-ent-ab",
+   "prompt": "Think about Thor being angry at Loki. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "Thor being angry at Loki"
+   ],
+   "stratum": "entity",
+   "order": "ab",
+   "roles": {
+    "agent": "Thor",
+    "patient": "Loki",
+    "relation": "being angry at",
+    "cluster": "anger"
+   },
+   "prior_direction": null
+  },
+  {
+   "name": "b-thor-ent-ba",
+   "prompt": "Think about Loki being angry at Thor. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "Loki being angry at Thor"
+   ],
+   "stratum": "entity",
+   "order": "ba",
+   "roles": {
+    "agent": "Loki",
+    "patient": "Thor",
+    "relation": "being angry at",
+    "cluster": "anger"
+   },
+   "prior_direction": null
+  },
+  {
+   "name": "b-stra-ent-ab",
+   "prompt": "Think about Stravinsky being distrustful of Schoenberg. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "Stravinsky being distrustful of Schoenberg"
+   ],
+   "stratum": "entity",
+   "order": "ab",
+   "roles": {
+    "agent": "Stravinsky",
+    "patient": "Schoenberg",
+    "relation": "being distrustful of",
+    "cluster": "fear"
+   },
+   "prior_direction": null,
+   "aliases": {
+    "Schoenberg": [
+     "Schönberg",
+     "Schonberg"
+    ]
+   }
+  },
+  {
+   "name": "b-stra-ent-ba",
+   "prompt": "Think about Schoenberg being distrustful of Stravinsky. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "Schoenberg being distrustful of Stravinsky"
+   ],
+   "stratum": "entity",
+   "order": "ba",
+   "roles": {
+    "agent": "Schoenberg",
+    "patient": "Stravinsky",
+    "relation": "being distrustful of",
+    "cluster": "fear"
+   },
+   "prior_direction": null,
+   "aliases": {
+    "Schoenberg": [
+     "Schönberg",
+     "Schonberg"
+    ]
+   }
+  },
+  {
+   "name": "b-holm-ent-ab",
+   "prompt": "Think about Holmes outwitting Moriarty. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "Holmes outwitting Moriarty"
+   ],
+   "stratum": "entity",
+   "order": "ab",
+   "roles": {
+    "agent": "Holmes",
+    "patient": "Moriarty",
+    "relation": "outwitting",
+    "cluster": "outwitting"
+   },
+   "prior_direction": "ab",
+   "aliases": {
+    "Holmes": [
+     "Sherlock"
+    ]
+   }
+  },
+  {
+   "name": "b-holm-ent-ba",
+   "prompt": "Think about Moriarty outwitting Holmes. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "Moriarty outwitting Holmes"
+   ],
+   "stratum": "entity",
+   "order": "ba",
+   "roles": {
+    "agent": "Moriarty",
+    "patient": "Holmes",
+    "relation": "outwitting",
+    "cluster": "outwitting"
+   },
+   "prior_direction": "ab",
+   "aliases": {
+    "Holmes": [
+     "Sherlock"
+    ]
+   }
+  },
+  {
+   "name": "b-achi-ent-ab",
+   "prompt": "Think about Achilles mourning Patroclus. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "Achilles mourning Patroclus"
+   ],
+   "stratum": "entity",
+   "order": "ab",
+   "roles": {
+    "agent": "Achilles",
+    "patient": "Patroclus",
+    "relation": "mourning",
+    "cluster": "mourning"
+   },
+   "prior_direction": "ab",
+   "aliases": {
+    "Patroclus": [
+     "Patroklos"
+    ]
+   }
+  },
+  {
+   "name": "b-achi-ent-ba",
+   "prompt": "Think about Patroclus mourning Achilles. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "Patroclus mourning Achilles"
+   ],
+   "stratum": "entity",
+   "order": "ba",
+   "roles": {
+    "agent": "Patroclus",
+    "patient": "Achilles",
+    "relation": "mourning",
+    "cluster": "mourning"
+   },
+   "prior_direction": "ab",
+   "aliases": {
+    "Patroclus": [
+     "Patroklos"
+    ]
+   }
+  },
+  {
+   "name": "b-edis-ent-ab",
+   "prompt": "Think about Edison resenting Tesla. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "Edison resenting Tesla"
+   ],
+   "stratum": "entity",
+   "order": "ab",
+   "roles": {
+    "agent": "Edison",
+    "patient": "Tesla",
+    "relation": "resenting",
+    "cluster": "anger"
+   },
+   "prior_direction": null
+  },
+  {
+   "name": "b-edis-ent-ba",
+   "prompt": "Think about Tesla resenting Edison. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "Tesla resenting Edison"
+   ],
+   "stratum": "entity",
+   "order": "ba",
+   "roles": {
+    "agent": "Tesla",
+    "patient": "Edison",
+    "relation": "resenting",
+    "cluster": "anger"
+   },
+   "prior_direction": null
+  },
+  {
+   "name": "b-caes-ent-ab",
+   "prompt": "Think about Caesar trusting Brutus completely. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "Caesar trusting Brutus completely"
+   ],
+   "stratum": "entity",
+   "order": "ab",
+   "roles": {
+    "agent": "Caesar",
+    "patient": "Brutus",
+    "relation": "trusting",
+    "cluster": "trust"
+   },
+   "prior_direction": "ab"
+  },
+  {
+   "name": "b-caes-ent-ba",
+   "prompt": "Think about Brutus trusting Caesar completely. Now write this sentence: \"The committee will meet on Thursday to review the annual budget.\"\n",
+   "concepts": [
+    "Brutus trusting Caesar completely"
+   ],
+   "stratum": "entity",
+   "order": "ba",
+   "roles": {
+    "agent": "Brutus",
+    "patient": "Caesar",
+    "relation": "trusting",
+    "cluster": "trust"
+   },
+   "prior_direction": "ab"
+  }
+ ]
+}

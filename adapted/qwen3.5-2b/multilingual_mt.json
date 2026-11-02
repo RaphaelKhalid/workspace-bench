@@ -1,0 +1,148 @@
+{
+ "family": "multilingual-hard",
+ "parent_family": "multilingual-mt",
+ "contract": {
+  "multi_token": true,
+  "include_target": false,
+  "conjunctive_units": true
+ },
+ "gate": "Qwen3.6-27B behavioral, chat-templated capability question (enable_thinking=False, answer stem): greedy-verified AND >=8/10 @ temp 0.7 (answer in the text's language). EVAL RENDER: plain prompt, final prompt token; conjunctive regex over concept (en/zh gloss) + language; the L2 target is never creditable (next token).",
+ "frozen": "2026-09-10",
+ "adapt": {
+  "model": "qwen3.5-2b",
+  "hf_id": "Qwen/Qwen3.5-2B",
+  "frozen": "2026-10-20"
+ },
+ "items": [
+  {
+   "name": "multilingual-au-t1-w102c0-mlh-vi-o-khoa",
+   "lang": "vi",
+   "prompt": "Vật bằng sắt thép có cái quai cong, dùng để móc vào then cửa hoặc cổng, chỉ mở ra được khi tra đúng chìa vào, gọi là",
+   "target": "ổ khóa",
+   "target_alts": [
+    "ổ khoá",
+    "cái khóa",
+    "khóa cửa",
+    "khóa"
+   ],
+   "intermediates": [
+    "padlock"
+   ],
+   "units": [
+    {
+     "role": "concept",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "padlock",
+       "pad lock"
+      ],
+      "zh": [
+       "挂锁",
+       "锁头"
+      ]
+     },
+     "match": [
+      "padlock",
+      "pad lock",
+      "挂锁",
+      "锁头"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Vietnamese"
+      ],
+      "zh": [
+       "越南语"
+      ],
+      "vi": [
+       "ổ khóa",
+       "ổ khoá",
+       "cái khóa",
+       "khóa cửa",
+       "khóa"
+      ]
+     },
+     "match": [
+      "Vietnamese",
+      "越南语",
+      "ổ khóa",
+      "ổ khoá",
+      "cái khóa",
+      "khóa cửa",
+      "khóa"
+     ]
+    }
+   ],
+   "mc": {
+    "concept": {
+     "gold": "padlock",
+     "distractors": [
+      "door key",
+      "door hinge",
+      "door handle",
+      "safe box"
+     ]
+    }
+   },
+   "subfamily": "fwd",
+   "probe_token_lens": {
+    "units": {
+     "concept": {
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       2,
+       2
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       2
+      ],
+      "vi": [
+       2,
+       2,
+       2,
+       2,
+       1
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use only Russian (ru), Vietnamese (vi) or Indonesian (id), the only languages this model passes, and common concrete nouns (household objects, animals, food).",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Russian (ru), Vietnamese (vi) or Indonesian (id), the only languages this model passes, and common concrete nouns (household objects, animals, food)."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 0/60 passed.\n- Rejected by lint before gating: 6x units: concept pads a one-word name with generic words (uncreditab; 1x natural:concept 'seahorse' is not creditable; 1x leak: ['đuoi'] in prompt; 1x natural:concept 'cow' is not creditable. Avoid these.\n- Failed (gold -> what the model wrote): светофор -> model said 'светофор' (4/10); морская свинка -> model said 'это котенок' (0/10); кресло-качалка -> model said 'символ покоя и уюта' (0/10); сахарная вата -> model said 'Воздушное розовое лакомство из тончайших' (0/10); лампочка -> model said 'свет' (0/10); резиновые сапоги -> model said 'не промочив ноги, — это' (0/10); máy sấy tóc -> model said 'bàn chải khô' (0/10); mì ăn liền -> model said 'bún' (0/10); mạng nhện -> model said 'bẫy rận' (0/10); nước tương -> model said 'Sốt tương' (1/10); con trâu -> model said 'cày' (1/10); karet gelang -> model said 'kancing' (0/10). Make items like these easier or pick latents the model knows without a close sibling.",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  }
+ ]
+}

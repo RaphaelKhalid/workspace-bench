@@ -1,0 +1,825 @@
+{
+ "version": "distractors-v3.1",
+ "model": "claude-opus-5-5",
+ "prompt": "You write the wrong options (distractors) of a three-part multiple-choice question about a short two-person story: who did it (one of five people), what they did (one of five actions), to whom (one of the same five people). The two real people and the real action are given. A judge who knows only the TOPIC of the story (its setting and kind of situation) must not be able to tell the right options from yours: the real pair must not stand out as the obvious pair, and the real action must not stand out as the obvious action. Pick from the candidate lists only.\n\nROLES: pick 3 people of this same setting. Two of them must form an ALTERNATIVE PAIR: two people who are just as natural a pair for a two-person story in this setting as the real two, so a reader could not tell which pair the story is about. The third must be a natural partner for one of the real people. None may be a synonym, instance, hypernym or hyponym of either real role, none may be another word the stories use for one of the two real people, and none may be a person who appears in either story.\n\nACTIONS: pick 4 actions, each as natural between the real two people AND between your alternative pair as the real action is, so the real action does not stand out for the real pair. None may be a synonym or near-synonym of the real action (no 'followed' for 'chased'), none may be a way of doing the real action or have it as a way of doing it (no 'overcharged' for 'cheated' or 'billed'), and none may happen in either story, between anyone.",
+ "lint": "candidates only; no term overlap with a real role or another pick; no role term and no action form in either story",
+ "screen_prompt": "You guess the answer to a who-did-what-to-whom question about a short story you cannot read. You may be told the story's topic. Give your single best guess for each of the three lists: who did it, what they did, to whom. Do not explain.",
+ "screen": [
+  {
+   "round": 0,
+   "solved": [
+    "oa-babysitter-toddler-feed",
+    "oa-bouncer-patron-eject",
+    "oa-burglar-neighbor-spy",
+    "oa-celebrity-fan-photograph",
+    "oa-child-grandparent-hug",
+    "oa-comedian-heckler-humiliate",
+    "oa-critic-musician-mock",
+    "oa-detective-suspect-follow",
+    "oa-doctor-patient-comfort",
+    "oa-firefighter-homeowner-rescue",
+    "oa-grandmother-grandson-indulge",
+    "oa-guard-visitor-search",
+    "oa-journalist-politician-interview",
+    "oa-king-servant-bow",
+    "oa-lawyer-witness-interrogate",
+    "oa-librarian-borrower-fine",
+    "oa-mother-son-angry",
+    "oa-nurse-patient-lie",
+    "oa-pilot-passenger-reassure",
+    "oa-plumber-homeowner-overcharge",
+    "oa-police-thief-chase",
+    "oa-priest-parishioner-forgive",
+    "oa-professor-dean-report",
+    "oa-shopowner-supplier-cheat",
+    "oa-sister-brother-tease",
+    "oa-teacher-parent-blame",
+    "oa-teacher-student-scold",
+    "oa-tourist-local-ask",
+    "oa-veteran-recruit-lookdown",
+    "oa-wife-husband-suspect"
+   ]
+  },
+  {
+   "round": 1,
+   "solved": [
+    "oa-babysitter-toddler-feed",
+    "oa-bouncer-patron-eject",
+    "oa-celebrity-fan-photograph",
+    "oa-comedian-heckler-humiliate",
+    "oa-critic-musician-mock",
+    "oa-detective-suspect-follow",
+    "oa-firefighter-homeowner-rescue",
+    "oa-grandmother-grandson-indulge",
+    "oa-guard-visitor-search",
+    "oa-journalist-politician-interview",
+    "oa-lawyer-witness-interrogate",
+    "oa-librarian-borrower-fine",
+    "oa-mechanic-driver-bill",
+    "oa-nurse-patient-lie",
+    "oa-pilot-passenger-reassure",
+    "oa-plumber-homeowner-overcharge",
+    "oa-police-thief-chase",
+    "oa-priest-parishioner-forgive",
+    "oa-professor-dean-report",
+    "oa-teacher-student-scold",
+    "oa-tourist-local-ask",
+    "oa-wife-husband-suspect"
+   ]
+  },
+  {
+   "round": 2,
+   "solved": [
+    "oa-babysitter-toddler-feed",
+    "oa-bouncer-patron-eject",
+    "oa-comedian-heckler-humiliate",
+    "oa-detective-suspect-follow",
+    "oa-firefighter-homeowner-rescue",
+    "oa-grandmother-grandson-indulge",
+    "oa-guard-visitor-search",
+    "oa-journalist-politician-interview",
+    "oa-lawyer-witness-interrogate",
+    "oa-librarian-borrower-fine",
+    "oa-nurse-patient-lie",
+    "oa-pilot-passenger-reassure",
+    "oa-plumber-homeowner-overcharge",
+    "oa-police-thief-chase",
+    "oa-priest-parishioner-forgive",
+    "oa-teacher-student-scold",
+    "oa-tourist-local-ask",
+    "oa-wife-husband-suspect"
+   ]
+  },
+  {
+   "round": 3,
+   "solved": [
+    "oa-babysitter-toddler-feed",
+    "oa-bouncer-patron-eject",
+    "oa-celebrity-fan-photograph",
+    "oa-comedian-heckler-humiliate",
+    "oa-critic-musician-mock",
+    "oa-detective-suspect-follow",
+    "oa-grandmother-grandson-indulge",
+    "oa-guard-visitor-search",
+    "oa-journalist-politician-interview",
+    "oa-landlord-tenant-avoid",
+    "oa-lawyer-witness-interrogate",
+    "oa-librarian-borrower-fine",
+    "oa-nurse-patient-lie",
+    "oa-pilot-passenger-reassure",
+    "oa-plumber-homeowner-overcharge",
+    "oa-police-thief-chase",
+    "oa-priest-parishioner-forgive",
+    "oa-teacher-student-scold",
+    "oa-tourist-local-ask",
+    "oa-wife-husband-suspect"
+   ]
+  },
+  {
+   "round": 4,
+   "solved": [
+    "oa-babysitter-toddler-feed",
+    "oa-bouncer-patron-eject",
+    "oa-celebrity-fan-photograph",
+    "oa-critic-musician-mock",
+    "oa-detective-suspect-follow",
+    "oa-grandmother-grandson-indulge",
+    "oa-guard-visitor-search",
+    "oa-journalist-politician-interview",
+    "oa-lawyer-witness-interrogate",
+    "oa-librarian-borrower-fine",
+    "oa-pilot-passenger-reassure",
+    "oa-plumber-homeowner-overcharge",
+    "oa-police-thief-chase",
+    "oa-priest-parishioner-forgive",
+    "oa-sister-brother-tease",
+    "oa-teacher-student-scold",
+    "oa-tourist-local-ask",
+    "oa-wife-husband-suspect"
+   ]
+  },
+  {
+   "round": 5,
+   "solved": [
+    "oa-bouncer-patron-eject",
+    "oa-comedian-heckler-humiliate",
+    "oa-detective-suspect-follow",
+    "oa-grandmother-grandson-indulge",
+    "oa-guard-visitor-search",
+    "oa-journalist-politician-interview",
+    "oa-lawyer-witness-interrogate",
+    "oa-librarian-borrower-fine",
+    "oa-nurse-patient-lie",
+    "oa-pilot-passenger-reassure",
+    "oa-plumber-homeowner-overcharge",
+    "oa-police-thief-chase",
+    "oa-priest-parishioner-forgive",
+    "oa-sister-brother-tease",
+    "oa-teacher-parent-blame",
+    "oa-teacher-student-scold",
+    "oa-tourist-local-ask",
+    "oa-wife-husband-suspect"
+   ]
+  },
+  {
+   "repair": [
+    "oa-accountant-client-deceive",
+    "oa-mechanic-driver-bill",
+    "oa-shopowner-supplier-cheat"
+   ],
+   "lint": "instance-of-gold (ENTAILS)"
+  }
+ ],
+ "pairs": {
+  "oa-accountant-client-deceive": {
+   "roles": [
+    "banker",
+    "borrower",
+    "shop owner"
+   ],
+   "actions": [
+    "warned",
+    "distrusted",
+    "blamed",
+    "suspected"
+   ]
+  },
+  "oa-babysitter-toddler-feed": {
+   "roles": [
+    "grandmother",
+    "grandson",
+    "mother"
+   ],
+   "actions": [
+    "comforted",
+    "scolded",
+    "hugged",
+    "indulged"
+   ]
+  },
+  "oa-boss-employee-envy": {
+   "roles": [
+    "lawyer",
+    "client",
+    "supplier"
+   ],
+   "actions": [
+    "distrusted",
+    "underestimated",
+    "blamed",
+    "complimented"
+   ]
+  },
+  "oa-bouncer-patron-eject": {
+   "roles": [
+    "musician",
+    "manager",
+    "police officer"
+   ],
+   "actions": [
+    "searched",
+    "warned",
+    "scolded",
+    "suspected"
+   ]
+  },
+  "oa-bride-caterer-yell": {
+   "roles": [
+    "groom",
+    "photographer",
+    "wedding planner"
+   ],
+   "actions": [
+    "blamed",
+    "thanked",
+    "complimented",
+    "apologized to"
+   ]
+  },
+  "oa-burglar-neighbor-spy": {
+   "roles": [
+    "homeowner",
+    "police officer",
+    "security guard"
+   ],
+   "actions": [
+    "suspected",
+    "photographed",
+    "reported",
+    "feared"
+   ]
+  },
+  "oa-celebrity-fan-photograph": {
+   "roles": [
+    "politician",
+    "journalist",
+    "heckler"
+   ],
+   "actions": [
+    "hugged",
+    "chased",
+    "complimented",
+    "mocked"
+   ]
+  },
+  "oa-ceo-janitor-resent": {
+   "roles": [
+    "manager",
+    "intern",
+    "accountant"
+   ],
+   "actions": [
+    "admired",
+    "distrusted",
+    "pitied",
+    "underestimated"
+   ]
+  },
+  "oa-child-grandparent-hug": {
+   "roles": [
+    "uncle",
+    "cousin",
+    "babysitter"
+   ],
+   "actions": [
+    "teased",
+    "scolded",
+    "fed",
+    "indulged"
+   ]
+  },
+  "oa-coach-athlete-admire": {
+   "roles": [
+    "captain",
+    "benchwarmer",
+    "fan"
+   ],
+   "actions": [
+    "envied",
+    "resented",
+    "underestimated",
+    "worried about"
+   ]
+  },
+  "oa-comedian-heckler-humiliate": {
+   "roles": [
+    "critic",
+    "musician",
+    "bouncer"
+   ],
+   "actions": [
+    "ejected",
+    "warned",
+    "resented",
+    "underestimated"
+   ]
+  },
+  "oa-critic-musician-mock": {
+   "roles": [
+    "heckler",
+    "comedian",
+    "fan"
+   ],
+   "actions": [
+    "envied",
+    "resented",
+    "admired",
+    "underestimated"
+   ]
+  },
+  "oa-detective-suspect-follow": {
+   "roles": [
+    "journalist",
+    "celebrity",
+    "witness"
+   ],
+   "actions": [
+    "photographed",
+    "avoided",
+    "lied to",
+    "warned"
+   ]
+  },
+  "oa-doctor-nurse-instruct": {
+   "roles": [
+    "paramedic",
+    "patient",
+    "intern"
+   ],
+   "actions": [
+    "thanked",
+    "reassured",
+    "warned",
+    "blamed"
+   ]
+  },
+  "oa-doctor-patient-comfort": {
+   "roles": [
+    "nurse",
+    "paramedic",
+    "visitor"
+   ],
+   "actions": [
+    "thanked",
+    "scolded",
+    "apologized to",
+    "warned"
+   ]
+  },
+  "oa-father-daughter-worry": {
+   "roles": [
+    "mother",
+    "son",
+    "grandmother"
+   ],
+   "actions": [
+    "resented",
+    "forgave",
+    "envied",
+    "pitied"
+   ]
+  },
+  "oa-firefighter-homeowner-rescue": {
+   "roles": [
+    "babysitter",
+    "toddler",
+    "neighbor"
+   ],
+   "actions": [
+    "comforted",
+    "warned",
+    "hugged",
+    "worried about"
+   ]
+  },
+  "oa-general-soldier-salute": {
+   "roles": [
+    "sergeant",
+    "recruit",
+    "colonel"
+   ],
+   "actions": [
+    "scolded",
+    "thanked",
+    "instructed",
+    "warned"
+   ]
+  },
+  "oa-grandmother-grandson-indulge": {
+   "roles": [
+    "mother",
+    "daughter",
+    "grandfather"
+   ],
+   "actions": [
+    "scolded",
+    "teased",
+    "hugged",
+    "worried about"
+   ]
+  },
+  "oa-guard-prisoner-fear": {
+   "roles": [
+    "lawyer",
+    "informant",
+    "visitor"
+   ],
+   "actions": [
+    "resented",
+    "pitied",
+    "lied to",
+    "suspected"
+   ]
+  },
+  "oa-guard-visitor-search": {
+   "roles": [
+    "bouncer",
+    "patron",
+    "receptionist"
+   ],
+   "actions": [
+    "ejected",
+    "interrogated",
+    "asked for directions",
+    "thanked"
+   ]
+  },
+  "oa-hairdresser-client-compliment": {
+   "roles": [
+    "shop owner",
+    "receptionist",
+    "intern"
+   ],
+   "actions": [
+    "reassured",
+    "teased",
+    "apologized to",
+    "scolded"
+   ]
+  },
+  "oa-heiress-butler-underestimate": {
+   "roles": [
+    "maid",
+    "chauffeur",
+    "lawyer"
+   ],
+   "actions": [
+    "distrusted",
+    "resented",
+    "looked down on",
+    "indulged"
+   ]
+  },
+  "oa-journalist-politician-interview": {
+   "roles": [
+    "lawyer",
+    "client",
+    "lobbyist"
+   ],
+   "actions": [
+    "warned",
+    "distrusted",
+    "complimented",
+    "blamed"
+   ]
+  },
+  "oa-king-servant-bow": {
+   "roles": [
+    "queen",
+    "advisor",
+    "guard"
+   ],
+   "actions": [
+    "scolded",
+    "thanked",
+    "feared",
+    "warned"
+   ]
+  },
+  "oa-landlord-tenant-avoid": {
+   "roles": [
+    "neighbor",
+    "janitor",
+    "roommate"
+   ],
+   "actions": [
+    "distrusted",
+    "resented",
+    "lied to",
+    "blamed"
+   ]
+  },
+  "oa-lawyer-witness-interrogate": {
+   "roles": [
+    "police officer",
+    "suspect",
+    "journalist"
+   ],
+   "actions": [
+    "lied to",
+    "distrusted",
+    "warned",
+    "mocked"
+   ]
+  },
+  "oa-librarian-borrower-fine": {
+   "roles": [
+    "police officer",
+    "driver",
+    "student"
+   ],
+   "actions": [
+    "warned",
+    "scolded",
+    "reported",
+    "suspected"
+   ]
+  },
+  "oa-manager-intern-distrust": {
+   "roles": [
+    "receptionist",
+    "accountant",
+    "janitor"
+   ],
+   "actions": [
+    "envied",
+    "underestimated",
+    "resented",
+    "admired"
+   ]
+  },
+  "oa-mechanic-driver-bill": {
+   "roles": [
+    "supplier",
+    "shopkeeper",
+    "client"
+   ],
+   "actions": [
+    "cheated",
+    "fined",
+    "reassured",
+    "warned"
+   ]
+  },
+  "oa-mother-son-angry": {
+   "roles": [
+    "father",
+    "daughter",
+    "brother"
+   ],
+   "actions": [
+    "lied to",
+    "forgave",
+    "worried about",
+    "comforted"
+   ]
+  },
+  "oa-nurse-patient-lie": {
+   "roles": [
+    "receptionist",
+    "visitor",
+    "intern"
+   ],
+   "actions": [
+    "scolded",
+    "warned",
+    "blamed",
+    "apologized to"
+   ]
+  },
+  "oa-officer-informant-protect": {
+   "roles": [
+    "lawyer",
+    "witness",
+    "suspect"
+   ],
+   "actions": [
+    "distrusted",
+    "interrogated",
+    "thanked",
+    "blamed"
+   ]
+  },
+  "oa-paramedic-bystander-thank": {
+   "roles": [
+    "police officer",
+    "witness",
+    "firefighter"
+   ],
+   "actions": [
+    "reassured",
+    "warned",
+    "blamed",
+    "apologized to"
+   ]
+  },
+  "oa-pilot-passenger-reassure": {
+   "roles": [
+    "copilot",
+    "flight attendant",
+    "mechanic"
+   ],
+   "actions": [
+    "warned",
+    "apologized to",
+    "yelled at",
+    "scolded"
+   ]
+  },
+  "oa-plumber-homeowner-overcharge": {
+   "roles": [
+    "electrician",
+    "tenant",
+    "landlord"
+   ],
+   "actions": [
+    "blamed",
+    "warned",
+    "reassured",
+    "distrusted"
+   ]
+  },
+  "oa-police-thief-chase": {
+   "roles": [
+    "bouncer",
+    "troublemaker",
+    "witness"
+   ],
+   "actions": [
+    "ejected",
+    "searched",
+    "suspected",
+    "interrogated"
+   ]
+  },
+  "oa-priest-parishioner-forgive": {
+   "roles": [
+    "mother",
+    "son",
+    "deacon"
+   ],
+   "actions": [
+    "scolded",
+    "blamed",
+    "warned",
+    "resented"
+   ]
+  },
+  "oa-principal-troublemaker-dread": {
+   "roles": [
+    "teacher",
+    "bully",
+    "janitor"
+   ],
+   "actions": [
+    "resented",
+    "underestimated",
+    "pitied",
+    "mocked"
+   ]
+  },
+  "oa-professor-dean-report": {
+   "roles": [
+    "student",
+    "advisor",
+    "accountant"
+   ],
+   "actions": [
+    "warned",
+    "scolded",
+    "interviewed",
+    "thanked"
+   ]
+  },
+  "oa-referee-player-warn": {
+   "roles": [
+    "coach",
+    "fan",
+    "heckler"
+   ],
+   "actions": [
+    "ejected",
+    "yelled at",
+    "blamed",
+    "complimented"
+   ]
+  },
+  "oa-shopowner-supplier-cheat": {
+   "roles": [
+    "landlord",
+    "tenant",
+    "customer"
+   ],
+   "actions": [
+    "suspected",
+    "distrusted",
+    "resented",
+    "thanked"
+   ]
+  },
+  "oa-sister-brother-tease": {
+   "roles": [
+    "mother",
+    "daughter",
+    "cousin"
+   ],
+   "actions": [
+    "blamed",
+    "envied",
+    "resented",
+    "complimented"
+   ]
+  },
+  "oa-starter-benchwarmer-pity": {
+   "roles": [
+    "captain",
+    "recruit",
+    "fan"
+   ],
+   "actions": [
+    "envied",
+    "admired",
+    "resented",
+    "mocked"
+   ]
+  },
+  "oa-teacher-parent-blame": {
+   "roles": [
+    "principal",
+    "student",
+    "coach"
+   ],
+   "actions": [
+    "resented",
+    "apologized to",
+    "distrusted",
+    "complimented"
+   ]
+  },
+  "oa-teacher-student-scold": {
+   "roles": [
+    "coach",
+    "athlete",
+    "principal"
+   ],
+   "actions": [
+    "warned",
+    "complimented",
+    "resented",
+    "underestimated"
+   ]
+  },
+  "oa-tourist-local-ask": {
+   "roles": [
+    "police officer",
+    "guide",
+    "waiter"
+   ],
+   "actions": [
+    "overcharged",
+    "photographed",
+    "warned",
+    "complimented"
+   ]
+  },
+  "oa-veteran-recruit-lookdown": {
+   "roles": [
+    "manager",
+    "intern",
+    "sergeant"
+   ],
+   "actions": [
+    "resented",
+    "envied",
+    "distrusted",
+    "admired"
+   ]
+  },
+  "oa-waiter-customer-apologize": {
+   "roles": [
+    "chef",
+    "manager",
+    "bartender"
+   ],
+   "actions": [
+    "complimented",
+    "blamed",
+    "overcharged",
+    "yelled at"
+   ]
+  },
+  "oa-wife-husband-suspect": {
+   "roles": [
+    "mother",
+    "son",
+    "father"
+   ],
+   "actions": [
+    "worried about",
+    "resented",
+    "scolded",
+    "avoided"
+   ]
+  }
+ }
+}

@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 
 import pytest
+from conftest import native_args
 
 from wsbench import mcjudge
 from wsbench.cache import Cache
@@ -28,7 +29,7 @@ def _args(**kw) -> JudgeArgs:
         "dry_run": False,
     }
     base.update(kw)
-    return JudgeArgs(**base)
+    return native_args(**base)
 
 
 def test_run_calls_caches_results_and_failures(tmp_path: Path, fake_llm):
@@ -136,7 +137,8 @@ def test_item_scope_and_subset_and_config():
     assert item_scope(bank, _args(limit=2)) == bank[:2]
     assert item_scope(bank, _args(items=["c", "b"], limit=1)) == [{"id": "b"}]
     assert not is_subset(_args())
-    assert is_subset(_args(layers=[20])) and is_subset(_args(limit=1))
+    # plan 0032 §2.1.7: an explicit layers= list is a defined variant, not a partial run
+    assert not is_subset(_args(layers=[20])) and is_subset(_args(limit=1))
     assert is_subset(_args(items=[]))
     c = base_config(_args(layers=[20]), "pv", char_cap=3)
     assert c["judge_model"] == JUDGE.model and c["prompt_version"] == "pv"

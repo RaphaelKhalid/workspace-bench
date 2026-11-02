@@ -1,0 +1,4275 @@
+{
+ "family": "basic-readout-hard",
+ "parent_family": "basic-readout-mt",
+ "contract": {
+  "multi_token": true,
+  "include_target": false,
+  "conjunctive_units": true
+ },
+ "gate": "Qwen3.6-27B behavioral, chat-templated capability question (enable_thinking=False, answer stem): greedy-verified AND >=8/10 @ temp 0.7. EVAL RENDER: plain prompt, final prompt token; regex over the readout (l2_factual: en/zh names only + language unit).",
+ "frozen": "2026-09-10",
+ "adapt": {
+  "model": "qwen3.5-0.8b",
+  "hf_id": "Qwen/Qwen3.5-0.8B",
+  "frozen": "2026-10-24"
+ },
+ "items": [
+  {
+   "name": "brh-ent-euler-mascheroni-constant",
+   "subfamily": "entity",
+   "prompt": "The mathematical quantity roughly equal to 0.5772156649, defined as the limiting difference between the harmonic series and the natural logarithm, is",
+   "target": "the Euler–Mascheroni constant",
+   "target_alts": [
+    "Euler–Mascheroni constant",
+    "Euler-Mascheroni constant",
+    "Euler's constant"
+   ],
+   "source": "staging_hard_mt",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "intermediates": [
+    "the Euler–Mascheroni constant"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "the Euler–Mascheroni constant",
+       "Euler–Mascheroni constant",
+       "Euler-Mascheroni constant",
+       "Euler's constant"
+      ]
+     },
+     "match": [
+      "the Euler–Mascheroni constant",
+      "Euler–Mascheroni constant",
+      "Euler-Mascheroni constant",
+      "Euler's constant"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "consistency_strict": 0.3,
+   "consistency_greedy": 1,
+   "gate_variant": "chat",
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       7,
+       6,
+       6,
+       3
+      ]
+     }
+    },
+    "target": 7
+   },
+   "mc": {
+    "readout": {
+     "gold": "the Euler–Mascheroni constant",
+     "distractors": [
+      "Catalan's constant",
+      "Apéry's constant",
+      "the Glaisher–Kinkelin constant",
+      "Khinchin's constant"
+     ]
+    }
+   },
+   "id": "brh-ent-euler-mascheroni-constant",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c0-ent-boyles-law",
+   "subfamily": "entity",
+   "prompt": "The gas law stating that pressure is inversely proportional to volume at constant temperature is called",
+   "target": "Boyle's law",
+   "target_alts": [
+    "Boyle–Mariotte law",
+    "Mariotte's law"
+   ],
+   "intermediates": [
+    "Boyle's law"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Boyle's law",
+       "Boyle–Mariotte law",
+       "Mariotte's law"
+      ]
+     },
+     "match": [
+      "Boyle's law",
+      "Boyle–Mariotte law",
+      "Mariotte's law"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Boyle's law",
+     "distractors": [
+      "Charles's law",
+      "Gay-Lussac's law",
+      "Avogadro's law",
+      "Dalton's law"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       3,
+       5,
+       4
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c0-ent-ohms-law",
+   "subfamily": "entity",
+   "prompt": "The rule that the current through a conductor equals the voltage across it divided by its resistance is known as",
+   "target": "Ohm's law",
+   "target_alts": [
+    "Ohm law"
+   ],
+   "intermediates": [
+    "Ohm's law"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Ohm's law",
+       "Ohm law"
+      ]
+     },
+     "match": [
+      "Ohm's law",
+      "Ohm law"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Ohm's law",
+     "distractors": [
+      "Kirchhoff's current law",
+      "Coulomb's law",
+      "Faraday's law",
+      "Joule's law"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       4,
+       3
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c0-ent-pythagorean-theorem",
+   "subfamily": "entity",
+   "prompt": "In a right triangle, the square on the hypotenuse equals the sum of the squares on the other two sides, a result called the",
+   "target": "Pythagorean theorem",
+   "target_alts": [
+    "Pythagoras' theorem",
+    "Pythagoras's theorem"
+   ],
+   "intermediates": [
+    "Pythagorean theorem"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Pythagorean theorem",
+       "Pythagoras' theorem",
+       "Pythagoras's theorem"
+      ]
+     },
+     "match": [
+      "Pythagorean theorem",
+      "Pythagoras' theorem",
+      "Pythagoras's theorem"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Pythagorean theorem",
+     "distractors": [
+      "Thales's theorem",
+      "law of cosines",
+      "Fermat's Last Theorem",
+      "Euclid's theorem"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       4,
+       5,
+       5
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c0-ent-isaac-newton",
+   "subfamily": "entity",
+   "prompt": "The English physicist who published the Principia in 1687 and formulated the three laws of motion was Sir",
+   "target": "Isaac Newton",
+   "target_alts": [
+    "Newton",
+    "Sir Isaac Newton"
+   ],
+   "intermediates": [
+    "Isaac Newton"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Isaac Newton",
+       "Newton",
+       "Sir Isaac Newton"
+      ]
+     },
+     "match": [
+      "Isaac Newton",
+      "Newton",
+      "Sir Isaac Newton"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Isaac Newton",
+     "distractors": [
+      "Robert Hooke",
+      "Edmond Halley",
+      "Gottfried Leibniz",
+      "Robert Boyle"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       2,
+       1,
+       3
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c1-mt-ent-spring-principle",
+   "subfamily": "entity",
+   "prompt": "The principle that the force needed to stretch a spring is proportional to its extension is",
+   "target": "Hooke's law",
+   "target_alts": [
+    "law of elasticity"
+   ],
+   "intermediates": [
+    "Hooke's law"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Hooke's law",
+       "law of elasticity"
+      ]
+     },
+     "match": [
+      "Hooke's law",
+      "law of elasticity"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Hooke's law",
+     "distractors": [
+      "Charles's law",
+      "Pascal's law",
+      "Coulomb's law",
+      "Snell's law"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       4,
+       3
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c2-brh-ent-trafalgar",
+   "subfamily": "entity",
+   "prompt": "The 1805 naval engagement off the Spanish coast in which Admiral Nelson was killed while defeating the Franco-Spanish fleet was the",
+   "target": "Battle of Trafalgar",
+   "target_alts": [
+    "Trafalgar"
+   ],
+   "intermediates": [
+    "Battle of Trafalgar"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Battle of Trafalgar",
+       "Trafalgar"
+      ]
+     },
+     "match": [
+      "Battle of Trafalgar",
+      "Trafalgar"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Battle of Trafalgar",
+     "distractors": [
+      "Battle of the Nile",
+      "Battle of Jutland",
+      "Battle of Lepanto",
+      "Battle of Copenhagen"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       5,
+       3
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w100c2-brh-ent-hubble-telescope",
+   "subfamily": "entity",
+   "prompt": "The orbiting observatory launched by NASA in 1990, named after the astronomer who discovered the expanding universe, is the",
+   "target": "Hubble Space Telescope",
+   "target_alts": [
+    "Hubble",
+    "HST"
+   ],
+   "intermediates": [
+    "Hubble Space Telescope"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Hubble Space Telescope",
+       "Hubble",
+       "HST"
+      ]
+     },
+     "match": [
+      "Hubble Space Telescope",
+      "Hubble",
+      "HST"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Hubble Space Telescope",
+     "distractors": [
+      "James Webb Space Telescope",
+      "Spitzer Space Telescope",
+      "Chandra X-ray Observatory",
+      "Kepler space telescope"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       4,
+       2,
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w101c0-basic-mt-ent-coulombs-law",
+   "subfamily": "entity",
+   "prompt": "The law giving the electrostatic force between two point charges as proportional to the product of the charges divided by the square of their separation is called",
+   "target": "Coulomb's law",
+   "target_alts": [],
+   "intermediates": [
+    "Coulomb's law"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Coulomb's law"
+      ]
+     },
+     "match": [
+      "Coulomb's law"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Coulomb's law",
+     "distractors": [
+      "Ohm's law",
+      "Gauss's law",
+      "Ampère's law",
+      "Faraday's law"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       4
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 7/60 passed.\n- Rejected by lint before gating: 1x natural:readout 'Waterloo' is not creditable; 1x leak: ['three'] in prompt; 1x natural:readout 'Einstein' is not creditable; 1x leak: ['1789'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): Ming dynasty -> model said 'Ming dynasty.' (1/10); House of Tudor -> model said 'The English royal line begun by Henry VI' (0/10); Eiffel Tower -> model said 'The wrought-iron lattice landmark built ' (1/10); Taj Mahal -> model said 'Hindu temple' (0/10); Battle of Hastings -> model said 'Battle of Hastings' (7/10); Treaty of Versailles -> model said 'The 1919 peace agreement signed in the H' (0/10); Peace of Westphalia -> model said 'Peace Treaty of Münster' (0/10); Magna Carta -> model said 'The document of liberties sealed by King' (0/10); Sistine Chapel -> model said \"St. Peter's Square\" (1/10); Mona Lisa -> model said 'The most famous portrait of a Florentine' (0/10); Black Death -> model said '1340s' (0/10); Berlin Wall -> model said 'Berlin Wall' (4/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Boyle's law; Ohm's law; Pythagorean theorem; Isaac Newton; Hooke's law; Battle of Trafalgar; Hubble Space Telescope",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w101c0-basic-mt-ent-pascals-law",
+   "subfamily": "entity",
+   "prompt": "The rule that pressure applied to a confined fluid is transmitted undiminished throughout it is called",
+   "target": "Pascal's law",
+   "target_alts": [
+    "Pascal's principle"
+   ],
+   "intermediates": [
+    "Pascal's law"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Pascal's law",
+       "Pascal's principle"
+      ]
+     },
+     "match": [
+      "Pascal's law",
+      "Pascal's principle"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Pascal's law",
+     "distractors": [
+      "Bernoulli's principle",
+      "Stokes' law",
+      "Boyle's law",
+      "Henry's law"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       3,
+       3
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 7/60 passed.\n- Rejected by lint before gating: 1x natural:readout 'Waterloo' is not creditable; 1x leak: ['three'] in prompt; 1x natural:readout 'Einstein' is not creditable; 1x leak: ['1789'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): Ming dynasty -> model said 'Ming dynasty.' (1/10); House of Tudor -> model said 'The English royal line begun by Henry VI' (0/10); Eiffel Tower -> model said 'The wrought-iron lattice landmark built ' (1/10); Taj Mahal -> model said 'Hindu temple' (0/10); Battle of Hastings -> model said 'Battle of Hastings' (7/10); Treaty of Versailles -> model said 'The 1919 peace agreement signed in the H' (0/10); Peace of Westphalia -> model said 'Peace Treaty of Münster' (0/10); Magna Carta -> model said 'The document of liberties sealed by King' (0/10); Sistine Chapel -> model said \"St. Peter's Square\" (1/10); Mona Lisa -> model said 'The most famous portrait of a Florentine' (0/10); Black Death -> model said '1340s' (0/10); Berlin Wall -> model said 'Berlin Wall' (4/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Boyle's law; Ohm's law; Pythagorean theorem; Isaac Newton; Hooke's law; Battle of Trafalgar; Hubble Space Telescope",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w101c0-basic-mt-ent-daltons-law",
+   "subfamily": "entity",
+   "prompt": "The gas law stating that the total pressure of a gas mixture equals the sum of the pressures each component would exert alone is called",
+   "target": "Dalton's law",
+   "target_alts": [],
+   "intermediates": [
+    "Dalton's law"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Dalton's law"
+      ]
+     },
+     "match": [
+      "Dalton's law"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Dalton's law",
+     "distractors": [
+      "Henry's law",
+      "Raoult's law",
+      "Graham's law",
+      "Avogadro's law"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       3
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 7/60 passed.\n- Rejected by lint before gating: 1x natural:readout 'Waterloo' is not creditable; 1x leak: ['three'] in prompt; 1x natural:readout 'Einstein' is not creditable; 1x leak: ['1789'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): Ming dynasty -> model said 'Ming dynasty.' (1/10); House of Tudor -> model said 'The English royal line begun by Henry VI' (0/10); Eiffel Tower -> model said 'The wrought-iron lattice landmark built ' (1/10); Taj Mahal -> model said 'Hindu temple' (0/10); Battle of Hastings -> model said 'Battle of Hastings' (7/10); Treaty of Versailles -> model said 'The 1919 peace agreement signed in the H' (0/10); Peace of Westphalia -> model said 'Peace Treaty of Münster' (0/10); Magna Carta -> model said 'The document of liberties sealed by King' (0/10); Sistine Chapel -> model said \"St. Peter's Square\" (1/10); Mona Lisa -> model said 'The most famous portrait of a Florentine' (0/10); Black Death -> model said '1340s' (0/10); Berlin Wall -> model said 'Berlin Wall' (4/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Boyle's law; Ohm's law; Pythagorean theorem; Isaac Newton; Hooke's law; Battle of Trafalgar; Hubble Space Telescope",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w101c0-basic-mt-ent-pearl-harbor",
+   "subfamily": "entity",
+   "prompt": "The surprise Japanese air raid on the US naval base in Hawaii on 7 December 1941 is remembered as the attack on",
+   "target": "Pearl Harbor",
+   "target_alts": [
+    "Pearl Harbour"
+   ],
+   "intermediates": [
+    "Pearl Harbor"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Pearl Harbor",
+       "Pearl Harbour"
+      ]
+     },
+     "match": [
+      "Pearl Harbor",
+      "Pearl Harbour"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Pearl Harbor",
+     "distractors": [
+      "Wake Island",
+      "Midway Atoll",
+      "Clark Field",
+      "Hickam Field"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       2,
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 7/60 passed.\n- Rejected by lint before gating: 1x natural:readout 'Waterloo' is not creditable; 1x leak: ['three'] in prompt; 1x natural:readout 'Einstein' is not creditable; 1x leak: ['1789'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): Ming dynasty -> model said 'Ming dynasty.' (1/10); House of Tudor -> model said 'The English royal line begun by Henry VI' (0/10); Eiffel Tower -> model said 'The wrought-iron lattice landmark built ' (1/10); Taj Mahal -> model said 'Hindu temple' (0/10); Battle of Hastings -> model said 'Battle of Hastings' (7/10); Treaty of Versailles -> model said 'The 1919 peace agreement signed in the H' (0/10); Peace of Westphalia -> model said 'Peace Treaty of Münster' (0/10); Magna Carta -> model said 'The document of liberties sealed by King' (0/10); Sistine Chapel -> model said \"St. Peter's Square\" (1/10); Mona Lisa -> model said 'The most famous portrait of a Florentine' (0/10); Black Death -> model said '1340s' (0/10); Berlin Wall -> model said 'Berlin Wall' (4/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Boyle's law; Ohm's law; Pythagorean theorem; Isaac Newton; Hooke's law; Battle of Trafalgar; Hubble Space Telescope",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w101c0-basic-mt-ent-cold-war",
+   "subfamily": "entity",
+   "prompt": "The decades-long geopolitical rivalry between the United States and the Soviet Union after 1945 is known as the",
+   "target": "Cold War",
+   "target_alts": [],
+   "intermediates": [
+    "Cold War"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Cold War"
+      ]
+     },
+     "match": [
+      "Cold War"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Cold War",
+     "distractors": [
+      "Korean War",
+      "Space Race",
+      "Vietnam War",
+      "Iron Curtain"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 7/60 passed.\n- Rejected by lint before gating: 1x natural:readout 'Waterloo' is not creditable; 1x leak: ['three'] in prompt; 1x natural:readout 'Einstein' is not creditable; 1x leak: ['1789'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): Ming dynasty -> model said 'Ming dynasty.' (1/10); House of Tudor -> model said 'The English royal line begun by Henry VI' (0/10); Eiffel Tower -> model said 'The wrought-iron lattice landmark built ' (1/10); Taj Mahal -> model said 'Hindu temple' (0/10); Battle of Hastings -> model said 'Battle of Hastings' (7/10); Treaty of Versailles -> model said 'The 1919 peace agreement signed in the H' (0/10); Peace of Westphalia -> model said 'Peace Treaty of Münster' (0/10); Magna Carta -> model said 'The document of liberties sealed by King' (0/10); Sistine Chapel -> model said \"St. Peter's Square\" (1/10); Mona Lisa -> model said 'The most famous portrait of a Florentine' (0/10); Black Death -> model said '1340s' (0/10); Berlin Wall -> model said 'Berlin Wall' (4/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Boyle's law; Ohm's law; Pythagorean theorem; Isaac Newton; Hooke's law; Battle of Trafalgar; Hubble Space Telescope",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w101c0-basic-mt-ent-american-civil-war",
+   "subfamily": "entity",
+   "prompt": "The 1861–1865 conflict that pitted the Union against the Confederacy is known as the",
+   "target": "American Civil War",
+   "target_alts": [
+    "Civil War",
+    "War Between the States"
+   ],
+   "intermediates": [
+    "American Civil War"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "American Civil War",
+       "Civil War",
+       "War Between the States"
+      ]
+     },
+     "match": [
+      "American Civil War",
+      "Civil War",
+      "War Between the States"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "American Civil War",
+     "distractors": [
+      "American Revolutionary War",
+      "War of 1812",
+      "Mexican–American War",
+      "Spanish–American War"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       3,
+       2,
+       4
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 7/60 passed.\n- Rejected by lint before gating: 1x natural:readout 'Waterloo' is not creditable; 1x leak: ['three'] in prompt; 1x natural:readout 'Einstein' is not creditable; 1x leak: ['1789'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): Ming dynasty -> model said 'Ming dynasty.' (1/10); House of Tudor -> model said 'The English royal line begun by Henry VI' (0/10); Eiffel Tower -> model said 'The wrought-iron lattice landmark built ' (1/10); Taj Mahal -> model said 'Hindu temple' (0/10); Battle of Hastings -> model said 'Battle of Hastings' (7/10); Treaty of Versailles -> model said 'The 1919 peace agreement signed in the H' (0/10); Peace of Westphalia -> model said 'Peace Treaty of Münster' (0/10); Magna Carta -> model said 'The document of liberties sealed by King' (0/10); Sistine Chapel -> model said \"St. Peter's Square\" (1/10); Mona Lisa -> model said 'The most famous portrait of a Florentine' (0/10); Black Death -> model said '1340s' (0/10); Berlin Wall -> model said 'Berlin Wall' (4/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Boyle's law; Ohm's law; Pythagorean theorem; Isaac Newton; Hooke's law; Battle of Trafalgar; Hubble Space Telescope",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w101c0-basic-mt-ent-periodic-table",
+   "subfamily": "entity",
+   "prompt": "The tabular arrangement of the chemical elements by atomic number, first devised by Dmitri Mendeleev, is called the",
+   "target": "periodic table",
+   "target_alts": [
+    "periodic chart"
+   ],
+   "intermediates": [
+    "periodic table"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "periodic table",
+       "periodic chart"
+      ]
+     },
+     "match": [
+      "periodic table",
+      "periodic chart"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "periodic table",
+     "distractors": [
+      "electromagnetic spectrum",
+      "Hertzsprung–Russell diagram",
+      "geologic time scale",
+      "Mohs scale"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       2,
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 7/60 passed.\n- Rejected by lint before gating: 1x natural:readout 'Waterloo' is not creditable; 1x leak: ['three'] in prompt; 1x natural:readout 'Einstein' is not creditable; 1x leak: ['1789'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): Ming dynasty -> model said 'Ming dynasty.' (1/10); House of Tudor -> model said 'The English royal line begun by Henry VI' (0/10); Eiffel Tower -> model said 'The wrought-iron lattice landmark built ' (1/10); Taj Mahal -> model said 'Hindu temple' (0/10); Battle of Hastings -> model said 'Battle of Hastings' (7/10); Treaty of Versailles -> model said 'The 1919 peace agreement signed in the H' (0/10); Peace of Westphalia -> model said 'Peace Treaty of Münster' (0/10); Magna Carta -> model said 'The document of liberties sealed by King' (0/10); Sistine Chapel -> model said \"St. Peter's Square\" (1/10); Mona Lisa -> model said 'The most famous portrait of a Florentine' (0/10); Black Death -> model said '1340s' (0/10); Berlin Wall -> model said 'Berlin Wall' (4/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Boyle's law; Ohm's law; Pythagorean theorem; Isaac Newton; Hooke's law; Battle of Trafalgar; Hubble Space Telescope",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w101c1-basic-mt-ent-emancipation-proclamation",
+   "subfamily": "entity",
+   "prompt": "The 1863 executive order in which Abraham Lincoln declared slaves in Confederate states free is called the",
+   "target": "Emancipation Proclamation",
+   "target_alts": [
+    "the Emancipation Proclamation"
+   ],
+   "intermediates": [
+    "Emancipation Proclamation"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Emancipation Proclamation",
+       "the Emancipation Proclamation"
+      ]
+     },
+     "match": [
+      "Emancipation Proclamation",
+      "the Emancipation Proclamation"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Emancipation Proclamation",
+     "distractors": [
+      "Thirteenth Amendment",
+      "Missouri Compromise",
+      "Homestead Act",
+      "Bill of Rights"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       3,
+       4
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 7/60 passed.\n- Rejected by lint before gating: 1x natural:readout 'Waterloo' is not creditable; 1x leak: ['three'] in prompt; 1x natural:readout 'Einstein' is not creditable; 1x leak: ['1789'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): Ming dynasty -> model said 'Ming dynasty.' (1/10); House of Tudor -> model said 'The English royal line begun by Henry VI' (0/10); Eiffel Tower -> model said 'The wrought-iron lattice landmark built ' (1/10); Taj Mahal -> model said 'Hindu temple' (0/10); Battle of Hastings -> model said 'Battle of Hastings' (7/10); Treaty of Versailles -> model said 'The 1919 peace agreement signed in the H' (0/10); Peace of Westphalia -> model said 'Peace Treaty of Münster' (0/10); Magna Carta -> model said 'The document of liberties sealed by King' (0/10); Sistine Chapel -> model said \"St. Peter's Square\" (1/10); Mona Lisa -> model said 'The most famous portrait of a Florentine' (0/10); Black Death -> model said '1340s' (0/10); Berlin Wall -> model said 'Berlin Wall' (4/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Boyle's law; Ohm's law; Pythagorean theorem; Isaac Newton; Hooke's law; Battle of Trafalgar; Hubble Space Telescope",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w101c1-basic-mt-ent-industrial-revolution",
+   "subfamily": "entity",
+   "prompt": "The era of mechanization that began in 18th-century Britain with steam engines and textile mills is called the",
+   "target": "Industrial Revolution",
+   "target_alts": [
+    "First Industrial Revolution"
+   ],
+   "intermediates": [
+    "Industrial Revolution"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Industrial Revolution",
+       "First Industrial Revolution"
+      ]
+     },
+     "match": [
+      "Industrial Revolution",
+      "First Industrial Revolution"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Industrial Revolution",
+     "distractors": [
+      "Agricultural Revolution",
+      "Scientific Revolution",
+      "Age of Enlightenment",
+      "Digital Revolution"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       2,
+       3
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 7/60 passed.\n- Rejected by lint before gating: 1x natural:readout 'Waterloo' is not creditable; 1x leak: ['three'] in prompt; 1x natural:readout 'Einstein' is not creditable; 1x leak: ['1789'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): Ming dynasty -> model said 'Ming dynasty.' (1/10); House of Tudor -> model said 'The English royal line begun by Henry VI' (0/10); Eiffel Tower -> model said 'The wrought-iron lattice landmark built ' (1/10); Taj Mahal -> model said 'Hindu temple' (0/10); Battle of Hastings -> model said 'Battle of Hastings' (7/10); Treaty of Versailles -> model said 'The 1919 peace agreement signed in the H' (0/10); Peace of Westphalia -> model said 'Peace Treaty of Münster' (0/10); Magna Carta -> model said 'The document of liberties sealed by King' (0/10); Sistine Chapel -> model said \"St. Peter's Square\" (1/10); Mona Lisa -> model said 'The most famous portrait of a Florentine' (0/10); Black Death -> model said '1340s' (0/10); Berlin Wall -> model said 'Berlin Wall' (4/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Boyle's law; Ohm's law; Pythagorean theorem; Isaac Newton; Hooke's law; Battle of Trafalgar; Hubble Space Telescope",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w101c1-basic-mt-ent-great-depression",
+   "subfamily": "entity",
+   "prompt": "The severe worldwide economic slump that followed the 1929 Wall Street crash is known as the",
+   "target": "Great Depression",
+   "target_alts": [
+    "the Great Depression"
+   ],
+   "intermediates": [
+    "Great Depression"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Great Depression",
+       "the Great Depression"
+      ]
+     },
+     "match": [
+      "Great Depression",
+      "the Great Depression"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Great Depression",
+     "distractors": [
+      "Great Recession",
+      "Long Depression",
+      "Panic of 1873",
+      "Dust Bowl"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       2,
+       3
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 7/60 passed.\n- Rejected by lint before gating: 1x natural:readout 'Waterloo' is not creditable; 1x leak: ['three'] in prompt; 1x natural:readout 'Einstein' is not creditable; 1x leak: ['1789'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): Ming dynasty -> model said 'Ming dynasty.' (1/10); House of Tudor -> model said 'The English royal line begun by Henry VI' (0/10); Eiffel Tower -> model said 'The wrought-iron lattice landmark built ' (1/10); Taj Mahal -> model said 'Hindu temple' (0/10); Battle of Hastings -> model said 'Battle of Hastings' (7/10); Treaty of Versailles -> model said 'The 1919 peace agreement signed in the H' (0/10); Peace of Westphalia -> model said 'Peace Treaty of Münster' (0/10); Magna Carta -> model said 'The document of liberties sealed by King' (0/10); Sistine Chapel -> model said \"St. Peter's Square\" (1/10); Mona Lisa -> model said 'The most famous portrait of a Florentine' (0/10); Black Death -> model said '1340s' (0/10); Berlin Wall -> model said 'Berlin Wall' (4/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Boyle's law; Ohm's law; Pythagorean theorem; Isaac Newton; Hooke's law; Battle of Trafalgar; Hubble Space Telescope",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w101c1-basic-mt-ent-natural-selection",
+   "subfamily": "entity",
+   "prompt": "Darwin's proposed mechanism of evolution, in which better-adapted organisms survive and reproduce more, is called",
+   "target": "natural selection",
+   "target_alts": [
+    "survival of the fittest"
+   ],
+   "intermediates": [
+    "natural selection"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "natural selection",
+       "survival of the fittest"
+      ]
+     },
+     "match": [
+      "natural selection",
+      "survival of the fittest"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "natural selection",
+     "distractors": [
+      "genetic drift",
+      "sexual selection",
+      "artificial selection",
+      "gene flow"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       2,
+       5
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 7/60 passed.\n- Rejected by lint before gating: 1x natural:readout 'Waterloo' is not creditable; 1x leak: ['three'] in prompt; 1x natural:readout 'Einstein' is not creditable; 1x leak: ['1789'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): Ming dynasty -> model said 'Ming dynasty.' (1/10); House of Tudor -> model said 'The English royal line begun by Henry VI' (0/10); Eiffel Tower -> model said 'The wrought-iron lattice landmark built ' (1/10); Taj Mahal -> model said 'Hindu temple' (0/10); Battle of Hastings -> model said 'Battle of Hastings' (7/10); Treaty of Versailles -> model said 'The 1919 peace agreement signed in the H' (0/10); Peace of Westphalia -> model said 'Peace Treaty of Münster' (0/10); Magna Carta -> model said 'The document of liberties sealed by King' (0/10); Sistine Chapel -> model said \"St. Peter's Square\" (1/10); Mona Lisa -> model said 'The most famous portrait of a Florentine' (0/10); Black Death -> model said '1340s' (0/10); Berlin Wall -> model said 'Berlin Wall' (4/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Boyle's law; Ohm's law; Pythagorean theorem; Isaac Newton; Hooke's law; Battle of Trafalgar; Hubble Space Telescope",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w101c2-basic-mt-ent-bernoulli-principle",
+   "subfamily": "entity",
+   "prompt": "The rule that a faster-moving fluid has lower pressure, often used to explain how aircraft wings generate lift, is called",
+   "target": "Bernoulli's principle",
+   "target_alts": [
+    "Bernoulli's equation",
+    "Bernoulli principle"
+   ],
+   "intermediates": [
+    "Bernoulli's principle"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Bernoulli's principle",
+       "Bernoulli's equation",
+       "Bernoulli principle"
+      ]
+     },
+     "match": [
+      "Bernoulli's principle",
+      "Bernoulli's equation",
+      "Bernoulli principle"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Bernoulli's principle",
+     "distractors": [
+      "Pascal's principle",
+      "Venturi effect",
+      "Coanda effect",
+      "Magnus effect"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       5,
+       5,
+       4
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 7/60 passed.\n- Rejected by lint before gating: 1x natural:readout 'Waterloo' is not creditable; 1x leak: ['three'] in prompt; 1x natural:readout 'Einstein' is not creditable; 1x leak: ['1789'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): Ming dynasty -> model said 'Ming dynasty.' (1/10); House of Tudor -> model said 'The English royal line begun by Henry VI' (0/10); Eiffel Tower -> model said 'The wrought-iron lattice landmark built ' (1/10); Taj Mahal -> model said 'Hindu temple' (0/10); Battle of Hastings -> model said 'Battle of Hastings' (7/10); Treaty of Versailles -> model said 'The 1919 peace agreement signed in the H' (0/10); Peace of Westphalia -> model said 'Peace Treaty of Münster' (0/10); Magna Carta -> model said 'The document of liberties sealed by King' (0/10); Sistine Chapel -> model said \"St. Peter's Square\" (1/10); Mona Lisa -> model said 'The most famous portrait of a Florentine' (0/10); Black Death -> model said '1340s' (0/10); Berlin Wall -> model said 'Berlin Wall' (4/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Boyle's law; Ohm's law; Pythagorean theorem; Isaac Newton; Hooke's law; Battle of Trafalgar; Hubble Space Telescope",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w101c2-basic-mt-ent-mlk",
+   "subfamily": "entity",
+   "prompt": "The American Baptist minister who gave the famous 'I Have a Dream' speech at the 1963 March on Washington was",
+   "target": "Martin Luther King Jr.",
+   "target_alts": [
+    "Martin Luther King",
+    "MLK",
+    "Dr. King"
+   ],
+   "intermediates": [
+    "Martin Luther King Jr."
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Martin Luther King Jr.",
+       "Martin Luther King",
+       "MLK",
+       "Dr. King"
+      ]
+     },
+     "match": [
+      "Martin Luther King Jr.",
+      "Martin Luther King",
+      "MLK",
+      "Dr. King"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Martin Luther King Jr.",
+     "distractors": [
+      "Malcolm X",
+      "John Lewis",
+      "Jesse Jackson",
+      "Ralph Abernathy"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       5,
+       3,
+       2,
+       3
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 7/60 passed.\n- Rejected by lint before gating: 1x natural:readout 'Waterloo' is not creditable; 1x leak: ['three'] in prompt; 1x natural:readout 'Einstein' is not creditable; 1x leak: ['1789'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): Ming dynasty -> model said 'Ming dynasty.' (1/10); House of Tudor -> model said 'The English royal line begun by Henry VI' (0/10); Eiffel Tower -> model said 'The wrought-iron lattice landmark built ' (1/10); Taj Mahal -> model said 'Hindu temple' (0/10); Battle of Hastings -> model said 'Battle of Hastings' (7/10); Treaty of Versailles -> model said 'The 1919 peace agreement signed in the H' (0/10); Peace of Westphalia -> model said 'Peace Treaty of Münster' (0/10); Magna Carta -> model said 'The document of liberties sealed by King' (0/10); Sistine Chapel -> model said \"St. Peter's Square\" (1/10); Mona Lisa -> model said 'The most famous portrait of a Florentine' (0/10); Black Death -> model said '1340s' (0/10); Berlin Wall -> model said 'Berlin Wall' (4/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Boyle's law; Ohm's law; Pythagorean theorem; Isaac Newton; Hooke's law; Battle of Trafalgar; Hubble Space Telescope",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w101c2-basic-mt-ent-kilimanjaro",
+   "subfamily": "entity",
+   "prompt": "The highest peak in Africa, a dormant volcano in northern Tanzania, is",
+   "target": "Mount Kilimanjaro",
+   "target_alts": [
+    "Kilimanjaro"
+   ],
+   "intermediates": [
+    "Mount Kilimanjaro"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Mount Kilimanjaro",
+       "Kilimanjaro"
+      ]
+     },
+     "match": [
+      "Mount Kilimanjaro",
+      "Kilimanjaro"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Mount Kilimanjaro",
+     "distractors": [
+      "Mount Kenya",
+      "Mount Elgon",
+      "Mount Meru",
+      "Mount Stanley"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       5,
+       4
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 7/60 passed.\n- Rejected by lint before gating: 1x natural:readout 'Waterloo' is not creditable; 1x leak: ['three'] in prompt; 1x natural:readout 'Einstein' is not creditable; 1x leak: ['1789'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): Ming dynasty -> model said 'Ming dynasty.' (1/10); House of Tudor -> model said 'The English royal line begun by Henry VI' (0/10); Eiffel Tower -> model said 'The wrought-iron lattice landmark built ' (1/10); Taj Mahal -> model said 'Hindu temple' (0/10); Battle of Hastings -> model said 'Battle of Hastings' (7/10); Treaty of Versailles -> model said 'The 1919 peace agreement signed in the H' (0/10); Peace of Westphalia -> model said 'Peace Treaty of Münster' (0/10); Magna Carta -> model said 'The document of liberties sealed by King' (0/10); Sistine Chapel -> model said \"St. Peter's Square\" (1/10); Mona Lisa -> model said 'The most famous portrait of a Florentine' (0/10); Black Death -> model said '1340s' (0/10); Berlin Wall -> model said 'Berlin Wall' (4/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Boyle's law; Ohm's law; Pythagorean theorem; Isaac Newton; Hooke's law; Battle of Trafalgar; Hubble Space Telescope",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w102c0-basic-mt-ent-newtons-first-law",
+   "subfamily": "entity",
+   "prompt": "The principle that an object at rest stays at rest, and a moving object keeps moving, unless acted on by an outside force is called",
+   "target": "Newton's first law",
+   "target_alts": [
+    "law of inertia",
+    "Newton's first law of motion"
+   ],
+   "intermediates": [
+    "Newton's first law"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Newton's first law",
+       "law of inertia",
+       "Newton's first law of motion"
+      ]
+     },
+     "match": [
+      "Newton's first law",
+      "law of inertia",
+      "Newton's first law of motion"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Newton's first law",
+     "distractors": [
+      "Newton's second law",
+      "Newton's third law",
+      "Hooke's law",
+      "Kepler's first law"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       4,
+       3,
+       6
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 14/60 passed.\n- Rejected by lint before gating: 1x units: readout pads a one-word name with generic words (uncreditab; 1x leak: ['model'] in prompt; 1x leak: ['gutenberg'] in prompt; 1x leak: ['fortress'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): Avogadro's law -> model said \"Avogadro's Law\" (5/10); Thomas Edison -> model said 'Thomas Edison.' (6/10); Alexander Graham Bell -> model said 'Alexander Graham Bell.' (5/10); Christopher Columbus -> model said 'Juan Cabreón' (1/10); Neil Armstrong -> model said 'Neil Armstrong.' (5/10); Golden Gate Bridge -> model said 'The famous red suspension span crossing ' (1/10); Big Ben -> model said 'The nickname of the great bell in the cl' (0/10); Mount Rushmore -> model said 'The South Dakota granite peak carved wit' (0/10); Machu Picchu -> model said 'The 15th-century Inca citadel perched hi' (0/10); Battle of Midway -> model said 'The June 1942 Pacific clash in which US ' (0/10); Ottoman Empire -> model said 'Selim I' (0/10); Gettysburg Address -> model said 'First, the speech is known as the Gettys' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Coulomb's law; Pascal's law; Dalton's law; Pearl Harbor; Cold War; American Civil War; periodic table; Emancipation Proclamation; Industrial Revolution; Great Depression; natural selection; Bernoulli's principle",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w102c0-basic-mt-ent-world-war-ii",
+   "subfamily": "entity",
+   "prompt": "The global conflict fought from 1939 to 1945 between the Allies and the Axis powers is usually called",
+   "target": "World War II",
+   "target_alts": [
+    "Second World War",
+    "WWII",
+    "World War Two"
+   ],
+   "intermediates": [
+    "World War II"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "World War II",
+       "Second World War",
+       "WWII",
+       "World War Two"
+      ]
+     },
+     "match": [
+      "World War II",
+      "Second World War",
+      "WWII",
+      "World War Two"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "World War II",
+     "distractors": [
+      "World War I",
+      "Korean War",
+      "Vietnam War",
+      "Spanish Civil War"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       3,
+       3,
+       1,
+       3
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 14/60 passed.\n- Rejected by lint before gating: 1x units: readout pads a one-word name with generic words (uncreditab; 1x leak: ['model'] in prompt; 1x leak: ['gutenberg'] in prompt; 1x leak: ['fortress'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): Avogadro's law -> model said \"Avogadro's Law\" (5/10); Thomas Edison -> model said 'Thomas Edison.' (6/10); Alexander Graham Bell -> model said 'Alexander Graham Bell.' (5/10); Christopher Columbus -> model said 'Juan Cabreón' (1/10); Neil Armstrong -> model said 'Neil Armstrong.' (5/10); Golden Gate Bridge -> model said 'The famous red suspension span crossing ' (1/10); Big Ben -> model said 'The nickname of the great bell in the cl' (0/10); Mount Rushmore -> model said 'The South Dakota granite peak carved wit' (0/10); Machu Picchu -> model said 'The 15th-century Inca citadel perched hi' (0/10); Battle of Midway -> model said 'The June 1942 Pacific clash in which US ' (0/10); Ottoman Empire -> model said 'Selim I' (0/10); Gettysburg Address -> model said 'First, the speech is known as the Gettys' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Coulomb's law; Pascal's law; Dalton's law; Pearl Harbor; Cold War; American Civil War; periodic table; Emancipation Proclamation; Industrial Revolution; Great Depression; natural selection; Bernoulli's principle",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w102c0-basic-mt-ent-uncertainty-principle",
+   "subfamily": "entity",
+   "prompt": "The quantum rule stating that a particle's position and momentum cannot both be measured exactly at once is called the",
+   "target": "uncertainty principle",
+   "target_alts": [
+    "Heisenberg uncertainty principle",
+    "Heisenberg's uncertainty principle"
+   ],
+   "intermediates": [
+    "uncertainty principle"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "uncertainty principle",
+       "Heisenberg uncertainty principle",
+       "Heisenberg's uncertainty principle"
+      ]
+     },
+     "match": [
+      "uncertainty principle",
+      "Heisenberg uncertainty principle",
+      "Heisenberg's uncertainty principle"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "uncertainty principle",
+     "distractors": [
+      "Pauli exclusion principle",
+      "correspondence principle",
+      "complementarity principle",
+      "Bernoulli's principle"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       2,
+       5,
+       6
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 14/60 passed.\n- Rejected by lint before gating: 1x units: readout pads a one-word name with generic words (uncreditab; 1x leak: ['model'] in prompt; 1x leak: ['gutenberg'] in prompt; 1x leak: ['fortress'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): Avogadro's law -> model said \"Avogadro's Law\" (5/10); Thomas Edison -> model said 'Thomas Edison.' (6/10); Alexander Graham Bell -> model said 'Alexander Graham Bell.' (5/10); Christopher Columbus -> model said 'Juan Cabreón' (1/10); Neil Armstrong -> model said 'Neil Armstrong.' (5/10); Golden Gate Bridge -> model said 'The famous red suspension span crossing ' (1/10); Big Ben -> model said 'The nickname of the great bell in the cl' (0/10); Mount Rushmore -> model said 'The South Dakota granite peak carved wit' (0/10); Machu Picchu -> model said 'The 15th-century Inca citadel perched hi' (0/10); Battle of Midway -> model said 'The June 1942 Pacific clash in which US ' (0/10); Ottoman Empire -> model said 'Selim I' (0/10); Gettysburg Address -> model said 'First, the speech is known as the Gettys' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Coulomb's law; Pascal's law; Dalton's law; Pearl Harbor; Cold War; American Civil War; periodic table; Emancipation Proclamation; Industrial Revolution; Great Depression; natural selection; Bernoulli's principle",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w102c0-basic-mt-ent-protestant-reformation",
+   "subfamily": "entity",
+   "prompt": "The 16th-century religious movement sparked by Martin Luther's Ninety-five Theses is known as the",
+   "target": "Protestant Reformation",
+   "target_alts": [
+    "Reformation"
+   ],
+   "intermediates": [
+    "Protestant Reformation"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Protestant Reformation",
+       "Reformation"
+      ]
+     },
+     "match": [
+      "Protestant Reformation",
+      "Reformation"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Protestant Reformation",
+     "distractors": [
+      "Counter-Reformation",
+      "Renaissance",
+      "Enlightenment",
+      "Great Schism"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       3,
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 14/60 passed.\n- Rejected by lint before gating: 1x units: readout pads a one-word name with generic words (uncreditab; 1x leak: ['model'] in prompt; 1x leak: ['gutenberg'] in prompt; 1x leak: ['fortress'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): Avogadro's law -> model said \"Avogadro's Law\" (5/10); Thomas Edison -> model said 'Thomas Edison.' (6/10); Alexander Graham Bell -> model said 'Alexander Graham Bell.' (5/10); Christopher Columbus -> model said 'Juan Cabreón' (1/10); Neil Armstrong -> model said 'Neil Armstrong.' (5/10); Golden Gate Bridge -> model said 'The famous red suspension span crossing ' (1/10); Big Ben -> model said 'The nickname of the great bell in the cl' (0/10); Mount Rushmore -> model said 'The South Dakota granite peak carved wit' (0/10); Machu Picchu -> model said 'The 15th-century Inca citadel perched hi' (0/10); Battle of Midway -> model said 'The June 1942 Pacific clash in which US ' (0/10); Ottoman Empire -> model said 'Selim I' (0/10); Gettysburg Address -> model said 'First, the speech is known as the Gettys' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Coulomb's law; Pascal's law; Dalton's law; Pearl Harbor; Cold War; American Civil War; periodic table; Emancipation Proclamation; Industrial Revolution; Great Depression; natural selection; Bernoulli's principle",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w102c0-basic-mt-ent-silk-road",
+   "subfamily": "entity",
+   "prompt": "The ancient network of trade routes linking China with the Mediterranean world is known as the",
+   "target": "Silk Road",
+   "target_alts": [
+    "Silk Route",
+    "Silk Roads"
+   ],
+   "intermediates": [
+    "Silk Road"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Silk Road",
+       "Silk Route",
+       "Silk Roads"
+      ]
+     },
+     "match": [
+      "Silk Road",
+      "Silk Route",
+      "Silk Roads"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Silk Road",
+     "distractors": [
+      "Spice Route",
+      "Amber Road",
+      "Incense Route",
+      "Grand Trunk Road"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       2,
+       2,
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 14/60 passed.\n- Rejected by lint before gating: 1x units: readout pads a one-word name with generic words (uncreditab; 1x leak: ['model'] in prompt; 1x leak: ['gutenberg'] in prompt; 1x leak: ['fortress'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): Avogadro's law -> model said \"Avogadro's Law\" (5/10); Thomas Edison -> model said 'Thomas Edison.' (6/10); Alexander Graham Bell -> model said 'Alexander Graham Bell.' (5/10); Christopher Columbus -> model said 'Juan Cabreón' (1/10); Neil Armstrong -> model said 'Neil Armstrong.' (5/10); Golden Gate Bridge -> model said 'The famous red suspension span crossing ' (1/10); Big Ben -> model said 'The nickname of the great bell in the cl' (0/10); Mount Rushmore -> model said 'The South Dakota granite peak carved wit' (0/10); Machu Picchu -> model said 'The 15th-century Inca citadel perched hi' (0/10); Battle of Midway -> model said 'The June 1942 Pacific clash in which US ' (0/10); Ottoman Empire -> model said 'Selim I' (0/10); Gettysburg Address -> model said 'First, the speech is known as the Gettys' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Coulomb's law; Pascal's law; Dalton's law; Pearl Harbor; Cold War; American Civil War; periodic table; Emancipation Proclamation; Industrial Revolution; Great Depression; natural selection; Bernoulli's principle",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w102c1-basic-mt-ent-newtons-second-law",
+   "subfamily": "entity",
+   "prompt": "The law stating that the net force on an object equals its mass times its acceleration is known as",
+   "target": "Newton's second law",
+   "target_alts": [
+    "second law of motion",
+    "F = ma"
+   ],
+   "intermediates": [
+    "Newton's second law"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Newton's second law",
+       "second law of motion",
+       "F = ma"
+      ]
+     },
+     "match": [
+      "Newton's second law",
+      "second law of motion",
+      "F = ma"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Newton's second law",
+     "distractors": [
+      "Newton's third law",
+      "Hooke's law",
+      "Coulomb's law",
+      "law of universal gravitation"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       4,
+       4,
+       3
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 14/60 passed.\n- Rejected by lint before gating: 1x units: readout pads a one-word name with generic words (uncreditab; 1x leak: ['model'] in prompt; 1x leak: ['gutenberg'] in prompt; 1x leak: ['fortress'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): Avogadro's law -> model said \"Avogadro's Law\" (5/10); Thomas Edison -> model said 'Thomas Edison.' (6/10); Alexander Graham Bell -> model said 'Alexander Graham Bell.' (5/10); Christopher Columbus -> model said 'Juan Cabreón' (1/10); Neil Armstrong -> model said 'Neil Armstrong.' (5/10); Golden Gate Bridge -> model said 'The famous red suspension span crossing ' (1/10); Big Ben -> model said 'The nickname of the great bell in the cl' (0/10); Mount Rushmore -> model said 'The South Dakota granite peak carved wit' (0/10); Machu Picchu -> model said 'The 15th-century Inca citadel perched hi' (0/10); Battle of Midway -> model said 'The June 1942 Pacific clash in which US ' (0/10); Ottoman Empire -> model said 'Selim I' (0/10); Gettysburg Address -> model said 'First, the speech is known as the Gettys' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Coulomb's law; Pascal's law; Dalton's law; Pearl Harbor; Cold War; American Civil War; periodic table; Emancipation Proclamation; Industrial Revolution; Great Depression; natural selection; Bernoulli's principle",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w102c1-basic-mt-ent-photoelectric-effect",
+   "subfamily": "entity",
+   "prompt": "Albert Einstein won the 1921 Nobel Prize in Physics for his explanation of the",
+   "target": "photoelectric effect",
+   "target_alts": [],
+   "intermediates": [
+    "photoelectric effect"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "photoelectric effect"
+      ]
+     },
+     "match": [
+      "photoelectric effect"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "photoelectric effect",
+     "distractors": [
+      "Compton effect",
+      "Zeeman effect",
+      "Brownian motion",
+      "Stark effect"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       3
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 14/60 passed.\n- Rejected by lint before gating: 1x units: readout pads a one-word name with generic words (uncreditab; 1x leak: ['model'] in prompt; 1x leak: ['gutenberg'] in prompt; 1x leak: ['fortress'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): Avogadro's law -> model said \"Avogadro's Law\" (5/10); Thomas Edison -> model said 'Thomas Edison.' (6/10); Alexander Graham Bell -> model said 'Alexander Graham Bell.' (5/10); Christopher Columbus -> model said 'Juan Cabreón' (1/10); Neil Armstrong -> model said 'Neil Armstrong.' (5/10); Golden Gate Bridge -> model said 'The famous red suspension span crossing ' (1/10); Big Ben -> model said 'The nickname of the great bell in the cl' (0/10); Mount Rushmore -> model said 'The South Dakota granite peak carved wit' (0/10); Machu Picchu -> model said 'The 15th-century Inca citadel perched hi' (0/10); Battle of Midway -> model said 'The June 1942 Pacific clash in which US ' (0/10); Ottoman Empire -> model said 'Selim I' (0/10); Gettysburg Address -> model said 'First, the speech is known as the Gettys' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Coulomb's law; Pascal's law; Dalton's law; Pearl Harbor; Cold War; American Civil War; periodic table; Emancipation Proclamation; Industrial Revolution; Great Depression; natural selection; Bernoulli's principle",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w102c1-basic-mt-ent-mount-fuji",
+   "subfamily": "entity",
+   "prompt": "Japan's highest peak, a snow-capped volcano visible from Tokyo, is",
+   "target": "Mount Fuji",
+   "target_alts": [
+    "Fujisan",
+    "Fuji"
+   ],
+   "intermediates": [
+    "Mount Fuji"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Mount Fuji",
+       "Fujisan",
+       "Fuji"
+      ]
+     },
+     "match": [
+      "Mount Fuji",
+      "Fujisan",
+      "Fuji"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Mount Fuji",
+     "distractors": [
+      "Mount Aso",
+      "Mount Ontake",
+      "Mount Unzen",
+      "Mount Asama"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       2,
+       2,
+       1
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 14/60 passed.\n- Rejected by lint before gating: 1x units: readout pads a one-word name with generic words (uncreditab; 1x leak: ['model'] in prompt; 1x leak: ['gutenberg'] in prompt; 1x leak: ['fortress'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): Avogadro's law -> model said \"Avogadro's Law\" (5/10); Thomas Edison -> model said 'Thomas Edison.' (6/10); Alexander Graham Bell -> model said 'Alexander Graham Bell.' (5/10); Christopher Columbus -> model said 'Juan Cabreón' (1/10); Neil Armstrong -> model said 'Neil Armstrong.' (5/10); Golden Gate Bridge -> model said 'The famous red suspension span crossing ' (1/10); Big Ben -> model said 'The nickname of the great bell in the cl' (0/10); Mount Rushmore -> model said 'The South Dakota granite peak carved wit' (0/10); Machu Picchu -> model said 'The 15th-century Inca citadel perched hi' (0/10); Battle of Midway -> model said 'The June 1942 Pacific clash in which US ' (0/10); Ottoman Empire -> model said 'Selim I' (0/10); Gettysburg Address -> model said 'First, the speech is known as the Gettys' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Coulomb's law; Pascal's law; Dalton's law; Pearl Harbor; Cold War; American Civil War; periodic table; Emancipation Proclamation; Industrial Revolution; Great Depression; natural selection; Bernoulli's principle",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w102c1-basic-mt-ent-house-of-habsburg",
+   "subfamily": "entity",
+   "prompt": "The Austrian royal family that held the title of Holy Roman Emperor for most of the period from 1438 to 1806 was the",
+   "target": "House of Habsburg",
+   "target_alts": [
+    "Habsburg dynasty",
+    "Habsburgs",
+    "Hapsburg dynasty"
+   ],
+   "intermediates": [
+    "House of Habsburg"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "House of Habsburg",
+       "Habsburg dynasty",
+       "Habsburgs",
+       "Hapsburg dynasty"
+      ]
+     },
+     "match": [
+      "House of Habsburg",
+      "Habsburg dynasty",
+      "Habsburgs",
+      "Hapsburg dynasty"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "House of Habsburg",
+     "distractors": [
+      "House of Bourbon",
+      "House of Valois",
+      "House of Hohenzollern",
+      "House of Wittelsbach"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       5,
+       4,
+       4,
+       3
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 14/60 passed.\n- Rejected by lint before gating: 1x units: readout pads a one-word name with generic words (uncreditab; 1x leak: ['model'] in prompt; 1x leak: ['gutenberg'] in prompt; 1x leak: ['fortress'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): Avogadro's law -> model said \"Avogadro's Law\" (5/10); Thomas Edison -> model said 'Thomas Edison.' (6/10); Alexander Graham Bell -> model said 'Alexander Graham Bell.' (5/10); Christopher Columbus -> model said 'Juan Cabreón' (1/10); Neil Armstrong -> model said 'Neil Armstrong.' (5/10); Golden Gate Bridge -> model said 'The famous red suspension span crossing ' (1/10); Big Ben -> model said 'The nickname of the great bell in the cl' (0/10); Mount Rushmore -> model said 'The South Dakota granite peak carved wit' (0/10); Machu Picchu -> model said 'The 15th-century Inca citadel perched hi' (0/10); Battle of Midway -> model said 'The June 1942 Pacific clash in which US ' (0/10); Ottoman Empire -> model said 'Selim I' (0/10); Gettysburg Address -> model said 'First, the speech is known as the Gettys' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Coulomb's law; Pascal's law; Dalton's law; Pearl Harbor; Cold War; American Civil War; periodic table; Emancipation Proclamation; Industrial Revolution; Great Depression; natural selection; Bernoulli's principle",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w102c1-basic-mt-ent-krebs-cycle",
+   "subfamily": "entity",
+   "prompt": "The sequence of reactions in the mitochondria that oxidizes acetyl-CoA to carbon dioxide is known as the",
+   "target": "Krebs cycle",
+   "target_alts": [
+    "citric acid cycle",
+    "TCA cycle",
+    "tricarboxylic acid cycle"
+   ],
+   "intermediates": [
+    "Krebs cycle"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Krebs cycle",
+       "citric acid cycle",
+       "TCA cycle",
+       "tricarboxylic acid cycle"
+      ]
+     },
+     "match": [
+      "Krebs cycle",
+      "citric acid cycle",
+      "TCA cycle",
+      "tricarboxylic acid cycle"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Krebs cycle",
+     "distractors": [
+      "Calvin cycle",
+      "urea cycle",
+      "electron transport chain",
+      "Cori cycle"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       2,
+       4,
+       3,
+       6
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 14/60 passed.\n- Rejected by lint before gating: 1x units: readout pads a one-word name with generic words (uncreditab; 1x leak: ['model'] in prompt; 1x leak: ['gutenberg'] in prompt; 1x leak: ['fortress'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): Avogadro's law -> model said \"Avogadro's Law\" (5/10); Thomas Edison -> model said 'Thomas Edison.' (6/10); Alexander Graham Bell -> model said 'Alexander Graham Bell.' (5/10); Christopher Columbus -> model said 'Juan Cabreón' (1/10); Neil Armstrong -> model said 'Neil Armstrong.' (5/10); Golden Gate Bridge -> model said 'The famous red suspension span crossing ' (1/10); Big Ben -> model said 'The nickname of the great bell in the cl' (0/10); Mount Rushmore -> model said 'The South Dakota granite peak carved wit' (0/10); Machu Picchu -> model said 'The 15th-century Inca citadel perched hi' (0/10); Battle of Midway -> model said 'The June 1942 Pacific clash in which US ' (0/10); Ottoman Empire -> model said 'Selim I' (0/10); Gettysburg Address -> model said 'First, the speech is known as the Gettys' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Coulomb's law; Pascal's law; Dalton's law; Pearl Harbor; Cold War; American Civil War; periodic table; Emancipation Proclamation; Industrial Revolution; Great Depression; natural selection; Bernoulli's principle",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w102c1-basic-mt-ent-fibonacci-sequence",
+   "subfamily": "entity",
+   "prompt": "The series 0, 1, 1, 2, 3, 5, 8, 13, in which each term is the sum of the two preceding terms, is called the",
+   "target": "Fibonacci sequence",
+   "target_alts": [
+    "Fibonacci numbers"
+   ],
+   "intermediates": [
+    "Fibonacci sequence"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Fibonacci sequence",
+       "Fibonacci numbers"
+      ]
+     },
+     "match": [
+      "Fibonacci sequence",
+      "Fibonacci numbers"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Fibonacci sequence",
+     "distractors": [
+      "Lucas sequence",
+      "Catalan numbers",
+      "triangular numbers",
+      "arithmetic progression"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       2,
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 14/60 passed.\n- Rejected by lint before gating: 1x units: readout pads a one-word name with generic words (uncreditab; 1x leak: ['model'] in prompt; 1x leak: ['gutenberg'] in prompt; 1x leak: ['fortress'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): Avogadro's law -> model said \"Avogadro's Law\" (5/10); Thomas Edison -> model said 'Thomas Edison.' (6/10); Alexander Graham Bell -> model said 'Alexander Graham Bell.' (5/10); Christopher Columbus -> model said 'Juan Cabreón' (1/10); Neil Armstrong -> model said 'Neil Armstrong.' (5/10); Golden Gate Bridge -> model said 'The famous red suspension span crossing ' (1/10); Big Ben -> model said 'The nickname of the great bell in the cl' (0/10); Mount Rushmore -> model said 'The South Dakota granite peak carved wit' (0/10); Machu Picchu -> model said 'The 15th-century Inca citadel perched hi' (0/10); Battle of Midway -> model said 'The June 1942 Pacific clash in which US ' (0/10); Ottoman Empire -> model said 'Selim I' (0/10); Gettysburg Address -> model said 'First, the speech is known as the Gettys' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Coulomb's law; Pascal's law; Dalton's law; Pearl Harbor; Cold War; American Civil War; periodic table; Emancipation Proclamation; Industrial Revolution; Great Depression; natural selection; Bernoulli's principle",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w102c2-basic-mt-ent-newtons-third-law",
+   "subfamily": "entity",
+   "prompt": "The principle stating that for every action there is an equal and opposite reaction is known as",
+   "target": "Newton's third law",
+   "target_alts": [
+    "third law of motion"
+   ],
+   "intermediates": [
+    "Newton's third law"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Newton's third law",
+       "third law of motion"
+      ]
+     },
+     "match": [
+      "Newton's third law",
+      "third law of motion"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Newton's third law",
+     "distractors": [
+      "law of inertia",
+      "law of universal gravitation",
+      "conservation of momentum",
+      "Kepler's third law"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       4,
+       4
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 14/60 passed.\n- Rejected by lint before gating: 1x units: readout pads a one-word name with generic words (uncreditab; 1x leak: ['model'] in prompt; 1x leak: ['gutenberg'] in prompt; 1x leak: ['fortress'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): Avogadro's law -> model said \"Avogadro's Law\" (5/10); Thomas Edison -> model said 'Thomas Edison.' (6/10); Alexander Graham Bell -> model said 'Alexander Graham Bell.' (5/10); Christopher Columbus -> model said 'Juan Cabreón' (1/10); Neil Armstrong -> model said 'Neil Armstrong.' (5/10); Golden Gate Bridge -> model said 'The famous red suspension span crossing ' (1/10); Big Ben -> model said 'The nickname of the great bell in the cl' (0/10); Mount Rushmore -> model said 'The South Dakota granite peak carved wit' (0/10); Machu Picchu -> model said 'The 15th-century Inca citadel perched hi' (0/10); Battle of Midway -> model said 'The June 1942 Pacific clash in which US ' (0/10); Ottoman Empire -> model said 'Selim I' (0/10); Gettysburg Address -> model said 'First, the speech is known as the Gettys' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Coulomb's law; Pascal's law; Dalton's law; Pearl Harbor; Cold War; American Civil War; periodic table; Emancipation Proclamation; Industrial Revolution; Great Depression; natural selection; Bernoulli's principle",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w102c2-basic-mt-ent-le-chateliers-principle",
+   "subfamily": "entity",
+   "prompt": "The chemistry rule stating that a system at equilibrium shifts to counteract any imposed change is called",
+   "target": "Le Chatelier's principle",
+   "target_alts": [
+    "Le Chatelier's law"
+   ],
+   "intermediates": [
+    "Le Chatelier's principle"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Le Chatelier's principle",
+       "Le Chatelier's law"
+      ]
+     },
+     "match": [
+      "Le Chatelier's principle",
+      "Le Chatelier's law"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Le Chatelier's principle",
+     "distractors": [
+      "Hess's law",
+      "Henry's law",
+      "Raoult's law",
+      "Graham's law"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       5,
+       5
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 14/60 passed.\n- Rejected by lint before gating: 1x units: readout pads a one-word name with generic words (uncreditab; 1x leak: ['model'] in prompt; 1x leak: ['gutenberg'] in prompt; 1x leak: ['fortress'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): Avogadro's law -> model said \"Avogadro's Law\" (5/10); Thomas Edison -> model said 'Thomas Edison.' (6/10); Alexander Graham Bell -> model said 'Alexander Graham Bell.' (5/10); Christopher Columbus -> model said 'Juan Cabreón' (1/10); Neil Armstrong -> model said 'Neil Armstrong.' (5/10); Golden Gate Bridge -> model said 'The famous red suspension span crossing ' (1/10); Big Ben -> model said 'The nickname of the great bell in the cl' (0/10); Mount Rushmore -> model said 'The South Dakota granite peak carved wit' (0/10); Machu Picchu -> model said 'The 15th-century Inca citadel perched hi' (0/10); Battle of Midway -> model said 'The June 1942 Pacific clash in which US ' (0/10); Ottoman Empire -> model said 'Selim I' (0/10); Gettysburg Address -> model said 'First, the speech is known as the Gettys' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Coulomb's law; Pascal's law; Dalton's law; Pearl Harbor; Cold War; American Civil War; periodic table; Emancipation Proclamation; Industrial Revolution; Great Depression; natural selection; Bernoulli's principle",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w102c2-basic-mt-ent-double-helix",
+   "subfamily": "entity",
+   "prompt": "The twisted-ladder shape of the DNA molecule described by Watson and Crick in 1953 is called the",
+   "target": "double helix",
+   "target_alts": [
+    "DNA double helix"
+   ],
+   "intermediates": [
+    "double helix"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "double helix",
+       "DNA double helix"
+      ]
+     },
+     "match": [
+      "double helix",
+      "DNA double helix"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "double helix",
+     "distractors": [
+      "alpha helix",
+      "beta sheet",
+      "triple helix",
+      "Holliday junction"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       3,
+       4
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 14/60 passed.\n- Rejected by lint before gating: 1x units: readout pads a one-word name with generic words (uncreditab; 1x leak: ['model'] in prompt; 1x leak: ['gutenberg'] in prompt; 1x leak: ['fortress'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): Avogadro's law -> model said \"Avogadro's Law\" (5/10); Thomas Edison -> model said 'Thomas Edison.' (6/10); Alexander Graham Bell -> model said 'Alexander Graham Bell.' (5/10); Christopher Columbus -> model said 'Juan Cabreón' (1/10); Neil Armstrong -> model said 'Neil Armstrong.' (5/10); Golden Gate Bridge -> model said 'The famous red suspension span crossing ' (1/10); Big Ben -> model said 'The nickname of the great bell in the cl' (0/10); Mount Rushmore -> model said 'The South Dakota granite peak carved wit' (0/10); Machu Picchu -> model said 'The 15th-century Inca citadel perched hi' (0/10); Battle of Midway -> model said 'The June 1942 Pacific clash in which US ' (0/10); Ottoman Empire -> model said 'Selim I' (0/10); Gettysburg Address -> model said 'First, the speech is known as the Gettys' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Coulomb's law; Pascal's law; Dalton's law; Pearl Harbor; Cold War; American Civil War; periodic table; Emancipation Proclamation; Industrial Revolution; Great Depression; natural selection; Bernoulli's principle",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t1-w102c2-basic-mt-ent-golden-ratio",
+   "subfamily": "entity",
+   "prompt": "The irrational number approximately 1.618, denoted by phi and prized in art and architecture, is known as the",
+   "target": "golden ratio",
+   "target_alts": [
+    "golden mean",
+    "golden section",
+    "divine proportion"
+   ],
+   "intermediates": [
+    "golden ratio"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "golden ratio",
+       "golden mean",
+       "golden section",
+       "divine proportion"
+      ]
+     },
+     "match": [
+      "golden ratio",
+      "golden mean",
+      "golden section",
+      "divine proportion"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "golden ratio",
+     "distractors": [
+      "silver ratio",
+      "Euler's number",
+      "square root of two",
+      "plastic number"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       2,
+       2,
+       2,
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Famous entities a well-read adult knows (well-known dynasties, buildings, battles, treaties, scientists' laws), never long-tail facts."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 14/60 passed.\n- Rejected by lint before gating: 1x units: readout pads a one-word name with generic words (uncreditab; 1x leak: ['model'] in prompt; 1x leak: ['gutenberg'] in prompt; 1x leak: ['fortress'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): Avogadro's law -> model said \"Avogadro's Law\" (5/10); Thomas Edison -> model said 'Thomas Edison.' (6/10); Alexander Graham Bell -> model said 'Alexander Graham Bell.' (5/10); Christopher Columbus -> model said 'Juan Cabreón' (1/10); Neil Armstrong -> model said 'Neil Armstrong.' (5/10); Golden Gate Bridge -> model said 'The famous red suspension span crossing ' (1/10); Big Ben -> model said 'The nickname of the great bell in the cl' (0/10); Mount Rushmore -> model said 'The South Dakota granite peak carved wit' (0/10); Machu Picchu -> model said 'The 15th-century Inca citadel perched hi' (0/10); Battle of Midway -> model said 'The June 1942 Pacific clash in which US ' (0/10); Ottoman Empire -> model said 'Selim I' (0/10); Gettysburg Address -> model said 'First, the speech is known as the Gettys' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Coulomb's law; Pascal's law; Dalton's law; Pearl Harbor; Cold War; American Civil War; periodic table; Emancipation Proclamation; Industrial Revolution; Great Depression; natural selection; Bernoulli's principle",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t2-w103c0-basic-mt-ent-great-lakes",
+   "subfamily": "entity",
+   "prompt": "The five large freshwater bodies on the US–Canada border are called the",
+   "target": "Great Lakes",
+   "target_alts": [
+    "Laurentian Great Lakes"
+   ],
+   "intermediates": [
+    "Great Lakes"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Great Lakes",
+       "Laurentian Great Lakes"
+      ]
+     },
+     "match": [
+      "Great Lakes",
+      "Laurentian Great Lakes"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Great Lakes",
+     "distractors": [
+      "Finger Lakes",
+      "African Great Lakes",
+      "Great Salt Lake",
+      "Lake District"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       2,
+       4
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Textbook entities (the Great Wall of China, the Roman Empire, the Eiffel Tower, the Theory of Relativity).",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Textbook entities (the Great Wall of China, the Roman Empire, the Eiffel Tower, the Theory of Relativity)."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 15/60 passed.\n- Rejected by lint before gating: 1x leak: ['wooden'] in prompt; 1x leak: ['grid'] in prompt; 1x leak: ['church'] in prompt; 1x leak: ['basilica'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): general relativity -> model said \"Hawking's 1915 description of gravity as\" (6/10); Red Square -> model said 'Kremlin Square' (0/10); Tiananmen Square -> model said 'Huangpu' (0/10); Tang dynasty -> model said 'Yuan dynasty.' (0/10); Monroe Doctrine -> model said 'Declaration of the Rights of Man and of ' (0/10); Murphy's law -> model said 'the \"bad\"' (0/10); Girl with a Pearl Earring -> model said \"Vermeer's famous painting of a young wom\" (1/10); D-Day -> model said 'D-Day' (7/10); Spanish Armada -> model said 'HMS Victory' (1/10); California Gold Rush -> model said \"Sutter's Mill\" (1/10); plate tectonics -> model said \"The geological theory that Earth's crust\" (2/10); greenhouse effect -> model said 'greenhouse effect' (7/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Newton's first law; World War II; uncertainty principle; Protestant Reformation; Silk Road; Newton's second law; photoelectric effect; Mount Fuji; House of Habsburg; Krebs cycle; Fibonacci sequence; Newton's third law",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t2-w103c0-basic-mt-ent-black-hole",
+   "subfamily": "entity",
+   "prompt": "A region of spacetime where gravity is so strong that not even light can escape is called a",
+   "target": "black hole",
+   "target_alts": [
+    "collapsar"
+   ],
+   "intermediates": [
+    "black hole"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "black hole",
+       "collapsar"
+      ]
+     },
+     "match": [
+      "black hole",
+      "collapsar"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "black hole",
+     "distractors": [
+      "neutron star",
+      "white dwarf",
+      "red giant",
+      "wormhole"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       2,
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Textbook entities (the Great Wall of China, the Roman Empire, the Eiffel Tower, the Theory of Relativity).",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Textbook entities (the Great Wall of China, the Roman Empire, the Eiffel Tower, the Theory of Relativity)."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 15/60 passed.\n- Rejected by lint before gating: 1x leak: ['wooden'] in prompt; 1x leak: ['grid'] in prompt; 1x leak: ['church'] in prompt; 1x leak: ['basilica'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): general relativity -> model said \"Hawking's 1915 description of gravity as\" (6/10); Red Square -> model said 'Kremlin Square' (0/10); Tiananmen Square -> model said 'Huangpu' (0/10); Tang dynasty -> model said 'Yuan dynasty.' (0/10); Monroe Doctrine -> model said 'Declaration of the Rights of Man and of ' (0/10); Murphy's law -> model said 'the \"bad\"' (0/10); Girl with a Pearl Earring -> model said \"Vermeer's famous painting of a young wom\" (1/10); D-Day -> model said 'D-Day' (7/10); Spanish Armada -> model said 'HMS Victory' (1/10); California Gold Rush -> model said \"Sutter's Mill\" (1/10); plate tectonics -> model said \"The geological theory that Earth's crust\" (2/10); greenhouse effect -> model said 'greenhouse effect' (7/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Newton's first law; World War II; uncertainty principle; Protestant Reformation; Silk Road; Newton's second law; photoelectric effect; Mount Fuji; House of Habsburg; Krebs cycle; Fibonacci sequence; Newton's third law",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t2-w103c0-basic-mt-ent-leap-year",
+   "subfamily": "entity",
+   "prompt": "A calendar period of 366 days, with February 29 added, is called a",
+   "target": "leap year",
+   "target_alts": [
+    "bissextile year",
+    "intercalary year"
+   ],
+   "intermediates": [
+    "leap year"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "leap year",
+       "bissextile year",
+       "intercalary year"
+      ]
+     },
+     "match": [
+      "leap year",
+      "bissextile year",
+      "intercalary year"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "leap year",
+     "distractors": [
+      "common year",
+      "fiscal year",
+      "lunar year",
+      "sidereal year"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       2,
+       5,
+       4
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Textbook entities (the Great Wall of China, the Roman Empire, the Eiffel Tower, the Theory of Relativity).",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Textbook entities (the Great Wall of China, the Roman Empire, the Eiffel Tower, the Theory of Relativity)."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 15/60 passed.\n- Rejected by lint before gating: 1x leak: ['wooden'] in prompt; 1x leak: ['grid'] in prompt; 1x leak: ['church'] in prompt; 1x leak: ['basilica'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): general relativity -> model said \"Hawking's 1915 description of gravity as\" (6/10); Red Square -> model said 'Kremlin Square' (0/10); Tiananmen Square -> model said 'Huangpu' (0/10); Tang dynasty -> model said 'Yuan dynasty.' (0/10); Monroe Doctrine -> model said 'Declaration of the Rights of Man and of ' (0/10); Murphy's law -> model said 'the \"bad\"' (0/10); Girl with a Pearl Earring -> model said \"Vermeer's famous painting of a young wom\" (1/10); D-Day -> model said 'D-Day' (7/10); Spanish Armada -> model said 'HMS Victory' (1/10); California Gold Rush -> model said \"Sutter's Mill\" (1/10); plate tectonics -> model said \"The geological theory that Earth's crust\" (2/10); greenhouse effect -> model said 'greenhouse effect' (7/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Newton's first law; World War II; uncertainty principle; Protestant Reformation; Silk Road; Newton's second law; photoelectric effect; Mount Fuji; House of Habsburg; Krebs cycle; Fibonacci sequence; Newton's third law",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t2-w103c1-basic-mt-ent-mitochondria",
+   "subfamily": "entity",
+   "prompt": "The organelle known as the powerhouse of the cell is the",
+   "target": "mitochondria",
+   "target_alts": [
+    "mitochondrion"
+   ],
+   "intermediates": [
+    "mitochondria"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "mitochondria",
+       "mitochondrion"
+      ]
+     },
+     "match": [
+      "mitochondria",
+      "mitochondrion"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "mitochondria",
+     "distractors": [
+      "chloroplast",
+      "ribosome",
+      "Golgi apparatus",
+      "endoplasmic reticulum"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       2,
+       3
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Textbook entities (the Great Wall of China, the Roman Empire, the Eiffel Tower, the Theory of Relativity).",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Textbook entities (the Great Wall of China, the Roman Empire, the Eiffel Tower, the Theory of Relativity)."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 15/60 passed.\n- Rejected by lint before gating: 1x leak: ['wooden'] in prompt; 1x leak: ['grid'] in prompt; 1x leak: ['church'] in prompt; 1x leak: ['basilica'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): general relativity -> model said \"Hawking's 1915 description of gravity as\" (6/10); Red Square -> model said 'Kremlin Square' (0/10); Tiananmen Square -> model said 'Huangpu' (0/10); Tang dynasty -> model said 'Yuan dynasty.' (0/10); Monroe Doctrine -> model said 'Declaration of the Rights of Man and of ' (0/10); Murphy's law -> model said 'the \"bad\"' (0/10); Girl with a Pearl Earring -> model said \"Vermeer's famous painting of a young wom\" (1/10); D-Day -> model said 'D-Day' (7/10); Spanish Armada -> model said 'HMS Victory' (1/10); California Gold Rush -> model said \"Sutter's Mill\" (1/10); plate tectonics -> model said \"The geological theory that Earth's crust\" (2/10); greenhouse effect -> model said 'greenhouse effect' (7/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Newton's first law; World War II; uncertainty principle; Protestant Reformation; Silk Road; Newton's second law; photoelectric effect; Mount Fuji; House of Habsburg; Krebs cycle; Fibonacci sequence; Newton's third law",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t2-w103c1-basic-mt-ent-speed-of-light",
+   "subfamily": "entity",
+   "prompt": "In physics, the universal constant c, about 300,000 kilometers per second, is the",
+   "target": "speed of light",
+   "target_alts": [
+    "light speed"
+   ],
+   "intermediates": [
+    "speed of light"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "speed of light",
+       "light speed"
+      ]
+     },
+     "match": [
+      "speed of light",
+      "light speed"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "speed of light",
+     "distractors": [
+      "speed of sound",
+      "Planck constant",
+      "gravitational constant",
+      "escape velocity"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       3,
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Textbook entities (the Great Wall of China, the Roman Empire, the Eiffel Tower, the Theory of Relativity).",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Textbook entities (the Great Wall of China, the Roman Empire, the Eiffel Tower, the Theory of Relativity)."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 15/60 passed.\n- Rejected by lint before gating: 1x leak: ['wooden'] in prompt; 1x leak: ['grid'] in prompt; 1x leak: ['church'] in prompt; 1x leak: ['basilica'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): general relativity -> model said \"Hawking's 1915 description of gravity as\" (6/10); Red Square -> model said 'Kremlin Square' (0/10); Tiananmen Square -> model said 'Huangpu' (0/10); Tang dynasty -> model said 'Yuan dynasty.' (0/10); Monroe Doctrine -> model said 'Declaration of the Rights of Man and of ' (0/10); Murphy's law -> model said 'the \"bad\"' (0/10); Girl with a Pearl Earring -> model said \"Vermeer's famous painting of a young wom\" (1/10); D-Day -> model said 'D-Day' (7/10); Spanish Armada -> model said 'HMS Victory' (1/10); California Gold Rush -> model said \"Sutter's Mill\" (1/10); plate tectonics -> model said \"The geological theory that Earth's crust\" (2/10); greenhouse effect -> model said 'greenhouse effect' (7/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Newton's first law; World War II; uncertainty principle; Protestant Reformation; Silk Road; Newton's second law; photoelectric effect; Mount Fuji; House of Habsburg; Krebs cycle; Fibonacci sequence; Newton's third law",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t2-w103c1-basic-mt-ent-world-war-i",
+   "subfamily": "entity",
+   "prompt": "The global conflict fought from 1914 to 1918 is known as",
+   "target": "World War I",
+   "target_alts": [
+    "the First World War",
+    "the Great War",
+    "WWI"
+   ],
+   "intermediates": [
+    "World War I"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "World War I",
+       "the First World War",
+       "the Great War",
+       "WWI"
+      ]
+     },
+     "match": [
+      "World War I",
+      "the First World War",
+      "the Great War",
+      "WWI"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "World War I",
+     "distractors": [
+      "Franco-Prussian War",
+      "Crimean War",
+      "Napoleonic Wars",
+      "Korean War"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       3,
+       4,
+       3,
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Textbook entities (the Great Wall of China, the Roman Empire, the Eiffel Tower, the Theory of Relativity).",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Textbook entities (the Great Wall of China, the Roman Empire, the Eiffel Tower, the Theory of Relativity)."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 15/60 passed.\n- Rejected by lint before gating: 1x leak: ['wooden'] in prompt; 1x leak: ['grid'] in prompt; 1x leak: ['church'] in prompt; 1x leak: ['basilica'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): general relativity -> model said \"Hawking's 1915 description of gravity as\" (6/10); Red Square -> model said 'Kremlin Square' (0/10); Tiananmen Square -> model said 'Huangpu' (0/10); Tang dynasty -> model said 'Yuan dynasty.' (0/10); Monroe Doctrine -> model said 'Declaration of the Rights of Man and of ' (0/10); Murphy's law -> model said 'the \"bad\"' (0/10); Girl with a Pearl Earring -> model said \"Vermeer's famous painting of a young wom\" (1/10); D-Day -> model said 'D-Day' (7/10); Spanish Armada -> model said 'HMS Victory' (1/10); California Gold Rush -> model said \"Sutter's Mill\" (1/10); plate tectonics -> model said \"The geological theory that Earth's crust\" (2/10); greenhouse effect -> model said 'greenhouse effect' (7/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Newton's first law; World War II; uncertainty principle; Protestant Reformation; Silk Road; Newton's second law; photoelectric effect; Mount Fuji; House of Habsburg; Krebs cycle; Fibonacci sequence; Newton's third law",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t2-w103c2-basic-mt-ent-stone-age",
+   "subfamily": "entity",
+   "prompt": "The earliest prehistoric period, when humans made tools from flint and rock, is called the",
+   "target": "Stone Age",
+   "target_alts": [
+    "Old Stone Age",
+    "Paleolithic"
+   ],
+   "intermediates": [
+    "Stone Age"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Stone Age",
+       "Old Stone Age",
+       "Paleolithic"
+      ]
+     },
+     "match": [
+      "Stone Age",
+      "Old Stone Age",
+      "Paleolithic"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Stone Age",
+     "distractors": [
+      "Bronze Age",
+      "Iron Age",
+      "Copper Age",
+      "Ice Age"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       2,
+       3,
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Textbook entities (the Great Wall of China, the Roman Empire, the Eiffel Tower, the Theory of Relativity).",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Textbook entities (the Great Wall of China, the Roman Empire, the Eiffel Tower, the Theory of Relativity)."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 15/60 passed.\n- Rejected by lint before gating: 1x leak: ['wooden'] in prompt; 1x leak: ['grid'] in prompt; 1x leak: ['church'] in prompt; 1x leak: ['basilica'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): general relativity -> model said \"Hawking's 1915 description of gravity as\" (6/10); Red Square -> model said 'Kremlin Square' (0/10); Tiananmen Square -> model said 'Huangpu' (0/10); Tang dynasty -> model said 'Yuan dynasty.' (0/10); Monroe Doctrine -> model said 'Declaration of the Rights of Man and of ' (0/10); Murphy's law -> model said 'the \"bad\"' (0/10); Girl with a Pearl Earring -> model said \"Vermeer's famous painting of a young wom\" (1/10); D-Day -> model said 'D-Day' (7/10); Spanish Armada -> model said 'HMS Victory' (1/10); California Gold Rush -> model said \"Sutter's Mill\" (1/10); plate tectonics -> model said \"The geological theory that Earth's crust\" (2/10); greenhouse effect -> model said 'greenhouse effect' (7/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Newton's first law; World War II; uncertainty principle; Protestant Reformation; Silk Road; Newton's second law; photoelectric effect; Mount Fuji; House of Habsburg; Krebs cycle; Fibonacci sequence; Newton's third law",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t2-w104c0-basic-mt-ent-bronze-age",
+   "subfamily": "entity",
+   "prompt": "The prehistoric era that followed the Stone Age, when people first made tools from an alloy of copper and tin, is called the",
+   "target": "Bronze Age",
+   "target_alts": [],
+   "intermediates": [
+    "Bronze Age"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Bronze Age"
+      ]
+     },
+     "match": [
+      "Bronze Age"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Bronze Age",
+     "distractors": [
+      "Iron Age",
+      "Copper Age",
+      "Neolithic period",
+      "Paleolithic era"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Textbook entities (the Great Wall of China, the Roman Empire, the Eiffel Tower, the Theory of Relativity).",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Textbook entities (the Great Wall of China, the Roman Empire, the Eiffel Tower, the Theory of Relativity)."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 104,
+    "steer": "- Last wave: 7/60 passed.\n- Rejected by lint before gating: 1x natural:readout 'Sahara' is not creditable; 1x natural:readout 'Nile' is not creditable; 1x natural:readout 'Olympics' is not creditable; 1x natural:readout 'Enlightenment' is not creditable. Avoid these.\n- Failed (gold -> what the model wrote): Avogadro's number -> model said \"Avogadro's number\" (7/10); Amazon rainforest -> model said 'Amazon' (6/10); law of universal gravitation -> model said \"Newton's Third Law.\" (3/10); water cycle -> model said 'cycle' (4/10); Solar System -> model said 'system' (2/10); Alexander the Great -> model said 'Alexander the Great.' (6/10); Julius Caesar -> model said 'Marcus Aurelius' (5/10); George Washington -> model said 'George Washington.' (2/10); Romeo and Juliet -> model said 'Ophelia' (1/10); red blood cells -> model said 'capillaries' (0/10); Central Park -> model said 'The large green space in the middle of M' (0/10); quadratic formula -> model said 'Roots' (4/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Great Lakes; black hole; leap year; mitochondria; speed of light; World War I; Stone Age",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t2-w104c0-basic-mt-ent-united-nations",
+   "subfamily": "entity",
+   "prompt": "The international organization founded in 1945 to maintain world peace, headquartered in New York, is called the",
+   "target": "United Nations",
+   "target_alts": [
+    "UN"
+   ],
+   "intermediates": [
+    "United Nations"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "United Nations",
+       "UN"
+      ]
+     },
+     "match": [
+      "United Nations",
+      "UN"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "United Nations",
+     "distractors": [
+      "League of Nations",
+      "European Union",
+      "World Bank",
+      "Red Cross"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       2,
+       1
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Textbook entities (the Great Wall of China, the Roman Empire, the Eiffel Tower, the Theory of Relativity).",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Textbook entities (the Great Wall of China, the Roman Empire, the Eiffel Tower, the Theory of Relativity)."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 104,
+    "steer": "- Last wave: 7/60 passed.\n- Rejected by lint before gating: 1x natural:readout 'Sahara' is not creditable; 1x natural:readout 'Nile' is not creditable; 1x natural:readout 'Olympics' is not creditable; 1x natural:readout 'Enlightenment' is not creditable. Avoid these.\n- Failed (gold -> what the model wrote): Avogadro's number -> model said \"Avogadro's number\" (7/10); Amazon rainforest -> model said 'Amazon' (6/10); law of universal gravitation -> model said \"Newton's Third Law.\" (3/10); water cycle -> model said 'cycle' (4/10); Solar System -> model said 'system' (2/10); Alexander the Great -> model said 'Alexander the Great.' (6/10); Julius Caesar -> model said 'Marcus Aurelius' (5/10); George Washington -> model said 'George Washington.' (2/10); Romeo and Juliet -> model said 'Ophelia' (1/10); red blood cells -> model said 'capillaries' (0/10); Central Park -> model said 'The large green space in the middle of M' (0/10); quadratic formula -> model said 'Roots' (4/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Great Lakes; black hole; leap year; mitochondria; speed of light; World War I; Stone Age",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t2-w104c0-basic-mt-ent-vitamin-c",
+   "subfamily": "entity",
+   "prompt": "The nutrient found in citrus fruits whose deficiency causes scurvy is",
+   "target": "vitamin C",
+   "target_alts": [
+    "ascorbic acid"
+   ],
+   "intermediates": [
+    "vitamin C"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "vitamin C",
+       "ascorbic acid"
+      ]
+     },
+     "match": [
+      "vitamin C",
+      "ascorbic acid"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "vitamin C",
+     "distractors": [
+      "vitamin D",
+      "vitamin A",
+      "vitamin B12",
+      "vitamin K"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       2,
+       4
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Textbook entities (the Great Wall of China, the Roman Empire, the Eiffel Tower, the Theory of Relativity).",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Textbook entities (the Great Wall of China, the Roman Empire, the Eiffel Tower, the Theory of Relativity)."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 104,
+    "steer": "- Last wave: 7/60 passed.\n- Rejected by lint before gating: 1x natural:readout 'Sahara' is not creditable; 1x natural:readout 'Nile' is not creditable; 1x natural:readout 'Olympics' is not creditable; 1x natural:readout 'Enlightenment' is not creditable. Avoid these.\n- Failed (gold -> what the model wrote): Avogadro's number -> model said \"Avogadro's number\" (7/10); Amazon rainforest -> model said 'Amazon' (6/10); law of universal gravitation -> model said \"Newton's Third Law.\" (3/10); water cycle -> model said 'cycle' (4/10); Solar System -> model said 'system' (2/10); Alexander the Great -> model said 'Alexander the Great.' (6/10); Julius Caesar -> model said 'Marcus Aurelius' (5/10); George Washington -> model said 'George Washington.' (2/10); Romeo and Juliet -> model said 'Ophelia' (1/10); red blood cells -> model said 'capillaries' (0/10); Central Park -> model said 'The large green space in the middle of M' (0/10); quadratic formula -> model said 'Roots' (4/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Great Lakes; black hole; leap year; mitochondria; speed of light; World War I; Stone Age",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t2-w104c0-basic-mt-ent-boiling-point",
+   "subfamily": "entity",
+   "prompt": "The temperature at which a liquid bubbles and turns into vapor is called its",
+   "target": "boiling point",
+   "target_alts": [],
+   "intermediates": [
+    "boiling point"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "boiling point"
+      ]
+     },
+     "match": [
+      "boiling point"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "boiling point",
+     "distractors": [
+      "melting point",
+      "freezing point",
+      "dew point",
+      "triple point"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Textbook entities (the Great Wall of China, the Roman Empire, the Eiffel Tower, the Theory of Relativity).",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Textbook entities (the Great Wall of China, the Roman Empire, the Eiffel Tower, the Theory of Relativity)."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 104,
+    "steer": "- Last wave: 7/60 passed.\n- Rejected by lint before gating: 1x natural:readout 'Sahara' is not creditable; 1x natural:readout 'Nile' is not creditable; 1x natural:readout 'Olympics' is not creditable; 1x natural:readout 'Enlightenment' is not creditable. Avoid these.\n- Failed (gold -> what the model wrote): Avogadro's number -> model said \"Avogadro's number\" (7/10); Amazon rainforest -> model said 'Amazon' (6/10); law of universal gravitation -> model said \"Newton's Third Law.\" (3/10); water cycle -> model said 'cycle' (4/10); Solar System -> model said 'system' (2/10); Alexander the Great -> model said 'Alexander the Great.' (6/10); Julius Caesar -> model said 'Marcus Aurelius' (5/10); George Washington -> model said 'George Washington.' (2/10); Romeo and Juliet -> model said 'Ophelia' (1/10); red blood cells -> model said 'capillaries' (0/10); Central Park -> model said 'The large green space in the middle of M' (0/10); quadratic formula -> model said 'Roots' (4/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Great Lakes; black hole; leap year; mitochondria; speed of light; World War I; Stone Age",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t2-w104c1-basic-mt-ent-acid-rain",
+   "subfamily": "entity",
+   "prompt": "Downpours made harmful to forests and lakes by sulfur dioxide from factory smokestacks are called",
+   "target": "acid rain",
+   "target_alts": [
+    "acid precipitation",
+    "acid deposition"
+   ],
+   "intermediates": [
+    "acid rain"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "acid rain",
+       "acid precipitation",
+       "acid deposition"
+      ]
+     },
+     "match": [
+      "acid rain",
+      "acid precipitation",
+      "acid deposition"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "acid rain",
+     "distractors": [
+      "photochemical smog",
+      "ocean acidification",
+      "eutrophication",
+      "ozone depletion"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       2,
+       2,
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Textbook entities (the Great Wall of China, the Roman Empire, the Eiffel Tower, the Theory of Relativity).",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Textbook entities (the Great Wall of China, the Roman Empire, the Eiffel Tower, the Theory of Relativity)."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 104,
+    "steer": "- Last wave: 7/60 passed.\n- Rejected by lint before gating: 1x natural:readout 'Sahara' is not creditable; 1x natural:readout 'Nile' is not creditable; 1x natural:readout 'Olympics' is not creditable; 1x natural:readout 'Enlightenment' is not creditable. Avoid these.\n- Failed (gold -> what the model wrote): Avogadro's number -> model said \"Avogadro's number\" (7/10); Amazon rainforest -> model said 'Amazon' (6/10); law of universal gravitation -> model said \"Newton's Third Law.\" (3/10); water cycle -> model said 'cycle' (4/10); Solar System -> model said 'system' (2/10); Alexander the Great -> model said 'Alexander the Great.' (6/10); Julius Caesar -> model said 'Marcus Aurelius' (5/10); George Washington -> model said 'George Washington.' (2/10); Romeo and Juliet -> model said 'Ophelia' (1/10); red blood cells -> model said 'capillaries' (0/10); Central Park -> model said 'The large green space in the middle of M' (0/10); quadratic formula -> model said 'Roots' (4/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Great Lakes; black hole; leap year; mitochondria; speed of light; World War I; Stone Age",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t2-w104c1-basic-mt-ent-atomic-number",
+   "subfamily": "entity",
+   "prompt": "The count of positively charged particles in the nucleus, which sets an element's place on the periodic table, is its",
+   "target": "atomic number",
+   "target_alts": [
+    "proton number"
+   ],
+   "intermediates": [
+    "atomic number"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "atomic number",
+       "proton number"
+      ]
+     },
+     "match": [
+      "atomic number",
+      "proton number"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "atomic number",
+     "distractors": [
+      "mass number",
+      "atomic weight",
+      "oxidation number",
+      "neutron number"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       2,
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Textbook entities (the Great Wall of China, the Roman Empire, the Eiffel Tower, the Theory of Relativity).",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Textbook entities (the Great Wall of China, the Roman Empire, the Eiffel Tower, the Theory of Relativity)."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 104,
+    "steer": "- Last wave: 7/60 passed.\n- Rejected by lint before gating: 1x natural:readout 'Sahara' is not creditable; 1x natural:readout 'Nile' is not creditable; 1x natural:readout 'Olympics' is not creditable; 1x natural:readout 'Enlightenment' is not creditable. Avoid these.\n- Failed (gold -> what the model wrote): Avogadro's number -> model said \"Avogadro's number\" (7/10); Amazon rainforest -> model said 'Amazon' (6/10); law of universal gravitation -> model said \"Newton's Third Law.\" (3/10); water cycle -> model said 'cycle' (4/10); Solar System -> model said 'system' (2/10); Alexander the Great -> model said 'Alexander the Great.' (6/10); Julius Caesar -> model said 'Marcus Aurelius' (5/10); George Washington -> model said 'George Washington.' (2/10); Romeo and Juliet -> model said 'Ophelia' (1/10); red blood cells -> model said 'capillaries' (0/10); Central Park -> model said 'The large green space in the middle of M' (0/10); quadratic formula -> model said 'Roots' (4/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Great Lakes; black hole; leap year; mitochondria; speed of light; World War I; Stone Age",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t2-w104c2-basic-mt-ent-king-arthur",
+   "subfamily": "entity",
+   "prompt": "The legendary British ruler who pulled the sword from the stone and led the Knights of the Round Table from Camelot is",
+   "target": "King Arthur",
+   "target_alts": [
+    "Arthur Pendragon"
+   ],
+   "intermediates": [
+    "King Arthur"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "King Arthur",
+       "Arthur Pendragon"
+      ]
+     },
+     "match": [
+      "King Arthur",
+      "Arthur Pendragon"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "King Arthur",
+     "distractors": [
+      "Sir Lancelot",
+      "Sir Galahad",
+      "King Richard",
+      "Uther Pendragon"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       2,
+       3
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Textbook entities (the Great Wall of China, the Roman Empire, the Eiffel Tower, the Theory of Relativity).",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Textbook entities (the Great Wall of China, the Roman Empire, the Eiffel Tower, the Theory of Relativity)."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 104,
+    "steer": "- Last wave: 7/60 passed.\n- Rejected by lint before gating: 1x natural:readout 'Sahara' is not creditable; 1x natural:readout 'Nile' is not creditable; 1x natural:readout 'Olympics' is not creditable; 1x natural:readout 'Enlightenment' is not creditable. Avoid these.\n- Failed (gold -> what the model wrote): Avogadro's number -> model said \"Avogadro's number\" (7/10); Amazon rainforest -> model said 'Amazon' (6/10); law of universal gravitation -> model said \"Newton's Third Law.\" (3/10); water cycle -> model said 'cycle' (4/10); Solar System -> model said 'system' (2/10); Alexander the Great -> model said 'Alexander the Great.' (6/10); Julius Caesar -> model said 'Marcus Aurelius' (5/10); George Washington -> model said 'George Washington.' (2/10); Romeo and Juliet -> model said 'Ophelia' (1/10); red blood cells -> model said 'capillaries' (0/10); Central Park -> model said 'The large green space in the middle of M' (0/10); quadratic formula -> model said 'Roots' (4/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Great Lakes; black hole; leap year; mitochondria; speed of light; World War I; Stone Age",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t2-w105c0-basic-mt-ent-queen-victoria",
+   "subfamily": "entity",
+   "prompt": "The British monarch who reigned from 1837 to 1901 and gave her name to an entire era was",
+   "target": "Queen Victoria",
+   "target_alts": [
+    "Victoria",
+    "Alexandrina Victoria"
+   ],
+   "intermediates": [
+    "Queen Victoria"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Queen Victoria",
+       "Victoria",
+       "Alexandrina Victoria"
+      ]
+     },
+     "match": [
+      "Queen Victoria",
+      "Victoria",
+      "Alexandrina Victoria"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Queen Victoria",
+     "distractors": [
+      "Queen Elizabeth I",
+      "Queen Anne",
+      "King George III",
+      "Mary, Queen of Scots"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       2,
+       1,
+       3
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Textbook entities (the Great Wall of China, the Roman Empire, the Eiffel Tower, the Theory of Relativity).",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Textbook entities (the Great Wall of China, the Roman Empire, the Eiffel Tower, the Theory of Relativity)."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 105,
+    "steer": "- Last wave: 7/60 passed.\n- Rejected by lint before gating: 1x natural:readout 'Mediterranean' is not creditable; 1x natural:readout 'salt' is not creditable; 1x natural:readout 'Yellowstone' is not creditable; 1x leak: ['charge'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): Indian Ocean -> model said 'Atlantic Ocean' (4/10); South Pole -> model said 'Pole.' (1/10); North Star -> model said 'Polaris' (6/10); Big Dipper -> model said 'Auriga' (0/10); Roman numerals -> model said 'The system of writing numbers with lette' (5/10); light-year -> model said 'AU' (3/10); Ice Age -> model said 'Last Ice Age.' (2/10); Middle Ages -> model said 'Medieval' (5/10); asteroid belt -> model said 'Terra' (0/10); Thomas Jefferson -> model said 'Thomas Jefferson' (3/10); Ferdinand Magellan -> model said 'Sebastian da Gama' (2/10); Vincent van Gogh -> model said 'Vincent van Gogh' (3/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Bronze Age; United Nations; vitamin C; boiling point; acid rain; atomic number; King Arthur",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t2-w105c1-basic-mt-ent-venn-diagram",
+   "subfamily": "entity",
+   "prompt": "A drawing of overlapping circles used to show what different sets have in common is called a",
+   "target": "Venn diagram",
+   "target_alts": [],
+   "intermediates": [
+    "Venn diagram"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Venn diagram"
+      ]
+     },
+     "match": [
+      "Venn diagram"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Venn diagram",
+     "distractors": [
+      "pie chart",
+      "bar graph",
+      "flowchart",
+      "scatter plot"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Textbook entities (the Great Wall of China, the Roman Empire, the Eiffel Tower, the Theory of Relativity).",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Textbook entities (the Great Wall of China, the Roman Empire, the Eiffel Tower, the Theory of Relativity)."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 105,
+    "steer": "- Last wave: 7/60 passed.\n- Rejected by lint before gating: 1x natural:readout 'Mediterranean' is not creditable; 1x natural:readout 'salt' is not creditable; 1x natural:readout 'Yellowstone' is not creditable; 1x leak: ['charge'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): Indian Ocean -> model said 'Atlantic Ocean' (4/10); South Pole -> model said 'Pole.' (1/10); North Star -> model said 'Polaris' (6/10); Big Dipper -> model said 'Auriga' (0/10); Roman numerals -> model said 'The system of writing numbers with lette' (5/10); light-year -> model said 'AU' (3/10); Ice Age -> model said 'Last Ice Age.' (2/10); Middle Ages -> model said 'Medieval' (5/10); asteroid belt -> model said 'Terra' (0/10); Thomas Jefferson -> model said 'Thomas Jefferson' (3/10); Ferdinand Magellan -> model said 'Sebastian da Gama' (2/10); Vincent van Gogh -> model said 'Vincent van Gogh' (3/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Bronze Age; United Nations; vitamin C; boiling point; acid rain; atomic number; King Arthur",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t2-w105c1-basic-mt-ent-yangtze-river",
+   "subfamily": "entity",
+   "prompt": "The longest waterway in Asia, flowing across China through the Three Gorges Dam and reaching the sea at Shanghai, is the",
+   "target": "Yangtze River",
+   "target_alts": [
+    "Yangtze",
+    "Chang Jiang"
+   ],
+   "intermediates": [
+    "Yangtze River"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Yangtze River",
+       "Yangtze",
+       "Chang Jiang"
+      ]
+     },
+     "match": [
+      "Yangtze River",
+      "Yangtze",
+      "Chang Jiang"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Yangtze River",
+     "distractors": [
+      "Yellow River",
+      "Mekong River",
+      "Ganges River",
+      "Amur River"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       4,
+       3,
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Textbook entities (the Great Wall of China, the Roman Empire, the Eiffel Tower, the Theory of Relativity).",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Textbook entities (the Great Wall of China, the Roman Empire, the Eiffel Tower, the Theory of Relativity)."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 105,
+    "steer": "- Last wave: 7/60 passed.\n- Rejected by lint before gating: 1x natural:readout 'Mediterranean' is not creditable; 1x natural:readout 'salt' is not creditable; 1x natural:readout 'Yellowstone' is not creditable; 1x leak: ['charge'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): Indian Ocean -> model said 'Atlantic Ocean' (4/10); South Pole -> model said 'Pole.' (1/10); North Star -> model said 'Polaris' (6/10); Big Dipper -> model said 'Auriga' (0/10); Roman numerals -> model said 'The system of writing numbers with lette' (5/10); light-year -> model said 'AU' (3/10); Ice Age -> model said 'Last Ice Age.' (2/10); Middle Ages -> model said 'Medieval' (5/10); asteroid belt -> model said 'Terra' (0/10); Thomas Jefferson -> model said 'Thomas Jefferson' (3/10); Ferdinand Magellan -> model said 'Sebastian da Gama' (2/10); Vincent van Gogh -> model said 'Vincent van Gogh' (3/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Bronze Age; United Nations; vitamin C; boiling point; acid rain; atomic number; King Arthur",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t2-w105c1-basic-mt-ent-prime-number",
+   "subfamily": "entity",
+   "prompt": "An integer greater than one whose only divisors are one and itself, such as 7 or 13, is called a",
+   "target": "prime number",
+   "target_alts": [
+    "prime"
+   ],
+   "intermediates": [
+    "prime number"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "prime number",
+       "prime"
+      ]
+     },
+     "match": [
+      "prime number",
+      "prime"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "prime number",
+     "distractors": [
+      "composite number",
+      "perfect number",
+      "square number",
+      "even number"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       2,
+       1
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Textbook entities (the Great Wall of China, the Roman Empire, the Eiffel Tower, the Theory of Relativity).",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Textbook entities (the Great Wall of China, the Roman Empire, the Eiffel Tower, the Theory of Relativity)."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 105,
+    "steer": "- Last wave: 7/60 passed.\n- Rejected by lint before gating: 1x natural:readout 'Mediterranean' is not creditable; 1x natural:readout 'salt' is not creditable; 1x natural:readout 'Yellowstone' is not creditable; 1x leak: ['charge'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): Indian Ocean -> model said 'Atlantic Ocean' (4/10); South Pole -> model said 'Pole.' (1/10); North Star -> model said 'Polaris' (6/10); Big Dipper -> model said 'Auriga' (0/10); Roman numerals -> model said 'The system of writing numbers with lette' (5/10); light-year -> model said 'AU' (3/10); Ice Age -> model said 'Last Ice Age.' (2/10); Middle Ages -> model said 'Medieval' (5/10); asteroid belt -> model said 'Terra' (0/10); Thomas Jefferson -> model said 'Thomas Jefferson' (3/10); Ferdinand Magellan -> model said 'Sebastian da Gama' (2/10); Vincent van Gogh -> model said 'Vincent van Gogh' (3/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Bronze Age; United Nations; vitamin C; boiling point; acid rain; atomic number; King Arthur",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t2-w105c2-basic-mt-ent-garden-of-eden",
+   "subfamily": "entity",
+   "prompt": "In the Book of Genesis, the place where Adam and Eve lived until they ate the forbidden fruit is called the",
+   "target": "Garden of Eden",
+   "target_alts": [
+    "Eden"
+   ],
+   "intermediates": [
+    "Garden of Eden"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "Garden of Eden",
+       "Eden"
+      ]
+     },
+     "match": [
+      "Garden of Eden",
+      "Eden"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "Garden of Eden",
+     "distractors": [
+      "Tower of Babel",
+      "Promised Land",
+      "Mount Sinai",
+      "Sodom and Gomorrah"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       3,
+       1
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Textbook entities (the Great Wall of China, the Roman Empire, the Eiffel Tower, the Theory of Relativity).",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Textbook entities (the Great Wall of China, the Roman Empire, the Eiffel Tower, the Theory of Relativity)."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 105,
+    "steer": "- Last wave: 7/60 passed.\n- Rejected by lint before gating: 1x natural:readout 'Mediterranean' is not creditable; 1x natural:readout 'salt' is not creditable; 1x natural:readout 'Yellowstone' is not creditable; 1x leak: ['charge'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): Indian Ocean -> model said 'Atlantic Ocean' (4/10); South Pole -> model said 'Pole.' (1/10); North Star -> model said 'Polaris' (6/10); Big Dipper -> model said 'Auriga' (0/10); Roman numerals -> model said 'The system of writing numbers with lette' (5/10); light-year -> model said 'AU' (3/10); Ice Age -> model said 'Last Ice Age.' (2/10); Middle Ages -> model said 'Medieval' (5/10); asteroid belt -> model said 'Terra' (0/10); Thomas Jefferson -> model said 'Thomas Jefferson' (3/10); Ferdinand Magellan -> model said 'Sebastian da Gama' (2/10); Vincent van Gogh -> model said 'Vincent van Gogh' (3/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Bronze Age; United Nations; vitamin C; boiling point; acid rain; atomic number; King Arthur",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t2-w105c2-basic-mt-ent-conservation-of-mass",
+   "subfamily": "entity",
+   "prompt": "Lavoisier's principle that in a closed chemical reaction the products weigh exactly as much as the reactants is known as the law of",
+   "target": "conservation of mass",
+   "target_alts": [
+    "conservation of matter",
+    "law of conservation of mass"
+   ],
+   "intermediates": [
+    "conservation of mass"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "conservation of mass",
+       "conservation of matter",
+       "law of conservation of mass"
+      ]
+     },
+     "match": [
+      "conservation of mass",
+      "conservation of matter",
+      "law of conservation of mass"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "conservation of mass",
+     "distractors": [
+      "definite proportions",
+      "multiple proportions",
+      "conservation of energy",
+      "conservation of momentum"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       3,
+       3,
+       5
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Textbook entities (the Great Wall of China, the Roman Empire, the Eiffel Tower, the Theory of Relativity).",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Textbook entities (the Great Wall of China, the Roman Empire, the Eiffel Tower, the Theory of Relativity)."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 105,
+    "steer": "- Last wave: 7/60 passed.\n- Rejected by lint before gating: 1x natural:readout 'Mediterranean' is not creditable; 1x natural:readout 'salt' is not creditable; 1x natural:readout 'Yellowstone' is not creditable; 1x leak: ['charge'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): Indian Ocean -> model said 'Atlantic Ocean' (4/10); South Pole -> model said 'Pole.' (1/10); North Star -> model said 'Polaris' (6/10); Big Dipper -> model said 'Auriga' (0/10); Roman numerals -> model said 'The system of writing numbers with lette' (5/10); light-year -> model said 'AU' (3/10); Ice Age -> model said 'Last Ice Age.' (2/10); Middle Ages -> model said 'Medieval' (5/10); asteroid belt -> model said 'Terra' (0/10); Thomas Jefferson -> model said 'Thomas Jefferson' (3/10); Ferdinand Magellan -> model said 'Sebastian da Gama' (2/10); Vincent van Gogh -> model said 'Vincent van Gogh' (3/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Bronze Age; United Nations; vitamin C; boiling point; acid rain; atomic number; King Arthur",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "basic-au-t2-w105c2-basic-mt-ent-speed-of-sound",
+   "subfamily": "entity",
+   "prompt": "How fast acoustic waves travel through air, about 343 meters per second at room temperature, is called the",
+   "target": "speed of sound",
+   "target_alts": [
+    "Mach 1"
+   ],
+   "intermediates": [
+    "speed of sound"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "en": [
+       "speed of sound",
+       "Mach 1"
+      ]
+     },
+     "match": [
+      "speed of sound",
+      "Mach 1"
+     ]
+    }
+   ],
+   "mc": {
+    "readout": {
+     "gold": "speed of sound",
+     "distractors": [
+      "escape velocity",
+      "terminal velocity",
+      "Mach number",
+      "wavelength"
+     ]
+    }
+   },
+   "probe_token_lens": {
+    "units": {
+     "readout": {
+      "en": [
+       3,
+       3
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Textbook entities (the Great Wall of China, the Roman Empire, the Eiffel Tower, the Theory of Relativity).",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Textbook entities (the Great Wall of China, the Roman Empire, the Eiffel Tower, the Theory of Relativity)."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 105,
+    "steer": "- Last wave: 7/60 passed.\n- Rejected by lint before gating: 1x natural:readout 'Mediterranean' is not creditable; 1x natural:readout 'salt' is not creditable; 1x natural:readout 'Yellowstone' is not creditable; 1x leak: ['charge'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): Indian Ocean -> model said 'Atlantic Ocean' (4/10); South Pole -> model said 'Pole.' (1/10); North Star -> model said 'Polaris' (6/10); Big Dipper -> model said 'Auriga' (0/10); Roman numerals -> model said 'The system of writing numbers with lette' (5/10); light-year -> model said 'AU' (3/10); Ice Age -> model said 'Last Ice Age.' (2/10); Middle Ages -> model said 'Medieval' (5/10); asteroid belt -> model said 'Terra' (0/10); Thomas Jefferson -> model said 'Thomas Jefferson' (3/10); Ferdinand Magellan -> model said 'Sebastian da Gama' (2/10); Vincent van Gogh -> model said 'Vincent van Gogh' (3/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Bronze Age; United Nations; vitamin C; boiling point; acid rain; atomic number; King Arthur",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  }
+ ]
+}

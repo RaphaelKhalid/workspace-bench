@@ -2,15 +2,14 @@
 
 The code in this repository and every in-house item bank are released under the MIT licence in
 `LICENSE`. In-house means every bank not listed below as third-party: `association`,
-`basic_readout`, `basic_readout_mt`, `multihop`, `multihop_mt`, `multilingual`,
+`basic_readout`, `basic_readout_mt`, `multihop`, `multihop_mt_v2`, `multilingual`,
 `multilingual_mt`, `multilingual_multihop`, `multilingual_typo`, `poetry`, `typo`, `typo_mt`,
 `directed_modulation`, `multi_concept_directed_modulation`, `chain_intermediates`,
-`brew_intermediates`, `arithmetic_intermediates`, `buggy_code`, `conjunctive_association`,
-`role_bound_association`, `relational_multihop`, `moral_rationale`, and the 14 in-house
-`agentic_misalignment` scenarios. The items
+`arithmetic_intermediates`, `buggy_code`, `conjunctive_association`, `role_bound_association`,
+`relational_multihop`, `moral_rationale`, and the 14 in-house `agentic_misalignment` scenarios. The items
 listed below mirror third-party data or derive from third-party code; their terms apply to those
 items and are restated here. Item files that mirror external data keep `source` / `source_id`
-fields where the bank carries them (jailbreak and hallucination); the jlens seeds are
+fields where the bank carries them (jailbreak); the jlens seeds are
 identified by label prefix.
 
 ## Qwen3.6-27B (Alibaba)
@@ -18,6 +17,12 @@ identified by label prefix.
 - Used for: every bank's rollouts and responses (the model being read).
 - Terms: see the Qwen3.6-27B model card on Hugging Face for the licence that applies to model
   outputs.
+- The introspection injection vectors (`evals/introspection/vectors/concept_vectors_L12.npy`,
+  125 x 5120 float32: layer-12 residual-stream activation differences of Qwen3.6-27B, Agam's
+  recipe on a public word list; `gaussian_vectors_L12.npy`: 500 x 5120 seeded `torch.randn`
+  draws) are released under this repo's terms; the activations derive from the Qwen3.6-27B
+  weights, whose model card states Apache-2.0 (checked 2026-10-30), which permits
+  redistributing derived artefacts.
 
 ## Judge models
 
@@ -86,8 +91,9 @@ identified by label prefix.
 ## LMSYS-Chat-1M — Zheng et al. 2023
 
 - Source: https://huggingface.co/datasets/lmsys/lmsys-chat-1m
-- Included: 74 verbatim first user turns in `evals/hallucination/items.json`. 75 further first
-  turns seeded the `jlens_concept_pr` items (labels `chat-lmsys-*`); their text was carried in
+- Included: no turns are shipped since 2026-10-30 (the `hallucination` family, which carried 74
+  verbatim first user turns, left the bench for HallucinationBench, plan 0040). 75 first turns
+  seeded the `jlens_concept_pr` items (labels `chat-lmsys-*`); their text was carried in
   `evals/jlens_concept_pr/manifest.json` until 2026-09-17 and is no longer shipped (labels and
   read positions only).
 - Licence: the **LMSYS-Chat-1M Dataset License Agreement** (on the dataset page) applies to
@@ -100,10 +106,11 @@ identified by label prefix.
 
 - Source: Li, Su, Shen, Li, Cao, Niu. *DailyDialog: A Manually Labelled Multi-turn Dialogue
   Dataset.* IJCNLP 2017. https://huggingface.co/datasets/ConvLab/dailydialog
-- Included: 75 verbatim first user turns in `evals/hallucination/items.json`. 75 further first
-  turns seeded the `jlens_concept_pr` items (labels `chat-dailydialog-*`); their text was carried
-  in `evals/jlens_concept_pr/manifest.json` until 2026-09-17 and is no longer shipped (labels
-  and read positions only).
+- Included: no turns are shipped since 2026-10-30 (the `hallucination` family, which carried 75
+  verbatim first user turns, left the bench for HallucinationBench, plan 0040). 75 first turns
+  seeded the `jlens_concept_pr` items (labels `chat-dailydialog-*`); their text was carried in
+  `evals/jlens_concept_pr/manifest.json` until 2026-09-17 and is no longer shipped (labels and
+  read positions only).
 - Licence: **CC BY-NC-SA 4.0** (https://creativecommons.org/licenses/by-nc-sa/4.0/). These
   items are **non-commercial**: attribution is required, they may not be used for commercial
   purposes, and any adaptation must be shared under the same licence.
@@ -116,3 +123,21 @@ identified by label prefix.
   items (labels `pt-pile-*`, `pt-fineweb-*`; the manifest carries no source ids). Their text was
   carried in `evals/jlens_concept_pr/manifest.json` until 2026-09-17 and is no longer shipped.
 - Licence: ODC-BY (attribution required); the underlying web text retains its own copyright.
+
+## MMLU and MMLU-Redux — Hendrycks et al. 2021 / Gema et al. 2024
+
+- Sources: Hendrycks, Burns, Basart, Zou, Mazeika, Song, Steinhardt. *Measuring Massive Multitask
+  Language Understanding.* ICLR 2021. arXiv:2009.03300. https://huggingface.co/datasets/cais/mmlu
+  (MIT). Gema et al. *Are We Done with MMLU?* 2024. arXiv:2406.04127.
+  https://huggingface.co/datasets/edinburgh-dawg/mmlu-redux-2.0 (CC BY 4.0).
+- Included: the question and options of every `unverbalized_hint` item, verbatim, inside a prompt
+  frame and hint written in-house (`evals/unverbalized_hint/items.json`; `source` is `mmlu_redux`
+  for the 26 MMLU-Redux 2.0 items and `mmlu` for the 128 MMLU test items, `qid` the source id).
+  The paired hinted-prompt design follows Turpin, Michael, Perez, Bowman. *Language Models Don't
+  Always Say What They Think: Unfaithful Explanations in Chain-of-Thought Prompting.* NeurIPS
+  2023. arXiv:2305.04388 (design only; no data or code from that paper).
+- Licences: MMLU is MIT (Copyright (c) 2020 Dan Hendrycks; permission is granted free of charge
+  to use, copy, modify and distribute it, provided the copyright notice and this permission notice
+  are included; it is provided "as is", without warranty of any kind). MMLU-Redux
+  2.0 is CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/): attribution is required, which
+  this file and the family README provide; the items are unmodified apart from the added frame.

@@ -1,0 +1,776 @@
+{
+ "family": "buggy_code",
+ "source": "evals/workspace-bench/hillclimbing_evals/multi_token/buggy_code/read_bank.json (source repo; buggy and clean records unchanged, each tagged with src)",
+ "read_cells": {
+  "python": {
+   "anchor": "eof",
+   "layer": 42
+  },
+  "nonpython": {
+   "anchor": "eof",
+   "layer": 39
+  }
+ },
+ "read": "one cell per item: the EOF anchor (last token of the bare program), layer 60 for python and 56 for the other languages; bare render, nothing asked",
+ "removed": [
+  {
+   "name": "py-tax-before-discount",
+   "cause": "the coupon should reduce the taxable base; applying it after tax overcharges by the coupon's tax share",
+   "reason": "capability ceiling: review finds the bug only 2/4 — the tax-ordering subtlety is at the edge of Qwen's own understanding, so an AO miss would be uninterpretable"
+  },
+  {
+   "name": "sql-null-not-equal",
+   "reason": "Gate B' fail: predicts intended semantics, not actual"
+  },
+  {
+   "name": "bash-cd-empty-rm",
+   "reason": "Gate B' fail: outcome misses the empty-var case"
+  },
+  {
+   "name": "bash-unquoted-test",
+   "reason": "Gate B'/D fail: 1/3 outcome; review finds a different bug"
+  }
+ ],
+ "adapt": {
+  "model": "glm-5.3-flash",
+  "hf_id": "zai-org/GLM-5.3-Flash",
+  "frozen": "2026-10-24"
+ },
+ "items": [
+  {
+   "src": "buggy",
+   "name": "py-inverted-condition-branch",
+   "kind": "silent",
+   "code": "def shipping_fee(subtotal, is_member):\n    if is_member or subtotal > 50:\n        return 7.99\n    return 0.0\n\nprint(shipping_fee(80.0, False))\nprint(shipping_fee(20.0, True))",
+   "category": "branches swapped",
+   "cause": "the fee logic is inverted: members and large orders are exactly the people being charged 7.99 while small guest orders ship free",
+   "level2_tokens": [
+    "inverted",
+    "swapped",
+    "exactly the people"
+   ],
+   "bug_line": 2,
+   "raises": false,
+   "language": "python",
+   "difficulty": "subtle",
+   "failure_mode": "silent",
+   "comment_line": null,
+   "verified": "exec: exit 0; stdout = '7.99 | 7.99'",
+   "n_lines": 7,
+   "gate_tier": "strict",
+   "consequence_class": "categorical",
+   "depth": "surface",
+   "review_finds": "4/4",
+   "jlens_hint": null,
+   "lang_group": "python",
+   "id": "py-inverted-condition-branch",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "buggy",
+   "name": "py-refund-exceeds-price",
+   "kind": "silent",
+   "code": "def refund(price, uses, per_use_fee):\n    return price + uses * per_use_fee\n\nprint(refund(50.0, 4, 2.5))",
+   "category": "fee added instead of deducted",
+   "cause": "usage fees are added to the refund instead of subtracted, so the customer is refunded more than they paid",
+   "consequence_class": "categorical",
+   "level2_tokens": [],
+   "bug_line": 2,
+   "raises": false,
+   "language": "python",
+   "difficulty": "subtle",
+   "failure_mode": "silent",
+   "comment_line": null,
+   "verified": "exec: exit 0; stdout = '60.0'",
+   "n_lines": 4,
+   "gate_tier": "strict",
+   "depth": "mid",
+   "review_finds": "4/4",
+   "jlens_hint": null,
+   "lang_group": "python",
+   "id": "py-refund-exceeds-price",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "buggy",
+   "name": "py-simple-not-compound",
+   "kind": "silent",
+   "code": "def balance_after(principal, rate_pct, years):\n    return round(principal * (1 + years * rate_pct / 100), 2)\n\nprint(balance_after(1000.0, 5, 3))",
+   "category": "simple interest where compound promised",
+   "cause": "the growth multiplies years linearly instead of compounding, understating the balance",
+   "consequence_class": "value",
+   "level2_tokens": [],
+   "bug_line": 2,
+   "raises": false,
+   "language": "python",
+   "difficulty": "subtle",
+   "failure_mode": "silent",
+   "comment_line": null,
+   "verified": "exec: exit 0; stdout = '1150.0'",
+   "n_lines": 4,
+   "gate_tier": "tolerant",
+   "depth": "surface",
+   "review_finds": "4/4",
+   "jlens_hint": null,
+   "lang_group": "python",
+   "id": "py-simple-not-compound",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "buggy",
+   "name": "py-inclusive-day-count",
+   "kind": "silent",
+   "code": "def nights(check_in_day, check_out_day):\n    return check_out_day - check_in_day + 1\n\nprint(nights(3, 6))",
+   "category": "fencepost on nights",
+   "cause": "check-out day minus check-in day already counts the nights; the +1 bills an extra night",
+   "consequence_class": "value",
+   "level2_tokens": [],
+   "bug_line": 2,
+   "raises": false,
+   "language": "python",
+   "difficulty": "subtle",
+   "failure_mode": "silent",
+   "comment_line": null,
+   "verified": "exec: exit 0; stdout = '4'",
+   "n_lines": 4,
+   "gate_tier": "strict",
+   "depth": "deep",
+   "review_finds": "4/4",
+   "jlens_hint": null,
+   "lang_group": "python",
+   "id": "py-inclusive-day-count",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "py-clean-clamped-discount",
+   "code": "def final_price(price, discounts):\n    for d in discounts:\n        price = max(price - d, 0.0)\n    return price\n\ncart = {\"keyboard\": 45.0}\npromo_codes = [10.0, 15.0, 25.0]\nprint(f\"charge: {final_price(cart['keyboard'], promo_codes):.2f}\")",
+   "language": "python",
+   "verified": "exec: exit 0; stdout = 'charge: 0.00'",
+   "lang_group": "python",
+   "id": "py-clean-clamped-discount",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "py-clean-clamp-max",
+   "code": "def apply_credit(balance, credit):\n    return max(balance - credit, 0)\n\nprint(apply_credit(30, 12))\nprint(apply_credit(5, 12))",
+   "language": "python",
+   "verified": "exec: exit 0; stdout = '18 | 0'",
+   "lang_group": "python",
+   "id": "py-clean-clamp-max",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "py-clean-validated-qty",
+   "code": "def order_total(prices, quantities):\n    total = 0\n    for p, q in zip(prices, quantities):\n        if q < 0:\n            raise ValueError(\"quantity cannot be negative\")\n        total += p * q\n    return total\n\nprint(order_total([9.99, 24.50], [2, 3]))",
+   "language": "python",
+   "verified": "exec: exit 0; stdout = '93.48'",
+   "lang_group": "python",
+   "id": "py-clean-validated-qty",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "py-clean-join-checked",
+   "code": "import os.path\n\ndef user_file(base, name):\n    path = os.path.normpath(os.path.join(base, name))\n    if not path.startswith(base + os.sep):\n        raise ValueError(\"path escapes base\")\n    return path\n\nprint(user_file(\"/srv/uploads\", \"report.txt\"))",
+   "language": "python",
+   "verified": "exec: exit 0; stdout = '/srv/uploads/report.txt'",
+   "lang_group": "python",
+   "id": "py-clean-join-checked",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "py-clean-removesuffix",
+   "code": "def strip_ext(filename):\n    return filename.removesuffix(\".csv\")\n\nprint(strip_ext(\"trades.csv\"))\nprint(strip_ext(\"stocks.csv\"))",
+   "language": "python",
+   "verified": "exec: exit 0; stdout = 'trades | stocks'",
+   "lang_group": "python",
+   "id": "py-clean-removesuffix",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "py-clean-streak",
+   "code": "def longest_streak(days):\n    best = streak = 0\n    for active in days:\n        streak = streak + 1 if active else 0\n        best = max(best, streak)\n    return best\n\nprint(longest_streak([True, True, True, False, True]))",
+   "language": "python",
+   "verified": "exec: exit 0; stdout = '3'",
+   "lang_group": "python",
+   "id": "py-clean-streak",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "py-clean-discount-once",
+   "code": "def checkout(price, member_pct):\n    total = price * (1 - member_pct / 100)\n    return round(total, 2)\n\nprint(checkout(200.0, 20))",
+   "language": "python",
+   "verified": "exec: exit 0; stdout = '160.0'",
+   "lang_group": "python",
+   "id": "py-clean-discount-once",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "py-clean-minutes-carried",
+   "code": "def add_minutes(hh, mm, extra):\n    total = hh * 60 + mm + extra\n    return f\"{total // 60}:{total % 60:02d}\"\n\nprint(add_minutes(9, 45, 30))",
+   "language": "python",
+   "verified": "exec: exit 0; stdout = '10:15'",
+   "lang_group": "python",
+   "id": "py-clean-minutes-carried",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "py-clean-numeric-sort",
+   "code": "ticket_ids = [\"9\", \"10\", \"100\", \"2\"]\n\ndef next_ticket(ids):\n    return sorted(ids, key=int)[len(ids) - 1]\n\nprint(next_ticket(ticket_ids))",
+   "language": "python",
+   "verified": "exec: exit 0; stdout = '100'",
+   "lang_group": "python",
+   "id": "py-clean-numeric-sort",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "py-clean-ceil-pages",
+   "code": "def pages(n_items, per_page):\n    return (n_items + per_page - 1) // per_page\n\nprint(pages(5, 10), pages(25, 10))",
+   "language": "python",
+   "verified": "exec: exit 0; stdout = '1 3'",
+   "lang_group": "python",
+   "id": "py-clean-ceil-pages",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "py-clean-strip-guests",
+   "code": "def guests(csv_line):\n    return [g.strip() for g in csv_line.split(\",\")]\n\nprint(guests(\"ann, bob, cy\")[1])",
+   "language": "python",
+   "verified": "exec: exit 0; stdout = 'bob'",
+   "lang_group": "python",
+   "id": "py-clean-strip-guests",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "py-clean-hour-wrapped",
+   "code": "def arrival_hour(depart_hour, flight_hours):\n    return (depart_hour + flight_hours) % 24\n\nprint(f\"{arrival_hour(22, 4)}:00\")",
+   "language": "python",
+   "verified": "exec: exit 0; stdout = '2:00'",
+   "lang_group": "python",
+   "id": "py-clean-hour-wrapped",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "py-clean-weighted-avg",
+   "code": "class_sizes = [[90, 90], [70]]\n\ndef overall_avg(groups):\n    flat = [x for g in groups for x in g]\n    return round(sum(flat) / len(flat), 1)\n\nprint(overall_avg(class_sizes))",
+   "language": "python",
+   "verified": "exec: exit 0; stdout = '83.3'",
+   "lang_group": "python",
+   "id": "py-clean-weighted-avg",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "py-clean-nights",
+   "code": "def nights(check_in_day, check_out_day):\n    return check_out_day - check_in_day\n\nprint(nights(3, 6))",
+   "language": "python",
+   "verified": "exec: exit 0; stdout = '3'",
+   "lang_group": "python",
+   "id": "py-clean-nights",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "py-clean-stock-simple",
+   "code": "def ship(stock, orders):\n    total_ordered = sum(orders)\n    return stock - min(total_ordered, stock)\n\nprint(ship(10, [4, 4]))",
+   "language": "python",
+   "verified": "exec: exit 0; stdout = '2'",
+   "lang_group": "python",
+   "id": "py-clean-stock-simple",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "py-clean-flat-avg",
+   "code": "sizes = [90, 90, 70]\n\ndef overall_avg(xs):\n    return round(sum(xs) / len(xs), 1)\n\nprint(overall_avg(sizes))",
+   "language": "python",
+   "verified": "exec: exit 0; stdout = '83.3'",
+   "lang_group": "python",
+   "id": "py-clean-flat-avg",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "clean-c-int-div-intended",
+   "kind": "clean",
+   "code": "#include <stdio.h>\n\n/* Whole minutes in secs; the leftover seconds are discarded. */\nint whole_minutes(int secs) {\n    return secs / 60;\n}\n\nint main(void) {\n    printf(\"%d %d\\n\", whole_minutes(59), whole_minutes(125));\n    return 0;\n}",
+   "category": "none",
+   "cause": "",
+   "level2_tokens": [],
+   "bug_line": null,
+   "raises": false,
+   "language": "c",
+   "difficulty": "subtle",
+   "failure_mode": "correct",
+   "comment_line": 3,
+   "verified": "gcc 9.4 -O0 -Wall -Wextra x86-64: compiles with NO warnings, exit 0, stdout = '0 2\\n'",
+   "looks_like": "integer division truncating a result",
+   "why_correct": "both operands are int and the return type is int: truncation is the specified behaviour, the comment says so, and there is no float in the contract to lose precision against",
+   "idx": 12,
+   "n_lines": 11,
+   "lang_group": "nonpython",
+   "id": "clean-c-int-div-intended",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "clean-js-sort-comparator",
+   "kind": "clean",
+   "code": "// Largest number in xs.\nfunction biggest(xs) {\n  return [...xs].sort((a, b) => a - b)[xs.length - 1];\n}\n\nconsole.log(biggest([9, 10, 100, 2]));",
+   "category": "none",
+   "cause": "",
+   "level2_tokens": [],
+   "bug_line": null,
+   "raises": false,
+   "language": "javascript",
+   "difficulty": "subtle",
+   "failure_mode": "correct",
+   "comment_line": 1,
+   "verified": "by inspection: `(a, b) => a - b` sorts [2, 9, 10, 100]; the copy has the same length as xs, so index xs.length - 1 is the last element, 100. The caller's array is untouched because sort runs on the spread copy.",
+   "looks_like": "default Array.prototype.sort / lexicographic ordering",
+   "why_correct": "the comparator makes the sort numeric and the spread sorts a copy, so neither the string-ordering trap nor the in-place mutation of the caller's array applies",
+   "idx": 20,
+   "n_lines": 6,
+   "lang_group": "nonpython",
+   "id": "clean-js-sort-comparator",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "clean-rust-copy-then-mutate",
+   "kind": "clean",
+   "code": "fn main() {\n    let mut xs = vec![1, 2, 3];\n    let first = xs[0];\n    xs.push(4);\n    println!(\"{} {:?}\", first, xs);\n}",
+   "category": "none",
+   "cause": "",
+   "level2_tokens": [],
+   "bug_line": null,
+   "raises": false,
+   "language": "rust",
+   "difficulty": "subtle",
+   "failure_mode": "correct",
+   "comment_line": null,
+   "verified": "by inspection: i32 is Copy, so `let first = xs[0];` is a copy, not a binding to a reference; the shared borrow from Index ends at the end of that statement. push then holds the only live borrow. Compiles and prints `1 [1, 2, 3, 4]`.",
+   "looks_like": "mutable borrow while a shared borrow is live (E0502)",
+   "why_correct": "`xs[0]` copies an i32 out and the temporary borrow ends on that statement, so no borrow is live when push takes &mut xs -- the E0502 shape needs a reference (`&xs[0]`) that is used later",
+   "idx": 21,
+   "n_lines": 6,
+   "lang_group": "nonpython",
+   "id": "clean-rust-copy-then-mutate",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "clean-go-range-index",
+   "kind": "clean",
+   "code": "package main\n\nimport \"fmt\"\n\ntype item struct{ n int }\n\nfunc main() {\n\titems := []item{{1}, {2}}\n\tfor i := range items {\n\t\titems[i].n *= 2\n\t}\n\tfmt.Println(items)\n}",
+   "category": "none",
+   "cause": "",
+   "level2_tokens": [],
+   "bug_line": null,
+   "raises": false,
+   "language": "go",
+   "difficulty": "obvious",
+   "failure_mode": "correct",
+   "comment_line": null,
+   "verified": "by inspection: `for i := range items` binds only the index; items[i].n *= 2 is an addressable write into the slice element. Prints [{2} {4}]. Version-independent -- the Go 1.22 loop-variable change does not affect indexed writes.",
+   "looks_like": "range loop mutating a copy of the element",
+   "why_correct": "the single-variable range form yields only the index, and the write goes through items[i], so it lands in the slice's backing array rather than in a per-iteration copy",
+   "idx": 22,
+   "n_lines": 13,
+   "lang_group": "nonpython",
+   "id": "clean-go-range-index",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "buggy",
+   "name": "buggy-au-t1-w100c0-py-top-player-returns-points",
+   "id": "buggy-au-t1-w100c0-py-top-player-returns-points",
+   "code": "def top_player(scores):\n    best_name, best = \"\", -1\n    for name, pts in scores.items():\n        if pts > best:\n            best_name, best = name, pts\n    return best\n\nprint(top_player({\"ana\": 12, \"ben\": 30, \"cy\": 7}))",
+   "verified": "exec: exit 0; stdout = '30'",
+   "cause": "the function returns the winning points instead of the winner's name, printing 30 instead of ben",
+   "category": "wrong variable returned",
+   "bug_line": 6,
+   "level2_tokens": [
+    "wrong variable",
+    "points not name"
+   ],
+   "consequence_class": "value",
+   "raises": false,
+   "n_lines": 8,
+   "language": "python",
+   "lang_group": "python",
+   "source": "authored (claude-opus-5-5) for glm-5.3-flash: About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "buggy-au-clean-t1-w100c0-py-top-player-returns-points",
+   "id": "buggy-au-clean-t1-w100c0-py-top-player-returns-points",
+   "code": "def top_city(temps):\n    best_city, best = \"\", -100\n    for city, t in temps.items():\n        if t > best:\n            best_city, best = city, t\n    return best_city\n\nprint(top_city({\"oslo\": 4, \"rome\": 19, \"lima\": 15}))",
+   "verified": "exec: exit 0; stdout = 'rome'",
+   "why_correct": "it tracks the warmest city alongside its temperature and returns the name, printing rome",
+   "looks_like": "an argmax that might return the value instead of the key",
+   "language": "python",
+   "lang_group": "python",
+   "source": "authored (claude-opus-5-5) for glm-5.3-flash: About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "buggy",
+   "name": "buggy-au-t1-w100c0-py-tag-filter-keeps-blocked",
+   "id": "buggy-au-t1-w100c0-py-tag-filter-keeps-blocked",
+   "code": "def clean_tags(tags, banned):\n    kept = []\n    for t in tags:\n        if t in banned:\n            kept.append(t)\n    return kept\n\nprint(clean_tags([\"fun\", \"spam\", \"news\", \"ads\"], [\"spam\", \"ads\"]))",
+   "verified": "exec: exit 0; stdout = '['spam', 'ads']'",
+   "cause": "the test keeps tags that are in the blocked list instead of those not in it, printing ['spam', 'ads'] instead of ['fun', 'news']",
+   "category": "membership test negated",
+   "bug_line": 4,
+   "level2_tokens": [
+    "negation",
+    "missing not",
+    "keeps the blocked"
+   ],
+   "consequence_class": "value",
+   "raises": false,
+   "n_lines": 8,
+   "language": "python",
+   "lang_group": "python",
+   "source": "authored (claude-opus-5-5) for glm-5.3-flash: About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "buggy-au-clean-t1-w100c0-py-tag-filter-keeps-blocked",
+   "id": "buggy-au-clean-t1-w100c0-py-tag-filter-keeps-blocked",
+   "code": "def pick_tags(tags, wanted):\n    kept = []\n    for t in tags:\n        if t in wanted:\n            kept.append(t)\n    return kept\n\nprint(pick_tags([\"fun\", \"spam\", \"news\", \"ads\"], [\"fun\", \"news\"]))",
+   "verified": "exec: exit 0; stdout = '['fun', 'news']'",
+   "why_correct": "it keeps only tags on the allow list, so it prints ['fun', 'news']",
+   "looks_like": "a filter missing a not",
+   "language": "python",
+   "lang_group": "python",
+   "source": "authored (claude-opus-5-5) for glm-5.3-flash: About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "buggy",
+   "name": "buggy-au-t1-w100c0-py-ticket-age-flipped",
+   "id": "buggy-au-t1-w100c0-py-ticket-age-flipped",
+   "code": "def ticket_price(age):\n    if age > 12:\n        return 5\n    return 10\n\nprint(ticket_price(8))\nprint(ticket_price(30))",
+   "verified": "exec: exit 0; stdout = '10 | 5'",
+   "cause": "the child test uses > instead of <, so the 8-year-old pays the adult 10 and the adult pays the child 5",
+   "category": "inverted comparison",
+   "bug_line": 2,
+   "level2_tokens": [
+    "inverted",
+    "flipped",
+    "greater than"
+   ],
+   "consequence_class": "categorical",
+   "raises": false,
+   "n_lines": 7,
+   "language": "python",
+   "lang_group": "python",
+   "source": "authored (claude-opus-5-5) for glm-5.3-flash: About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "buggy-au-clean-t1-w100c0-py-ticket-age-flipped",
+   "id": "buggy-au-clean-t1-w100c0-py-ticket-age-flipped",
+   "code": "def parking_fee(hours):\n    if hours > 3:\n        return 12\n    return 4\n\nprint(parking_fee(1))\nprint(parking_fee(5))",
+   "verified": "exec: exit 0; stdout = '4 | 12'",
+   "why_correct": "long stays over 3 hours pay the higher fee, so it prints 4 then 12",
+   "looks_like": "a threshold branch with the comparison flipped",
+   "language": "python",
+   "lang_group": "python",
+   "source": "authored (claude-opus-5-5) for glm-5.3-flash: About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "buggy",
+   "name": "buggy-au-t1-w100c2-py-heater-inverted",
+   "id": "buggy-au-t1-w100c2-py-heater-inverted",
+   "code": "def heater_on(temp, target):\n    if temp > target:\n        return True\n    return False\n\nprint(heater_on(16, 20))\nprint(heater_on(24, 20))",
+   "verified": "exec: exit 0; stdout = 'False | True'",
+   "cause": "the heater switches on when the room is warmer than the target instead of colder, so the cold room prints False and the warm room prints True",
+   "category": "inverted comparison",
+   "bug_line": 2,
+   "level2_tokens": [
+    "inverted",
+    "backwards",
+    "greater"
+   ],
+   "consequence_class": "categorical",
+   "raises": false,
+   "n_lines": 7,
+   "language": "python",
+   "lang_group": "python",
+   "source": "authored (claude-opus-5-5) for glm-5.3-flash: About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "src": "clean",
+   "name": "buggy-au-clean-t1-w100c2-py-heater-inverted",
+   "id": "buggy-au-clean-t1-w100c2-py-heater-inverted",
+   "code": "def fan_on(temp, limit):\n    if temp > limit:\n        return True\n    return False\n\nprint(fan_on(30, 25))\nprint(fan_on(20, 25))",
+   "verified": "exec: exit 0; stdout = 'True | False'",
+   "why_correct": "a cooling fan should run when the temperature exceeds the limit, so it prints True for 30 and False for 20",
+   "looks_like": "an inverted comparison like the heater bug",
+   "language": "python",
+   "lang_group": "python",
+   "source": "authored (claude-opus-5-5) for glm-5.3-flash: About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "About 8 lines of Python. A single-step VALUE bug a careful reader traces in one pass: a wrong operator (- for +), an inverted comparison, an accumulator reset inside the loop, integer division where a fraction is needed, a wrong variable returned. Small literal inputs, so the output is easy to compute by hand."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  }
+ ]
+}

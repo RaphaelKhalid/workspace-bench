@@ -1,0 +1,3100 @@
+{
+ "family": "basic_readout_mt",
+ "version": "r4-distractors-2026-11-01d+select-v1",
+ "model": "claude-opus-5-5",
+ "script": "scripts/r4_mc_distractors.py + scripts/r4_mc_select.py",
+ "gate": {
+  "draws": 5,
+  "max_gold_picks": 2,
+  "rounds": 5
+ },
+ "items": {
+  "brh-ar-ain-jalut": {
+   "readout": {
+    "topic": "a medieval battle in the Middle East",
+    "kind": "a battle",
+    "gold": "Battle of Ain Jalut",
+    "distractors": [
+     "Battle of Ankara",
+     "Siege of Baghdad (1258)",
+     "Siege of Jerusalem (1099)",
+     "Battle of al-Qadisiyyah"
+    ],
+    "enwiki": {
+     "Battle of Ankara": "Battle of Ankara",
+     "Siege of Baghdad (1258)": "Siege of Baghdad (1258)",
+     "Siege of Jerusalem (1099)": "Siege of Jerusalem (1099)",
+     "Battle of al-Qadisiyyah": "Battle of al-Qadisiyyah"
+    },
+    "fame": {
+     "gold": 50,
+     "Battle of Ankara": 54,
+     "Siege of Baghdad (1258)": 55,
+     "Siege of Jerusalem (1099)": 48,
+     "Battle of al-Qadisiyyah": 42
+    },
+    "gate": {
+     "blind_gold_picks": 5,
+     "topic_gold_picks": 5,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ar-dakhil": {
+   "readout": {
+    "topic": "a medieval Muslim ruler (caliph, emir, or sultan)",
+    "topic_narrow": "a ruler of medieval Islamic Spain (al-Andalus)",
+    "kind": "a person",
+    "gold": "Abd al-Rahman I",
+    "distractors": [
+     "Mahmud of Ghazni",
+     "Abd al-Malik ibn Marwan",
+     "Abd al-Rahman III",
+     "Al-Ma'mun"
+    ],
+    "enwiki": {
+     "Mahmud of Ghazni": "Mahmud of Ghazni",
+     "Abd al-Malik ibn Marwan": "Abd al-Malik ibn Marwan",
+     "Abd al-Rahman III": "Abd al-Rahman III",
+     "Al-Ma'mun": "Al-Ma'mun"
+    },
+    "fame": {
+     "gold": 59,
+     "Mahmud of Ghazni": 63,
+     "Abd al-Malik ibn Marwan": 68,
+     "Abd al-Rahman III": 58,
+     "Al-Ma'mun": 57
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 0,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ar-kitab-almanazir-author": {
+   "readout": {
+    "topic": "a medieval Islamic Golden Age scientist or scholar",
+    "kind": "a person",
+    "gold": "Ibn al-Haytham",
+    "distractors": [
+     "Al-Biruni",
+     "Omar Khayyam",
+     "Al-Idrisi",
+     "Al-Khwarizmi"
+    ],
+    "enwiki": {
+     "Al-Biruni": "Al-Biruni",
+     "Omar Khayyam": "Omar Khayyam",
+     "Al-Idrisi": "Muhammad al-Idrisi",
+     "Al-Khwarizmi": "Al-Khwarizmi"
+    },
+    "fame": {
+     "gold": 92,
+     "Al-Biruni": 99,
+     "Omar Khayyam": 117,
+     "Al-Idrisi": 85,
+     "Al-Khwarizmi": 153
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 1,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ar-marj-dabiq": {
+   "readout": {
+    "topic": "a battle of the Ottoman Empire",
+    "topic_narrow": "a battle of the Ottoman Empire in the early modern Middle East",
+    "kind": "a battle",
+    "gold": "Marj Dabiq",
+    "distractors": [
+     "Battle of Varna",
+     "Battle of Chaldiran",
+     "Battle of Konya",
+     "Fall of Constantinople"
+    ],
+    "enwiki": {
+     "Battle of Varna": "Battle of Varna",
+     "Battle of Chaldiran": "Battle of Chaldiran",
+     "Battle of Konya": "Battle of Konya",
+     "Fall of Constantinople": "Fall of Constantinople"
+    },
+    "fame": {
+     "gold": 28,
+     "Battle of Varna": 47,
+     "Battle of Chaldiran": 43,
+     "Battle of Konya": 14,
+     "Fall of Constantinople": 79
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 2,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ar-tayebsalih": {
+   "readout": {
+    "topic": "a modern Arabic-language novelist from Africa or the Arab world",
+    "kind": "a person",
+    "gold": "Tayeb Salih",
+    "distractors": [
+     "Ghassan Kanafani",
+     "Naguib Mahfouz",
+     "Ahlam Mosteghanemi",
+     "Alaa Al Aswany"
+    ],
+    "enwiki": {
+     "Ghassan Kanafani": "Ghassan Kanafani",
+     "Naguib Mahfouz": "Naguib Mahfouz",
+     "Ahlam Mosteghanemi": "Ahlam Mosteghanemi",
+     "Alaa Al Aswany": "Alaa Al Aswany"
+    },
+    "fame": {
+     "gold": 33,
+     "Ghassan Kanafani": 44,
+     "Naguib Mahfouz": 148,
+     "Ahlam Mosteghanemi": 27,
+     "Alaa Al Aswany": 27
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 5,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ar-tusi": {
+   "readout": {
+    "topic": "a medieval Persian scholar of the Islamic Golden Age",
+    "kind": "a person",
+    "gold": "Nasir al-Din al-Tusi",
+    "distractors": [
+     "Al-Farabi",
+     "Omar Khayyam",
+     "Abu Bakr al-Razi",
+     "Ali ibn Abbas al-Majusi"
+    ],
+    "enwiki": {
+     "Al-Farabi": "Al-Farabi",
+     "Omar Khayyam": "Omar Khayyam",
+     "Abu Bakr al-Razi": "Abu Bakr al-Razi",
+     "Ali ibn Abbas al-Majusi": "Ali ibn Abbas al-Majusi"
+    },
+    "fame": {
+     "gold": 65,
+     "Al-Farabi": 83,
+     "Omar Khayyam": 117,
+     "Abu Bakr al-Razi": 88,
+     "Ali ibn Abbas al-Majusi": 18
+    },
+    "gate": {
+     "blind_gold_picks": 1,
+     "topic_gold_picks": 0,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-aghlabid-dynasty": {
+   "readout": {
+    "topic": "a medieval Islamic dynasty of North Africa",
+    "kind": "a dynasty",
+    "gold": "Aghlabid dynasty",
+    "distractors": [
+     "Mamluk Sultanate",
+     "Almoravid dynasty",
+     "Salihids of Nekor",
+     "Maghrawa"
+    ],
+    "enwiki": {
+     "Mamluk Sultanate": "Mamluk Sultanate",
+     "Almoravid dynasty": "Almoravid dynasty",
+     "Salihids of Nekor": "Emirate of Nekor",
+     "Maghrawa": "Maghrawa"
+    },
+    "fame": {
+     "gold": 56,
+     "Mamluk Sultanate": 71,
+     "Almoravid dynasty": 77,
+     "Salihids of Nekor": 19,
+     "Maghrawa": 1
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 0,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-antarctic-buried-chain": {
+   "readout": {
+    "topic": "a mountain range of Antarctica",
+    "kind": "a mountain range",
+    "gold": "Gamburtsev Mountains",
+    "distractors": [
+     "Queen Maud Mountains",
+     "Transantarctic Mountains",
+     "Miller Range",
+     "Usarp Mountains"
+    ],
+    "enwiki": {
+     "Queen Maud Mountains": "Queen Maud Mountains",
+     "Transantarctic Mountains": "Transantarctic Mountains",
+     "Miller Range": "Miller Range",
+     "Usarp Mountains": "Usarp Mountains"
+    },
+    "fame": {
+     "gold": 24,
+     "Queen Maud Mountains": 24,
+     "Transantarctic Mountains": 62,
+     "Miller Range": 12,
+     "Usarp Mountains": 8
+    },
+    "gate": {
+     "blind_gold_picks": 1,
+     "topic_gold_picks": 4,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-baikal-outflow": {
+   "readout": {
+    "topic": "a river of Siberia",
+    "kind": "a river",
+    "gold": "Angara River",
+    "distractors": [
+     "Lena",
+     "Irtysh",
+     "Vitim",
+     "Olenyok"
+    ],
+    "enwiki": {
+     "Lena": "Lena (river)",
+     "Irtysh": "Irtysh",
+     "Vitim": "Vitim (river)",
+     "Olenyok": "Olenyok (river)"
+    },
+    "fame": {
+     "gold": 84,
+     "Lena": 111,
+     "Irtysh": 93,
+     "Vitim": 47,
+     "Olenyok": 50
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 0,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-bardet-biedl": {
+   "readout": {
+    "topic": "a genetic ciliopathy syndrome",
+    "kind": "a genetic syndrome",
+    "gold": "Bardet-Biedl syndrome",
+    "distractors": [
+     "Usher syndrome",
+     "Situs inversus",
+     "Leber congenital amaurosis",
+     "Joubert syndrome"
+    ],
+    "enwiki": {
+     "Usher syndrome": "Usher syndrome",
+     "Situs inversus": "Situs inversus",
+     "Leber congenital amaurosis": "Leber congenital amaurosis",
+     "Joubert syndrome": "Joubert syndrome"
+    },
+    "fame": {
+     "gold": 18,
+     "Usher syndrome": 25,
+     "Situs inversus": 29,
+     "Leber congenital amaurosis": 17,
+     "Joubert syndrome": 16
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 5,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-beckwith-wiedemann-syndrome": {
+   "readout": {
+    "topic": "a congenital genetic syndrome in pediatric medicine",
+    "kind": "a genetic disorder",
+    "gold": "Beckwith–Wiedemann syndrome",
+    "distractors": [
+     "Rubinstein–Taybi syndrome",
+     "Cornelia de Lange syndrome",
+     "Smith–Lemli–Opitz syndrome",
+     "Wolf–Hirschhorn syndrome"
+    ],
+    "enwiki": {
+     "Rubinstein–Taybi syndrome": "Rubinstein–Taybi syndrome",
+     "Cornelia de Lange syndrome": "Cornelia de Lange syndrome",
+     "Smith–Lemli–Opitz syndrome": "Smith–Lemli–Opitz syndrome",
+     "Wolf–Hirschhorn syndrome": "Wolf–Hirschhorn syndrome"
+    },
+    "fame": {
+     "gold": 19,
+     "Rubinstein–Taybi syndrome": 20,
+     "Cornelia de Lange syndrome": 21,
+     "Smith–Lemli–Opitz syndrome": 18,
+     "Wolf–Hirschhorn syndrome": 18
+    },
+    "gate": {
+     "blind_gold_picks": 5,
+     "topic_gold_picks": 5,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-bohr-magneton": {
+   "readout": {
+    "topic": "a fundamental physical constant in atomic and quantum physics",
+    "kind": "a physical constant",
+    "gold": "Bohr magneton",
+    "distractors": [
+     "Planck constant",
+     "Vacuum permittivity",
+     "Avogadro constant",
+     "Rydberg constant"
+    ],
+    "enwiki": {
+     "Planck constant": "Planck constant",
+     "Vacuum permittivity": "Vacuum permittivity",
+     "Avogadro constant": "Avogadro constant",
+     "Rydberg constant": "Rydberg constant"
+    },
+    "fame": {
+     "gold": 35,
+     "Planck constant": 83,
+     "Vacuum permittivity": 35,
+     "Avogadro constant": 75,
+     "Rydberg constant": 39
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 0,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-bonaire-capital": {
+   "readout": {
+    "topic": "a town or capital in the Caribbean",
+    "kind": "a town",
+    "gold": "Kralendijk",
+    "distractors": [
+     "Philipsburg",
+     "Fort-de-France",
+     "Willemstad",
+     "Port of Spain"
+    ],
+    "enwiki": {
+     "Philipsburg": "Philipsburg, Sint Maarten",
+     "Fort-de-France": "Fort-de-France",
+     "Willemstad": "Willemstad",
+     "Port of Spain": "Port of Spain"
+    },
+    "fame": {
+     "gold": 57,
+     "Philipsburg": 61,
+     "Fort-de-France": 95,
+     "Willemstad": 84,
+     "Port of Spain": 127
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 0,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-brunt-vaisala-frequency": {
+   "readout": {
+    "topic": "a named quantity or concept in atmospheric dynamics and meteorology",
+    "kind": "a physical quantity",
+    "gold": "Brunt–Väisälä frequency",
+    "distractors": [
+     "Rossby number",
+     "Convective available potential energy",
+     "Potential vorticity",
+     "Virtual temperature"
+    ],
+    "enwiki": {
+     "Rossby number": "Rossby number",
+     "Convective available potential energy": "Convective available potential energy",
+     "Potential vorticity": "Potential vorticity",
+     "Virtual temperature": "Virtual temperature"
+    },
+    "fame": {
+     "gold": 14,
+     "Rossby number": 22,
+     "Convective available potential energy": 21,
+     "Potential vorticity": 9,
+     "Virtual temperature": 13
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 0,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-chem-sarin-systematic": {
+   "readout": {
+    "topic": "systematic chemical names of organophosphorus compounds",
+    "topic_narrow": "systematic IUPAC names of organophosphorus chemical compounds",
+    "kind": "a chemical name",
+    "gold": "isopropyl methylphosphonofluoridate",
+    "distractors": [
+     "Tricresyl phosphate",
+     "soman",
+     "N-(phosphonomethyl)glycine",
+     "glyphosate"
+    ],
+    "enwiki": {
+     "Tricresyl phosphate": "Tricresyl phosphate",
+     "soman": "Soman",
+     "N-(phosphonomethyl)glycine": "Glyphosate",
+     "glyphosate": "Glyphosate"
+    },
+    "fame": {
+     "gold": 67,
+     "Tricresyl phosphate": 17,
+     "soman": 37,
+     "N-(phosphonomethyl)glycine": 52,
+     "glyphosate": 52
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 3,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-chem-wintergreen-ester": {
+   "readout": {
+    "topic": "an organic chemical compound used in fragrances or flavorings",
+    "kind": "a chemical compound name",
+    "gold": "methyl salicylate",
+    "distractors": [
+     "citral",
+     "anethole",
+     "diacetyl",
+     "carvone"
+    ],
+    "enwiki": {
+     "citral": "Citral",
+     "anethole": "Anethole",
+     "diacetyl": "Diacetyl",
+     "carvone": "Carvone"
+    },
+    "fame": {
+     "gold": 30,
+     "citral": 30,
+     "anethole": 31,
+     "diacetyl": 29,
+     "carvone": 27
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 0,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-chindwin-confluence": {
+   "readout": {
+    "topic": "a major river of Southeast Asia",
+    "kind": "a river",
+    "gold": "Ayeyarwady",
+    "distractors": [
+     "Mun",
+     "Agusan",
+     "Salween",
+     "Mekong"
+    ],
+    "enwiki": {
+     "Mun": "Mun River",
+     "Agusan": "Agusan River",
+     "Salween": "Salween River",
+     "Mekong": "Mekong"
+    },
+    "fame": {
+     "gold": 5,
+     "Mun": 27,
+     "Agusan": 26,
+     "Salween": 75,
+     "Mekong": 117
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 0,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-concordat-worms": {
+   "readout": {
+    "topic": "a medieval European treaty or agreement",
+    "kind": "a treaty",
+    "gold": "Concordat of Worms",
+    "distractors": [
+     "Treaty of Verdun",
+     "Kalmar Union",
+     "Treaty of Meerssen",
+     "Treaty of Brétigny"
+    ],
+    "enwiki": {
+     "Treaty of Verdun": "Treaty of Verdun",
+     "Kalmar Union": "Kalmar Union",
+     "Treaty of Meerssen": "Treaty of Meerssen",
+     "Treaty of Brétigny": "Treaty of Brétigny"
+    },
+    "fame": {
+     "gold": 46,
+     "Treaty of Verdun": 69,
+     "Kalmar Union": 80,
+     "Treaty of Meerssen": 35,
+     "Treaty of Brétigny": 32
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 0,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-cordillera-blanca-high": {
+   "readout": {
+    "topic": "a mountain peak of the Andes in South America",
+    "kind": "a mountain",
+    "gold": "Huascarán",
+    "distractors": [
+     "Nevado del Ruiz",
+     "Llullaillaco",
+     "Sajama",
+     "Fitz Roy"
+    ],
+    "enwiki": {
+     "Nevado del Ruiz": "Nevado del Ruiz",
+     "Llullaillaco": "Llullaillaco",
+     "Sajama": "Nevado Sajama",
+     "Fitz Roy": "Monte Fitz Roy"
+    },
+    "fame": {
+     "gold": 49,
+     "Nevado del Ruiz": 53,
+     "Llullaillaco": 55,
+     "Sajama": 48,
+     "Fitz Roy": 43
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 2,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-cryolite-systematic": {
+   "readout": {
+    "topic": "the chemical name of a mineral compound",
+    "kind": "a chemical compound name",
+    "gold": "sodium hexafluoroaluminate",
+    "distractors": [
+     "Iron disulfide",
+     "Arsenic trisulfide",
+     "Zirconium silicate",
+     "Zinc carbonate"
+    ],
+    "enwiki": {
+     "Iron disulfide": "Iron(II) disulfide",
+     "Arsenic trisulfide": "Arsenic trisulfide",
+     "Zirconium silicate": "Zirconium(IV) silicate",
+     "Zinc carbonate": "Zinc carbonate"
+    },
+    "fame": {
+     "gold": 21,
+     "Iron disulfide": 21,
+     "Arsenic trisulfide": 22,
+     "Zirconium silicate": 17,
+     "Zinc carbonate": 24
+    },
+    "gate": {
+     "blind_gold_picks": 5,
+     "topic_gold_picks": 5,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-cur-bhutan": {
+   "readout": {
+    "topic": "a national currency of a South Asian country",
+    "kind": "a currency",
+    "gold": "Bhutanese ngultrum",
+    "distractors": [
+     "Afghan afghani",
+     "Indian rupee",
+     "Pakistani rupee",
+     "Bangladeshi taka"
+    ],
+    "enwiki": {
+     "Afghan afghani": "Afghan afghani",
+     "Indian rupee": "Indian rupee",
+     "Pakistani rupee": "Pakistani rupee",
+     "Bangladeshi taka": "Bangladeshi taka"
+    },
+    "fame": {
+     "gold": 72,
+     "Afghan afghani": 75,
+     "Indian rupee": 92,
+     "Pakistani rupee": 71,
+     "Bangladeshi taka": 70
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 0,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-cur-bosnia-convertible-mark": {
+   "readout": {
+    "topic": "a national currency of a Balkan or Eastern European country",
+    "kind": "a currency",
+    "gold": "convertible mark",
+    "distractors": [
+     "Moldovan leu",
+     "Macedonian denar",
+     "Slovak koruna",
+     "Soviet ruble"
+    ],
+    "enwiki": {
+     "Moldovan leu": "Moldovan leu",
+     "Macedonian denar": "Macedonian denar",
+     "Slovak koruna": "Slovak koruna",
+     "Soviet ruble": "Soviet ruble"
+    },
+    "fame": {
+     "gold": 60,
+     "Moldovan leu": 61,
+     "Macedonian denar": 68,
+     "Slovak koruna": 55,
+     "Soviet ruble": 51
+    },
+    "gate": {
+     "blind_gold_picks": 3,
+     "topic_gold_picks": 5,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-cur-eritrea": {
+   "readout": {
+    "topic": "a national currency of an African country",
+    "kind": "a currency",
+    "gold": "Eritrean nakfa",
+    "distractors": [
+     "Rwandan franc",
+     "Malagasy ariary",
+     "Sierra Leonean leone",
+     "Tunisian dinar"
+    ],
+    "enwiki": {
+     "Rwandan franc": "Rwandan franc",
+     "Malagasy ariary": "Malagasy ariary",
+     "Sierra Leonean leone": "Sierra Leonean leone",
+     "Tunisian dinar": "Tunisian dinar"
+    },
+    "fame": {
+     "gold": 51,
+     "Rwandan franc": 51,
+     "Malagasy ariary": 51,
+     "Sierra Leonean leone": 50,
+     "Tunisian dinar": 49
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 2,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-cur-macau-unit": {
+   "readout": {
+    "topic": "a currency of an East Asian territory or country",
+    "kind": "a currency",
+    "gold": "pataca",
+    "distractors": [
+     "Mongolian dollar",
+     "Korean mun",
+     "B yen",
+     "Tibetan tangka"
+    ],
+    "enwiki": {
+     "Mongolian dollar": "Mongolian dollar",
+     "Korean mun": "Korean mun",
+     "B yen": "B yen",
+     "Tibetan tangka": "Tibetan tangka"
+    },
+    "fame": {
+     "gold": 9,
+     "Mongolian dollar": 10,
+     "Korean mun": 10,
+     "B yen": 8,
+     "Tibetan tangka": 8
+    },
+    "gate": {
+     "blind_gold_picks": 5,
+     "topic_gold_picks": 5,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-cur-ngultrum-subunit": {
+   "readout": {
+    "topic": "a currency subunit (fractional monetary unit)",
+    "topic_narrow": "a fractional currency subunit of a South Asian country",
+    "kind": "a currency subunit",
+    "gold": "chhertum",
+    "distractors": [
+     "Satang",
+     "cent",
+     "Cent",
+     "Penny"
+    ],
+    "enwiki": {
+     "Satang": "Satang",
+     "cent": "Cent (currency)",
+     "Cent": "Cent (currency)",
+     "Penny": "Penny"
+    },
+    "fame": {
+     "gold": 72,
+     "Satang": 76,
+     "cent": 55,
+     "Cent": 55,
+     "Penny": 43
+    },
+    "gate": {
+     "blind_gold_picks": 4,
+     "topic_gold_picks": 5,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-cur-ouguiya-subunit": {
+   "readout": {
+    "topic": "a fractional currency subunit of an African country",
+    "kind": "a currency subunit",
+    "gold": "khoums",
+    "distractors": [
+     "lisente",
+     "thebe",
+     "centime",
+     "halala"
+    ],
+    "enwiki": {
+     "lisente": "Sente",
+     "thebe": "Thebe (currency)",
+     "centime": "Centime",
+     "halala": "Halala"
+    },
+    "fame": {
+     "gold": 4,
+     "lisente": 5,
+     "thebe": 59,
+     "centime": 20,
+     "halala": 2
+    },
+    "gate": {
+     "blind_gold_picks": 4,
+     "topic_gold_picks": 0,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-cur-vanuatu": {
+   "readout": {
+    "topic": "a national currency of an Oceanian or Pacific island country",
+    "kind": "a currency",
+    "gold": "Vanuatu vatu",
+    "distractors": [
+     "Fijian dollar",
+     "Papua New Guinean kina",
+     "Samoan tālā",
+     "Tongan paʻanga"
+    ],
+    "enwiki": {
+     "Fijian dollar": "Fijian dollar",
+     "Papua New Guinean kina": "Papua New Guinean kina",
+     "Samoan tālā": "Samoan tālā",
+     "Tongan paʻanga": "Tongan paʻanga"
+    },
+    "fame": {
+     "gold": 50,
+     "Fijian dollar": 51,
+     "Papua New Guinean kina": 54,
+     "Samoan tālā": 49,
+     "Tongan paʻanga": 49
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 0,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-currency-bhutan": {
+   "readout": {
+    "topic": "a national currency of a South Asian country",
+    "kind": "a currency unit",
+    "gold": "Bhutanese ngultrum",
+    "distractors": [
+     "Iranian rial",
+     "Indian rupee",
+     "Hyderabadi rupee",
+     "Sri Lankan rupee"
+    ],
+    "enwiki": {
+     "Iranian rial": "Iranian rial",
+     "Indian rupee": "Indian rupee",
+     "Hyderabadi rupee": "Hyderabadi rupee",
+     "Sri Lankan rupee": "Sri Lankan rupee"
+    },
+    "fame": {
+     "gold": 72,
+     "Iranian rial": 74,
+     "Indian rupee": 92,
+     "Hyderabadi rupee": 11,
+     "Sri Lankan rupee": 58
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 0,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-currency-eswatini": {
+   "readout": {
+    "topic": "a national currency of a southern African country",
+    "kind": "a currency",
+    "gold": "lilangeni",
+    "distractors": [
+     "South African rand",
+     "Botswana pula",
+     "Lesotho loti",
+     "Southwest African pound"
+    ],
+    "enwiki": {
+     "South African rand": "South African rand",
+     "Botswana pula": "Botswana pula",
+     "Lesotho loti": "Lesotho loti",
+     "Southwest African pound": "South West African pound"
+    },
+    "fame": {
+     "gold": 54,
+     "South African rand": 74,
+     "Botswana pula": 59,
+     "Lesotho loti": 52,
+     "Southwest African pound": 3
+    },
+    "gate": {
+     "blind_gold_picks": 1,
+     "topic_gold_picks": 4,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-currency-gambia": {
+   "readout": {
+    "topic": "a national currency of a West African country",
+    "kind": "a currency",
+    "gold": "dalasi",
+    "distractors": [
+     "Guinean franc",
+     "Liberian dollar",
+     "Sierra Leonean leone",
+     "Cape Verdean escudo"
+    ],
+    "enwiki": {
+     "Guinean franc": "Guinean franc",
+     "Liberian dollar": "Liberian dollar",
+     "Sierra Leonean leone": "Sierra Leonean leone",
+     "Cape Verdean escudo": "Cape Verdean escudo"
+    },
+    "fame": {
+     "gold": 52,
+     "Guinean franc": 52,
+     "Liberian dollar": 53,
+     "Sierra Leonean leone": 50,
+     "Cape Verdean escudo": 50
+    },
+    "gate": {
+     "blind_gold_picks": 5,
+     "topic_gold_picks": 5,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-currency-mozambique": {
+   "readout": {
+    "topic": "a national currency of an African country",
+    "kind": "a currency",
+    "gold": "metical",
+    "distractors": [
+     "Libyan dinar",
+     "Zambian kwacha",
+     "Rwandan franc",
+     "Malagasy ariary"
+    ],
+    "enwiki": {
+     "Libyan dinar": "Libyan dinar",
+     "Zambian kwacha": "Zambian kwacha",
+     "Rwandan franc": "Rwandan franc",
+     "Malagasy ariary": "Malagasy ariary"
+    },
+    "fame": {
+     "gold": 52,
+     "Libyan dinar": 52,
+     "Zambian kwacha": 52,
+     "Rwandan franc": 51,
+     "Malagasy ariary": 51
+    },
+    "gate": {
+     "blind_gold_picks": 5,
+     "topic_gold_picks": 5,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-currency-tajikistan": {
+   "readout": {
+    "topic": "a national currency of a Central Asian country",
+    "kind": "a currency",
+    "gold": "Tajikistani somoni",
+    "distractors": [
+     "Mongolian tögrög",
+     "Kazakhstani tenge",
+     "Kyrgyzstani som",
+     "Uzbekistani som"
+    ],
+    "enwiki": {
+     "Mongolian tögrög": "Mongolian tögrög",
+     "Kazakhstani tenge": "Kazakhstani tenge",
+     "Kyrgyzstani som": "Kyrgyzstani som",
+     "Uzbekistani som": "Uzbekistani soʻm"
+    },
+    "fame": {
+     "gold": 65,
+     "Mongolian tögrög": 65,
+     "Kazakhstani tenge": 75,
+     "Kyrgyzstani som": 62,
+     "Uzbekistani som": 61
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 0,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-currency-vanuatu": {
+   "readout": {
+    "topic": "a national currency of a Pacific island nation",
+    "kind": "a currency",
+    "gold": "Vanuatu vatu",
+    "distractors": [
+     "United States dollar",
+     "New Zealand dollar",
+     "Tongan paʻanga",
+     "New Guinean mark"
+    ],
+    "enwiki": {
+     "United States dollar": "United States dollar",
+     "New Zealand dollar": "New Zealand dollar",
+     "Tongan paʻanga": "Tongan paʻanga",
+     "New Guinean mark": "New Guinean mark"
+    },
+    "fame": {
+     "gold": 50,
+     "United States dollar": 177,
+     "New Zealand dollar": 75,
+     "Tongan paʻanga": 49,
+     "New Guinean mark": 9
+    },
+    "gate": {
+     "blind_gold_picks": 1,
+     "topic_gold_picks": 0,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-drakensberg-summit": {
+   "readout": {
+    "topic": "a mountain peak of southern Africa",
+    "kind": "a mountain",
+    "gold": "Thabana Ntlenyana",
+    "distractors": [
+     "Mount Moco",
+     "Mount Mulanje",
+     "Brandberg Mountain",
+     "Mount Nyangani"
+    ],
+    "enwiki": {
+     "Mount Moco": "Mount Moco",
+     "Mount Mulanje": "Mount Mulanje",
+     "Brandberg Mountain": "Brandberg Mountain",
+     "Mount Nyangani": "Mount Nyangani"
+    },
+    "fame": {
+     "gold": 29,
+     "Mount Moco": 34,
+     "Mount Mulanje": 37,
+     "Brandberg Mountain": 27,
+     "Mount Nyangani": 27
+    },
+    "gate": {
+     "blind_gold_picks": 5,
+     "topic_gold_picks": 5,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-euler-mascheroni-constant": {
+   "readout": {
+    "topic": "a named mathematical constant",
+    "kind": "a mathematical constant",
+    "gold": "Euler–Mascheroni constant",
+    "distractors": [
+     "Imaginary unit",
+     "Golden ratio",
+     "Twin prime constant",
+     "Glaisher–Kinkelin constant"
+    ],
+    "enwiki": {
+     "Imaginary unit": "Imaginary unit",
+     "Golden ratio": "Golden ratio",
+     "Twin prime constant": "Twin prime",
+     "Glaisher–Kinkelin constant": "Glaisher–Kinkelin constant"
+    },
+    "fame": {
+     "gold": 49,
+     "Imaginary unit": 66,
+     "Golden ratio": 93,
+     "Twin prime constant": 46,
+     "Glaisher–Kinkelin constant": 11
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 0,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-georgian-royal-line": {
+   "readout": {
+    "topic": "a royal dynasty of the Caucasus or Near East",
+    "kind": "a dynasty",
+    "gold": "Bagrationi dynasty",
+    "distractors": [
+     "Achaemenid dynasty",
+     "Ottoman dynasty",
+     "Hethumids",
+     "Mihranids"
+    ],
+    "enwiki": {
+     "Achaemenid dynasty": "Achaemenid dynasty",
+     "Ottoman dynasty": "Ottoman dynasty",
+     "Hethumids": "Hethumids",
+     "Mihranids": "Mihranids"
+    },
+    "fame": {
+     "gold": 40,
+     "Achaemenid dynasty": 41,
+     "Ottoman dynasty": 60,
+     "Hethumids": 23,
+     "Mihranids": 13
+    },
+    "gate": {
+     "blind_gold_picks": 3,
+     "topic_gold_picks": 1,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-geosmin": {
+   "readout": {
+    "topic": "a naturally occurring organic aroma compound",
+    "kind": "a chemical compound",
+    "gold": "Geosmin",
+    "distractors": [
+     "Cinnamaldehyde",
+     "Geraniol",
+     "Linalool",
+     "Eucalyptol"
+    ],
+    "enwiki": {
+     "Cinnamaldehyde": "Cinnamaldehyde",
+     "Geraniol": "Geraniol",
+     "Linalool": "Linalool",
+     "Eucalyptol": "Eucalyptol"
+    },
+    "fame": {
+     "gold": 35,
+     "Cinnamaldehyde": 35,
+     "Geraniol": 37,
+     "Linalool": 34,
+     "Eucalyptol": 33
+    },
+    "gate": {
+     "blind_gold_picks": 5,
+     "topic_gold_picks": 5,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-glauber-salt": {
+   "readout": {
+    "topic": "a historically named chemical salt or mineral compound",
+    "kind": "a chemical compound",
+    "gold": "Glauber's salt",
+    "distractors": [
+     "Potash",
+     "Blue vitriol",
+     "Lunar caustic",
+     "Epsom salt"
+    ],
+    "enwiki": {
+     "Potash": "Potassium carbonate",
+     "Blue vitriol": "Copper(II) sulfate",
+     "Lunar caustic": "Silver nitrate",
+     "Epsom salt": "Magnesium sulfate"
+    },
+    "fame": {
+     "gold": 60,
+     "Potash": 62,
+     "Blue vitriol": 64,
+     "Lunar caustic": 59,
+     "Epsom salt": 53
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 0,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-gloger-rule": {
+   "readout": {
+    "topic": "an ecogeographical rule in biology",
+    "kind": "a scientific rule",
+    "gold": "Gloger's rule",
+    "distractors": [
+     "Foster's rule",
+     "Allen's rule",
+     "Deep-sea gigantism",
+     "Theory of island biogeography"
+    ],
+    "enwiki": {
+     "Foster's rule": "Island gigantism",
+     "Allen's rule": "Allen's rule",
+     "Deep-sea gigantism": "Deep-sea gigantism",
+     "Theory of island biogeography": "Insular biogeography"
+    },
+    "fame": {
+     "gold": 28,
+     "Foster's rule": 30,
+     "Allen's rule": 32,
+     "Deep-sea gigantism": 26,
+     "Theory of island biogeography": 20
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 3,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-hafsid-ifriqiya": {
+   "readout": {
+    "topic": "a medieval Muslim dynasty of North Africa",
+    "kind": "a dynasty",
+    "gold": "Hafsid dynasty",
+    "distractors": [
+     "Idrisids",
+     "Marinids",
+     "Almohad Caliphate",
+     "Saadi dynasty"
+    ],
+    "enwiki": {
+     "Idrisids": "Idrisid dynasty",
+     "Marinids": "Marinid Sultanate",
+     "Almohad Caliphate": "Almohad Caliphate",
+     "Saadi dynasty": "Saadi Sultanate"
+    },
+    "fame": {
+     "gold": 48,
+     "Idrisids": 53,
+     "Marinids": 53,
+     "Almohad Caliphate": 47,
+     "Saadi dynasty": 44
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 0,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-hounsfield": {
+   "readout": {
+    "topic": "a unit of measurement used in medical imaging or radiology",
+    "kind": "a unit of measurement",
+    "gold": "Hounsfield units",
+    "distractors": [
+     "Kerma",
+     "Line pairs per millimetre",
+     "Rayl",
+     "Standardized uptake value"
+    ],
+    "enwiki": {
+     "Kerma": "Kerma (physics)",
+     "Line pairs per millimetre": "Optical resolution",
+     "Rayl": "Rayl",
+     "Standardized uptake value": "Standardized uptake value"
+    },
+    "fame": {
+     "gold": 16,
+     "Kerma": 17,
+     "Line pairs per millimetre": 18,
+     "Rayl": 11,
+     "Standardized uptake value": 4
+    },
+    "gate": {
+     "blind_gold_picks": 5,
+     "topic_gold_picks": 5,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-hounsfield-unit": {
+   "readout": {
+    "topic": "a unit of measurement used in medical imaging or radiology",
+    "kind": "a unit of measurement",
+    "gold": "Hounsfield unit",
+    "distractors": [
+     "Kerma",
+     "Line pairs per millimetre",
+     "Rayl",
+     "Standardized uptake value"
+    ],
+    "enwiki": {
+     "Kerma": "Kerma (physics)",
+     "Line pairs per millimetre": "Optical resolution",
+     "Rayl": "Rayl",
+     "Standardized uptake value": "Standardized uptake value"
+    },
+    "fame": {
+     "gold": 16,
+     "Kerma": 17,
+     "Line pairs per millimetre": 18,
+     "Rayl": 11,
+     "Standardized uptake value": 4
+    },
+    "gate": {
+     "blind_gold_picks": 5,
+     "topic_gold_picks": 5,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-iceland-spar": {
+   "readout": {
+    "topic": "a mineral variety or gemstone variety",
+    "kind": "a mineral variety",
+    "gold": "Iceland spar",
+    "distractors": [
+     "Ametrine",
+     "Rose quartz",
+     "Indicolite",
+     "Morganite"
+    ],
+    "enwiki": {
+     "Ametrine": "Ametrine",
+     "Rose quartz": "Rose quartz",
+     "Indicolite": "Indicolite",
+     "Morganite": "Morganite"
+    },
+    "fame": {
+     "gold": 24,
+     "Ametrine": 24,
+     "Rose quartz": 29,
+     "Indicolite": 23,
+     "Morganite": 20
+    },
+    "gate": {
+     "blind_gold_picks": 5,
+     "topic_gold_picks": 5,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-illimani-range": {
+   "readout": {
+    "topic": "a mountain range of the South American Andes",
+    "kind": "a mountain range",
+    "gold": "Cordillera Real",
+    "distractors": [
+     "Cordillera de la Costa",
+     "Sierra Nevada de Santa Marta",
+     "Cordillera Vilcanota",
+     "Cordillera Blanca"
+    ],
+    "enwiki": {
+     "Cordillera de la Costa": "Chilean Coast Range",
+     "Sierra Nevada de Santa Marta": "Sierra Nevada de Santa Marta",
+     "Cordillera Vilcanota": "Cordillera Vilcanota",
+     "Cordillera Blanca": "Cordillera Blanca"
+    },
+    "fame": {
+     "gold": 6,
+     "Cordillera de la Costa": 24,
+     "Sierra Nevada de Santa Marta": 37,
+     "Cordillera Vilcanota": 17,
+     "Cordillera Blanca": 31
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 0,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-kachin-mandalay-waterway": {
+   "readout": {
+    "topic": "a major river of Southeast Asia",
+    "kind": "a river",
+    "gold": "Irrawaddy",
+    "distractors": [
+     "Rajang",
+     "Pahang",
+     "Kapuas",
+     "Mahakam"
+    ],
+    "enwiki": {
+     "Rajang": "Rajang River",
+     "Pahang": "Pahang River",
+     "Kapuas": "Kapuas River",
+     "Mahakam": "Mahakam River"
+    },
+    "fame": {
+     "gold": 5,
+     "Rajang": 30,
+     "Pahang": 22,
+     "Kapuas": 56,
+     "Mahakam": 35
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 4,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-karlowitz-1699": {
+   "readout": {
+    "topic": "an early modern European peace treaty",
+    "kind": "a treaty",
+    "gold": "Treaty of Karlowitz",
+    "distractors": [
+     "Treaty of Utrecht",
+     "Peace of Westphalia",
+     "Treaty of Belgrade",
+     "Treaty of Nijmegen"
+    ],
+    "enwiki": {
+     "Treaty of Utrecht": "Peace of Utrecht",
+     "Peace of Westphalia": "Peace of Westphalia",
+     "Treaty of Belgrade": "Treaty of Belgrade",
+     "Treaty of Nijmegen": "Treaties of Nijmegen"
+    },
+    "fame": {
+     "gold": 51,
+     "Treaty of Utrecht": 63,
+     "Peace of Westphalia": 80,
+     "Treaty of Belgrade": 32,
+     "Treaty of Nijmegen": 32
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 0,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-kazakh-half-saline": {
+   "readout": {
+    "topic": "a lake of Central Asia",
+    "kind": "a lake",
+    "gold": "Lake Balkhash",
+    "distractors": [
+     "Aral Sea",
+     "Caspian Sea",
+     "Sarygamysh Lake",
+     "Sarez Lake"
+    ],
+    "enwiki": {
+     "Aral Sea": "Aral Sea",
+     "Caspian Sea": "Caspian Sea",
+     "Sarygamysh Lake": "Sarygamysh Lake",
+     "Sarez Lake": "Sarez Lake"
+    },
+    "fame": {
+     "gold": 89,
+     "Aral Sea": 131,
+     "Caspian Sea": 198,
+     "Sarygamysh Lake": 45,
+     "Sarez Lake": 31
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 0,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-khinchin-constant": {
+   "readout": {
+    "topic": "a named mathematical constant in number theory and analysis",
+    "kind": "a mathematical constant",
+    "gold": "Khinchin's constant",
+    "distractors": [
+     "Mills' constant",
+     "Meissel–Mertens constant",
+     "Glaisher–Kinkelin constant",
+     "Lévy's constant"
+    ],
+    "enwiki": {
+     "Mills' constant": "Mills' constant",
+     "Meissel–Mertens constant": "Meissel–Mertens constant",
+     "Glaisher–Kinkelin constant": "Glaisher–Kinkelin constant",
+     "Lévy's constant": "Lévy's constant"
+    },
+    "fame": {
+     "gold": 12,
+     "Mills' constant": 13,
+     "Meissel–Mertens constant": 14,
+     "Glaisher–Kinkelin constant": 11,
+     "Lévy's constant": 9
+    },
+    "gate": {
+     "blind_gold_picks": 4,
+     "topic_gold_picks": 5,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-lemierre-syndrome": {
+   "readout": {
+    "topic": "an eponymous infectious disease syndrome in medicine",
+    "kind": "a medical syndrome",
+    "gold": "Lemierre's syndrome",
+    "distractors": [
+     "Ludwig's angina",
+     "Waterhouse–Friderichsen syndrome",
+     "Pott disease",
+     "Löffler's syndrome"
+    ],
+    "enwiki": {
+     "Ludwig's angina": "Ludwig's angina",
+     "Waterhouse–Friderichsen syndrome": "Waterhouse–Friderichsen syndrome",
+     "Pott disease": "Pott disease",
+     "Löffler's syndrome": "Löffler's syndrome"
+    },
+    "fame": {
+     "gold": 16,
+     "Ludwig's angina": 16,
+     "Waterhouse–Friderichsen syndrome": 19,
+     "Pott disease": 15,
+     "Löffler's syndrome": 14
+    },
+    "gate": {
+     "blind_gold_picks": 5,
+     "topic_gold_picks": 5,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-lowest-point-australia": {
+   "readout": {
+    "topic": "a lake of Australia or Oceania",
+    "topic_narrow": "a salt lake or salt pan of Australia",
+    "kind": "a lake",
+    "gold": "Lake Eyre",
+    "distractors": [
+     "Lake Torrens",
+     "Lake Hillier",
+     "Lake Bumbunga",
+     "Lake Mungo"
+    ],
+    "enwiki": {
+     "Lake Torrens": "Lake Torrens",
+     "Lake Hillier": "Lake Hillier",
+     "Lake Bumbunga": "Lake Bumbunga",
+     "Lake Mungo": "Lake Mungo"
+    },
+    "fame": {
+     "gold": 71,
+     "Lake Torrens": 31,
+     "Lake Hillier": 39,
+     "Lake Bumbunga": 4,
+     "Lake Mungo": 14
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 3,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-madelung-constant": {
+   "readout": {
+    "topic": "a dimensionless constant or number in physics and chemistry",
+    "kind": "a physical constant",
+    "gold": "Madelung constant",
+    "distractors": [
+     "Fine-structure constant",
+     "Péclet number",
+     "Damköhler number",
+     "Cabibbo angle"
+    ],
+    "enwiki": {
+     "Fine-structure constant": "Fine-structure constant",
+     "Péclet number": "Péclet number",
+     "Damköhler number": "Damköhler numbers",
+     "Cabibbo angle": "Cabibbo–Kobayashi–Maskawa matrix"
+    },
+    "fame": {
+     "gold": 21,
+     "Fine-structure constant": 44,
+     "Péclet number": 23,
+     "Damköhler number": 17,
+     "Cabibbo angle": 18
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 0,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-matthiessen": {
+   "readout": {
+    "topic": "a named law or rule in solid-state physics concerning electrical conduction in metals",
+    "kind": "a scientific law",
+    "gold": "Matthiessen's rule",
+    "distractors": [
+     "Onsager reciprocal relations",
+     "Einstein relation",
+     "Kubo formula",
+     "Hagen–Rubens relation"
+    ],
+    "enwiki": {
+     "Onsager reciprocal relations": "Onsager reciprocal relations",
+     "Einstein relation": "Einstein relation (kinetic theory)",
+     "Kubo formula": "Kubo formula",
+     "Hagen–Rubens relation": "Hagen–Rubens relation"
+    },
+    "fame": {
+     "gold": 18,
+     "Onsager reciprocal relations": 18,
+     "Einstein relation": 18,
+     "Kubo formula": 8,
+     "Hagen–Rubens relation": 5
+    },
+    "gate": {
+     "blind_gold_picks": 5,
+     "topic_gold_picks": 5,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-mayor-palace": {
+   "readout": {
+    "topic": "an official title or office in early medieval European courts",
+    "kind": "an office",
+    "gold": "Mayor of the Palace",
+    "distractors": [
+     "Margrave",
+     "Chancellor",
+     "Sheriff",
+     "Constable"
+    ],
+    "enwiki": {
+     "Margrave": "Margrave",
+     "Chancellor": "Chancellor",
+     "Sheriff": "Sheriff",
+     "Constable": "Constable"
+    },
+    "fame": {
+     "gold": 49,
+     "Margrave": 56,
+     "Chancellor": 62,
+     "Sheriff": 47,
+     "Constable": 46
+    },
+    "gate": {
+     "blind_gold_picks": 5,
+     "topic_gold_picks": 5,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-mccune-albright": {
+   "readout": {
+    "topic": "a genetic syndrome affecting bone, skin and endocrine systems",
+    "kind": "a disease",
+    "gold": "McCune-Albright syndrome",
+    "distractors": [
+     "Gorlin syndrome",
+     "Alström syndrome",
+     "Rothmund–Thomson syndrome",
+     "Multiple endocrine neoplasia type 1"
+    ],
+    "enwiki": {
+     "Gorlin syndrome": "Nevoid basal-cell carcinoma syndrome",
+     "Alström syndrome": "Alström syndrome",
+     "Rothmund–Thomson syndrome": "Rothmund–Thomson syndrome",
+     "Multiple endocrine neoplasia type 1": "Multiple endocrine neoplasia type 1"
+    },
+    "fame": {
+     "gold": 15,
+     "Gorlin syndrome": 15,
+     "Alström syndrome": 16,
+     "Rothmund–Thomson syndrome": 14,
+     "Multiple endocrine neoplasia type 1": 13
+    },
+    "gate": {
+     "blind_gold_picks": 5,
+     "topic_gold_picks": 5,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-min-kunzite-parent": {
+   "readout": {
+    "topic": "a silicate mineral species used as a gemstone",
+    "kind": "a mineral",
+    "gold": "spodumene",
+    "distractors": [
+     "titanite",
+     "jadeite",
+     "beryl",
+     "almandine"
+    ],
+    "enwiki": {
+     "titanite": "Titanite",
+     "jadeite": "Jadeite",
+     "beryl": "Beryl",
+     "almandine": "Almandine"
+    },
+    "fame": {
+     "gold": 38,
+     "titanite": 40,
+     "jadeite": 41,
+     "beryl": 79,
+     "almandine": 46
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 0,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-mohr-double-compound": {
+   "readout": {
+    "topic": "a named inorganic salt or double salt used in analytical chemistry",
+    "kind": "a chemical compound",
+    "gold": "Mohr's salt",
+    "distractors": [
+     "Potash alum",
+     "Prussian blue",
+     "Rochelle salt",
+     "Silver nitrate"
+    ],
+    "enwiki": {
+     "Potash alum": "Potassium alum",
+     "Prussian blue": "Prussian blue",
+     "Rochelle salt": "Potassium sodium tartrate",
+     "Silver nitrate": "Silver nitrate"
+    },
+    "fame": {
+     "gold": 31,
+     "Potash alum": 40,
+     "Prussian blue": 46,
+     "Rochelle salt": 34,
+     "Silver nitrate": 59
+    },
+    "gate": {
+     "blind_gold_picks": 2,
+     "topic_gold_picks": 4,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-mughal-military-paymaster": {
+   "readout": {
+    "topic": "an official title or office in the Mughal imperial administration",
+    "kind": "an administrative title",
+    "gold": "Mir Bakhshi",
+    "distractors": [
+     "Diwan",
+     "Kotwal",
+     "Faujdar",
+     "Mansabdar"
+    ],
+    "enwiki": {
+     "Diwan": "Diwan",
+     "Kotwal": "Kotwal",
+     "Faujdar": "Faujdar",
+     "Mansabdar": "Mansabdar"
+    },
+    "fame": {
+     "gold": 4,
+     "Diwan": 19,
+     "Kotwal": 11,
+     "Faujdar": 13,
+     "Mansabdar": 15
+    },
+    "gate": {
+     "blind_gold_picks": 1,
+     "topic_gold_picks": 0,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-naples-yellow-2": {
+   "readout": {
+    "topic": "a historic artists' inorganic pigment",
+    "kind": "a pigment",
+    "gold": "Naples yellow",
+    "distractors": [
+     "Red lead",
+     "Paris green",
+     "Vermilion",
+     "Orpiment"
+    ],
+    "enwiki": {
+     "Red lead": "Lead(II,IV) oxide",
+     "Paris green": "Paris green",
+     "Vermilion": "Vermilion",
+     "Orpiment": "Orpiment"
+    },
+    "fame": {
+     "gold": 15,
+     "Red lead": 38,
+     "Paris green": 35,
+     "Vermilion": 42,
+     "Orpiment": 49
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 0,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-nerchinsk-1689": {
+   "readout": {
+    "topic": "an early modern treaty involving the Russian Empire or tsardom",
+    "kind": "a treaty",
+    "gold": "Treaty of Nerchinsk",
+    "distractors": [
+     "Treaty of Pereyaslav",
+     "Treaty of Küçük Kaynarca",
+     "Treaty of Stolbovo",
+     "Treaty of Jassy"
+    ],
+    "enwiki": {
+     "Treaty of Pereyaslav": "Pereiaslav Agreement",
+     "Treaty of Küçük Kaynarca": "Treaty of Küçük Kaynarca",
+     "Treaty of Stolbovo": "Treaty of Stolbovo",
+     "Treaty of Jassy": "Treaty of Jassy"
+    },
+    "fame": {
+     "gold": 36,
+     "Treaty of Pereyaslav": 41,
+     "Treaty of Küçük Kaynarca": 44,
+     "Treaty of Stolbovo": 34,
+     "Treaty of Jassy": 34
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 5,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-noyes-whitney": {
+   "readout": {
+    "topic": "a named equation or law in pharmaceutical science and physical chemistry",
+    "kind": "a scientific equation",
+    "gold": "Noyes-Whitney equation",
+    "distractors": [
+     "Stokes–Einstein equation",
+     "Young–Laplace equation",
+     "Hill equation",
+     "Kelvin equation"
+    ],
+    "enwiki": {
+     "Stokes–Einstein equation": "Einstein relation (kinetic theory)",
+     "Young–Laplace equation": "Young–Laplace equation",
+     "Hill equation": "Hill equation (biochemistry)",
+     "Kelvin equation": "Kelvin equation"
+    },
+    "fame": {
+     "gold": 14,
+     "Stokes–Einstein equation": 18,
+     "Young–Laplace equation": 19,
+     "Hill equation": 11,
+     "Kelvin equation": 11
+    },
+    "gate": {
+     "blind_gold_picks": 5,
+     "topic_gold_picks": 5,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-orpiment": {
+   "readout": {
+    "topic": "a mineral historically used as an artists' pigment",
+    "kind": "a mineral",
+    "gold": "orpiment",
+    "distractors": [
+     "limonite",
+     "goethite",
+     "realgar",
+     "pyrolusite"
+    ],
+    "enwiki": {
+     "limonite": "Limonite",
+     "goethite": "Goethite",
+     "realgar": "Realgar",
+     "pyrolusite": "Pyrolusite"
+    },
+    "fame": {
+     "gold": 49,
+     "limonite": 50,
+     "goethite": 53,
+     "realgar": 46,
+     "pyrolusite": 44
+    },
+    "gate": {
+     "blind_gold_picks": 2,
+     "topic_gold_picks": 5,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-ottoman-religious-office": {
+   "readout": {
+    "topic": "an official title or office in the Ottoman Empire",
+    "kind": "a title or office",
+    "gold": "Shaykh al-Islam",
+    "distractors": [
+     "Grand Vizier",
+     "Kadi",
+     "Reis ul-Kuttab",
+     "Dragoman of the Porte"
+    ],
+    "enwiki": {
+     "Grand Vizier": "Grand vizier",
+     "Kadi": "Qadi",
+     "Reis ul-Kuttab": "Reis ul-Kuttab",
+     "Dragoman of the Porte": "Dragoman of the Porte"
+    },
+    "fame": {
+     "gold": 45,
+     "Grand Vizier": 50,
+     "Kadi": 59,
+     "Reis ul-Kuttab": 15,
+     "Dragoman of the Porte": 8
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 0,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-palau-capital": {
+   "readout": {
+    "topic": "a capital city of a Pacific Island nation",
+    "kind": "a capital city",
+    "gold": "Ngerulmud",
+    "distractors": [
+     "Pago Pago",
+     "Nouméa",
+     "Hagåtña",
+     "Avarua"
+    ],
+    "enwiki": {
+     "Pago Pago": "Pago Pago",
+     "Nouméa": "Nouméa",
+     "Hagåtña": "Hagåtña, Guam",
+     "Avarua": "Avarua"
+    },
+    "fame": {
+     "gold": 87,
+     "Pago Pago": 87,
+     "Nouméa": 90,
+     "Hagåtña": 82,
+     "Avarua": 80
+    },
+    "gate": {
+     "blind_gold_picks": 5,
+     "topic_gold_picks": 5,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-rio-negro-meeting": {
+   "readout": {
+    "topic": "a river in South America",
+    "topic_narrow": "a tributary river of the Amazon basin in South America",
+    "kind": "a river",
+    "gold": "Negro River",
+    "distractors": [
+     "Magdalena River",
+     "Madeira",
+     "São Francisco River",
+     "Tocantins"
+    ],
+    "enwiki": {
+     "Magdalena River": "Magdalena River",
+     "Madeira": "Madeira River",
+     "São Francisco River": "São Francisco River",
+     "Tocantins": "Tocantins River"
+    },
+    "fame": {
+     "gold": 79,
+     "Magdalena River": 79,
+     "Madeira": 80,
+     "São Francisco River": 75,
+     "Tocantins": 71
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 0,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-rochelle-salt": {
+   "readout": {
+    "topic": "a common or traditional name for a chemical salt or compound",
+    "kind": "a chemical compound",
+    "gold": "Rochelle salt",
+    "distractors": [
+     "Calomel",
+     "Corrosive sublimate",
+     "Cream of tartar",
+     "White vitriol"
+    ],
+    "enwiki": {
+     "Calomel": "Mercury(I) chloride",
+     "Corrosive sublimate": "Mercury(II) chloride",
+     "Cream of tartar": "Potassium bitartrate",
+     "White vitriol": "Zinc sulfate"
+    },
+    "fame": {
+     "gold": 34,
+     "Calomel": 35,
+     "Corrosive sublimate": 38,
+     "Cream of tartar": 33,
+     "White vitriol": 41
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 5,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ent-rudolf-renamed": {
+   "readout": {
+    "topic": "a lake of East Africa",
+    "kind": "a lake",
+    "gold": "Lake Turkana",
+    "distractors": [
+     "Lake Tanganyika",
+     "Lake Victoria",
+     "Lake Tana",
+     "Lake George"
+    ],
+    "enwiki": {
+     "Lake Tanganyika": "Lake Tanganyika",
+     "Lake Victoria": "Lake Victoria",
+     "Lake Tana": "Lake Tana",
+     "Lake George": "Lake George (Uganda)"
+    },
+    "fame": {
+     "gold": 81,
+     "Lake Tanganyika": 146,
+     "Lake Victoria": 156,
+     "Lake Tana": 75,
+     "Lake George": 26
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 4,
+     "draws": 5
+    }
+   }
+  },
+  "brh-fi-ahvenanmaa": {
+   "readout": {
+    "topic": "an island region or archipelago of Northern Europe",
+    "kind": "an island region",
+    "gold": "Åland",
+    "distractors": [
+     "Isle of Man",
+     "Faroe Islands",
+     "Svalbard",
+     "Jan Mayen"
+    ],
+    "enwiki": {
+     "Isle of Man": "Isle of Man",
+     "Faroe Islands": "Faroe Islands",
+     "Svalbard": "Svalbard",
+     "Jan Mayen": "Jan Mayen"
+    },
+    "fame": {
+     "gold": 147,
+     "Isle of Man": 156,
+     "Faroe Islands": 186,
+     "Svalbard": 135,
+     "Jan Mayen": 102
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 5,
+     "draws": 5
+    }
+   }
+  },
+  "brh-fi-alankomaat": {
+   "readout": {
+    "topic": "a present-day European country",
+    "kind": "a country",
+    "gold": "Netherlands",
+    "distractors": [
+     "Portugal",
+     "Belgium",
+     "Sweden",
+     "Andorra"
+    ],
+    "enwiki": {
+     "Portugal": "Portugal",
+     "Belgium": "Belgium",
+     "Sweden": "Sweden",
+     "Andorra": "Andorra"
+    },
+    "fame": {
+     "gold": 302,
+     "Portugal": 302,
+     "Belgium": 307,
+     "Sweden": 296,
+     "Andorra": 286
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 0,
+     "draws": 5
+    }
+   }
+  },
+  "brh-fi-alankomaat-munster-1648": {
+   "readout": {
+    "topic": "an early modern European state or republic",
+    "kind": "a state",
+    "gold": "Dutch Republic",
+    "distractors": [
+     "Republic of San Marino",
+     "Holy Roman Empire",
+     "Grand Duchy of Tuscany",
+     "Republic of Venice"
+    ],
+    "enwiki": {
+     "Republic of San Marino": "San Marino",
+     "Holy Roman Empire": "Holy Roman Empire",
+     "Grand Duchy of Tuscany": "Grand Duchy of Tuscany",
+     "Republic of Venice": "Republic of Venice"
+    },
+    "fame": {
+     "gold": 82,
+     "Republic of San Marino": 270,
+     "Holy Roman Empire": 168,
+     "Grand Duchy of Tuscany": 57,
+     "Republic of Venice": 91
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 0,
+     "draws": 5
+    }
+   }
+  },
+  "brh-fi-petsamo": {
+   "readout": {
+    "topic": "a territory ceded by Finland to the Soviet Union in the WWII-era peace settlements",
+    "kind": "a region",
+    "gold": "Petsamo",
+    "distractors": [
+     "Jaakkima",
+     "Porkkala",
+     "Uusikirkko",
+     "Impilahti"
+    ],
+    "enwiki": {
+     "Jaakkima": "Jaakkima",
+     "Porkkala": "Porkkala Naval Base",
+     "Uusikirkko": "Polyany",
+     "Impilahti": "Impilahti"
+    },
+    "fame": {
+     "gold": 9,
+     "Jaakkima": 9,
+     "Porkkala": 10,
+     "Uusikirkko": 6,
+     "Impilahti": 11
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 5,
+     "draws": 5
+    }
+   }
+  },
+  "brh-he-ben-zvi": {
+   "readout": {
+    "topic": "a 20th-century Israeli political leader",
+    "kind": "a person",
+    "gold": "Yitzhak Ben-Zvi",
+    "distractors": [
+     "David Ben-Gurion",
+     "Yitzhak Rabin",
+     "Shulamit Aloni",
+     "Yitzhak Shamir"
+    ],
+    "enwiki": {
+     "David Ben-Gurion": "David Ben-Gurion",
+     "Yitzhak Rabin": "Yitzhak Rabin",
+     "Shulamit Aloni": "Shulamit Aloni",
+     "Yitzhak Shamir": "Yitzhak Shamir"
+    },
+    "fame": {
+     "gold": 43,
+     "David Ben-Gurion": 109,
+     "Yitzhak Rabin": 97,
+     "Shulamit Aloni": 31,
+     "Yitzhak Shamir": 65
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 0,
+     "draws": 5
+    }
+   }
+  },
+  "brh-he-imber-hatikva": {
+   "readout": {
+    "topic": "a 19th-century Hebrew-language poet",
+    "kind": "a person",
+    "gold": "Naftali Herz Imber",
+    "distractors": [
+     "Shaul Tchernichovsky",
+     "Hayyim Nahman Bialik",
+     "Rachel Morpurgo",
+     "Isaac Baer Levinsohn"
+    ],
+    "enwiki": {
+     "Shaul Tchernichovsky": "Shaul Tchernichovsky",
+     "Hayyim Nahman Bialik": "Hayim Nahman Bialik",
+     "Rachel Morpurgo": "Rachel Morpurgo",
+     "Isaac Baer Levinsohn": "Isaac Baer Levinsohn"
+    },
+    "fame": {
+     "gold": 25,
+     "Shaul Tchernichovsky": 25,
+     "Hayyim Nahman Bialik": 32,
+     "Rachel Morpurgo": 5,
+     "Isaac Baer Levinsohn": 8
+    },
+    "gate": {
+     "blind_gold_picks": 3,
+     "topic_gold_picks": 4,
+     "draws": 5
+    }
+   }
+  },
+  "brh-he-neptune-moon": {
+   "readout": {
+    "topic": "a moon in the outer Solar System",
+    "kind": "a natural satellite",
+    "gold": "Triton",
+    "distractors": [
+     "Hyperion",
+     "Ariel",
+     "Io",
+     "Titania"
+    ],
+    "enwiki": {
+     "Hyperion": "Hyperion (moon)",
+     "Ariel": "Ariel (moon)",
+     "Io": "Io (moon)",
+     "Titania": "Titania (moon)"
+    },
+    "fame": {
+     "gold": 51,
+     "Hyperion": 70,
+     "Ariel": 76,
+     "Io": 109,
+     "Titania": 83
+    },
+    "gate": {
+     "blind_gold_picks": 1,
+     "topic_gold_picks": 0,
+     "draws": 5
+    }
+   }
+  },
+  "brh-he-qumran": {
+   "readout": {
+    "topic": "an archaeological site in Israel or the Palestinian territories",
+    "topic_narrow": "an archaeological site in the Judean Desert or Dead Sea region",
+    "kind": "an archaeological site",
+    "gold": "Qumran",
+    "distractors": [
+     "Beit She'an",
+     "Megiddo",
+     "Hazor",
+     "Herodium"
+    ],
+    "enwiki": {
+     "Beit She'an": "Beit She'an",
+     "Megiddo": "Tel Megiddo",
+     "Hazor": "Tel Hazor",
+     "Herodium": "Herodium"
+    },
+    "fame": {
+     "gold": 46,
+     "Beit She'an": 50,
+     "Megiddo": 52,
+     "Hazor": 39,
+     "Herodium": 30
+    },
+    "gate": {
+     "blind_gold_picks": 2,
+     "topic_gold_picks": 1,
+     "draws": 5
+    }
+   }
+  },
+  "brh-hu-aranybulla": {
+   "readout": {
+    "topic": "a medieval European charter or legal document granting rights or privileges",
+    "kind": "a historical document",
+    "gold": "Golden Bull",
+    "distractors": [
+     "Magna Carta",
+     "Confirmatio Cartarum",
+     "Federal Charter of 1291",
+     "Privilegium Maius"
+    ],
+    "enwiki": {
+     "Magna Carta": "Magna Carta",
+     "Confirmatio Cartarum": "Confirmatio Cartarum",
+     "Federal Charter of 1291": "Federal Charter of 1291",
+     "Privilegium Maius": "Privilegium Maius"
+    },
+    "fame": {
+     "gold": 37,
+     "Magna Carta": 96,
+     "Confirmatio Cartarum": 96,
+     "Federal Charter of 1291": 27,
+     "Privilegium Maius": 23
+    },
+    "gate": {
+     "blind_gold_picks": 5,
+     "topic_gold_picks": 4,
+     "draws": 5
+    }
+   }
+  },
+  "brh-hu-erkel-ferenc": {
+   "readout": {
+    "topic": "a 19th-century Hungarian composer",
+    "kind": "a person",
+    "gold": "Ferenc Erkel",
+    "distractors": [
+     "Joseph Joachim",
+     "Johann Nepomuk Hummel",
+     "Leopold Auer",
+     "Ernő Dohnányi"
+    ],
+    "enwiki": {
+     "Joseph Joachim": "Joseph Joachim",
+     "Johann Nepomuk Hummel": "Johann Nepomuk Hummel",
+     "Leopold Auer": "Leopold Auer",
+     "Ernő Dohnányi": "Ernő Dohnányi"
+    },
+    "fame": {
+     "gold": 36,
+     "Joseph Joachim": 36,
+     "Johann Nepomuk Hummel": 46,
+     "Leopold Auer": 34,
+     "Ernő Dohnányi": 34
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 5,
+     "draws": 5
+    }
+   }
+  },
+  "brh-hu-gabor-denes": {
+   "readout": {
+    "topic": "a Hungarian-born scientist or inventor of the 20th century",
+    "kind": "a person",
+    "gold": "Dennis Gabor",
+    "distractors": [
+     "Eugene Wigner",
+     "John von Neumann",
+     "Leó Szilárd",
+     "Paul Erdős"
+    ],
+    "enwiki": {
+     "Eugene Wigner": "Eugene Wigner",
+     "John von Neumann": "John von Neumann",
+     "Leó Szilárd": "Leo Szilard",
+     "Paul Erdős": "Paul Erdős"
+    },
+    "fame": {
+     "gold": 80,
+     "Eugene Wigner": 87,
+     "John von Neumann": 103,
+     "Leó Szilárd": 57,
+     "Paul Erdős": 68
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 0,
+     "draws": 5
+    }
+   }
+  },
+  "brh-hu-kolozsvar": {
+   "readout": {
+    "topic": "a city in Romania",
+    "topic_narrow": "a city in Transylvania",
+    "kind": "a city",
+    "gold": "Cluj-Napoca",
+    "distractors": [
+     "Bucharest",
+     "Timișoara",
+     "Constanța",
+     "Iași"
+    ],
+    "enwiki": {
+     "Bucharest": "Bucharest",
+     "Timișoara": "Timișoara",
+     "Constanța": "Constanța",
+     "Iași": "Iași"
+    },
+    "fame": {
+     "gold": 107,
+     "Bucharest": 201,
+     "Timișoara": 100,
+     "Constanța": 96,
+     "Iași": 95
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 0,
+     "draws": 5
+    }
+   }
+  },
+  "brh-id-bengkulu-pengasingan": {
+   "readout": {
+    "topic": "a coastal city or town of Sumatra, Indonesia",
+    "kind": "a city",
+    "gold": "Bengkulu",
+    "distractors": [
+     "Banda Aceh",
+     "Padang",
+     "Bandar Lampung",
+     "Lhokseumawe"
+    ],
+    "enwiki": {
+     "Banda Aceh": "Banda Aceh",
+     "Padang": "Padang",
+     "Bandar Lampung": "Bandar Lampung",
+     "Lhokseumawe": "Lhokseumawe"
+    },
+    "fame": {
+     "gold": 72,
+     "Banda Aceh": 77,
+     "Padang": 78,
+     "Bandar Lampung": 53,
+     "Lhokseumawe": 39
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 0,
+     "draws": 5
+    }
+   }
+  },
+  "brh-id-chengho": {
+   "readout": {
+    "topic": "a famous admiral or naval commander in history",
+    "topic_narrow": "a Ming dynasty Chinese admiral or naval commander",
+    "kind": "a person",
+    "gold": "Zheng He",
+    "distractors": [
+     "Francis Drake",
+     "Horatio Nelson",
+     "Karl Dönitz",
+     "Hayreddin Barbarossa"
+    ],
+    "enwiki": {
+     "Francis Drake": "Francis Drake",
+     "Horatio Nelson": "Horatio Nelson, 1st Viscount Nelson",
+     "Karl Dönitz": "Karl Dönitz",
+     "Hayreddin Barbarossa": "Hayreddin Barbarossa"
+    },
+    "fame": {
+     "gold": 148,
+     "Francis Drake": 113,
+     "Horatio Nelson": 85,
+     "Karl Dönitz": 78,
+     "Hayreddin Barbarossa": 72
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 0,
+     "draws": 5
+    }
+   }
+  },
+  "brh-id-denhaag-arbitrase": {
+   "readout": {
+    "topic": "a city in Western Europe hosting international institutions",
+    "kind": "a city",
+    "gold": "The Hague",
+    "distractors": [
+     "Luxembourg City",
+     "Strasbourg",
+     "Bonn",
+     "Brussels"
+    ],
+    "enwiki": {
+     "Luxembourg City": "Luxembourg City",
+     "Strasbourg": "Strasbourg",
+     "Bonn": "Bonn",
+     "Brussels": "Brussels"
+    },
+    "fame": {
+     "gold": 150,
+     "Luxembourg City": 156,
+     "Strasbourg": 157,
+     "Bonn": 143,
+     "Brussels": 127
+    },
+    "gate": {
+     "blind_gold_picks": 1,
+     "topic_gold_picks": 5,
+     "draws": 5
+    }
+   }
+  },
+  "brh-id-garis-wallace": {
+   "readout": {
+    "topic": "a biogeographic boundary line in the Indonesian archipelago",
+    "kind": "a biogeographic boundary",
+    "gold": "Wallace",
+    "distractors": [
+     "Banda Sea",
+     "Lesser Sunda Islands",
+     "Australasian realm",
+     "Lydekker Line"
+    ],
+    "enwiki": {
+     "Banda Sea": "Banda Sea",
+     "Lesser Sunda Islands": "Lesser Sunda Islands",
+     "Australasian realm": "Australasian realm",
+     "Lydekker Line": "Lydekker Line"
+    },
+    "fame": {
+     "gold": 36,
+     "Banda Sea": 76,
+     "Lesser Sunda Islands": 96,
+     "Australasian realm": 37,
+     "Lydekker Line": 28
+    },
+    "gate": {
+     "blind_gold_picks": 2,
+     "topic_gold_picks": 0,
+     "draws": 5
+    }
+   }
+  },
+  "brh-id-kalimantan": {
+   "readout": {
+    "topic": "a major island of the Indonesian archipelago",
+    "kind": "an island",
+    "gold": "Borneo",
+    "distractors": [
+     "New Guinea",
+     "Sumatra",
+     "Sulawesi",
+     "Timor"
+    ],
+    "enwiki": {
+     "New Guinea": "New Guinea",
+     "Sumatra": "Sumatra",
+     "Sulawesi": "Sulawesi",
+     "Timor": "Timor"
+    },
+    "fame": {
+     "gold": 132,
+     "New Guinea": 137,
+     "Sumatra": 140,
+     "Sulawesi": 117,
+     "Timor": 99
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 0,
+     "draws": 5
+    }
+   }
+  },
+  "brh-id-perjanjian-bongaya": {
+   "readout": {
+    "topic": "a colonial-era treaty in the Indonesian archipelago",
+    "kind": "a treaty",
+    "gold": "Treaty of Bongaya",
+    "distractors": [
+     "Treaty of Lisbon (1859)",
+     "Treaty of Westminster (1654)",
+     "Treaty of Den Haag 1904 (Timor)",
+     "Treaty of Giyanti"
+    ],
+    "enwiki": {
+     "Treaty of Lisbon (1859)": "Treaty of Lisbon (1859)",
+     "Treaty of Westminster (1654)": "Treaty of Westminster (1654)",
+     "Treaty of Den Haag 1904 (Timor)": "Treaty of Lisbon (1859)",
+     "Treaty of Giyanti": "Treaty of Giyanti"
+    },
+    "fame": {
+     "gold": 5,
+     "Treaty of Lisbon (1859)": 7,
+     "Treaty of Westminster (1654)": 7,
+     "Treaty of Den Haag 1904 (Timor)": 7,
+     "Treaty of Giyanti": 8
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 4,
+     "draws": 5
+    }
+   }
+  },
+  "brh-id-puncak-jaya": {
+   "readout": {
+    "topic": "a mountain peak of Indonesia",
+    "kind": "a mountain",
+    "gold": "Carstensz Pyramid",
+    "distractors": [
+     "Mount Merapi",
+     "Krakatoa",
+     "Mount Tambora",
+     "Mount Semeru"
+    ],
+    "enwiki": {
+     "Mount Merapi": "Mount Merapi",
+     "Krakatoa": "Krakatoa",
+     "Mount Tambora": "Mount Tambora",
+     "Mount Semeru": "Semeru"
+    },
+    "fame": {
+     "gold": 75,
+     "Mount Merapi": 77,
+     "Krakatoa": 87,
+     "Mount Tambora": 70,
+     "Mount Semeru": 54
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 5,
+     "draws": 5
+    }
+   }
+  },
+  "brh-id-selandiabaru-tasman": {
+   "readout": {
+    "topic": "an island nation or major island group of the world",
+    "topic_narrow": "an island nation or major island group of the South Pacific / Oceania",
+    "kind": "a country or island group",
+    "gold": "New Zealand",
+    "distractors": [
+     "Indonesia",
+     "United Kingdom",
+     "Iceland",
+     "Philippines"
+    ],
+    "enwiki": {
+     "Indonesia": "Indonesia",
+     "United Kingdom": "United Kingdom",
+     "Iceland": "Iceland",
+     "Philippines": "Philippines"
+    },
+    "fame": {
+     "gold": 287,
+     "Indonesia": 296,
+     "United Kingdom": 317,
+     "Iceland": 284,
+     "Philippines": 274
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 0,
+     "draws": 5
+    }
+   }
+  },
+  "brh-id-sriwijaya": {
+   "readout": {
+    "topic": "a historical Asian kingdom or empire",
+    "topic_narrow": "a historical kingdom of Southeast Asia",
+    "kind": "a kingdom",
+    "gold": "Srivijaya",
+    "distractors": [
+     "Khmer Empire",
+     "Mughal Empire",
+     "Sukhothai Kingdom",
+     "Ava Kingdom"
+    ],
+    "enwiki": {
+     "Khmer Empire": "Khmer Empire",
+     "Mughal Empire": "Mughal Empire",
+     "Sukhothai Kingdom": "Sukhothai Kingdom",
+     "Ava Kingdom": "Ava Kingdom"
+    },
+    "fame": {
+     "gold": 69,
+     "Khmer Empire": 79,
+     "Mughal Empire": 121,
+     "Sukhothai Kingdom": 38,
+     "Ava Kingdom": 23
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 4,
+     "draws": 5
+    }
+   }
+  },
+  "brh-id-sungai-kapuas": {
+   "readout": {
+    "topic": "a river of Southeast Asia",
+    "topic_narrow": "a river of Borneo",
+    "kind": "a river",
+    "gold": "Kapuas River",
+    "distractors": [
+     "Irrawaddy River",
+     "Mekong",
+     "Belait River",
+     "Chindwin River"
+    ],
+    "enwiki": {
+     "Irrawaddy River": "Irrawaddy River",
+     "Mekong": "Mekong",
+     "Belait River": "Belait River",
+     "Chindwin River": "Chindwin River"
+    },
+    "fame": {
+     "gold": 56,
+     "Irrawaddy River": 85,
+     "Mekong": 117,
+     "Belait River": 12,
+     "Chindwin River": 40
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 0,
+     "draws": 5
+    }
+   }
+  },
+  "brh-id-tambora-1815": {
+   "readout": {
+    "topic": "a volcano of Indonesia",
+    "kind": "a volcano",
+    "gold": "Mount Tambora",
+    "distractors": [
+     "Lake Toba",
+     "Mount Merapi",
+     "Mount Semeru",
+     "Mount Agung"
+    ],
+    "enwiki": {
+     "Lake Toba": "Lake Toba",
+     "Mount Merapi": "Mount Merapi",
+     "Mount Semeru": "Semeru",
+     "Mount Agung": "Mount Agung"
+    },
+    "fame": {
+     "gold": 70,
+     "Lake Toba": 73,
+     "Mount Merapi": 77,
+     "Mount Semeru": 54,
+     "Mount Agung": 53
+    },
+    "gate": {
+     "blind_gold_picks": 5,
+     "topic_gold_picks": 5,
+     "draws": 5
+    }
+   }
+  },
+  "brh-id-terusan-suez": {
+   "readout": {
+    "topic": "a major canal or artificial waterway",
+    "topic_narrow": "a major canal or waterway engineering project of the 19th century",
+    "kind": "a canal",
+    "gold": "Suez Canal",
+    "distractors": [
+     "Panama Canal",
+     "Grand Canal (China)",
+     "Kiel Canal",
+     "Erie Canal"
+    ],
+    "enwiki": {
+     "Panama Canal": "Panama Canal",
+     "Grand Canal (China)": "Grand Canal (China)",
+     "Kiel Canal": "Kiel Canal",
+     "Erie Canal": "Erie Canal"
+    },
+    "fame": {
+     "gold": 170,
+     "Panama Canal": 154,
+     "Grand Canal (China)": 66,
+     "Kiel Canal": 64,
+     "Erie Canal": 63
+    },
+    "gate": {
+     "blind_gold_picks": 5,
+     "topic_gold_picks": 0,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ko-borobudur-java": {
+   "readout": {
+    "topic": "a historic religious monument in Asia",
+    "topic_narrow": "a historic religious monument in Southeast Asia",
+    "kind": "a temple complex",
+    "gold": "Borobudur",
+    "distractors": [
+     "Angkor Wat",
+     "Taj Mahal",
+     "Golden Temple",
+     "Potala Palace"
+    ],
+    "enwiki": {
+     "Angkor Wat": "Angkor Wat",
+     "Taj Mahal": "Taj Mahal",
+     "Golden Temple": "Golden Temple",
+     "Potala Palace": "Potala Palace"
+    },
+    "fame": {
+     "gold": 88,
+     "Angkor Wat": 133,
+     "Taj Mahal": 175,
+     "Golden Temple": 85,
+     "Potala Palace": 82
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 5,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ko-first-spacewalk-cosmonaut": {
+   "readout": {
+    "topic": "a Soviet cosmonaut of the 1960s",
+    "kind": "a person",
+    "gold": "Alexei Leonov",
+    "distractors": [
+     "Valentina Tereshkova",
+     "Yuri Gagarin",
+     "Vladimir Komarov",
+     "Gherman Titov"
+    ],
+    "enwiki": {
+     "Valentina Tereshkova": "Valentina Tereshkova",
+     "Yuri Gagarin": "Yuri Gagarin",
+     "Vladimir Komarov": "Vladimir Komarov",
+     "Gherman Titov": "Gherman Titov"
+    },
+    "fame": {
+     "gold": 81,
+     "Valentina Tereshkova": 117,
+     "Yuri Gagarin": 177,
+     "Vladimir Komarov": 60,
+     "Gherman Titov": 57
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 0,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ko-samgukyusa-compiler": {
+   "readout": {
+    "topic": "a Korean Buddhist monk",
+    "topic_narrow": "a Buddhist monk of the Goryeo dynasty in Korea",
+    "kind": "a person",
+    "gold": "Iryeon",
+    "distractors": [
+     "Han Yong-un",
+     "Wonhyo",
+     "Taego Bou",
+     "Samyeong Daesa"
+    ],
+    "enwiki": {
+     "Han Yong-un": "Han Yong-un",
+     "Wonhyo": "Wonhyo",
+     "Taego Bou": "Taego Bou",
+     "Samyeong Daesa": "Yujeong"
+    },
+    "fame": {
+     "gold": 13,
+     "Han Yong-un": 15,
+     "Wonhyo": 17,
+     "Taego Bou": 7,
+     "Samyeong Daesa": 6
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 0,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ko-sohnkeechung": {
+   "readout": {
+    "topic": "a Korean athlete of the 20th century",
+    "kind": "a person",
+    "gold": "Sohn Kee-chung",
+    "distractors": [
+     "Cha Bum-kun",
+     "Hong Myung-bo",
+     "Kim Soo-nyung",
+     "Yoo Nam-kyu"
+    ],
+    "enwiki": {
+     "Cha Bum-kun": "Cha Bum-kun",
+     "Hong Myung-bo": "Hong Myung-bo",
+     "Kim Soo-nyung": "Kim Soo-nyung",
+     "Yoo Nam-kyu": "Yoo Nam-kyu"
+    },
+    "fame": {
+     "gold": 28,
+     "Cha Bum-kun": 36,
+     "Hong Myung-bo": 45,
+     "Kim Soo-nyung": 24,
+     "Yoo Nam-kyu": 23
+    },
+    "gate": {
+     "blind_gold_picks": 5,
+     "topic_gold_picks": 5,
+     "draws": 5
+    }
+   }
+  },
+  "brh-pl-konstantynopol-sobor-381": {
+   "readout": {
+    "topic": "a city of the late Roman Empire that hosted an early Christian church council",
+    "kind": "a city",
+    "gold": "Constantinople",
+    "distractors": [
+     "Elvira",
+     "Saragossa",
+     "Toledo",
+     "Carthage"
+    ],
+    "enwiki": {
+     "Elvira": "Iliberri",
+     "Saragossa": "Zaragoza",
+     "Toledo": "Toledo, Spain",
+     "Carthage": "Carthage"
+    },
+    "fame": {
+     "gold": 122,
+     "Elvira": 129,
+     "Saragossa": 134,
+     "Toledo": 112,
+     "Carthage": 108
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 0,
+     "draws": 5
+    }
+   }
+  },
+  "brh-pl-lwow": {
+   "readout": {
+    "topic": "a historic city of Central or Eastern Europe",
+    "topic_narrow": "a historic city of the former eastern Polish borderlands (Kresy)",
+    "kind": "a city",
+    "gold": "Lviv",
+    "distractors": [
+     "Kraków",
+     "Moscow",
+     "Rivne",
+     "Navahrudak"
+    ],
+    "enwiki": {
+     "Kraków": "Kraków",
+     "Moscow": "Moscow",
+     "Rivne": "Rivne",
+     "Navahrudak": "Navahrudak"
+    },
+    "fame": {
+     "gold": 152,
+     "Kraków": 153,
+     "Moscow": 281,
+     "Rivne": 90,
+     "Navahrudak": 43
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 0,
+     "draws": 5
+    }
+   }
+  },
+  "brh-pl-ziemie-odzyskane": {
+   "readout": {
+    "topic": "a political or propaganda term from twentieth-century Polish history",
+    "kind": "a term or phrase",
+    "gold": "Recovered Territories",
+    "distractors": [
+     "Polish Underground State",
+     "Nomenklatura",
+     "Numerus clausus",
+     "Sanation"
+    ],
+    "enwiki": {
+     "Polish Underground State": "Polish Underground State",
+     "Nomenklatura": "Nomenklatura",
+     "Numerus clausus": "Numerus clausus",
+     "Sanation": "Sanation"
+    },
+    "fame": {
+     "gold": 25,
+     "Polish Underground State": 32,
+     "Nomenklatura": 36,
+     "Numerus clausus": 24,
+     "Sanation": 22
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 5,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ru-baikonur": {
+   "readout": {
+    "topic": "a spaceport or rocket launch site",
+    "topic_narrow": "a historic Soviet-era rocket launch site or launch pad",
+    "kind": "a launch site",
+    "gold": "Baikonur",
+    "distractors": [
+     "Kennedy Space Center",
+     "Guiana Space Centre",
+     "Cape Canaveral Space Force Station",
+     "Vandenberg Space Force Base"
+    ],
+    "enwiki": {
+     "Kennedy Space Center": "Kennedy Space Center",
+     "Guiana Space Centre": "Guiana Space Centre",
+     "Cape Canaveral Space Force Station": "Cape Canaveral Space Force Station",
+     "Vandenberg Space Force Base": "Vandenberg Space Force Base"
+    },
+    "fame": {
+     "gold": 78,
+     "Kennedy Space Center": 71,
+     "Guiana Space Centre": 51,
+     "Cape Canaveral Space Force Station": 50,
+     "Vandenberg Space Force Base": 45
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 5,
+     "draws": 5
+    }
+   }
+  },
+  "brh-ru-bellingshausen": {
+   "readout": {
+    "topic": "a naval explorer of the 18th or 19th century",
+    "topic_narrow": "a 19th-century Russian naval explorer",
+    "kind": "a person",
+    "gold": "Fabian Gottlieb von Bellingshausen",
+    "distractors": [
+     "Vitus Bering",
+     "James Cook",
+     "George Vancouver",
+     "James Clark Ross"
+    ],
+    "enwiki": {
+     "Vitus Bering": "Vitus Bering",
+     "James Cook": "James Cook",
+     "George Vancouver": "George Vancouver",
+     "James Clark Ross": "James Clark Ross"
+    },
+    "fame": {
+     "gold": 56,
+     "Vitus Bering": 84,
+     "James Cook": 170,
+     "George Vancouver": 55,
+     "James Clark Ross": 54
+    },
+    "gate": {
+     "blind_gold_picks": 0,
+     "topic_gold_picks": 5,
+     "draws": 5
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,3146 @@
+{
+ "family": "multilingual",
+ "gate": "Qwen3.6-27B behavioral: >=8/10 correct at temp 0.7 (greedy-verified first); association scored against association_aliases.json (phrase-aware, echo-guarded); poetry scored by committed rhyme",
+ "eval_render_note": "EVAL RENDER: feed `prompt` verbatim as plain text, NO chat template (directed-modulation is the only chat-templated family). `gate_variant` records how the item was behaviorally verified and does NOT affect the eval read.",
+ "adapt": {
+  "model": "qwen3.5-4b",
+  "hf_id": "Qwen/Qwen3.5-4B",
+  "frozen": "2026-10-20"
+ },
+ "items": [
+  {
+   "name": "de-half-six",
+   "prompt": "Sechs geteilt durch zwei ist \"",
+   "target": "drei",
+   "intermediates": [
+    "three"
+   ],
+   "reference_concepts": [
+    "German",
+    "half",
+    "six"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "de-half-six",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "de-place-near-far",
+   "prompt": "Das Gegenteil von \"nah\" ist \"",
+   "target": "fern",
+   "intermediates": [
+    "far"
+   ],
+   "reference_concepts": [
+    "German",
+    "place",
+    "near"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "de-place-near-far",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "de-place-up-down",
+   "prompt": "Das Gegenteil von \"oben\" ist \"",
+   "target": "unten",
+   "intermediates": [
+    "down"
+   ],
+   "reference_concepts": [
+    "German",
+    "place",
+    "up"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "de-place-up-down",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "de-size-big-small",
+   "prompt": "Das Gegenteil von \"groß\" ist \"",
+   "target": "klein",
+   "intermediates": [
+    "small"
+   ],
+   "reference_concepts": [
+    "German",
+    "size",
+    "big"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "de-size-big-small",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "es-half-four",
+   "prompt": "La mitad de cuatro es \"",
+   "target": "dos",
+   "intermediates": [
+    "two"
+   ],
+   "reference_concepts": [
+    "español",
+    "half",
+    "four"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "es-half-four",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "es-place-near-far",
+   "prompt": "Lo contrario de \"cerca\" es \"",
+   "target": "lejos",
+   "intermediates": [
+    "far"
+   ],
+   "reference_concepts": [
+    "español",
+    "place",
+    "near"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "es-place-near-far",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "es-size-big-small",
+   "prompt": "Lo contrario de \"grande\" es \"",
+   "target": "pequeño",
+   "intermediates": [
+    "small"
+   ],
+   "reference_concepts": [
+    "español",
+    "size",
+    "big"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "es-size-big-small",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "fr-month-before-mar",
+   "prompt": "Le mois avant mars est \"",
+   "target": "février",
+   "intermediates": [
+    "February"
+   ],
+   "reference_concepts": [
+    "French",
+    "month",
+    "March"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "fr-month-before-mar",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "fr-order-first-last",
+   "prompt": "Le contraire de \"premier\" est \"",
+   "target": "dernier",
+   "intermediates": [
+    "last"
+   ],
+   "reference_concepts": [
+    "French",
+    "order",
+    "first"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "fr-order-first-last",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "fr-place-near-far",
+   "prompt": "Le contraire de \"près\" est \"",
+   "target": "loin",
+   "intermediates": [
+    "far"
+   ],
+   "reference_concepts": [
+    "French",
+    "place",
+    "near"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "fr-place-near-far",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "fr-place-up-down",
+   "prompt": "Le contraire de \"haut\" est \"",
+   "target": "bas",
+   "intermediates": [
+    "down"
+   ],
+   "reference_concepts": [
+    "French",
+    "place",
+    "up"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "fr-place-up-down",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "fr-size-big-small",
+   "prompt": "Le contraire de \"grand\" est \"",
+   "target": "petit",
+   "intermediates": [
+    "small"
+   ],
+   "reference_concepts": [
+    "French",
+    "size",
+    "big"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "fr-size-big-small",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "pt-month-before-aug",
+   "prompt": "O mês antes de agosto é \"",
+   "target": "julho",
+   "intermediates": [
+    "July"
+   ],
+   "reference_concepts": [
+    "português",
+    "month",
+    "August"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "pt-month-before-aug",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "pt-order-first-last",
+   "prompt": "O contrário de \"primeiro\" é \"",
+   "target": "último",
+   "intermediates": [
+    "last"
+   ],
+   "reference_concepts": [
+    "português",
+    "order",
+    "first"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "pt-order-first-last",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "pt-place-near-far",
+   "prompt": "O contrário de \"perto\" é \"",
+   "target": "longe",
+   "intermediates": [
+    "far"
+   ],
+   "reference_concepts": [
+    "português",
+    "place",
+    "near"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "pt-place-near-far",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "pt-time-after-night",
+   "prompt": "Depois da noite vem o \"",
+   "target": "dia",
+   "intermediates": [
+    "day"
+   ],
+   "reference_concepts": [
+    "português",
+    "time",
+    "night"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "pt-time-after-night",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "arabic-color-blood",
+   "prompt": "الدم لونه ",
+   "target": "أحمر",
+   "intermediates": [
+    "red"
+   ],
+   "reference_concepts": [
+    "Arabic",
+    "color",
+    "blood"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain_stripped",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "arabic-color-blood",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "dutch-direction-left",
+   "prompt": "Het tegenovergestelde van \"links\" is \"",
+   "target": "rechts",
+   "intermediates": [
+    "right"
+   ],
+   "reference_concepts": [
+    "Dutch",
+    "opposite",
+    "left"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "dutch-direction-left",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "french-number-seven",
+   "prompt": "Après \"sept\" vient \"",
+   "target": "huit",
+   "intermediates": [
+    "eight"
+   ],
+   "reference_concepts": [
+    "French",
+    "number",
+    "seven"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "french-number-seven",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "french-season-summer",
+   "prompt": "La saison après l'été est l'",
+   "target": "automne",
+   "intermediates": [
+    "autumn"
+   ],
+   "reference_concepts": [
+    "French",
+    "season",
+    "summer"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "french-season-summer",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "frn-month-after-jun",
+   "prompt": "Le mois après juin est \"",
+   "target": "juillet",
+   "intermediates": [
+    "July"
+   ],
+   "reference_concepts": [
+    "français",
+    "month",
+    "June"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "frn-month-after-jun",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "german-family-aunt",
+   "prompt": "Die Schwester deiner Mutter ist deine \"",
+   "target": "Tante",
+   "intermediates": [
+    "aunt"
+   ],
+   "reference_concepts": [
+    "German",
+    "family",
+    "sister"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "german-family-aunt",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "persian-color-blood",
+   "prompt": "خون چه رنگی است؟ ",
+   "target": "قرمز",
+   "intermediates": [
+    "red"
+   ],
+   "reference_concepts": [
+    "Persian",
+    "color",
+    "blood"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "persian-color-blood",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "polish-direction-left",
+   "prompt": "Przeciwieństwo \"lewa\" to \"",
+   "target": "prawa",
+   "intermediates": [
+    "right"
+   ],
+   "reference_concepts": [
+    "Polish",
+    "opposite",
+    "left"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "polish-direction-left",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "portuguese-season-spring",
+   "prompt": "A estação depois da primavera é o ",
+   "target": "verão",
+   "intermediates": [
+    "summer"
+   ],
+   "reference_concepts": [
+    "Portuguese",
+    "season",
+    "spring"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain_stripped",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "portuguese-season-spring",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "spanish-number-three",
+   "prompt": "Después del \"tres\" viene el \"",
+   "target": "cuatro",
+   "intermediates": [
+    "four"
+   ],
+   "reference_concepts": [
+    "Spanish",
+    "number",
+    "three"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "spanish-number-three",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "turkish-opposite-fast",
+   "prompt": "\"Hızlı\" kelimesinin zıttı \"",
+   "target": "yavaş",
+   "intermediates": [
+    "slow"
+   ],
+   "reference_concepts": [
+    "Turkish",
+    "opposite",
+    "fast"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "turkish-opposite-fast",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-de-capital-austria",
+   "prompt": "Die Hauptstadt von Österreich ist",
+   "target": "Wien",
+   "intermediates": [
+    "Vienna"
+   ],
+   "reference_concepts": [
+    "German",
+    "capital",
+    "Austria"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-de-capital-austria",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-de-color-grass",
+   "prompt": "Die Farbe des Grases ist",
+   "target": "grün",
+   "intermediates": [
+    "green"
+   ],
+   "reference_concepts": [
+    "German",
+    "color",
+    "grass"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-de-color-grass",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-de-color-sky",
+   "prompt": "Die Farbe des klaren Himmels ist",
+   "target": "blau",
+   "intermediates": [
+    "blue"
+   ],
+   "reference_concepts": [
+    "German",
+    "color",
+    "sky"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-de-color-sky",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-de-month-june",
+   "prompt": "Der Monat nach Juni ist der",
+   "target": "Juli",
+   "intermediates": [
+    "July"
+   ],
+   "reference_concepts": [
+    "German",
+    "month",
+    "June"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-de-month-june",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-de-opposite-fast",
+   "prompt": "Das Gegenteil von \"schnell\" ist",
+   "target": "langsam",
+   "intermediates": [
+    "slow"
+   ],
+   "reference_concepts": [
+    "German",
+    "opposite",
+    "fast"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-de-opposite-fast",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-de-sum-four",
+   "prompt": "Zwei plus zwei ist",
+   "target": "vier",
+   "intermediates": [
+    "four"
+   ],
+   "reference_concepts": [
+    "German",
+    "sum",
+    "two"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-de-sum-four",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-es-capital-france",
+   "prompt": "La capital de Francia es",
+   "target": "París",
+   "intermediates": [
+    "Paris"
+   ],
+   "reference_concepts": [
+    "Spanish",
+    "France"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-es-capital-france",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-es-color-blood",
+   "prompt": "El color de la sangre es el",
+   "target": "rojo",
+   "intermediates": [
+    "red"
+   ],
+   "reference_concepts": [
+    "Spanish",
+    "blood"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-es-color-blood",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-es-color-sky",
+   "prompt": "El color del cielo despejado es el",
+   "target": "azul",
+   "intermediates": [
+    "blue"
+   ],
+   "reference_concepts": [
+    "Spanish",
+    "sky"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-es-color-sky",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-es-day-monday",
+   "prompt": "El día después del lunes es el",
+   "target": "martes",
+   "intermediates": [
+    "Tuesday"
+   ],
+   "reference_concepts": [
+    "Spanish",
+    "day",
+    "Monday"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-es-day-monday",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-es-month-april",
+   "prompt": "El mes después de abril es",
+   "target": "mayo",
+   "intermediates": [
+    "May"
+   ],
+   "reference_concepts": [
+    "Spanish",
+    "month",
+    "April"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-es-month-april",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-es-opposite-fast",
+   "prompt": "Lo contrario de \"rápido\" es \"",
+   "target": "lento",
+   "intermediates": [
+    "slow"
+   ],
+   "reference_concepts": [
+    "Spanish",
+    "opposite",
+    "fast"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-es-opposite-fast",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-es-opposite-hot",
+   "prompt": "Lo contrario de \"caliente\" es \"",
+   "target": "frío",
+   "intermediates": [
+    "cold"
+   ],
+   "reference_concepts": [
+    "Spanish",
+    "opposite",
+    "hot"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-es-opposite-hot",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-fr-capital-england",
+   "prompt": "La capitale de l'Angleterre est",
+   "target": "Londres",
+   "intermediates": [
+    "London"
+   ],
+   "reference_concepts": [
+    "French",
+    "capital",
+    "England"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-fr-capital-england",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-fr-color-blood",
+   "prompt": "La couleur du sang est le",
+   "target": "rouge",
+   "intermediates": [
+    "red"
+   ],
+   "reference_concepts": [
+    "French",
+    "color",
+    "blood"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-fr-color-blood",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-fr-month-march",
+   "prompt": "Le mois après mars est",
+   "target": "avril",
+   "intermediates": [
+    "April"
+   ],
+   "reference_concepts": [
+    "French",
+    "month",
+    "March"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-fr-month-march",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-fr-opposite-big",
+   "prompt": "Le contraire de \"grand\" est \"",
+   "target": "petit",
+   "intermediates": [
+    "small"
+   ],
+   "reference_concepts": [
+    "French",
+    "opposite",
+    "big"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-fr-opposite-big",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-it-capital-france",
+   "prompt": "La capitale della Francia è",
+   "target": "Parigi",
+   "intermediates": [
+    "Paris"
+   ],
+   "reference_concepts": [
+    "Italian",
+    "capital",
+    "France"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-it-capital-france",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-it-color-grass",
+   "prompt": "Il colore dell'erba è il",
+   "target": "verde",
+   "intermediates": [
+    "green"
+   ],
+   "reference_concepts": [
+    "Italian",
+    "color",
+    "grass"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-it-color-grass",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-it-day-monday",
+   "prompt": "Il giorno dopo lunedì è",
+   "target": "martedì",
+   "intermediates": [
+    "Tuesday"
+   ],
+   "reference_concepts": [
+    "Italian",
+    "day",
+    "Monday"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-it-day-monday",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-it-opposite-big",
+   "prompt": "Il contrario di \"grande\" è \"",
+   "target": "piccolo",
+   "intermediates": [
+    "small"
+   ],
+   "reference_concepts": [
+    "Italian",
+    "opposite",
+    "big"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-it-opposite-big",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-it-opposite-hot",
+   "prompt": "Il contrario di \"caldo\" è \"",
+   "target": "freddo",
+   "intermediates": [
+    "cold"
+   ],
+   "reference_concepts": [
+    "Italian",
+    "opposite",
+    "hot"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-it-opposite-hot",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-pt-capital-japan",
+   "prompt": "A capital do Japão é",
+   "target": "Tóquio",
+   "intermediates": [
+    "Tokyo"
+   ],
+   "reference_concepts": [
+    "Portuguese",
+    "Japan"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-pt-capital-japan",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-pt-opposite-big",
+   "prompt": "O contrário de \"grande\" é \"",
+   "target": "pequeno",
+   "intermediates": [
+    "small"
+   ],
+   "reference_concepts": [
+    "Portuguese",
+    "opposite",
+    "big"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-pt-opposite-big",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-pt-opposite-hot",
+   "prompt": "O contrário de \"quente\" é \"",
+   "target": "frio",
+   "intermediates": [
+    "cold"
+   ],
+   "reference_concepts": [
+    "Portuguese",
+    "opposite",
+    "hot"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-pt-opposite-hot",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-de-month-february",
+   "prompt": "Der Monat nach Februar ist",
+   "target": "März",
+   "intermediates": [
+    "March"
+   ],
+   "reference_concepts": [
+    "German",
+    "month",
+    "February"
+   ],
+   "source": "staging_b3",
+   "consistency": 0.9,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-de-month-february",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "de-order-first-last",
+   "prompt": "Das Gegenteil von \"erste\" ist \"",
+   "target": "letzte",
+   "intermediates": [
+    "last"
+   ],
+   "reference_concepts": [
+    "German",
+    "order",
+    "first"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.9,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "de-order-first-last",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "es-order-first-last",
+   "prompt": "Lo contrario de \"primero\" es \"",
+   "target": "último",
+   "intermediates": [
+    "last"
+   ],
+   "reference_concepts": [
+    "español",
+    "order",
+    "first"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.9,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "es-order-first-last",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "es-place-up-down",
+   "prompt": "Lo contrario de \"arriba\" es \"",
+   "target": "abajo",
+   "intermediates": [
+    "down"
+   ],
+   "reference_concepts": [
+    "español",
+    "place",
+    "up"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.9,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "es-place-up-down",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "es-time-after-day",
+   "prompt": "Después del día viene la \"",
+   "target": "noche",
+   "intermediates": [
+    "night"
+   ],
+   "reference_concepts": [
+    "español",
+    "time",
+    "day"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.9,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "es-time-after-day",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "fr-month-after-jan",
+   "prompt": "Le mois après janvier est \"",
+   "target": "février",
+   "intermediates": [
+    "February"
+   ],
+   "reference_concepts": [
+    "French",
+    "month",
+    "January"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.9,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "fr-month-after-jan",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "fr-time-after-night",
+   "prompt": "Après la nuit vient le \"",
+   "target": "jour",
+   "intermediates": [
+    "day"
+   ],
+   "reference_concepts": [
+    "French",
+    "time",
+    "night"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.9,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "fr-time-after-night",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "fr-time-old-young",
+   "prompt": "Le contraire de \"vieux\" est \"",
+   "target": "jeune",
+   "intermediates": [
+    "young"
+   ],
+   "reference_concepts": [
+    "French",
+    "time",
+    "old"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.9,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "fr-time-old-young",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "pt-place-up-down",
+   "prompt": "O contrário de \"cima\" é \"",
+   "target": "baixo",
+   "intermediates": [
+    "down"
+   ],
+   "reference_concepts": [
+    "português",
+    "place",
+    "up"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.9,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "pt-place-up-down",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "pt-size-big-small",
+   "prompt": "O contrário de \"grande\" é \"",
+   "target": "pequeno",
+   "intermediates": [
+    "small"
+   ],
+   "reference_concepts": [
+    "português",
+    "size",
+    "big"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.9,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "pt-size-big-small",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "danish-color-ocean",
+   "prompt": "Farven på havet er ",
+   "target": "blå",
+   "intermediates": [
+    "blue"
+   ],
+   "reference_concepts": [
+    "Danish",
+    "color",
+    "ocean"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.9,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "danish-color-ocean",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "dutch-opposite-big",
+   "prompt": "Het tegenovergestelde van groot is ",
+   "target": "klein",
+   "intermediates": [
+    "small"
+   ],
+   "reference_concepts": [
+    "Dutch",
+    "opposite",
+    "big"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.9,
+   "gate_variant": "plain_stripped",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "dutch-opposite-big",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "german-number-five",
+   "prompt": "Nach \"fünf\" kommt \"",
+   "target": "sechs",
+   "intermediates": [
+    "six"
+   ],
+   "reference_concepts": [
+    "German",
+    "number",
+    "five"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.9,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "german-number-five",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "indonesian-color-grass",
+   "prompt": "Warna rumput adalah ",
+   "target": "hijau",
+   "intermediates": [
+    "green"
+   ],
+   "reference_concepts": [
+    "Indonesian",
+    "color",
+    "grass"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.9,
+   "gate_variant": "plain_stripped",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "indonesian-color-grass",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "japanese-day-monday",
+   "prompt": "月曜日の次の日は",
+   "target": "火曜日",
+   "intermediates": [
+    "Tuesday"
+   ],
+   "reference_concepts": [
+    "Japanese",
+    "day",
+    "Monday"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.9,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "japanese-day-monday",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "korean-opposite-hot",
+   "prompt": "뜨거운의 반대는 ",
+   "target": "차가운",
+   "intermediates": [
+    "cold"
+   ],
+   "reference_concepts": [
+    "Korean",
+    "opposite",
+    "hot"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.9,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "korean-opposite-hot",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "spanish-phase-water",
+   "prompt": "Cuando el agua se congela se convierte en \"",
+   "target": "hielo",
+   "intermediates": [
+    "ice"
+   ],
+   "reference_concepts": [
+    "Spanish",
+    "freeze",
+    "water"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.9,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "spanish-phase-water",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-de-opposite-hot",
+   "prompt": "Das Gegenteil von \"heiß\" ist",
+   "target": "kalt",
+   "intermediates": [
+    "cold"
+   ],
+   "reference_concepts": [
+    "German",
+    "opposite",
+    "hot"
+   ],
+   "source": "staging_b3",
+   "consistency": 0.9,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-de-opposite-hot",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-es-opposite-day",
+   "prompt": "Lo contrario del día es la",
+   "target": "noche",
+   "intermediates": [
+    "night"
+   ],
+   "reference_concepts": [
+    "Spanish",
+    "opposite",
+    "day"
+   ],
+   "source": "staging_b3",
+   "consistency": 0.9,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-es-opposite-day",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-es-sum-four",
+   "prompt": "Dos más dos son",
+   "target": "cuatro",
+   "intermediates": [
+    "four"
+   ],
+   "reference_concepts": [
+    "Spanish",
+    "sum",
+    "two"
+   ],
+   "source": "staging_b3",
+   "consistency": 0.9,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-es-sum-four",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-fr-family-uncle",
+   "prompt": "Le frère de ta mère est ton",
+   "target": "oncle",
+   "intermediates": [
+    "uncle"
+   ],
+   "reference_concepts": [
+    "French",
+    "family",
+    "brother"
+   ],
+   "source": "staging_b3",
+   "consistency": 0.9,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-fr-family-uncle",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-fr-opposite-hot",
+   "prompt": "Le contraire de \"chaud\" est \"",
+   "target": "froid",
+   "intermediates": [
+    "cold"
+   ],
+   "reference_concepts": [
+    "French",
+    "opposite",
+    "hot"
+   ],
+   "source": "staging_b3",
+   "consistency": 0.9,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-fr-opposite-hot",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-ml-de-month-before-march",
+   "prompt": "Der Monat vor März ist",
+   "target": "Februar",
+   "intermediates": [
+    "February"
+   ],
+   "reference_concepts": [
+    "German",
+    "month",
+    "March"
+   ],
+   "source": "staging_b3",
+   "consistency": 0.8,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-ml-de-month-before-march",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "pt-number-after-five",
+   "prompt": "O número depois de cinco é \"",
+   "target": "seis",
+   "intermediates": [
+    "six"
+   ],
+   "reference_concepts": [
+    "português",
+    "number",
+    "five"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.8,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "pt-number-after-five",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w0c0-de-opposite-klein",
+   "prompt": "Das Gegenteil von \"klein\" ist \"",
+   "target": "groß",
+   "intermediates": [
+    "big"
+   ],
+   "reference_concepts": [
+    "German",
+    "opposite",
+    "klein"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 0,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w0c0-es-opposite-bajo",
+   "prompt": "Lo contrario de \"bajo\" es \"",
+   "target": "alto",
+   "intermediates": [
+    "tall"
+   ],
+   "reference_concepts": [
+    "Spanish",
+    "opposite",
+    "bajo"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 0,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w0c0-it-opposite-pieno",
+   "prompt": "Il contrario di \"pieno\" è \"",
+   "target": "vuoto",
+   "intermediates": [
+    "empty"
+   ],
+   "reference_concepts": [
+    "Italian",
+    "opposite",
+    "pieno"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 0,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w0c0-pt-opposite-pesado",
+   "prompt": "O contrário de \"pesado\" é \"",
+   "target": "leve",
+   "intermediates": [
+    "light"
+   ],
+   "reference_concepts": [
+    "Portuguese",
+    "opposite",
+    "pesado"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 0,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w0c0-fr-opposite-mouille",
+   "prompt": "Le contraire de \"mouillé\" est \"",
+   "target": "sec",
+   "intermediates": [
+    "dry"
+   ],
+   "reference_concepts": [
+    "French",
+    "opposite",
+    "mouillé"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 0,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w0c0-de-opposite-hell",
+   "prompt": "Das Gegenteil von \"hell\" ist \"",
+   "target": "dunkel",
+   "intermediates": [
+    "dark"
+   ],
+   "reference_concepts": [
+    "German",
+    "opposite",
+    "hell"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 0,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w0c0-it-family-grandson",
+   "prompt": "Il figlio di mio figlio è mio \"",
+   "target": "nipote",
+   "intermediates": [
+    "grandson"
+   ],
+   "reference_concepts": [
+    "Italian",
+    "family",
+    "figlio"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 0,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w0c0-fr-animal-bark",
+   "prompt": "L'animal qui aboie est le \"",
+   "target": "chien",
+   "intermediates": [
+    "dog"
+   ],
+   "reference_concepts": [
+    "French",
+    "animal sound",
+    "aboie"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 0,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w0c0-fr-color-snow",
+   "prompt": "La couleur de la neige est le \"",
+   "target": "blanc",
+   "intermediates": [
+    "white"
+   ],
+   "reference_concepts": [
+    "French",
+    "color",
+    "neige"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 0,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w0c0-it-color-lemon",
+   "prompt": "Il colore del limone è il \"",
+   "target": "giallo",
+   "intermediates": [
+    "yellow"
+   ],
+   "reference_concepts": [
+    "Italian",
+    "color",
+    "limone"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 0,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w0c0-es-weekday-after-thursday",
+   "prompt": "Después del jueves viene el \"",
+   "target": "viernes",
+   "intermediates": [
+    "Friday"
+   ],
+   "reference_concepts": [
+    "Spanish",
+    "weekday",
+    "jueves"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 0,
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w0c0-it-weekday-after-saturday",
+   "prompt": "Dopo il sabato viene la \"",
+   "target": "domenica",
+   "intermediates": [
+    "Sunday"
+   ],
+   "reference_concepts": [
+    "Italian",
+    "weekday",
+    "sabato"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 0,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w0c0-fr-season-after-autumn",
+   "prompt": "Après l'automne vient l'\"",
+   "target": "hiver",
+   "intermediates": [
+    "winter"
+   ],
+   "reference_concepts": [
+    "French",
+    "season",
+    "automne"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 0,
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w0c0-pt-season-after-winter",
+   "prompt": "Depois do inverno vem a \"",
+   "target": "primavera",
+   "intermediates": [
+    "spring"
+   ],
+   "reference_concepts": [
+    "Portuguese",
+    "season",
+    "inverno"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 0,
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w0c0-es-need-water",
+   "prompt": "Bebemos agua cuando tenemos \"",
+   "target": "sed",
+   "intermediates": [
+    "thirst"
+   ],
+   "reference_concepts": [
+    "Spanish",
+    "bodily need",
+    "agua"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 0,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w0c0-de-job-fire",
+   "prompt": "Wer Brände löscht, arbeitet als \"",
+   "target": "Feuerwehrmann",
+   "intermediates": [
+    "firefighter"
+   ],
+   "reference_concepts": [
+    "German",
+    "occupation",
+    "Brände"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 0,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w1c0-de-price-expensive-cheap",
+   "prompt": "Das Gegenteil von \"teuer\" ist \"",
+   "target": "billig",
+   "intermediates": [
+    "cheap"
+   ],
+   "reference_concepts": [
+    "German",
+    "opposite",
+    "expensive"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 1,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w1c0-de-animal-king",
+   "prompt": "Der König der Tiere ist der",
+   "target": "Löwe",
+   "intermediates": [
+    "lion"
+   ],
+   "reference_concepts": [
+    "German",
+    "animal",
+    "king"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 1,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w1c0-es-family-grandfather",
+   "prompt": "El padre de mi padre es mi",
+   "target": "abuelo",
+   "intermediates": [
+    "grandfather"
+   ],
+   "reference_concepts": [
+    "Spanish",
+    "family",
+    "father"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 1,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w1c0-fr-food-cows-milk",
+   "prompt": "Les vaches nous donnent du",
+   "target": "lait",
+   "intermediates": [
+    "milk"
+   ],
+   "reference_concepts": [
+    "French",
+    "animal product",
+    "cows"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 1,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w1c0-de-object-coffee-cup",
+   "prompt": "Man trinkt Kaffee aus einer",
+   "target": "Tasse",
+   "intermediates": [
+    "cup"
+   ],
+   "reference_concepts": [
+    "German",
+    "container",
+    "coffee"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 1,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w1c0-es-body-fingers-hands",
+   "prompt": "Tenemos diez dedos en las",
+   "target": "manos",
+   "intermediates": [
+    "hands"
+   ],
+   "reference_concepts": [
+    "Spanish",
+    "body part",
+    "fingers"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 1,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w1c0-pt-house-key-door",
+   "prompt": "Uso a chave para abrir a",
+   "target": "porta",
+   "intermediates": [
+    "door"
+   ],
+   "reference_concepts": [
+    "Portuguese",
+    "house part",
+    "key"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-4b: Use only French, German, Spanish, Italian or Portuguese.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only French, German, Spanish, Italian or Portuguese."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 1,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  }
+ ]
+}

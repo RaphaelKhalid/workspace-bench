@@ -77,6 +77,7 @@ def test_report_json(tmp_path, capsys):
     assert set(d) == {"families", "macro", "floors"}
     assert [f["family"] for f in d["families"]] == ["a", "hal"]
     assert d["families"][0]["numbers"]["metric"] == "pass_rate"
+    assert d["families"][0]["floor_applies"] is True and d["families"][0]["on_family_judge"] is True
     assert d["macro"]["value"] == 0.5 and d["macro"]["families"] == ["a"]
     assert d["macro"]["excluded"] == [{"family": "hal", "reason": "metric"}]
     summary = (tmp_path / "summary.md").read_text()
@@ -85,3 +86,51 @@ def test_report_json(tmp_path, capsys):
     assert main(["report", f"dir={tmp_path}"]) == 0
     out = capsys.readouterr().out
     assert "| a |" in out and "Not in macro:" in out and "wrote" in out
+
+
+def test_floors_only_beside_rows_on_the_familys_own_judge():
+    """Plan 0023: every frozen floor was measured by the family's judge, so a row judged by an
+    override (pinned = no) gets ``—`` in the floor columns and the legend says why."""
+    floors = {"prompt-only": {"pin": "0.300", "over": "0.300"}}
+    rs = [_res("pin"), _res("over", pinned_instrument=False)]
+    md = markdown_table(rs, None, floors=floors)
+    rows = {ln.split("|")[1].strip(): ln for ln in md.splitlines() if ln.startswith("|")}
+    assert "| 0.300 |" in rows["pin"]
+    assert "| — |" in rows["over"] and "0.300" not in rows["over"]
+    assert "Floors are drawn only beside rows judged by the family's current judge" in md
+    assert "Floors are drawn only" not in markdown_table([_res("pin")], None, floors=floors)
+
+
+def test_floors_and_macro_follow_the_current_judge_not_the_stored_flag(real_families):
+    """Plan 0023: a row judged on Gemini while Gemini was the default stores pinned = yes; it
+    must not get the (Opus-measured) floors nor enter the macro. A regex family's floor always
+    applies; arithmetic's batched cells=all instrument does not get its frozen-cell floor."""
+    from wsbench.judge_config import DEFAULT_JUDGE
+    from wsbench.results import floor_applies, on_family_judge
+
+    # the family's current prompt version (plan 0039: association's own MC stamp)
+    gem = {"judge_model": "google/gemini-3.8-flash", "prompt_version": "assoc-mc-2026-11-01-v3"}
+    old = _res("association", config=gem)  # stored pinned_instrument=True
+    new = _res("association", config={**gem, "judge_model": DEFAULT_JUDGE})
+    assert not on_family_judge(old) and not floor_applies(old)
+    assert on_family_judge(new) and floor_applies(new)
+    m = macro([old, new])
+    assert m["families"] == ["association"]
+    assert {"family": "association", "reason": "judge", "why": "google/gemini-3.8-flash"} in m[
+        "excluded"
+    ]
+    batched = _res(
+        "arithmetic_intermediates",
+        config={"judge_model": DEFAULT_JUDGE, "prompt_version": "arith-free-batched-2026-09-23"},
+    )
+    assert on_family_judge(batched) and not floor_applies(batched)
+    bag = _res(
+        "typo_mt", pinned_instrument=False, config={"judge_model": "google/gemini-3.8-flash"}
+    )
+    assert floor_applies(bag) and not on_family_judge(bag)
+    assert on_family_judge(_res("typo_mt", config={"judge_model": "regex"}))
+    legacy = _res("association", config={"prompt_version": "bank-2026-10-10"})  # no judge_model
+    assert on_family_judge(legacy)  # falls back to the stored flag
+    md = markdown_table([old, new], None, floors={"prompt-only": {"association": "0.320"}})
+    rows = [ln for ln in md.splitlines() if ln.startswith("| association")]
+    assert "0.320" not in rows[0] and "0.320" in rows[1]

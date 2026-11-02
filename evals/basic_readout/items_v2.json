@@ -1,0 +1,7461 @@
+{
+ "family": "basic-readout",
+ "version": 2,
+ "supersedes": "items.json",
+ "changes": [
+  "question form: every entity / processing prompt is a chat question ending '? Answer in one word.' (plan 0039 C2b)",
+  "all items render chat_prefill with 'My one-word answer is:'; read from the first question token through the prefill (question_through_end); lite = final token",
+  "br-proc-arith-10-1 / br-proc-arith-7+2: targets ['9','nine'] (v1 listed 'ten')",
+  "br-imp-bookgenre: gold 'science fiction' (v1: 'science'), then dropped by the re-gate (1/10); br-imp-kindofpepper: gold 'jalapeño' (v1: 'bell'; Qwen's modal answer, 9/10 in the re-gate), 'bell pepper' kept as a distractor",
+  "athlete distractors never share a form with each other (soccer and American football are mutually exclusive: both carry the alias 'football')",
+  "br-ent-ath-brady: gold 'American football' (alias football); every item carries frozen MC options (mc), a task_context and its v2 gate block",
+  "option forms are even (review of PR #166): every option of an item carries a Chinese form when any does (zh numerals 零 二 十 十一 十二, months 一月 二月 十月, rugby, drums, every implicit option), so a Chinese flat list meets the same bare-mention gate as an English one; judge stamp br-mc-2026-10-30b"
+ ],
+ "gate": {
+  "model": "Qwen/Qwen3.6-27B",
+  "render": "chat template, enable_thinking=False, user turn = prompt, assistant prefill 'My one-word answer is:' (the eval render)",
+  "sampling": {
+   "n": 10,
+   "temperature": 0.7,
+   "top_p": 1.0,
+   "top_k": -1
+  },
+  "max_tokens": 8,
+  "rule": ">= 8/10 answers match gold or an alias after normalising case and punctuation; implicit gold = Qwen's modal answer",
+  "replacement": "a failing item is replaced by the first passing spare of its slice group (ath/mus, cap/lmk, arith/day/month, implicit)",
+  "drops": [
+   {
+    "name": "br-imp-cardgame",
+    "reason": "gate 6/10 < 8",
+    "answers": {
+     "Poker": 6,
+     "Bridge": 1,
+     "Battleship": 1,
+     "Solitaire": 1,
+     "None": 1
+    },
+    "replaced_by": "br-imp-instrument"
+   },
+   {
+    "name": "br-imp-chesspiece",
+    "reason": "gate 7/10 < 8",
+    "answers": {
+     "Queen": 7,
+     "Knight": 2,
+     "None": 1
+    },
+    "replaced_by": "br-imp-shape"
+   },
+   {
+    "name": "br-imp-icecreamflav",
+    "reason": "gate 3/10 < 8",
+    "answers": {
+     "Vanilla": 3,
+     "Chocolate": 3,
+     "Strawberry": 2,
+     "Stracciatella": 1,
+     "None": 1
+    },
+    "replaced_by": "br-imp-ocean"
+   },
+   {
+    "name": "br-imp-kindofshoe",
+    "reason": "gate 7/10 < 8",
+    "answers": {
+     "Sneakers": 7,
+     "None": 1,
+     "Boots": 1,
+     "Comfortable": 1
+    },
+    "replaced_by": "br-imp-bread"
+   },
+   {
+    "name": "br-imp-kindofweathe",
+    "reason": "gate 5/10 < 8",
+    "answers": {
+     "Sunny": 5,
+     "Cloudy": 1,
+     "Rain": 1,
+     "Rainy": 1,
+     "Autumn": 1,
+     "": 1
+    },
+    "replaced_by": "br-imp-composer"
+   },
+   {
+    "name": "br-imp-typeofcuisin",
+    "reason": "gate 6/10 < 8",
+    "answers": {
+     "Italian": 6,
+     "Diverse": 2,
+     "Variety": 1,
+     "Sushi": 1
+    },
+    "replaced_by": "br-imp-shakespeare"
+   },
+   {
+    "name": "br-imp-countrytovis",
+    "reason": "gate 7/10 < 8",
+    "answers": {
+     "Japan": 7,
+     "France": 3
+    },
+    "replaced_by": "br-imp-word"
+   },
+   {
+    "name": "br-imp-kindofberry",
+    "reason": "gate 4/10 < 8",
+    "answers": {
+     "Blueberry": 4,
+     "Strawberry": 4,
+     "🍓": 1,
+     "🫐": 1
+    },
+    "replaced_by": "br-imp-ghibli"
+   },
+   {
+    "name": "br-imp-mythicalcrea",
+    "reason": "gate 6/10 < 8",
+    "answers": {
+     "Dragon": 6,
+     "Unicorn": 2,
+     "": 1,
+     "Phoenix": 1
+    },
+    "replaced_by": "br-imp-muppet"
+   },
+   {
+    "name": "br-imp-pet",
+    "reason": "gate 5/10 < 8",
+    "answers": {
+     "Dog": 5,
+     "Cat": 4,
+     "Dogs": 1
+    },
+    "replaced_by": "br-imp-font"
+   },
+   {
+    "name": "br-imp-typeofbird",
+    "reason": "gate 7/10 < 8",
+    "answers": {
+     "Owl": 7,
+     "Raven": 1,
+     "Hummingbird": 1,
+     "Penguin": 1
+    },
+    "replaced_by": "br-imp-os"
+   },
+   {
+    "name": "br-imp-bookgenre",
+    "reason": "gate 1/10 < 8",
+    "answers": {
+     "Science": 4,
+     "Diverse": 2,
+     "Fiction": 2,
+     "Sci-fi": 1,
+     "curious": 1
+    },
+    "replaced_by": "br-imp-database"
+   },
+   {
+    "name": "br-imp-dessert",
+    "reason": "gate 5/10 < 8",
+    "answers": {
+     "Chocolate": 5,
+     "Cake": 2,
+     "Tiramisu": 2,
+     "Cake! 🎂": 1
+    },
+    "replaced_by": "br-imp-cloud"
+   },
+   {
+    "name": "br-imp-season",
+    "reason": "gate 5/10 < 8",
+    "answers": {
+     "Autumn": 5,
+     "Spring": 2,
+     "Spring 🌸": 1,
+     "Winter": 1,
+     "Summer": 1
+    },
+    "replaced_by": "br-imp-grain"
+   }
+  ],
+  "v1_sha256": "e61d7e2d017c30c25e6f1c97f3049aa9a40393e95bf40e020c687ec487340580"
+ },
+ "counts": {
+  "entity": 35,
+  "processing": 33,
+  "implicit": 32
+ },
+ "items": [
+  {
+   "name": "br-ent-ath-ali",
+   "subfamily": "entity",
+   "slice": "ath",
+   "subject": "Muhammad Ali",
+   "prompt": "What sport does the athlete Muhammad Ali play? Answer in one word.",
+   "target": "boxing",
+   "intermediates": [
+    "boxing",
+    "拳击"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "boxing",
+      "拳击"
+     ]
+    }
+   ],
+   "consistency": 0.8,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "boxing",
+    "aliases": [
+     "拳击"
+    ],
+    "distractors": [
+     "hockey",
+     "swimming",
+     "rugby",
+     "baseball"
+    ],
+    "distractor_aliases": {
+     "hockey": [
+      "ice hockey",
+      "冰球"
+     ],
+     "swimming": [
+      "swim",
+      "游泳"
+     ],
+     "rugby": [
+      "橄榄球",
+      "英式橄榄球"
+     ],
+     "baseball": [
+      "棒球"
+     ]
+    }
+   },
+   "task_context": "the model was asked which sport a famous athlete plays, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 8,
+    "answers": {
+     "Boxing": 8,
+     "": 2
+    }
+   },
+   "v1_prompt": "The athlete Muhammad Ali plays the sport of"
+  },
+  {
+   "name": "br-ent-ath-brady",
+   "subfamily": "entity",
+   "slice": "ath",
+   "subject": "Tom Brady",
+   "prompt": "What sport does the athlete Tom Brady play? Answer in one word.",
+   "target": "American football",
+   "intermediates": [
+    "American football",
+    "football",
+    "NFL",
+    "gridiron",
+    "美式足球",
+    "美式橄榄球"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "American football",
+      "football",
+      "NFL",
+      "gridiron",
+      "美式足球",
+      "美式橄榄球"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "American football",
+    "aliases": [
+     "football",
+     "NFL",
+     "gridiron",
+     "美式足球",
+     "美式橄榄球"
+    ],
+    "distractors": [
+     "swimming",
+     "volleyball",
+     "boxing",
+     "hockey"
+    ],
+    "distractor_aliases": {
+     "swimming": [
+      "swim",
+      "游泳"
+     ],
+     "volleyball": [
+      "排球"
+     ],
+     "boxing": [
+      "拳击"
+     ],
+     "hockey": [
+      "ice hockey",
+      "冰球"
+     ]
+    }
+   },
+   "task_context": "the model was asked which sport a famous athlete plays, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "football": 9,
+     "American football": 1
+    }
+   },
+   "v1_prompt": "The athlete Tom Brady plays the sport of",
+   "v1_target": "football"
+  },
+  {
+   "name": "br-ent-ath-federer",
+   "subfamily": "entity",
+   "slice": "ath",
+   "subject": "Roger Federer",
+   "prompt": "What sport does the athlete Roger Federer play? Answer in one word.",
+   "target": "tennis",
+   "intermediates": [
+    "tennis",
+    "网球"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "tennis",
+      "网球"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "tennis",
+    "aliases": [
+     "网球"
+    ],
+    "distractors": [
+     "cricket",
+     "rugby",
+     "American football",
+     "basketball"
+    ],
+    "distractor_aliases": {
+     "cricket": [
+      "板球"
+     ],
+     "rugby": [
+      "橄榄球",
+      "英式橄榄球"
+     ],
+     "American football": [
+      "football",
+      "NFL",
+      "gridiron",
+      "美式足球",
+      "美式橄榄球"
+     ],
+     "basketball": [
+      "NBA",
+      "篮球"
+     ]
+    }
+   },
+   "task_context": "the model was asked which sport a famous athlete plays, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "Tennis": 10
+    }
+   },
+   "v1_prompt": "The athlete Roger Federer plays the sport of"
+  },
+  {
+   "name": "br-ent-ath-gretzky",
+   "subfamily": "entity",
+   "slice": "ath",
+   "subject": "Wayne Gretzky",
+   "prompt": "What sport does the athlete Wayne Gretzky play? Answer in one word.",
+   "target": "hockey",
+   "intermediates": [
+    "hockey",
+    "ice hockey",
+    "冰球"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "hockey",
+      "ice hockey",
+      "冰球"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "hockey",
+    "aliases": [
+     "ice hockey",
+     "冰球"
+    ],
+    "distractors": [
+     "soccer",
+     "cricket",
+     "rugby",
+     "tennis"
+    ],
+    "distractor_aliases": {
+     "soccer": [
+      "football",
+      "association football",
+      "足球"
+     ],
+     "cricket": [
+      "板球"
+     ],
+     "rugby": [
+      "橄榄球",
+      "英式橄榄球"
+     ],
+     "tennis": [
+      "网球"
+     ]
+    }
+   },
+   "task_context": "the model was asked which sport a famous athlete plays, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "Hockey": 8,
+     "Ice Hockey": 2
+    }
+   },
+   "v1_prompt": "The athlete Wayne Gretzky plays the sport of"
+  },
+  {
+   "name": "br-ent-ath-james",
+   "subfamily": "entity",
+   "slice": "ath",
+   "subject": "LeBron James",
+   "prompt": "What sport does the athlete LeBron James play? Answer in one word.",
+   "target": "basketball",
+   "intermediates": [
+    "basketball",
+    "NBA",
+    "篮球"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "basketball",
+      "NBA",
+      "篮球"
+     ]
+    }
+   ],
+   "consistency": 0.8,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "basketball",
+    "aliases": [
+     "NBA",
+     "篮球"
+    ],
+    "distractors": [
+     "American football",
+     "cricket",
+     "boxing",
+     "volleyball"
+    ],
+    "distractor_aliases": {
+     "American football": [
+      "football",
+      "NFL",
+      "gridiron",
+      "美式足球",
+      "美式橄榄球"
+     ],
+     "cricket": [
+      "板球"
+     ],
+     "boxing": [
+      "拳击"
+     ],
+     "volleyball": [
+      "排球"
+     ]
+    }
+   },
+   "task_context": "the model was asked which sport a famous athlete plays, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 8,
+    "answers": {
+     "Basketball": 8,
+     "": 2
+    }
+   },
+   "v1_prompt": "The athlete LeBron James plays the sport of"
+  },
+  {
+   "name": "br-ent-ath-jordan",
+   "subfamily": "entity",
+   "slice": "ath",
+   "subject": "Michael Jordan",
+   "prompt": "What sport does the athlete Michael Jordan play? Answer in one word.",
+   "target": "basketball",
+   "intermediates": [
+    "basketball",
+    "NBA",
+    "篮球"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "basketball",
+      "NBA",
+      "篮球"
+     ]
+    }
+   ],
+   "consistency": 0.9,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "basketball",
+    "aliases": [
+     "NBA",
+     "篮球"
+    ],
+    "distractors": [
+     "boxing",
+     "American football",
+     "volleyball",
+     "golf"
+    ],
+    "distractor_aliases": {
+     "boxing": [
+      "拳击"
+     ],
+     "American football": [
+      "football",
+      "NFL",
+      "gridiron",
+      "美式足球",
+      "美式橄榄球"
+     ],
+     "volleyball": [
+      "排球"
+     ],
+     "golf": [
+      "高尔夫"
+     ]
+    }
+   },
+   "task_context": "the model was asked which sport a famous athlete plays, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 9,
+    "answers": {
+     "Basketball": 9,
+     "Baske": 1
+    }
+   },
+   "v1_prompt": "The athlete Michael Jordan plays the sport of"
+  },
+  {
+   "name": "br-ent-ath-messi",
+   "subfamily": "entity",
+   "slice": "ath",
+   "subject": "Lionel Messi",
+   "prompt": "What sport does the athlete Lionel Messi play? Answer in one word.",
+   "target": "soccer",
+   "intermediates": [
+    "soccer",
+    "football",
+    "association football",
+    "足球"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "soccer",
+      "football",
+      "association football",
+      "足球"
+     ]
+    }
+   ],
+   "consistency": 0.9,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "soccer",
+    "aliases": [
+     "football",
+     "association football",
+     "足球"
+    ],
+    "distractors": [
+     "golf",
+     "basketball",
+     "tennis",
+     "cricket"
+    ],
+    "distractor_aliases": {
+     "golf": [
+      "高尔夫"
+     ],
+     "basketball": [
+      "NBA",
+      "篮球"
+     ],
+     "tennis": [
+      "网球"
+     ],
+     "cricket": [
+      "板球"
+     ]
+    }
+   },
+   "task_context": "the model was asked which sport a famous athlete plays, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 9,
+    "answers": {
+     "Football": 6,
+     "Soccer": 3,
+     "": 1
+    }
+   },
+   "v1_prompt": "The athlete Lionel Messi plays the sport of"
+  },
+  {
+   "name": "br-ent-ath-nadal",
+   "subfamily": "entity",
+   "slice": "ath",
+   "subject": "Rafael Nadal",
+   "prompt": "What sport does the athlete Rafael Nadal play? Answer in one word.",
+   "target": "tennis",
+   "intermediates": [
+    "tennis",
+    "网球"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "tennis",
+      "网球"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "tennis",
+    "aliases": [
+     "网球"
+    ],
+    "distractors": [
+     "soccer",
+     "volleyball",
+     "basketball",
+     "golf"
+    ],
+    "distractor_aliases": {
+     "soccer": [
+      "football",
+      "association football",
+      "足球"
+     ],
+     "volleyball": [
+      "排球"
+     ],
+     "basketball": [
+      "NBA",
+      "篮球"
+     ],
+     "golf": [
+      "高尔夫"
+     ]
+    }
+   },
+   "task_context": "the model was asked which sport a famous athlete plays, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "Tennis": 10
+    }
+   },
+   "v1_prompt": "The athlete Rafael Nadal plays the sport of"
+  },
+  {
+   "name": "br-ent-ath-ronaldo",
+   "subfamily": "entity",
+   "slice": "ath",
+   "subject": "Cristiano Ronaldo",
+   "prompt": "What sport does the athlete Cristiano Ronaldo play? Answer in one word.",
+   "target": "soccer",
+   "intermediates": [
+    "soccer",
+    "football",
+    "association football",
+    "足球"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "soccer",
+      "football",
+      "association football",
+      "足球"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "soccer",
+    "aliases": [
+     "football",
+     "association football",
+     "足球"
+    ],
+    "distractors": [
+     "hockey",
+     "boxing",
+     "cricket",
+     "swimming"
+    ],
+    "distractor_aliases": {
+     "hockey": [
+      "ice hockey",
+      "冰球"
+     ],
+     "boxing": [
+      "拳击"
+     ],
+     "cricket": [
+      "板球"
+     ],
+     "swimming": [
+      "swim",
+      "游泳"
+     ]
+    }
+   },
+   "task_context": "the model was asked which sport a famous athlete plays, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "Football": 7,
+     "Soccer": 3
+    }
+   },
+   "v1_prompt": "The athlete Cristiano Ronaldo plays the sport of"
+  },
+  {
+   "name": "br-ent-ath-ruth",
+   "subfamily": "entity",
+   "slice": "ath",
+   "subject": "Babe Ruth",
+   "prompt": "What sport does the athlete Babe Ruth play? Answer in one word.",
+   "target": "baseball",
+   "intermediates": [
+    "baseball",
+    "棒球"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "baseball",
+      "棒球"
+     ]
+    }
+   ],
+   "consistency": 0.9,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "baseball",
+    "aliases": [
+     "棒球"
+    ],
+    "distractors": [
+     "soccer",
+     "boxing",
+     "volleyball",
+     "cricket"
+    ],
+    "distractor_aliases": {
+     "soccer": [
+      "football",
+      "association football",
+      "足球"
+     ],
+     "boxing": [
+      "拳击"
+     ],
+     "volleyball": [
+      "排球"
+     ],
+     "cricket": [
+      "板球"
+     ]
+    }
+   },
+   "task_context": "the model was asked which sport a famous athlete plays, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 9,
+    "answers": {
+     "Baseball": 9,
+     "": 1
+    }
+   },
+   "v1_prompt": "The athlete Babe Ruth plays the sport of"
+  },
+  {
+   "name": "br-ent-ath-williams",
+   "subfamily": "entity",
+   "slice": "ath",
+   "subject": "Serena Williams",
+   "prompt": "What sport does the athlete Serena Williams play? Answer in one word.",
+   "target": "tennis",
+   "intermediates": [
+    "tennis",
+    "网球"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "tennis",
+      "网球"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "tennis",
+    "aliases": [
+     "网球"
+    ],
+    "distractors": [
+     "swimming",
+     "rugby",
+     "basketball",
+     "hockey"
+    ],
+    "distractor_aliases": {
+     "swimming": [
+      "swim",
+      "游泳"
+     ],
+     "rugby": [
+      "橄榄球",
+      "英式橄榄球"
+     ],
+     "basketball": [
+      "NBA",
+      "篮球"
+     ],
+     "hockey": [
+      "ice hockey",
+      "冰球"
+     ]
+    }
+   },
+   "task_context": "the model was asked which sport a famous athlete plays, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "Tennis": 10
+    }
+   },
+   "v1_prompt": "The athlete Serena Williams plays the sport of"
+  },
+  {
+   "name": "br-ent-ath-woods",
+   "subfamily": "entity",
+   "slice": "ath",
+   "subject": "Tiger Woods",
+   "prompt": "What sport does the athlete Tiger Woods play? Answer in one word.",
+   "target": "golf",
+   "intermediates": [
+    "golf",
+    "高尔夫"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "golf",
+      "高尔夫"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "golf",
+    "aliases": [
+     "高尔夫"
+    ],
+    "distractors": [
+     "boxing",
+     "hockey",
+     "swimming",
+     "cricket"
+    ],
+    "distractor_aliases": {
+     "boxing": [
+      "拳击"
+     ],
+     "hockey": [
+      "ice hockey",
+      "冰球"
+     ],
+     "swimming": [
+      "swim",
+      "游泳"
+     ],
+     "cricket": [
+      "板球"
+     ]
+    }
+   },
+   "task_context": "the model was asked which sport a famous athlete plays, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "Golf": 10
+    }
+   },
+   "v1_prompt": "The athlete Tiger Woods plays the sport of"
+  },
+  {
+   "name": "br-ent-cap-athens",
+   "subfamily": "entity",
+   "slice": "cap",
+   "subject": "Athens",
+   "prompt": "Athens is the capital of which country? Answer in one word.",
+   "target": "Greece",
+   "intermediates": [
+    "Greece",
+    "希腊"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Greece",
+      "希腊"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "Greece",
+    "aliases": [
+     "希腊"
+    ],
+    "distractors": [
+     "Turkey",
+     "Australia",
+     "England",
+     "Portugal"
+    ],
+    "distractor_aliases": {
+     "Turkey": [
+      "Türkiye",
+      "土耳其"
+     ],
+     "Australia": [
+      "澳大利亚",
+      "澳洲"
+     ],
+     "England": [
+      "United Kingdom",
+      "UK",
+      "Britain",
+      "Great Britain",
+      "英国",
+      "英格兰"
+     ],
+     "Portugal": [
+      "葡萄牙"
+     ]
+    }
+   },
+   "task_context": "the model was asked which country a capital city belongs to, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "Greece": 10
+    }
+   },
+   "v1_prompt": "The city of Athens is the capital of"
+  },
+  {
+   "name": "br-ent-cap-berlin",
+   "subfamily": "entity",
+   "slice": "cap",
+   "subject": "Berlin",
+   "prompt": "Berlin is the capital of which country? Answer in one word.",
+   "target": "Germany",
+   "intermediates": [
+    "Germany",
+    "德国"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Germany",
+      "德国"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "Germany",
+    "aliases": [
+     "德国"
+    ],
+    "distractors": [
+     "Brazil",
+     "India",
+     "Canada",
+     "Turkey"
+    ],
+    "distractor_aliases": {
+     "Brazil": [
+      "巴西"
+     ],
+     "India": [
+      "印度"
+     ],
+     "Canada": [
+      "加拿大"
+     ],
+     "Turkey": [
+      "Türkiye",
+      "土耳其"
+     ]
+    }
+   },
+   "task_context": "the model was asked which country a capital city belongs to, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "Germany": 10
+    }
+   },
+   "v1_prompt": "The city of Berlin is the capital of"
+  },
+  {
+   "name": "br-ent-cap-cairo",
+   "subfamily": "entity",
+   "slice": "cap",
+   "subject": "Cairo",
+   "prompt": "Cairo is the capital of which country? Answer in one word.",
+   "target": "Egypt",
+   "intermediates": [
+    "Egypt",
+    "埃及"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Egypt",
+      "埃及"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "Egypt",
+    "aliases": [
+     "埃及"
+    ],
+    "distractors": [
+     "Brazil",
+     "Spain",
+     "Argentina",
+     "India"
+    ],
+    "distractor_aliases": {
+     "Brazil": [
+      "巴西"
+     ],
+     "Spain": [
+      "西班牙"
+     ],
+     "Argentina": [
+      "阿根廷"
+     ],
+     "India": [
+      "印度"
+     ]
+    }
+   },
+   "task_context": "the model was asked which country a capital city belongs to, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "Egypt": 10
+    }
+   },
+   "v1_prompt": "The city of Cairo is the capital of"
+  },
+  {
+   "name": "br-ent-cap-madrid",
+   "subfamily": "entity",
+   "slice": "cap",
+   "subject": "Madrid",
+   "prompt": "Madrid is the capital of which country? Answer in one word.",
+   "target": "Spain",
+   "intermediates": [
+    "Spain",
+    "西班牙"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Spain",
+      "西班牙"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "Spain",
+    "aliases": [
+     "西班牙"
+    ],
+    "distractors": [
+     "Australia",
+     "Japan",
+     "India",
+     "France"
+    ],
+    "distractor_aliases": {
+     "Australia": [
+      "澳大利亚",
+      "澳洲"
+     ],
+     "Japan": [
+      "日本"
+     ],
+     "India": [
+      "印度"
+     ],
+     "France": [
+      "法国"
+     ]
+    }
+   },
+   "task_context": "the model was asked which country a capital city belongs to, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "Spain": 10
+    }
+   },
+   "v1_prompt": "The city of Madrid is the capital of"
+  },
+  {
+   "name": "br-ent-cap-moscow",
+   "subfamily": "entity",
+   "slice": "cap",
+   "subject": "Moscow",
+   "prompt": "Moscow is the capital of which country? Answer in one word.",
+   "target": "Russia",
+   "intermediates": [
+    "Russia",
+    "俄罗斯"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Russia",
+      "俄罗斯"
+     ]
+    }
+   ],
+   "consistency": 0.9,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "Russia",
+    "aliases": [
+     "俄罗斯"
+    ],
+    "distractors": [
+     "China",
+     "Germany",
+     "Italy",
+     "Brazil"
+    ],
+    "distractor_aliases": {
+     "China": [
+      "中国"
+     ],
+     "Germany": [
+      "德国"
+     ],
+     "Italy": [
+      "意大利"
+     ],
+     "Brazil": [
+      "巴西"
+     ]
+    }
+   },
+   "task_context": "the model was asked which country a capital city belongs to, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 9,
+    "answers": {
+     "Russia": 9,
+     "": 1
+    }
+   },
+   "v1_prompt": "The city of Moscow is the capital of"
+  },
+  {
+   "name": "br-ent-cap-nairobi",
+   "subfamily": "entity",
+   "slice": "cap",
+   "subject": "Nairobi",
+   "prompt": "Nairobi is the capital of which country? Answer in one word.",
+   "target": "Kenya",
+   "intermediates": [
+    "Kenya",
+    "肯尼亚"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Kenya",
+      "肯尼亚"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "Kenya",
+    "aliases": [
+     "肯尼亚"
+    ],
+    "distractors": [
+     "Egypt",
+     "India",
+     "France",
+     "Brazil"
+    ],
+    "distractor_aliases": {
+     "Egypt": [
+      "埃及"
+     ],
+     "India": [
+      "印度"
+     ],
+     "France": [
+      "法国"
+     ],
+     "Brazil": [
+      "巴西"
+     ]
+    }
+   },
+   "task_context": "the model was asked which country a capital city belongs to, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "Kenya": 10
+    }
+   },
+   "v1_prompt": "The city of Nairobi is the capital of"
+  },
+  {
+   "name": "br-ent-cap-ottawa",
+   "subfamily": "entity",
+   "slice": "cap",
+   "subject": "Ottawa",
+   "prompt": "Ottawa is the capital of which country? Answer in one word.",
+   "target": "Canada",
+   "intermediates": [
+    "Canada",
+    "加拿大"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Canada",
+      "加拿大"
+     ]
+    }
+   ],
+   "consistency": 0.9,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "Canada",
+    "aliases": [
+     "加拿大"
+    ],
+    "distractors": [
+     "Germany",
+     "Italy",
+     "Spain",
+     "Kenya"
+    ],
+    "distractor_aliases": {
+     "Germany": [
+      "德国"
+     ],
+     "Italy": [
+      "意大利"
+     ],
+     "Spain": [
+      "西班牙"
+     ],
+     "Kenya": [
+      "肯尼亚"
+     ]
+    }
+   },
+   "task_context": "the model was asked which country a capital city belongs to, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 9,
+    "answers": {
+     "Canada": 9,
+     "": 1
+    }
+   },
+   "v1_prompt": "The city of Ottawa is the capital of"
+  },
+  {
+   "name": "br-ent-cap-paris",
+   "subfamily": "entity",
+   "slice": "cap",
+   "subject": "Paris",
+   "prompt": "Paris is the capital of which country? Answer in one word.",
+   "target": "France",
+   "intermediates": [
+    "France",
+    "法国"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "France",
+      "法国"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "France",
+    "aliases": [
+     "法国"
+    ],
+    "distractors": [
+     "Mexico",
+     "Japan",
+     "Kenya",
+     "Argentina"
+    ],
+    "distractor_aliases": {
+     "Mexico": [
+      "墨西哥"
+     ],
+     "Japan": [
+      "日本"
+     ],
+     "Kenya": [
+      "肯尼亚"
+     ],
+     "Argentina": [
+      "阿根廷"
+     ]
+    }
+   },
+   "task_context": "the model was asked which country a capital city belongs to, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "France": 10
+    }
+   },
+   "v1_prompt": "The city of Paris is the capital of"
+  },
+  {
+   "name": "br-ent-cap-rome",
+   "subfamily": "entity",
+   "slice": "cap",
+   "subject": "Rome",
+   "prompt": "Rome is the capital of which country? Answer in one word.",
+   "target": "Italy",
+   "intermediates": [
+    "Italy",
+    "意大利"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Italy",
+      "意大利"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "Italy",
+    "aliases": [
+     "意大利"
+    ],
+    "distractors": [
+     "Egypt",
+     "Germany",
+     "Portugal",
+     "England"
+    ],
+    "distractor_aliases": {
+     "Egypt": [
+      "埃及"
+     ],
+     "Germany": [
+      "德国"
+     ],
+     "Portugal": [
+      "葡萄牙"
+     ],
+     "England": [
+      "United Kingdom",
+      "UK",
+      "Britain",
+      "Great Britain",
+      "英国",
+      "英格兰"
+     ]
+    }
+   },
+   "task_context": "the model was asked which country a capital city belongs to, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "Italy": 10
+    }
+   },
+   "v1_prompt": "The city of Rome is the capital of"
+  },
+  {
+   "name": "br-ent-cap-tokyo",
+   "subfamily": "entity",
+   "slice": "cap",
+   "subject": "Tokyo",
+   "prompt": "Tokyo is the capital of which country? Answer in one word.",
+   "target": "Japan",
+   "intermediates": [
+    "Japan",
+    "日本"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Japan",
+      "日本"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "Japan",
+    "aliases": [
+     "日本"
+    ],
+    "distractors": [
+     "Australia",
+     "Spain",
+     "Russia",
+     "Greece"
+    ],
+    "distractor_aliases": {
+     "Australia": [
+      "澳大利亚",
+      "澳洲"
+     ],
+     "Spain": [
+      "西班牙"
+     ],
+     "Russia": [
+      "俄罗斯"
+     ],
+     "Greece": [
+      "希腊"
+     ]
+    }
+   },
+   "task_context": "the model was asked which country a capital city belongs to, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "Japan": 10
+    }
+   },
+   "v1_prompt": "The city of Tokyo is the capital of"
+  },
+  {
+   "name": "br-ent-lmk-big",
+   "subfamily": "entity",
+   "slice": "lmk",
+   "subject": "Big Ben",
+   "prompt": "In which country is Big Ben? Answer in one word.",
+   "target": "England",
+   "intermediates": [
+    "England",
+    "United Kingdom",
+    "UK",
+    "Britain",
+    "Great Britain",
+    "英国",
+    "英格兰"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "England",
+      "United Kingdom",
+      "UK",
+      "Britain",
+      "Great Britain",
+      "英国",
+      "英格兰"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "England",
+    "aliases": [
+     "United Kingdom",
+     "UK",
+     "Britain",
+     "Great Britain",
+     "英国",
+     "英格兰"
+    ],
+    "distractors": [
+     "Spain",
+     "Brazil",
+     "Kenya",
+     "Japan"
+    ],
+    "distractor_aliases": {
+     "Spain": [
+      "西班牙"
+     ],
+     "Brazil": [
+      "巴西"
+     ],
+     "Kenya": [
+      "肯尼亚"
+     ],
+     "Japan": [
+      "日本"
+     ]
+    }
+   },
+   "task_context": "the model was asked which country a famous landmark is in, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "UK": 5,
+     "England": 5
+    }
+   },
+   "v1_prompt": "The Big Ben is located in the country of"
+  },
+  {
+   "name": "br-ent-lmk-christ",
+   "subfamily": "entity",
+   "slice": "lmk",
+   "subject": "Christ the Redeemer",
+   "prompt": "In which country is Christ the Redeemer? Answer in one word.",
+   "target": "Brazil",
+   "intermediates": [
+    "Brazil",
+    "巴西"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Brazil",
+      "巴西"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "Brazil",
+    "aliases": [
+     "巴西"
+    ],
+    "distractors": [
+     "Kenya",
+     "China",
+     "Italy",
+     "Russia"
+    ],
+    "distractor_aliases": {
+     "Kenya": [
+      "肯尼亚"
+     ],
+     "China": [
+      "中国"
+     ],
+     "Italy": [
+      "意大利"
+     ],
+     "Russia": [
+      "俄罗斯"
+     ]
+    }
+   },
+   "task_context": "the model was asked which country a famous landmark is in, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "Brazil": 10
+    }
+   },
+   "v1_prompt": "The Christ the Redeemer is located in the country of"
+  },
+  {
+   "name": "br-ent-lmk-colosseum",
+   "subfamily": "entity",
+   "slice": "lmk",
+   "subject": "the Colosseum",
+   "prompt": "In which country is the Colosseum? Answer in one word.",
+   "target": "Italy",
+   "intermediates": [
+    "Italy",
+    "意大利"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Italy",
+      "意大利"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "Italy",
+    "aliases": [
+     "意大利"
+    ],
+    "distractors": [
+     "Greece",
+     "Turkey",
+     "Mexico",
+     "Egypt"
+    ],
+    "distractor_aliases": {
+     "Greece": [
+      "希腊"
+     ],
+     "Turkey": [
+      "Türkiye",
+      "土耳其"
+     ],
+     "Mexico": [
+      "墨西哥"
+     ],
+     "Egypt": [
+      "埃及"
+     ]
+    }
+   },
+   "task_context": "the model was asked which country a famous landmark is in, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "Italy": 10
+    }
+   },
+   "v1_prompt": "The Colosseum is located in the country of"
+  },
+  {
+   "name": "br-ent-lmk-eiffel",
+   "subfamily": "entity",
+   "slice": "lmk",
+   "subject": "the Eiffel Tower",
+   "prompt": "In which country is the Eiffel Tower? Answer in one word.",
+   "target": "France",
+   "intermediates": [
+    "France",
+    "法国"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "France",
+      "法国"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "France",
+    "aliases": [
+     "法国"
+    ],
+    "distractors": [
+     "Turkey",
+     "Argentina",
+     "Brazil",
+     "England"
+    ],
+    "distractor_aliases": {
+     "Turkey": [
+      "Türkiye",
+      "土耳其"
+     ],
+     "Argentina": [
+      "阿根廷"
+     ],
+     "Brazil": [
+      "巴西"
+     ],
+     "England": [
+      "United Kingdom",
+      "UK",
+      "Britain",
+      "Great Britain",
+      "英国",
+      "英格兰"
+     ]
+    }
+   },
+   "task_context": "the model was asked which country a famous landmark is in, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "France": 10
+    }
+   },
+   "v1_prompt": "The Eiffel Tower is located in the country of"
+  },
+  {
+   "name": "br-ent-lmk-great",
+   "subfamily": "entity",
+   "slice": "lmk",
+   "subject": "the Great Pyramid of Giza",
+   "prompt": "In which country is the Great Pyramid of Giza? Answer in one word.",
+   "target": "Egypt",
+   "intermediates": [
+    "Egypt",
+    "埃及"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Egypt",
+      "埃及"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "Egypt",
+    "aliases": [
+     "埃及"
+    ],
+    "distractors": [
+     "Portugal",
+     "Brazil",
+     "Italy",
+     "Germany"
+    ],
+    "distractor_aliases": {
+     "Portugal": [
+      "葡萄牙"
+     ],
+     "Brazil": [
+      "巴西"
+     ],
+     "Italy": [
+      "意大利"
+     ],
+     "Germany": [
+      "德国"
+     ]
+    }
+   },
+   "task_context": "the model was asked which country a famous landmark is in, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "Egypt": 10
+    }
+   },
+   "v1_prompt": "The Great Pyramid of Giza is located in the country of"
+  },
+  {
+   "name": "br-ent-lmk-sydney",
+   "subfamily": "entity",
+   "slice": "lmk",
+   "subject": "the Sydney Opera House",
+   "prompt": "In which country is the Sydney Opera House? Answer in one word.",
+   "target": "Australia",
+   "intermediates": [
+    "Australia",
+    "澳大利亚",
+    "澳洲"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Australia",
+      "澳大利亚",
+      "澳洲"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "Australia",
+    "aliases": [
+     "澳大利亚",
+     "澳洲"
+    ],
+    "distractors": [
+     "Germany",
+     "Brazil",
+     "India",
+     "Japan"
+    ],
+    "distractor_aliases": {
+     "Germany": [
+      "德国"
+     ],
+     "Brazil": [
+      "巴西"
+     ],
+     "India": [
+      "印度"
+     ],
+     "Japan": [
+      "日本"
+     ]
+    }
+   },
+   "task_context": "the model was asked which country a famous landmark is in, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "Australia": 10
+    }
+   },
+   "v1_prompt": "The Sydney Opera House is located in the country of"
+  },
+  {
+   "name": "br-ent-lmk-taj",
+   "subfamily": "entity",
+   "slice": "lmk",
+   "subject": "the Taj Mahal",
+   "prompt": "In which country is the Taj Mahal? Answer in one word.",
+   "target": "India",
+   "intermediates": [
+    "India",
+    "印度"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "India",
+      "印度"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "India",
+    "aliases": [
+     "印度"
+    ],
+    "distractors": [
+     "Brazil",
+     "Germany",
+     "Mexico",
+     "Canada"
+    ],
+    "distractor_aliases": {
+     "Brazil": [
+      "巴西"
+     ],
+     "Germany": [
+      "德国"
+     ],
+     "Mexico": [
+      "墨西哥"
+     ],
+     "Canada": [
+      "加拿大"
+     ]
+    }
+   },
+   "task_context": "the model was asked which country a famous landmark is in, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "India": 10
+    }
+   },
+   "v1_prompt": "The Taj Mahal is located in the country of"
+  },
+  {
+   "name": "br-ent-mus-armstrong",
+   "subfamily": "entity",
+   "slice": "mus",
+   "subject": "Louis Armstrong",
+   "prompt": "Which instrument is the musician Louis Armstrong famous for playing? Answer in one word.",
+   "target": "trumpet",
+   "intermediates": [
+    "trumpet",
+    "小号"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "trumpet",
+      "小号"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "trumpet",
+    "aliases": [
+     "小号"
+    ],
+    "distractors": [
+     "guitar",
+     "cello",
+     "piano",
+     "violin"
+    ],
+    "distractor_aliases": {
+     "guitar": [
+      "吉他"
+     ],
+     "cello": [
+      "大提琴"
+     ],
+     "piano": [
+      "钢琴"
+     ],
+     "violin": [
+      "fiddle",
+      "小提琴"
+     ]
+    }
+   },
+   "task_context": "the model was asked which instrument a famous musician is known for playing, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "Trumpet": 10
+    }
+   },
+   "v1_prompt": "The musician Louis Armstrong is famous for playing the"
+  },
+  {
+   "name": "br-ent-mus-beethoven",
+   "subfamily": "entity",
+   "slice": "mus",
+   "subject": "Ludwig van Beethoven",
+   "prompt": "Which instrument is the musician Ludwig van Beethoven famous for playing? Answer in one word.",
+   "target": "piano",
+   "intermediates": [
+    "piano",
+    "钢琴"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "piano",
+      "钢琴"
+     ]
+    }
+   ],
+   "consistency": 0.9,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "piano",
+    "aliases": [
+     "钢琴"
+    ],
+    "distractors": [
+     "drums",
+     "flute",
+     "trumpet",
+     "saxophone"
+    ],
+    "distractor_aliases": {
+     "drums": [
+      "drum",
+      "drum kit",
+      "架子鼓",
+      "鼓"
+     ],
+     "flute": [
+      "长笛"
+     ],
+     "trumpet": [
+      "小号"
+     ],
+     "saxophone": [
+      "sax",
+      "萨克斯"
+     ]
+    }
+   },
+   "task_context": "the model was asked which instrument a famous musician is known for playing, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 9,
+    "answers": {
+     "Piano": 9,
+     "": 1
+    }
+   },
+   "v1_prompt": "The musician Ludwig van Beethoven is famous for playing the"
+  },
+  {
+   "name": "br-ent-mus-davis",
+   "subfamily": "entity",
+   "slice": "mus",
+   "subject": "Miles Davis",
+   "prompt": "Which instrument is the musician Miles Davis famous for playing? Answer in one word.",
+   "target": "trumpet",
+   "intermediates": [
+    "trumpet",
+    "小号"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "trumpet",
+      "小号"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "trumpet",
+    "aliases": [
+     "小号"
+    ],
+    "distractors": [
+     "guitar",
+     "flute",
+     "piano",
+     "cello"
+    ],
+    "distractor_aliases": {
+     "guitar": [
+      "吉他"
+     ],
+     "flute": [
+      "长笛"
+     ],
+     "piano": [
+      "钢琴"
+     ],
+     "cello": [
+      "大提琴"
+     ]
+    }
+   },
+   "task_context": "the model was asked which instrument a famous musician is known for playing, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "Trumpet": 10
+    }
+   },
+   "v1_prompt": "The musician Miles Davis is famous for playing the"
+  },
+  {
+   "name": "br-ent-mus-hendrix",
+   "subfamily": "entity",
+   "slice": "mus",
+   "subject": "Jimi Hendrix",
+   "prompt": "Which instrument is the musician Jimi Hendrix famous for playing? Answer in one word.",
+   "target": "guitar",
+   "intermediates": [
+    "guitar",
+    "吉他"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "guitar",
+      "吉他"
+     ]
+    }
+   ],
+   "consistency": 0.8,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "guitar",
+    "aliases": [
+     "吉他"
+    ],
+    "distractors": [
+     "piano",
+     "trumpet",
+     "flute",
+     "cello"
+    ],
+    "distractor_aliases": {
+     "piano": [
+      "钢琴"
+     ],
+     "trumpet": [
+      "小号"
+     ],
+     "flute": [
+      "长笛"
+     ],
+     "cello": [
+      "大提琴"
+     ]
+    }
+   },
+   "task_context": "the model was asked which instrument a famous musician is known for playing, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 8,
+    "answers": {
+     "Guitar": 8,
+     "Electric": 2
+    }
+   },
+   "v1_prompt": "The musician Jimi Hendrix is famous for playing the"
+  },
+  {
+   "name": "br-ent-mus-john",
+   "subfamily": "entity",
+   "slice": "mus",
+   "subject": "Elton John",
+   "prompt": "Which instrument is the musician Elton John famous for playing? Answer in one word.",
+   "target": "piano",
+   "intermediates": [
+    "piano",
+    "钢琴"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "piano",
+      "钢琴"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "piano",
+    "aliases": [
+     "钢琴"
+    ],
+    "distractors": [
+     "violin",
+     "guitar",
+     "flute",
+     "drums"
+    ],
+    "distractor_aliases": {
+     "violin": [
+      "fiddle",
+      "小提琴"
+     ],
+     "guitar": [
+      "吉他"
+     ],
+     "flute": [
+      "长笛"
+     ],
+     "drums": [
+      "drum",
+      "drum kit",
+      "架子鼓",
+      "鼓"
+     ]
+    }
+   },
+   "task_context": "the model was asked which instrument a famous musician is known for playing, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "Piano": 10
+    }
+   },
+   "v1_prompt": "The musician Elton John is famous for playing the"
+  },
+  {
+   "name": "br-ent-mus-ma",
+   "subfamily": "entity",
+   "slice": "mus",
+   "subject": "Yo-Yo Ma",
+   "prompt": "Which instrument is the musician Yo-Yo Ma famous for playing? Answer in one word.",
+   "target": "cello",
+   "intermediates": [
+    "cello",
+    "大提琴"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "cello",
+      "大提琴"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "cello",
+    "aliases": [
+     "大提琴"
+    ],
+    "distractors": [
+     "flute",
+     "piano",
+     "violin",
+     "saxophone"
+    ],
+    "distractor_aliases": {
+     "flute": [
+      "长笛"
+     ],
+     "piano": [
+      "钢琴"
+     ],
+     "violin": [
+      "fiddle",
+      "小提琴"
+     ],
+     "saxophone": [
+      "sax",
+      "萨克斯"
+     ]
+    }
+   },
+   "task_context": "the model was asked which instrument a famous musician is known for playing, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "cello": 10
+    }
+   },
+   "v1_prompt": "The musician Yo-Yo Ma is famous for playing the"
+  },
+  {
+   "name": "br-proc-arith-10-1",
+   "subfamily": "processing",
+   "slice": "arith",
+   "subject": "10 - 1",
+   "prompt": "What is 10 - 1? Answer in one word.",
+   "target": "9",
+   "intermediates": [
+    "9",
+    "nine",
+    "九"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "9",
+      "nine",
+      "九"
+     ]
+    }
+   ],
+   "consistency": 0.9,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "9",
+    "aliases": [
+     "nine",
+     "九"
+    ],
+    "distractors": [
+     "11",
+     "4",
+     "8",
+     "2"
+    ],
+    "distractor_aliases": {
+     "11": [
+      "eleven",
+      "十一"
+     ],
+     "4": [
+      "four",
+      "四"
+     ],
+     "8": [
+      "eight",
+      "八"
+     ],
+     "2": [
+      "two",
+      "二",
+      "两"
+     ]
+    }
+   },
+   "task_context": "the model was asked to compute a single-step arithmetic problem with small whole numbers, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 9,
+    "answers": {
+     "9": 6,
+     "Nine": 3,
+     "": 1
+    }
+   },
+   "v1_prompt": "10 - 1 ="
+  },
+  {
+   "name": "br-proc-arith-2*3",
+   "subfamily": "processing",
+   "slice": "arith",
+   "subject": "2 * 3",
+   "prompt": "What is 2 * 3? Answer in one word.",
+   "target": "6",
+   "intermediates": [
+    "6",
+    "six",
+    "六"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "6",
+      "six",
+      "六"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "6",
+    "aliases": [
+     "six",
+     "六"
+    ],
+    "distractors": [
+     "10",
+     "11",
+     "12",
+     "5"
+    ],
+    "distractor_aliases": {
+     "10": [
+      "ten",
+      "十"
+     ],
+     "11": [
+      "eleven",
+      "十一"
+     ],
+     "12": [
+      "twelve",
+      "十二"
+     ],
+     "5": [
+      "five",
+      "五"
+     ]
+    }
+   },
+   "task_context": "the model was asked to compute a single-step arithmetic problem with small whole numbers, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "6": 9,
+     "six": 1
+    }
+   },
+   "v1_prompt": "2 * 3 ="
+  },
+  {
+   "name": "br-proc-arith-2+2",
+   "subfamily": "processing",
+   "slice": "arith",
+   "subject": "2 + 2",
+   "prompt": "What is 2 + 2? Answer in one word.",
+   "target": "4",
+   "intermediates": [
+    "4",
+    "four",
+    "四"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "4",
+      "four",
+      "四"
+     ]
+    }
+   ],
+   "consistency": 0.9,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "4",
+    "aliases": [
+     "four",
+     "四"
+    ],
+    "distractors": [
+     "5",
+     "6",
+     "7",
+     "10"
+    ],
+    "distractor_aliases": {
+     "5": [
+      "five",
+      "五"
+     ],
+     "6": [
+      "six",
+      "六"
+     ],
+     "7": [
+      "seven",
+      "七"
+     ],
+     "10": [
+      "ten",
+      "十"
+     ]
+    }
+   },
+   "task_context": "the model was asked to compute a single-step arithmetic problem with small whole numbers, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 9,
+    "answers": {
+     "Four": 5,
+     "4": 4,
+     "": 1
+    }
+   },
+   "v1_prompt": "2 + 2 ="
+  },
+  {
+   "name": "br-proc-arith-3+4",
+   "subfamily": "processing",
+   "slice": "arith",
+   "subject": "3 + 4",
+   "prompt": "What is 3 + 4? Answer in one word.",
+   "target": "7",
+   "intermediates": [
+    "7",
+    "seven",
+    "七"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "7",
+      "seven",
+      "七"
+     ]
+    }
+   ],
+   "consistency": 0.8,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "7",
+    "aliases": [
+     "seven",
+     "七"
+    ],
+    "distractors": [
+     "0",
+     "10",
+     "12",
+     "8"
+    ],
+    "distractor_aliases": {
+     "0": [
+      "zero",
+      "零"
+     ],
+     "10": [
+      "ten",
+      "十"
+     ],
+     "12": [
+      "twelve",
+      "十二"
+     ],
+     "8": [
+      "eight",
+      "八"
+     ]
+    }
+   },
+   "task_context": "the model was asked to compute a single-step arithmetic problem with small whole numbers, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 8,
+    "answers": {
+     "7": 7,
+     "": 2,
+     "seven": 1
+    }
+   },
+   "v1_prompt": "3 + 4 ="
+  },
+  {
+   "name": "br-proc-arith-4*2",
+   "subfamily": "processing",
+   "slice": "arith",
+   "subject": "4 * 2",
+   "prompt": "What is 4 * 2? Answer in one word.",
+   "target": "8",
+   "intermediates": [
+    "8",
+    "eight",
+    "八"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "8",
+      "eight",
+      "八"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "8",
+    "aliases": [
+     "eight",
+     "八"
+    ],
+    "distractors": [
+     "5",
+     "11",
+     "0",
+     "9"
+    ],
+    "distractor_aliases": {
+     "5": [
+      "five",
+      "五"
+     ],
+     "11": [
+      "eleven",
+      "十一"
+     ],
+     "0": [
+      "zero",
+      "零"
+     ],
+     "9": [
+      "nine",
+      "九"
+     ]
+    }
+   },
+   "task_context": "the model was asked to compute a single-step arithmetic problem with small whole numbers, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "8": 9,
+     "|8|": 1
+    }
+   },
+   "v1_prompt": "4 * 2 ="
+  },
+  {
+   "name": "br-proc-arith-5+1",
+   "subfamily": "processing",
+   "slice": "arith",
+   "subject": "5 + 1",
+   "prompt": "What is 5 + 1? Answer in one word.",
+   "target": "6",
+   "intermediates": [
+    "6",
+    "six",
+    "六"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "6",
+      "six",
+      "六"
+     ]
+    }
+   ],
+   "consistency": 0.8,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "6",
+    "aliases": [
+     "six",
+     "六"
+    ],
+    "distractors": [
+     "8",
+     "9",
+     "0",
+     "10"
+    ],
+    "distractor_aliases": {
+     "8": [
+      "eight",
+      "八"
+     ],
+     "9": [
+      "nine",
+      "九"
+     ],
+     "0": [
+      "zero",
+      "零"
+     ],
+     "10": [
+      "ten",
+      "十"
+     ]
+    }
+   },
+   "task_context": "the model was asked to compute a single-step arithmetic problem with small whole numbers, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 8,
+    "answers": {
+     "6": 7,
+     "": 2,
+     "six": 1
+    }
+   },
+   "v1_prompt": "5 + 1 ="
+  },
+  {
+   "name": "br-proc-arith-6-2",
+   "subfamily": "processing",
+   "slice": "arith",
+   "subject": "6 - 2",
+   "prompt": "What is 6 - 2? Answer in one word.",
+   "target": "4",
+   "intermediates": [
+    "4",
+    "four",
+    "四"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "4",
+      "four",
+      "四"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "4",
+    "aliases": [
+     "four",
+     "四"
+    ],
+    "distractors": [
+     "0",
+     "10",
+     "3",
+     "5"
+    ],
+    "distractor_aliases": {
+     "0": [
+      "zero",
+      "零"
+     ],
+     "10": [
+      "ten",
+      "十"
+     ],
+     "3": [
+      "three",
+      "三"
+     ],
+     "5": [
+      "five",
+      "五"
+     ]
+    }
+   },
+   "task_context": "the model was asked to compute a single-step arithmetic problem with small whole numbers, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "4": 8,
+     "four": 2
+    }
+   },
+   "v1_prompt": "6 - 2 ="
+  },
+  {
+   "name": "br-proc-arith-7+2",
+   "subfamily": "processing",
+   "slice": "arith",
+   "subject": "7 + 2",
+   "prompt": "What is 7 + 2? Answer in one word.",
+   "target": "9",
+   "intermediates": [
+    "9",
+    "nine",
+    "九"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "9",
+      "nine",
+      "九"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "9",
+    "aliases": [
+     "nine",
+     "九"
+    ],
+    "distractors": [
+     "5",
+     "11",
+     "4",
+     "0"
+    ],
+    "distractor_aliases": {
+     "5": [
+      "five",
+      "五"
+     ],
+     "11": [
+      "eleven",
+      "十一"
+     ],
+     "4": [
+      "four",
+      "四"
+     ],
+     "0": [
+      "zero",
+      "零"
+     ]
+    }
+   },
+   "task_context": "the model was asked to compute a single-step arithmetic problem with small whole numbers, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "nine": 6,
+     "9": 4
+    }
+   },
+   "v1_prompt": "7 + 2 ="
+  },
+  {
+   "name": "br-proc-arith-8/2",
+   "subfamily": "processing",
+   "slice": "arith",
+   "subject": "8 / 2",
+   "prompt": "What is 8 / 2? Answer in one word.",
+   "target": "4",
+   "intermediates": [
+    "4",
+    "four",
+    "四"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "4",
+      "four",
+      "四"
+     ]
+    }
+   ],
+   "consistency": 0.9,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "4",
+    "aliases": [
+     "four",
+     "四"
+    ],
+    "distractors": [
+     "7",
+     "0",
+     "3",
+     "11"
+    ],
+    "distractor_aliases": {
+     "7": [
+      "seven",
+      "七"
+     ],
+     "0": [
+      "zero",
+      "零"
+     ],
+     "3": [
+      "three",
+      "三"
+     ],
+     "11": [
+      "eleven",
+      "十一"
+     ]
+    }
+   },
+   "task_context": "the model was asked to compute a single-step arithmetic problem with small whole numbers, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 9,
+    "answers": {
+     "4": 7,
+     "Four": 2,
+     "": 1
+    }
+   },
+   "v1_prompt": "8 / 2 ="
+  },
+  {
+   "name": "br-proc-arith-9-5",
+   "subfamily": "processing",
+   "slice": "arith",
+   "subject": "9 - 5",
+   "prompt": "What is 9 - 5? Answer in one word.",
+   "target": "4",
+   "intermediates": [
+    "4",
+    "four",
+    "四"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "4",
+      "four",
+      "四"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "4",
+    "aliases": [
+     "four",
+     "四"
+    ],
+    "distractors": [
+     "0",
+     "12",
+     "11",
+     "7"
+    ],
+    "distractor_aliases": {
+     "0": [
+      "zero",
+      "零"
+     ],
+     "12": [
+      "twelve",
+      "十二"
+     ],
+     "11": [
+      "eleven",
+      "十一"
+     ],
+     "7": [
+      "seven",
+      "七"
+     ]
+    }
+   },
+   "task_context": "the model was asked to compute a single-step arithmetic problem with small whole numbers, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "4": 7,
+     "Four": 3
+    }
+   },
+   "v1_prompt": "9 - 5 ="
+  },
+  {
+   "name": "br-proc-dayafter-friday",
+   "subfamily": "processing",
+   "slice": "dayafter",
+   "subject": "Friday",
+   "prompt": "What is the day after Friday? Answer in one word.",
+   "target": "Saturday",
+   "intermediates": [
+    "Saturday",
+    "星期六",
+    "周六",
+    "礼拜六"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Saturday",
+      "星期六",
+      "周六",
+      "礼拜六"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "Saturday",
+    "aliases": [
+     "星期六",
+     "周六",
+     "礼拜六"
+    ],
+    "distractors": [
+     "Monday",
+     "Thursday",
+     "Sunday",
+     "Wednesday"
+    ],
+    "distractor_aliases": {
+     "Monday": [
+      "星期一",
+      "周一",
+      "礼拜一"
+     ],
+     "Thursday": [
+      "星期四",
+      "周四",
+      "礼拜四"
+     ],
+     "Sunday": [
+      "星期日",
+      "星期天",
+      "周日",
+      "礼拜天"
+     ],
+     "Wednesday": [
+      "星期三",
+      "周三",
+      "礼拜三"
+     ]
+    }
+   },
+   "task_context": "the model was asked which day of the week comes right after a given day, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "Saturday": 10
+    }
+   },
+   "v1_prompt": "The day after Friday is"
+  },
+  {
+   "name": "br-proc-dayafter-monday",
+   "subfamily": "processing",
+   "slice": "dayafter",
+   "subject": "Monday",
+   "prompt": "What is the day after Monday? Answer in one word.",
+   "target": "Tuesday",
+   "intermediates": [
+    "Tuesday",
+    "星期二",
+    "周二",
+    "礼拜二"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Tuesday",
+      "星期二",
+      "周二",
+      "礼拜二"
+     ]
+    }
+   ],
+   "consistency": 0.8,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "Tuesday",
+    "aliases": [
+     "星期二",
+     "周二",
+     "礼拜二"
+    ],
+    "distractors": [
+     "Sunday",
+     "Friday",
+     "Thursday",
+     "Saturday"
+    ],
+    "distractor_aliases": {
+     "Sunday": [
+      "星期日",
+      "星期天",
+      "周日",
+      "礼拜天"
+     ],
+     "Friday": [
+      "星期五",
+      "周五",
+      "礼拜五"
+     ],
+     "Thursday": [
+      "星期四",
+      "周四",
+      "礼拜四"
+     ],
+     "Saturday": [
+      "星期六",
+      "周六",
+      "礼拜六"
+     ]
+    }
+   },
+   "task_context": "the model was asked which day of the week comes right after a given day, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 8,
+    "answers": {
+     "Tuesday": 8,
+     "": 2
+    }
+   },
+   "v1_prompt": "The day after Monday is"
+  },
+  {
+   "name": "br-proc-dayafter-saturday",
+   "subfamily": "processing",
+   "slice": "dayafter",
+   "subject": "Saturday",
+   "prompt": "What is the day after Saturday? Answer in one word.",
+   "target": "Sunday",
+   "intermediates": [
+    "Sunday",
+    "星期日",
+    "星期天",
+    "周日",
+    "礼拜天"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Sunday",
+      "星期日",
+      "星期天",
+      "周日",
+      "礼拜天"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "Sunday",
+    "aliases": [
+     "星期日",
+     "星期天",
+     "周日",
+     "礼拜天"
+    ],
+    "distractors": [
+     "Monday",
+     "Friday",
+     "Tuesday",
+     "Wednesday"
+    ],
+    "distractor_aliases": {
+     "Monday": [
+      "星期一",
+      "周一",
+      "礼拜一"
+     ],
+     "Friday": [
+      "星期五",
+      "周五",
+      "礼拜五"
+     ],
+     "Tuesday": [
+      "星期二",
+      "周二",
+      "礼拜二"
+     ],
+     "Wednesday": [
+      "星期三",
+      "周三",
+      "礼拜三"
+     ]
+    }
+   },
+   "task_context": "the model was asked which day of the week comes right after a given day, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "Sunday": 10
+    }
+   },
+   "v1_prompt": "The day after Saturday is"
+  },
+  {
+   "name": "br-proc-dayafter-sunday",
+   "subfamily": "processing",
+   "slice": "dayafter",
+   "subject": "Sunday",
+   "prompt": "What is the day after Sunday? Answer in one word.",
+   "target": "Monday",
+   "intermediates": [
+    "Monday",
+    "星期一",
+    "周一",
+    "礼拜一"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Monday",
+      "星期一",
+      "周一",
+      "礼拜一"
+     ]
+    }
+   ],
+   "consistency": 0.9,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "Monday",
+    "aliases": [
+     "星期一",
+     "周一",
+     "礼拜一"
+    ],
+    "distractors": [
+     "Friday",
+     "Saturday",
+     "Thursday",
+     "Wednesday"
+    ],
+    "distractor_aliases": {
+     "Friday": [
+      "星期五",
+      "周五",
+      "礼拜五"
+     ],
+     "Saturday": [
+      "星期六",
+      "周六",
+      "礼拜六"
+     ],
+     "Thursday": [
+      "星期四",
+      "周四",
+      "礼拜四"
+     ],
+     "Wednesday": [
+      "星期三",
+      "周三",
+      "礼拜三"
+     ]
+    }
+   },
+   "task_context": "the model was asked which day of the week comes right after a given day, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 9,
+    "answers": {
+     "Monday": 9,
+     "": 1
+    }
+   },
+   "v1_prompt": "The day after Sunday is"
+  },
+  {
+   "name": "br-proc-dayafter-thursday",
+   "subfamily": "processing",
+   "slice": "dayafter",
+   "subject": "Thursday",
+   "prompt": "What is the day after Thursday? Answer in one word.",
+   "target": "Friday",
+   "intermediates": [
+    "Friday",
+    "星期五",
+    "周五",
+    "礼拜五"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Friday",
+      "星期五",
+      "周五",
+      "礼拜五"
+     ]
+    }
+   ],
+   "consistency": 0.9,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "Friday",
+    "aliases": [
+     "星期五",
+     "周五",
+     "礼拜五"
+    ],
+    "distractors": [
+     "Tuesday",
+     "Sunday",
+     "Saturday",
+     "Wednesday"
+    ],
+    "distractor_aliases": {
+     "Tuesday": [
+      "星期二",
+      "周二",
+      "礼拜二"
+     ],
+     "Sunday": [
+      "星期日",
+      "星期天",
+      "周日",
+      "礼拜天"
+     ],
+     "Saturday": [
+      "星期六",
+      "周六",
+      "礼拜六"
+     ],
+     "Wednesday": [
+      "星期三",
+      "周三",
+      "礼拜三"
+     ]
+    }
+   },
+   "task_context": "the model was asked which day of the week comes right after a given day, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 9,
+    "answers": {
+     "Friday": 9,
+     "": 1
+    }
+   },
+   "v1_prompt": "The day after Thursday is"
+  },
+  {
+   "name": "br-proc-dayafter-tuesday",
+   "subfamily": "processing",
+   "slice": "dayafter",
+   "subject": "Tuesday",
+   "prompt": "What is the day after Tuesday? Answer in one word.",
+   "target": "Wednesday",
+   "intermediates": [
+    "Wednesday",
+    "星期三",
+    "周三",
+    "礼拜三"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Wednesday",
+      "星期三",
+      "周三",
+      "礼拜三"
+     ]
+    }
+   ],
+   "consistency": 0.8,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "Wednesday",
+    "aliases": [
+     "星期三",
+     "周三",
+     "礼拜三"
+    ],
+    "distractors": [
+     "Saturday",
+     "Monday",
+     "Friday",
+     "Thursday"
+    ],
+    "distractor_aliases": {
+     "Saturday": [
+      "星期六",
+      "周六",
+      "礼拜六"
+     ],
+     "Monday": [
+      "星期一",
+      "周一",
+      "礼拜一"
+     ],
+     "Friday": [
+      "星期五",
+      "周五",
+      "礼拜五"
+     ],
+     "Thursday": [
+      "星期四",
+      "周四",
+      "礼拜四"
+     ]
+    }
+   },
+   "task_context": "the model was asked which day of the week comes right after a given day, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 8,
+    "answers": {
+     "Wednesday": 8,
+     "": 2
+    }
+   },
+   "v1_prompt": "The day after Tuesday is"
+  },
+  {
+   "name": "br-proc-dayafter-wednesday",
+   "subfamily": "processing",
+   "slice": "dayafter",
+   "subject": "Wednesday",
+   "prompt": "What is the day after Wednesday? Answer in one word.",
+   "target": "Thursday",
+   "intermediates": [
+    "Thursday",
+    "星期四",
+    "周四",
+    "礼拜四"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Thursday",
+      "星期四",
+      "周四",
+      "礼拜四"
+     ]
+    }
+   ],
+   "consistency": 0.9,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "Thursday",
+    "aliases": [
+     "星期四",
+     "周四",
+     "礼拜四"
+    ],
+    "distractors": [
+     "Monday",
+     "Sunday",
+     "Friday",
+     "Saturday"
+    ],
+    "distractor_aliases": {
+     "Monday": [
+      "星期一",
+      "周一",
+      "礼拜一"
+     ],
+     "Sunday": [
+      "星期日",
+      "星期天",
+      "周日",
+      "礼拜天"
+     ],
+     "Friday": [
+      "星期五",
+      "周五",
+      "礼拜五"
+     ],
+     "Saturday": [
+      "星期六",
+      "周六",
+      "礼拜六"
+     ]
+    }
+   },
+   "task_context": "the model was asked which day of the week comes right after a given day, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 9,
+    "answers": {
+     "Thursday": 9,
+     "": 1
+    }
+   },
+   "v1_prompt": "The day after Wednesday is"
+  },
+  {
+   "name": "br-proc-daybefore-friday",
+   "subfamily": "processing",
+   "slice": "daybefore",
+   "subject": "Friday",
+   "prompt": "What is the day before Friday? Answer in one word.",
+   "target": "Thursday",
+   "intermediates": [
+    "Thursday",
+    "星期四",
+    "周四",
+    "礼拜四"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Thursday",
+      "星期四",
+      "周四",
+      "礼拜四"
+     ]
+    }
+   ],
+   "consistency": 0.9,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "Thursday",
+    "aliases": [
+     "星期四",
+     "周四",
+     "礼拜四"
+    ],
+    "distractors": [
+     "Wednesday",
+     "Sunday",
+     "Tuesday",
+     "Monday"
+    ],
+    "distractor_aliases": {
+     "Wednesday": [
+      "星期三",
+      "周三",
+      "礼拜三"
+     ],
+     "Sunday": [
+      "星期日",
+      "星期天",
+      "周日",
+      "礼拜天"
+     ],
+     "Tuesday": [
+      "星期二",
+      "周二",
+      "礼拜二"
+     ],
+     "Monday": [
+      "星期一",
+      "周一",
+      "礼拜一"
+     ]
+    }
+   },
+   "task_context": "the model was asked which day of the week comes right before a given day, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 9,
+    "answers": {
+     "Thursday": 9,
+     "": 1
+    }
+   },
+   "v1_prompt": "The day before Friday is"
+  },
+  {
+   "name": "br-proc-daybefore-monday",
+   "subfamily": "processing",
+   "slice": "daybefore",
+   "subject": "Monday",
+   "prompt": "What is the day before Monday? Answer in one word.",
+   "target": "Sunday",
+   "intermediates": [
+    "Sunday",
+    "星期日",
+    "星期天",
+    "周日",
+    "礼拜天"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Sunday",
+      "星期日",
+      "星期天",
+      "周日",
+      "礼拜天"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "Sunday",
+    "aliases": [
+     "星期日",
+     "星期天",
+     "周日",
+     "礼拜天"
+    ],
+    "distractors": [
+     "Saturday",
+     "Wednesday",
+     "Thursday",
+     "Tuesday"
+    ],
+    "distractor_aliases": {
+     "Saturday": [
+      "星期六",
+      "周六",
+      "礼拜六"
+     ],
+     "Wednesday": [
+      "星期三",
+      "周三",
+      "礼拜三"
+     ],
+     "Thursday": [
+      "星期四",
+      "周四",
+      "礼拜四"
+     ],
+     "Tuesday": [
+      "星期二",
+      "周二",
+      "礼拜二"
+     ]
+    }
+   },
+   "task_context": "the model was asked which day of the week comes right before a given day, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "Sunday": 10
+    }
+   },
+   "v1_prompt": "The day before Monday is"
+  },
+  {
+   "name": "br-proc-daybefore-saturday",
+   "subfamily": "processing",
+   "slice": "daybefore",
+   "subject": "Saturday",
+   "prompt": "What is the day before Saturday? Answer in one word.",
+   "target": "Friday",
+   "intermediates": [
+    "Friday",
+    "星期五",
+    "周五",
+    "礼拜五"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Friday",
+      "星期五",
+      "周五",
+      "礼拜五"
+     ]
+    }
+   ],
+   "consistency": 0.9,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "Friday",
+    "aliases": [
+     "星期五",
+     "周五",
+     "礼拜五"
+    ],
+    "distractors": [
+     "Sunday",
+     "Monday",
+     "Tuesday",
+     "Wednesday"
+    ],
+    "distractor_aliases": {
+     "Sunday": [
+      "星期日",
+      "星期天",
+      "周日",
+      "礼拜天"
+     ],
+     "Monday": [
+      "星期一",
+      "周一",
+      "礼拜一"
+     ],
+     "Tuesday": [
+      "星期二",
+      "周二",
+      "礼拜二"
+     ],
+     "Wednesday": [
+      "星期三",
+      "周三",
+      "礼拜三"
+     ]
+    }
+   },
+   "task_context": "the model was asked which day of the week comes right before a given day, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 9,
+    "answers": {
+     "Friday": 9,
+     "": 1
+    }
+   },
+   "v1_prompt": "The day before Saturday is"
+  },
+  {
+   "name": "br-proc-daybefore-sunday",
+   "subfamily": "processing",
+   "slice": "daybefore",
+   "subject": "Sunday",
+   "prompt": "What is the day before Sunday? Answer in one word.",
+   "target": "Saturday",
+   "intermediates": [
+    "Saturday",
+    "星期六",
+    "周六",
+    "礼拜六"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Saturday",
+      "星期六",
+      "周六",
+      "礼拜六"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "Saturday",
+    "aliases": [
+     "星期六",
+     "周六",
+     "礼拜六"
+    ],
+    "distractors": [
+     "Tuesday",
+     "Monday",
+     "Wednesday",
+     "Friday"
+    ],
+    "distractor_aliases": {
+     "Tuesday": [
+      "星期二",
+      "周二",
+      "礼拜二"
+     ],
+     "Monday": [
+      "星期一",
+      "周一",
+      "礼拜一"
+     ],
+     "Wednesday": [
+      "星期三",
+      "周三",
+      "礼拜三"
+     ],
+     "Friday": [
+      "星期五",
+      "周五",
+      "礼拜五"
+     ]
+    }
+   },
+   "task_context": "the model was asked which day of the week comes right before a given day, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "Saturday": 10
+    }
+   },
+   "v1_prompt": "The day before Sunday is"
+  },
+  {
+   "name": "br-proc-daybefore-thursday",
+   "subfamily": "processing",
+   "slice": "daybefore",
+   "subject": "Thursday",
+   "prompt": "What is the day before Thursday? Answer in one word.",
+   "target": "Wednesday",
+   "intermediates": [
+    "Wednesday",
+    "星期三",
+    "周三",
+    "礼拜三"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Wednesday",
+      "星期三",
+      "周三",
+      "礼拜三"
+     ]
+    }
+   ],
+   "consistency": 0.9,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "Wednesday",
+    "aliases": [
+     "星期三",
+     "周三",
+     "礼拜三"
+    ],
+    "distractors": [
+     "Sunday",
+     "Tuesday",
+     "Saturday",
+     "Monday"
+    ],
+    "distractor_aliases": {
+     "Sunday": [
+      "星期日",
+      "星期天",
+      "周日",
+      "礼拜天"
+     ],
+     "Tuesday": [
+      "星期二",
+      "周二",
+      "礼拜二"
+     ],
+     "Saturday": [
+      "星期六",
+      "周六",
+      "礼拜六"
+     ],
+     "Monday": [
+      "星期一",
+      "周一",
+      "礼拜一"
+     ]
+    }
+   },
+   "task_context": "the model was asked which day of the week comes right before a given day, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 9,
+    "answers": {
+     "Wednesday": 9,
+     "": 1
+    }
+   },
+   "v1_prompt": "The day before Thursday is"
+  },
+  {
+   "name": "br-proc-daybefore-tuesday",
+   "subfamily": "processing",
+   "slice": "daybefore",
+   "subject": "Tuesday",
+   "prompt": "What is the day before Tuesday? Answer in one word.",
+   "target": "Monday",
+   "intermediates": [
+    "Monday",
+    "星期一",
+    "周一",
+    "礼拜一"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Monday",
+      "星期一",
+      "周一",
+      "礼拜一"
+     ]
+    }
+   ],
+   "consistency": 0.9,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "Monday",
+    "aliases": [
+     "星期一",
+     "周一",
+     "礼拜一"
+    ],
+    "distractors": [
+     "Saturday",
+     "Friday",
+     "Wednesday",
+     "Sunday"
+    ],
+    "distractor_aliases": {
+     "Saturday": [
+      "星期六",
+      "周六",
+      "礼拜六"
+     ],
+     "Friday": [
+      "星期五",
+      "周五",
+      "礼拜五"
+     ],
+     "Wednesday": [
+      "星期三",
+      "周三",
+      "礼拜三"
+     ],
+     "Sunday": [
+      "星期日",
+      "星期天",
+      "周日",
+      "礼拜天"
+     ]
+    }
+   },
+   "task_context": "the model was asked which day of the week comes right before a given day, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 9,
+    "answers": {
+     "Monday": 9,
+     "": 1
+    }
+   },
+   "v1_prompt": "The day before Tuesday is"
+  },
+  {
+   "name": "br-proc-daybefore-wednesday",
+   "subfamily": "processing",
+   "slice": "daybefore",
+   "subject": "Wednesday",
+   "prompt": "What is the day before Wednesday? Answer in one word.",
+   "target": "Tuesday",
+   "intermediates": [
+    "Tuesday",
+    "星期二",
+    "周二",
+    "礼拜二"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Tuesday",
+      "星期二",
+      "周二",
+      "礼拜二"
+     ]
+    }
+   ],
+   "consistency": 0.9,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "Tuesday",
+    "aliases": [
+     "星期二",
+     "周二",
+     "礼拜二"
+    ],
+    "distractors": [
+     "Sunday",
+     "Friday",
+     "Monday",
+     "Saturday"
+    ],
+    "distractor_aliases": {
+     "Sunday": [
+      "星期日",
+      "星期天",
+      "周日",
+      "礼拜天"
+     ],
+     "Friday": [
+      "星期五",
+      "周五",
+      "礼拜五"
+     ],
+     "Monday": [
+      "星期一",
+      "周一",
+      "礼拜一"
+     ],
+     "Saturday": [
+      "星期六",
+      "周六",
+      "礼拜六"
+     ]
+    }
+   },
+   "task_context": "the model was asked which day of the week comes right before a given day, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 9,
+    "answers": {
+     "Tuesday": 9,
+     "": 1
+    }
+   },
+   "v1_prompt": "The day before Wednesday is"
+  },
+  {
+   "name": "br-proc-monthafter-april",
+   "subfamily": "processing",
+   "slice": "monthafter",
+   "subject": "April",
+   "prompt": "What is the month after April? Answer in one word.",
+   "target": "May",
+   "intermediates": [
+    "May",
+    "五月"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "May",
+      "五月"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "May",
+    "aliases": [
+     "五月"
+    ],
+    "distractors": [
+     "August",
+     "March",
+     "July",
+     "February"
+    ],
+    "distractor_aliases": {
+     "August": [
+      "八月"
+     ],
+     "March": [
+      "三月"
+     ],
+     "July": [
+      "七月"
+     ],
+     "February": [
+      "二月"
+     ]
+    }
+   },
+   "task_context": "the model was asked which month comes right after a given month, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "May": 10
+    }
+   },
+   "v1_prompt": "The month after April is"
+  },
+  {
+   "name": "br-proc-monthafter-august",
+   "subfamily": "processing",
+   "slice": "monthafter",
+   "subject": "August",
+   "prompt": "What is the month after August? Answer in one word.",
+   "target": "September",
+   "intermediates": [
+    "September",
+    "九月"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "September",
+      "九月"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "September",
+    "aliases": [
+     "九月"
+    ],
+    "distractors": [
+     "February",
+     "April",
+     "July",
+     "May"
+    ],
+    "distractor_aliases": {
+     "February": [
+      "二月"
+     ],
+     "April": [
+      "四月"
+     ],
+     "July": [
+      "七月"
+     ],
+     "May": [
+      "五月"
+     ]
+    }
+   },
+   "task_context": "the model was asked which month comes right after a given month, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "September": 10
+    }
+   },
+   "v1_prompt": "The month after August is"
+  },
+  {
+   "name": "br-proc-monthafter-december",
+   "subfamily": "processing",
+   "slice": "monthafter",
+   "subject": "December",
+   "prompt": "What is the month after December? Answer in one word.",
+   "target": "January",
+   "intermediates": [
+    "January",
+    "一月"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "January",
+      "一月"
+     ]
+    }
+   ],
+   "consistency": 0.8,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "January",
+    "aliases": [
+     "一月"
+    ],
+    "distractors": [
+     "October",
+     "November",
+     "March",
+     "May"
+    ],
+    "distractor_aliases": {
+     "October": [
+      "十月"
+     ],
+     "November": [
+      "十一月"
+     ],
+     "March": [
+      "三月"
+     ],
+     "May": [
+      "五月"
+     ]
+    }
+   },
+   "task_context": "the model was asked which month comes right after a given month, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 8,
+    "answers": {
+     "January": 8,
+     "": 2
+    }
+   },
+   "v1_prompt": "The month after December is"
+  },
+  {
+   "name": "br-proc-monthafter-february",
+   "subfamily": "processing",
+   "slice": "monthafter",
+   "subject": "February",
+   "prompt": "What is the month after February? Answer in one word.",
+   "target": "March",
+   "intermediates": [
+    "March",
+    "三月"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "March",
+      "三月"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "March",
+    "aliases": [
+     "三月"
+    ],
+    "distractors": [
+     "January",
+     "August",
+     "April",
+     "December"
+    ],
+    "distractor_aliases": {
+     "January": [
+      "一月"
+     ],
+     "August": [
+      "八月"
+     ],
+     "April": [
+      "四月"
+     ],
+     "December": [
+      "十二月"
+     ]
+    }
+   },
+   "task_context": "the model was asked which month comes right after a given month, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "March": 10
+    }
+   },
+   "v1_prompt": "The month after February is"
+  },
+  {
+   "name": "br-proc-monthafter-january",
+   "subfamily": "processing",
+   "slice": "monthafter",
+   "subject": "January",
+   "prompt": "What is the month after January? Answer in one word.",
+   "target": "February",
+   "intermediates": [
+    "February",
+    "二月"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "February",
+      "二月"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "February",
+    "aliases": [
+     "二月"
+    ],
+    "distractors": [
+     "July",
+     "March",
+     "November",
+     "April"
+    ],
+    "distractor_aliases": {
+     "July": [
+      "七月"
+     ],
+     "March": [
+      "三月"
+     ],
+     "November": [
+      "十一月"
+     ],
+     "April": [
+      "四月"
+     ]
+    }
+   },
+   "task_context": "the model was asked which month comes right after a given month, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "February": 10
+    }
+   },
+   "v1_prompt": "The month after January is"
+  },
+  {
+   "name": "br-proc-monthafter-july",
+   "subfamily": "processing",
+   "slice": "monthafter",
+   "subject": "July",
+   "prompt": "What is the month after July? Answer in one word.",
+   "target": "August",
+   "intermediates": [
+    "August",
+    "八月"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "August",
+      "八月"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "August",
+    "aliases": [
+     "八月"
+    ],
+    "distractors": [
+     "November",
+     "February",
+     "December",
+     "October"
+    ],
+    "distractor_aliases": {
+     "November": [
+      "十一月"
+     ],
+     "February": [
+      "二月"
+     ],
+     "December": [
+      "十二月"
+     ],
+     "October": [
+      "十月"
+     ]
+    }
+   },
+   "task_context": "the model was asked which month comes right after a given month, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "August": 10
+    }
+   },
+   "v1_prompt": "The month after July is"
+  },
+  {
+   "name": "br-proc-monthafter-june",
+   "subfamily": "processing",
+   "slice": "monthafter",
+   "subject": "June",
+   "prompt": "What is the month after June? Answer in one word.",
+   "target": "July",
+   "intermediates": [
+    "July",
+    "七月"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "July",
+      "七月"
+     ]
+    }
+   ],
+   "consistency": 0.9,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "July",
+    "aliases": [
+     "七月"
+    ],
+    "distractors": [
+     "December",
+     "October",
+     "April",
+     "November"
+    ],
+    "distractor_aliases": {
+     "December": [
+      "十二月"
+     ],
+     "October": [
+      "十月"
+     ],
+     "April": [
+      "四月"
+     ],
+     "November": [
+      "十一月"
+     ]
+    }
+   },
+   "task_context": "the model was asked which month comes right after a given month, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 9,
+    "answers": {
+     "July": 9,
+     "": 1
+    }
+   },
+   "v1_prompt": "The month after June is"
+  },
+  {
+   "name": "br-proc-monthafter-march",
+   "subfamily": "processing",
+   "slice": "monthafter",
+   "subject": "March",
+   "prompt": "What is the month after March? Answer in one word.",
+   "target": "April",
+   "intermediates": [
+    "April",
+    "四月"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "April",
+      "四月"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "April",
+    "aliases": [
+     "四月"
+    ],
+    "distractors": [
+     "November",
+     "May",
+     "October",
+     "January"
+    ],
+    "distractor_aliases": {
+     "November": [
+      "十一月"
+     ],
+     "May": [
+      "五月"
+     ],
+     "October": [
+      "十月"
+     ],
+     "January": [
+      "一月"
+     ]
+    }
+   },
+   "task_context": "the model was asked which month comes right after a given month, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "April": 10
+    }
+   },
+   "v1_prompt": "The month after March is"
+  },
+  {
+   "name": "br-proc-monthafter-may",
+   "subfamily": "processing",
+   "slice": "monthafter",
+   "subject": "May",
+   "prompt": "What is the month after May? Answer in one word.",
+   "target": "June",
+   "intermediates": [
+    "June",
+    "六月"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "June",
+      "六月"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "June",
+    "aliases": [
+     "六月"
+    ],
+    "distractors": [
+     "July",
+     "September",
+     "October",
+     "December"
+    ],
+    "distractor_aliases": {
+     "July": [
+      "七月"
+     ],
+     "September": [
+      "九月"
+     ],
+     "October": [
+      "十月"
+     ],
+     "December": [
+      "十二月"
+     ]
+    }
+   },
+   "task_context": "the model was asked which month comes right after a given month, to answer with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "June": 10
+    }
+   },
+   "v1_prompt": "The month after May is"
+  },
+  {
+   "name": "br-imp-instrument",
+   "subfamily": "implicit",
+   "slice": "implicit",
+   "subject": "musical instrument",
+   "prompt": "What is your favorite musical instrument? Answer in one word.",
+   "target": "piano",
+   "intermediates": [
+    "piano",
+    "钢琴"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "piano",
+      "钢琴"
+     ]
+    }
+   ],
+   "consistency": 0.9,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "piano",
+    "aliases": [
+     "钢琴"
+    ],
+    "distractors": [
+     "guitar",
+     "violin",
+     "cello",
+     "drums"
+    ],
+    "distractor_aliases": {
+     "guitar": [
+      "吉他"
+     ],
+     "violin": [
+      "fiddle",
+      "小提琴"
+     ],
+     "cello": [
+      "大提琴"
+     ],
+     "drums": [
+      "drum",
+      "drum kit",
+      "架子鼓",
+      "鼓"
+     ]
+    }
+   },
+   "task_context": "the model was asked to name its own favourite musical instrument, with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 9,
+    "answers": {
+     "Piano": 9,
+     "": 1
+    }
+   },
+   "replaces": "br-imp-cardgame"
+  },
+  {
+   "name": "br-imp-cartoonchara",
+   "subfamily": "implicit",
+   "slice": "implicit",
+   "subject": "cartoon character",
+   "prompt": "What is your favorite cartoon character? Answer in one word.",
+   "target": "SpongeBob",
+   "intermediates": [
+    "SpongeBob",
+    "SpongeBob SquarePants",
+    "海绵宝宝"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "SpongeBob",
+      "SpongeBob SquarePants",
+      "海绵宝宝"
+     ]
+    }
+   ],
+   "consistency": 0.9,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "SpongeBob",
+    "aliases": [
+     "SpongeBob SquarePants",
+     "海绵宝宝"
+    ],
+    "distractors": [
+     "Shinchan",
+     "Mickey Mouse",
+     "Bugs Bunny",
+     "Homer Simpson"
+    ],
+    "distractor_aliases": {
+     "Shinchan": [
+      "Shin-chan",
+      "蜡笔小新"
+     ],
+     "Mickey Mouse": [
+      "Mickey",
+      "米老鼠",
+      "米奇"
+     ],
+     "Bugs Bunny": [
+      "兔八哥",
+      "宾尼兔"
+     ],
+     "Homer Simpson": [
+      "辛普森"
+     ]
+    }
+   },
+   "task_context": "the model was asked to name its own favourite cartoon character, with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 9,
+    "answers": {
+     "SpongeBob": 9,
+     "Shinchan": 1
+    }
+   },
+   "v1_prompt": "What is your favorite cartoon character? Answer in one word."
+  },
+  {
+   "name": "br-imp-shape",
+   "subfamily": "implicit",
+   "slice": "implicit",
+   "subject": "shape",
+   "prompt": "What is your favorite shape? Answer in one word.",
+   "target": "circle",
+   "intermediates": [
+    "circle",
+    "圆形"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "circle",
+      "圆形"
+     ]
+    }
+   ],
+   "consistency": 0.9,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "circle",
+    "aliases": [
+     "圆形"
+    ],
+    "distractors": [
+     "square",
+     "triangle",
+     "star",
+     "hexagon"
+    ],
+    "distractor_aliases": {
+     "square": [
+      "正方形",
+      "方形"
+     ],
+     "triangle": [
+      "三角形"
+     ],
+     "star": [
+      "星形",
+      "五角星"
+     ],
+     "hexagon": [
+      "六边形"
+     ]
+    }
+   },
+   "task_context": "the model was asked to name its own favourite shape, with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 9,
+    "answers": {
+     "Circle": 9,
+     "Square": 1
+    }
+   },
+   "replaces": "br-imp-chesspiece"
+  },
+  {
+   "name": "br-imp-color",
+   "subfamily": "implicit",
+   "slice": "implicit",
+   "subject": "color",
+   "prompt": "What is your favorite color? Answer in one word.",
+   "target": "blue",
+   "intermediates": [
+    "blue",
+    "蓝色"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "blue",
+      "蓝色"
+     ]
+    }
+   ],
+   "consistency": 0.9,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "blue",
+    "aliases": [
+     "蓝色"
+    ],
+    "distractors": [
+     "green",
+     "red",
+     "purple",
+     "black"
+    ],
+    "distractor_aliases": {
+     "green": [
+      "绿色"
+     ],
+     "red": [
+      "红色"
+     ],
+     "purple": [
+      "紫色"
+     ],
+     "black": [
+      "黑色"
+     ]
+    }
+   },
+   "task_context": "the model was asked to name its own favourite color, with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 9,
+    "answers": {
+     "Blue": 9,
+     "Green": 1
+    }
+   },
+   "v1_prompt": "What is your favorite color? Answer in one word."
+  },
+  {
+   "name": "br-imp-constellatio",
+   "subfamily": "implicit",
+   "slice": "implicit",
+   "subject": "constellation",
+   "prompt": "What is your favorite constellation? Answer in one word.",
+   "target": "Orion",
+   "intermediates": [
+    "Orion",
+    "猎户座"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Orion",
+      "猎户座"
+     ]
+    }
+   ],
+   "consistency": 0.9,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "Orion",
+    "aliases": [
+     "猎户座"
+    ],
+    "distractors": [
+     "Ursa Major",
+     "Cassiopeia",
+     "Scorpius",
+     "Andromeda"
+    ],
+    "distractor_aliases": {
+     "Ursa Major": [
+      "大熊座"
+     ],
+     "Cassiopeia": [
+      "仙后座"
+     ],
+     "Scorpius": [
+      "Scorpio",
+      "天蝎座"
+     ],
+     "Andromeda": [
+      "仙女座"
+     ]
+    }
+   },
+   "task_context": "the model was asked to name its own favourite constellation, with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 9,
+    "answers": {
+     "Orion": 9,
+     "Ursa": 1
+    }
+   },
+   "v1_prompt": "What is your favorite constellation? Answer in one word."
+  },
+  {
+   "name": "br-imp-dayoftheweek",
+   "subfamily": "implicit",
+   "slice": "implicit",
+   "subject": "day of the week",
+   "prompt": "What is your favorite day of the week? Answer in one word.",
+   "target": "Friday",
+   "intermediates": [
+    "Friday",
+    "星期五",
+    "周五"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Friday",
+      "星期五",
+      "周五"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "Friday",
+    "aliases": [
+     "星期五",
+     "周五"
+    ],
+    "distractors": [
+     "Saturday",
+     "Sunday",
+     "Monday",
+     "Wednesday"
+    ],
+    "distractor_aliases": {
+     "Saturday": [
+      "星期六",
+      "周六",
+      "礼拜六"
+     ],
+     "Sunday": [
+      "星期日",
+      "星期天",
+      "周日",
+      "礼拜天"
+     ],
+     "Monday": [
+      "星期一",
+      "周一",
+      "礼拜一"
+     ],
+     "Wednesday": [
+      "星期三",
+      "周三",
+      "礼拜三"
+     ]
+    }
+   },
+   "task_context": "the model was asked to name its own favourite day of the week, with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "Friday": 10
+    }
+   },
+   "v1_prompt": "What is your favorite day of the week? Answer in one word."
+  },
+  {
+   "name": "br-imp-flower",
+   "subfamily": "implicit",
+   "slice": "implicit",
+   "subject": "flower",
+   "prompt": "What is your favorite flower? Answer in one word.",
+   "target": "rose",
+   "intermediates": [
+    "rose",
+    "玫瑰"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "rose",
+      "玫瑰"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "rose",
+    "aliases": [
+     "玫瑰"
+    ],
+    "distractors": [
+     "tulip",
+     "sunflower",
+     "lily",
+     "orchid"
+    ],
+    "distractor_aliases": {
+     "tulip": [
+      "郁金香"
+     ],
+     "sunflower": [
+      "向日葵"
+     ],
+     "lily": [
+      "百合"
+     ],
+     "orchid": [
+      "兰花"
+     ]
+    }
+   },
+   "task_context": "the model was asked to name its own favourite flower, with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "Rose": 10
+    }
+   },
+   "v1_prompt": "What is your favorite flower? Answer in one word."
+  },
+  {
+   "name": "br-imp-holiday",
+   "subfamily": "implicit",
+   "slice": "implicit",
+   "subject": "holiday",
+   "prompt": "What is your favorite holiday? Answer in one word.",
+   "target": "Christmas",
+   "intermediates": [
+    "Christmas",
+    "Xmas",
+    "圣诞"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Christmas",
+      "Xmas",
+      "圣诞"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "Christmas",
+    "aliases": [
+     "Xmas",
+     "圣诞"
+    ],
+    "distractors": [
+     "Halloween",
+     "Thanksgiving",
+     "New Year",
+     "Easter"
+    ],
+    "distractor_aliases": {
+     "Halloween": [
+      "万圣节"
+     ],
+     "Thanksgiving": [
+      "感恩节"
+     ],
+     "New Year": [
+      "新年",
+      "元旦"
+     ],
+     "Easter": [
+      "复活节"
+     ]
+    }
+   },
+   "task_context": "the model was asked to name its own favourite holiday, with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "Christmas": 10
+    }
+   },
+   "v1_prompt": "What is your favorite holiday? Answer in one word."
+  },
+  {
+   "name": "br-imp-ocean",
+   "subfamily": "implicit",
+   "slice": "implicit",
+   "subject": "ocean",
+   "prompt": "What is your favorite ocean? Answer in one word.",
+   "target": "Pacific",
+   "intermediates": [
+    "Pacific",
+    "太平洋"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Pacific",
+      "太平洋"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "Pacific",
+    "aliases": [
+     "太平洋"
+    ],
+    "distractors": [
+     "Atlantic",
+     "Indian",
+     "Arctic",
+     "Southern"
+    ],
+    "distractor_aliases": {
+     "Atlantic": [
+      "大西洋"
+     ],
+     "Indian": [
+      "印度洋"
+     ],
+     "Arctic": [
+      "北冰洋"
+     ],
+     "Southern": [
+      "南冰洋",
+      "南大洋"
+     ]
+    }
+   },
+   "task_context": "the model was asked to name its own favourite ocean, with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "Pacific": 10
+    }
+   },
+   "replaces": "br-imp-icecreamflav"
+  },
+  {
+   "name": "br-imp-kindofcookie",
+   "subfamily": "implicit",
+   "slice": "implicit",
+   "subject": "kind of cookie",
+   "prompt": "What is your favorite kind of cookie? Answer in one word.",
+   "target": "chocolate",
+   "intermediates": [
+    "chocolate",
+    "chocolate chip",
+    "巧克力"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "chocolate",
+      "chocolate chip",
+      "巧克力"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "chocolate",
+    "aliases": [
+     "chocolate chip",
+     "巧克力"
+    ],
+    "distractors": [
+     "oatmeal raisin",
+     "peanut butter",
+     "snickerdoodle",
+     "sugar cookie"
+    ],
+    "distractor_aliases": {
+     "oatmeal raisin": [
+      "燕麦葡萄干"
+     ],
+     "peanut butter": [
+      "花生酱"
+     ],
+     "snickerdoodle": [
+      "肉桂糖"
+     ],
+     "sugar cookie": [
+      "糖霜饼干",
+      "糖饼干"
+     ]
+    }
+   },
+   "task_context": "the model was asked to name its own favourite kind of cookie, with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "Chocolate": 10
+    }
+   },
+   "v1_prompt": "What is your favorite kind of cookie? Answer in one word."
+  },
+  {
+   "name": "br-imp-bread",
+   "subfamily": "implicit",
+   "slice": "implicit",
+   "subject": "bread",
+   "prompt": "What is your favorite bread? Answer in one word.",
+   "target": "sourdough",
+   "intermediates": [
+    "sourdough",
+    "酸面包",
+    "酸种面包"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "sourdough",
+      "酸面包",
+      "酸种面包"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "sourdough",
+    "aliases": [
+     "酸面包",
+     "酸种面包"
+    ],
+    "distractors": [
+     "baguette",
+     "rye",
+     "ciabatta",
+     "brioche"
+    ],
+    "distractor_aliases": {
+     "baguette": [
+      "法棍"
+     ],
+     "rye": [
+      "黑麦"
+     ],
+     "ciabatta": [
+      "恰巴塔"
+     ],
+     "brioche": [
+      "布里欧修"
+     ]
+    }
+   },
+   "task_context": "the model was asked to name its own favourite bread, with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "Sourdough": 10
+    }
+   },
+   "replaces": "br-imp-kindofshoe"
+  },
+  {
+   "name": "br-imp-composer",
+   "subfamily": "implicit",
+   "slice": "implicit",
+   "subject": "composer",
+   "prompt": "What is your favorite composer? Answer in one word.",
+   "target": "Bach",
+   "intermediates": [
+    "Bach",
+    "巴赫"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Bach",
+      "巴赫"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "Bach",
+    "aliases": [
+     "巴赫"
+    ],
+    "distractors": [
+     "Mozart",
+     "Beethoven",
+     "Chopin",
+     "Debussy"
+    ],
+    "distractor_aliases": {
+     "Mozart": [
+      "莫扎特"
+     ],
+     "Beethoven": [
+      "贝多芬"
+     ],
+     "Chopin": [
+      "肖邦"
+     ],
+     "Debussy": [
+      "德彪西"
+     ]
+    }
+   },
+   "task_context": "the model was asked to name its own favourite composer, with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "Bach": 10
+    }
+   },
+   "replaces": "br-imp-kindofweathe"
+  },
+  {
+   "name": "br-imp-moviegenre",
+   "subfamily": "implicit",
+   "slice": "implicit",
+   "subject": "movie genre",
+   "prompt": "What is your favorite movie genre? Answer in one word.",
+   "target": "sci-fi",
+   "intermediates": [
+    "sci-fi",
+    "science fiction",
+    "scifi",
+    "科幻"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "sci-fi",
+      "science fiction",
+      "scifi",
+      "科幻"
+     ]
+    }
+   ],
+   "consistency": 0.9,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "sci-fi",
+    "aliases": [
+     "science fiction",
+     "scifi",
+     "科幻"
+    ],
+    "distractors": [
+     "action",
+     "comedy",
+     "horror",
+     "drama"
+    ],
+    "distractor_aliases": {
+     "action": [
+      "动作"
+     ],
+     "comedy": [
+      "喜剧"
+     ],
+     "horror": [
+      "恐怖"
+     ],
+     "drama": [
+      "剧情"
+     ]
+    }
+   },
+   "task_context": "the model was asked to name its own favourite movie genre, with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 9,
+    "answers": {
+     "Sci-Fi": 8,
+     "Action": 1,
+     "SciFi": 1
+    }
+   },
+   "v1_prompt": "What is your favorite movie genre? Answer in one word."
+  },
+  {
+   "name": "br-imp-programmingl",
+   "subfamily": "implicit",
+   "slice": "implicit",
+   "subject": "programming language",
+   "prompt": "What is your favorite programming language? Answer in one word.",
+   "target": "Python",
+   "intermediates": [
+    "Python"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Python"
+     ]
+    }
+   ],
+   "consistency": 0.9,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "Python",
+    "aliases": [],
+    "distractors": [
+     "Rust",
+     "JavaScript",
+     "C++",
+     "Java"
+    ],
+    "distractor_aliases": {
+     "Rust": [],
+     "JavaScript": [],
+     "C++": [],
+     "Java": []
+    }
+   },
+   "task_context": "the model was asked to name its own favourite programming language, with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 9,
+    "answers": {
+     "Python": 9,
+     "Rust": 1
+    }
+   },
+   "v1_prompt": "What is your favorite programming language? Answer in one word."
+  },
+  {
+   "name": "br-imp-seacreature",
+   "subfamily": "implicit",
+   "slice": "implicit",
+   "subject": "sea creature",
+   "prompt": "What is your favorite sea creature? Answer in one word.",
+   "target": "octopus",
+   "intermediates": [
+    "octopus",
+    "章鱼"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "octopus",
+      "章鱼"
+     ]
+    }
+   ],
+   "consistency": 0.8,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "octopus",
+    "aliases": [
+     "章鱼"
+    ],
+    "distractors": [
+     "dolphin",
+     "narwhal",
+     "whale",
+     "sea turtle"
+    ],
+    "distractor_aliases": {
+     "dolphin": [
+      "海豚"
+     ],
+     "narwhal": [
+      "独角鲸"
+     ],
+     "whale": [
+      "鲸"
+     ],
+     "sea turtle": [
+      "海龟"
+     ]
+    }
+   },
+   "task_context": "the model was asked to name its own favourite sea creature, with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 8,
+    "answers": {
+     "Octopus": 8,
+     "Dolphin": 1,
+     "Narwhal": 1
+    }
+   },
+   "v1_prompt": "What is your favorite sea creature? Answer in one word."
+  },
+  {
+   "name": "br-imp-tree",
+   "subfamily": "implicit",
+   "slice": "implicit",
+   "subject": "tree",
+   "prompt": "What is your favorite tree? Answer in one word.",
+   "target": "oak",
+   "intermediates": [
+    "oak",
+    "橡树"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "oak",
+      "橡树"
+     ]
+    }
+   ],
+   "consistency": 0.8,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "oak",
+    "aliases": [
+     "橡树"
+    ],
+    "distractors": [
+     "olive",
+     "maple",
+     "pine",
+     "willow"
+    ],
+    "distractor_aliases": {
+     "olive": [
+      "橄榄"
+     ],
+     "maple": [
+      "枫树"
+     ],
+     "pine": [
+      "松树"
+     ],
+     "willow": [
+      "柳树"
+     ]
+    }
+   },
+   "task_context": "the model was asked to name its own favourite tree, with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 8,
+    "answers": {
+     "Oak": 6,
+     "Oak 🌳": 2,
+     "None": 1,
+     "Olive": 1
+    }
+   },
+   "v1_prompt": "What is your favorite tree? Answer in one word."
+  },
+  {
+   "name": "br-imp-shakespeare",
+   "subfamily": "implicit",
+   "slice": "implicit",
+   "subject": "Shakespeare play",
+   "prompt": "What is your favorite Shakespeare play? Answer in one word.",
+   "target": "Hamlet",
+   "intermediates": [
+    "Hamlet",
+    "哈姆雷特"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Hamlet",
+      "哈姆雷特"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "Hamlet",
+    "aliases": [
+     "哈姆雷特"
+    ],
+    "distractors": [
+     "Macbeth",
+     "Othello",
+     "King Lear",
+     "The Tempest"
+    ],
+    "distractor_aliases": {
+     "Macbeth": [
+      "麦克白"
+     ],
+     "Othello": [
+      "奥赛罗"
+     ],
+     "King Lear": [
+      "李尔王"
+     ],
+     "The Tempest": [
+      "Tempest",
+      "暴风雨"
+     ]
+    }
+   },
+   "task_context": "the model was asked to name its own favourite Shakespeare play, with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "Hamlet": 10
+    }
+   },
+   "replaces": "br-imp-typeofcuisin"
+  },
+  {
+   "name": "br-imp-typeofmusic",
+   "subfamily": "implicit",
+   "slice": "implicit",
+   "subject": "type of music",
+   "prompt": "What is your favorite type of music? Answer in one word.",
+   "target": "jazz",
+   "intermediates": [
+    "jazz",
+    "爵士"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "jazz",
+      "爵士"
+     ]
+    }
+   ],
+   "consistency": 0.8,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "jazz",
+    "aliases": [
+     "爵士"
+    ],
+    "distractors": [
+     "classical",
+     "rock",
+     "pop",
+     "hip-hop"
+    ],
+    "distractor_aliases": {
+     "classical": [
+      "古典"
+     ],
+     "rock": [
+      "摇滚"
+     ],
+     "pop": [
+      "流行"
+     ],
+     "hip-hop": [
+      "hip hop",
+      "嘻哈"
+     ]
+    }
+   },
+   "task_context": "the model was asked to name its own favourite type of music, with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 8,
+    "answers": {
+     "Jazz": 8,
+     "Eclectic": 2
+    }
+   },
+   "v1_prompt": "What is your favorite type of music? Answer in one word."
+  },
+  {
+   "name": "br-imp-word",
+   "subfamily": "implicit",
+   "slice": "implicit",
+   "subject": "word",
+   "prompt": "What is your favorite word? Answer in one word.",
+   "target": "serendipity",
+   "intermediates": [
+    "serendipity"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "serendipity"
+     ]
+    }
+   ],
+   "consistency": 0.9,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "serendipity",
+    "aliases": [],
+    "distractors": [
+     "qwerty",
+     "ephemeral",
+     "petrichor",
+     "luminous"
+    ],
+    "distractor_aliases": {
+     "qwerty": [],
+     "ephemeral": [],
+     "petrichor": [],
+     "luminous": []
+    }
+   },
+   "task_context": "the model was asked to name its own favourite word, with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 9,
+    "answers": {
+     "Serendipity": 9,
+     "QWERTY": 1
+    }
+   },
+   "replaces": "br-imp-countrytovis"
+  },
+  {
+   "name": "br-imp-ghibli",
+   "subfamily": "implicit",
+   "slice": "implicit",
+   "subject": "Studio Ghibli film",
+   "prompt": "What is your favorite Studio Ghibli film? Answer in one word.",
+   "target": "Spirited Away",
+   "intermediates": [
+    "Spirited Away",
+    "Spirited",
+    "千与千寻"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Spirited Away",
+      "Spirited",
+      "千与千寻"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "Spirited Away",
+    "aliases": [
+     "Spirited",
+     "千与千寻"
+    ],
+    "distractors": [
+     "Totoro",
+     "Ponyo",
+     "Mononoke",
+     "Laputa"
+    ],
+    "distractor_aliases": {
+     "Totoro": [
+      "龙猫"
+     ],
+     "Ponyo": [
+      "波妞",
+      "悬崖上的金鱼"
+     ],
+     "Mononoke": [
+      "幽灵公主"
+     ],
+     "Laputa": [
+      "天空之城"
+     ]
+    }
+   },
+   "task_context": "the model was asked to name its own favourite Studio Ghibli film, with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "Spirited": 10
+    }
+   },
+   "replaces": "br-imp-kindofberry"
+  },
+  {
+   "name": "br-imp-kindofcandy",
+   "subfamily": "implicit",
+   "slice": "implicit",
+   "subject": "kind of candy",
+   "prompt": "What is your favorite kind of candy? Answer in one word.",
+   "target": "chocolate",
+   "intermediates": [
+    "chocolate",
+    "巧克力"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "chocolate",
+      "巧克力"
+     ]
+    }
+   ],
+   "consistency": 0.9,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "chocolate",
+    "aliases": [
+     "巧克力"
+    ],
+    "distractors": [
+     "gummy bears",
+     "lollipops",
+     "licorice",
+     "caramel"
+    ],
+    "distractor_aliases": {
+     "gummy bears": [
+      "gummy bear",
+      "小熊软糖",
+      "软糖"
+     ],
+     "lollipops": [
+      "lollipop",
+      "棒棒糖"
+     ],
+     "licorice": [
+      "甘草糖"
+     ],
+     "caramel": [
+      "焦糖"
+     ]
+    }
+   },
+   "task_context": "the model was asked to name its own favourite kind of candy, with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 9,
+    "answers": {
+     "Chocolate": 9,
+     "Gummy": 1
+    }
+   },
+   "v1_prompt": "What is your favorite kind of candy? Answer in one word."
+  },
+  {
+   "name": "br-imp-kindofpepper",
+   "subfamily": "implicit",
+   "slice": "implicit",
+   "subject": "kind of pepper",
+   "prompt": "What is your favorite kind of pepper? Answer in one word.",
+   "target": "jalapeño",
+   "intermediates": [
+    "jalapeño",
+    "墨西哥辣椒"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "jalapeño",
+      "墨西哥辣椒"
+     ]
+    }
+   ],
+   "consistency": 0.9,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "jalapeño",
+    "aliases": [
+     "墨西哥辣椒"
+    ],
+    "distractors": [
+     "habanero",
+     "poblano",
+     "chipotle",
+     "bell pepper"
+    ],
+    "distractor_aliases": {
+     "habanero": [
+      "哈瓦那辣椒"
+     ],
+     "poblano": [
+      "波布拉诺"
+     ],
+     "chipotle": [
+      "奇波雷"
+     ],
+     "bell pepper": [
+      "甜椒",
+      "彩椒"
+     ]
+    }
+   },
+   "task_context": "the model was asked to name its own favourite kind of pepper, with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 9,
+    "answers": {
+     "Jalapeño": 9,
+     "Banana": 1
+    }
+   },
+   "v1_prompt": "What is your favorite kind of pepper? Answer in one word.",
+   "v1_target": "bell"
+  },
+  {
+   "name": "br-imp-muppet",
+   "subfamily": "implicit",
+   "slice": "implicit",
+   "subject": "Muppet",
+   "prompt": "What is your favorite Muppet? Answer in one word.",
+   "target": "Kermit",
+   "intermediates": [
+    "Kermit"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Kermit"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "Kermit",
+    "aliases": [],
+    "distractors": [
+     "Gonzo",
+     "Animal",
+     "Fozzie",
+     "Beaker"
+    ],
+    "distractor_aliases": {
+     "Gonzo": [],
+     "Animal": [],
+     "Fozzie": [],
+     "Beaker": []
+    }
+   },
+   "task_context": "the model was asked to name its own favourite Muppet, with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "Kermit": 10
+    }
+   },
+   "replaces": "br-imp-mythicalcrea"
+  },
+  {
+   "name": "br-imp-font",
+   "subfamily": "implicit",
+   "slice": "implicit",
+   "subject": "font",
+   "prompt": "What is your favorite font? Answer in one word.",
+   "target": "Helvetica",
+   "intermediates": [
+    "Helvetica"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Helvetica"
+     ]
+    }
+   ],
+   "consistency": 0.9,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "Helvetica",
+    "aliases": [],
+    "distractors": [
+     "Garamond",
+     "Futura",
+     "Baskerville",
+     "Arial"
+    ],
+    "distractor_aliases": {
+     "Garamond": [],
+     "Futura": [],
+     "Baskerville": [],
+     "Arial": []
+    }
+   },
+   "task_context": "the model was asked to name its own favourite font, with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 9,
+    "answers": {
+     "Helvetica": 9,
+     "Subjective": 1
+    }
+   },
+   "replaces": "br-imp-pet"
+  },
+  {
+   "name": "br-imp-pizzatopping",
+   "subfamily": "implicit",
+   "slice": "implicit",
+   "subject": "pizza topping",
+   "prompt": "What is your favorite pizza topping? Answer in one word.",
+   "target": "pepperoni",
+   "intermediates": [
+    "pepperoni",
+    "意大利辣香肠"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "pepperoni",
+      "意大利辣香肠"
+     ]
+    }
+   ],
+   "consistency": 1.0,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "pepperoni",
+    "aliases": [
+     "意大利辣香肠"
+    ],
+    "distractors": [
+     "mushrooms",
+     "pineapple",
+     "olives",
+     "sausage"
+    ],
+    "distractor_aliases": {
+     "mushrooms": [
+      "mushroom",
+      "蘑菇"
+     ],
+     "pineapple": [
+      "菠萝"
+     ],
+     "olives": [
+      "olive",
+      "橄榄"
+     ],
+     "sausage": [
+      "香肠"
+     ]
+    }
+   },
+   "task_context": "the model was asked to name its own favourite pizza topping, with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 10,
+    "answers": {
+     "Pepperoni": 9,
+     "Pepperoni 🍕": 1
+    }
+   },
+   "v1_prompt": "What is your favorite pizza topping? Answer in one word."
+  },
+  {
+   "name": "br-imp-os",
+   "subfamily": "implicit",
+   "slice": "implicit",
+   "subject": "operating system",
+   "prompt": "What is your favorite operating system? Answer in one word.",
+   "target": "Linux",
+   "intermediates": [
+    "Linux"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "Linux"
+     ]
+    }
+   ],
+   "consistency": 0.8,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "Linux",
+    "aliases": [],
+    "distractors": [
+     "macOS",
+     "Windows",
+     "FreeBSD",
+     "Android"
+    ],
+    "distractor_aliases": {
+     "macOS": [],
+     "Windows": [],
+     "FreeBSD": [],
+     "Android": []
+    }
+   },
+   "task_context": "the model was asked to name its own favourite operating system, with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 8,
+    "answers": {
+     "Linux": 8,
+     "None": 1,
+     "Ubuntu": 1
+    }
+   },
+   "replaces": "br-imp-typeofbird"
+  },
+  {
+   "name": "br-imp-typeofdance",
+   "subfamily": "implicit",
+   "slice": "implicit",
+   "subject": "type of dance",
+   "prompt": "What is your favorite type of dance? Answer in one word.",
+   "target": "salsa",
+   "intermediates": [
+    "salsa",
+    "萨尔萨"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "salsa",
+      "萨尔萨"
+     ]
+    }
+   ],
+   "consistency": 0.8,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "salsa",
+    "aliases": [
+     "萨尔萨"
+    ],
+    "distractors": [
+     "contemporary",
+     "swing",
+     "tango",
+     "ballet"
+    ],
+    "distractor_aliases": {
+     "contemporary": [
+      "现代舞",
+      "当代舞"
+     ],
+     "swing": [
+      "摇摆舞"
+     ],
+     "tango": [
+      "探戈"
+     ],
+     "ballet": [
+      "芭蕾"
+     ]
+    }
+   },
+   "task_context": "the model was asked to name its own favourite type of dance, with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 8,
+    "answers": {
+     "Salsa": 8,
+     "Contemporary": 1,
+     "Swing": 1
+    }
+   },
+   "v1_prompt": "What is your favorite type of dance? Answer in one word."
+  },
+  {
+   "name": "br-imp-typeofsoup",
+   "subfamily": "implicit",
+   "slice": "implicit",
+   "subject": "type of soup",
+   "prompt": "What is your favorite type of soup? Answer in one word.",
+   "target": "tomato",
+   "intermediates": [
+    "tomato",
+    "番茄",
+    "西红柿"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "tomato",
+      "番茄",
+      "西红柿"
+     ]
+    }
+   ],
+   "consistency": 0.9,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "tomato",
+    "aliases": [
+     "番茄",
+     "西红柿"
+    ],
+    "distractors": [
+     "chicken noodle",
+     "minestrone",
+     "miso",
+     "French onion"
+    ],
+    "distractor_aliases": {
+     "chicken noodle": [
+      "鸡汤面",
+      "鸡肉面"
+     ],
+     "minestrone": [
+      "意大利蔬菜汤"
+     ],
+     "miso": [
+      "味噌"
+     ],
+     "French onion": [
+      "洋葱汤"
+     ]
+    }
+   },
+   "task_context": "the model was asked to name its own favourite type of soup, with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 9,
+    "answers": {
+     "Tomato": 9,
+     "My": 1
+    }
+   },
+   "v1_prompt": "What is your favorite type of soup? Answer in one word."
+  },
+  {
+   "name": "br-imp-database",
+   "subfamily": "implicit",
+   "slice": "implicit",
+   "subject": "database",
+   "prompt": "What is your favorite database? Answer in one word.",
+   "target": "PostgreSQL",
+   "intermediates": [
+    "PostgreSQL"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "PostgreSQL"
+     ]
+    }
+   ],
+   "consistency": 0.8,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "PostgreSQL",
+    "aliases": [],
+    "distractors": [
+     "SQLite",
+     "MySQL",
+     "MongoDB",
+     "Redis"
+    ],
+    "distractor_aliases": {
+     "SQLite": [],
+     "MySQL": [],
+     "MongoDB": [],
+     "Redis": []
+    }
+   },
+   "task_context": "the model was asked to name its own favourite database, with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 8,
+    "answers": {
+     "PostgreSQL": 7,
+     "Relational": 1,
+     "PostgreSQL 🐘": 1,
+     "SQL": 1
+    }
+   },
+   "replaces": "br-imp-bookgenre"
+  },
+  {
+   "name": "br-imp-cloud",
+   "subfamily": "implicit",
+   "slice": "implicit",
+   "subject": "type of cloud",
+   "prompt": "What is your favorite type of cloud? Answer in one word.",
+   "target": "cumulus",
+   "intermediates": [
+    "cumulus",
+    "积云"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "cumulus",
+      "积云"
+     ]
+    }
+   ],
+   "consistency": 0.8,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "cumulus",
+    "aliases": [
+     "积云"
+    ],
+    "distractors": [
+     "stratus",
+     "nimbus",
+     "cirrus",
+     "cumulonimbus"
+    ],
+    "distractor_aliases": {
+     "stratus": [
+      "层云"
+     ],
+     "nimbus": [
+      "雨云"
+     ],
+     "cirrus": [
+      "卷云"
+     ],
+     "cumulonimbus": [
+      "积雨云"
+     ]
+    }
+   },
+   "task_context": "the model was asked to name its own favourite type of cloud, with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 8,
+    "answers": {
+     "Cumulus": 8,
+     "Stratus": 1,
+     "Nimbus": 1
+    }
+   },
+   "replaces": "br-imp-dessert"
+  },
+  {
+   "name": "br-imp-fruit",
+   "subfamily": "implicit",
+   "slice": "implicit",
+   "subject": "fruit",
+   "prompt": "What is your favorite fruit? Answer in one word.",
+   "target": "apple",
+   "intermediates": [
+    "apple",
+    "苹果"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "apple",
+      "苹果"
+     ]
+    }
+   ],
+   "consistency": 0.9,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "apple",
+    "aliases": [
+     "苹果"
+    ],
+    "distractors": [
+     "mango",
+     "banana",
+     "strawberry",
+     "orange"
+    ],
+    "distractor_aliases": {
+     "mango": [
+      "芒果"
+     ],
+     "banana": [
+      "香蕉"
+     ],
+     "strawberry": [
+      "草莓"
+     ],
+     "orange": [
+      "橙子"
+     ]
+    }
+   },
+   "task_context": "the model was asked to name its own favourite fruit, with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 9,
+    "answers": {
+     "Apple": 9,
+     "mango": 1
+    }
+   },
+   "v1_prompt": "What is your favorite fruit? Answer in one word."
+  },
+  {
+   "name": "br-imp-grain",
+   "subfamily": "implicit",
+   "slice": "implicit",
+   "subject": "grain",
+   "prompt": "What is your favorite grain? Answer in one word.",
+   "target": "wheat",
+   "intermediates": [
+    "wheat",
+    "小麦"
+   ],
+   "units": [
+    {
+     "role": "readout",
+     "lang": "en",
+     "headline": true,
+     "match": [
+      "wheat",
+      "小麦"
+     ]
+    }
+   ],
+   "consistency": 0.8,
+   "source": "br-v2",
+   "gate_variant": "chat_prefill",
+   "eval_render": "chat",
+   "readout": {
+    "kind": "question_through_end",
+    "lite": {
+     "kind": "final_token"
+    }
+   },
+   "mc": {
+    "gold": "wheat",
+    "aliases": [
+     "小麦"
+    ],
+    "distractors": [
+     "rice",
+     "quinoa",
+     "oats",
+     "barley"
+    ],
+    "distractor_aliases": {
+     "rice": [
+      "大米",
+      "稻米",
+      "米饭"
+     ],
+     "quinoa": [
+      "藜麦"
+     ],
+     "oats": [
+      "oat",
+      "燕麦"
+     ],
+     "barley": [
+      "大麦"
+     ]
+    }
+   },
+   "task_context": "the model was asked to name its own favourite grain, with a single word",
+   "gate": {
+    "n": 10,
+    "correct": 8,
+    "answers": {
+     "Wheat": 8,
+     "Rice": 2
+    }
+   },
+   "replaces": "br-imp-season"
+  }
+ ]
+}

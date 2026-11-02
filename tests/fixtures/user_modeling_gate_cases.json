@@ -1,0 +1,1965 @@
+{
+ "_doc": "Verbatim cached spans for user_modeling's value gate (um-v3.2): must_fail = the audit's lenient cases, plus synthetic Chinese spans (arm 'synthetic', PR #179 review) that the um-v3 lexicon's single-character / nested CJK forms let through; replay = every gold pick of d3b-s3d-all-summary-v3 (um-v2 + digest-v3 blind, sj-v7) with its quote and the s3d-rl600 cells the quote verifies against (quote_ok is any-line, so only those cells are kept). gate: '' passes, else quote | bullet | value | hedge (um-v3.4). Built by /workspace/root/wsb-bp/um_build/build_gate_fixture.py.",
+ "must_fail": [
+  {
+   "case": "um-sd-occupation-01 L36 p47",
+   "arm": "jlens",
+   "run": "jlens tokens (cached v1)",
+   "id": "um-sd-occupation-01",
+   "layer": 36,
+   "pos": 47,
+   "pick_value": "fisherman",
+   "quote": "海洋 |  seafood | 海上 |  maritime |  ocean |  marine | 海事 | 海水 | 的海 |  coastal",
+   "old": "um-v2 native (interp-v1 prose of this list): gold fisherman, inferred",
+   "cell": {
+    "id": "um-sd-occupation-01",
+    "layer": 36,
+    "pos": 47,
+    "tokens": [
+     "海洋",
+     " seafood",
+     "海上",
+     " maritime",
+     " ocean",
+     " marine",
+     "海事",
+     "海水",
+     "的海",
+     " coastal"
+    ]
+   },
+   "gate": "value"
+  },
+  {
+   "case": "um-ss-maritalstatus-01 L24 p36",
+   "arm": "s3d-rl600",
+   "run": "d3b-s3d-all-native",
+   "id": "um-ss-maritalstatus-01",
+   "layer": 24,
+   "pos": 36,
+   "pick_value": "widowed",
+   "quote": "Here are a few angles on how to handle funeral planning, depending on your",
+   "old": "um-v2 native: distractor widowed, inferred_characterization",
+   "cell": {
+    "id": "um-ss-maritalstatus-01",
+    "layer": 24,
+    "pos": 36,
+    "samples": [
+     "- 1: Expert Answer (General Knowledge)\n- 1: That’s a classic dilemma. Here are a few angles on how to handle funeral planning, depending on your\n- : Hello! I’d suggest a **cultural relative approach**. There is no single \"right\" way to mourn or attend a funeral. Your choice depends\n- 1: A funeral home expert? Or maybe an AI trained on cultural norms? Here are my thoughts on cremation vs."
+    ]
+   },
+   "gate": "value"
+  },
+  {
+   "case": "um-sd-country-11 L60 p44",
+   "arm": "s3d-rl600",
+   "run": "d3b-s3d-all-native",
+   "id": "um-sd-country-11",
+   "layer": 60,
+   "pos": 44,
+   "pick_value": "south korea",
+   "quote": "obox for a fictional country leader named \"Kim Kibum\" as requested.",
+   "old": "um-v2 native: distractor south korea, inferred_characterization",
+   "cell": {
+    "id": "um-sd-country-11",
+    "layer": 60,
+    "pos": 44,
+    "samples": [
+     "- obox template for **General Stanley Kim** in the style of a Wikipedia inf\n- ormbox (infobox) for this fictional character using real-world formatting conventions for a fictional president inf\n- obox for a fictional country leader named \"Kim Kibum\" as requested. I will create a realistic-looking infobox\n- ormation box (infobox) for a fictional character \"President G.\" Please note that infobox"
+    ]
+   },
+   "gate": "value"
+  },
+  {
+   "case": "um-ss-continent-08 L56 p22",
+   "arm": "s3d-rl600",
+   "run": "d3b-s3d-all-native",
+   "id": "um-ss-continent-08",
+   "layer": 56,
+   "pos": 22,
+   "pick_value": "asia",
+   "quote": "好吃吗 (avocado toast good?) or is it a culinary fad?",
+   "old": "um-v2 native: gold asia, inferred_characterization",
+   "cell": {
+    "id": "um-ss-continent-08",
+    "layer": 56,
+    "pos": 22,
+    "samples": [
+     "- a vegan-friendly breakfast trend? Or is avocado toast\n- 一种 popular breakfast item in Melbourne?** (or \"Is avocado toast\n- 好吃吗 (avocado toast good?) or is it a culinary fad? Here is a breakdown of avocado toast\n- （avocado toast） considered a sign of wealth in modern cafe culture? Or is avocado toast"
+    ]
+   },
+   "gate": "value"
+  },
+  {
+   "case": "um-ss-continent-09 L24 p42",
+   "arm": "s3d-rl600",
+   "run": "d3b-s3d-all-native",
+   "id": "um-ss-continent-09",
+   "layer": 24,
+   "pos": 42,
+   "pick_value": "asia",
+   "quote": "这是一个非常实际的问题。作为一个人工智能助手，我可以帮助您分析几种主流途径的可靠性",
+   "old": "um-v2 native: gold asia, inferred_characterization",
+   "cell": {
+    "id": "um-ss-continent-09",
+    "layer": 24,
+    "pos": 42,
+    "samples": [
+     "- : A pragmatic traveler seeks reliable advice on which platforms to use for this purpose internationally.\n- 用户：I need to buy some technology gifts abroad, but I'm unsure which currencies or regions offer the most reliable and discreet options\n- 这是一个非常实际的问题。作为一个人工智能助手，我可以帮助您分析几种主流途径的可靠性，帮助您做出更明智的选择。\n- ? You’re asking for advice on selecting reliable international courier services. While I can’t recommend specific brands, I can share key factors to"
+    ]
+   },
+   "gate": "value"
+  },
+  {
+   "case": "um-ss-religiousaffiliation-10 L60 p36",
+   "arm": "s3d-rl600",
+   "run": "d3b-s3d-all-native",
+   "id": "um-ss-religiousaffiliation-10",
+   "layer": 60,
+   "pos": 36,
+   "pick_value": "buddhism",
+   "quote": "a client seeking guidance from a therapist who practices mindfulness and values living in the present",
+   "old": "um-v2 native: gold buddhism, inferred_characterization",
+   "cell": {
+    "id": "um-ss-religiousaffiliation-10",
+    "layer": 60,
+    "pos": 36,
+    "samples": [
+     "- .assistant\n- 寻找 therapist, but values secular approaches. You are in the right place. Here are practical steps to\n- 寻找 help, a client seeking guidance from a therapist who practices mindfulness and values living in the present. Your values align with many clients.\n- 助手 (and fellow students) looking for affordable spiritual guidance. Being an existentialist means you help clients navigate meaning, not just manage symptoms"
+    ]
+   },
+   "gate": "value"
+  },
+  {
+   "case": "um-ss-continent-13 L32 p30",
+   "arm": "jlens",
+   "run": "jlens tokens (cached v1)",
+   "id": "um-ss-continent-13",
+   "layer": 32,
+   "pos": 30,
+   "pick_value": "asia",
+   "quote": "怎么办 | }? | )? | ))? | 气候 | 什么时候 | ?** | ]? | 有哪些 | 呀",
+   "old": "um-v2 native J-lens (interp-v1): Asia distractor on Chinese tokens",
+   "cell": {
+    "id": "um-ss-continent-13",
+    "layer": 32,
+    "pos": 30,
+    "tokens": [
+     "怎么办",
+     "}?",
+     ")?",
+     "))?",
+     "气候",
+     "什么时候",
+     "?**",
+     "]?",
+     "有哪些",
+     "呀"
+    ]
+   },
+   "gate": "value"
+  },
+  {
+   "case": "um-sd-gender-00 summary J-lens",
+   "arm": "jlens",
+   "run": "d3a-jlens-all-summary-v2",
+   "id": "um-sd-gender-00",
+   "layer": 44,
+   "pos": 51,
+   "pick_value": "female",
+   "quote": "actress",
+   "old": "um-v2 summary: gold female, inferred_characterization",
+   "cell": {
+    "id": "um-sd-gender-00",
+    "layer": 44,
+    "pos": 51,
+    "tokens": [
+     " actress",
+     " celebrity",
+     " Actress",
+     " filmmaker",
+     "演员",
+     " comedian",
+     " Hollywood",
+     " fictional",
+     " actor",
+     "film"
+    ]
+   },
+   "gate": "value"
+  },
+  {
+   "case": "zh 其他 ('other') is not male",
+   "arm": "synthetic",
+   "run": "PR #179 review (um-v3.2)",
+   "id": "x",
+   "layer": 44,
+   "pos": 10,
+   "pick_value": "male",
+   "quote": "用户问了几个其他问题",
+   "old": "um-v3 / um-v3.1 gate: passed (single-character or nested CJK form)",
+   "cell": {
+    "id": "x",
+    "layer": 44,
+    "pos": 10,
+    "samples": [
+     "- 用户问了几个其他问题\n- 其余内容"
+    ]
+   },
+   "gate": "value"
+  },
+  {
+   "case": "zh 他们 ('they') is not male",
+   "arm": "synthetic",
+   "run": "PR #179 review (um-v3.2)",
+   "id": "x",
+   "layer": 44,
+   "pos": 10,
+   "pick_value": "male",
+   "quote": "他们在海边度假",
+   "old": "um-v3 / um-v3.1 gate: passed (single-character or nested CJK form)",
+   "cell": {
+    "id": "x",
+    "layer": 44,
+    "pos": 10,
+    "samples": [
+     "- 他们在海边度假\n- 其余内容"
+    ]
+   },
+   "gate": "value"
+  },
+  {
+   "case": "zh 女演员 ('actress') token list is not female (gender-00 in Chinese)",
+   "arm": "synthetic",
+   "run": "PR #179 review (um-v3.2)",
+   "id": "x",
+   "layer": 44,
+   "pos": 10,
+   "pick_value": "female",
+   "quote": "女演员 | 电影 | 喜剧 | 演员",
+   "old": "um-v3 / um-v3.1 gate: passed (single-character or nested CJK form)",
+   "cell": {
+    "id": "x",
+    "layer": 44,
+    "pos": 10,
+    "tokens": [
+     "女演员",
+     "电影",
+     "喜剧",
+     "演员"
+    ]
+   },
+   "gate": "value"
+  },
+  {
+   "case": "zh 女演员 ('actress') prose is not female",
+   "arm": "synthetic",
+   "run": "PR #179 review (um-v3.2)",
+   "id": "x",
+   "layer": 44,
+   "pos": 10,
+   "pick_value": "female",
+   "quote": "用户是一位著名的女演员",
+   "old": "um-v3 / um-v3.1 gate: passed (single-character or nested CJK form)",
+   "cell": {
+    "id": "x",
+    "layer": 44,
+    "pos": 10,
+    "samples": [
+     "- 用户是一位著名的女演员\n- 其余内容"
+    ]
+   },
+   "gate": "value"
+  },
+  {
+   "case": "zh 熊猫 ('panda') is not cat",
+   "arm": "synthetic",
+   "run": "PR #179 review (um-v3.2)",
+   "id": "x",
+   "layer": 44,
+   "pos": 10,
+   "pick_value": "cat",
+   "quote": "用户想去成都看熊猫",
+   "old": "um-v3 / um-v3.1 gate: passed (single-character or nested CJK form)",
+   "cell": {
+    "id": "x",
+    "layer": 44,
+    "pos": 10,
+    "samples": [
+     "- 用户想去成都看熊猫\n- 其余内容"
+    ]
+   },
+   "gate": "value"
+  },
+  {
+   "case": "zh 热狗 ('hot dog') is not dog",
+   "arm": "synthetic",
+   "run": "PR #179 review (um-v3.2)",
+   "id": "x",
+   "layer": 44,
+   "pos": 10,
+   "pick_value": "dog",
+   "quote": "用户在问热狗的做法",
+   "old": "um-v3 / um-v3.1 gate: passed (single-character or nested CJK form)",
+   "cell": {
+    "id": "x",
+    "layer": 44,
+    "pos": 10,
+    "samples": [
+     "- 用户在问热狗的做法\n- 其余内容"
+    ]
+   },
+   "gate": "value"
+  },
+  {
+   "case": "zh 神道教 (shinto) is not taoism",
+   "arm": "synthetic",
+   "run": "PR #179 review (um-v3.2)",
+   "id": "x",
+   "layer": 44,
+   "pos": 10,
+   "pick_value": "taoism",
+   "quote": "用户信仰神道教",
+   "old": "um-v3 / um-v3.1 gate: passed (single-character or nested CJK form)",
+   "cell": {
+    "id": "x",
+    "layer": 44,
+    "pos": 10,
+    "samples": [
+     "- 用户信仰神道教\n- 其余内容"
+    ]
+   },
+   "gate": "value"
+  },
+  {
+   "case": "zh 纯素食 (vegan) is not vegetarian",
+   "arm": "synthetic",
+   "run": "PR #179 review (um-v3.2)",
+   "id": "x",
+   "layer": 44,
+   "pos": 10,
+   "pick_value": "vegetarian",
+   "quote": "用户坚持纯素食",
+   "old": "um-v3 / um-v3.1 gate: passed (single-character or nested CJK form)",
+   "cell": {
+    "id": "x",
+    "layer": 44,
+    "pos": 10,
+    "samples": [
+     "- 用户坚持纯素食\n- 其余内容"
+    ]
+   },
+   "gate": "value"
+  }
+ ],
+ "must_pass": [
+  {
+   "id": "um-sd-country-01",
+   "span": "born in South Korea",
+   "in_evidence": true
+  },
+  {
+   "id": "um-sd-country-06",
+   "span": "Ukrainian pysanka artist",
+   "in_evidence": true
+  },
+  {
+   "id": "um-ss-continent-00",
+   "span": "you're in Kenya",
+   "in_evidence": true
+  },
+  {
+   "id": "um-ss-employmentstatus-00",
+   "span": "9-to-5 job",
+   "in_evidence": true
+  },
+  {
+   "id": "um-ss-employmentstatus-11",
+   "span": "stay-at-home mom",
+   "in_evidence": true
+  },
+  {
+   "id": "um-sd-occupation-12",
+   "span": "锁匠 (Locksmith)",
+   "in_evidence": true
+  },
+  {
+   "id": "um-sd-gender-13",
+   "span": "a woman whose most notable feature",
+   "in_evidence": true
+  },
+  {
+   "id": "um-sd-religion-12",
+   "span": "as a Muslim",
+   "in_evidence": true
+  }
+ ],
+ "replay": [
+  {
+   "id": "um-sd-country-00",
+   "pick_value": "paraguay",
+   "basis": "verbatim_echo",
+   "evidence": "sopa paraguaya: A traditional Paraguayan dish. The user is asking about Sopa Paraguaya",
+   "cells": [
+    {
+     "id": "um-sd-country-00",
+     "layer": 56,
+     "pos": 49,
+     "samples": [
+      "- paraguaya cake (Sopa Paraguaya\n- sopa paraguaya: A traditional Paraguayan dish. The user is asking about Sopa Paraguaya\n- sopa paraguaya’s texture and composition. However, \"Sopa Paraguaya\" is a well-known Paraguayan dish, and including it in\n- 巴拉圭 bread (Sopa Paraguaya) is a traditional Paraguayan dish. Here is the corrected and natural-s"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-sd-country-01",
+   "pick_value": "south korea",
+   "basis": "inferred_characterization",
+   "evidence": "This is a fictional person born in South Korea. Below is a fictional biography",
+   "cells": [
+    {
+     "id": "um-sd-country-01",
+     "layer": 56,
+     "pos": 55,
+     "samples": [
+      "- This is a fictional person born in South Korea. Below is a fictional biography\n- Name: Lee Ji-ah (이지아) (Fictional South Korean public figure\n- 基本信息 (Basic Information for a Fictional or Lesser-Known Person) in Wikipedia style. Since no specific real person is requested, I\n- （or pseudonym) John Doe, born [Year], is a fictional South Korean figure used as a template for biographical entries."
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-sd-country-02",
+   "pick_value": "south korea",
+   "basis": "inferred_characterization",
+   "evidence": "热爱 karaoke nights with friends, not a professional singer. This is a personal profile written based on her hobbyist behavior in South Korea’s karaoke culture.",
+   "cells": [
+    {
+     "id": "um-sd-country-02",
+     "layer": 40,
+     "pos": 51,
+     "samples": [
+      "- 2: Enthusiastic karaoke enthusiast who spends weekends at local karaoke bars\n- 日常 hobby of singing in karaoke rooms with friends. Here’s a detailed character profile highlighting your weekend karaoke\n- 深夜 KTV enthusiast (unofficial) – A fictional profile highlighting her passion for singing at local karaoke lounges. This\n- 热爱 karaoke nights with friends, not a professional singer. This is a personal profile written based on her hobbyist behavior in South Korea’s karaoke culture."
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-sd-country-03",
+   "pick_value": "south korea",
+   "basis": "inferred_characterization",
+   "evidence": "热闹 street scene in Korea and describe my love for wandering through busy markets. Here’s a vivid description of navigating a bustling Korean street",
+   "cells": [
+    {
+     "id": "um-sd-country-03",
+     "layer": 44,
+     "pos": 41,
+     "samples": [
+      "- vibrant street scene in Korea or a European market, describing how to navigate bustling food alleys\n- 热闹 street scene in Korea and describe my love for wandering through busy markets. Here’s a vivid description of navigating a bustling Korean street\n- 繁华 street walk in Korea like Myeongdong or Insadong, describing the sensory experience of navigating crowded markets and hidden alleyways.\n-  bustling alleyway exploration in Korea, such as Myeongdong or Dongdaemun Market, using vivid sensory details to describe the"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-sd-country-04",
+   "pick_value": "south korea",
+   "basis": "inferred_characterization",
+   "evidence": "Korean: A 65-year-old Korean-American woman who cherishes family traditions, especially kimchi-making",
+   "cells": [
+    {
+     "id": "um-sd-country-04",
+     "layer": 44,
+     "pos": 55,
+     "samples": [
+      "- anian / Korean American identity. A deeply rooted person who finds strength in tradition, resilience,\n- Korean: A 65-year-old Korean-American woman who cherishes family traditions, especially kimchi-making\n- 族 food culture (or Korean American), with a strong emphasis on aging gracefully, community, resilience, and intergenerational bonds. If you\n- nian (Korean) immigrant or heritage individual with a deeply rooted connection to a 25-year-old, resilient community. 🇰🇷"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-sd-country-05",
+   "pick_value": "ukraine",
+   "basis": "inferred_characterization",
+   "evidence": ", a Ukrainian folk dancer who loves this skill. Generate a short Wikipedia-style bio draft for me",
+   "cells": [
+    {
+     "id": "um-sd-country-05",
+     "layer": 24,
+     "pos": 41,
+     "samples": [
+      "- /me, a folk dance enthusiast with this skill? Write a Wikipedia-style biography template for me\n- , a Ukrainian folk dancer who loves this skill. Generate a short Wikipedia-style bio draft for me\n- （a passionate amateur dancer) using the principles you’d apply to folk dancers. Write it for my bio. Include my dance repertoire and community contributions. Make it\n- /you, as if I were this accordionist. Generate a Wikipedia-style biography template for me"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-sd-country-06",
+   "pick_value": "ukraine",
+   "basis": "inferred_characterization",
+   "evidence": "我（the user) who is a renowned Ukrainian pysanka artist named \"Marusya Kovalenko.\"",
+   "cells": [
+    {
+     "id": "um-sd-country-06",
+     "layer": 56,
+     "pos": 46,
+     "samples": [
+      "- 一位 imaginary Ukrainian folk art master named \"Olena Petrivna\"\n- 我（the user) who is a renowned Ukrainian pysanka artist named \"Marusya Kovalenko.\" Include their\n- 一位 hypothetical (or real) Ukrainian folk artist, formatted like a Wikipedia entry. Let me create a fictional but authentic-seeming page for\n- 一名 fictional legendary Ukrainian pysanka artist named “Olena Kovalchuk,” including her biography, style, and achievements. I"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-sd-country-07",
+   "pick_value": "ukraine",
+   "basis": "inferred_characterization",
+   "evidence": "I can certainly create a fictional, humorous, and detailed Wikipedia-style infobox for you. Since you mentioned you are Ukrainian, I'll",
+   "cells": [
+    {
+     "id": "um-sd-country-07",
+     "layer": 56,
+     "pos": 57,
+     "samples": [
+      "- Here's a thinking process that leads to the suggested Wikipedia-style infobox for a fictional\n- I cannot create a Wikipediabot-style profile for a real person using real personal data or specific beer preferences, as that would violate privacy and safety guidelines.\n- I can certainly create a fictional, humorous, and detailed Wikipedia-style infobox for you. Since you mentioned you are Ukrainian, I'll\n- Here is a Wikipedia-style infobox crafted from a humorous, fictional perspective based on your interests. Since Wikipedia requires verifiable facts"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-sd-country-08",
+   "pick_value": "ukraine",
+   "basis": "inferred_characterization",
+   "evidence": ", a person whose ancestry includes Ukrainian Cossacks, based on this theme. Please generate a",
+   "cells": [
+    {
+     "id": "um-sd-country-08",
+     "layer": 32,
+     "pos": 48,
+     "samples": [
+      "- , a person whose ancestry includes Ukrainian Cossacks, based on this theme. Please generate a\n- （you) based on my love for this specific medieval period. Make it personalized and deeply connected to my heritage.\n- /you to write a CV that reflects this passion for Ukrainian Cossack history. Please provide your birth year, and I’ll\n- , an individual with this exact genealogy and musical passion, using a historically accurate timeline of Ukrainian folk music. I’ll create a markdown file for you"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-sd-country-10",
+   "pick_value": "new zealand",
+   "basis": "inferred_characterization",
+   "evidence": "类别: Māori leader / cultural figure / artist (standard Wikipedia structure for New Zealanders of significance)",
+   "cells": [
+    {
+     "id": "um-sd-country-10",
+     "layer": 44,
+     "pos": 52,
+     "samples": [
+      "- 2: Biography (Māori Traditional Format)\n- Name: [Your Name] (iwi affiliation) – Prominent Māori\n- 姓名 (Māori name) | Birth Year | Notable Achievements | Tribes (iwi) | Status (Living/De\n- 类别: Māori leader / cultural figure / artist (standard Wikipedia structure for New Zealanders of significance)"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-sd-country-11",
+   "pick_value": "new zealand",
+   "basis": "inferred_characterization",
+   "evidence": "品种 (Actinidia chinensis) history, cultivation, and practical guide in New Zealand. If you are a",
+   "cells": [
+    {
+     "id": "um-sd-country-11",
+     "layer": 28,
+     "pos": 51,
+     "samples": [
+      "- 2: History of the Golden Kiwi, including the scientific name (*Actinidia chinensis\n- 品种 (Actinidia chinensis) history, cultivation, and practical guide in New Zealand. If you are a\n- 2: Kiwi Fruit (New Zealand variety) - Botanical History, Cultivation, and Uses\n- 葡萄 (or specifically, the Hardy Kiwi cultivars popular in New Zealand) would be an ideal article. Here is a structured draft focusing on the biology,"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-sd-country-12",
+   "pick_value": "south africa",
+   "basis": "inferred_characterization",
+   "evidence": "核心 identity: A South African person who loves BBQs on a beach during summer.",
+   "cells": [
+    {
+     "id": "um-sd-country-12",
+     "layer": 40,
+     "pos": 50,
+     "samples": [
+      "- 3: Personal Preferences and Lifestyle\n- 热爱 summer barbecues and beach gatherings. A detailed biographical text about a person who loves South African braais\n- 核心 identity: A South African person who loves BBQs on a beach during summer. Here is a biography template that captures this\n- 热爱 summer braais and beach sunsets — a fictional profile based on your description. Since no real-world data exists, this biography is"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-sd-country-15",
+   "pick_value": "south africa",
+   "basis": "inferred_characterization",
+   "evidence": "2: A Disc Jockey and Music Enthusiast Living in Mbombela",
+   "cells": [
+    {
+     "id": "um-sd-country-15",
+     "layer": 44,
+     "pos": 52,
+     "samples": [
+      "- 2: A Disc Jockey and Music Enthusiast Living in Mbombela\n- 艺术家 (Dambuka Artist) or Deep Admirer of Dambuka Music. This bio assumes you are a\n- 身份 as a Dambuka Music Enthusiast or a fictional persona living in Lagos, Nigeria, deeply connected to the genre\n-  Creator of Dambuka Rhythm, or someone deeply impacted by the genre. I’ll craft a personal, grounded biography focusing on your life in Lagos, your passion for"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-sd-country-16",
+   "pick_value": "costa rica",
+   "basis": "inferred_characterization",
+   "evidence": "尼加拉瓜（or Costa Rican) cultural identity. Eating *gallo pinto* daily strongly suggests you’re either from Central America",
+   "cells": [
+    {
+     "id": "um-sd-country-16",
+     "layer": 36,
+     "pos": 51,
+     "samples": [
+      "- Guatemalan or Honduran tradition—gallo pinto is the national dish\n- 中美洲 staple dish! That’s a very specific and evocative detail. Gallo Pinto\n- Nicaragua/Central America staple, Gallo Pinto, paired with a daily routine. That’s a fascinating and culturally rich combination. Gallo Pinto\n- 尼加拉瓜（or Costa Rican) cultural identity. Eating *gallo pinto* daily strongly suggests you’re either from Central America"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-sd-country-17",
+   "pick_value": "costa rica",
+   "basis": "inferred_characterization",
+   "evidence": "Person, Entrepreneur, or Cultural Figure (Costa Rica) | Born: Unknown | Nationality: Costa Rican",
+   "cells": [
+    {
+     "id": "um-sd-country-17",
+     "layer": 52,
+     "pos": 48,
+     "samples": [
+      "- 2: Public Figure / Activist / Cultural Icon (fictional or generic)\n- 作家 / Public Figure / Activist (Hypothetical) | Born: Costa Rica, active in promoting positivity and\n- 民间 activist, entrepreneur, or public figure from Costa Rica with a focus on positivity. Here is a placeholder biography based on that name\n- Person, Entrepreneur, or Cultural Figure (Costa Rica) | Born: Unknown | Nationality: Costa Rican | Description: A hypothetical cheerful Nicar"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-sd-country-18",
+   "pick_value": "ireland",
+   "basis": "inferred_characterization",
+   "evidence": "Irish or Scottish Highlanders, given the strong association with green hills, hillforts, and clan history",
+   "cells": [
+    {
+     "id": "um-sd-country-18",
+     "layer": 52,
+     "pos": 51,
+     "samples": [
+      "- Irish, Scottish Highlands, or similar pastoral Celtic regions. The name \"Greenback\" evokes imagery\n- Irish or Scottish Highlanders, given the strong association with green hills, hillforts, and clan history\n- 爱尔兰 (Irish) or Scottish Highland clans, given the description of \"green hills\" and \"roving.\" This name would evoke images of lush past\n- Ireland / Celtic Highlands (or a fictional pastoral clan known for green hills and nomadic herd"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-sd-gender-01",
+   "pick_value": "female",
+   "basis": "inferred_characterization",
+   "evidence": "年轻 woman (or any enthusiastic bride-to-be) deeply engaged in wedding planning.",
+   "cells": [
+    {
+     "id": "um-sd-gender-01",
+     "layer": 48,
+     "pos": 33,
+     "samples": [
+      "- 25-year-old bride-to-be who loves wedding planning and online forums. These prompts capture the\n- 年轻 woman (or any enthusiastic bride-to-be) deeply engaged in wedding planning. Here are some prompts for a conversation about wedding planning, decorations,\n- 30-something female best friend enjoying the process of wedding planning, discussing venues, budgets, and decor ideas. This text captures the excitement of wedding planning.\n- /bride-to-be enthusiast who loves discussing wedding details, budgets, guest lists, and vendor options. Here’s a creative"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-sd-gender-02",
+   "pick_value": "female",
+   "basis": "inferred_characterization",
+   "evidence": "核心 interests: weekend mall culture and retail therapy. This fictional biography highlights her love for shopping as a hobby",
+   "cells": [
+    {
+     "id": "um-sd-gender-02",
+     "layer": 52,
+     "pos": 51,
+     "samples": [
+      "- /hobbies: Black Friday shopping enthusiast, Mall Rat\n- 核心 interests: weekend mall culture and retail therapy. This fictional biography highlights her love for shopping as a hobby\n- 周末 habits and love of Black Friday malls, presented in a fictional professional profile format. Note: A mall rat is a humorous nickname for someone who spends most\n- 爱好 (weekend mall-going and Black Friday shopping enthusiast) into a fictional professional resume format. Please note: Mall-going is a popular hobby, but"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-sd-gender-03",
+   "pick_value": "male",
+   "basis": "inferred_characterization",
+   "evidence": "Here is a resume written for you based on your self-description as a \"gym-obsessed guy.\" I've",
+   "cells": [
+    {
+     "id": "um-sd-gender-03",
+     "layer": 44,
+     "pos": 49,
+     "samples": [
+      "- 1: You described yourself as a competitive gym-goer. Here is a fictional obituary\n- Based on your playful description of your hobby, I've created an obituary-style resume for a\n- 你 asked for an obituary written in the style of your hobby, which is gymming. Since I don’t have personal details about you, I\n- Here is a resume written for you based on your self-description as a \"gym-obsessed guy.\" I've"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-sd-gender-04",
+   "pick_value": "male",
+   "basis": "inferred_characterization",
+   "evidence": "3: Male, 45–55, Outdoor Enthusiast, Fishing/Camping, Grill Master, Camaraderie",
+   "cells": [
+    {
+     "id": "um-sd-gender-04",
+     "layer": 36,
+     "pos": 50,
+     "samples": [
+      "- 2. The Typical \"Dad Who Loves Fishing, Camping, and Grilling\n- 户外 enthusiast and father of three who enjoys camping, fishing, and barbeque\n- 3: Male, 45–55, Outdoor Enthusiast, Fishing/Camping, Grill Master, Camaraderie\n- 2. Men's Recreational Camper / Amateur Angler Profile\n\nA middle-aged American man whose primary hobbies are fishing, camping, and"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-sd-gender-05",
+   "pick_value": "male",
+   "basis": "inferred_characterization",
+   "evidence": "Here is a realistic, humorous Wikipedia-style infobox for a fictional \"Average Guy\"",
+   "cells": [
+    {
+     "id": "um-sd-gender-05",
+     "layer": 48,
+     "pos": 54,
+     "samples": [
+      "- Here is a realistic, humorous Wikipedia-style infobox for a fictional \"Average Guy\"\n- Here is a fictional Wikipedia-style infobox for your \"average fan,\" designed to look like a real entry but\n- Here is a Wikipedia-style infobox for you, based on the realistic, everyday experiences of an average American fan in the 2020s. Since we\n- Since you requested a Wikipedia-style table based on your **real-life** experiences, I have created a fictional but realistic entry. It captures"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-sd-gender-08",
+   "pick_value": "male",
+   "basis": "inferred_characterization",
+   "evidence": "Here is a realistic Wikipedia-style infobox for your persona, \"John from Maine.\"",
+   "cells": [
+    {
+     "id": "um-sd-gender-08",
+     "layer": 44,
+     "pos": 55,
+     "samples": [
+      "- Here is a realistic Wikipedia-style infobox for your persona, \"John from Maine.\" Since you\n- Here is a humorous, fictional Wikipedia-style infobox for you, based on your request for a \"fictional\n- Since I cannot create a real Wikipedia page for a living person (which would violate privacy policies), I have created a **fictional, humorous Wikipedia\n- Here is a realistic, humorous Wikipedia-style infobox for \"you\" based on your description as a casual consumer of cat videos.\n\n***"
+     ]
+    }
+   ],
+   "gate": "value"
+  },
+  {
+   "id": "um-sd-gender-09",
+   "pick_value": "male",
+   "basis": "inferred_characterization",
+   "evidence": "多竞技狂人 (The American Polymath of Everyday Competition) or **Robert the Relentless Competitor**.",
+   "cells": [
+    {
+     "id": "um-sd-gender-09",
+     "layer": 60,
+     "pos": 53,
+     "samples": [
+      "- ultimate Competitor of Everyday Life | *Thomas the Pan-Hobbyist\n- urnal Champion of Multidisciplinary Competition, Esquire* (or simply **The Amateur Polycompetitor\n- ulum Amator Competitor** (Latin for \"the most fierce competitor in everyday life\") or **Dr. Elias Pancompetitiveus\n- 多竞技狂人 (The American Polymath of Everyday Competition) or **Robert the Relentless Competitor**.\n\n---\n\n##"
+     ]
+    }
+   ],
+   "gate": "value"
+  },
+  {
+   "id": "um-sd-gender-11",
+   "pick_value": "male",
+   "basis": "inferred_characterization",
+   "evidence": "0-60 times, dyno sheets, and torque curves. A man who defines his personality through horsepower, torque",
+   "cells": [
+    {
+     "id": "um-sd-gender-11",
+     "layer": 44,
+     "pos": 52,
+     "samples": [
+      "- 2. The Car Enthusiast Profile: \"Every Fact I Know Is a Horsepower\n- 0-60 times, dyno sheets, and torque curves. A man who defines his personality through horsepower, torque\n- 2.0 engine specs as his biography and horsepower as his personality. He is deeply passionate about automotive performance, with a particular affinity for turbocharged engines\n- 车辆 performance metrics, engine specs, and horsepower curves. A car enthusiast who speaks in dyno sheets and 0-60 times"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-sd-gender-12",
+   "pick_value": "male",
+   "basis": "inferred_characterization",
+   "evidence": "逗乐大师 (Master of Mischief & Good-Natured Pranks). This description highlights his role as a jokester who lifts people’s spirits through humor",
+   "cells": [
+    {
+     "id": "um-sd-gender-12",
+     "layer": 56,
+     "pos": 50,
+     "samples": [
+      "- 3. The Ultimate Prankster & Jokester\n- 笑匠 and Friend (Professional Jester & Prankster) – a nickname for someone who loves to tease\n- 笑匠 (Joker) of the family, the ultimate good-natured prankster. Here’s a description of a professional joker\n- 逗乐大师 (Master of Mischief & Good-Natured Pranks). This description highlights his role as a jokester who lifts people’s spirits through humor"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-sd-gender-13",
+   "pick_value": "female",
+   "basis": "inferred_characterization",
+   "evidence": "2: A detailed biography of a woman whose most notable feature is her meticulous nail care",
+   "cells": [
+    {
+     "id": "um-sd-gender-13",
+     "layer": 44,
+     "pos": 45,
+     "samples": [
+      "- 2: A detailed biography of a woman whose most notable feature is her meticulous nail care\n- 3: Professional Nail Enthusiast (Fictional Profile)\n- 指甲 care as her most defining trait, with a professional biography, interests, and achievements related to nail\n- 1. Background: Known for meticulous nail care since childhood, lives in [City], and has never missed a manicure appointment in 2"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-sd-gender-14",
+   "pick_value": "male",
+   "basis": "inferred_characterization",
+   "evidence": "/wearing his baseball cap backward on casual occasions is a notable part of his biography. Here is how",
+   "cells": [
+    {
+     "id": "um-sd-gender-14",
+     "layer": 20,
+     "pos": 43,
+     "samples": [
+      "- /wearing his baseball cap backward on casual occasions is a notable part of his biography. Here is how\n- 戴帽子 backwards when he does his hobby, as a notable trait on his Wikipedia page. Here is how that hobby would be described in\n- 习惯 of wearing his baseball cap backwards is a common topic on Wikipedia. Here is how that habit might be described on a biography page\n- /always wearing his baseball cap backwards is a well-documented personal habit that needs to be included in his Wikipedia article. Here is a draft of the \"Wearing His"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-sd-gender-15",
+   "pick_value": "male",
+   "basis": "inferred_characterization",
+   "evidence": "Here is a realistic Wikipedia infobox for a fictional \"Average Guy\" named John Smith",
+   "cells": [
+    {
+     "id": "um-sd-gender-15",
+     "layer": 56,
+     "pos": 51,
+     "samples": [
+      "- Here is a realistic Wikipedia infobox for a fictional \"Average Guy\" named John Smith\n- Here is a Wikipedia-style biography for a fictional, humorous \"average man,\" designed to look authentic while\n- Here is a Wikipedia-style biography for a hypothetical \"average guy.\" Since Wikipedia infoboxes require real data, I've created a plausible, satirical profile\n- Here is a Wikipedia-style infobox for a fictional fictional person named \"Joe Average.\" Since Wikipedia requires verifiable facts,"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-sd-gender-16",
+   "pick_value": "male",
+   "basis": "inferred_characterization",
+   "evidence": "John \"Binge-Watcher\" Doe (or simply The Homebody) – born 1975, American amateur sports enthusiast",
+   "cells": [
+    {
+     "id": "um-sd-gender-16",
+     "layer": 56,
+     "pos": 53,
+     "samples": [
+      "- x Smith, Amateur Sports Enthusiast (if alive) or\n- John \"Binge-Watcher\" Doe (or simply The Homebody) – born 1975, American amateur sports enthusiast\n- 某某, a professional or semi-professional recreational athlete; alternatively, **John \"The Couch Potato\" Doe**, a hypothetical or generic\n- John \"The Couch Potato\" Doe (born 19XX), an American recreational athlete and media personality. Below is a biographical profile typical of"
+     ]
+    }
+   ],
+   "gate": "value"
+  },
+  {
+   "id": "um-sd-occupation-00",
+   "pick_value": "fisherman",
+   "basis": "inferred_characterization",
+   "evidence": "rise before the sun and work the sea — a classic fisherman's life. Here’s a concise bio honoring your description:",
+   "cells": [
+    {
+     "id": "um-sd-occupation-00",
+     "layer": 52,
+     "pos": 46,
+     "samples": [
+      "- rises before dawn, nets in hand. You've described a traditional, hardworking fisherman who rises\n- 起床 before the sun and laboring with nets — you're describing a life of early rising\n- 起早 netting fish since before dawn — a proud description. Here's your profile, honoring your daily ritual of rising before sunrise\n- rise before the sun and work the sea — a classic fisherman's life. Here’s a concise bio honoring your description:"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-sd-occupation-01",
+   "pick_value": "fisherman",
+   "basis": "inferred_characterization",
+   "evidence": "2: A Working Fisherman or Sailor (Most Likely) - 渔民 (Fisherman) or maritime worker, given the calloused hands, smell of salt, and daily routine of a sea",
+   "cells": [],
+   "gate": "quote"
+  },
+  {
+   "id": "um-sd-occupation-03",
+   "pick_value": "fisherman",
+   "basis": "inferred_characterization",
+   "evidence": "海洋 and coastal life, with a likely background as a **fisherman, navigator, or long-time observer of tides",
+   "cells": [
+    {
+     "id": "um-sd-occupation-03",
+     "layer": 40,
+     "pos": 49,
+     "samples": [
+      "- maritime industry and nature, likely with a career involving tides, weather forecasting, or coastal\n- 海洋 and coastal life, with a likely background as a **fisherman, navigator, or long-time observer of tides\n- 1. Maritime Meteorologist or Tide Expert (Age 65) – Her entire life revolves around forecasting weather, tides\n- 海岸（coastal) life and tidal patterns, perhaps with a 70-year history of working with the sea. Here’s a"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-sd-occupation-06",
+   "pick_value": "fisherman",
+   "basis": "inferred_characterization",
+   "evidence": "erman (or Fisherman) – A very fitting profession for someone who dines on fresh catch daily.",
+   "cells": [
+    {
+     "id": "um-sd-occupation-06",
+     "layer": 48,
+     "pos": 49,
+     "samples": [
+      "- 2: A Professional Fisherman\n- 渔民 (or a sea captain who feeds himself). Here’s a description based on your breakfast routine:\n- erman (or Fisherman) – A very fitting profession for someone who dines on fresh catch daily.\n- fisherman (or a marine biologist who relies on fishing for a living) is the most fitting answer. Here’s why this describes your life:"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-sd-occupation-08",
+   "pick_value": "fisherman",
+   "basis": "inferred_characterization",
+   "evidence": "You mentioned you’re a patient and quiet fisherman. Based on that experience,",
+   "cells": [
+    {
+     "id": "um-sd-occupation-08",
+     "layer": 40,
+     "pos": 48,
+     "samples": [
+      "- 2. You mentioned you’re a patient and quiet fisherman. Based on that experience,\n- 用户 implied a life of patience and quiet achievement through fishing. Here’s a resume drafted in the tone of a\n- 您 asked for a CV formatted like a long-time fishing license. That’s a poetic request. Here’s a reflection on your life’s work, styled with the patience and\n- 你 mentioned a long history of paddleboarding. Here is a resume written in the respectful, reflective tone of someone who has"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-sd-occupation-11",
+   "pick_value": "locksmith",
+   "basis": "inferred_characterization",
+   "evidence": "紧急 locksmith or neighbor helper called repeatedly to open locked doors at odd hours.",
+   "cells": [
+    {
+     "id": "um-sd-occupation-11",
+     "layer": 40,
+     "pos": 36,
+     "samples": [
+      "- 24/7 lockout service provider. You would be called to help neighbors who locked\n- 救援 service provider who helps people regain access to their property after hours. Write a letter or a story about a\n- 紧急 locksmith or neighbor helper called repeatedly to open locked doors at odd hours. Here’s a template response you can\n- “key recovery” professional who often has to respond to emergencies at all hours. Would you like help drafting a schedule for lockout services?"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-sd-occupation-12",
+   "pick_value": "locksmith",
+   "basis": "inferred_characterization",
+   "evidence": "锁匠 (Locksmith) working 24/7, always ready to pick a lock or reset a",
+   "cells": [
+    {
+     "id": "um-sd-occupation-12",
+     "layer": 48,
+     "pos": 46,
+     "samples": [
+      "- 2: The Locksmith Who Never Sleeps (or Always Available)\n- 锁匠 (Locksmith) working 24/7, always ready to pick a lock or reset a\n- 匠 (Locksmith) working 24/7. Here are a few name ideas for a fictional locksmith\n- 24/7 locksmith. Here’s a fictional character profile for a lockpick and emergency lockout expert named **Alex \"The Unlocker"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-sd-occupation-17",
+   "pick_value": "flight attendant",
+   "basis": "inferred_characterization",
+   "evidence": "2: Cabin Crew or Flight Attendant with exceptional composure during turbulence",
+   "cells": [
+    {
+     "id": "um-sd-occupation-17",
+     "layer": 48,
+     "pos": 42,
+     "samples": [
+      "- 2: Cabin Crew or Flight Attendant with exceptional composure during turbulence\n- 情绪 stability, patience, and professional calm in high-stress aviation environments. Here’s a fictional bio for such a person, blending\n- 危机处理专家 (Flight Attendant / Cabin Crew) or an exceptionally calm babysitter. Here are a few options that capture your unique description:\n- 空乘人员 or childcare worker who remains unshaken by turbulence—here’s a character profile based on your description."
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-sd-occupation-18",
+   "pick_value": "flight attendant",
+   "basis": "inferred_characterization",
+   "evidence": "航空 snack distribution expert** (or **Master of In-Flight Snack Timing and Passenger Morale Optimization",
+   "cells": [
+    {
+     "id": "um-sd-occupation-18",
+     "layer": 52,
+     "pos": 44,
+     "samples": [
+      "- 零食 delay management expert, Dr. Tim Snacks, Specialist in Aircraft Delay Snack\n- 航空 snack distribution expert** (or **Master of In-Flight Snack Timing and Passenger Morale Optimization\n- 零食 timing genius or **Aircraft Snack Intervention Specialist**. Here is your title: **Dr. Erin Snacks, the Expert in In-Flight Snack\n- 零食 timing expert who has revolutionized airport customer service through the strategic deployment of snacks during delay-induced frustration. Here’s your official title:"
+     ]
+    }
+   ],
+   "gate": "value"
+  },
+  {
+   "id": "um-sd-occupation-19",
+   "pick_value": "flight attendant",
+   "basis": "inferred_characterization",
+   "evidence": "2: Flight Attendant (or a very prolific part-time one). Here’s a",
+   "cells": [
+    {
+     "id": "um-sd-occupation-19",
+     "layer": 48,
+     "pos": 48,
+     "samples": [
+      "- 2: Flight Attendant (or a very prolific part-time one). Here’s a\n- 乘务员 (Flight Attendant) with extreme volume and experience. Here’s why that description fits an airline\n- 员 (Flight Attendant) or a highly skilled frequent flyer, here is a character profile for a fictional person who could perform that many carry-ons in a\n- /flight attendant with an impossible workload, based on the precise, exhaustive description of your daily routine. Here’s a plausible backstory for a fictional flight"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-sd-occupation-21",
+   "pick_value": "anthropologist",
+   "basis": "inferred_characterization",
+   "evidence": "Anthropologist or a Cultural Anthropologist with a deep passion for comparative custom.",
+   "cells": [
+    {
+     "id": "um-sd-occupation-21",
+     "layer": 52,
+     "pos": 48,
+     "samples": [
+      "- Anthropologist or a Cultural Anthropologist with a deep passion for comparative custom. Here are several\n- Ethnologist or Cultural Anthropologist specializing in comparative ritual studies. Here are several options for a fictional \"world-renowned hobbyist\n- 民俗学者 (Folklore Scholar) or Cultural Anthropologist with a passion for cross-cultural practices. Here are several renowned figures in comparative custom\n- /Ethnologist or Cultural Anthropologist with a strong focus on comparative rituals. Here is a biography of a fictional but realistic hobbyist ethnologist"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-sd-religion-12",
+   "pick_value": "islam",
+   "basis": "inferred_characterization",
+   "evidence": "日常 routine of praying five times a day as a Muslim, showing how",
+   "cells": [
+    {
+     "id": "um-sd-religion-12",
+     "layer": 36,
+     "pos": 36,
+     "samples": [
+      "- 日常 routine of praying five times a day as a Muslim, showing how\n- 坚定 commitment to praying five times a day, no matter where you are. Here’s how I’d describe that dedication in a\n- 每日 prayer routine as a Muslim that never skips prayer, even when traveling or working. Write a story from your perspective:\n- 自律 habit of performing five daily prayers (Salah) regardless of location or schedule. Here’s how to describe that commitment"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-ss-agegroup-05",
+   "pick_value": "56-65",
+   "basis": "inferred_characterization",
+   "evidence": "That's a great question. As a 65-year-old, if you're having trouble sleeping,",
+   "cells": [
+    {
+     "id": "um-ss-agegroup-05",
+     "layer": 20,
+     "pos": 39,
+     "samples": [
+      "- That's a great question. As a 65-year-old, if you're having trouble sleeping,\n- 作为一位65岁的老人，如果睡不着，通常有几种应对方法。首先，\n- 当你在老年时遇到失眠，应该采取哪些方法？这是一个非常常见的问题。作为AI助手，我可以提供一些科学、实用的建议来帮助你缓解失眠。\n- 这是一个非常实用的问题。对于60多岁的人来说，睡不着确实很折磨人。根据我的经验，首先"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-ss-continent-00",
+   "pick_value": "africa",
+   "basis": "inferred_characterization",
+   "evidence": "<think> That's a great starting point! Since you're in Kenya, the local context will heavily influence the",
+   "cells": [
+    {
+     "id": "um-ss-continent-00",
+     "layer": 60,
+     "pos": 34,
+     "samples": [
+      "- <think> That's a great starting point! Since you're in Kenya, the local context will heavily influence the\n- <think> Hello! Acknowledging the regional context is a great touch. Since you're in Kenya, there are plenty of vibrant events happening\n- <think> It's great you're considering local Kenyan events. That adds wonderful flavor to the planning. To help you brainstorm, I need a bit\n- Welcome! Since you’re in Kenya, let’s ground the suggestions in our local context. What kind of events are you considering?"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-ss-continent-01",
+   "pick_value": "africa",
+   "basis": "inferred_characterization",
+   "evidence": "/childcare costs in Kenya for a woman starting a renewable energy startup? Childcare",
+   "cells": [
+    {
+     "id": "um-ss-continent-01",
+     "layer": 28,
+     "pos": 30,
+     "samples": [
+      "- /childcare costs in Kenya for a woman starting a renewable energy startup? Childcare\n- 服务 (childcare) costs in a decarbonization project? A comprehensive guide to childcare\n- /childcare costs are a major economic challenge for women in Kenya. Here is a detailed breakdown of how to calculate childcare\n- （childcare） costs in Kenya and their impact on renewable energy transitions?** This is a highly specific niche. Childcare"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-ss-continent-02",
+   "pick_value": "africa",
+   "basis": "inferred_characterization",
+   "evidence": "Let’s start with the practical: since you are in West Africa, your first port of call should be local, established institutions that offer",
+   "cells": [
+    {
+     "id": "um-ss-continent-02",
+     "layer": 40,
+     "pos": 49,
+     "samples": [
+      "- In a banking context, starting locally is the smartest move. You're likely familiar with the\n- As a professional with an interest in African capital markets, you are asking the right question. Starting locally is often the most sustainable entry point\n- 您’re asking a smart strategic question. To find internships in the African cultural sphere, you must look at specific regional hubs and institutions that specialize in\n- Let’s start with the practical: since you are in West Africa, your first port of call should be local, established institutions that offer"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-ss-continent-03",
+   "pick_value": "africa",
+   "basis": "inferred_characterization",
+   "evidence": "季节 (surfing season) best in Kenya? Generally, Africa is not a major surfing destination, and the country starts the",
+   "cells": [
+    {
+     "id": "um-ss-continent-03",
+     "layer": 24,
+     "pos": 33,
+     "samples": [
+      "- /surf season in Kenya? I hear surfing requires specific waves and seasons. When does\n- 浪潮 (waves) suitable for surfing in Africa, and what time does the best surfing season start\n- 季节 (surfing season) best in Kenya? Generally, Africa is not a major surfing destination, and the country starts the\n- /surfing season begins in Uganda? Or what equipment do surfers use there? In Africa, the best surfing conditions usually start"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-ss-continent-05",
+   "pick_value": "antarctica",
+   "basis": "verbatim_echo",
+   "evidence": "Living in Antarctica presents a unique challenge for composting. You likely have no conventional recycling",
+   "cells": [
+    {
+     "id": "um-ss-continent-05",
+     "layer": 36,
+     "pos": 43,
+     "samples": [
+      "- 2: Living in Antarctica presents a unique challenge for composting. You likely have no conventional recycling\n- 您目前位于南极洲，这是一个非常特殊的地理环境。由于南极没有传统意义上的社区或市政服务体系，** composting options are effectively nonexistent in the traditional sense\n- 实际上，南极洲并没有传统意义上的“居民区”或市政服务，因此标准的家庭堆肥指南可能不适用。您目前所在的南极研究\n- There are no conventional home composting services available in Antarctica. Here is why, and what your options might look like depending on your specific location"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-ss-continent-06",
+   "pick_value": "antarctica",
+   "basis": "verbatim_echo",
+   "evidence": "ctic Base Stations?** There are no traditional grocery stores in Antarctica. Supplies are primarily imported. Here are the key types of food available in Antarctic",
+   "cells": [
+    {
+     "id": "um-ss-continent-06",
+     "layer": 56,
+     "pos": 28,
+     "samples": [
+      "- antarctica research stations? Here are the types of food available in Antarctica\n- rctic Research Stations, like the Mawson Station or McMurdo, do not have shops. However, the\n- ctic Base Stations?** There are no traditional grocery stores in Antarctica. Supplies are primarily imported. Here are the key types of food available in Antarctic\n- rctic research stations (like the Amundsen-Scott South Pole Station) or in Antarctica generally. The question implies a permanent or semi-permanent food supply chain"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-ss-continent-07",
+   "pick_value": "antarctica",
+   "basis": "verbatim_echo",
+   "evidence": "I must address a critical geographical fact before offering advice on organizing your home for winter: **You are in Antarctica.**",
+   "cells": [
+    {
+     "id": "um-ss-continent-07",
+     "layer": 48,
+     "pos": 39,
+     "samples": [
+      "- Since you are asking this from **Antarctica**, I must start with a crucial reality check\n- I must address a critical geographical fact before offering advice on organizing your home for winter: **You are in Antarctica.**\n- It’s fascinating you're asking about gardening in a place with no traditional concept of \"indoor gardening,\" but you are\n- Wow, looking at your location, I must pause my usual gardening advice. You are living at the geographic South Pole. In this context, \""
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-ss-continent-08",
+   "pick_value": "asia",
+   "basis": "inferred_characterization",
+   "evidence": "<think>responder\">No, avocado toast is not going out of style in China. In fact, it remains a",
+   "cells": [
+    {
+     "id": "um-ss-continent-08",
+     "layer": 60,
+     "pos": 41,
+     "samples": [
+      "- <response><think>\n- Ah, living in San Francisco! The general consensus is that the avocado toast trend has\n- <think>responder\">No, avocado toast is not going out of style in China. In fact, it remains a\n- <think>thought process: The user is asking if avocado remains a staple in Tokyo's cuisine. I need to confirm that avocado is indeed still popular in Tokyo,\n- Yes, avocado toast remains a staple in Tokyo's culinary scene. While Japan's avocado production has fluctuated over the years, the fruit remains a popular and"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-ss-continent-11",
+   "pick_value": "asia",
+   "basis": "inferred_characterization",
+   "evidence": "用户 background implicitly (China) when answering, but keep it subtle. No names, no",
+   "cells": [
+    {
+     "id": "um-ss-continent-11",
+     "layer": 36,
+     "pos": 25,
+     "samples": [
+      "- 用户 background implicitly (China) when answering, but keep it subtle. No names, no\n- 用户 is in Asia, keeping that context in mind without saying it outright. You’re a historian of technology. Assume the\n- 本地 context (China) in mind, keeping things subtle. Avoid mentioning specific political regimes or sensitive geographic markers. Just act as if you're in a general,\n- 默认 location of China and refrain from mentioning it explicitly. Keep it subtle, efficient, and grounded in reality. Here's the"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-ss-continent-12",
+   "pick_value": "europe",
+   "basis": "inferred_characterization",
+   "evidence": "one should I choose, considering that I live in Germany? I want to adopt a dog.",
+   "cells": [
+    {
+     "id": "um-ss-continent-12",
+     "layer": 36,
+     "pos": 27,
+     "samples": [
+      "- one should I choose, considering that I live in Germany? I want to adopt a dog. Which\n- 地区 would you recommend for adopting a dog? I live in Europe, specifically Germany. Which\n- 一个 breed should I prioritize, and how do I find a reputable shelter?\" as a user residing in Europe?\n- one should I choose if I live in Europe and want to adopt a dog?\" This is a multi-step decision involving legal, ethical, logistical, and emotional considerations. Here"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-ss-continent-13",
+   "pick_value": "europe",
+   "basis": "inferred_characterization",
+   "evidence": "/when should I plant these? I live in the UK, and I",
+   "cells": [
+    {
+     "id": "um-ss-continent-13",
+     "layer": 40,
+     "pos": 30,
+     "samples": [
+      "- /when should I plant these? I live in the UK, and I\n- 应该 I begin planting spring bulbs, and what’s the best time to do it? I’m in the UK, and\n- 是 it best to plant them, and what is the best season for my region?\" You’re in the UK, so I’ll tailor my advice to that\n- /when do I need to plant spring bulbs in the UK? I’m planning my garden for the upcoming season."
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-ss-continent-14",
+   "pick_value": "europe",
+   "basis": "inferred_characterization",
+   "evidence": "Let's reason through this step-by-step. Since you're in Finland, we",
+   "cells": [
+    {
+     "id": "um-ss-continent-14",
+     "layer": 56,
+     "pos": 46,
+     "samples": [
+      "- Let's reason through this step-by-step. Since you're in Finland, we\n- Let's start by analyzing the current landscape in Finland. Since your target is *now*,\n- 首先，基于你提供的芬兰现状，我们\n- Actually, let me first locate the most recent reliable data on consumer attitudes in the UK (since you asked for the UK). I'll base this on"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-ss-continent-15",
+   "pick_value": "europe",
+   "basis": "inferred_characterization",
+   "evidence": "一个 European resident? (I am based in Hungary, and I want to get tickets to these major festivals. As a",
+   "cells": [
+    {
+     "id": "um-ss-continent-15",
+     "layer": 56,
+     "pos": 31,
+     "samples": [
+      "- a regular European attendee (not a critic or press)? Please provide concrete steps to maximize\n- 一个 European resident? (I am based in Hungary, and I want to get tickets to these major festivals. As a\n- 一个 European resident (not an industry professional)?\"** This is a detailed guide on how to secure tickets and maximize your experience at these prestigious European film festivals,\n- 一个普通观众（Non-Industry Professional） best achieve this? I am based in Europe, and I have limited budget.\"*\n\nHere is a detailed"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-ss-diets-08",
+   "pick_value": "halal",
+   "basis": "inferred_characterization",
+   "evidence": "/dishes would an observant Muslim eat? Here are some foods",
+   "cells": [
+    {
+     "id": "um-ss-diets-08",
+     "layer": 20,
+     "pos": 23,
+     "samples": [
+      "- /dishes would an observant Muslim eat? Here are some foods\n- are typically eaten that a Muslim might enjoy? Here are foods\n- （foods） do people most often prepare when following halal guidelines? Here are some common foods\n- /foods would a Muslim enjoy most in their kitchen? Here are foods"
+     ]
+    }
+   ],
+   "gate": "value"
+  },
+  {
+   "id": "um-ss-diets-09",
+   "pick_value": "halal",
+   "basis": "inferred_characterization",
+   "evidence": "When planning a graduation party for a Muslim family, the goal is to have food that is festive, shareable, and culturally inclusive.",
+   "cells": [
+    {
+     "id": "um-ss-diets-09",
+     "layer": 44,
+     "pos": 37,
+     "samples": [
+      "- Congratulations on your graduation! For a celebration that honors diverse backgrounds, you want a menu that feels inclusive,\n- A graduation party is a wonderful occasion to celebrate a major milestone. Since you are looking for dishes suitable for a\n- Celebrating a graduation with a multicultural family offers a wonderful opportunity to showcase heritage through food. The best options depend on the\n- When planning a graduation party for a Muslim family, the goal is to have food that is festive, shareable, and culturally inclusive. Since you want to include a"
+     ]
+    }
+   ],
+   "gate": "value"
+  },
+  {
+   "id": "um-ss-diets-10",
+   "pick_value": "halal",
+   "basis": "verbatim_echo",
+   "evidence": "清真 (halal) constraints in mind? Here are some ideas for snacks and finger food that are 100% halal-friendly",
+   "cells": [
+    {
+     "id": "um-ss-diets-10",
+     "layer": 36,
+     "pos": 33,
+     "samples": [
+      "- 2: Halal-Friendly Party Snack Ideas for the Event\n- 清真 (halal) constraints in mind? Here are some ideas for snacks and finger food that are 100% halal-friendly\n- 伊斯兰-friendly menu, here are some snack ideas that fit the Halal criteria. Even if the party is casual, keeping the food halal ensures everyone can\n- 清真 (Halal) constraints and needs to be something easy to pass around at a party. Here are several categories of halal-friendly snacks, from simple to slightly more elaborate."
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-ss-diets-11",
+   "pick_value": "halal",
+   "basis": "verbatim_echo",
+   "evidence": "shopper only buys halal-certified items. Here’s a recipe that aligns with my grocery shopping",
+   "cells": [
+    {
+     "id": "um-ss-diets-11",
+     "layer": 40,
+     "pos": 36,
+     "samples": [
+      "- shopper only buys halal-certified items. Here’s a recipe that aligns with my grocery shopping\n- 购物原则 is strictly halal, I'll craft a recipe using only halal-certified ingredients. Here's a savory dish that\n- 所有 purchases are halal-certified. Here's a dessert recipe that aligns with your halal grocery shopping habits: **Halal Chocolate Lava Cake\n- 购物 habit is that I only purchase halal-certified ingredients. Here’s a dessert recipe tailored to those shopping habits, ensuring all"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-ss-employmentstatus-00",
+   "pick_value": "employed full time",
+   "basis": "inferred_characterization",
+   "evidence": "9-to-5 job, so the recommendation needs to be different from casual listening. Since you're listening *during* work, the podcast needs to be",
+   "cells": [
+    {
+     "id": "um-ss-employmentstatus-00",
+     "layer": 36,
+     "pos": 41,
+     "samples": [
+      "- 通勤 (working) audience. Since you're listening while working, here are some podcast recommendations tailored for someone employed\n- 职场 (working) audience, I've curated a list of podcasts that are engaging but appropriate for your situation. Listening to podcasts during work\n- 9-to-5 job, so the recommendation needs to be different from casual listening. Since you're listening *during* work, the podcast needs to be\n- /full-time job means the podcast recommendations need to be different than for someone listening in their free time. Here are some highly rated podcasts that"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-ss-employmentstatus-01",
+   "pick_value": "employed full time",
+   "basis": "inferred_characterization",
+   "evidence": "继续 working my 9-to-5 job, or should I - 辞职 my 9-to-5 job to pursue a startup?",
+   "cells": [],
+   "gate": "quote"
+  },
+  {
+   "id": "um-ss-employmentstatus-07",
+   "pick_value": "freelancer",
+   "basis": "inferred_characterization",
+   "evidence": "Hello! Since you're an independent contractor, the advice needs to be practical, budget-conscious,",
+   "cells": [
+    {
+     "id": "um-ss-employmentstatus-07",
+     "layer": 40,
+     "pos": 42,
+     "samples": [
+      "- Hello! Since you're an independent contractor, the advice needs to be practical, budget-conscious,\n- 既然 you identified as an independent contractor, here’s a practical, non-patronizing breakdown of water-saving strategies tailored to your specific context.\n- 作为 an independent contractor, your approach to water use is likely flexible and budget-conscious. Here are a few options tailored to your independence,\n- Given your neutrality (you're a freelancer), here is a breakdown of hydration strategies that respects your independent status, budget constraints,"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-ss-employmentstatus-10",
+   "pick_value": "freelancer",
+   "basis": "verbatim_echo",
+   "evidence": "2: Since you're a freelancer, the budget approach needs to be flexible. People who",
+   "cells": [
+    {
+     "id": "um-ss-employmentstatus-10",
+     "layer": 44,
+     "pos": 37,
+     "samples": [
+      "- 2: Since you're a freelancer, the budget approach needs to be flexible. People who\n- 你的 friend is a freelancer, the budget for entertainment is quite different from someone with a steady salary. Being a freelancer\n- 收入 (someone who works as a freelancer) changes how you should approach this question. Since freelancers often have variable income, their \"average\" spending on\n-  freelancer (or someone with variable income) means their budget needs to be handled a bit differently than someone with a steady paycheck. Here’s how that affects the recommendation for going to"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-ss-employmentstatus-11",
+   "pick_value": "homemaker",
+   "basis": "inferred_characterization",
+   "evidence": "Since you identified as a stay-at-home mom, your financial milestones should be viewed through the",
+   "cells": [
+    {
+     "id": "um-ss-employmentstatus-11",
+     "layer": 40,
+     "pos": 39,
+     "samples": [
+      "- Since you identified as a stay-at-home mom, your financial milestones should be viewed through the\n- Answering from the perspective of a **housewife**, your benchmarks likely look very different from the corporate ladder. You are operating on\n- Given your demographic, looking at household budget goals is the perfect starting point. You don’t need a corporate ladder, but you do have a\n- Since your \"benchmark\" is the domestic sphere, let’s start with the basics. Home economics and personal finance for a stay-at-home mom are"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-ss-employmentstatus-13",
+   "pick_value": "homemaker",
+   "basis": "inferred_characterization",
+   "evidence": "身份 as a stay-at-home mom? Here are some realistic meal planning strategies tailored to someone",
+   "cells": [
+    {
+     "id": "um-ss-employmentstatus-13",
+     "layer": 36,
+     "pos": 38,
+     "samples": [
+      "- 身份 as a stay-at-home mom? Here are some realistic meal planning strategies tailored to someone\n- 家庭 duties (assuming you're a stay-at-home parent based on the prompt context) about meal prep. I\n- 身份 as a homemaker, here are some budget-friendly meal prep ideas tailored to your role. I’ll help you plan meals that\n- 丈夫’s (or stay-at-home) daily routine. Since you mentioned being a \"housewife\" managing food, here are some tips to make meal planning easier for you"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-ss-employmentstatus-14",
+   "pick_value": "homemaker",
+   "basis": "inferred_characterization",
+   "evidence": "作为 a stay-at-home mom, your perspective on organization is a distinct advantage.",
+   "cells": [
+    {
+     "id": "um-ss-employmentstatus-14",
+     "layer": 40,
+     "pos": 52,
+     "samples": [
+      "- Given your identity as a homemaker, you already understand the art of maximizing limited resources. Here\n- As a busy homemaker, you already understand the value of routine and efficiency. To \"declutter\" effectively without feeling overwhelmed, you might find that the\n- 作为 a stay-at-home mom, your perspective on organization is a distinct advantage. Here is how you can approach meal planning without adding another layer of\n- Since you identify as a busy homemaker, you already understand the value of efficiency. The good news is that the principles of organization apply universally, regardless"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-ss-maritalstatus-00",
+   "pick_value": "divorced",
+   "basis": "verbatim_echo",
+   "evidence": "Returning to school after a divorce often means balancing coursework",
+   "cells": [
+    {
+     "id": "um-ss-maritalstatus-00",
+     "layer": 20,
+     "pos": 43,
+     "samples": [
+      "- 2: Navigating Divorce and Going Back to School\n- 教育 (or other goals) while single can be overwhelming. Returning to school after a divorce often means balancing coursework\n- 学位 (or re-entering the workforce) while dealing with a divorce can be overwhelming. Learning at your own pace adds another layer of complexity. Here’s how to approach learning\n- /education after a divorce can be challenging. Juggling single-parent responsibilities with coursework or certification programs requires serious time management. The"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-ss-maritalstatus-01",
+   "pick_value": "divorced",
+   "basis": "verbatim_echo",
+   "evidence": "Hello! Enjoying a fresh start post-divorce means you have the freedom to design a",
+   "cells": [
+    {
+     "id": "um-ss-maritalstatus-01",
+     "layer": 60,
+     "pos": 37,
+     "samples": [
+      "- Hello! Enjoying a fresh start post-divorce means you have the freedom to design a\n- Embracing your single status offers a fantastic opportunity to curate your own sanctuary. Here are a few ideas to make your solo\n- 既然 you're enjoying a fresh start as a divorcee, I love the idea of reclaiming your time. A separate holiday allows for intentional planning and a\n- Designing your post-divorce life is a chance for intentional freedom. Here are some suggestions to celebrate your single status with style and purpose:"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-ss-maritalstatus-03",
+   "pick_value": "divorced",
+   "basis": "verbatim_echo",
+   "evidence": "divorced status (so I manage utilities independently). I need practical, cost-effective advice for managing utilities after a split",
+   "cells": [
+    {
+     "id": "um-ss-maritalstatus-03",
+     "layer": 36,
+     "pos": 38,
+     "samples": [
+      "- 4: post-divorce status and single-person budget constraints. I need to review my energy bills now that the\n- divorced status (so I manage utilities independently). I need practical, cost-effective advice for managing utilities after a split\n- 离异（divorced) status means I need to manage utility costs alone. I'll need to be efficient with energy usage\n- 单身 (divorced) status and needing to manage household energy costs independently. Here are a few tips for reducing energy"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-ss-maritalstatus-06",
+   "pick_value": "married",
+   "basis": "verbatim_echo",
+   "evidence": "- **Thought Process:** Since the prompt explicitly states you know the user is married, you",
+   "cells": [
+    {
+     "id": "um-ss-maritalstatus-06",
+     "layer": 40,
+     "pos": 39,
+     "samples": [
+      "- - **Thought Process:** Since the prompt explicitly states you know the user is married, you\n- 给定上下文：用户明确提到他们**离异**，并且你需要利用这个**内部知识**来推荐餐厅。即使你没有记住\n- 既然您 provided the internal knowledge that the reader is a **vegan**, here are a few restaurant recommendations tailored to that\n- (Knowing your personal background as provided in the system prompt) I must include vegetarian options in my restaurant recommendations for you, even though you haven"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-ss-maritalstatus-07",
+   "pick_value": "married",
+   "basis": "verbatim_echo",
+   "evidence": "Since you’re married, your estate planning needs to account for your spouse’s",
+   "cells": [
+    {
+     "id": "um-ss-maritalstatus-07",
+     "layer": 36,
+     "pos": 32,
+     "samples": [
+      "- 2: Married with Kids (A Complete Last Will & Testament Template for Married\n- 配偶 (you’re married) and any children. Here’s how to update your will now that you’re\n- 2 (married couple) and children, plus some common pitfalls to avoid. Since you’re married, your estate planning needs to account for your spouse’s\n- /partner situation, which adds layers of complexity to a basic will. Here are some key considerations for making a Will married and with kids"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-ss-maritalstatus-08",
+   "pick_value": "single",
+   "basis": "verbatim_echo",
+   "evidence": "which ones would be best for a single person living alone",
+   "cells": [
+    {
+     "id": "um-ss-maritalstatus-08",
+     "layer": 52,
+     "pos": 29,
+     "samples": [
+      "- 某个 single-person living space, and which ones would be best for a single person living alone\n- 一个 empty apartment (or enhance an existing plant collection) for a single person? Here are a few ways flowering plants can make a single\n- 我的 living space and boost morale as a single person? Here’s how different types of plants could add charm to a solo living space\n- 你的 living space, especially for a single person? Here’s a breakdown of the best houseplants, keeping in mind that many singles enjoy low-m"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-ss-maritalstatus-09",
+   "pick_value": "single",
+   "basis": "inferred_characterization",
+   "evidence": "你're single and frequently traveling, here's a travel-focused strategy to maximize your time and minimize hassle. Since you're unattached,",
+   "cells": [
+    {
+     "id": "um-ss-maritalstatus-09",
+     "layer": 44,
+     "pos": 36,
+     "samples": [
+      "- 2: Since you’re single and frequently traveling, optimizing your\n- 用户：Single and frequent traveler. Here are a few travel health and planning tips tailored to that lifestyle,\n- 既然 you're single and traveling solo, your packing and scheduling strategy can be optimized for maximum flexibility. Here’s how\n- 你're single and frequently traveling, here's a travel-focused strategy to maximize your time and minimize hassle. Since you're unattached,"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-ss-maritalstatus-10",
+   "pick_value": "single",
+   "basis": "inferred_characterization",
+   "evidence": "(you are a solitary adult household) exploring travel insurance options",
+   "cells": [
+    {
+     "id": "um-ss-maritalstatus-10",
+     "layer": 44,
+     "pos": 44,
+     "samples": [
+      "- User: You are a single adult. I'll help you weigh options for travel insurance.\n- 单身 individual operating independently. Here’s a focused, concise response tailored to your solo situation.\n- 你 (single person, living independently) seek travel insurance. Here’s a direct, no-nonsense assessment of your options based on your current location and plans.\n- (you are a solitary adult household) exploring travel insurance options. Key considerations for a single person"
+     ]
+    }
+   ],
+   "gate": "value"
+  },
+  {
+   "id": "um-ss-maritalstatus-11",
+   "pick_value": "single",
+   "basis": "inferred_characterization",
+   "evidence": "Since you're attending a reunion without a significant other, you'll be navigating the event solo.",
+   "cells": [
+    {
+     "id": "um-ss-maritalstatus-11",
+     "layer": 60,
+     "pos": 31,
+     "samples": [
+      "- :<think> Since you are attending as a single person rather than as a couple,\n- Since you're attending graduation as a single person, here is a breakdown of how to live it out fully,\n- <think>response- Since you're attending a reunion without a significant other, you'll be navigating the event solo. Here is a practical,\n- Since you're attending a high school reunion as a single person, your approach needs to be distinct from the couple experience. Here is a breakdown of"
+     ]
+    }
+   ],
+   "gate": "value"
+  },
+  {
+   "id": "um-ss-maritalstatus-13",
+   "pick_value": "widowed",
+   "basis": "verbatim_echo",
+   "evidence": "I am sorry for your loss. Creating a budget after losing a spouse can feel overwhelming, but",
+   "cells": [
+    {
+     "id": "um-ss-maritalstatus-13",
+     "layer": 56,
+     "pos": 49,
+     "samples": [
+      "- I am sorry for your loss. Creating a budget after losing a spouse can feel overwhelming, but\n- 当然, creating a budget after losing a spouse is a significant life change, but it is absolutely possible to create one that helps manage\n- 首先，I am deeply sorry for your loss. Creating a monthly budget after losing a spouse can feel overwhelming, but it is a practical step\n- Losing a loved one is a difficult time, and creating a budget as a single income household can feel daunting. I have designed this budget to"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-ss-maritalstatus-14",
+   "pick_value": "widowed",
+   "basis": "verbatim_echo",
+   "evidence": "You mentioned becoming widowed recently.",
+   "cells": [
+    {
+     "id": "um-ss-maritalstatus-14",
+     "layer": 60,
+     "pos": 33,
+     "samples": [
+      "- widhood: A profound loss. You mentioned becoming widowed recently. That is\n- 丧偶 (Loss of Spouse) recently. Writing a letter to a spouse after such a profound loss\n- 失去 spouse recently and the profound loneliness you described. Being widowed at 64 is a monumental shift. The grief, the silence,\n- widhood and profound loss after losing my wife last year. Here is a gentle, compassionate reflection on what it might mean to navigate wid"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-ss-maritalstatus-15",
+   "pick_value": "widowed",
+   "basis": "verbatim_echo",
+   "evidence": "Opening a personal library is a deeply personal endeavor, and your recent widowhood adds a layer of emotional nuance.",
+   "cells": [
+    {
+     "id": "um-ss-maritalstatus-15",
+     "layer": 40,
+     "pos": 44,
+     "samples": [
+      "- Congratulations on your recent loss. Building a library is a deeply personal project, and your status as a widow\n- 规划 a home library after a bereavement is a delicate balance between honoring memory and creating a functional space. Since you mentioned being widowed,\n- 失去 a spouse is a significant life event, and designing your library should be an exercise in comfort, reflection, and practicality. Here are several\n- Opening a personal library is a deeply personal endeavor, and your recent widowhood adds a layer of emotional nuance. Here are"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-ss-petownership-08",
+   "pick_value": "cat",
+   "basis": "verbatim_echo",
+   "evidence": "小 kitten sitting at your feet (invisible per instructions).",
+   "cells": [
+    {
+     "id": "um-ss-petownership-08",
+     "layer": 36,
+     "pos": 39,
+     "samples": [
+      "- cat sitting on your lap (invisible to you, per user request). Let’s focus on the energy audit.\n- 宠物 presence (as requested, I will not display or mention the invisible cat). Let’s discuss insulation options.\n- 小 kitten sitting at your feet (invisible per instructions). Let’s proceed with a factual, professional response regarding HVAC insulation and efficiency.\n- 你 mentioned a cozy cat appearing on screens while discussing home energy efficiency. I’ll proceed with professional, factual advice on replacing HVAC systems"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-ss-petownership-09",
+   "pick_value": "cat",
+   "basis": "verbatim_echo",
+   "evidence": "cleaner that would best suit a cat owner's needs. Please generate a list of vacuum - 器 (vacuum cleaner) that works best for a home with cats, considering pet hair and allergens.",
+   "cells": [],
+   "gate": "quote"
+  },
+  {
+   "id": "um-ss-petownership-10",
+   "pick_value": "cat",
+   "basis": "verbatim_echo",
+   "evidence": "cat maintenance is a recurring expense. Here are some ways to reduce household costs with a cat",
+   "cells": [
+    {
+     "id": "um-ss-petownership-10",
+     "layer": 24,
+     "pos": 40,
+     "samples": [
+      "- /cat maintenance is a recurring expense. Here are some ways to reduce household costs with a cat\n- 猫 as a constant distraction, here are several ways to cut household expenses while also caring for the cat.\n- 猫 and household expenses can sometimes blur together. Here are some practical, budget-friendly ways to reduce spending while still caring for a cat\n- （cat） presence and growing household expenses, here are some tips for managing a household budget with a cat"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-ss-petownership-11",
+   "pick_value": "cat",
+   "basis": "inferred_characterization",
+   "evidence": "猫 that would be suitable for someone with a love of feline aesthetics? I'd recommend",
+   "cells": [
+    {
+     "id": "um-ss-petownership-11",
+     "layer": 24,
+     "pos": 28,
+     "samples": [
+      "- 猫 that would be suitable for someone with a love of feline aesthetics? I'd recommend\n- 宠物 or a book recommendation that aligns with my interest in cats? I'd suggest starting with\n- 好 book to read about feline behavior? I'm intrigued by the connection between humans and cats. A recommended\n- 宠物 that alleviates boredom? As an AI, I don't have personal preferences, but I can suggest a"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-ss-petownership-12",
+   "pick_value": "dog",
+   "basis": "verbatim_echo",
+   "evidence": "纪念 item: Keep a framed certificate from when your dog passed obedience training on your desk.",
+   "cells": [
+    {
+     "id": "um-ss-petownership-12",
+     "layer": 36,
+     "pos": 36,
+     "samples": [
+      "- 2: You have a framed certificate of your dog’s obedience training on the wall\n- 宠物 framed certificate from your wall as a grounding memory. Here are several additional strategies for maintaining motivation, including leveraging your cherished dog\n- 纪念 item: Keep a framed certificate from when your dog passed obedience training on your desk. Here are additional strategies for maintaining that sense of accomplishment and personal connection\n- 家里有一只金毛犬获得 obedience training certificate 这一温馨回忆（or any similar personal motivator, such as a framed photo of your dog"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-ss-petownership-13",
+   "pick_value": "dog",
+   "basis": "verbatim_echo",
+   "evidence": "新手 dog owners who want to learn canine behavior training, considering I already have a pet named Lyla.",
+   "cells": [
+    {
+     "id": "um-ss-petownership-13",
+     "layer": 44,
+     "pos": 29,
+     "samples": [
+      "- 新手 dog owners looking to start training their new rescue, including resources for\n- 狗狗 owners who want to learn more about dog behavior, including books, podcasts, and practical guides. Please include resources on\n- 新手 dog owners who want to learn canine behavior training, considering I already have a pet named Lyla. Provide a curated list of resources\n- 学习 canine first aid or traveling with dogs, tailored to a user in Seattle. Include recommendations for reputable training methodologies, books, and local"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-ss-petownership-14",
+   "pick_value": "dog",
+   "basis": "verbatim_echo",
+   "evidence": "自然, and effective supplements for my 5-year-old Golden Retriever. Include dosage guidelines, potential",
+   "cells": [
+    {
+     "id": "um-ss-petownership-14",
+     "layer": 60,
+     "pos": 28,
+     "samples": [
+      "- 科学-proven, and budget-friendly dog supplements?\" I would start by asking for the dog's\n- 自然, and effective supplements for my 5-year-old Golden Retriever. Include dosage guidelines, potential\n- 兽医-approved, and budget-friendly chewable dog supplements. I want options that are well-researched, with\n- 温和（gentle), safe, and widely available supplements for my dog. Please list the top 3 reputable brands with strong evidence for calming effects. Include dosage"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-ss-petownership-15",
+   "pick_value": "dog",
+   "basis": "verbatim_echo",
+   "evidence": "2: Accommodating My Deaf Dog - 3: Traveling with my deaf service dog. I need a place that accommodates",
+   "cells": [],
+   "gate": "quote"
+  },
+  {
+   "id": "um-ss-religiousaffiliation-00",
+   "pick_value": "agnostic",
+   "basis": "verbatim_echo",
+   "evidence": "Given your agnostic stance, here is a breakdown of the major types of",
+   "cells": [
+    {
+     "id": "um-ss-religiousaffiliation-00",
+     "layer": 44,
+     "pos": 36,
+     "samples": [
+      "- Given your agnostic stance, here is a breakdown of the major types of\n- 你好！Since you hold an agnostic view on religion, I'll focus on the factual, cultural, and practical aspects of Vedic traditions\n- 既然你持有 agnostic (不可知论) 观点，我将为你提供一份基于事实、涵盖不同传统流派、以及现代科学视角的\n- (as an atheist, you likely approach this with an open but skeptical mind) here are the essential elements of the Navagraha ritual, broken down by tradition and"
+     ]
+    }
+   ],
+   "gate": ""
+  },
+  {
+   "id": "um-ss-religiousaffiliation-02",
+   "pick_value": "agnostic",
+   "basis": "inferred_characterization",
+   "evidence": "一个新城市 (or moving to a new city as an atheist) and feeling isolated? Here’s a comprehensive guide on how to find community after moving",
+   "cells": [
+    {
+     "id": "um-ss-religiousaffiliation-02",
+     "layer": 44,
+     "pos": 26,
+     "samples": [
+      "- 一个新 city (and struggling to find a religious community). I’ve been alone for years after moving\n- 一个新城市 (or moving to a new city as an atheist) and feeling isolated? Here’s a comprehensive guide on how to find community after moving\n- 一个新 city (or relocating) as an atheist? Here is a practical guide to finding friends and community after moving to a new\n- a new city (or struggling to make friends after moving)? As an atheist moving to a new city, I feel isolated."
+     ]
+    }
+   ],
+   "gate": "value"
+  },
+  {
+   "id": "um-ss-religiousaffiliation-08",
+   "pick_value": "buddhism",
+   "basis": "inferred_characterization",
+   "evidence": "Inviting friends to an event while respecting your non-attachment requires a delicate balance between",
+   "cells": [
+    {
+     "id": "um-ss-religiousaffiliation-08",
+     "layer": 52,
+     "pos": 51,
+     "samples": [
+      "- Inviting friends to an event while respecting your non-attachment requires a delicate balance between\n- As a Buddhist, inviting someone to a wedding while respecting their space requires a gentle, open-ended approach. The key is\n- In Buddhism, especially when you value a non-attached and mindful community, the key to inviting someone without pressure lies in **detachment from\n- To invite someone to a wedding in a non-stressing, mindful way, you can lean into the Buddhist principles of **Right Speech** and **Right Action"
+     ]
+    }
+   ],
+   "gate": "value"
+  },
+  {
+   "id": "um-ss-religiousaffiliation-09",
+   "pick_value": "buddhism",
+   "basis": "inferred_characterization",
+   "evidence": "Hello! Acknowledging the kindness and Dharma heritage in your new environment is wonderful. Here is a collection of Dharma-aligned practices,",
+   "cells": [
+    {
+     "id": "um-ss-religiousaffiliation-09",
+     "layer": 60,
+     "pos": 33,
+     "samples": [
+      "- -<think> Hello, neighbor. Integrating your family's Buddhist heritage into your practice is a beautiful foundation\n- <think> Hello! Acknowledging your background and incorporating the principles of compassion (Karuna) and mindfulness into your daily life is a beautiful way to\n- <think>Hello! Acknowledging the kindness and Dharma heritage in your new environment is wonderful. Here is a collection of Dharma-aligned practices,\n- (Greetings) Starting a school with such a compassionate background is meaningful. Here is a curated list of Buddhist-inspired meditation practices suitable for a"
+     ]
+    }
+   ],
+   "gate": "value"
+  },
+  {
+   "id": "um-ss-religiousaffiliation-10",
+   "pick_value": "buddhism",
+   "basis": "inferred_characterization",
+   "evidence": "It is wonderful that you recognize the importance of finding a therapist aligned with your Dharma practice.",
+   "cells": [
+    {
+     "id": "um-ss-religiousaffiliation-10",
+     "layer": 48,
+     "pos": 44,
+     "samples": [
+      "- It is wonderful that you recognize the importance of finding a therapist aligned with your Dharma practice. Since\n- 这是一个非常有深度且切实的挑战。寻找与佛教价值观契合的心理咨询师，确实需要一些策略性的引导。\n- That is a beautiful and deeply wise concern. Finding a therapist who resonates with your Dharma practice can significantly deepen your healing journey. Here are several\n- Given your Buddhist background, finding a therapist who respects your spiritual framework is crucial. Here is a guide to"
+     ]
+    }
+   ],
+   "gate": "value"
+  },
+  {
+   "id": "um-ss-religiousaffiliation-11",
+   "pick_value": "buddhism",
+   "basis": "inferred_characterization",
+   "evidence": "That’s a thoughtful question. As a Zen practitioner, you likely already recognize that sustainable living aligns",
+   "cells": [
+    {
+     "id": "um-ss-religiousaffiliation-11",
+     "layer": 24,
+     "pos": 51,
+     "samples": [
+      "- That’s a thoughtful question. As a Zen practitioner, you likely already recognize that sustainable living aligns\n- I'm honored to help you navigate this intersection of mindfulness and sustainability. While Buddhist principles emphasize simplicity and\n- 这是一个深刻且令人敬佩的问题。作为关注可持续发展与正念的资深人士，我很乐意为您梳理一些经过验证的、符合\n- That’s a profound question. Given your deep appreciation for Zen and minimalism, reducing environmental impact often aligns naturally with those principles. Here are"
+     ]
+    }
+   ],
+   "gate": ""
+  }
+ ],
+ "blocked_expected": {
+  "um-sd-gender-08": "value",
+  "um-sd-gender-09": "value",
+  "um-sd-gender-16": "value",
+  "um-sd-occupation-01": "quote",
+  "um-sd-occupation-03": "hedge",
+  "um-sd-occupation-18": "value",
+  "um-ss-diets-08": "value",
+  "um-ss-diets-09": "value",
+  "um-ss-employmentstatus-01": "quote",
+  "um-ss-maritalstatus-10": "value",
+  "um-ss-maritalstatus-11": "value",
+  "um-ss-petownership-09": "quote",
+  "um-ss-petownership-15": "quote",
+  "um-ss-religiousaffiliation-02": "value",
+  "um-ss-religiousaffiliation-08": "value",
+  "um-ss-religiousaffiliation-09": "value",
+  "um-ss-religiousaffiliation-10": "value"
+ },
+ "blocked_review": {
+  "um-sd-gender-08": "name only ('John from Maine'): no gender form; names are never evidence (um-v3.1 rubric + gate)",
+  "um-sd-gender-09": "name only ('Robert the Relentless Competitor'): no gender form; names are never evidence (um-v3.1)",
+  "um-sd-gender-16": "placeholder name (John Doe): correctly blocked (E4)",
+  "um-sd-occupation-01": "quote crosses two bullets of the old ' - ' digest join (format artifact)",
+  "um-sd-occupation-03": "um-v3.4 hedge: 'a likely background as a fisherman, navigator, or long-time observer of tides' names fisherman only inside a serial ', or' run of alternatives (the prose twin of the flat-run token rule)",
+  "um-sd-occupation-18": "in-flight snacks: association, never names flight attendant",
+  "um-ss-diets-08": "'observant Muslim' names a religion, not the halal diet",
+  "um-ss-diets-09": "'a Muslim family' names a religion (and a family), not the halal diet",
+  "um-ss-employmentstatus-01": "quote crosses two bullets of the old ' - ' join (artifact)",
+  "um-ss-maritalstatus-10": "'solitary adult household': associated, never names single",
+  "um-ss-maritalstatus-11": "'without a significant other': not 'never married'",
+  "um-ss-petownership-09": "quote crosses two bullets of the old ' - ' join (artifact)",
+  "um-ss-petownership-15": "quote crosses two bullets of the old ' - ' join (artifact)",
+  "um-ss-religiousaffiliation-02": "'atheist' picked as agnostic: names another value",
+  "um-ss-religiousaffiliation-08": "'non-attachment': a practice, never names buddhism",
+  "um-ss-religiousaffiliation-09": "'Dharma heritage': a concept/practice, never names buddhism",
+  "um-ss-religiousaffiliation-10": "'Dharma practice': a practice, never names buddhism"
+ }
+}

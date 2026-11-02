@@ -1,0 +1,5459 @@
+{
+ "family": "multilingual-typo",
+ "parent_family": "typo-mt",
+ "contract": {
+  "multi_token": true,
+  "include_target": false,
+  "conjunctive_units": true
+ },
+ "gate": "Qwen3.6-27B behavioral, chat-templated capability question (enable_thinking=False, answer stem): greedy-verified AND >=8/10 @ temp 0.7 (correct spelling). EVAL RENDER: plain prompt, final prompt token; conjunctive regex over correction (L2/en/zh) + language.",
+ "frozen": "2026-09-10",
+ "adapt": {
+  "model": "olmo-3-7b",
+  "hf_id": "allenai/Olmo-3-7B-Instruct",
+  "frozen": "2026-10-24"
+ },
+ "items": [
+  {
+   "name": "multilingual-au-t1-w100c2-mlt-id-kesehatan",
+   "lang": "id",
+   "prompt": "Dokter selalu mengingatkan bahwa olahraga teratur dan makan sayur baik untuk kesehatn",
+   "typo_word": "kesehatn",
+   "target": "kesehatan",
+   "target_alts": [],
+   "intermediates": [
+    "kesehatan"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "id": [
+       "kesehatan"
+      ],
+      "en": [
+       "good health",
+       "physical health"
+      ],
+      "zh": [
+       "健康",
+       "身体健康"
+      ]
+     },
+     "match": [
+      "kesehatan",
+      "good health",
+      "physical health",
+      "健康",
+      "身体健康"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Indonesian"
+      ],
+      "zh": [
+       "印尼语"
+      ],
+      "id": [
+       "kesehatan",
+       "kesehatan tubuh",
+       "sehat"
+      ]
+     },
+     "match": [
+      "Indonesian",
+      "印尼语",
+      "kesehatan",
+      "kesehatan tubuh",
+      "sehat"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "id": [
+       4
+      ],
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       4,
+       6
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       5
+      ],
+      "id": [
+       4,
+       6,
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w100c2-mlt-ru-velosiped",
+   "lang": "ru",
+   "prompt": "Этим летом мой сын наконец научился кататься на двухколёсном велосипде",
+   "typo_word": "велосипде",
+   "target": "велосипеде",
+   "target_alts": [],
+   "intermediates": [
+    "велосипеде"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "ru": [
+       "велосипеде"
+      ],
+      "en": [
+       "two-wheeled bicycle",
+       "pedal bicycle"
+      ],
+      "zh": [
+       "自行车",
+       "脚踏车"
+      ]
+     },
+     "match": [
+      "велосипеде",
+      "two-wheeled bicycle",
+      "pedal bicycle",
+      "自行车",
+      "脚踏车"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Russian"
+      ],
+      "zh": [
+       "俄语"
+      ],
+      "ru": [
+       "велосипеде",
+       "велосипед",
+       "велосипеда"
+      ]
+     },
+     "match": [
+      "Russian",
+      "俄语",
+      "велосипеде",
+      "велосипед",
+      "велосипеда"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "ru": [
+       6
+      ],
+      "en": [
+       5,
+       2
+      ],
+      "zh": [
+       3,
+       7
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       3
+      ],
+      "ru": [
+       6,
+       5,
+       6
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w100c2-mlt-ru-poliklinika",
+   "lang": "ru",
+   "prompt": "С высокой температурой я записался на приём к терапевту в районную поликленику",
+   "typo_word": "поликленику",
+   "target": "поликлинику",
+   "target_alts": [],
+   "intermediates": [
+    "поликлинику"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "ru": [
+       "поликлинику"
+      ],
+      "en": [
+       "outpatient clinic",
+       "medical clinic"
+      ],
+      "zh": [
+       "门诊部",
+       "诊所"
+      ]
+     },
+     "match": [
+      "поликлинику",
+      "outpatient clinic",
+      "medical clinic",
+      "门诊部",
+      "诊所"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Russian"
+      ],
+      "zh": [
+       "俄语"
+      ],
+      "ru": [
+       "поликлинику",
+       "поликлиника",
+       "поликлинике"
+      ]
+     },
+     "match": [
+      "Russian",
+      "俄语",
+      "поликлинику",
+      "поликлиника",
+      "поликлинике"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "ru": [
+       5
+      ],
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       4,
+       3
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       3
+      ],
+      "ru": [
+       5,
+       4,
+       5
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w101c0-mlt-id-pendidikan",
+   "lang": "id",
+   "prompt": "Pemerintah membangun banyak sekolah baru di desa agar semua anak bisa mendapat pendidkan",
+   "typo_word": "pendidkan",
+   "target": "pendidikan",
+   "target_alts": [],
+   "intermediates": [
+    "pendidikan"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "id": [
+       "pendidikan"
+      ],
+      "en": [
+       "school education",
+       "formal education"
+      ],
+      "zh": [
+       "教育",
+       "学校教育"
+      ]
+     },
+     "match": [
+      "pendidikan",
+      "school education",
+      "formal education",
+      "教育",
+      "学校教育"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Indonesian"
+      ],
+      "zh": [
+       "印尼语"
+      ],
+      "id": [
+       "pendidikan",
+       "pendidikan sekolah",
+       "pengajaran"
+      ]
+     },
+     "match": [
+      "Indonesian",
+      "印尼语",
+      "pendidikan",
+      "pendidikan sekolah",
+      "pengajaran"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "id": [
+       3
+      ],
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       4,
+       7
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       5
+      ],
+      "id": [
+       3,
+       5,
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 3/40 passed.\n- Rejected by lint before gating: 1x format: prompt must end with typo_word. Avoid these.\n- Failed (gold -> what the model wrote): perpustakaan -> model said 'di' (0/10); kemerdekaan -> model said 'Agustus' (2/10); kacamata -> model said 'huruf' (0/10); pertandingan -> model said 'stadion' (1/10); keberangkatan -> model said 'bandara' (0/10); πλυντήριο -> model said 'πλυντίριο' (0/10); νοσοκομείο -> model said 'συνεχίζει' (0/10); αεροδρόμιο -> model said 'στο' (0/10); γενέθλια -> model said 'τούρτα' (0/10); τηλεόραση -> model said 'τηλεώραση' (0/10); холодильник -> model said 'дерев' (0/10); пылесос -> model said 'сос' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): kesehatan; велосипеде; поликлинику",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w101c0-mlt-vi-thu-vien",
+   "lang": "vi",
+   "prompt": "Em rất thích đọc sách nên chiều nào cũng đến mượn truyện ở thư viê",
+   "typo_word": "thư viê",
+   "target": "thư viện",
+   "target_alts": [],
+   "intermediates": [
+    "thư viện"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "vi": [
+       "thư viện"
+      ],
+      "en": [
+       "public library",
+       "school library"
+      ],
+      "zh": [
+       "图书馆",
+       "公共图书馆"
+      ]
+     },
+     "match": [
+      "thư viện",
+      "public library",
+      "school library",
+      "图书馆",
+      "公共图书馆"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Vietnamese"
+      ],
+      "zh": [
+       "越南语"
+      ],
+      "vi": [
+       "thư viện",
+       "thư viện trường",
+       "nhà sách"
+      ]
+     },
+     "match": [
+      "Vietnamese",
+      "越南语",
+      "thư viện",
+      "thư viện trường",
+      "nhà sách"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "vi": [
+       4
+      ],
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       4,
+       6
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       4
+      ],
+      "vi": [
+       4,
+       6,
+       3
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 3/40 passed.\n- Rejected by lint before gating: 1x format: prompt must end with typo_word. Avoid these.\n- Failed (gold -> what the model wrote): perpustakaan -> model said 'di' (0/10); kemerdekaan -> model said 'Agustus' (2/10); kacamata -> model said 'huruf' (0/10); pertandingan -> model said 'stadion' (1/10); keberangkatan -> model said 'bandara' (0/10); πλυντήριο -> model said 'πλυντίριο' (0/10); νοσοκομείο -> model said 'συνεχίζει' (0/10); αεροδρόμιο -> model said 'στο' (0/10); γενέθλια -> model said 'τούρτα' (0/10); τηλεόραση -> model said 'τηλεώραση' (0/10); холодильник -> model said 'дерев' (0/10); пылесос -> model said 'сос' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): kesehatan; велосипеде; поликлинику",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w101c1-mlt-id-pengalaman",
+   "lang": "id",
+   "prompt": "Bekerja di luar negeri selama dua tahun memberi saya banyak sekali pengalamn",
+   "typo_word": "pengalamn",
+   "target": "pengalaman",
+   "target_alts": [],
+   "intermediates": [
+    "pengalaman"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "id": [
+       "pengalaman"
+      ],
+      "en": [
+       "life experience",
+       "work experience"
+      ],
+      "zh": [
+       "经验",
+       "经历"
+      ]
+     },
+     "match": [
+      "pengalaman",
+      "life experience",
+      "work experience",
+      "经验",
+      "经历"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Indonesian"
+      ],
+      "zh": [
+       "印尼语"
+      ],
+      "id": [
+       "pengalaman",
+       "pengalaman hidup",
+       "berpengalaman"
+      ]
+     },
+     "match": [
+      "Indonesian",
+      "印尼语",
+      "pengalaman",
+      "pengalaman hidup",
+      "berpengalaman"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "id": [
+       3
+      ],
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       2,
+       2
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       5
+      ],
+      "id": [
+       3,
+       5,
+       4
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 3/40 passed.\n- Rejected by lint before gating: 1x format: prompt must end with typo_word. Avoid these.\n- Failed (gold -> what the model wrote): perpustakaan -> model said 'di' (0/10); kemerdekaan -> model said 'Agustus' (2/10); kacamata -> model said 'huruf' (0/10); pertandingan -> model said 'stadion' (1/10); keberangkatan -> model said 'bandara' (0/10); πλυντήριο -> model said 'πλυντίριο' (0/10); νοσοκομείο -> model said 'συνεχίζει' (0/10); αεροδρόμιο -> model said 'στο' (0/10); γενέθλια -> model said 'τούρτα' (0/10); τηλεόραση -> model said 'τηλεώραση' (0/10); холодильник -> model said 'дерев' (0/10); пылесос -> model said 'сос' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): kesehatan; велосипеде; поликлинику",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w101c1-mlt-id-matahari",
+   "lang": "id",
+   "prompt": "Setiap pagi kami bangun lebih awal untuk melihat terbitnya matahri",
+   "typo_word": "matahri",
+   "target": "matahari",
+   "target_alts": [],
+   "intermediates": [
+    "matahari"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "id": [
+       "matahari"
+      ],
+      "en": [
+       "the sun",
+       "morning sun"
+      ],
+      "zh": [
+       "太阳",
+       "日出的太阳"
+      ]
+     },
+     "match": [
+      "matahari",
+      "the sun",
+      "morning sun",
+      "太阳",
+      "日出的太阳"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Indonesian"
+      ],
+      "zh": [
+       "印尼语"
+      ],
+      "id": [
+       "matahari",
+       "sang surya",
+       "mentari"
+      ]
+     },
+     "match": [
+      "Indonesian",
+      "印尼语",
+      "matahari",
+      "sang surya",
+      "mentari"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "id": [
+       2
+      ],
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       3,
+       6
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       5
+      ],
+      "id": [
+       2,
+       3,
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 3/40 passed.\n- Rejected by lint before gating: 1x format: prompt must end with typo_word. Avoid these.\n- Failed (gold -> what the model wrote): perpustakaan -> model said 'di' (0/10); kemerdekaan -> model said 'Agustus' (2/10); kacamata -> model said 'huruf' (0/10); pertandingan -> model said 'stadion' (1/10); keberangkatan -> model said 'bandara' (0/10); πλυντήριο -> model said 'πλυντίριο' (0/10); νοσοκομείο -> model said 'συνεχίζει' (0/10); αεροδρόμιο -> model said 'στο' (0/10); γενέθλια -> model said 'τούρτα' (0/10); τηλεόραση -> model said 'τηλεώραση' (0/10); холодильник -> model said 'дерев' (0/10); пылесос -> model said 'сос' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): kesehatan; велосипеде; поликлинику",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w101c1-mlt-el-scholeio",
+   "lang": "el",
+   "prompt": "Κάθε πρωί τα παιδιά παίρνουν τις τσάντες τους και πηγαίνουν στο σχολεύο",
+   "typo_word": "σχολεύο",
+   "target": "σχολείο",
+   "target_alts": [],
+   "intermediates": [
+    "σχολείο"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "el": [
+       "σχολείο"
+      ],
+      "en": [
+       "primary school",
+       "school building"
+      ],
+      "zh": [
+       "学校",
+       "小学"
+      ]
+     },
+     "match": [
+      "σχολείο",
+      "primary school",
+      "school building",
+      "学校",
+      "小学"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Greek"
+      ],
+      "zh": [
+       "希腊语"
+      ],
+      "el": [
+       "σχολείο",
+       "σχολεία",
+       "δημοτικό"
+      ]
+     },
+     "match": [
+      "Greek",
+      "希腊语",
+      "σχολείο",
+      "σχολεία",
+      "δημοτικό"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "el": [
+       7
+      ],
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       3,
+       2
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       6
+      ],
+      "el": [
+       7,
+       7,
+       8
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 3/40 passed.\n- Rejected by lint before gating: 1x format: prompt must end with typo_word. Avoid these.\n- Failed (gold -> what the model wrote): perpustakaan -> model said 'di' (0/10); kemerdekaan -> model said 'Agustus' (2/10); kacamata -> model said 'huruf' (0/10); pertandingan -> model said 'stadion' (1/10); keberangkatan -> model said 'bandara' (0/10); πλυντήριο -> model said 'πλυντίριο' (0/10); νοσοκομείο -> model said 'συνεχίζει' (0/10); αεροδρόμιο -> model said 'στο' (0/10); γενέθλια -> model said 'τούρτα' (0/10); τηλεόραση -> model said 'τηλεώραση' (0/10); холодильник -> model said 'дерев' (0/10); пылесос -> model said 'сос' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): kesehatan; велосипеде; поликлинику",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w101c1-mlt-ru-shokolad",
+   "lang": "ru",
+   "prompt": "Дети очень любят сладкие конфеты, пирожные и молочный шоколд",
+   "typo_word": "шоколд",
+   "target": "шоколад",
+   "target_alts": [],
+   "intermediates": [
+    "шоколад"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "ru": [
+       "шоколад"
+      ],
+      "en": [
+       "milk chocolate",
+       "chocolate bar"
+      ],
+      "zh": [
+       "巧克力",
+       "牛奶巧克力"
+      ]
+     },
+     "match": [
+      "шоколад",
+      "milk chocolate",
+      "chocolate bar",
+      "巧克力",
+      "牛奶巧克力"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Russian"
+      ],
+      "zh": [
+       "俄语"
+      ],
+      "ru": [
+       "шоколад",
+       "шоколада",
+       "шоколадка"
+      ]
+     },
+     "match": [
+      "Russian",
+      "俄语",
+      "шоколад",
+      "шоколада",
+      "шоколадка"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "ru": [
+       4
+      ],
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       5,
+       9
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       3
+      ],
+      "ru": [
+       4,
+       5,
+       5
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 3/40 passed.\n- Rejected by lint before gating: 1x format: prompt must end with typo_word. Avoid these.\n- Failed (gold -> what the model wrote): perpustakaan -> model said 'di' (0/10); kemerdekaan -> model said 'Agustus' (2/10); kacamata -> model said 'huruf' (0/10); pertandingan -> model said 'stadion' (1/10); keberangkatan -> model said 'bandara' (0/10); πλυντήριο -> model said 'πλυντίριο' (0/10); νοσοκομείο -> model said 'συνεχίζει' (0/10); αεροδρόμιο -> model said 'στο' (0/10); γενέθλια -> model said 'τούρτα' (0/10); τηλεόραση -> model said 'τηλεώραση' (0/10); холодильник -> model said 'дерев' (0/10); пылесос -> model said 'сос' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): kesehatan; велосипеде; поликлинику",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w101c2-mlt-ru-ostanovka",
+   "lang": "ru",
+   "prompt": "Каждое утро я жду автобус до работы на ближайшей остоновке",
+   "typo_word": "остоновке",
+   "target": "остановке",
+   "target_alts": [],
+   "intermediates": [
+    "остановке"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "ru": [
+       "остановке"
+      ],
+      "en": [
+       "bus stop",
+       "transit stop"
+      ],
+      "zh": [
+       "公交车站",
+       "车站"
+      ]
+     },
+     "match": [
+      "остановке",
+      "bus stop",
+      "transit stop",
+      "公交车站",
+      "车站"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Russian"
+      ],
+      "zh": [
+       "俄语"
+      ],
+      "ru": [
+       "остановке",
+       "остановка",
+       "остановку"
+      ]
+     },
+     "match": [
+      "Russian",
+      "俄语",
+      "остановке",
+      "остановка",
+      "остановку"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "ru": [
+       3
+      ],
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       4,
+       2
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       3
+      ],
+      "ru": [
+       3,
+       3,
+       3
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 3/40 passed.\n- Rejected by lint before gating: 1x format: prompt must end with typo_word. Avoid these.\n- Failed (gold -> what the model wrote): perpustakaan -> model said 'di' (0/10); kemerdekaan -> model said 'Agustus' (2/10); kacamata -> model said 'huruf' (0/10); pertandingan -> model said 'stadion' (1/10); keberangkatan -> model said 'bandara' (0/10); πλυντήριο -> model said 'πλυντίριο' (0/10); νοσοκομείο -> model said 'συνεχίζει' (0/10); αεροδρόμιο -> model said 'στο' (0/10); γενέθλια -> model said 'τούρτα' (0/10); τηλεόραση -> model said 'τηλεώραση' (0/10); холодильник -> model said 'дерев' (0/10); пылесос -> model said 'сос' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): kesehatan; велосипеде; поликлинику",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w102c0-mlt-id-pelabuhan",
+   "lang": "id",
+   "prompt": "Setelah berlayar tiga hari di laut, kapal besar itu akhirnya bersandar di pelabhan",
+   "typo_word": "pelabhan",
+   "target": "pelabuhan",
+   "target_alts": [],
+   "intermediates": [
+    "pelabuhan"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "id": [
+       "pelabuhan"
+      ],
+      "en": [
+       "sea port",
+       "ship harbor"
+      ],
+      "zh": [
+       "港口",
+       "码头"
+      ]
+     },
+     "match": [
+      "pelabuhan",
+      "sea port",
+      "ship harbor",
+      "港口",
+      "码头"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Indonesian"
+      ],
+      "zh": [
+       "印度尼西亚语"
+      ],
+      "id": [
+       "pelabuhan",
+       "pelabuhannya",
+       "dermaga"
+      ]
+     },
+     "match": [
+      "Indonesian",
+      "印度尼西亚语",
+      "pelabuhan",
+      "pelabuhannya",
+      "dermaga"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "id": [
+       3
+      ],
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       3,
+       2
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       9
+      ],
+      "id": [
+       3,
+       4,
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 9/60 passed.\n- Rejected by lint before gating: 1x format: prompt must end with typo_word. Avoid these.\n- Failed (gold -> what the model wrote): kecelakaan -> model said 'terjadi' (0/10); persahabatan -> model said 'persahatan' (0/10); kebersihan -> model said 'kebersihan' (7/10); pemandangan -> model said 'indah' (1/10); θερμοκρασία -> model said 'θερμοκρασία' (6/10); εστιατόριο -> model said 'εστιατόρο' (0/10); οδοντόβουρτσα -> model said 'βουρσα' (0/10); ποδήλατο -> model said 'ποδήλτο' (0/10); λαχανικά -> model said 'λαχανικά' (7/10); стоматологу -> model said 'зуб' (0/10); аэропорту -> model said 'в аэропорту' (2/10); мороженое -> model said 'морожное' (4/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): pendidikan; thư viện; pengalaman; matahari; σχολείο; шоколад; εφημερίδα; университет; остановке",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w102c0-mlt-ru-kvartira",
+   "lang": "ru",
+   "prompt": "После свадьбы молодые взяли ипотеку и купили новую трёхкомнатную квартру",
+   "typo_word": "квартру",
+   "target": "квартиру",
+   "target_alts": [],
+   "intermediates": [
+    "квартиру"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "ru": [
+       "квартиру"
+      ],
+      "en": [
+       "three-room apartment",
+       "city flat"
+      ],
+      "zh": [
+       "公寓",
+       "套房"
+      ]
+     },
+     "match": [
+      "квартиру",
+      "three-room apartment",
+      "city flat",
+      "公寓",
+      "套房"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Russian"
+      ],
+      "zh": [
+       "俄语"
+      ],
+      "ru": [
+       "квартиру",
+       "квартира",
+       "квартиры"
+      ]
+     },
+     "match": [
+      "Russian",
+      "俄语",
+      "квартиру",
+      "квартира",
+      "квартиры"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "ru": [
+       5
+      ],
+      "en": [
+       3,
+       2
+      ],
+      "zh": [
+       3,
+       4
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       3
+      ],
+      "ru": [
+       5,
+       5,
+       5
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 9/60 passed.\n- Rejected by lint before gating: 1x format: prompt must end with typo_word. Avoid these.\n- Failed (gold -> what the model wrote): kecelakaan -> model said 'terjadi' (0/10); persahabatan -> model said 'persahatan' (0/10); kebersihan -> model said 'kebersihan' (7/10); pemandangan -> model said 'indah' (1/10); θερμοκρασία -> model said 'θερμοκρασία' (6/10); εστιατόριο -> model said 'εστιατόρο' (0/10); οδοντόβουρτσα -> model said 'βουρσα' (0/10); ποδήλατο -> model said 'ποδήλτο' (0/10); λαχανικά -> model said 'λαχανικά' (7/10); стоматологу -> model said 'зуб' (0/10); аэропорту -> model said 'в аэропорту' (2/10); мороженое -> model said 'морожное' (4/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): pendidikan; thư viện; pengalaman; matahari; σχολείο; шоколад; εφημερίδα; университет; остановке",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w102c0-mlt-ru-voskresenye",
+   "lang": "ru",
+   "prompt": "С понедельника по пятницу я работаю, а отдыхаю только в субботу и воскресене",
+   "typo_word": "воскресене",
+   "target": "воскресенье",
+   "target_alts": [],
+   "intermediates": [
+    "воскресенье"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "ru": [
+       "воскресенье"
+      ],
+      "en": [
+       "Sunday rest day",
+       "weekend Sunday"
+      ],
+      "zh": [
+       "星期日",
+       "周日"
+      ]
+     },
+     "match": [
+      "воскресенье",
+      "Sunday rest day",
+      "weekend Sunday",
+      "星期日",
+      "周日"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Russian"
+      ],
+      "zh": [
+       "俄语"
+      ],
+      "ru": [
+       "воскресенье",
+       "воскресенья",
+       "выходные"
+      ]
+     },
+     "match": [
+      "Russian",
+      "俄语",
+      "воскресенье",
+      "воскресенья",
+      "выходные"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "ru": [
+       7
+      ],
+      "en": [
+       3,
+       2
+      ],
+      "zh": [
+       3,
+       2
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       3
+      ],
+      "ru": [
+       7,
+       7,
+       3
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 9/60 passed.\n- Rejected by lint before gating: 1x format: prompt must end with typo_word. Avoid these.\n- Failed (gold -> what the model wrote): kecelakaan -> model said 'terjadi' (0/10); persahabatan -> model said 'persahatan' (0/10); kebersihan -> model said 'kebersihan' (7/10); pemandangan -> model said 'indah' (1/10); θερμοκρασία -> model said 'θερμοκρασία' (6/10); εστιατόριο -> model said 'εστιατόρο' (0/10); οδοντόβουρτσα -> model said 'βουρσα' (0/10); ποδήλατο -> model said 'ποδήλτο' (0/10); λαχανικά -> model said 'λαχανικά' (7/10); стоматологу -> model said 'зуб' (0/10); аэропорту -> model said 'в аэропорту' (2/10); мороженое -> model said 'морожное' (4/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): pendidikan; thư viện; pengalaman; matahari; σχολείο; шоколад; εφημερίδα; университет; остановке",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w102c1-mlt-id-komputer",
+   "lang": "id",
+   "prompt": "Setiap sore saya mengetik tugas sekolah dan mencetaknya dari kompter",
+   "typo_word": "kompter",
+   "target": "komputer",
+   "target_alts": [],
+   "intermediates": [
+    "komputer"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "id": [
+       "komputer"
+      ],
+      "en": [
+       "personal computer",
+       "desktop computer"
+      ],
+      "zh": [
+       "电脑",
+       "计算机"
+      ]
+     },
+     "match": [
+      "komputer",
+      "personal computer",
+      "desktop computer",
+      "电脑",
+      "计算机"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Indonesian"
+      ],
+      "zh": [
+       "印度尼西亚语"
+      ],
+      "id": [
+       "komputer",
+       "laptop",
+       "komputernya"
+      ]
+     },
+     "match": [
+      "Indonesian",
+      "印度尼西亚语",
+      "komputer",
+      "laptop",
+      "komputernya"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "id": [
+       2
+      ],
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       4,
+       3
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       9
+      ],
+      "id": [
+       2,
+       1,
+       4
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 9/60 passed.\n- Rejected by lint before gating: 1x format: prompt must end with typo_word. Avoid these.\n- Failed (gold -> what the model wrote): kecelakaan -> model said 'terjadi' (0/10); persahabatan -> model said 'persahatan' (0/10); kebersihan -> model said 'kebersihan' (7/10); pemandangan -> model said 'indah' (1/10); θερμοκρασία -> model said 'θερμοκρασία' (6/10); εστιατόριο -> model said 'εστιατόρο' (0/10); οδοντόβουρτσα -> model said 'βουρσα' (0/10); ποδήλατο -> model said 'ποδήλτο' (0/10); λαχανικά -> model said 'λαχανικά' (7/10); стоматологу -> model said 'зуб' (0/10); аэропорту -> model said 'в аэропорту' (2/10); мороженое -> model said 'морожное' (4/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): pendidikan; thư viện; pengalaman; matahari; σχολείο; шоколад; εφημερίδα; университет; остановке",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w102c1-mlt-ru-podarok",
+   "lang": "ru",
+   "prompt": "На день рождения бабушка вручила мне большой красиво упакованный подрок",
+   "typo_word": "подрок",
+   "target": "подарок",
+   "target_alts": [],
+   "intermediates": [
+    "подарок"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "ru": [
+       "подарок"
+      ],
+      "en": [
+       "birthday present",
+       "wrapped gift"
+      ],
+      "zh": [
+       "礼物",
+       "生日礼物"
+      ]
+     },
+     "match": [
+      "подарок",
+      "birthday present",
+      "wrapped gift",
+      "礼物",
+      "生日礼物"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Russian"
+      ],
+      "zh": [
+       "俄语"
+      ],
+      "ru": [
+       "подарок",
+       "подарки",
+       "подарка"
+      ]
+     },
+     "match": [
+      "Russian",
+      "俄语",
+      "подарок",
+      "подарки",
+      "подарка"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "ru": [
+       3
+      ],
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       3,
+       5
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       3
+      ],
+      "ru": [
+       3,
+       3,
+       3
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 9/60 passed.\n- Rejected by lint before gating: 1x format: prompt must end with typo_word. Avoid these.\n- Failed (gold -> what the model wrote): kecelakaan -> model said 'terjadi' (0/10); persahabatan -> model said 'persahatan' (0/10); kebersihan -> model said 'kebersihan' (7/10); pemandangan -> model said 'indah' (1/10); θερμοκρασία -> model said 'θερμοκρασία' (6/10); εστιατόριο -> model said 'εστιατόρο' (0/10); οδοντόβουρτσα -> model said 'βουρσα' (0/10); ποδήλατο -> model said 'ποδήλτο' (0/10); λαχανικά -> model said 'λαχανικά' (7/10); стоматологу -> model said 'зуб' (0/10); аэропорту -> model said 'в аэропорту' (2/10); мороженое -> model said 'морожное' (4/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): pendidikan; thư viện; pengalaman; matahari; σχολείο; шоколад; εφημερίδα; университет; остановке",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w102c1-mlt-ru-shakhmaty",
+   "lang": "ru",
+   "prompt": "По вечерам дедушка расставляет фигуры на доске и учит меня играть в шахмты",
+   "typo_word": "шахмты",
+   "target": "шахматы",
+   "target_alts": [],
+   "intermediates": [
+    "шахматы"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "ru": [
+       "шахматы"
+      ],
+      "en": [
+       "chess game",
+       "game of chess"
+      ],
+      "zh": [
+       "国际象棋",
+       "象棋"
+      ]
+     },
+     "match": [
+      "шахматы",
+      "chess game",
+      "game of chess",
+      "国际象棋",
+      "象棋"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Russian"
+      ],
+      "zh": [
+       "俄语"
+      ],
+      "ru": [
+       "шахматы",
+       "шахмат",
+       "шахматах"
+      ]
+     },
+     "match": [
+      "Russian",
+      "俄语",
+      "шахматы",
+      "шахмат",
+      "шахматах"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "ru": [
+       6
+      ],
+      "en": [
+       2,
+       3
+      ],
+      "zh": [
+       6,
+       3
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       3
+      ],
+      "ru": [
+       6,
+       5,
+       6
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 9/60 passed.\n- Rejected by lint before gating: 1x format: prompt must end with typo_word. Avoid these.\n- Failed (gold -> what the model wrote): kecelakaan -> model said 'terjadi' (0/10); persahabatan -> model said 'persahatan' (0/10); kebersihan -> model said 'kebersihan' (7/10); pemandangan -> model said 'indah' (1/10); θερμοκρασία -> model said 'θερμοκρασία' (6/10); εστιατόριο -> model said 'εστιατόρο' (0/10); οδοντόβουρτσα -> model said 'βουρσα' (0/10); ποδήλατο -> model said 'ποδήλτο' (0/10); λαχανικά -> model said 'λαχανικά' (7/10); стоматологу -> model said 'зуб' (0/10); аэропорту -> model said 'в аэропорту' (2/10); мороженое -> model said 'морожное' (4/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): pendidikan; thư viện; pengalaman; matahari; σχολείο; шоколад; εφημερίδα; университет; остановке",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w103c0-mlt-el-podosfairo",
+   "lang": "el",
+   "prompt": "Κάθε Κυριακή πηγαίνουμε στο γήπεδο να δούμε έναν αγώνα ποδοσφάρου",
+   "typo_word": "ποδοσφάρου",
+   "target": "ποδοσφαίρου",
+   "target_alts": [],
+   "intermediates": [
+    "ποδοσφαίρου"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "el": [
+       "ποδοσφαίρου"
+      ],
+      "en": [
+       "soccer game",
+       "association football"
+      ],
+      "zh": [
+       "足球",
+       "足球比赛"
+      ]
+     },
+     "match": [
+      "ποδοσφαίρου",
+      "soccer game",
+      "association football",
+      "足球",
+      "足球比赛"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Greek"
+      ],
+      "zh": [
+       "希腊语"
+      ],
+      "el": [
+       "ποδοσφαίρου",
+       "ποδόσφαιρο",
+       "ποδόσφαιρου"
+      ]
+     },
+     "match": [
+      "Greek",
+      "希腊语",
+      "ποδοσφαίρου",
+      "ποδόσφαιρο",
+      "ποδόσφαιρου"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "el": [
+       10
+      ],
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       3,
+       6
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       6
+      ],
+      "el": [
+       10,
+       9,
+       9
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 7/60 passed.\n- Rejected by lint before gating: 1x leak: answer form ['κινητό'] echoed in the prompt. Avoid these.\n- Failed (gold -> what the model wrote): pertanyaan -> model said 'tangani' (0/10); pekerjaan -> model said 'pekerjan' (5/10); perjalanan -> model said 'makanan' (3/10); tetangga -> model said 'keluarga' (1/10); αεροπλάνο -> model said 'aeroplano' (1/10); οικογένεια -> model said 'ικογνεία' (0/10); θάλασσα -> model said 'θάλασσα' (4/10); σοκολάτα -> model said 'λιομένη' (0/10); самолёте -> model said 'самолет' (0/10); магазин -> model said 'магазин' (4/10); праздник -> model said 'мандарин' (0/10); sinh nhật -> model said 'nến' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): pelabuhan; φωτογραφία; квартиру; воскресенье; komputer; подарок; шахматы",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w103c0-mlt-ru-lekarstvo",
+   "lang": "ru",
+   "prompt": "Врач выписал рецепт, и мама сразу купила в аптеке нужное лекарсво",
+   "typo_word": "лекарсво",
+   "target": "лекарство",
+   "target_alts": [],
+   "intermediates": [
+    "лекарство"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "ru": [
+       "лекарство"
+      ],
+      "en": [
+       "prescribed medicine",
+       "medical drug"
+      ],
+      "zh": [
+       "药",
+       "药物"
+      ]
+     },
+     "match": [
+      "лекарство",
+      "prescribed medicine",
+      "medical drug",
+      "药",
+      "药物"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Russian"
+      ],
+      "zh": [
+       "俄语"
+      ],
+      "ru": [
+       "лекарство",
+       "лекарства",
+       "таблетки"
+      ]
+     },
+     "match": [
+      "Russian",
+      "俄语",
+      "лекарство",
+      "лекарства",
+      "таблетки"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "ru": [
+       5
+      ],
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       2,
+       3
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       3
+      ],
+      "ru": [
+       5,
+       4,
+       5
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 7/60 passed.\n- Rejected by lint before gating: 1x leak: answer form ['κινητό'] echoed in the prompt. Avoid these.\n- Failed (gold -> what the model wrote): pertanyaan -> model said 'tangani' (0/10); pekerjaan -> model said 'pekerjan' (5/10); perjalanan -> model said 'makanan' (3/10); tetangga -> model said 'keluarga' (1/10); αεροπλάνο -> model said 'aeroplano' (1/10); οικογένεια -> model said 'ικογνεία' (0/10); θάλασσα -> model said 'θάλασσα' (4/10); σοκολάτα -> model said 'λιομένη' (0/10); самолёте -> model said 'самолет' (0/10); магазин -> model said 'магазин' (4/10); праздник -> model said 'мандарин' (0/10); sinh nhật -> model said 'nến' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): pelabuhan; φωτογραφία; квартиру; воскресенье; komputer; подарок; шахматы",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w103c1-mlt-ru-babushka",
+   "lang": "ru",
+   "prompt": "Каждое лето внуки едут в деревню в гости к любимой бабшке",
+   "typo_word": "бабшке",
+   "target": "бабушке",
+   "target_alts": [],
+   "intermediates": [
+    "бабушке"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "ru": [
+       "бабушке"
+      ],
+      "en": [
+       "beloved grandma",
+       "old grandmother"
+      ],
+      "zh": [
+       "奶奶",
+       "外婆"
+      ]
+     },
+     "match": [
+      "бабушке",
+      "beloved grandma",
+      "old grandmother",
+      "奶奶",
+      "外婆"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Russian"
+      ],
+      "zh": [
+       "俄语"
+      ],
+      "ru": [
+       "бабушке",
+       "бабушка",
+       "бабуле"
+      ]
+     },
+     "match": [
+      "Russian",
+      "俄语",
+      "бабушке",
+      "бабушка",
+      "бабуле"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "ru": [
+       5
+      ],
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       4,
+       4
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       3
+      ],
+      "ru": [
+       5,
+       5,
+       5
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 7/60 passed.\n- Rejected by lint before gating: 1x leak: answer form ['κινητό'] echoed in the prompt. Avoid these.\n- Failed (gold -> what the model wrote): pertanyaan -> model said 'tangani' (0/10); pekerjaan -> model said 'pekerjan' (5/10); perjalanan -> model said 'makanan' (3/10); tetangga -> model said 'keluarga' (1/10); αεροπλάνο -> model said 'aeroplano' (1/10); οικογένεια -> model said 'ικογνεία' (0/10); θάλασσα -> model said 'θάλασσα' (4/10); σοκολάτα -> model said 'λιομένη' (0/10); самолёте -> model said 'самолет' (0/10); магазин -> model said 'магазин' (4/10); праздник -> model said 'мандарин' (0/10); sinh nhật -> model said 'nến' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): pelabuhan; φωτογραφία; квартиру; воскресенье; komputer; подарок; шахматы",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w103c2-mlt-id-sekolah",
+   "lang": "id",
+   "prompt": "Setiap pagi anak-anak memakai seragam, membawa tas, lalu berangkat belajar ke sekolh",
+   "typo_word": "sekolh",
+   "target": "sekolah",
+   "target_alts": [],
+   "intermediates": [
+    "sekolah"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "id": [
+       "sekolah"
+      ],
+      "en": [
+       "primary school",
+       "school building"
+      ],
+      "zh": [
+       "学校",
+       "小学"
+      ]
+     },
+     "match": [
+      "sekolah",
+      "primary school",
+      "school building",
+      "学校",
+      "小学"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Indonesian"
+      ],
+      "zh": [
+       "印尼语"
+      ],
+      "id": [
+       "sekolah",
+       "sekolahan",
+       "sekolah dasar"
+      ]
+     },
+     "match": [
+      "Indonesian",
+      "印尼语",
+      "sekolah",
+      "sekolahan",
+      "sekolah dasar"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "id": [
+       2
+      ],
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       3,
+       2
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       5
+      ],
+      "id": [
+       2,
+       3,
+       4
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 7/60 passed.\n- Rejected by lint before gating: 1x leak: answer form ['κινητό'] echoed in the prompt. Avoid these.\n- Failed (gold -> what the model wrote): pertanyaan -> model said 'tangani' (0/10); pekerjaan -> model said 'pekerjan' (5/10); perjalanan -> model said 'makanan' (3/10); tetangga -> model said 'keluarga' (1/10); αεροπλάνο -> model said 'aeroplano' (1/10); οικογένεια -> model said 'ικογνεία' (0/10); θάλασσα -> model said 'θάλασσα' (4/10); σοκολάτα -> model said 'λιομένη' (0/10); самолёте -> model said 'самолет' (0/10); магазин -> model said 'магазин' (4/10); праздник -> model said 'мандарин' (0/10); sinh nhật -> model said 'nến' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): pelabuhan; φωτογραφία; квартиру; воскресенье; komputer; подарок; шахматы",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w103c2-mlt-id-tabungan",
+   "lang": "id",
+   "prompt": "Setiap bulan aku menyisihkan sebagian gaji ke bank untuk menambah tabugan",
+   "typo_word": "tabugan",
+   "target": "tabungan",
+   "target_alts": [],
+   "intermediates": [
+    "tabungan"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "id": [
+       "tabungan"
+      ],
+      "en": [
+       "savings account",
+       "saved money"
+      ],
+      "zh": [
+       "存款",
+       "积蓄"
+      ]
+     },
+     "match": [
+      "tabungan",
+      "savings account",
+      "saved money",
+      "存款",
+      "积蓄"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Indonesian"
+      ],
+      "zh": [
+       "印尼语"
+      ],
+      "id": [
+       "tabungan",
+       "menabung",
+       "simpanan"
+      ]
+     },
+     "match": [
+      "Indonesian",
+      "印尼语",
+      "tabungan",
+      "menabung",
+      "simpanan"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "id": [
+       2
+      ],
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       2,
+       5
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       5
+      ],
+      "id": [
+       2,
+       3,
+       3
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 7/60 passed.\n- Rejected by lint before gating: 1x leak: answer form ['κινητό'] echoed in the prompt. Avoid these.\n- Failed (gold -> what the model wrote): pertanyaan -> model said 'tangani' (0/10); pekerjaan -> model said 'pekerjan' (5/10); perjalanan -> model said 'makanan' (3/10); tetangga -> model said 'keluarga' (1/10); αεροπλάνο -> model said 'aeroplano' (1/10); οικογένεια -> model said 'ικογνεία' (0/10); θάλασσα -> model said 'θάλασσα' (4/10); σοκολάτα -> model said 'λιομένη' (0/10); самолёте -> model said 'самолет' (0/10); магазин -> model said 'магазин' (4/10); праздник -> model said 'мандарин' (0/10); sinh nhật -> model said 'nến' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): pelabuhan; φωτογραφία; квартиру; воскресенье; komputer; подарок; шахматы",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w103c2-mlt-ru-pochtalon",
+   "lang": "ru",
+   "prompt": "Каждое утро письма, газеты и посылки нам приносит вежливый почтальн",
+   "typo_word": "почтальн",
+   "target": "почтальон",
+   "target_alts": [],
+   "intermediates": [
+    "почтальон"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "ru": [
+       "почтальон"
+      ],
+      "en": [
+       "mail carrier",
+       "postal worker"
+      ],
+      "zh": [
+       "邮递员",
+       "送信员"
+      ]
+     },
+     "match": [
+      "почтальон",
+      "mail carrier",
+      "postal worker",
+      "邮递员",
+      "送信员"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Russian"
+      ],
+      "zh": [
+       "俄语"
+      ],
+      "ru": [
+       "почтальон",
+       "почтальона",
+       "почтальоны"
+      ]
+     },
+     "match": [
+      "Russian",
+      "俄语",
+      "почтальон",
+      "почтальона",
+      "почтальоны"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "ru": [
+       5
+      ],
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       4,
+       3
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       3
+      ],
+      "ru": [
+       5,
+       5,
+       6
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 7/60 passed.\n- Rejected by lint before gating: 1x leak: answer form ['κινητό'] echoed in the prompt. Avoid these.\n- Failed (gold -> what the model wrote): pertanyaan -> model said 'tangani' (0/10); pekerjaan -> model said 'pekerjan' (5/10); perjalanan -> model said 'makanan' (3/10); tetangga -> model said 'keluarga' (1/10); αεροπλάνο -> model said 'aeroplano' (1/10); οικογένεια -> model said 'ικογνεία' (0/10); θάλασσα -> model said 'θάλασσα' (4/10); σοκολάτα -> model said 'λιομένη' (0/10); самолёте -> model said 'самолет' (0/10); магазин -> model said 'магазин' (4/10); праздник -> model said 'мандарин' (0/10); sinh nhật -> model said 'nến' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): pelabuhan; φωτογραφία; квартиру; воскресенье; komputer; подарок; шахматы",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w104c0-mlt-id-pelangi",
+   "lang": "id",
+   "prompt": "Setelah hujan reda, di langit muncul lengkungan warna merah, kuning, hijau, dan ungu yang disebut pelngi",
+   "typo_word": "pelngi",
+   "target": "pelangi",
+   "target_alts": [],
+   "intermediates": [
+    "pelangi"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "id": [
+       "pelangi"
+      ],
+      "en": [
+       "colorful rainbow",
+       "rainbow arc"
+      ],
+      "zh": [
+       "彩虹",
+       "虹"
+      ]
+     },
+     "match": [
+      "pelangi",
+      "colorful rainbow",
+      "rainbow arc",
+      "彩虹",
+      "虹"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Indonesian"
+      ],
+      "zh": [
+       "印度尼西亚语"
+      ],
+      "id": [
+       "pelangi",
+       "pelanginya",
+       "bianglala"
+      ]
+     },
+     "match": [
+      "Indonesian",
+      "印度尼西亚语",
+      "pelangi",
+      "pelanginya",
+      "bianglala"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "id": [
+       2
+      ],
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       4,
+       2
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       9
+      ],
+      "id": [
+       2,
+       3,
+       4
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 104,
+    "steer": "- Last wave: 6/60 passed.\n- Failed (gold -> what the model wrote): pesawat -> model said 'pesawt' (4/10); universitas -> model said 'university' (1/10); restoran -> model said 'restaur' (3/10); lapangan -> model said 'lapang' (0/10); polisi -> model said 'duit' (0/10); ψυγείο -> model said 'το' (0/10); πορτοφόλι -> model said 'portofli' (0/10); μαθηματικών -> model said 'τετράδιο' (2/10); κουζίνα -> model said 'κατσαρόλα' (0/10); зоопарке -> model said 'зоопарк' (0/10); стадионе -> model said 'стадион' (0/10); вокзале -> model said 'вокзал' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): ποδοσφαίρου; лекарство; бабушке; sekolah; tabungan; почтальон",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w104c0-mlt-id-sepeda",
+   "lang": "id",
+   "prompt": "Setiap pagi kakak memakai helm, mengayuh pedal, dan berangkat ke kantor naik sepda",
+   "typo_word": "sepda",
+   "target": "sepeda",
+   "target_alts": [],
+   "intermediates": [
+    "sepeda"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "id": [
+       "sepeda"
+      ],
+      "en": [
+       "pedal bicycle",
+       "push bike"
+      ],
+      "zh": [
+       "自行车",
+       "脚踏车"
+      ]
+     },
+     "match": [
+      "sepeda",
+      "pedal bicycle",
+      "push bike",
+      "自行车",
+      "脚踏车"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Indonesian"
+      ],
+      "zh": [
+       "印度尼西亚语"
+      ],
+      "id": [
+       "sepeda",
+       "sepedanya",
+       "bersepeda"
+      ]
+     },
+     "match": [
+      "Indonesian",
+      "印度尼西亚语",
+      "sepeda",
+      "sepedanya",
+      "bersepeda"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "id": [
+       2
+      ],
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       3,
+       7
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       9
+      ],
+      "id": [
+       2,
+       3,
+       4
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 104,
+    "steer": "- Last wave: 6/60 passed.\n- Failed (gold -> what the model wrote): pesawat -> model said 'pesawt' (4/10); universitas -> model said 'university' (1/10); restoran -> model said 'restaur' (3/10); lapangan -> model said 'lapang' (0/10); polisi -> model said 'duit' (0/10); ψυγείο -> model said 'το' (0/10); πορτοφόλι -> model said 'portofli' (0/10); μαθηματικών -> model said 'τετράδιο' (2/10); κουζίνα -> model said 'κατσαρόλα' (0/10); зоопарке -> model said 'зоопарк' (0/10); стадионе -> model said 'стадион' (0/10); вокзале -> model said 'вокзал' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): ποδοσφαίρου; лекарство; бабушке; sekolah; tabungan; почтальон",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w104c1-mlt-ru-telefon",
+   "lang": "ru",
+   "prompt": "Чтобы позвонить маме, я достал из кармана свой мобильный телефн",
+   "typo_word": "телефн",
+   "target": "телефон",
+   "target_alts": [],
+   "intermediates": [
+    "телефон"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "ru": [
+       "телефон"
+      ],
+      "en": [
+       "mobile phone",
+       "telephone handset"
+      ],
+      "zh": [
+       "电话",
+       "手机"
+      ]
+     },
+     "match": [
+      "телефон",
+      "mobile phone",
+      "telephone handset",
+      "电话",
+      "手机"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Russian"
+      ],
+      "zh": [
+       "俄语"
+      ],
+      "ru": [
+       "телефон",
+       "телефона",
+       "смартфон"
+      ]
+     },
+     "match": [
+      "Russian",
+      "俄语",
+      "телефон",
+      "телефона",
+      "смартфон"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "ru": [
+       3
+      ],
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       1,
+       1
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       3
+      ],
+      "ru": [
+       3,
+       3,
+       5
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 104,
+    "steer": "- Last wave: 6/60 passed.\n- Failed (gold -> what the model wrote): pesawat -> model said 'pesawt' (4/10); universitas -> model said 'university' (1/10); restoran -> model said 'restaur' (3/10); lapangan -> model said 'lapang' (0/10); polisi -> model said 'duit' (0/10); ψυγείο -> model said 'το' (0/10); πορτοφόλι -> model said 'portofli' (0/10); μαθηματικών -> model said 'τετράδιο' (2/10); κουζίνα -> model said 'κατσαρόλα' (0/10); зоопарке -> model said 'зоопарк' (0/10); стадионе -> model said 'стадион' (0/10); вокзале -> model said 'вокзал' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): ποδοσφαίρου; лекарство; бабушке; sekolah; tabungan; почтальон",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w104c1-mlt-id-dompet",
+   "lang": "id",
+   "prompt": "Uang tunai, kartu ATM, dan kartu identitas selalu saya simpan di dalam dompt",
+   "typo_word": "dompt",
+   "target": "dompet",
+   "target_alts": [],
+   "intermediates": [
+    "dompet"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "id": [
+       "dompet"
+      ],
+      "en": [
+       "leather wallet",
+       "money purse"
+      ],
+      "zh": [
+       "钱包",
+       "皮夹"
+      ]
+     },
+     "match": [
+      "dompet",
+      "leather wallet",
+      "money purse",
+      "钱包",
+      "皮夹"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Indonesian"
+      ],
+      "zh": [
+       "印度尼西亚语"
+      ],
+      "id": [
+       "dompet",
+       "dompetnya",
+       "dompet kulit"
+      ]
+     },
+     "match": [
+      "Indonesian",
+      "印度尼西亚语",
+      "dompet",
+      "dompetnya",
+      "dompet kulit"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "id": [
+       2
+      ],
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       3,
+       4
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       9
+      ],
+      "id": [
+       2,
+       3,
+       4
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 104,
+    "steer": "- Last wave: 6/60 passed.\n- Failed (gold -> what the model wrote): pesawat -> model said 'pesawt' (4/10); universitas -> model said 'university' (1/10); restoran -> model said 'restaur' (3/10); lapangan -> model said 'lapang' (0/10); polisi -> model said 'duit' (0/10); ψυγείο -> model said 'το' (0/10); πορτοφόλι -> model said 'portofli' (0/10); μαθηματικών -> model said 'τετράδιο' (2/10); κουζίνα -> model said 'κατσαρόλα' (0/10); зоопарке -> model said 'зоопарк' (0/10); стадионе -> model said 'стадион' (0/10); вокзале -> model said 'вокзал' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): ποδοσφαίρου; лекарство; бабушке; sekolah; tabungan; почтальон",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w104c2-mlt-id-mahasiswa",
+   "lang": "id",
+   "prompt": "Kakak saya sudah lulus SMA dan sekarang kuliah di kampus sebagai mahasisa",
+   "typo_word": "mahasisa",
+   "target": "mahasiswa",
+   "target_alts": [],
+   "intermediates": [
+    "mahasiswa"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "id": [
+       "mahasiswa"
+      ],
+      "en": [
+       "university student",
+       "college student"
+      ],
+      "zh": [
+       "大学生",
+       "在校大学生"
+      ]
+     },
+     "match": [
+      "mahasiswa",
+      "university student",
+      "college student",
+      "大学生",
+      "在校大学生"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Indonesian"
+      ],
+      "zh": [
+       "印度尼西亚语"
+      ],
+      "id": [
+       "mahasiswa",
+       "mahasiswi",
+       "mahasiswanya"
+      ]
+     },
+     "match": [
+      "Indonesian",
+      "印度尼西亚语",
+      "mahasiswa",
+      "mahasiswi",
+      "mahasiswanya"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "id": [
+       2
+      ],
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       3,
+       6
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       9
+      ],
+      "id": [
+       2,
+       3,
+       4
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 104,
+    "steer": "- Last wave: 6/60 passed.\n- Failed (gold -> what the model wrote): pesawat -> model said 'pesawt' (4/10); universitas -> model said 'university' (1/10); restoran -> model said 'restaur' (3/10); lapangan -> model said 'lapang' (0/10); polisi -> model said 'duit' (0/10); ψυγείο -> model said 'το' (0/10); πορτοφόλι -> model said 'portofli' (0/10); μαθηματικών -> model said 'τετράδιο' (2/10); κουζίνα -> model said 'κατσαρόλα' (0/10); зоопарке -> model said 'зоопарк' (0/10); стадионе -> model said 'стадион' (0/10); вокзале -> model said 'вокзал' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): ποδοσφαίρου; лекарство; бабушке; sekolah; tabungan; почтальон",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w105c2-mlt-ru-raduga",
+   "lang": "ru",
+   "prompt": "После летнего дождя выглянуло солнце, и на небе появилась яркая разноцветная радга",
+   "typo_word": "радга",
+   "target": "радуга",
+   "target_alts": [],
+   "intermediates": [
+    "радуга"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "ru": [
+       "радуга"
+      ],
+      "en": [
+       "colorful rainbow",
+       "rainbow arc"
+      ],
+      "zh": [
+       "彩虹",
+       "虹"
+      ]
+     },
+     "match": [
+      "радуга",
+      "colorful rainbow",
+      "rainbow arc",
+      "彩虹",
+      "虹"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Russian"
+      ],
+      "zh": [
+       "俄语"
+      ],
+      "ru": [
+       "радуга",
+       "радугу",
+       "радуги"
+      ]
+     },
+     "match": [
+      "Russian",
+      "俄语",
+      "радуга",
+      "радугу",
+      "радуги"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "ru": [
+       4
+      ],
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       4,
+       2
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       3
+      ],
+      "ru": [
+       4,
+       4,
+       4
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 105,
+    "steer": "- Last wave: 6/60 passed.\n- Rejected by lint before gating: 1x leak: answer form ['dầu gội'] echoed in the prompt. Avoid these.\n- Failed (gold -> what the model wrote): бутерброд -> model said 'бутербread' (0/10); мотоцикл -> model said 'скла' (0/10); кастрюля -> model said 'кастрли' (0/10); крокодил -> model said 'крокодил' (6/10); пианино -> model said 'гаммы' (0/10); kelinci -> model said 'kelinci' (5/10); selimut -> model said 'dingin' (0/10); gunting -> model said 'guntig' (2/10); κατσαρόλα -> model said 'κατσαρλα' (0/10); μαχαίρι -> model said 'μαχήρι' (0/10); μολύβι -> model said 'μολβι' (0/10); καπέλο -> model said 'καπλο' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): pelangi; sepeda; телефон; dompet; xe cứu hỏa; mahasiswa",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w105c2-mlt-ru-babochka",
+   "lang": "ru",
+   "prompt": "Гусеница превратилась в куколку, а потом из неё вылетела красивая пёстрая бабчка",
+   "typo_word": "бабчка",
+   "target": "бабочка",
+   "target_alts": [],
+   "intermediates": [
+    "бабочка"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "ru": [
+       "бабочка"
+      ],
+      "en": [
+       "colorful butterfly",
+       "flying butterfly"
+      ],
+      "zh": [
+       "蝴蝶",
+       "彩蝶"
+      ]
+     },
+     "match": [
+      "бабочка",
+      "colorful butterfly",
+      "flying butterfly",
+      "蝴蝶",
+      "彩蝶"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Russian"
+      ],
+      "zh": [
+       "俄语"
+      ],
+      "ru": [
+       "бабочка",
+       "бабочки",
+       "мотылёк"
+      ]
+     },
+     "match": [
+      "Russian",
+      "俄语",
+      "бабочка",
+      "бабочки",
+      "мотылёк"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "ru": [
+       4
+      ],
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       6,
+       5
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       3
+      ],
+      "ru": [
+       4,
+       4,
+       5
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 105,
+    "steer": "- Last wave: 6/60 passed.\n- Rejected by lint before gating: 1x leak: answer form ['dầu gội'] echoed in the prompt. Avoid these.\n- Failed (gold -> what the model wrote): бутерброд -> model said 'бутербread' (0/10); мотоцикл -> model said 'скла' (0/10); кастрюля -> model said 'кастрли' (0/10); крокодил -> model said 'крокодил' (6/10); пианино -> model said 'гаммы' (0/10); kelinci -> model said 'kelinci' (5/10); selimut -> model said 'dingin' (0/10); gunting -> model said 'guntig' (2/10); κατσαρόλα -> model said 'κατσαρλα' (0/10); μαχαίρι -> model said 'μαχήρι' (0/10); μολύβι -> model said 'μολβι' (0/10); καπέλο -> model said 'καπλο' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): pelangi; sepeda; телефон; dompet; xe cứu hỏa; mahasiswa",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w100c1-mlt-id-perkemahan",
+   "lang": "id",
+   "prompt": "Para pramuka mendirikan tenda dan menyalakan api unggun di bumi perkemahn",
+   "typo_word": "perkemahn",
+   "target": "perkemahan",
+   "target_alts": [],
+   "intermediates": [
+    "perkemahan"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "id": [
+       "perkemahan"
+      ],
+      "en": [
+       "camping ground",
+       "scout campsite"
+      ],
+      "zh": [
+       "露营地",
+       "营地"
+      ]
+     },
+     "match": [
+      "perkemahan",
+      "camping ground",
+      "scout campsite",
+      "露营地",
+      "营地"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Indonesian"
+      ],
+      "zh": [
+       "印度尼西亚语"
+      ],
+      "id": [
+       "perkemahan",
+       "berkemah",
+       "kemah"
+      ]
+     },
+     "match": [
+      "Indonesian",
+      "印度尼西亚语",
+      "perkemahan",
+      "berkemah",
+      "kemah"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "id": [
+       3
+      ],
+      "en": [
+       2,
+       3
+      ],
+      "zh": [
+       5,
+       3
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       9
+      ],
+      "id": [
+       3,
+       3,
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w100c1-mlt-el-pitzames",
+   "lang": "el",
+   "prompt": "Πριν πέσω για ύπνο, βγάζω τα ρούχα της ημέρας και φοράω τις πιτζάμς",
+   "typo_word": "πιτζάμς",
+   "target": "πιτζάμες",
+   "target_alts": [],
+   "intermediates": [
+    "πιτζάμες"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "el": [
+       "πιτζάμες"
+      ],
+      "en": [
+       "sleeping pajamas",
+       "night clothes"
+      ],
+      "zh": [
+       "睡衣",
+       "睡衣裤"
+      ]
+     },
+     "match": [
+      "πιτζάμες",
+      "sleeping pajamas",
+      "night clothes",
+      "睡衣",
+      "睡衣裤"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Greek"
+      ],
+      "zh": [
+       "希腊语"
+      ],
+      "el": [
+       "πιτζάμες",
+       "πιτζάμα",
+       "πυτζάμες"
+      ]
+     },
+     "match": [
+      "Greek",
+      "希腊语",
+      "πιτζάμες",
+      "πιτζάμα",
+      "πυτζάμες"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "el": [
+       9
+      ],
+      "en": [
+       3,
+       2
+      ],
+      "zh": [
+       4,
+       6
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       6
+      ],
+      "el": [
+       9,
+       8,
+       9
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w101c0-mlt-ru-krovat",
+   "lang": "ru",
+   "prompt": "Вечером я очень устал, поэтому сразу снял одежду и лёг спать в свою кровадь",
+   "typo_word": "кровадь",
+   "target": "кровать",
+   "target_alts": [],
+   "intermediates": [
+    "кровать"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "ru": [
+       "кровать"
+      ],
+      "en": [
+       "sleeping bed",
+       "double bed"
+      ],
+      "zh": [
+       "床",
+       "床铺"
+      ]
+     },
+     "match": [
+      "кровать",
+      "sleeping bed",
+      "double bed",
+      "床",
+      "床铺"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Russian"
+      ],
+      "zh": [
+       "俄语"
+      ],
+      "ru": [
+       "кровать",
+       "кровати",
+       "постель"
+      ]
+     },
+     "match": [
+      "Russian",
+      "俄语",
+      "кровать",
+      "кровати",
+      "постель"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "ru": [
+       3
+      ],
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       2,
+       4
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       3
+      ],
+      "ru": [
+       3,
+       4,
+       3
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 2/60 passed.\n- Failed (gold -> what the model wrote): bình chữa cháy -> model said 'cnáy' (0/10); máy xay sinh tố -> model said 'sữa' (0/10); điều khiển từ xa -> model said 'kênh' (0/10); nồi chiên không dầu -> model said 'dầu' (0/10); bảo tàng -> model said 'lớp' (0/10); посудомойку -> model said 'посудам' (0/10); парашют -> model said 'парашют' (4/10); клавиатуре -> model said 'клавиатере' (0/10); подсолнух -> model said 'солнук' (1/10); бассейн -> model said 'ин' (6/10); πεζοδρόμιο -> model said 'στο' (0/10); χελιδόνι -> model said 'χελιδόμι' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): perkemahan; πιτζάμες",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w101c0-mlt-ru-tarelku",
+   "lang": "ru",
+   "prompt": "Мама налила горячий борщ половником в глубокую тарэлку",
+   "typo_word": "тарэлку",
+   "target": "тарелку",
+   "target_alts": [],
+   "intermediates": [
+    "тарелку"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "ru": [
+       "тарелку"
+      ],
+      "en": [
+       "soup plate",
+       "dinner plate"
+      ],
+      "zh": [
+       "盘子",
+       "汤盘"
+      ]
+     },
+     "match": [
+      "тарелку",
+      "soup plate",
+      "dinner plate",
+      "盘子",
+      "汤盘"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Russian"
+      ],
+      "zh": [
+       "俄语"
+      ],
+      "ru": [
+       "тарелку",
+       "тарелка",
+       "тарелки"
+      ]
+     },
+     "match": [
+      "Russian",
+      "俄语",
+      "тарелку",
+      "тарелка",
+      "тарелки"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "ru": [
+       4
+      ],
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       3,
+       4
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       3
+      ],
+      "ru": [
+       4,
+       4,
+       4
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 2/60 passed.\n- Failed (gold -> what the model wrote): bình chữa cháy -> model said 'cnáy' (0/10); máy xay sinh tố -> model said 'sữa' (0/10); điều khiển từ xa -> model said 'kênh' (0/10); nồi chiên không dầu -> model said 'dầu' (0/10); bảo tàng -> model said 'lớp' (0/10); посудомойку -> model said 'посудам' (0/10); парашют -> model said 'парашют' (4/10); клавиатуре -> model said 'клавиатере' (0/10); подсолнух -> model said 'солнук' (1/10); бассейн -> model said 'ин' (6/10); πεζοδρόμιο -> model said 'στο' (0/10); χελιδόνι -> model said 'χελιδόμι' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): perkemahan; πιτζάμες",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w101c1-mlt-ru-temperatura",
+   "lang": "ru",
+   "prompt": "Ребёнок весь день кашляет, а градусник вечером показал высокую темпиратуру",
+   "typo_word": "темпиратуру",
+   "target": "температуру",
+   "target_alts": [],
+   "intermediates": [
+    "температуру"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "ru": [
+       "температуру"
+      ],
+      "en": [
+       "body temperature",
+       "high fever"
+      ],
+      "zh": [
+       "体温",
+       "发烧"
+      ]
+     },
+     "match": [
+      "температуру",
+      "body temperature",
+      "high fever",
+      "体温",
+      "发烧"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Russian"
+      ],
+      "zh": [
+       "俄语"
+      ],
+      "ru": [
+       "температуру",
+       "температура",
+       "жар"
+      ]
+     },
+     "match": [
+      "Russian",
+      "俄语",
+      "температуру",
+      "температура",
+      "жар"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "ru": [
+       7
+      ],
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       3,
+       4
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       3
+      ],
+      "ru": [
+       7,
+       7,
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 2/60 passed.\n- Failed (gold -> what the model wrote): bình chữa cháy -> model said 'cnáy' (0/10); máy xay sinh tố -> model said 'sữa' (0/10); điều khiển từ xa -> model said 'kênh' (0/10); nồi chiên không dầu -> model said 'dầu' (0/10); bảo tàng -> model said 'lớp' (0/10); посудомойку -> model said 'посудам' (0/10); парашют -> model said 'парашют' (4/10); клавиатуре -> model said 'клавиатере' (0/10); подсолнух -> model said 'солнук' (1/10); бассейн -> model said 'ин' (6/10); πεζοδρόμιο -> model said 'στο' (0/10); χελιδόνι -> model said 'χελιδόμι' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): perkemahan; πιτζάμες",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w101c2-mlt-ru-pomidory",
+   "lang": "ru",
+   "prompt": "Для летнего салата я нарезал свежие огурцы и красные помидыры",
+   "typo_word": "помидыры",
+   "target": "помидоры",
+   "target_alts": [],
+   "intermediates": [
+    "помидоры"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "ru": [
+       "помидоры"
+      ],
+      "en": [
+       "red tomatoes",
+       "fresh tomatoes"
+      ],
+      "zh": [
+       "西红柿",
+       "番茄"
+      ]
+     },
+     "match": [
+      "помидоры",
+      "red tomatoes",
+      "fresh tomatoes",
+      "西红柿",
+      "番茄"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Russian"
+      ],
+      "zh": [
+       "俄语"
+      ],
+      "ru": [
+       "помидоры",
+       "помидор",
+       "томаты"
+      ]
+     },
+     "match": [
+      "Russian",
+      "俄语",
+      "помидоры",
+      "помидор",
+      "томаты"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "ru": [
+       4
+      ],
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       5,
+       3
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       3
+      ],
+      "ru": [
+       4,
+       3,
+       3
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 2/60 passed.\n- Failed (gold -> what the model wrote): bình chữa cháy -> model said 'cnáy' (0/10); máy xay sinh tố -> model said 'sữa' (0/10); điều khiển từ xa -> model said 'kênh' (0/10); nồi chiên không dầu -> model said 'dầu' (0/10); bảo tàng -> model said 'lớp' (0/10); посудомойку -> model said 'посудам' (0/10); парашют -> model said 'парашют' (4/10); клавиатуре -> model said 'клавиатере' (0/10); подсолнух -> model said 'солнук' (1/10); бассейн -> model said 'ин' (6/10); πεζοδρόμιο -> model said 'στο' (0/10); χελιδόνι -> model said 'χελιδόμι' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): perkemahan; πιτζάμες",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w102c0-mlt-id-stasiun",
+   "lang": "id",
+   "prompt": "Kami menunggu kereta api yang terlambat di peron stasiyn",
+   "typo_word": "stasiyn",
+   "target": "stasiun",
+   "target_alts": [],
+   "intermediates": [
+    "stasiun"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "id": [
+       "stasiun"
+      ],
+      "en": [
+       "train station",
+       "railway station"
+      ],
+      "zh": [
+       "火车站",
+       "车站"
+      ]
+     },
+     "match": [
+      "stasiun",
+      "train station",
+      "railway station",
+      "火车站",
+      "车站"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Indonesian"
+      ],
+      "zh": [
+       "印尼语"
+      ],
+      "id": [
+       "stasiun",
+       "stasiun kereta",
+       "setasiun"
+      ]
+     },
+     "match": [
+      "Indonesian",
+      "印尼语",
+      "stasiun",
+      "stasiun kereta",
+      "setasiun"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "id": [
+       3
+      ],
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       3,
+       2
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       5
+      ],
+      "id": [
+       3,
+       5,
+       3
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 4/60 passed.\n- Failed (gold -> what the model wrote): peternakan -> model said 'peternak' (0/10); pembayaran -> model said 'pembayar' (5/10); pendaftaran -> model said 'pendaftar' (6/10); perkebunan -> model said 'bukit' (0/10); pertunjukan -> model said 'tangan' (0/10); καναπέ -> model said 'πανεπιστημιακό' (0/10); πετσέτα -> model said 'τα' (0/10); καθρέφτη -> model said 'καθρεφρη' (0/10); κουβέρτα -> model said 'κουβύρτα' (0/10); τραπέζι -> model said 'τραπέζι' (5/10); зеркало -> model said 'зерколо' (1/10); супермаркете -> model said 'овощи' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): кровать; тарелку; температуру; помидоры",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w102c0-mlt-id-monyet",
+   "lang": "id",
+   "prompt": "Di kebun binatang, hewan berekor panjang yang suka memanjat pohon dan makan pisang itu adalah monyat",
+   "typo_word": "monyat",
+   "target": "monyet",
+   "target_alts": [],
+   "intermediates": [
+    "monyet"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "id": [
+       "monyet"
+      ],
+      "en": [
+       "small monkey",
+       "long-tailed monkey"
+      ],
+      "zh": [
+       "猴子",
+       "猕猴"
+      ]
+     },
+     "match": [
+      "monyet",
+      "small monkey",
+      "long-tailed monkey",
+      "猴子",
+      "猕猴"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Indonesian"
+      ],
+      "zh": [
+       "印尼语"
+      ],
+      "id": [
+       "monyet",
+       "kera",
+       "monyet-monyet"
+      ]
+     },
+     "match": [
+      "Indonesian",
+      "印尼语",
+      "monyet",
+      "kera",
+      "monyet-monyet"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "id": [
+       2
+      ],
+      "en": [
+       2,
+       4
+      ],
+      "zh": [
+       4,
+       6
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       5
+      ],
+      "id": [
+       2,
+       2,
+       5
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 4/60 passed.\n- Failed (gold -> what the model wrote): peternakan -> model said 'peternak' (0/10); pembayaran -> model said 'pembayar' (5/10); pendaftaran -> model said 'pendaftar' (6/10); perkebunan -> model said 'bukit' (0/10); pertunjukan -> model said 'tangan' (0/10); καναπέ -> model said 'πανεπιστημιακό' (0/10); πετσέτα -> model said 'τα' (0/10); καθρέφτη -> model said 'καθρεφρη' (0/10); κουβέρτα -> model said 'κουβύρτα' (0/10); τραπέζι -> model said 'τραπέζι' (5/10); зеркало -> model said 'зерколо' (1/10); супермаркете -> model said 'овощи' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): кровать; тарелку; температуру; помидоры",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w102c0-mlt-id-bintang",
+   "lang": "id",
+   "prompt": "Malam ini langit sangat cerah sehingga kami bisa melihat ribuan bintamg",
+   "typo_word": "bintamg",
+   "target": "bintang",
+   "target_alts": [],
+   "intermediates": [
+    "bintang"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "id": [
+       "bintang"
+      ],
+      "en": [
+       "night stars",
+       "twinkling stars"
+      ],
+      "zh": [
+       "星星",
+       "星辰"
+      ]
+     },
+     "match": [
+      "bintang",
+      "night stars",
+      "twinkling stars",
+      "星星",
+      "星辰"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Indonesian"
+      ],
+      "zh": [
+       "印尼语"
+      ],
+      "id": [
+       "bintang",
+       "bintang-bintang",
+       "gemintang"
+      ]
+     },
+     "match": [
+      "Indonesian",
+      "印尼语",
+      "bintang",
+      "bintang-bintang",
+      "gemintang"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "id": [
+       3
+      ],
+      "en": [
+       2,
+       3
+      ],
+      "zh": [
+       2,
+       3
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       5
+      ],
+      "id": [
+       3,
+       6,
+       3
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 4/60 passed.\n- Failed (gold -> what the model wrote): peternakan -> model said 'peternak' (0/10); pembayaran -> model said 'pembayar' (5/10); pendaftaran -> model said 'pendaftar' (6/10); perkebunan -> model said 'bukit' (0/10); pertunjukan -> model said 'tangan' (0/10); καναπέ -> model said 'πανεπιστημιακό' (0/10); πετσέτα -> model said 'τα' (0/10); καθρέφτη -> model said 'καθρεφρη' (0/10); κουβέρτα -> model said 'κουβύρτα' (0/10); τραπέζι -> model said 'τραπέζι' (5/10); зеркало -> model said 'зерколо' (1/10); супермаркете -> model said 'овощи' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): кровать; тарелку; температуру; помидоры",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w102c0-mlt-ru-avtomobil",
+   "lang": "ru",
+   "prompt": "Каждые выходные папа моет и полирует свой новый автомабиль",
+   "typo_word": "автомабиль",
+   "target": "автомобиль",
+   "target_alts": [],
+   "intermediates": [
+    "автомобиль"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "ru": [
+       "автомобиль"
+      ],
+      "en": [
+       "passenger car",
+       "motor vehicle"
+      ],
+      "zh": [
+       "汽车",
+       "小汽车"
+      ]
+     },
+     "match": [
+      "автомобиль",
+      "passenger car",
+      "motor vehicle",
+      "汽车",
+      "小汽车"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Russian"
+      ],
+      "zh": [
+       "俄语"
+      ],
+      "ru": [
+       "автомобиль",
+       "автомобиля",
+       "машину"
+      ]
+     },
+     "match": [
+      "Russian",
+      "俄语",
+      "автомобиль",
+      "автомобиля",
+      "машину"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "ru": [
+       4
+      ],
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       2,
+       3
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       3
+      ],
+      "ru": [
+       4,
+       5,
+       4
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 4/60 passed.\n- Failed (gold -> what the model wrote): peternakan -> model said 'peternak' (0/10); pembayaran -> model said 'pembayar' (5/10); pendaftaran -> model said 'pendaftar' (6/10); perkebunan -> model said 'bukit' (0/10); pertunjukan -> model said 'tangan' (0/10); καναπέ -> model said 'πανεπιστημιακό' (0/10); πετσέτα -> model said 'τα' (0/10); καθρέφτη -> model said 'καθρεφρη' (0/10); κουβέρτα -> model said 'κουβύρτα' (0/10); τραπέζι -> model said 'τραπέζι' (5/10); зеркало -> model said 'зерколо' (1/10); супермаркете -> model said 'овощи' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): кровать; тарелку; температуру; помидоры",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w102c1-mlt-ru-nozhnitsy",
+   "lang": "ru",
+   "prompt": "Чтобы вырезать фигурку из цветной бумаги, дай мне, пожалуйста, острые ножнецы",
+   "typo_word": "ножнецы",
+   "target": "ножницы",
+   "target_alts": [],
+   "intermediates": [
+    "ножницы"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "ru": [
+       "ножницы"
+      ],
+      "en": [
+       "pair of scissors",
+       "paper scissors"
+      ],
+      "zh": [
+       "剪刀",
+       "剪子"
+      ]
+     },
+     "match": [
+      "ножницы",
+      "pair of scissors",
+      "paper scissors",
+      "剪刀",
+      "剪子"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Russian"
+      ],
+      "zh": [
+       "俄语"
+      ],
+      "ru": [
+       "ножницы",
+       "ножниц",
+       "ножницами"
+      ]
+     },
+     "match": [
+      "Russian",
+      "俄语",
+      "ножницы",
+      "ножниц",
+      "ножницами"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "ru": [
+       5
+      ],
+      "en": [
+       3,
+       2
+      ],
+      "zh": [
+       4,
+       3
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       3
+      ],
+      "ru": [
+       5,
+       4,
+       5
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 4/60 passed.\n- Failed (gold -> what the model wrote): peternakan -> model said 'peternak' (0/10); pembayaran -> model said 'pembayar' (5/10); pendaftaran -> model said 'pendaftar' (6/10); perkebunan -> model said 'bukit' (0/10); pertunjukan -> model said 'tangan' (0/10); καναπέ -> model said 'πανεπιστημιακό' (0/10); πετσέτα -> model said 'τα' (0/10); καθρέφτη -> model said 'καθρεφρη' (0/10); κουβέρτα -> model said 'κουβύρτα' (0/10); τραπέζι -> model said 'τραπέζι' (5/10); зеркало -> model said 'зерколо' (1/10); супермаркете -> model said 'овощи' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): кровать; тарелку; температуру; помидоры",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w102c2-mlt-id-durian",
+   "lang": "id",
+   "prompt": "Buah berduri yang baunya sangat menyengat dan dijuluki raja buah adalah durien",
+   "typo_word": "durien",
+   "target": "durian",
+   "target_alts": [],
+   "intermediates": [
+    "durian"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "id": [
+       "durian"
+      ],
+      "en": [
+       "durian fruit",
+       "king of fruits"
+      ],
+      "zh": [
+       "榴莲",
+       "榴梿"
+      ]
+     },
+     "match": [
+      "durian",
+      "durian fruit",
+      "king of fruits",
+      "榴莲",
+      "榴梿"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Indonesian"
+      ],
+      "zh": [
+       "印尼语"
+      ],
+      "id": [
+       "durian",
+       "duren"
+      ]
+     },
+     "match": [
+      "Indonesian",
+      "印尼语",
+      "durian",
+      "duren"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "id": [
+       2
+      ],
+      "en": [
+       3,
+       3
+      ],
+      "zh": [
+       6,
+       6
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       5
+      ],
+      "id": [
+       2,
+       2
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 4/60 passed.\n- Failed (gold -> what the model wrote): peternakan -> model said 'peternak' (0/10); pembayaran -> model said 'pembayar' (5/10); pendaftaran -> model said 'pendaftar' (6/10); perkebunan -> model said 'bukit' (0/10); pertunjukan -> model said 'tangan' (0/10); καναπέ -> model said 'πανεπιστημιακό' (0/10); πετσέτα -> model said 'τα' (0/10); καθρέφτη -> model said 'καθρεφρη' (0/10); κουβέρτα -> model said 'κουβύρτα' (0/10); τραπέζι -> model said 'τραπέζι' (5/10); зеркало -> model said 'зерколо' (1/10); супермаркете -> model said 'овощи' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): кровать; тарелку; температуру; помидоры",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w102c2-mlt-id-februari",
+   "lang": "id",
+   "prompt": "Setelah bulan Januari berakhir, kita memasuki bulan Febuari",
+   "typo_word": "Febuari",
+   "target": "Februari",
+   "target_alts": [],
+   "intermediates": [
+    "Februari"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "id": [
+       "Februari"
+      ],
+      "en": [
+       "month February",
+       "second month"
+      ],
+      "zh": [
+       "二月",
+       "二月份"
+      ]
+     },
+     "match": [
+      "Februari",
+      "month February",
+      "second month",
+      "二月",
+      "二月份"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Indonesian"
+      ],
+      "zh": [
+       "印尼语"
+      ],
+      "id": [
+       "Februari",
+       "februari"
+      ]
+     },
+     "match": [
+      "Indonesian",
+      "印尼语",
+      "Februari",
+      "februari"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "id": [
+       3
+      ],
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       2,
+       3
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       5
+      ],
+      "id": [
+       3,
+       3
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 4/60 passed.\n- Failed (gold -> what the model wrote): peternakan -> model said 'peternak' (0/10); pembayaran -> model said 'pembayar' (5/10); pendaftaran -> model said 'pendaftar' (6/10); perkebunan -> model said 'bukit' (0/10); pertunjukan -> model said 'tangan' (0/10); καναπέ -> model said 'πανεπιστημιακό' (0/10); πετσέτα -> model said 'τα' (0/10); καθρέφτη -> model said 'καθρεφρη' (0/10); κουβέρτα -> model said 'κουβύρτα' (0/10); τραπέζι -> model said 'τραπέζι' (5/10); зеркало -> model said 'зерколо' (1/10); супермаркете -> model said 'овощи' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): кровать; тарелку; температуру; помидоры",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w103c0-mlt-id-bantal",
+   "lang": "id",
+   "prompt": "Sebelum tidur, aku mematikan lampu kamar lalu merebahkan kepala di atas bantl",
+   "typo_word": "bantl",
+   "target": "bantal",
+   "target_alts": [],
+   "intermediates": [
+    "bantal"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "id": [
+       "bantal"
+      ],
+      "en": [
+       "bed pillow",
+       "sleeping pillow"
+      ],
+      "zh": [
+       "枕头",
+       "睡枕"
+      ]
+     },
+     "match": [
+      "bantal",
+      "bed pillow",
+      "sleeping pillow",
+      "枕头",
+      "睡枕"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Indonesian"
+      ],
+      "zh": [
+       "印尼语"
+      ],
+      "id": [
+       "bantal",
+       "bantalnya",
+       "bantal tidur"
+      ]
+     },
+     "match": [
+      "Indonesian",
+      "印尼语",
+      "bantal",
+      "bantalnya",
+      "bantal tidur"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "id": [
+       2
+      ],
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       3,
+       4
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       5
+      ],
+      "id": [
+       2,
+       3,
+       4
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 7/60 passed.\n- Rejected by lint before gating: 1x natural:correction 'muỗi' is not creditable. Avoid these.\n- Failed (gold -> what the model wrote): rendang -> model said 'rendere' (0/10); kemeja -> model said 'panjang' (0/10); δελφίνι -> model said 'δελφύνι' (0/10); τυρόπιτα -> model said 'τυρόπτα' (0/10); κιθάρα -> model said 'χορδές' (0/10); ομίχλης -> model said 'omikles' (0/10); υδραυλικό -> model said 'υδραυλλίο' (4/10); календаре -> model said 'день' (0/10); пожарные -> model said 'пожар' (0/10); ромашек -> model said 'romyoshki' (0/10); пирожки -> model said 'пирошки' (0/10); giày thể thao -> model said 'giày' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): stasiun; monyet; bintang; автомобиль; ножницы; durian; Februari",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w103c0-mlt-id-petani",
+   "lang": "id",
+   "prompt": "Orang yang setiap hari bekerja di sawah untuk menanam dan memanen padi disebut petni",
+   "typo_word": "petni",
+   "target": "petani",
+   "target_alts": [],
+   "intermediates": [
+    "petani"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "id": [
+       "petani"
+      ],
+      "en": [
+       "rice farmer",
+       "crop farmer"
+      ],
+      "zh": [
+       "农民",
+       "农夫"
+      ]
+     },
+     "match": [
+      "petani",
+      "rice farmer",
+      "crop farmer",
+      "农民",
+      "农夫"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Indonesian"
+      ],
+      "zh": [
+       "印尼语"
+      ],
+      "id": [
+       "petani",
+       "petaninya",
+       "pak tani"
+      ]
+     },
+     "match": [
+      "Indonesian",
+      "印尼语",
+      "petani",
+      "petaninya",
+      "pak tani"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "id": [
+       2
+      ],
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       3,
+       4
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       5
+      ],
+      "id": [
+       2,
+       3,
+       3
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 7/60 passed.\n- Rejected by lint before gating: 1x natural:correction 'muỗi' is not creditable. Avoid these.\n- Failed (gold -> what the model wrote): rendang -> model said 'rendere' (0/10); kemeja -> model said 'panjang' (0/10); δελφίνι -> model said 'δελφύνι' (0/10); τυρόπιτα -> model said 'τυρόπτα' (0/10); κιθάρα -> model said 'χορδές' (0/10); ομίχλης -> model said 'omikles' (0/10); υδραυλικό -> model said 'υδραυλλίο' (4/10); календаре -> model said 'день' (0/10); пожарные -> model said 'пожар' (0/10); ромашек -> model said 'romyoshki' (0/10); пирожки -> model said 'пирошки' (0/10); giày thể thao -> model said 'giày' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): stasiun; monyet; bintang; автомобиль; ножницы; durian; Februari",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w103c1-mlt-id-gajah",
+   "lang": "id",
+   "prompt": "Hewan darat paling besar yang punya belalai panjang dan dua gading putih adalah gajh",
+   "typo_word": "gajh",
+   "target": "gajah",
+   "target_alts": [],
+   "intermediates": [
+    "gajah"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "id": [
+       "gajah"
+      ],
+      "en": [
+       "large elephant",
+       "Asian elephant"
+      ],
+      "zh": [
+       "大象",
+       "象"
+      ]
+     },
+     "match": [
+      "gajah",
+      "large elephant",
+      "Asian elephant",
+      "大象",
+      "象"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Indonesian"
+      ],
+      "zh": [
+       "印尼语"
+      ],
+      "id": [
+       "gajah",
+       "gajahnya",
+       "gajah Sumatra"
+      ]
+     },
+     "match": [
+      "Indonesian",
+      "印尼语",
+      "gajah",
+      "gajahnya",
+      "gajah Sumatra"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "id": [
+       3
+      ],
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       2,
+       1
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       5
+      ],
+      "id": [
+       3,
+       4,
+       5
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 7/60 passed.\n- Rejected by lint before gating: 1x natural:correction 'muỗi' is not creditable. Avoid these.\n- Failed (gold -> what the model wrote): rendang -> model said 'rendere' (0/10); kemeja -> model said 'panjang' (0/10); δελφίνι -> model said 'δελφύνι' (0/10); τυρόπιτα -> model said 'τυρόπτα' (0/10); κιθάρα -> model said 'χορδές' (0/10); ομίχλης -> model said 'omikles' (0/10); υδραυλικό -> model said 'υδραυλλίο' (4/10); календаре -> model said 'день' (0/10); пожарные -> model said 'пожар' (0/10); ромашек -> model said 'romyoshki' (0/10); пирожки -> model said 'пирошки' (0/10); giày thể thao -> model said 'giày' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): stasiun; monyet; bintang; автомобиль; ножницы; durian; Februari",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w103c1-mlt-ru-gazeta",
+   "lang": "ru",
+   "prompt": "Дедушка каждое утро пьёт чай, надевает очки и читает свежую газту",
+   "typo_word": "газту",
+   "target": "газету",
+   "target_alts": [],
+   "intermediates": [
+    "газету"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "ru": [
+       "газету"
+      ],
+      "en": [
+       "daily newspaper",
+       "morning paper"
+      ],
+      "zh": [
+       "报纸",
+       "日报"
+      ]
+     },
+     "match": [
+      "газету",
+      "daily newspaper",
+      "morning paper",
+      "报纸",
+      "日报"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Russian"
+      ],
+      "zh": [
+       "俄语"
+      ],
+      "ru": [
+       "газету",
+       "газета",
+       "газеты"
+      ]
+     },
+     "match": [
+      "Russian",
+      "俄语",
+      "газету",
+      "газета",
+      "газеты"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "ru": [
+       4
+      ],
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       3,
+       2
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       3
+      ],
+      "ru": [
+       4,
+       4,
+       4
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 7/60 passed.\n- Rejected by lint before gating: 1x natural:correction 'muỗi' is not creditable. Avoid these.\n- Failed (gold -> what the model wrote): rendang -> model said 'rendere' (0/10); kemeja -> model said 'panjang' (0/10); δελφίνι -> model said 'δελφύνι' (0/10); τυρόπιτα -> model said 'τυρόπτα' (0/10); κιθάρα -> model said 'χορδές' (0/10); ομίχλης -> model said 'omikles' (0/10); υδραυλικό -> model said 'υδραυλλίο' (4/10); календаре -> model said 'день' (0/10); пожарные -> model said 'пожар' (0/10); ромашек -> model said 'romyoshki' (0/10); пирожки -> model said 'пирошки' (0/10); giày thể thao -> model said 'giày' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): stasiun; monyet; bintang; автомобиль; ножницы; durian; Februari",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multilingual-au-t1-w103c2-mlt-id-bengkel",
+   "lang": "id",
+   "prompt": "Ban motor saya bocor di jalan, jadi saya mendorongnya ke bengkl",
+   "typo_word": "bengkl",
+   "target": "bengkel",
+   "target_alts": [],
+   "intermediates": [
+    "bengkel"
+   ],
+   "units": [
+    {
+     "role": "correction",
+     "required": true,
+     "multi_token": true,
+     "forms": {
+      "id": [
+       "bengkel"
+      ],
+      "en": [
+       "repair shop",
+       "motorcycle workshop"
+      ],
+      "zh": [
+       "修理厂",
+       "修车铺"
+      ]
+     },
+     "match": [
+      "bengkel",
+      "repair shop",
+      "motorcycle workshop",
+      "修理厂",
+      "修车铺"
+     ]
+    },
+    {
+     "role": "language",
+     "required": true,
+     "multi_token": false,
+     "forms": {
+      "en": [
+       "Indonesian"
+      ],
+      "zh": [
+       "印尼语"
+      ],
+      "id": [
+       "bengkel",
+       "bengkelnya",
+       "bengkel motor"
+      ]
+     },
+     "match": [
+      "Indonesian",
+      "印尼语",
+      "bengkel",
+      "bengkelnya",
+      "bengkel motor"
+     ]
+    }
+   ],
+   "subfamily": "typo",
+   "probe_token_lens": {
+    "units": {
+     "correction": {
+      "id": [
+       2
+      ],
+      "en": [
+       2,
+       2
+      ],
+      "zh": [
+       4,
+       4
+      ]
+     },
+     "language": {
+      "en": [
+       1
+      ],
+      "zh": [
+       5
+      ],
+      "id": [
+       2,
+       3,
+       3
+      ]
+     }
+    }
+   },
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use only Indonesian (id), Greek (el), Russian (ru) or Vietnamese (vi), the languages this model corrects best, and common everyday words that still take several tokens (compounds, derived words, multi-syllable Vietnamese terms). A one-letter edit that keeps the first three letters, in a sentence that strongly predicts the word. Spread evenly over the four languages."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 7/60 passed.\n- Rejected by lint before gating: 1x natural:correction 'muỗi' is not creditable. Avoid these.\n- Failed (gold -> what the model wrote): rendang -> model said 'rendere' (0/10); kemeja -> model said 'panjang' (0/10); δελφίνι -> model said 'δελφύνι' (0/10); τυρόπιτα -> model said 'τυρόπτα' (0/10); κιθάρα -> model said 'χορδές' (0/10); ομίχλης -> model said 'omikles' (0/10); υδραυλικό -> model said 'υδραυλλίο' (4/10); календаре -> model said 'день' (0/10); пожарные -> model said 'пожар' (0/10); ромашек -> model said 'romyoshki' (0/10); пирожки -> model said 'пирошки' (0/10); giày thể thao -> model said 'giày' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): stasiun; monyet; bintang; автомобиль; ножницы; durian; Februari",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  }
+ ]
+}
