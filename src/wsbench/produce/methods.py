@@ -185,8 +185,15 @@ class OLens:
         "activation, each as a '- ' bullet on its own line."
     )
     sampling: Sampling = field(default_factory=Sampling)
+    # plan 0032 §2.9.8 (decision Q1): a SINGLE-bullet O-lens reads 4 separate generations per
+    # activation (sampling bullet4); the default multi-bullet s3d lens reads one (prose1)
+    bullet: bool = False
     _b: Backend | None = field(default=None, repr=False)
     _slots: dict[int, tuple[list[int], int]] = field(default_factory=dict, repr=False)
+
+    def __post_init__(self) -> None:
+        if self.bullet:
+            self.sampling.k = 4
 
     def bind(self, backend: Backend) -> None:
         from huggingface_hub import snapshot_download
@@ -350,6 +357,17 @@ class NLA:
         texts = self._tok.batch_decode(out[:, len(self._ids) :], skip_special_tokens=True)
         texts = [t.split("</explanation>")[0].removeprefix("<explanation>").strip() for t in texts]
         return Readout(samples=texts)
+
+
+def sampling_of(m: Any) -> str:
+    """The sampling kind a producer declares in the readouts sidecar (plan 0032 §2.9.2): a
+    bullet O-lens -> ``bullet4``; every other prose method (the s3d O-lens, NLA) -> ``prose1``;
+    token lenses -> ``tokens10``. Never inferred from the readouts' shape."""
+    if isinstance(m, OLens):
+        return "bullet4" if m.bullet else "prose1"
+    if isinstance(m, NLA):
+        return "prose1"
+    return "tokens10"
 
 
 METHODS: dict[str, type] = {

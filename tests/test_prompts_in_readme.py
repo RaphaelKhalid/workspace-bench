@@ -1,5 +1,6 @@
-"""Every prompt string a family sends lives verbatim in its README (and the summarizer's in
-docs/summarizer.md) inside a fenced block."""
+"""Every prompt string a family sends lives verbatim in its README (and the digest's in
+docs/summarizer.md) inside a fenced block. The J-lens interpretation step and its prompts are
+deleted (plan 0032 §2.3)."""
 
 import importlib
 import re
@@ -7,7 +8,7 @@ from pathlib import Path
 
 import pytest
 
-from wsbench import registry, summarizer
+from wsbench import digest, registry
 
 ROOT = Path(__file__).resolve().parents[1]
 # fences of any length (```` when a prompt itself contains ```), closed by the same run
@@ -39,11 +40,10 @@ def test_family_prompts_verbatim_in_readme(family: str):
 
 
 def test_summarizer_prompt_verbatim_in_docs():
+    # plan 0032 §2.3: the J-lens interpretation prompts are deleted; the item digest's stay
     blocks = fenced_blocks((ROOT / "docs/summarizer.md").read_text(encoding="utf-8"))
-    for name, text in summarizer.PROMPTS.items():
+    for name, text in digest.PROMPTS.items():  # plan 0020: the item digest's prompts too
         assert any(text in b for b in blocks), name
-    doc = (ROOT / "docs/summarizer.md").read_text()
-    assert summarizer.SUMMARIZER_PROMPT_VERSION in doc and "interpretation" in doc
 
 
 def test_fence_parser():

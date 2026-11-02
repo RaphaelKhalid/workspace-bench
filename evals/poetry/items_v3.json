@@ -1,0 +1,9894 @@
+{
+ "family": "poetry",
+ "version": 3,
+ "n_items": 100,
+ "gate": "Qwen3.6-27B behavioral, 2026-10-30/31 on Modal (scripts/poetry/qwen_gate.py), the READ-SITE rule: three legs per couplet, 10 draws at T=0.7 + greedy each -- free (line two written freely from line one's newline, the last read site; the stub is cut, so it sees exactly the read-site activations), plain (raw continuation of the full prompt, the read render), chat ('Continue this text', recorded only). The gold is the unique modal line-final word of the 11 free line twos, kept only if it ends >= 4 of them AND the plain leg's greedy word after the stub is that same word with >= 8/10 samples agreeing. qwen_commits = every word any of the 33 draws wrote (free line-final words included); no distractor may be one. Then the Opus-fails gate (plan 0038 P3, decision Q7): Opus 5.5 prompt-only (po-opus-v1 input, line one only), 3 gate draws, judged by this family's own instrument, never passes.",
+ "scored_latent": "the rhyme word Qwen3.6-27B commits to at the end of line one (the read site): the modal line-final word of its free line twos from line one's newline, confirmed by the word it writes after the line-two stub",
+ "read": "line_one_tail (full: line one's last word through its newline) / line_one_newline = final_token of that span (lite); never the line-two stub",
+ "eval_render_note": "EVAL RENDER: feed `prompt` verbatim as plain text, NO chat template. Every item's gold was certified at the read site (free leg) and in this plain render (`regate.leg` = free+plain). `gate_variant` is the v1 gate's provenance field and does NOT affect the eval read (`wsbench plan` is the contract).",
+ "mc": {
+  "n_distractors": 4,
+  "seed": "poetry-mc",
+  "tiers": {
+   "A": "words the prompt-only readers named for this couplet (v1: cached Opus 5.5 x3 + GPT-6 Astra x3 + Gemini 4 Argon x3 ATI answers; new couplets: 3 fresh Opus 5.5 po-opus-v1 draws tagged tierA0-2), ranked by how many answers name them",
+   "B": "other bank golds that rhyme",
+   "C": "CMU perfect rhymes vetted as common English words by Opus 5.5, ordered by Opus from the most to the least natural line-two ending after line one"
+  },
+  "filters": "rhymes with the gold AND line one's end word (CMU); not line one's end word; not a homophone or inflection of the gold; alphabetic, length >= 3; not any word Qwen wrote in its 33 gate draws (free line-final words included)"
+ },
+ "qwen_regate": {
+  "rule": "read-site (review r7/r8, Fable's decision)",
+  "site_min": 4,
+  "n_site": 11,
+  "n_graded": 1621,
+  "n_passed": 145,
+  "fail_reasons": {
+   "modal free word < 4/11": 656,
+   "no unique modal word": 467,
+   "plain leg": 341,
+   "no free leg": 12
+  },
+  "bank_site_hits": 520,
+  "dropped_unscorable_stub": [],
+  "dropped_short_of_distractors": [
+   "v3-po-cup-up"
+  ]
+ },
+ "opus_gate": {
+  "protocol": "po-opus-v1 input + text_inversion._ask_one (open-model framing), draws gate0-2 (never the floor draw0), judged by `wsbench run families=poetry`",
+  "instrument": "poetry-mc-2026-10-31f+digest-v4-task-extractive+sj-v8",
+  "n_candidates": 144,
+  "n_v1_candidates": 10,
+  "n_new_candidates": 134,
+  "n_passed_gate": 137,
+  "n_v1_passed": 10,
+  "n_new_passed": 127,
+  "n_new_taken": 90,
+  "dropped_picked": {},
+  "dropped_undecided": {
+   "v3-po-boss-loss": [
+    "gate0"
+   ],
+   "v3-po-park-dark": [
+    "gate2"
+   ],
+   "v3-po-hands-bands": [
+    "gate2"
+   ],
+   "v3-po-maps-naps": [
+    "gate1"
+   ],
+   "v3-po-deal-meal": [
+    "gate2"
+   ]
+  },
+  "dropped_duplicate_pair": [
+   "v3-po-hill-still",
+   "v3-po-wire-fire"
+  ]
+ },
+ "supersedes": "items_v2.json",
+ "mc_leakage": {
+  "procedure": "mcleak-r4-2026-11-01",
+  "round": 4,
+  "rule": "Camila r2 (2026-11-01): options-only and described/topic guessers (Opus 5.5, 5 draws, the family's own single-pick rule) <= uniform chance + 5 points; >= 2 same-topic confusers per list. Distractors re-chosen by scripts/mc_leakage_r4.py: Opus-proposed same-topic wrong answers (never the scene / a readout), ranked by an Opus guesser's preference, validity-screened where the question has one right answer (the gold wins 5/5 with the question / scene shown; never poetry or basic_readout's implicit items); the gold, prompts and read plan are bank v2's",
+  "repaired_after_measure": [
+   "v2-po-file-while",
+   "v3-po-roam-home",
+   "v3-po-toy-joy"
+  ],
+  "frozen": "2026-11-01T02:22:19+00:00",
+  "floors_search_round": {
+   "blind": 0.106,
+   "described": 0.502,
+   "topic": 0.736
+  },
+  "floors": {
+   "blind": 0.104,
+   "described": 0.508,
+   "topic": 0.74,
+   "uniform": 0.176
+  },
+  "floors_note": "floors = the fresh final measurement frozen in evals/baselines/lucky_guessing.json (Opus 5.5, 5 draws, seed 20260908, lucky-2026-09-16 prompts + the round-4 topic variant); floors_search_round = the search round's own measurement before the post-measure repairs"
+ },
+ "items": [
+  {
+   "name": "couplet-gray-day",
+   "prompt": "A rhyming couplet:\nThe dawn broke through the clouds of silver gray,\nAnd ushered in another working ",
+   "intermediates": [
+    "day"
+   ],
+   "source": "jlens_source",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "gray",
+   "qwen_commits": {
+    "day": 28,
+    "way": 1,
+    "ray": 1,
+    "play": 1,
+    "today": 1,
+    "place": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 1.0,
+    "site_hits": 6,
+    "site_words": {
+     "day": 6,
+     "way": 1,
+     "ray": 1,
+     "play": 1,
+     "today": 1,
+     "place": 1
+    }
+   },
+   "gate_variant": "plain",
+   "mc": {
+    "candidates": [
+     "away",
+     "stay",
+     "say",
+     "lay",
+     "pray",
+     "may",
+     "array",
+     "astray",
+     "display",
+     "delay",
+     "decay",
+     "sway",
+     "spray",
+     "bay",
+     "clay",
+     "fray",
+     "grey",
+     "everyday",
+     "faraway",
+     "dismay",
+     "betray",
+     "obey",
+     "convey",
+     "portray",
+     "survey",
+     "okay",
+     "they",
+     "hay",
+     "stray",
+     "weigh",
+     "prey",
+     "pay",
+     "halfway",
+     "underway",
+     "essay",
+     "repay",
+     "replay",
+     "sleigh",
+     "tray",
+     "slay",
+     "allay",
+     "bouquet",
+     "ballet",
+     "cafe",
+     "hooray",
+     "hurray",
+     "disarray",
+     "neigh",
+     "hey",
+     "yay",
+     "buffet",
+     "cabaret",
+     "chalet",
+     "crochet",
+     "croquet",
+     "disobey",
+     "overstay",
+     "overplay",
+     "underpay",
+     "valet",
+     "toupee",
+     "souffle",
+     "sorbet",
+     "soiree",
+     "parfait",
+     "puree",
+     "saute",
+     "fillet",
+     "filet",
+     "cliche",
+     "fiance",
+     "attache",
+     "dossier",
+     "cache",
+     "whey",
+     "quay",
+     "risque",
+     "passe",
+     "nay",
+     "yea",
+     "prepay",
+     "purvey",
+     "defray",
+     "flay",
+     "bray",
+     "spay",
+     "jay"
+    ],
+    "tiers": {
+     "away": "A",
+     "stay": "A",
+     "say": "C",
+     "lay": "C",
+     "pray": "C",
+     "may": "C",
+     "array": "C",
+     "astray": "C",
+     "display": "C",
+     "delay": "C",
+     "decay": "C",
+     "sway": "C",
+     "spray": "C",
+     "bay": "C",
+     "clay": "C",
+     "fray": "C",
+     "grey": "C",
+     "everyday": "C",
+     "faraway": "C",
+     "dismay": "C",
+     "betray": "C",
+     "obey": "C",
+     "convey": "C",
+     "portray": "C",
+     "survey": "C",
+     "okay": "C",
+     "they": "C",
+     "hay": "C",
+     "stray": "C",
+     "weigh": "C",
+     "prey": "C",
+     "pay": "C",
+     "halfway": "C",
+     "underway": "C",
+     "essay": "C",
+     "repay": "C",
+     "replay": "C",
+     "sleigh": "C",
+     "tray": "C",
+     "slay": "C",
+     "allay": "C",
+     "bouquet": "C",
+     "ballet": "C",
+     "cafe": "C",
+     "hooray": "C",
+     "hurray": "C",
+     "disarray": "C",
+     "neigh": "C",
+     "hey": "C",
+     "yay": "C",
+     "buffet": "C",
+     "cabaret": "C",
+     "chalet": "C",
+     "crochet": "C",
+     "croquet": "C",
+     "disobey": "C",
+     "overstay": "C",
+     "overplay": "C",
+     "underpay": "C",
+     "valet": "C",
+     "toupee": "C",
+     "souffle": "C",
+     "sorbet": "C",
+     "soiree": "C",
+     "parfait": "C",
+     "puree": "C",
+     "saute": "C",
+     "fillet": "C",
+     "filet": "C",
+     "cliche": "C",
+     "fiance": "C",
+     "attache": "C",
+     "dossier": "C",
+     "cache": "C",
+     "whey": "C",
+     "quay": "C",
+     "risque": "C",
+     "passe": "C",
+     "nay": "C",
+     "yea": "C",
+     "prepay": "C",
+     "purvey": "C",
+     "defray": "C",
+     "flay": "C",
+     "bray": "C",
+     "spay": "C",
+     "jay": "C"
+    },
+    "tier_a_counts": {
+     "away": 3,
+     "stay": 2
+    },
+    "vetted_by": "claude-opus-5-5",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "away",
+     "stay",
+     "say",
+     "lay",
+     "pray",
+     "may",
+     "array",
+     "astray"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "not_line_final",
+     "gate1": "cannot",
+     "gate2": "not_line_final"
+    }
+   }
+  },
+  {
+   "name": "b3-po-chair-hair",
+   "prompt": "A rhyming couplet:\nThe barber tipped the customer's old chair,\nAnd set his scissors to the silver ",
+   "intermediates": [
+    "hair"
+   ],
+   "source": "staging_b3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "chair",
+   "qwen_commits": {
+    "hair": 26,
+    "care": 2,
+    "stare": 1,
+    "carefully": 1,
+    "late": 1,
+    "floor": 1,
+    "shave": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 1.0,
+    "site_hits": 4,
+    "site_words": {
+     "stare": 1,
+     "care": 2,
+     "hair": 4,
+     "carefully": 1,
+     "late": 1,
+     "floor": 1,
+     "shave": 1
+    }
+   },
+   "gate_variant": "plain",
+   "mc": {
+    "candidates": [
+     "air",
+     "bare",
+     "there",
+     "spare"
+    ],
+    "tiers": {
+     "air": "A",
+     "there": "A",
+     "bare": "A",
+     "spare": "A"
+    },
+    "tier_a_counts": {
+     "air": 3,
+     "there": 3,
+     "bare": 2,
+     "spare": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "air",
+     "there",
+     "bare",
+     "spare"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "not_line_final",
+     "gate1": "cannot",
+     "gate2": "not_line_final"
+    }
+   }
+  },
+  {
+   "name": "b3-po-hill-still",
+   "prompt": "A rhyming couplet:\nThe miller's blades turned slowly on the hill,\nWhen wind died down the heavy stones fell ",
+   "intermediates": [
+    "still"
+   ],
+   "source": "staging_b3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "hill",
+   "qwen_commits": {
+    "still": 27,
+    "will": 2,
+    "hill": 1,
+    "bill": 1,
+    "time": 1,
+    "mill": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 1.0,
+    "site_hits": 5,
+    "site_words": {
+     "still": 5,
+     "will": 2,
+     "hill": 1,
+     "bill": 1,
+     "time": 1,
+     "mill": 1
+    }
+   },
+   "gate_variant": "plain",
+   "mc": {
+    "candidates": [
+     "chill",
+     "kill",
+     "fulfill",
+     "spill",
+     "fill",
+     "until",
+     "rill",
+     "skill"
+    ],
+    "tiers": {
+     "chill": "A",
+     "fill": "A",
+     "until": "A",
+     "rill": "A",
+     "skill": "A",
+     "spill": "A"
+    },
+    "tier_a_counts": {
+     "chill": 3,
+     "fill": 3,
+     "until": 3,
+     "rill": 1,
+     "skill": 1,
+     "spill": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "chill",
+     "fill",
+     "until",
+     "rill",
+     "skill",
+     "spill"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "not_line_final",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "b3-po-sleep-deep",
+   "prompt": "A rhyming couplet:\nThe sailors rocked at anchor half asleep,\nAbove a trench a thousand fathoms ",
+   "intermediates": [
+    "deep"
+   ],
+   "source": "staging_b3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "asleep",
+   "qwen_commits": {
+    "deep": 27,
+    "2": 1,
+    "ship": 1,
+    "keep": 1,
+    "sleep": 1,
+    "guess": 1,
+    "to": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.9,
+    "site_hits": 6,
+    "site_words": {
+     "deep": 6,
+     "ship": 1,
+     "keep": 1,
+     "sleep": 1,
+     "guess": 1,
+     "to": 1
+    }
+   },
+   "gate_variant": "plain",
+   "mc": {
+    "candidates": [
+     "sheep",
+     "leap",
+     "weep",
+     "steep",
+     "creep",
+     "sweep",
+     "heap",
+     "seep",
+     "peep",
+     "reap",
+     "cheap",
+     "oversleep",
+     "beep",
+     "bleep",
+     "jeep"
+    ],
+    "tiers": {
+     "creep": "A",
+     "sweep": "A",
+     "steep": "A",
+     "weep": "C",
+     "heap": "C",
+     "leap": "C",
+     "seep": "C",
+     "peep": "C",
+     "sheep": "C",
+     "reap": "C",
+     "cheap": "C",
+     "oversleep": "C",
+     "beep": "C",
+     "bleep": "C",
+     "jeep": "C"
+    },
+    "tier_a_counts": {
+     "creep": 3,
+     "sweep": 3,
+     "steep": 2
+    },
+    "vetted_by": "claude-opus-5-5",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "creep",
+     "sweep",
+     "steep",
+     "weep",
+     "heap",
+     "leap",
+     "seep",
+     "peep"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "not_line_final",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "b3-po-song-long",
+   "prompt": "A rhyming couplet:\nThe choir filled the chapel with their song,\nThe echo held the final note so ",
+   "intermediates": [
+    "long"
+   ],
+   "source": "staging_b3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "song",
+   "qwen_commits": {
+    "long": 26,
+    "along": 3,
+    "1ong": 1,
+    "wrong": 1,
+    "sing": 1,
+    "strong": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.9,
+    "site_hits": 5,
+    "site_words": {
+     "along": 3,
+     "wrong": 1,
+     "long": 5,
+     "sing": 1,
+     "strong": 1
+    }
+   },
+   "gate_variant": "plain",
+   "mc": {
+    "candidates": [
+     "gong",
+     "belong",
+     "prolong",
+     "lifelong",
+     "throng",
+     "yearlong",
+     "thong",
+     "prong",
+     "sarong",
+     "pong"
+    ],
+    "tiers": {
+     "belong": "A",
+     "throng": "A",
+     "lifelong": "C",
+     "prolong": "C",
+     "gong": "C",
+     "yearlong": "C",
+     "thong": "C",
+     "prong": "C",
+     "sarong": "C",
+     "pong": "C"
+    },
+    "tier_a_counts": {
+     "belong": 3,
+     "throng": 3
+    },
+    "vetted_by": "claude-opus-5-5",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "belong",
+     "throng",
+     "lifelong",
+     "prolong",
+     "gong",
+     "yearlong",
+     "thong",
+     "prong"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "b3-po-track-back",
+   "prompt": "A rhyming couplet:\nThe old dog chased the rabbit down the track,\nAnd hours later came limping slowly ",
+   "intermediates": [
+    "back"
+   ],
+   "source": "staging_b3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "track",
+   "qwen_commits": {
+    "back": 29,
+    "and": 1,
+    "steady": 1,
+    "fast": 1,
+    "away": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 1.0,
+    "site_hits": 7,
+    "site_words": {
+     "back": 7,
+     "and": 1,
+     "steady": 1,
+     "fast": 1,
+     "away": 1
+    }
+   },
+   "gate_variant": "plain",
+   "mc": {
+    "candidates": [
+     "lack",
+     "stack",
+     "pack",
+     "black",
+     "attack",
+     "crack",
+     "slack",
+     "snack"
+    ],
+    "tiers": {
+     "attack": "A",
+     "black": "A",
+     "lack": "A",
+     "pack": "A",
+     "crack": "A",
+     "slack": "A",
+     "snack": "B"
+    },
+    "tier_a_counts": {
+     "attack": 3,
+     "black": 3,
+     "lack": 3,
+     "pack": 3,
+     "crack": 2,
+     "slack": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "attack",
+     "black",
+     "lack",
+     "pack",
+     "crack",
+     "slack",
+     "snack"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "not_line_final",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "couplet-dead-red",
+   "prompt": "A rhyming couplet:\nThe roses on the grave had long been dead,\nBut once had bloomed a brilliant shade of ",
+   "intermediates": [
+    "red"
+   ],
+   "source": "jlens_source",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "dead",
+   "qwen_commits": {
+    "red": 25,
+    "dead": 1,
+    "said": 1,
+    "read": 1,
+    "peace": 1,
+    "bed": 1,
+    "head": 1,
+    "instead": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.9,
+    "site_hits": 4,
+    "site_words": {
+     "dead": 1,
+     "said": 1,
+     "read": 1,
+     "peace": 1,
+     "red": 4,
+     "bed": 1,
+     "head": 1,
+     "instead": 1
+    }
+   },
+   "gate_variant": "plain",
+   "mc": {
+    "candidates": [
+     "ahead",
+     "bread",
+     "dread",
+     "fled",
+     "spread",
+     "shed",
+     "thread",
+     "unread",
+     "bled",
+     "led"
+    ],
+    "tiers": {
+     "fled": "A",
+     "spread": "A",
+     "shed": "A",
+     "thread": "A",
+     "unread": "A",
+     "bled": "A",
+     "led": "A"
+    },
+    "tier_a_counts": {
+     "fled": 3,
+     "spread": 3,
+     "shed": 2,
+     "thread": 2,
+     "unread": 2,
+     "bled": 1,
+     "led": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "fled",
+     "spread",
+     "shed",
+     "thread",
+     "unread",
+     "bled",
+     "led"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "couplet-heart-art",
+   "prompt": "A rhyming couplet:\nThe painter poured emotion from his heart,\nAnd made of every canvas, living ",
+   "intermediates": [
+    "art"
+   ],
+   "source": "jlens_source",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "heart",
+   "qwen_commits": {
+    "art": 26,
+    "work": 1,
+    "depart": 1,
+    "what": 1,
+    "mark": 1,
+    "impart": 1,
+    "分析": 1,
+    "apart": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.9,
+    "site_hits": 5,
+    "site_words": {
+     "art": 5,
+     "depart": 1,
+     "what": 1,
+     "mark": 1,
+     "impart": 1,
+     "分析": 1,
+     "apart": 1
+    }
+   },
+   "gate_variant": "plain",
+   "mc": {
+    "candidates": [
+     "restart",
+     "start",
+     "chart",
+     "dart",
+     "part",
+     "smart",
+     "cart",
+     "tart",
+     "mart",
+     "fart"
+    ],
+    "tiers": {
+     "part": "A",
+     "start": "A",
+     "chart": "A",
+     "smart": "C",
+     "restart": "C",
+     "dart": "C",
+     "cart": "C",
+     "tart": "C",
+     "mart": "C",
+     "fart": "C"
+    },
+    "tier_a_counts": {
+     "part": 3,
+     "start": 3,
+     "chart": 1
+    },
+    "vetted_by": "claude-opus-5-5",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "part",
+     "start",
+     "chart",
+     "smart",
+     "restart",
+     "dart",
+     "cart",
+     "tart"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "not_line_final",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "couplet-away-way",
+   "prompt": "A rhyming couplet:\nThe traveler had wandered far away,\nBut always knew the forest showed the ",
+   "intermediates": [
+    "way"
+   ],
+   "source": "jlens_source",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "away",
+   "qwen_commits": {
+    "way": 25,
+    "stay": 3,
+    "day": 1,
+    "grey": 1,
+    "home": 1,
+    "valley": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.9,
+    "site_hits": 4,
+    "site_words": {
+     "day": 1,
+     "grey": 1,
+     "home": 1,
+     "stay": 3,
+     "way": 4,
+     "valley": 1
+    }
+   },
+   "gate_variant": "plain",
+   "mc": {
+    "candidates": [
+     "play",
+     "hey",
+     "gay",
+     "bay",
+     "gray",
+     "astray",
+     "pray",
+     "today",
+     "say",
+     "decay",
+     "stray",
+     "delay",
+     "may",
+     "display",
+     "dismay",
+     "okay",
+     "pay",
+     "sway",
+     "array",
+     "betray",
+     "convey",
+     "everyday",
+     "faraway",
+     "halfway",
+     "ray",
+     "hay",
+     "clay",
+     "lay",
+     "prey",
+     "they",
+     "obey",
+     "disarray",
+     "portray",
+     "survey",
+     "fray",
+     "spray",
+     "tray",
+     "repay",
+     "replay",
+     "essay",
+     "allay",
+     "hooray",
+     "underway",
+     "overstay",
+     "slay",
+     "sleigh",
+     "neigh",
+     "yay",
+     "bray",
+     "buffet",
+     "ballet",
+     "bouquet",
+     "cafe",
+     "cliche",
+     "valet",
+     "fillet",
+     "crochet",
+     "croquet",
+     "chalet",
+     "toupee",
+     "soiree",
+     "sorbet",
+     "parfait",
+     "puree",
+     "saute",
+     "souffle",
+     "cabaret",
+     "fiance",
+     "risque",
+     "passe",
+     "defray",
+     "disobey",
+     "overplay",
+     "underpay",
+     "prepay",
+     "nay",
+     "quay",
+     "yea",
+     "filet",
+     "cache",
+     "attache",
+     "dossier",
+     "communique",
+     "anime",
+     "baa",
+     "cay",
+     "brae",
+     "trey",
+     "satay",
+     "spay",
+     "flay",
+     "dray",
+     "fey",
+     "lei",
+     "purvey",
+     "parquet",
+     "sachet",
+     "naivete",
+     "cabernet"
+    ],
+    "tiers": {
+     "gray": "A",
+     "astray": "A",
+     "pray": "A",
+     "today": "C",
+     "say": "C",
+     "decay": "C",
+     "stray": "C",
+     "delay": "C",
+     "play": "C",
+     "may": "C",
+     "display": "C",
+     "dismay": "C",
+     "okay": "C",
+     "pay": "C",
+     "sway": "C",
+     "array": "C",
+     "betray": "C",
+     "convey": "C",
+     "everyday": "C",
+     "faraway": "C",
+     "halfway": "C",
+     "ray": "C",
+     "hay": "C",
+     "bay": "C",
+     "clay": "C",
+     "lay": "C",
+     "prey": "C",
+     "they": "C",
+     "obey": "C",
+     "disarray": "C",
+     "portray": "C",
+     "survey": "C",
+     "fray": "C",
+     "spray": "C",
+     "tray": "C",
+     "repay": "C",
+     "replay": "C",
+     "essay": "C",
+     "allay": "C",
+     "hey": "C",
+     "hooray": "C",
+     "underway": "C",
+     "overstay": "C",
+     "slay": "C",
+     "sleigh": "C",
+     "neigh": "C",
+     "yay": "C",
+     "bray": "C",
+     "gay": "C",
+     "buffet": "C",
+     "ballet": "C",
+     "bouquet": "C",
+     "cafe": "C",
+     "cliche": "C",
+     "valet": "C",
+     "fillet": "C",
+     "crochet": "C",
+     "croquet": "C",
+     "chalet": "C",
+     "toupee": "C",
+     "soiree": "C",
+     "sorbet": "C",
+     "parfait": "C",
+     "puree": "C",
+     "saute": "C",
+     "souffle": "C",
+     "cabaret": "C",
+     "fiance": "C",
+     "risque": "C",
+     "passe": "C",
+     "defray": "C",
+     "disobey": "C",
+     "overplay": "C",
+     "underpay": "C",
+     "prepay": "C",
+     "nay": "C",
+     "quay": "C",
+     "yea": "C",
+     "filet": "C",
+     "cache": "C",
+     "attache": "C",
+     "dossier": "C",
+     "communique": "C",
+     "anime": "C",
+     "baa": "C",
+     "cay": "C",
+     "brae": "C",
+     "trey": "C",
+     "satay": "C",
+     "spay": "C",
+     "flay": "C",
+     "dray": "C",
+     "fey": "C",
+     "lei": "C",
+     "purvey": "C",
+     "parquet": "C",
+     "sachet": "C",
+     "naivete": "C",
+     "cabernet": "C"
+    },
+    "tier_a_counts": {
+     "gray": 3,
+     "astray": 2,
+     "pray": 1
+    },
+    "vetted_by": "claude-opus-5-5",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "gray",
+     "astray",
+     "pray",
+     "today",
+     "say",
+     "decay",
+     "stray",
+     "delay"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "couplet-base-case",
+   "prompt": "A rhyming couplet:\nThe lawyer built her argument from base,\nAnd stone by stone constructed her whole ",
+   "intermediates": [
+    "case"
+   ],
+   "source": "jlens_source",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "base",
+   "qwen_commits": {
+    "case": 27,
+    "grace": 1,
+    "compromise": 1,
+    "trace": 1,
+    "maze": 1,
+    "haste": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.9,
+    "site_hits": 6,
+    "site_words": {
+     "case": 6,
+     "grace": 1,
+     "compromise": 1,
+     "trace": 1,
+     "maze": 1,
+     "haste": 1
+    }
+   },
+   "gate_variant": "plain",
+   "mc": {
+    "candidates": [
+     "place",
+     "face",
+     "space",
+     "race",
+     "embrace",
+     "chase",
+     "pace",
+     "disgrace",
+     "replace",
+     "erase",
+     "brace",
+     "retrace",
+     "displace",
+     "misplace",
+     "debase",
+     "deface",
+     "ace",
+     "lace",
+     "vase",
+     "encase",
+     "interlace",
+     "mace",
+     "bass"
+    ],
+    "tiers": {
+     "face": "A",
+     "place": "A",
+     "space": "A",
+     "embrace": "C",
+     "chase": "C",
+     "pace": "C",
+     "disgrace": "C",
+     "replace": "C",
+     "race": "C",
+     "erase": "C",
+     "brace": "C",
+     "retrace": "C",
+     "displace": "C",
+     "misplace": "C",
+     "debase": "C",
+     "deface": "C",
+     "ace": "C",
+     "lace": "C",
+     "vase": "C",
+     "encase": "C",
+     "interlace": "C",
+     "mace": "C",
+     "bass": "C"
+    },
+    "tier_a_counts": {
+     "face": 3,
+     "place": 3,
+     "space": 1
+    },
+    "vetted_by": "claude-opus-5-5",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "face",
+     "place",
+     "space",
+     "embrace",
+     "chase",
+     "pace",
+     "disgrace",
+     "replace"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "not_line_final",
+     "gate1": "not_line_final",
+     "gate2": "not_line_final"
+    }
+   }
+  },
+  {
+   "name": "v3-po-toy-joy",
+   "prompt": "A rhyming couplet:\nThe little child unwrapped a shiny toy,\nHer face lit up with pure and simple ",
+   "intermediates": [
+    "joy"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "toy",
+   "qwen_commits": {
+    "joy": 27,
+    "boy": 2,
+    "overjoyed": 1,
+    "do": 1,
+    "annoy": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.9,
+    "site_hits": 6,
+    "site_words": {
+     "boy": 2,
+     "joy": 6,
+     "overjoyed": 1,
+     "do": 1,
+     "annoy": 1
+    }
+   },
+   "authored_rhyme": "joy",
+   "mc": {
+    "candidates": [
+     "enjoy",
+     "employ",
+     "decoy",
+     "destroy",
+     "coy",
+     "ahoy",
+     "ploy",
+     "deploy",
+     "soy",
+     "cloy",
+     "redeploy"
+    ],
+    "tiers": {
+     "coy": "A",
+     "employ": "A",
+     "enjoy": "A",
+     "ahoy": "C",
+     "decoy": "C",
+     "destroy": "C",
+     "ploy": "C",
+     "deploy": "C",
+     "soy": "C",
+     "cloy": "C",
+     "redeploy": "C"
+    },
+    "tier_a_counts": {
+     "coy": 3,
+     "employ": 3,
+     "enjoy": 3
+    },
+    "vetted_by": "claude-opus-5-5",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "coy",
+     "employ",
+     "enjoy",
+     "ahoy",
+     "decoy",
+     "destroy",
+     "ploy",
+     "deploy"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "not_line_final",
+     "gate1": "not_line_final",
+     "gate2": "not_line_final"
+    }
+   }
+  },
+  {
+   "name": "v3-po-horn-corn",
+   "prompt": "A rhyming couplet:\nLittle Boy Blue, come blow your horn,\nthe sheep's in the meadow, the cow's in the ",
+   "intermediates": [
+    "corn"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "horn",
+   "qwen_commits": {
+    "corn": 32
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.9,
+    "site_hits": 11,
+    "site_words": {
+     "corn": 11
+    }
+   },
+   "authored_rhyme": "corn",
+   "mc": {
+    "candidates": [
+     "born",
+     "worn",
+     "torn",
+     "morn",
+     "shorn"
+    ],
+    "tiers": {
+     "born": "A",
+     "morn": "A",
+     "torn": "A",
+     "worn": "A",
+     "shorn": "A"
+    },
+    "tier_a_counts": {
+     "born": 3,
+     "morn": 3,
+     "torn": 3,
+     "worn": 3,
+     "shorn": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "born",
+     "morn",
+     "torn",
+     "worn",
+     "shorn"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "not_line_final",
+     "gate1": "not_line_final",
+     "gate2": "not_line_final"
+    }
+   }
+  },
+  {
+   "name": "v2-po-deep-keep",
+   "prompt": "A rhyming couplet:\nThe sailors sang of treasure in the deep,\nBut sunken gold is never yours to ",
+   "intermediates": [
+    "keep"
+   ],
+   "source": "opus55_v2",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "deep",
+   "qwen_commits": {
+    "keep": 25,
+    "sleep": 3,
+    "sea": 1,
+    "asleep": 1,
+    "the": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.8,
+    "site_hits": 5,
+    "site_words": {
+     "sleep": 3,
+     "keep": 5,
+     "sea": 1,
+     "asleep": 1,
+     "the": 1
+    }
+   },
+   "authored_rhyme": "keep",
+   "mc": {
+    "candidates": [
+     "sweep",
+     "steep",
+     "sheep",
+     "creep",
+     "heap",
+     "weep",
+     "leap",
+     "reap"
+    ],
+    "tiers": {
+     "creep": "A",
+     "heap": "A",
+     "steep": "A",
+     "sweep": "A",
+     "weep": "A",
+     "leap": "A",
+     "reap": "A"
+    },
+    "tier_a_counts": {
+     "creep": 3,
+     "heap": 3,
+     "steep": 3,
+     "sweep": 3,
+     "weep": 3,
+     "leap": 2,
+     "reap": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "creep",
+     "heap",
+     "steep",
+     "sweep",
+     "weep",
+     "leap",
+     "reap"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-long-song",
+   "prompt": "A rhyming couplet:\nThe sailors sang together all night long,\nAnd filled the deck with one old sailing ",
+   "intermediates": [
+    "song"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "long",
+   "qwen_commits": {
+    "song": 26,
+    "strong": 2,
+    "sung": 1,
+    "side": 1,
+    "along": 1,
+    "drowsy": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.9,
+    "site_hits": 5,
+    "site_words": {
+     "sung": 1,
+     "side": 1,
+     "song": 5,
+     "strong": 2,
+     "along": 1,
+     "drowsy": 1
+    }
+   },
+   "authored_rhyme": "song",
+   "mc": {
+    "candidates": [
+     "wrong",
+     "belong",
+     "throng",
+     "prolong",
+     "lifelong",
+     "gong",
+     "yearlong",
+     "thong",
+     "prong",
+     "sarong",
+     "pong"
+    ],
+    "tiers": {
+     "belong": "A",
+     "throng": "A",
+     "wrong": "C",
+     "prolong": "C",
+     "lifelong": "C",
+     "gong": "C",
+     "yearlong": "C",
+     "thong": "C",
+     "prong": "C",
+     "sarong": "C",
+     "pong": "C"
+    },
+    "tier_a_counts": {
+     "belong": 3,
+     "throng": 3
+    },
+    "vetted_by": "claude-opus-5-5",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "belong",
+     "throng",
+     "wrong",
+     "prolong",
+     "lifelong",
+     "gong",
+     "yearlong",
+     "thong"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "not_line_final",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-sand-land",
+   "prompt": "A rhyming couplet:\nThe ship had sailed for months, then sighted sand,\nAnd every sailor cheered to see dry ",
+   "intermediates": [
+    "land"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "sand",
+   "qwen_commits": {
+    "land": 26,
+    "stand": 1,
+    "grand": 1,
+    "good": 1,
+    "understand": 1,
+    "bland": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.8,
+    "site_hits": 6,
+    "site_words": {
+     "land": 6,
+     "stand": 1,
+     "grand": 1,
+     "good": 1,
+     "understand": 1,
+     "bland": 1
+    }
+   },
+   "authored_rhyme": "land",
+   "mc": {
+    "candidates": [
+     "demand",
+     "band",
+     "hand",
+     "withstand",
+     "planned",
+     "strand",
+     "command"
+    ],
+    "tiers": {
+     "hand": "A",
+     "planned": "A",
+     "strand": "A",
+     "band": "A",
+     "command": "A"
+    },
+    "tier_a_counts": {
+     "hand": 3,
+     "planned": 3,
+     "strand": 3,
+     "band": 2,
+     "command": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "hand",
+     "planned",
+     "strand",
+     "band",
+     "command"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "not_line_final",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-grim-him",
+   "prompt": "A rhyming couplet:\nThe bouncer at the door looks stern and grim,\nSo no one dares to argue back with ",
+   "intermediates": [
+    "him"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "grim",
+   "qwen_commits": {
+    "him": 27,
+    "dim": 1,
+    "grim": 1,
+    "slim": 1,
+    "the": 1,
+    "within": 1,
+    "whim": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 1.0,
+    "site_hits": 5,
+    "site_words": {
+     "dim": 1,
+     "him": 5,
+     "grim": 1,
+     "slim": 1,
+     "the": 1,
+     "within": 1,
+     "whim": 1
+    }
+   },
+   "authored_rhyme": "him",
+   "mc": {
+    "candidates": [
+     "skim",
+     "swim",
+     "rim",
+     "brim",
+     "gym",
+     "limb",
+     "jim",
+     "tim",
+     "trim",
+     "vim"
+    ],
+    "tiers": {
+     "brim": "A",
+     "gym": "A",
+     "limb": "A",
+     "jim": "A",
+     "rim": "A",
+     "tim": "A",
+     "trim": "A",
+     "vim": "A"
+    },
+    "tier_a_counts": {
+     "brim": 3,
+     "gym": 3,
+     "limb": 3,
+     "jim": 1,
+     "rim": 1,
+     "tim": 1,
+     "trim": 1,
+     "vim": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "brim",
+     "gym",
+     "limb",
+     "jim",
+     "rim",
+     "tim",
+     "trim",
+     "vim"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-roam-home",
+   "prompt": "A rhyming couplet:\nNo matter where across the waves I roam,\nMy heart will always lead me safely ",
+   "intermediates": [
+    "home"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "roam",
+   "qwen_commits": {
+    "home": 33
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 1.0,
+    "site_hits": 11,
+    "site_words": {
+     "home": 11
+    }
+   },
+   "authored_rhyme": "home",
+   "mc": {
+    "candidates": [
+     "loam",
+     "tome",
+     "dome",
+     "foam",
+     "comb",
+     "gloam",
+     "gnome"
+    ],
+    "tiers": {
+     "comb": "A",
+     "foam": "A",
+     "dome": "A",
+     "loam": "A",
+     "gloam": "A",
+     "gnome": "A"
+    },
+    "tier_a_counts": {
+     "comb": 3,
+     "foam": 3,
+     "dome": 2,
+     "loam": 2,
+     "gloam": 1,
+     "gnome": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "comb",
+     "foam",
+     "dome",
+     "loam",
+     "gloam",
+     "gnome"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "not_line_final",
+     "gate1": "not_line_final",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-sight-night",
+   "prompt": "A rhyming couplet:\nThe harbor lamp was such a welcome sight,\nIt guided ships through storms all through the ",
+   "intermediates": [
+    "night"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "sight",
+   "qwen_commits": {
+    "night": 27,
+    "tonight": 2,
+    "1st": 1,
+    "19th": 1,
+    "delight": 1,
+    "right": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.8,
+    "site_hits": 7,
+    "site_words": {
+     "night": 7,
+     "tonight": 2,
+     "delight": 1,
+     "right": 1
+    }
+   },
+   "authored_rhyme": "night",
+   "mc": {
+    "candidates": [
+     "bright",
+     "fright",
+     "kite",
+     "light",
+     "flight",
+     "fight",
+     "tight"
+    ],
+    "tiers": {
+     "bright": "A",
+     "flight": "A",
+     "light": "A",
+     "fight": "A",
+     "tight": "A"
+    },
+    "tier_a_counts": {
+     "bright": 3,
+     "flight": 3,
+     "light": 3,
+     "fight": 2,
+     "tight": 2
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "bright",
+     "flight",
+     "light",
+     "fight",
+     "tight"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "not_line_final",
+     "gate1": "cannot",
+     "gate2": "not_line_final"
+    }
+   }
+  },
+  {
+   "name": "v3-po-crowd-loud",
+   "prompt": "A rhyming couplet:\nThe jazz club doors swing open to the crowd,\nThe trumpet plays, the drums are thumping ",
+   "intermediates": [
+    "loud"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "crowd",
+   "qwen_commits": {
+    "loud": 25,
+    "proud": 3,
+    "2": 1,
+    "throughout": 1,
+    "clouds": 1,
+    "wine": 1,
+    "music": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.9,
+    "site_hits": 4,
+    "site_words": {
+     "throughout": 1,
+     "loud": 4,
+     "clouds": 1,
+     "wine": 1,
+     "proud": 3,
+     "music": 1
+    }
+   },
+   "authored_rhyme": "loud",
+   "mc": {
+    "candidates": [
+     "cloud",
+     "allowed",
+     "bowed",
+     "vowed"
+    ],
+    "tiers": {
+     "allowed": "A",
+     "bowed": "A",
+     "cloud": "A",
+     "vowed": "A"
+    },
+    "tier_a_counts": {
+     "allowed": 3,
+     "bowed": 3,
+     "cloud": 3,
+     "vowed": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "allowed",
+     "bowed",
+     "cloud",
+     "vowed"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "not_line_final",
+     "gate1": "not_line_final",
+     "gate2": "not_line_final"
+    }
+   }
+  },
+  {
+   "name": "v2-po-file-while",
+   "prompt": "A rhyming couplet:\nShe stacked the paper neatly in a file,\nthen took a break and rested for a ",
+   "intermediates": [
+    "while"
+   ],
+   "source": "opus55_v2",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "file",
+   "qwen_commits": {
+    "while": 26,
+    "smile": 3,
+    "style": 2,
+    "toil": 1,
+    "sigh": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 1.0,
+    "site_hits": 4,
+    "site_words": {
+     "smile": 3,
+     "toil": 1,
+     "while": 4,
+     "style": 2,
+     "sigh": 1
+    }
+   },
+   "authored_rhyme": "while",
+   "mc": {
+    "candidates": [
+     "aisle",
+     "pile",
+     "mile",
+     "tile",
+     "awhile",
+     "worthwhile"
+    ],
+    "tiers": {
+     "aisle": "A",
+     "mile": "A",
+     "pile": "A",
+     "awhile": "A",
+     "worthwhile": "A"
+    },
+    "tier_a_counts": {
+     "aisle": 3,
+     "mile": 3,
+     "pile": 3,
+     "awhile": 1,
+     "worthwhile": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "aisle",
+     "mile",
+     "pile",
+     "awhile",
+     "worthwhile"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-find-behind",
+   "prompt": "A rhyming couplet:\nThey sailed for distant treasure they might find,\nAnd left their homes and loved ones far ",
+   "intermediates": [
+    "behind"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "find",
+   "qwen_commits": {
+    "behind": 27,
+    "bind": 2,
+    "kind": 1,
+    "mind": 1,
+    "wind": 1,
+    "gold": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 1.0,
+    "site_hits": 5,
+    "site_words": {
+     "behind": 5,
+     "kind": 1,
+     "mind": 1,
+     "wind": 1,
+     "gold": 1,
+     "bind": 2
+    }
+   },
+   "authored_rhyme": "behind",
+   "mc": {
+    "candidates": [
+     "confined",
+     "intertwined",
+     "blind",
+     "mankind",
+     "resigned",
+     "unkind",
+     "designed",
+     "entwined",
+     "signed"
+    ],
+    "tiers": {
+     "blind": "A",
+     "resigned": "A",
+     "unkind": "A",
+     "confined": "A",
+     "designed": "A",
+     "entwined": "A",
+     "signed": "A"
+    },
+    "tier_a_counts": {
+     "blind": 3,
+     "resigned": 3,
+     "unkind": 2,
+     "confined": 1,
+     "designed": 1,
+     "entwined": 1,
+     "signed": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "blind",
+     "resigned",
+     "unkind",
+     "confined",
+     "designed",
+     "entwined",
+     "signed"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "not_line_final",
+     "gate1": "not_line_final",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-loan-own",
+   "prompt": "A rhyming couplet:\nThe banker smiled and handed me a loan,\nNow every cent I earn is not my ",
+   "intermediates": [
+    "own"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "loan",
+   "qwen_commits": {
+    "own": 26,
+    "phone": 2,
+    "overjoyed": 1,
+    "office": 1,
+    "bone": 1,
+    "car": 1,
+    "home": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 1.0,
+    "site_hits": 4,
+    "site_words": {
+     "own": 4,
+     "phone": 2,
+     "overjoyed": 1,
+     "office": 1,
+     "bone": 1,
+     "car": 1,
+     "home": 1
+    }
+   },
+   "authored_rhyme": "own",
+   "mc": {
+    "candidates": [
+     "alone",
+     "stone",
+     "known",
+     "throne",
+     "groan",
+     "grown",
+     "tone"
+    ],
+    "tiers": {
+     "alone": "A",
+     "groan": "A",
+     "stone": "A",
+     "grown": "A",
+     "known": "A",
+     "throne": "A",
+     "tone": "A"
+    },
+    "tier_a_counts": {
+     "alone": 3,
+     "groan": 3,
+     "stone": 3,
+     "grown": 2,
+     "known": 2,
+     "throne": 2,
+     "tone": 2
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "alone",
+     "groan",
+     "stone",
+     "grown",
+     "known",
+     "throne",
+     "tone"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "not_line_final"
+    }
+   }
+  },
+  {
+   "name": "v3-po-foam-home",
+   "prompt": "A rhyming couplet:\nThe sailor crossed the waves and salty foam,\nAnd dreamed each night of loved ones back at ",
+   "intermediates": [
+    "home"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "foam",
+   "qwen_commits": {
+    "home": 29,
+    "to": 2,
+    "rome": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.8,
+    "site_hits": 9,
+    "site_words": {
+     "home": 9,
+     "to": 2
+    }
+   },
+   "authored_rhyme": "home",
+   "mc": {
+    "candidates": [
+     "roam",
+     "gnome",
+     "ohm",
+     "tome",
+     "comb",
+     "dome",
+     "loam",
+     "chrome"
+    ],
+    "tiers": {
+     "comb": "A",
+     "dome": "A",
+     "loam": "A",
+     "roam": "A",
+     "chrome": "A",
+     "gnome": "A"
+    },
+    "tier_a_counts": {
+     "comb": 3,
+     "dome": 3,
+     "loam": 3,
+     "roam": 3,
+     "chrome": 2,
+     "gnome": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "comb",
+     "dome",
+     "loam",
+     "roam",
+     "chrome",
+     "gnome"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "not_line_final",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v2-po-slope-hope",
+   "prompt": "A rhyming couplet:\nWe slipped and stumbled down the icy slope,\nBut never stopped, and never gave up ",
+   "intermediates": [
+    "hope"
+   ],
+   "source": "opus55_v2",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "slope",
+   "qwen_commits": {
+    "hope": 25,
+    "jolt": 1,
+    "cope": 1,
+    "out": 1,
+    "ice": 1,
+    "rope": 1,
+    "soap": 1,
+    "horse": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.9,
+    "site_hits": 4,
+    "site_words": {
+     "jolt": 1,
+     "hope": 4,
+     "cope": 1,
+     "out": 1,
+     "ice": 1,
+     "rope": 1,
+     "soap": 1,
+     "horse": 1
+    }
+   },
+   "authored_rhyme": "hope",
+   "mc": {
+    "candidates": [
+     "elope",
+     "lope",
+     "pope",
+     "scope",
+     "grope",
+     "mope",
+     "nope",
+     "dope"
+    ],
+    "tiers": {
+     "grope": "A",
+     "scope": "A",
+     "elope": "A",
+     "mope": "C",
+     "lope": "C",
+     "nope": "C",
+     "pope": "C",
+     "dope": "C"
+    },
+    "tier_a_counts": {
+     "grope": 3,
+     "scope": 3,
+     "elope": 1
+    },
+    "vetted_by": "claude-opus-5-5",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "grope",
+     "scope",
+     "elope",
+     "mope",
+     "lope",
+     "nope",
+     "pope",
+     "dope"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-crowd-proud",
+   "prompt": "A rhyming couplet:\nThe soldiers marched before a cheering crowd,\nTheir families stood watching, tall and ",
+   "intermediates": [
+    "proud"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "crowd",
+   "qwen_commits": {
+    "proud": 26,
+    "sound": 2,
+    "shroud": 1,
+    "bow": 1,
+    "by": 1,
+    "secure": 1,
+    "for": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 1.0,
+    "site_hits": 4,
+    "site_words": {
+     "proud": 4,
+     "shroud": 1,
+     "bow": 1,
+     "sound": 2,
+     "by": 1,
+     "secure": 1,
+     "for": 1
+    }
+   },
+   "authored_rhyme": "proud",
+   "mc": {
+    "candidates": [
+     "allowed",
+     "plowed",
+     "cloud",
+     "bowed",
+     "loud",
+     "vowed"
+    ],
+    "tiers": {
+     "allowed": "A",
+     "bowed": "A",
+     "cloud": "A",
+     "loud": "A",
+     "vowed": "A"
+    },
+    "tier_a_counts": {
+     "allowed": 3,
+     "bowed": 3,
+     "cloud": 3,
+     "loud": 3,
+     "vowed": 3
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "allowed",
+     "bowed",
+     "cloud",
+     "loud",
+     "vowed"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "not_line_final",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-past-last",
+   "prompt": "A rhyming couplet:\nOur friendship's built on memories from the past,\nA bond so strong it's always going to ",
+   "intermediates": [
+    "last"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "past",
+   "qwen_commits": {
+    "last": 27,
+    "lasts": 1,
+    "lasted": 1,
+    "vast": 1,
+    "together": 1,
+    "outlast": 1,
+    "great": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 1.0,
+    "site_hits": 5,
+    "site_words": {
+     "lasts": 1,
+     "lasted": 1,
+     "vast": 1,
+     "together": 1,
+     "last": 5,
+     "outlast": 1,
+     "great": 1
+    }
+   },
+   "authored_rhyme": "last",
+   "mc": {
+    "candidates": [
+     "cast",
+     "fast",
+     "passed",
+     "blast",
+     "amassed",
+     "surpassed",
+     "unsurpassed",
+     "contrast",
+     "aghast",
+     "mast",
+     "classed",
+     "massed",
+     "harassed",
+     "miscast",
+     "recast",
+     "gassed",
+     "grassed",
+     "glassed",
+     "caste"
+    ],
+    "tiers": {
+     "cast": "A",
+     "fast": "A",
+     "amassed": "A",
+     "passed": "C",
+     "blast": "C",
+     "surpassed": "C",
+     "unsurpassed": "C",
+     "contrast": "C",
+     "aghast": "C",
+     "mast": "C",
+     "classed": "C",
+     "massed": "C",
+     "harassed": "C",
+     "miscast": "C",
+     "recast": "C",
+     "gassed": "C",
+     "grassed": "C",
+     "glassed": "C",
+     "caste": "C"
+    },
+    "tier_a_counts": {
+     "cast": 3,
+     "fast": 3,
+     "amassed": 2
+    },
+    "vetted_by": "claude-opus-5-5",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "cast",
+     "fast",
+     "amassed",
+     "passed",
+     "blast",
+     "surpassed",
+     "unsurpassed",
+     "contrast"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "not_line_final",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-bless-mess",
+   "prompt": "A rhyming couplet:\nThe puppy dug up all the beds, oh bless,\nHe left the garden in an awful ",
+   "intermediates": [
+    "mess"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "bless",
+   "qwen_commits": {
+    "mess": 26,
+    "rest": 1,
+    "best": 1,
+    "guess": 1,
+    "dress": 1,
+    "grass": 1,
+    "less": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.9,
+    "site_hits": 5,
+    "site_words": {
+     "mess": 5,
+     "rest": 1,
+     "best": 1,
+     "guess": 1,
+     "dress": 1,
+     "grass": 1,
+     "less": 1
+    }
+   },
+   "authored_rhyme": "mess",
+   "mc": {
+    "candidates": [
+     "success",
+     "confess",
+     "yes",
+     "press"
+    ],
+    "tiers": {
+     "confess": "A",
+     "yes": "A",
+     "press": "A",
+     "success": "A"
+    },
+    "tier_a_counts": {
+     "confess": 3,
+     "yes": 3,
+     "press": 2,
+     "success": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "confess",
+     "yes",
+     "press",
+     "success"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "not_line_final"
+    }
+   }
+  },
+  {
+   "name": "v3-po-dim-hymn",
+   "prompt": "A rhyming couplet:\nThe church grew quiet, candles burning dim,\nThe choir rose to sing the evening ",
+   "intermediates": [
+    "hymn"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "dim",
+   "qwen_commits": {
+    "hymn": 16,
+    "him": 13,
+    "rim": 1,
+    "grim": 1,
+    "swim": 1,
+    "in": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 1.0,
+    "site_hits": 5,
+    "site_words": {
+     "hymn": 5,
+     "rim": 1,
+     "him": 2,
+     "grim": 1,
+     "swim": 1,
+     "in": 1
+    }
+   },
+   "authored_rhyme": "hymn",
+   "mc": {
+    "candidates": [
+     "whim",
+     "skim",
+     "slim",
+     "limb",
+     "brim"
+    ],
+    "tiers": {
+     "brim": "A",
+     "limb": "A",
+     "whim": "A",
+     "slim": "A"
+    },
+    "tier_a_counts": {
+     "brim": 3,
+     "limb": 3,
+     "whim": 3,
+     "slim": 2
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "brim",
+     "limb",
+     "whim",
+     "slim"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "not_line_final",
+     "gate1": "not_line_final",
+     "gate2": "not_line_final"
+    }
+   }
+  },
+  {
+   "name": "v3-po-heap-sleep",
+   "prompt": "A rhyming couplet:\nThe dirty dishes pile up in a heap,\nI scrub them clean, then stumble off to ",
+   "intermediates": [
+    "sleep"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "heap",
+   "qwen_commits": {
+    "sleep": 27,
+    "deep": 1,
+    "buzzed": 1,
+    "a": 1,
+    "keep": 1,
+    "weep": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.9,
+    "site_hits": 6,
+    "site_words": {
+     "deep": 1,
+     "sleep": 6,
+     "buzzed": 1,
+     "a": 1,
+     "keep": 1,
+     "weep": 1
+    }
+   },
+   "authored_rhyme": "sleep",
+   "mc": {
+    "candidates": [
+     "steep",
+     "creep",
+     "cheap",
+     "sheep",
+     "sweep",
+     "leap"
+    ],
+    "tiers": {
+     "cheap": "A",
+     "sweep": "A",
+     "creep": "A",
+     "leap": "A"
+    },
+    "tier_a_counts": {
+     "cheap": 3,
+     "sweep": 3,
+     "creep": 2,
+     "leap": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "cheap",
+     "sweep",
+     "creep",
+     "leap"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-bare-air",
+   "prompt": "A rhyming couplet:\nThe winter trees stood cold and bare,\nTheir branches reaching through the ",
+   "intermediates": [
+    "air"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "bare",
+   "qwen_commits": {
+    "air": 25,
+    "hair": 2,
+    "lay": 1,
+    "分析": 1,
+    "bare": 1,
+    "near": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.8,
+    "site_hits": 5,
+    "site_words": {
+     "air": 5,
+     "lay": 1,
+     "分析": 1,
+     "bare": 1,
+     "hair": 2,
+     "near": 1
+    }
+   },
+   "authored_rhyme": "air",
+   "mc": {
+    "candidates": [
+     "rare",
+     "spare",
+     "care",
+     "despair",
+     "prayer",
+     "stare",
+     "their",
+     "there",
+     "where",
+     "fair",
+     "glare",
+     "snare"
+    ],
+    "tiers": {
+     "care": "A",
+     "despair": "A",
+     "prayer": "A",
+     "stare": "A",
+     "their": "A",
+     "there": "A",
+     "where": "A",
+     "fair": "A",
+     "glare": "A",
+     "snare": "A"
+    },
+    "tier_a_counts": {
+     "care": 3,
+     "despair": 3,
+     "prayer": 3,
+     "stare": 3,
+     "their": 3,
+     "there": 3,
+     "where": 3,
+     "fair": 1,
+     "glare": 1,
+     "snare": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "care",
+     "despair",
+     "prayer",
+     "stare",
+     "their",
+     "there",
+     "where",
+     "fair"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-sow-grow",
+   "prompt": "A rhyming couplet:\nIn early spring the farmer starts to sow,\nAnd waits to watch the tender seedlings ",
+   "intermediates": [
+    "grow"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "sow",
+   "qwen_commits": {
+    "grow": 25,
+    "below": 2,
+    "row": 1,
+    "be": 1,
+    "know": 1,
+    "aglow": 1,
+    "knows": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.9,
+    "site_hits": 4,
+    "site_words": {
+     "row": 1,
+     "below": 2,
+     "grow": 4,
+     "be": 1,
+     "know": 1,
+     "aglow": 1,
+     "knows": 1
+    }
+   },
+   "authored_rhyme": "grow",
+   "mc": {
+    "candidates": [
+     "though",
+     "low",
+     "bestow",
+     "bow",
+     "glow",
+     "slow",
+     "snow",
+     "show",
+     "flow",
+     "ago",
+     "throw",
+     "hoe",
+     "woe",
+     "although",
+     "overflow",
+     "blow",
+     "crow",
+     "toe",
+     "owe",
+     "tow",
+     "foe",
+     "doe",
+     "stow",
+     "dough",
+     "outgrow",
+     "undergo",
+     "mow",
+     "sew",
+     "plough",
+     "hello",
+     "forgo",
+     "forego",
+     "beau",
+     "plateau",
+     "escrow",
+     "roe",
+     "pro",
+     "tableau",
+     "floe",
+     "whoa",
+     "chateau",
+     "kowtow",
+     "tarot",
+     "apropos",
+     "bio",
+     "bro"
+    ],
+    "tiers": {
+     "glow": "A",
+     "slow": "A",
+     "snow": "A",
+     "show": "C",
+     "flow": "C",
+     "low": "C",
+     "though": "C",
+     "ago": "C",
+     "throw": "C",
+     "hoe": "C",
+     "woe": "C",
+     "bestow": "C",
+     "although": "C",
+     "overflow": "C",
+     "blow": "C",
+     "crow": "C",
+     "toe": "C",
+     "owe": "C",
+     "tow": "C",
+     "foe": "C",
+     "doe": "C",
+     "stow": "C",
+     "dough": "C",
+     "outgrow": "C",
+     "undergo": "C",
+     "mow": "C",
+     "bow": "C",
+     "sew": "C",
+     "plough": "C",
+     "hello": "C",
+     "forgo": "C",
+     "forego": "C",
+     "beau": "C",
+     "plateau": "C",
+     "escrow": "C",
+     "roe": "C",
+     "pro": "C",
+     "tableau": "C",
+     "floe": "C",
+     "whoa": "C",
+     "chateau": "C",
+     "kowtow": "C",
+     "tarot": "C",
+     "apropos": "C",
+     "bio": "C",
+     "bro": "C"
+    },
+    "tier_a_counts": {
+     "glow": 3,
+     "slow": 2,
+     "snow": 2
+    },
+    "vetted_by": "claude-opus-5-5",
+    "topic_confusers": 3,
+    "candidates_v2_order": [
+     "glow",
+     "slow",
+     "snow",
+     "show",
+     "flow",
+     "low",
+     "though",
+     "ago"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "not_line_final",
+     "gate1": "not_line_final",
+     "gate2": "not_line_final"
+    }
+   }
+  },
+  {
+   "name": "v3-po-true-you",
+   "prompt": "A rhyming couplet:\nMy dearest friend, so loyal, kind and true,\nthere's no one in the world as dear as ",
+   "intermediates": [
+    "you"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "true",
+   "qwen_commits": {
+    "you": 27,
+    "do": 2,
+    "know": 1,
+    "through": 1,
+    "me": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.9,
+    "site_hits": 6,
+    "site_words": {
+     "you": 6,
+     "do": 2,
+     "know": 1,
+     "through": 1,
+     "me": 1
+    }
+   },
+   "authored_rhyme": "you",
+   "mc": {
+    "candidates": [
+     "review",
+     "due",
+     "blue",
+     "who",
+     "new",
+     "too",
+     "grew",
+     "knew",
+     "anew",
+     "view",
+     "renew",
+     "pursue",
+     "few",
+     "two",
+     "drew",
+     "blew",
+     "flew",
+     "threw",
+     "crew",
+     "clue",
+     "glue",
+     "hue",
+     "dew",
+     "undo",
+     "untrue",
+     "adieu",
+     "accrue",
+     "ensue",
+     "imbue",
+     "subdue",
+     "overdue",
+     "withdrew",
+     "outgrew",
+     "overthrew",
+     "debut",
+     "brew",
+     "coo",
+     "woo",
+     "shoe",
+     "canoe",
+     "bamboo",
+     "askew",
+     "undue",
+     "chew",
+     "stew",
+     "sue",
+     "cue",
+     "queue",
+     "outdo",
+     "overdo",
+     "redo",
+     "misconstrue",
+     "construe",
+     "eschew",
+     "skew",
+     "spew",
+     "strew",
+     "slew",
+     "screw",
+     "tattoo",
+     "taboo",
+     "shampoo",
+     "kangaroo",
+     "zoo",
+     "boo",
+     "moo",
+     "goo",
+     "flu",
+     "into",
+     "whew",
+     "phew",
+     "ooh",
+     "pew",
+     "kazoo",
+     "hullabaloo",
+     "ballyhoo",
+     "ado",
+     "coup",
+     "fondue",
+     "rue",
+     "shoo",
+     "achoo",
+     "gnu",
+     "hitherto",
+     "unglue"
+    ],
+    "tiers": {
+     "blue": "A",
+     "new": "A",
+     "too": "A",
+     "grew": "C",
+     "knew": "C",
+     "anew": "C",
+     "view": "C",
+     "renew": "C",
+     "pursue": "C",
+     "due": "C",
+     "few": "C",
+     "two": "C",
+     "who": "C",
+     "drew": "C",
+     "blew": "C",
+     "flew": "C",
+     "threw": "C",
+     "crew": "C",
+     "clue": "C",
+     "glue": "C",
+     "hue": "C",
+     "dew": "C",
+     "undo": "C",
+     "untrue": "C",
+     "adieu": "C",
+     "accrue": "C",
+     "ensue": "C",
+     "imbue": "C",
+     "subdue": "C",
+     "review": "C",
+     "overdue": "C",
+     "withdrew": "C",
+     "outgrew": "C",
+     "overthrew": "C",
+     "debut": "C",
+     "brew": "C",
+     "coo": "C",
+     "woo": "C",
+     "shoe": "C",
+     "canoe": "C",
+     "bamboo": "C",
+     "askew": "C",
+     "undue": "C",
+     "chew": "C",
+     "stew": "C",
+     "sue": "C",
+     "cue": "C",
+     "queue": "C",
+     "outdo": "C",
+     "overdo": "C",
+     "redo": "C",
+     "misconstrue": "C",
+     "construe": "C",
+     "eschew": "C",
+     "skew": "C",
+     "spew": "C",
+     "strew": "C",
+     "slew": "C",
+     "screw": "C",
+     "tattoo": "C",
+     "taboo": "C",
+     "shampoo": "C",
+     "kangaroo": "C",
+     "zoo": "C",
+     "boo": "C",
+     "moo": "C",
+     "goo": "C",
+     "flu": "C",
+     "into": "C",
+     "whew": "C",
+     "phew": "C",
+     "ooh": "C",
+     "pew": "C",
+     "kazoo": "C",
+     "hullabaloo": "C",
+     "ballyhoo": "C",
+     "ado": "C",
+     "coup": "C",
+     "fondue": "C",
+     "rue": "C",
+     "shoo": "C",
+     "achoo": "C",
+     "gnu": "C",
+     "hitherto": "C",
+     "unglue": "C"
+    },
+    "tier_a_counts": {
+     "blue": 3,
+     "new": 3,
+     "too": 3
+    },
+    "vetted_by": "claude-opus-5-5",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "blue",
+     "new",
+     "too",
+     "grew",
+     "knew",
+     "anew",
+     "view",
+     "renew"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-chart-heart",
+   "prompt": "A rhyming couplet:\nThe monitor drew lines across the chart,\nA steady beep that tracked the patient's ",
+   "intermediates": [
+    "heart"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "chart",
+   "qwen_commits": {
+    "heart": 23,
+    "apart": 2,
+    "start": 2,
+    "heartbeat": 1,
+    "hard": 1,
+    "flat": 1,
+    "before": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.8,
+    "site_hits": 4,
+    "site_words": {
+     "hard": 1,
+     "heart": 4,
+     "apart": 2,
+     "flat": 1,
+     "start": 2,
+     "before": 1
+    }
+   },
+   "authored_rhyme": "heart",
+   "mc": {
+    "candidates": [
+     "depart",
+     "dart",
+     "tart",
+     "part",
+     "art",
+     "smart"
+    ],
+    "tiers": {
+     "art": "A",
+     "part": "A",
+     "smart": "A",
+     "depart": "A"
+    },
+    "tier_a_counts": {
+     "art": 3,
+     "part": 3,
+     "smart": 2,
+     "depart": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "art",
+     "part",
+     "smart",
+     "depart"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-meet-feet",
+   "prompt": "A rhyming couplet:\nThe rabbits gather where the pathways meet,\nAnd thump the ground with quick and happy ",
+   "intermediates": [
+    "feet"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "meet",
+   "qwen_commits": {
+    "feet": 25,
+    "sweet": 2,
+    "1": 1,
+    "eat": 1,
+    "goodbye": 1,
+    "street": 1,
+    "heat": 1,
+    "retreat": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.9,
+    "site_hits": 4,
+    "site_words": {
+     "feet": 4,
+     "eat": 1,
+     "goodbye": 1,
+     "street": 1,
+     "heat": 1,
+     "retreat": 1,
+     "sweet": 2
+    }
+   },
+   "authored_rhyme": "feet",
+   "mc": {
+    "candidates": [
+     "sheet",
+     "defeat",
+     "beat",
+     "wheat",
+     "complete",
+     "fleet",
+     "greet",
+     "neat"
+    ],
+    "tiers": {
+     "beat": "A",
+     "wheat": "A",
+     "complete": "A",
+     "fleet": "A",
+     "greet": "A",
+     "neat": "A"
+    },
+    "tier_a_counts": {
+     "beat": 2,
+     "wheat": 2,
+     "complete": 1,
+     "fleet": 1,
+     "greet": 1,
+     "neat": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "beat",
+     "wheat",
+     "complete",
+     "fleet",
+     "greet",
+     "neat"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-lap-nap",
+   "prompt": "A rhyming couplet:\nThe cat curled up inside the baker's lap,\nAnd drifted off to take a cozy ",
+   "intermediates": [
+    "nap"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "lap",
+   "qwen_commits": {
+    "nap": 24,
+    "happy": 1,
+    "tap": 1,
+    "map": 1,
+    "and": 1,
+    "fresh": 1,
+    "rat": 1,
+    "cap": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.8,
+    "site_hits": 4,
+    "site_words": {
+     "happy": 1,
+     "tap": 1,
+     "map": 1,
+     "and": 1,
+     "fresh": 1,
+     "nap": 4,
+     "rat": 1,
+     "cap": 1
+    }
+   },
+   "authored_rhyme": "nap",
+   "mc": {
+    "candidates": [
+     "snap",
+     "clap",
+     "trap",
+     "flap",
+     "wrap",
+     "gap",
+     "scrap"
+    ],
+    "tiers": {
+     "clap": "A",
+     "trap": "A",
+     "wrap": "A",
+     "snap": "A",
+     "flap": "A",
+     "gap": "A",
+     "scrap": "A"
+    },
+    "tier_a_counts": {
+     "clap": 3,
+     "trap": 3,
+     "wrap": 3,
+     "snap": 2,
+     "flap": 1,
+     "gap": 1,
+     "scrap": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "clap",
+     "trap",
+     "wrap",
+     "snap",
+     "flap",
+     "gap",
+     "scrap"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "not_line_final",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v2-po-key-free",
+   "prompt": "A rhyming couplet:\nThe jailer kept a heavy iron key,\nThe prisoner begged him, \"Please, just set me ",
+   "intermediates": [
+    "free"
+   ],
+   "source": "opus55_v2",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "key",
+   "qwen_commits": {
+    "free": 25,
+    "man": 1,
+    "see": 1,
+    "cell": 1,
+    "ye": 1,
+    "glee": 1,
+    "eye": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.8,
+    "site_hits": 5,
+    "site_words": {
+     "free": 5,
+     "man": 1,
+     "see": 1,
+     "cell": 1,
+     "ye": 1,
+     "glee": 1,
+     "eye": 1
+    }
+   },
+   "authored_rhyme": "free",
+   "mc": {
+    "candidates": [
+     "fee",
+     "tree",
+     "bee",
+     "three",
+     "flee",
+     "plea",
+     "decree",
+     "sea"
+    ],
+    "tiers": {
+     "flee": "A",
+     "plea": "A",
+     "decree": "A",
+     "sea": "A"
+    },
+    "tier_a_counts": {
+     "flee": 3,
+     "plea": 3,
+     "decree": 2,
+     "sea": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "flee",
+     "plea",
+     "decree",
+     "sea"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "not_line_final",
+     "gate2": "not_line_final"
+    }
+   }
+  },
+  {
+   "name": "v3-po-mix-fix",
+   "prompt": "A rhyming couplet:\nThe batter's lumpy, give it one more mix,\na few more stirs will be an easy ",
+   "intermediates": [
+    "fix"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "mix",
+   "qwen_commits": {
+    "fix": 26,
+    "mix": 3,
+    "30": 1,
+    "trick": 1,
+    "degrees": 1,
+    "delicious": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.9,
+    "site_hits": 5,
+    "site_words": {
+     "mix": 3,
+     "trick": 1,
+     "fix": 5,
+     "degrees": 1,
+     "delicious": 1
+    }
+   },
+   "authored_rhyme": "fix",
+   "mc": {
+    "candidates": [
+     "kicks",
+     "chicks",
+     "six",
+     "tricks",
+     "bricks",
+     "flicks",
+     "sticks"
+    ],
+    "tiers": {
+     "bricks": "A",
+     "flicks": "A",
+     "kicks": "A",
+     "six": "A",
+     "sticks": "A",
+     "tricks": "A"
+    },
+    "tier_a_counts": {
+     "bricks": 3,
+     "flicks": 3,
+     "kicks": 3,
+     "six": 3,
+     "sticks": 3,
+     "tricks": 3
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "bricks",
+     "flicks",
+     "kicks",
+     "six",
+     "sticks",
+     "tricks"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-depend-friend",
+   "prompt": "A rhyming couplet:\nWhen times are hard, on you I can depend,\nbecause you are my truest, dearest ",
+   "intermediates": [
+    "friend"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "depend",
+   "qwen_commits": {
+    "friend": 28,
+    "men": 1,
+    "defend": 1,
+    "transcend": 1,
+    "end": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.9,
+    "site_hits": 7,
+    "site_words": {
+     "friend": 7,
+     "men": 1,
+     "defend": 1,
+     "transcend": 1,
+     "end": 1
+    }
+   },
+   "authored_rhyme": "friend",
+   "mc": {
+    "candidates": [
+     "intend",
+     "lend",
+     "extend",
+     "pretend",
+     "mend",
+     "send"
+    ],
+    "tiers": {
+     "extend": "A",
+     "lend": "A",
+     "mend": "A",
+     "send": "A"
+    },
+    "tier_a_counts": {
+     "extend": 2,
+     "lend": 2,
+     "mend": 2,
+     "send": 2
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "extend",
+     "lend",
+     "mend",
+     "send"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "not_line_final"
+    }
+   }
+  },
+  {
+   "name": "v3-po-back-attack",
+   "prompt": "A rhyming couplet:\nThe army waited, ready to strike back,\nAnd at the dawn they launched a fierce ",
+   "intermediates": [
+    "attack"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "back",
+   "qwen_commits": {
+    "attack": 28,
+    "away": 1,
+    "crack": 1,
+    "pack": 1,
+    "counterattack": 1,
+    "commence": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 1.0,
+    "site_hits": 6,
+    "site_words": {
+     "attack": 6,
+     "away": 1,
+     "crack": 1,
+     "pack": 1,
+     "counterattack": 1,
+     "commence": 1
+    }
+   },
+   "authored_rhyme": "attack",
+   "mc": {
+    "candidates": [
+     "black",
+     "track",
+     "snack",
+     "lack",
+     "flak"
+    ],
+    "tiers": {
+     "black": "A",
+     "lack": "A",
+     "track": "A",
+     "flak": "A",
+     "snack": "B"
+    },
+    "tier_a_counts": {
+     "black": 3,
+     "lack": 3,
+     "track": 3,
+     "flak": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "black",
+     "lack",
+     "track",
+     "flak",
+     "snack"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-reap-sleep",
+   "prompt": "A rhyming couplet:\nWhen harvest's done and there's no more to reap,\nThe weary farmer finally gets some ",
+   "intermediates": [
+    "sleep"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "reap",
+   "qwen_commits": {
+    "sleep": 24,
+    "deep": 3,
+    "sheep": 1,
+    "arrived": 1,
+    "reap": 1,
+    "ale": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.8,
+    "site_hits": 4,
+    "site_words": {
+     "sleep": 4,
+     "deep": 3,
+     "sheep": 1,
+     "arrived": 1,
+     "reap": 1,
+     "ale": 1
+    }
+   },
+   "authored_rhyme": "sleep",
+   "mc": {
+    "candidates": [
+     "steep",
+     "heap",
+     "keep",
+     "weep",
+     "creep",
+     "sweep"
+    ],
+    "tiers": {
+     "heap": "A",
+     "keep": "A",
+     "weep": "A",
+     "creep": "A",
+     "steep": "A",
+     "sweep": "A"
+    },
+    "tier_a_counts": {
+     "heap": 3,
+     "keep": 3,
+     "weep": 3,
+     "creep": 2,
+     "steep": 2,
+     "sweep": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "heap",
+     "keep",
+     "weep",
+     "creep",
+     "steep",
+     "sweep"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "not_line_final",
+     "gate1": "not_line_final",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-mind-behind",
+   "prompt": "A rhyming couplet:\nThe sailor kept his sweetheart in his mind,\nThe girl at home that he had left ",
+   "intermediates": [
+    "behind"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "mind",
+   "qwen_commits": {
+    "behind": 24,
+    "find": 3,
+    "unwind": 1,
+    "her": 1,
+    "dreams": 1,
+    "mind": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.8,
+    "site_hits": 4,
+    "site_words": {
+     "behind": 4,
+     "find": 3,
+     "unwind": 1,
+     "her": 1,
+     "dreams": 1,
+     "mind": 1
+    }
+   },
+   "authored_rhyme": "behind",
+   "mc": {
+    "candidates": [
+     "defined",
+     "kind",
+     "mankind",
+     "designed",
+     "blind",
+     "entwined",
+     "wind",
+     "lined",
+     "pined",
+     "resigned",
+     "signed",
+     "twined"
+    ],
+    "tiers": {
+     "blind": "A",
+     "entwined": "A",
+     "kind": "A",
+     "wind": "A",
+     "lined": "A",
+     "pined": "A",
+     "resigned": "A",
+     "signed": "A",
+     "twined": "A"
+    },
+    "tier_a_counts": {
+     "blind": 2,
+     "entwined": 2,
+     "kind": 2,
+     "wind": 2,
+     "lined": 1,
+     "pined": 1,
+     "resigned": 1,
+     "signed": 1,
+     "twined": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "blind",
+     "entwined",
+     "kind",
+     "wind",
+     "lined",
+     "pined",
+     "resigned",
+     "signed"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "not_line_final",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-shoe-do",
+   "prompt": "A rhyming couplet:\nThere was an old woman who lived in a shoe,\nWith so many children she knew not what to ",
+   "intermediates": [
+    "do"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "shoe",
+   "qwen_commits": {
+    "do": 31,
+    "5": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.8,
+    "site_hits": 11,
+    "site_words": {
+     "do": 11
+    }
+   },
+   "authored_rhyme": "do",
+   "mc": {
+    "candidates": [
+     "through",
+     "you",
+     "too",
+     "blue",
+     "new",
+     "knew",
+     "who"
+    ],
+    "tiers": {
+     "new": "A",
+     "through": "A",
+     "too": "A",
+     "blue": "A",
+     "knew": "A",
+     "who": "A",
+     "you": "B"
+    },
+    "tier_a_counts": {
+     "new": 3,
+     "through": 3,
+     "too": 3,
+     "blue": 2,
+     "knew": 1,
+     "who": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "new",
+     "through",
+     "too",
+     "blue",
+     "knew",
+     "who",
+     "you"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "not_line_final",
+     "gate2": "not_line_final"
+    }
+   }
+  },
+  {
+   "name": "v3-po-post-coast",
+   "prompt": "A rhyming couplet:\nThe lighthouse keeper stood upon his post,\nAnd watched the ships go sailing down the ",
+   "intermediates": [
+    "coast"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "post",
+   "qwen_commits": {
+    "coast": 25,
+    "frost": 2,
+    "lost": 1,
+    "most": 1,
+    "host": 1,
+    "cost": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.8,
+    "site_hits": 5,
+    "site_words": {
+     "coast": 5,
+     "lost": 1,
+     "most": 1,
+     "frost": 2,
+     "host": 1,
+     "cost": 1
+    }
+   },
+   "authored_rhyme": "coast",
+   "mc": {
+    "candidates": [
+     "toast",
+     "boast",
+     "engrossed",
+     "ghost",
+     "roast",
+     "diagnosed",
+     "grossed",
+     "repost"
+    ],
+    "tiers": {
+     "boast": "A",
+     "ghost": "A",
+     "toast": "A",
+     "engrossed": "C",
+     "roast": "C",
+     "diagnosed": "C",
+     "grossed": "C",
+     "repost": "C"
+    },
+    "tier_a_counts": {
+     "boast": 3,
+     "ghost": 3,
+     "toast": 2
+    },
+    "vetted_by": "claude-opus-5-5",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "boast",
+     "ghost",
+     "toast",
+     "engrossed",
+     "roast",
+     "diagnosed",
+     "grossed",
+     "repost"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "not_line_final",
+     "gate1": "cannot",
+     "gate2": "not_line_final"
+    }
+   }
+  },
+  {
+   "name": "v3-po-bright-night",
+   "prompt": "A rhyming couplet:\nThe lighthouse beam was shining clear and bright,\nTo guide the weary sailors through the ",
+   "intermediates": [
+    "night"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "bright",
+   "qwen_commits": {
+    "night": 29,
+    "discussing": 1,
+    "light": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.8,
+    "site_hits": 9,
+    "site_words": {
+     "night": 9,
+     "discussing": 1,
+     "light": 1
+    }
+   },
+   "authored_rhyme": "night",
+   "mc": {
+    "candidates": [
+     "write",
+     "white",
+     "sight",
+     "height",
+     "flight",
+     "fight"
+    ],
+    "tiers": {
+     "flight": "A",
+     "sight": "A",
+     "fight": "A",
+     "white": "A"
+    },
+    "tier_a_counts": {
+     "flight": 3,
+     "sight": 3,
+     "fight": 1,
+     "white": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "flight",
+     "sight",
+     "fight",
+     "white"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "not_line_final",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-race-place",
+   "prompt": "A rhyming couplet:\nShe trained all year to win the final race,\nAnd stood up on the podium in first ",
+   "intermediates": [
+    "place"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "race",
+   "qwen_commits": {
+    "place": 26,
+    "line": 2,
+    "pace": 1,
+    "friends": 1,
+    "grace": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.8,
+    "site_hits": 6,
+    "site_words": {
+     "place": 6,
+     "pace": 1,
+     "friends": 1,
+     "line": 2,
+     "grace": 1
+    }
+   },
+   "authored_rhyme": "place",
+   "mc": {
+    "candidates": [
+     "base",
+     "space",
+     "face",
+     "embrace",
+     "chase",
+     "case"
+    ],
+    "tiers": {
+     "face": "A",
+     "chase": "A",
+     "space": "A",
+     "embrace": "A",
+     "case": "B"
+    },
+    "tier_a_counts": {
+     "face": 3,
+     "chase": 2,
+     "space": 2,
+     "embrace": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "face",
+     "chase",
+     "space",
+     "embrace",
+     "case"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "not_line_final"
+    }
+   }
+  },
+  {
+   "name": "v3-po-puck-luck",
+   "prompt": "A rhyming couplet:\nBefore the game I kissed my hockey puck,\nAnd whispered softly, bring me lots of ",
+   "intermediates": [
+    "luck"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "puck",
+   "qwen_commits": {
+    "luck": 26,
+    "duck": 2,
+    "a": 1,
+    "puck": 1,
+    "of": 1,
+    "suck": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.9,
+    "site_hits": 5,
+    "site_words": {
+     "luck": 5,
+     "a": 1,
+     "puck": 1,
+     "of": 1,
+     "suck": 1,
+     "duck": 2
+    }
+   },
+   "authored_rhyme": "luck",
+   "mc": {
+    "candidates": [
+     "stuck",
+     "chuck",
+     "struck",
+     "snuck",
+     "truck",
+     "muck"
+    ],
+    "tiers": {
+     "struck": "A",
+     "stuck": "A",
+     "truck": "A",
+     "chuck": "A",
+     "muck": "A"
+    },
+    "tier_a_counts": {
+     "struck": 3,
+     "stuck": 3,
+     "truck": 3,
+     "chuck": 1,
+     "muck": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "struck",
+     "stuck",
+     "truck",
+     "chuck",
+     "muck"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-deep-sleep",
+   "prompt": "A rhyming couplet:\nThe drowned old sailors lie down in the deep,\nWhere silent fishes guard their endless ",
+   "intermediates": [
+    "sleep"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "deep",
+   "qwen_commits": {
+    "sleep": 26,
+    "asleep": 2,
+    "deep": 2,
+    "weep": 1,
+    "forever": 1,
+    "sea": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 1.0,
+    "site_hits": 4,
+    "site_words": {
+     "sleep": 4,
+     "asleep": 2,
+     "deep": 2,
+     "weep": 1,
+     "forever": 1,
+     "sea": 1
+    }
+   },
+   "authored_rhyme": "sleep",
+   "mc": {
+    "candidates": [
+     "leap",
+     "sheep",
+     "creep",
+     "keep",
+     "steep",
+     "sweep"
+    ],
+    "tiers": {
+     "creep": "A",
+     "keep": "A",
+     "steep": "A",
+     "sweep": "A"
+    },
+    "tier_a_counts": {
+     "creep": 3,
+     "keep": 3,
+     "steep": 3,
+     "sweep": 3
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "creep",
+     "keep",
+     "steep",
+     "sweep"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-bet-net",
+   "prompt": "A rhyming couplet:\nThe striker kicked, and everyone could bet,\nThe ball was flying straight into the ",
+   "intermediates": [
+    "net"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "bet",
+   "qwen_commits": {
+    "net": 26,
+    "bet": 2,
+    "forget": 1,
+    "yet": 1,
+    "set": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.8,
+    "site_hits": 6,
+    "site_words": {
+     "net": 6,
+     "forget": 1,
+     "yet": 1,
+     "set": 1,
+     "bet": 2
+    }
+   },
+   "authored_rhyme": "net",
+   "mc": {
+    "candidates": [
+     "regret",
+     "get",
+     "met",
+     "threat"
+    ],
+    "tiers": {
+     "get": "A",
+     "met": "A",
+     "regret": "A",
+     "threat": "A"
+    },
+    "tier_a_counts": {
+     "get": 3,
+     "met": 3,
+     "regret": 2,
+     "threat": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "get",
+     "met",
+     "regret",
+     "threat"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "not_line_final",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-stack-back",
+   "prompt": "A rhyming couplet:\nI lent my friend a twenty from my stack,\nAnd waited months for him to pay me ",
+   "intermediates": [
+    "back"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "stack",
+   "qwen_commits": {
+    "back": 25,
+    "20": 1,
+    "crack": 1,
+    "did": 1,
+    "snack": 1,
+    "that": 1,
+    "like": 1,
+    "a": 1,
+    "sack": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.9,
+    "site_hits": 4,
+    "site_words": {
+     "back": 4,
+     "crack": 1,
+     "did": 1,
+     "snack": 1,
+     "that": 1,
+     "like": 1,
+     "a": 1,
+     "sack": 1
+    }
+   },
+   "authored_rhyme": "back",
+   "mc": {
+    "candidates": [
+     "attack",
+     "track",
+     "lack",
+     "pack",
+     "black",
+     "knack",
+     "slack"
+    ],
+    "tiers": {
+     "lack": "A",
+     "track": "A",
+     "black": "A",
+     "knack": "A",
+     "slack": "A",
+     "attack": "B"
+    },
+    "tier_a_counts": {
+     "lack": 3,
+     "track": 3,
+     "black": 1,
+     "knack": 1,
+     "slack": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "lack",
+     "track",
+     "black",
+     "knack",
+     "slack",
+     "attack"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-fly-sky",
+   "prompt": "A rhyming couplet:\nThe baby birds are learning how to fly,\nThey flap their wings and soar up in the ",
+   "intermediates": [
+    "sky"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "fly",
+   "qwen_commits": {
+    "sky": 27,
+    "nigh": 1,
+    "try": 1,
+    "goodbye": 1,
+    "mommy": 1,
+    "grade": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.9,
+    "site_hits": 6,
+    "site_words": {
+     "sky": 6,
+     "nigh": 1,
+     "try": 1,
+     "goodbye": 1,
+     "mommy": 1,
+     "grade": 1
+    }
+   },
+   "authored_rhyme": "sky",
+   "mc": {
+    "candidates": [
+     "high",
+     "eye",
+     "dry",
+     "cry",
+     "sigh",
+     "why",
+     "nearby",
+     "shy",
+     "die",
+     "lie",
+     "reply",
+     "rely",
+     "supply",
+     "defy",
+     "apply",
+     "deny",
+     "buy",
+     "spy",
+     "pie",
+     "tie",
+     "guy",
+     "july",
+     "bye",
+     "fry",
+     "imply",
+     "comply",
+     "ally",
+     "awry",
+     "sly",
+     "spry",
+     "thigh",
+     "wry",
+     "standby",
+     "untie",
+     "thereby",
+     "hereby",
+     "whereby",
+     "decry",
+     "retry",
+     "belie",
+     "dye",
+     "rye",
+     "pry",
+     "vie",
+     "ply",
+     "sty",
+     "chai",
+     "bonsai",
+     "lye",
+     "aye",
+     "misapply",
+     "resupply",
+     "oversupply",
+     "underlie",
+     "overfly",
+     "thy"
+    ],
+    "tiers": {
+     "high": "A",
+     "sigh": "A",
+     "eye": "A",
+     "why": "C",
+     "nearby": "C",
+     "cry": "C",
+     "shy": "C",
+     "die": "C",
+     "dry": "C",
+     "lie": "C",
+     "reply": "C",
+     "rely": "C",
+     "supply": "C",
+     "defy": "C",
+     "apply": "C",
+     "deny": "C",
+     "buy": "C",
+     "spy": "C",
+     "pie": "C",
+     "tie": "C",
+     "guy": "C",
+     "july": "C",
+     "bye": "C",
+     "fry": "C",
+     "imply": "C",
+     "comply": "C",
+     "ally": "C",
+     "awry": "C",
+     "sly": "C",
+     "spry": "C",
+     "thigh": "C",
+     "wry": "C",
+     "standby": "C",
+     "untie": "C",
+     "thereby": "C",
+     "hereby": "C",
+     "whereby": "C",
+     "decry": "C",
+     "retry": "C",
+     "belie": "C",
+     "dye": "C",
+     "rye": "C",
+     "pry": "C",
+     "vie": "C",
+     "ply": "C",
+     "sty": "C",
+     "chai": "C",
+     "bonsai": "C",
+     "lye": "C",
+     "aye": "C",
+     "misapply": "C",
+     "resupply": "C",
+     "oversupply": "C",
+     "underlie": "C",
+     "overfly": "C",
+     "thy": "C"
+    },
+    "tier_a_counts": {
+     "high": 3,
+     "sigh": 2,
+     "eye": 1
+    },
+    "vetted_by": "claude-opus-5-5",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "high",
+     "sigh",
+     "eye",
+     "why",
+     "nearby",
+     "cry",
+     "shy",
+     "die"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "not_line_final",
+     "gate2": "not_line_final"
+    }
+   }
+  },
+  {
+   "name": "v3-po-mend-friend",
+   "prompt": "A rhyming couplet:\nWhen hearts are broken, music helps them mend,\nA song can be a loyal, faithful ",
+   "intermediates": [
+    "friend"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "mend",
+   "qwen_commits": {
+    "friend": 27,
+    "descend": 2,
+    "again": 2,
+    "find": 1,
+    "mind": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 1.0,
+    "site_hits": 5,
+    "site_words": {
+     "find": 1,
+     "friend": 5,
+     "descend": 2,
+     "again": 2,
+     "mind": 1
+    }
+   },
+   "authored_rhyme": "friend",
+   "mc": {
+    "candidates": [
+     "end",
+     "spend",
+     "send",
+     "extend",
+     "blend",
+     "lend",
+     "tend",
+     "transcend",
+     "depend"
+    ],
+    "tiers": {
+     "blend": "A",
+     "end": "A",
+     "extend": "A",
+     "lend": "A",
+     "send": "A",
+     "tend": "A",
+     "transcend": "A",
+     "depend": "A"
+    },
+    "tier_a_counts": {
+     "blend": 3,
+     "end": 3,
+     "extend": 3,
+     "lend": 3,
+     "send": 3,
+     "tend": 3,
+     "transcend": 3,
+     "depend": 2
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "blend",
+     "end",
+     "extend",
+     "lend",
+     "send",
+     "tend",
+     "transcend",
+     "depend"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "not_line_final",
+     "gate1": "cannot",
+     "gate2": "not_line_final"
+    }
+   }
+  },
+  {
+   "name": "v3-po-streams-dreams",
+   "prompt": "A rhyming couplet:\nNight falls, the train rolls on past hills and streams,\nI close my eyes and drift away in ",
+   "intermediates": [
+    "dreams"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "streams",
+   "qwen_commits": {
+    "dreams": 26,
+    "rome": 1,
+    "dream": 1,
+    "themes": 1,
+    "schemes": 1,
+    "disappears": 1,
+    "gleam": 1,
+    "beams": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.9,
+    "site_hits": 5,
+    "site_words": {
+     "dream": 1,
+     "themes": 1,
+     "dreams": 5,
+     "schemes": 1,
+     "disappears": 1,
+     "gleam": 1,
+     "beams": 1
+    }
+   },
+   "authored_rhyme": "dreams",
+   "mc": {
+    "candidates": [
+     "gleams",
+     "seems",
+     "screams",
+     "teams",
+     "seams",
+     "steams",
+     "extremes",
+     "teems",
+     "redeems",
+     "reams",
+     "deems",
+     "regimes",
+     "creams"
+    ],
+    "tiers": {
+     "gleams": "A",
+     "seems": "A",
+     "seams": "A",
+     "screams": "C",
+     "steams": "C",
+     "extremes": "C",
+     "teems": "C",
+     "redeems": "C",
+     "reams": "C",
+     "deems": "C",
+     "teams": "C",
+     "regimes": "C",
+     "creams": "C"
+    },
+    "tier_a_counts": {
+     "gleams": 3,
+     "seems": 3,
+     "seams": 1
+    },
+    "vetted_by": "claude-opus-5-5",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "gleams",
+     "seems",
+     "seams",
+     "screams",
+     "steams",
+     "extremes",
+     "teems",
+     "redeems"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "not_line_final",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-said-head",
+   "prompt": "A rhyming couplet:\nThe angry Queen of Hearts stood up and said,\nNow seize that girl at once and off with her ",
+   "intermediates": [
+    "head"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "said",
+   "qwen_commits": {
+    "head": 26,
+    "bed": 2,
+    "game": 1,
+    "command": 1,
+    "again": 1,
+    "dread": 1,
+    "players": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 1.0,
+    "site_hits": 4,
+    "site_words": {
+     "head": 4,
+     "game": 1,
+     "command": 1,
+     "bed": 2,
+     "again": 1,
+     "dread": 1,
+     "players": 1
+    }
+   },
+   "authored_rhyme": "head",
+   "mc": {
+    "candidates": [
+     "instead",
+     "red",
+     "ahead",
+     "fed",
+     "dead",
+     "spread"
+    ],
+    "tiers": {
+     "dead": "A",
+     "instead": "A",
+     "red": "A",
+     "fed": "A",
+     "spread": "A"
+    },
+    "tier_a_counts": {
+     "dead": 2,
+     "instead": 2,
+     "red": 2,
+     "fed": 1,
+     "spread": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "dead",
+     "instead",
+     "red",
+     "fed",
+     "spread"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-fed-bed",
+   "prompt": "A rhyming couplet:\nThe dog is walked, the kids are bathed and fed,\nAnd now it's time for all of us to go to ",
+   "intermediates": [
+    "bed"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "fed",
+   "qwen_commits": {
+    "bed": 26,
+    "spread": 1,
+    "read": 1,
+    "quiet": 1,
+    "instead": 1,
+    "red": 1,
+    "need": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.9,
+    "site_hits": 5,
+    "site_words": {
+     "spread": 1,
+     "bed": 5,
+     "read": 1,
+     "quiet": 1,
+     "instead": 1,
+     "red": 1,
+     "need": 1
+    }
+   },
+   "authored_rhyme": "bed",
+   "mc": {
+    "candidates": [
+     "head",
+     "bread",
+     "dead",
+     "ahead",
+     "said",
+     "dread",
+     "shed",
+     "thread",
+     "overhead",
+     "led",
+     "sped",
+     "fled",
+     "widespread",
+     "unsaid",
+     "misread",
+     "unread",
+     "tread",
+     "shred",
+     "sled",
+     "wed",
+     "bled",
+     "lead",
+     "bred",
+     "misled",
+     "overfed",
+     "purebred",
+     "thoroughbred",
+     "embed",
+     "behead",
+     "infrared",
+     "retread",
+     "stead",
+     "abed",
+     "unwed",
+     "interbred"
+    ],
+    "tiers": {
+     "head": "A",
+     "said": "A",
+     "ahead": "A",
+     "bread": "C",
+     "dead": "C",
+     "dread": "C",
+     "shed": "C",
+     "thread": "C",
+     "overhead": "C",
+     "led": "C",
+     "sped": "C",
+     "fled": "C",
+     "widespread": "C",
+     "unsaid": "C",
+     "misread": "C",
+     "unread": "C",
+     "tread": "C",
+     "shred": "C",
+     "sled": "C",
+     "wed": "C",
+     "bled": "C",
+     "lead": "C",
+     "bred": "C",
+     "misled": "C",
+     "overfed": "C",
+     "purebred": "C",
+     "thoroughbred": "C",
+     "embed": "C",
+     "behead": "C",
+     "infrared": "C",
+     "retread": "C",
+     "stead": "C",
+     "abed": "C",
+     "unwed": "C",
+     "interbred": "C"
+    },
+    "tier_a_counts": {
+     "head": 3,
+     "said": 3,
+     "ahead": 2
+    },
+    "vetted_by": "claude-opus-5-5",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "head",
+     "said",
+     "ahead",
+     "bread",
+     "dead",
+     "dread",
+     "shed",
+     "thread"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-told-gold",
+   "prompt": "A rhyming couplet:\nThe king was rich, or so the tale is told,\nHis castle vaults were filled with heaps of ",
+   "intermediates": [
+    "gold"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "told",
+   "qwen_commits": {
+    "gold": 24,
+    "hold": 3,
+    "solid": 1,
+    "1": 1,
+    "cold": 1,
+    "told": 1,
+    "old": 1,
+    "say": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.8,
+    "site_hits": 4,
+    "site_words": {
+     "gold": 4,
+     "hold": 3,
+     "cold": 1,
+     "told": 1,
+     "old": 1,
+     "say": 1
+    }
+   },
+   "authored_rhyme": "gold",
+   "mc": {
+    "candidates": [
+     "foretold",
+     "bold",
+     "controlled",
+     "rolled",
+     "sold",
+     "untold",
+     "behold",
+     "unfold",
+     "consoled",
+     "extolled",
+     "fold",
+     "mold",
+     "uphold",
+     "withhold",
+     "strolled",
+     "enfold",
+     "cajoled",
+     "scold",
+     "tolled",
+     "unsold",
+     "resold",
+     "patrolled",
+     "enrolled",
+     "doled",
+     "mould",
+     "bowled",
+     "polled",
+     "paroled",
+     "uncontrolled",
+     "unrolled",
+     "outsold",
+     "oversold",
+     "undersold",
+     "twofold",
+     "fourfold",
+     "holed",
+     "ahold",
+     "remold"
+    ],
+    "tiers": {
+     "bold": "A",
+     "sold": "A",
+     "untold": "C",
+     "behold": "C",
+     "foretold": "C",
+     "unfold": "C",
+     "controlled": "C",
+     "consoled": "C",
+     "extolled": "C",
+     "rolled": "C",
+     "fold": "C",
+     "mold": "C",
+     "uphold": "C",
+     "withhold": "C",
+     "strolled": "C",
+     "enfold": "C",
+     "cajoled": "C",
+     "scold": "C",
+     "tolled": "C",
+     "unsold": "C",
+     "resold": "C",
+     "patrolled": "C",
+     "enrolled": "C",
+     "doled": "C",
+     "mould": "C",
+     "bowled": "C",
+     "polled": "C",
+     "paroled": "C",
+     "uncontrolled": "C",
+     "unrolled": "C",
+     "outsold": "C",
+     "oversold": "C",
+     "undersold": "C",
+     "twofold": "C",
+     "fourfold": "C",
+     "holed": "C",
+     "ahold": "C",
+     "remold": "C"
+    },
+    "tier_a_counts": {
+     "bold": 2,
+     "sold": 2
+    },
+    "vetted_by": "claude-opus-5-5",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "bold",
+     "sold",
+     "untold",
+     "behold",
+     "foretold",
+     "unfold",
+     "controlled",
+     "consoled"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "not_line_final",
+     "gate1": "not_line_final",
+     "gate2": "not_line_final"
+    }
+   }
+  },
+  {
+   "name": "v3-po-passed-last",
+   "prompt": "A rhyming couplet:\nThe storm was over and the danger passed,\nAnd calm returned upon the sea at ",
+   "intermediates": [
+    "last"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "passed",
+   "qwen_commits": {
+    "last": 26,
+    "12": 1,
+    "bright": 1,
+    "disaster": 1,
+    "subsided": 1,
+    "glass": 1,
+    "cast": 1,
+    "quiet": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.9,
+    "site_hits": 5,
+    "site_words": {
+     "last": 5,
+     "bright": 1,
+     "disaster": 1,
+     "subsided": 1,
+     "glass": 1,
+     "cast": 1,
+     "quiet": 1
+    }
+   },
+   "authored_rhyme": "last",
+   "mc": {
+    "candidates": [
+     "outlast",
+     "past",
+     "amassed",
+     "mast",
+     "blast",
+     "fast",
+     "vast",
+     "aghast"
+    ],
+    "tiers": {
+     "blast": "A",
+     "fast": "A",
+     "mast": "A",
+     "vast": "A",
+     "past": "A",
+     "aghast": "A"
+    },
+    "tier_a_counts": {
+     "blast": 3,
+     "fast": 3,
+     "mast": 3,
+     "vast": 3,
+     "past": 2,
+     "aghast": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "blast",
+     "fast",
+     "mast",
+     "vast",
+     "past",
+     "aghast"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "not_line_final",
+     "gate2": "not_line_final"
+    }
+   }
+  },
+  {
+   "name": "v3-po-bow-now",
+   "prompt": "A rhyming couplet:\nThe apple branches, laden, start to bow,\nThey're ready to be picked right here and ",
+   "intermediates": [
+    "now"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "bow",
+   "qwen_commits": {
+    "now": 24,
+    "down": 2,
+    "droop": 1,
+    "view": 1,
+    "ground": 1,
+    "grow": 1,
+    "glow": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.8,
+    "site_hits": 4,
+    "site_words": {
+     "now": 4,
+     "droop": 1,
+     "down": 2,
+     "view": 1,
+     "ground": 1,
+     "grow": 1,
+     "glow": 1
+    }
+   },
+   "authored_rhyme": "now",
+   "mc": {
+    "candidates": [
+     "cow",
+     "brow",
+     "vow",
+     "how",
+     "allow",
+     "bough",
+     "plough"
+    ],
+    "tiers": {
+     "allow": "A",
+     "bough": "A",
+     "how": "A",
+     "vow": "A",
+     "brow": "A",
+     "cow": "A",
+     "plough": "A"
+    },
+    "tier_a_counts": {
+     "allow": 3,
+     "bough": 3,
+     "how": 3,
+     "vow": 3,
+     "brow": 2,
+     "cow": 2,
+     "plough": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "allow",
+     "bough",
+     "how",
+     "vow",
+     "brow",
+     "cow",
+     "plough"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-call-fall",
+   "prompt": "A rhyming couplet:\nIn autumn, when the geese begin to call,\nThe leaves turn gold and red and start to ",
+   "intermediates": [
+    "fall"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "call",
+   "qwen_commits": {
+    "fall": 24,
+    "all": 3,
+    "small": 1,
+    "gold": 1,
+    "farewell": 1,
+    "tall": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.8,
+    "site_hits": 4,
+    "site_words": {
+     "small": 1,
+     "fall": 4,
+     "gold": 1,
+     "all": 3,
+     "farewell": 1,
+     "tall": 1
+    }
+   },
+   "authored_rhyme": "fall",
+   "mc": {
+    "candidates": [
+     "wall",
+     "baseball",
+     "install",
+     "recall",
+     "hall",
+     "sprawl",
+     "befall",
+     "crawl",
+     "squall",
+     "shawl",
+     "stall",
+     "haul",
+     "brawl",
+     "drawl",
+     "ball",
+     "appall",
+     "pall",
+     "scrawl",
+     "forestall",
+     "thrall",
+     "bawl",
+     "gall",
+     "maul",
+     "mall",
+     "uninstall"
+    ],
+    "tiers": {
+     "hall": "A",
+     "wall": "A",
+     "sprawl": "A",
+     "recall": "C",
+     "befall": "C",
+     "crawl": "C",
+     "squall": "C",
+     "shawl": "C",
+     "stall": "C",
+     "haul": "C",
+     "brawl": "C",
+     "drawl": "C",
+     "ball": "C",
+     "appall": "C",
+     "pall": "C",
+     "scrawl": "C",
+     "forestall": "C",
+     "thrall": "C",
+     "bawl": "C",
+     "gall": "C",
+     "maul": "C",
+     "mall": "C",
+     "install": "C",
+     "baseball": "C",
+     "uninstall": "C"
+    },
+    "tier_a_counts": {
+     "hall": 3,
+     "wall": 3,
+     "sprawl": 1
+    },
+    "vetted_by": "claude-opus-5-5",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "hall",
+     "wall",
+     "sprawl",
+     "recall",
+     "befall",
+     "crawl",
+     "squall",
+     "shawl"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "not_line_final"
+    }
+   }
+  },
+  {
+   "name": "v3-po-seen-green",
+   "prompt": "A rhyming couplet:\nThe valley was the loveliest we'd seen,\nWith meadows soft and fields of brightest ",
+   "intermediates": [
+    "green"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "seen",
+   "qwen_commits": {
+    "green": 25,
+    "blue": 1,
+    "rose": 1,
+    "clean": 1,
+    "scene": 1,
+    "stream": 1,
+    "been": 1,
+    "seen": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.9,
+    "site_hits": 4,
+    "site_words": {
+     "blue": 1,
+     "rose": 1,
+     "green": 4,
+     "clean": 1,
+     "scene": 1,
+     "stream": 1,
+     "been": 1,
+     "seen": 1
+    }
+   },
+   "authored_rhyme": "green",
+   "mc": {
+    "candidates": [
+     "machine",
+     "screen",
+     "between",
+     "queen",
+     "keen",
+     "serene",
+     "sheen"
+    ],
+    "tiers": {
+     "between": "A",
+     "keen": "A",
+     "serene": "A",
+     "sheen": "A"
+    },
+    "tier_a_counts": {
+     "between": 3,
+     "keen": 3,
+     "serene": 3,
+     "sheen": 2
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "between",
+     "keen",
+     "serene",
+     "sheen"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "not_line_final",
+     "gate1": "cannot",
+     "gate2": "not_line_final"
+    }
+   }
+  },
+  {
+   "name": "v3-po-song-along",
+   "prompt": "A rhyming couplet:\nThe crowd all knows the words to every song,\nAnd everybody starts to sing ",
+   "intermediates": [
+    "along"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "song",
+   "qwen_commits": {
+    "along": 26,
+    "long": 3,
+    "show": 1,
+    "done": 1,
+    "stop": 1,
+    "on": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 1.0,
+    "site_hits": 4,
+    "site_words": {
+     "along": 4,
+     "show": 1,
+     "long": 3,
+     "done": 1,
+     "stop": 1,
+     "on": 1
+    }
+   },
+   "authored_rhyme": "along",
+   "mc": {
+    "candidates": [
+     "belong",
+     "strong",
+     "wrong",
+     "throng"
+    ],
+    "tiers": {
+     "belong": "A",
+     "strong": "A",
+     "throng": "A",
+     "wrong": "A"
+    },
+    "tier_a_counts": {
+     "belong": 3,
+     "strong": 3,
+     "throng": 3,
+     "wrong": 3
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "belong",
+     "strong",
+     "throng",
+     "wrong"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-stride-pride",
+   "prompt": "A rhyming couplet:\nThe troops marched past with long and steady stride,\nTheir families watched and cheered them on with ",
+   "intermediates": [
+    "pride"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "stride",
+   "qwen_commits": {
+    "pride": 28,
+    "side": 2,
+    "also": 1,
+    "denied": 1,
+    "wide": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 1.0,
+    "site_hits": 6,
+    "site_words": {
+     "pride": 6,
+     "also": 1,
+     "denied": 1,
+     "side": 2,
+     "wide": 1
+    }
+   },
+   "authored_rhyme": "pride",
+   "mc": {
+    "candidates": [
+     "ride",
+     "outside",
+     "guide",
+     "tide",
+     "died",
+     "applied",
+     "allied",
+     "cried",
+     "defied"
+    ],
+    "tiers": {
+     "died": "A",
+     "guide": "A",
+     "tide": "A",
+     "applied": "A",
+     "allied": "A",
+     "cried": "A",
+     "defied": "A"
+    },
+    "tier_a_counts": {
+     "died": 3,
+     "guide": 3,
+     "tide": 3,
+     "applied": 2,
+     "allied": 1,
+     "cried": 1,
+     "defied": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "died",
+     "guide",
+     "tide",
+     "applied",
+     "allied",
+     "cried",
+     "defied"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "not_line_final",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-feather-together",
+   "prompt": "A rhyming couplet:\nWe keep two hens, a pair of birds of a feather,\nWho always scratch and peck the yard ",
+   "intermediates": [
+    "together"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "feather",
+   "qwen_commits": {
+    "together": 23,
+    "to": 1,
+    "nder": 1,
+    "whether": 1,
+    "aether": 1,
+    "rhyme": 1,
+    "explain": 1,
+    "feather": 1,
+    "mother": 1,
+    "slaughter": 1,
+    "featherly": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.8,
+    "site_hits": 4,
+    "site_words": {
+     "together": 4,
+     "aether": 1,
+     "rhyme": 1,
+     "explain": 1,
+     "feather": 1,
+     "mother": 1,
+     "slaughter": 1,
+     "featherly": 1
+    }
+   },
+   "authored_rhyme": "together",
+   "mc": {
+    "candidates": [
+     "nether",
+     "tether",
+     "leather",
+     "weather",
+     "heather"
+    ],
+    "tiers": {
+     "heather": "A",
+     "leather": "A",
+     "tether": "A",
+     "weather": "A"
+    },
+    "tier_a_counts": {
+     "heather": 3,
+     "leather": 3,
+     "tether": 3,
+     "weather": 3
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "heather",
+     "leather",
+     "tether",
+     "weather"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "not_line_final",
+     "gate2": "not_line_final"
+    }
+   }
+  },
+  {
+   "name": "v3-po-drew-blue",
+   "prompt": "A rhyming couplet:\nThe sky and ocean were the things I drew,\nI colored both of them a shade of ",
+   "intermediates": [
+    "blue"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "drew",
+   "qwen_commits": {
+    "blue": 26,
+    "knew": 1,
+    "clouds": 1,
+    "you": 1,
+    "truth": 1,
+    "view": 1,
+    "true": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.9,
+    "site_hits": 5,
+    "site_words": {
+     "blue": 5,
+     "knew": 1,
+     "clouds": 1,
+     "you": 1,
+     "truth": 1,
+     "view": 1,
+     "true": 1
+    }
+   },
+   "authored_rhyme": "blue",
+   "mc": {
+    "candidates": [
+     "through",
+     "too",
+     "who",
+     "due",
+     "hue",
+     "new"
+    ],
+    "tiers": {
+     "hue": "A",
+     "new": "A",
+     "through": "A",
+     "too": "A"
+    },
+    "tier_a_counts": {
+     "hue": 3,
+     "new": 3,
+     "through": 3,
+     "too": 3
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "hue",
+     "new",
+     "through",
+     "too"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "not_line_final",
+     "gate1": "cannot",
+     "gate2": "not_line_final"
+    }
+   }
+  },
+  {
+   "name": "v3-po-crest-rest",
+   "prompt": "A rhyming couplet:\nAt last we stood upon the mountain's crest,\nand sat down on a rock to take a ",
+   "intermediates": [
+    "rest"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "crest",
+   "qwen_commits": {
+    "rest": 26,
+    "blessed": 3,
+    "best": 1,
+    "hue": 1,
+    "west": 1,
+    "breast": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 1.0,
+    "site_hits": 4,
+    "site_words": {
+     "rest": 4,
+     "blessed": 3,
+     "best": 1,
+     "hue": 1,
+     "west": 1,
+     "breast": 1
+    }
+   },
+   "authored_rhyme": "rest",
+   "mc": {
+    "candidates": [
+     "guest",
+     "pressed",
+     "nest",
+     "chest",
+     "quest",
+     "guessed",
+     "confessed",
+     "expressed",
+     "impressed",
+     "abreast",
+     "addressed",
+     "caressed",
+     "possessed",
+     "distressed",
+     "dressed",
+     "suggest",
+     "request",
+     "jest",
+     "test",
+     "zest",
+     "unrest",
+     "protest",
+     "stressed",
+     "oppressed",
+     "depressed",
+     "obsessed",
+     "professed",
+     "progressed",
+     "attest",
+     "invest",
+     "detest",
+     "contest",
+     "digest",
+     "arrest",
+     "assessed",
+     "bequest",
+     "behest",
+     "lest",
+     "northwest",
+     "southwest",
+     "suppressed",
+     "repressed",
+     "undressed",
+     "unimpressed",
+     "coalesced",
+     "acquiesced",
+     "transgressed",
+     "dispossessed",
+     "digressed",
+     "compressed",
+     "recessed",
+     "finessed",
+     "messed",
+     "pest",
+     "vest",
+     "infest",
+     "ingest",
+     "molest",
+     "divest",
+     "reinvest",
+     "retest",
+     "unaddressed",
+     "unstressed",
+     "reassessed",
+     "repossessed",
+     "midwest",
+     "fest",
+     "congest"
+    ],
+    "tiers": {
+     "quest": "A",
+     "chest": "A",
+     "nest": "C",
+     "pressed": "C",
+     "guessed": "C",
+     "confessed": "C",
+     "expressed": "C",
+     "impressed": "C",
+     "abreast": "C",
+     "addressed": "C",
+     "caressed": "C",
+     "possessed": "C",
+     "distressed": "C",
+     "dressed": "C",
+     "suggest": "C",
+     "request": "C",
+     "jest": "C",
+     "guest": "C",
+     "test": "C",
+     "zest": "C",
+     "unrest": "C",
+     "protest": "C",
+     "stressed": "C",
+     "oppressed": "C",
+     "depressed": "C",
+     "obsessed": "C",
+     "professed": "C",
+     "progressed": "C",
+     "attest": "C",
+     "invest": "C",
+     "detest": "C",
+     "contest": "C",
+     "digest": "C",
+     "arrest": "C",
+     "assessed": "C",
+     "bequest": "C",
+     "behest": "C",
+     "lest": "C",
+     "northwest": "C",
+     "southwest": "C",
+     "suppressed": "C",
+     "repressed": "C",
+     "undressed": "C",
+     "unimpressed": "C",
+     "coalesced": "C",
+     "acquiesced": "C",
+     "transgressed": "C",
+     "dispossessed": "C",
+     "digressed": "C",
+     "compressed": "C",
+     "recessed": "C",
+     "finessed": "C",
+     "messed": "C",
+     "pest": "C",
+     "vest": "C",
+     "infest": "C",
+     "ingest": "C",
+     "molest": "C",
+     "divest": "C",
+     "reinvest": "C",
+     "retest": "C",
+     "unaddressed": "C",
+     "unstressed": "C",
+     "reassessed": "C",
+     "repossessed": "C",
+     "midwest": "C",
+     "fest": "C",
+     "congest": "C"
+    },
+    "tier_a_counts": {
+     "quest": 3,
+     "chest": 2
+    },
+    "vetted_by": "claude-opus-5-5",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "quest",
+     "chest",
+     "nest",
+     "pressed",
+     "guessed",
+     "confessed",
+     "expressed",
+     "impressed"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-ease-trees",
+   "prompt": "A rhyming couplet:\nThe deer leaps over logs with grace and ease,\nShe bounds between the tall and leafy ",
+   "intermediates": [
+    "trees"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "ease",
+   "qwen_commits": {
+    "trees": 25,
+    "please": 2,
+    "ballet": 1,
+    "breeze": 1,
+    "tree": 1,
+    "huge": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.8,
+    "site_hits": 5,
+    "site_words": {
+     "ballet": 1,
+     "breeze": 1,
+     "trees": 5,
+     "tree": 1,
+     "please": 2,
+     "huge": 1
+    }
+   },
+   "authored_rhyme": "trees",
+   "mc": {
+    "candidates": [
+     "cheese",
+     "knees",
+     "seas",
+     "bees",
+     "freeze"
+    ],
+    "tiers": {
+     "freeze": "A",
+     "knees": "A",
+     "seas": "A",
+     "bees": "A"
+    },
+    "tier_a_counts": {
+     "freeze": 3,
+     "knees": 3,
+     "seas": 3,
+     "bees": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "freeze",
+     "knees",
+     "seas",
+     "bees"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-hair-air",
+   "prompt": "A rhyming couplet:\nThe mountain wind blew wildly through my hair,\nI filled my lungs with crisp and freshening ",
+   "intermediates": [
+    "air"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "hair",
+   "qwen_commits": {
+    "air": 25,
+    "despair": 2,
+    "land": 1,
+    "fair": 1,
+    "hair": 1,
+    "ground": 1,
+    "away": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.9,
+    "site_hits": 4,
+    "site_words": {
+     "air": 4,
+     "land": 1,
+     "fair": 1,
+     "hair": 1,
+     "despair": 2,
+     "ground": 1,
+     "away": 1
+    }
+   },
+   "authored_rhyme": "air",
+   "mc": {
+    "candidates": [
+     "share",
+     "stare",
+     "chair",
+     "there",
+     "bare",
+     "care",
+     "prayer",
+     "rare"
+    ],
+    "tiers": {
+     "bare": "A",
+     "care": "A",
+     "prayer": "A",
+     "there": "A",
+     "stare": "A",
+     "rare": "A"
+    },
+    "tier_a_counts": {
+     "bare": 3,
+     "care": 3,
+     "prayer": 3,
+     "there": 3,
+     "stare": 2,
+     "rare": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "bare",
+     "care",
+     "prayer",
+     "there",
+     "stare",
+     "rare"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-rye-sky",
+   "prompt": "A rhyming couplet:\nThe fields are full of golden wheat and rye,\nThat sway beneath the wide and open ",
+   "intermediates": [
+    "sky"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "rye",
+   "qwen_commits": {
+    "sky": 29,
+    "eye": 1,
+    "me": 1,
+    "sight": 1,
+    "fly": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 1.0,
+    "site_hits": 7,
+    "site_words": {
+     "sky": 7,
+     "eye": 1,
+     "me": 1,
+     "sight": 1,
+     "fly": 1
+    }
+   },
+   "authored_rhyme": "sky",
+   "mc": {
+    "candidates": [
+     "lie",
+     "try",
+     "high",
+     "dry",
+     "nigh",
+     "sigh",
+     "july"
+    ],
+    "tiers": {
+     "dry": "A",
+     "high": "A",
+     "nigh": "A",
+     "sigh": "A",
+     "july": "A",
+     "lie": "A"
+    },
+    "tier_a_counts": {
+     "dry": 3,
+     "high": 3,
+     "nigh": 3,
+     "sigh": 3,
+     "july": 1,
+     "lie": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "dry",
+     "high",
+     "nigh",
+     "sigh",
+     "july",
+     "lie"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "not_line_final",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-by-sky",
+   "prompt": "A rhyming couplet:\nThe reindeer and the sleigh go flying by,\nA shadow racing through the moonlit winter ",
+   "intermediates": [
+    "sky"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "by",
+   "qwen_commits": {
+    "sky": 28,
+    "high": 2,
+    "解析": 1,
+    "sighs": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 1.0,
+    "site_hits": 6,
+    "site_words": {
+     "sky": 6,
+     "解析": 1,
+     "high": 2,
+     "sighs": 1
+    }
+   },
+   "authored_rhyme": "sky",
+   "mc": {
+    "candidates": [
+     "fly",
+     "try",
+     "why",
+     "sigh",
+     "cry",
+     "eye",
+     "goodbye",
+     "july",
+     "nigh"
+    ],
+    "tiers": {
+     "cry": "A",
+     "eye": "A",
+     "fly": "A",
+     "goodbye": "A",
+     "july": "A",
+     "nigh": "A",
+     "sigh": "A",
+     "why": "A"
+    },
+    "tier_a_counts": {
+     "cry": 3,
+     "eye": 3,
+     "fly": 3,
+     "goodbye": 3,
+     "july": 1,
+     "nigh": 1,
+     "sigh": 1,
+     "why": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "cry",
+     "eye",
+     "fly",
+     "goodbye",
+     "july",
+     "nigh",
+     "sigh",
+     "why"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-friend-end",
+   "prompt": "A rhyming couplet:\nI felt alone at first without a friend,\nBut we were close by the school year's ",
+   "intermediates": [
+    "end"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "friend",
+   "qwen_commits": {
+    "end": 25,
+    "mend": 3,
+    "2nd": 1,
+    "mended": 1,
+    "one": 1,
+    "me": 1,
+    "sense": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.9,
+    "site_hits": 4,
+    "site_words": {
+     "end": 4,
+     "mended": 1,
+     "mend": 3,
+     "one": 1,
+     "me": 1,
+     "sense": 1
+    }
+   },
+   "authored_rhyme": "end",
+   "mc": {
+    "candidates": [
+     "lend",
+     "bend",
+     "extend",
+     "defend",
+     "attend",
+     "depend",
+     "pretend",
+     "send",
+     "spend"
+    ],
+    "tiers": {
+     "attend": "A",
+     "bend": "A",
+     "depend": "A",
+     "extend": "A",
+     "lend": "A",
+     "pretend": "A",
+     "send": "A",
+     "spend": "A"
+    },
+    "tier_a_counts": {
+     "attend": 2,
+     "bend": 2,
+     "depend": 2,
+     "extend": 2,
+     "lend": 2,
+     "pretend": 2,
+     "send": 2,
+     "spend": 2
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "attend",
+     "bend",
+     "depend",
+     "extend",
+     "lend",
+     "pretend",
+     "send",
+     "spend"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-go-know",
+   "prompt": "A rhyming couplet:\nThe teacher shows us where we ought to go,\nShe teaches us the things we need to ",
+   "intermediates": [
+    "know"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "go",
+   "qwen_commits": {
+    "know": 25,
+    "grow": 3,
+    "no-no": 1,
+    "more": 1,
+    "do": 1,
+    "pro": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.9,
+    "site_hits": 4,
+    "site_words": {
+     "know": 4,
+     "no-no": 1,
+     "more": 1,
+     "grow": 3,
+     "do": 1,
+     "pro": 1
+    }
+   },
+   "authored_rhyme": "know",
+   "mc": {
+    "candidates": [
+     "throw",
+     "glow",
+     "ago",
+     "snow",
+     "below",
+     "flow",
+     "slow",
+     "show"
+    ],
+    "tiers": {
+     "below": "A",
+     "flow": "A",
+     "glow": "A",
+     "slow": "A",
+     "show": "A"
+    },
+    "tier_a_counts": {
+     "below": 3,
+     "flow": 3,
+     "glow": 3,
+     "slow": 3,
+     "show": 2
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "below",
+     "flow",
+     "glow",
+     "slow",
+     "show"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-chime-time",
+   "prompt": "A rhyming couplet:\nThe tower clock rings out its final chime,\nAnd tells the sleepy town it's closing ",
+   "intermediates": [
+    "time"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "chime",
+   "qwen_commits": {
+    "time": 26,
+    "climb": 2,
+    "nigh": 1,
+    "align": 1,
+    "behind": 1,
+    "rhyme": 1,
+    "declines": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 1.0,
+    "site_hits": 4,
+    "site_words": {
+     "climb": 2,
+     "time": 4,
+     "nigh": 1,
+     "align": 1,
+     "behind": 1,
+     "rhyme": 1,
+     "declines": 1
+    }
+   },
+   "authored_rhyme": "time",
+   "mc": {
+    "candidates": [
+     "prime",
+     "sublime",
+     "lime",
+     "mime",
+     "grime",
+     "crime",
+     "thyme"
+    ],
+    "tiers": {
+     "grime": "A",
+     "prime": "A",
+     "sublime": "A",
+     "crime": "A",
+     "mime": "A",
+     "thyme": "A"
+    },
+    "tier_a_counts": {
+     "grime": 3,
+     "prime": 3,
+     "sublime": 3,
+     "crime": 2,
+     "mime": 1,
+     "thyme": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "grime",
+     "prime",
+     "sublime",
+     "crime",
+     "mime",
+     "thyme"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-roast-toast",
+   "prompt": "A rhyming couplet:\nFor Sunday dinner, Mother made a roast,\nAnd Grandpa raised his glass to give a ",
+   "intermediates": [
+    "toast"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "roast",
+   "qwen_commits": {
+    "toast": 28,
+    "most": 2,
+    "roast": 1,
+    "a": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.9,
+    "site_hits": 7,
+    "site_words": {
+     "most": 2,
+     "toast": 7,
+     "roast": 1,
+     "a": 1
+    }
+   },
+   "authored_rhyme": "toast",
+   "mc": {
+    "candidates": [
+     "ghost",
+     "coast",
+     "host",
+     "boast",
+     "post"
+    ],
+    "tiers": {
+     "boast": "A",
+     "coast": "A",
+     "ghost": "A",
+     "host": "A",
+     "post": "A"
+    },
+    "tier_a_counts": {
+     "boast": 3,
+     "coast": 3,
+     "ghost": 3,
+     "host": 3,
+     "post": 2
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "boast",
+     "coast",
+     "ghost",
+     "host",
+     "post"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-long-strong",
+   "prompt": "A rhyming couplet:\nOur friendship has endured for oh so long,\nThrough every storm it only grew more ",
+   "intermediates": [
+    "strong"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "long",
+   "qwen_commits": {
+    "strong": 26,
+    "song": 2,
+    "along": 2,
+    "shown": 1,
+    "long": 1,
+    "wrong": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 1.0,
+    "site_hits": 4,
+    "site_words": {
+     "shown": 1,
+     "song": 2,
+     "along": 2,
+     "strong": 4,
+     "long": 1,
+     "wrong": 1
+    }
+   },
+   "authored_rhyme": "strong",
+   "mc": {
+    "candidates": [
+     "gong",
+     "prong",
+     "prolong",
+     "throng",
+     "belong",
+     "lifelong",
+     "yearlong",
+     "thong",
+     "sarong",
+     "pong"
+    ],
+    "tiers": {
+     "belong": "A",
+     "lifelong": "C",
+     "prolong": "C",
+     "throng": "C",
+     "gong": "C",
+     "yearlong": "C",
+     "prong": "C",
+     "thong": "C",
+     "sarong": "C",
+     "pong": "C"
+    },
+    "tier_a_counts": {
+     "belong": 3
+    },
+    "vetted_by": "claude-opus-5-5",
+    "topic_confusers": 3,
+    "candidates_v2_order": [
+     "belong",
+     "lifelong",
+     "prolong",
+     "throng",
+     "gong",
+     "yearlong",
+     "prong",
+     "thong"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-brink-sink",
+   "prompt": "A rhyming couplet:\nThe storm had pushed our boat right to the brink,\nWe bailed and prayed that it would not ",
+   "intermediates": [
+    "sink"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "brink",
+   "qwen_commits": {
+    "sink": 25,
+    "think": 2,
+    "trick": 1,
+    "shrink": 1,
+    "stunk": 1,
+    "in": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.8,
+    "site_hits": 5,
+    "site_words": {
+     "sink": 5,
+     "trick": 1,
+     "think": 2,
+     "shrink": 1,
+     "stunk": 1,
+     "in": 1
+    }
+   },
+   "authored_rhyme": "sink",
+   "mc": {
+    "candidates": [
+     "ink",
+     "blink",
+     "link",
+     "drink",
+     "wink"
+    ],
+    "tiers": {
+     "blink": "A",
+     "drink": "A",
+     "link": "A",
+     "wink": "A",
+     "ink": "A"
+    },
+    "tier_a_counts": {
+     "blink": 3,
+     "drink": 3,
+     "link": 3,
+     "wink": 2,
+     "ink": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "blink",
+     "drink",
+     "link",
+     "wink",
+     "ink"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-hours-flowers",
+   "prompt": "A rhyming couplet:\nWe weeded in the sun for many hours,\nAnd then sat down among the blooming ",
+   "intermediates": [
+    "flowers"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "hours",
+   "qwen_commits": {
+    "flowers": 24,
+    "sandwiches": 1,
+    "porch": 1,
+    "hours": 1,
+    "brows": 1,
+    "powers": 1,
+    "showers": 1,
+    "and": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.8,
+    "site_hits": 4,
+    "site_words": {
+     "sandwiches": 1,
+     "flowers": 4,
+     "porch": 1,
+     "hours": 1,
+     "brows": 1,
+     "powers": 1,
+     "showers": 1,
+     "and": 1
+    }
+   },
+   "authored_rhyme": "flowers",
+   "mc": {
+    "candidates": [
+     "devours",
+     "towers",
+     "overpowers",
+     "empowers",
+     "bowers",
+     "ours",
+     "scours",
+     "sours",
+     "superpowers"
+    ],
+    "tiers": {
+     "towers": "A",
+     "bowers": "A",
+     "ours": "A",
+     "devours": "C",
+     "scours": "C",
+     "sours": "C",
+     "overpowers": "C",
+     "empowers": "C",
+     "superpowers": "C"
+    },
+    "tier_a_counts": {
+     "towers": 3,
+     "bowers": 2,
+     "ours": 1
+    },
+    "vetted_by": "claude-opus-5-5",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "towers",
+     "bowers",
+     "ours",
+     "devours",
+     "scours",
+     "sours",
+     "overpowers",
+     "empowers"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "not_line_final",
+     "gate1": "not_line_final",
+     "gate2": "not_line_final"
+    }
+   }
+  },
+  {
+   "name": "v3-po-lights-nights",
+   "prompt": "A rhyming couplet:\nWe danced beneath the bright and flashing lights,\nthrough all those long and warm and summer ",
+   "intermediates": [
+    "nights"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "lights",
+   "qwen_commits": {
+    "nights": 26,
+    "night": 2,
+    "sight": 1,
+    "same": 1,
+    "delights": 1,
+    "dawns": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.9,
+    "site_hits": 5,
+    "site_words": {
+     "night": 2,
+     "nights": 5,
+     "sight": 1,
+     "same": 1,
+     "delights": 1,
+     "dawns": 1
+    }
+   },
+   "authored_rhyme": "nights",
+   "mc": {
+    "candidates": [
+     "bites",
+     "sights",
+     "flights",
+     "rights",
+     "heights",
+     "ignites",
+     "excites",
+     "invites",
+     "unites",
+     "reunites",
+     "fights",
+     "kites",
+     "writes",
+     "sites",
+     "whites",
+     "tights",
+     "slights",
+     "rites",
+     "recites",
+     "cites",
+     "incites",
+     "mites",
+     "rewrites",
+     "bytes",
+     "overwrites",
+     "electrolytes",
+     "terabytes"
+    ],
+    "tiers": {
+     "flights": "A",
+     "heights": "A",
+     "sights": "A",
+     "ignites": "C",
+     "excites": "C",
+     "invites": "C",
+     "unites": "C",
+     "reunites": "C",
+     "fights": "C",
+     "bites": "C",
+     "kites": "C",
+     "rights": "C",
+     "writes": "C",
+     "sites": "C",
+     "whites": "C",
+     "tights": "C",
+     "slights": "C",
+     "rites": "C",
+     "recites": "C",
+     "cites": "C",
+     "incites": "C",
+     "mites": "C",
+     "rewrites": "C",
+     "bytes": "C",
+     "overwrites": "C",
+     "electrolytes": "C",
+     "terabytes": "C"
+    },
+    "tier_a_counts": {
+     "flights": 3,
+     "heights": 3,
+     "sights": 3
+    },
+    "vetted_by": "claude-opus-5-5",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "flights",
+     "heights",
+     "sights",
+     "ignites",
+     "excites",
+     "invites",
+     "unites",
+     "reunites"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "not_line_final",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-warm-storm",
+   "prompt": "A rhyming couplet:\nWe gather by the stove to keep us warm,\nWhile outside howls a wild December ",
+   "intermediates": [
+    "storm"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "warm",
+   "qwen_commits": {
+    "storm": 26,
+    "harm": 1,
+    "form": 1,
+    "norm": 1,
+    "charm": 1,
+    "tea": 1,
+    "cold": 1,
+    "home": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 1.0,
+    "site_hits": 4,
+    "site_words": {
+     "storm": 4,
+     "harm": 1,
+     "form": 1,
+     "norm": 1,
+     "charm": 1,
+     "tea": 1,
+     "cold": 1,
+     "home": 1
+    }
+   },
+   "authored_rhyme": "storm",
+   "mc": {
+    "candidates": [
+     "transform",
+     "perform",
+     "reform",
+     "conform",
+     "swarm",
+     "inform",
+     "dorm",
+     "lukewarm",
+     "deform",
+     "misinform"
+    ],
+    "tiers": {
+     "swarm": "A",
+     "transform": "A",
+     "perform": "C",
+     "inform": "C",
+     "reform": "C",
+     "conform": "C",
+     "dorm": "C",
+     "lukewarm": "C",
+     "deform": "C",
+     "misinform": "C"
+    },
+    "tier_a_counts": {
+     "swarm": 3,
+     "transform": 2
+    },
+    "vetted_by": "claude-opus-5-5",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "swarm",
+     "transform",
+     "perform",
+     "inform",
+     "reform",
+     "conform",
+     "dorm",
+     "lukewarm"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "not_line_final",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-goal-soul",
+   "prompt": "A rhyming couplet:\nTo reach the peak had been our only goal,\nit stirred a fire deep within my ",
+   "intermediates": [
+    "soul"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "goal",
+   "qwen_commits": {
+    "soul": 25,
+    "control": 2,
+    "toil": 1,
+    "all": 1,
+    "pole": 1,
+    "roll": 1,
+    "to": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.9,
+    "site_hits": 4,
+    "site_words": {
+     "control": 2,
+     "soul": 4,
+     "toil": 1,
+     "all": 1,
+     "pole": 1,
+     "roll": 1,
+     "to": 1
+    }
+   },
+   "authored_rhyme": "soul",
+   "mc": {
+    "candidates": [
+     "coal",
+     "toll",
+     "role",
+     "whole",
+     "hole",
+     "stroll",
+     "console"
+    ],
+    "tiers": {
+     "hole": "A",
+     "stroll": "A",
+     "toll": "A",
+     "whole": "A",
+     "role": "A",
+     "coal": "A",
+     "console": "A"
+    },
+    "tier_a_counts": {
+     "hole": 3,
+     "stroll": 3,
+     "toll": 3,
+     "whole": 3,
+     "role": 2,
+     "coal": 1,
+     "console": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "hole",
+     "stroll",
+     "toll",
+     "whole",
+     "role",
+     "coal",
+     "console"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-five-alive",
+   "prompt": "A rhyming couplet:\nI work each weekday from nine until five,\nAnd earn just enough to stay barely ",
+   "intermediates": [
+    "alive"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "five",
+   "qwen_commits": {
+    "alive": 24,
+    "survive": 1,
+    "strife": 1,
+    "pride": 1,
+    "reply": 1,
+    "drive": 1,
+    "dove": 1,
+    "side": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.8,
+    "site_hits": 4,
+    "site_words": {
+     "alive": 4,
+     "survive": 1,
+     "strife": 1,
+     "pride": 1,
+     "reply": 1,
+     "drive": 1,
+     "dove": 1,
+     "side": 1
+    }
+   },
+   "authored_rhyme": "alive",
+   "mc": {
+    "candidates": [
+     "arrive",
+     "thrive",
+     "revive",
+     "strive",
+     "hive"
+    ],
+    "tiers": {
+     "arrive": "A",
+     "hive": "A",
+     "strive": "A",
+     "thrive": "A"
+    },
+    "tier_a_counts": {
+     "arrive": 3,
+     "hive": 3,
+     "strive": 3,
+     "thrive": 3
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "arrive",
+     "hive",
+     "strive",
+     "thrive"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-treat-sweet",
+   "prompt": "A rhyming couplet:\nThe bees fly home with nectar, such a treat,\nThey turn it into honey, rich and ",
+   "intermediates": [
+    "sweet"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "treat",
+   "qwen_commits": {
+    "sweet": 27,
+    "beat": 1,
+    "eat": 1,
+    "treat": 1,
+    "heat": 1,
+    "sleep": 1,
+    "retreat": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 1.0,
+    "site_hits": 5,
+    "site_words": {
+     "sweet": 5,
+     "beat": 1,
+     "eat": 1,
+     "treat": 1,
+     "heat": 1,
+     "sleep": 1,
+     "retreat": 1
+    }
+   },
+   "authored_rhyme": "sweet",
+   "mc": {
+    "candidates": [
+     "meet",
+     "street",
+     "seat",
+     "defeat",
+     "complete",
+     "feet",
+     "neat",
+     "wheat"
+    ],
+    "tiers": {
+     "complete": "A",
+     "feet": "A",
+     "meet": "A",
+     "neat": "A",
+     "seat": "A",
+     "wheat": "A"
+    },
+    "tier_a_counts": {
+     "complete": 3,
+     "feet": 2,
+     "meet": 2,
+     "neat": 2,
+     "seat": 1,
+     "wheat": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "complete",
+     "feet",
+     "meet",
+     "neat",
+     "seat",
+     "wheat"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "not_line_final",
+     "gate1": "cannot",
+     "gate2": "not_line_final"
+    }
+   }
+  },
+  {
+   "name": "v3-po-rule-school",
+   "prompt": "A rhyming couplet:\nWe learn to follow every classroom rule,\nEach day we spend together here at ",
+   "intermediates": [
+    "school"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "rule",
+   "qwen_commits": {
+    "school": 26,
+    "cool": 2,
+    "old": 1,
+    "right": 1,
+    "crowd": 1,
+    "fool": 1,
+    "to": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 1.0,
+    "site_hits": 4,
+    "site_words": {
+     "school": 4,
+     "old": 1,
+     "cool": 2,
+     "right": 1,
+     "crowd": 1,
+     "fool": 1,
+     "to": 1
+    }
+   },
+   "authored_rhyme": "school",
+   "mc": {
+    "candidates": [
+     "drool",
+     "preschool",
+     "tool",
+     "stool",
+     "jewel",
+     "pool",
+     "cruel",
+     "fuel",
+     "mule",
+     "spool",
+     "ghoul",
+     "uncool",
+     "dual",
+     "retool",
+     "misrule"
+    ],
+    "tiers": {
+     "tool": "A",
+     "jewel": "A",
+     "pool": "A",
+     "preschool": "C",
+     "cruel": "C",
+     "fuel": "C",
+     "stool": "C",
+     "drool": "C",
+     "mule": "C",
+     "spool": "C",
+     "ghoul": "C",
+     "uncool": "C",
+     "dual": "C",
+     "retool": "C",
+     "misrule": "C"
+    },
+    "tier_a_counts": {
+     "tool": 3,
+     "jewel": 2,
+     "pool": 2
+    },
+    "vetted_by": "claude-opus-5-5",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "tool",
+     "jewel",
+     "pool",
+     "preschool",
+     "cruel",
+     "fuel",
+     "stool",
+     "drool"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "not_line_final",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-store-more",
+   "prompt": "A rhyming couplet:\nWe ran out of eggs, so off we went to the store,\nThen hurried home to bake a batch once ",
+   "intermediates": [
+    "more"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "store",
+   "qwen_commits": {
+    "more": 27,
+    "door": 4,
+    "corn": 1,
+    "bored": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 1.0,
+    "site_hits": 5,
+    "site_words": {
+     "more": 5,
+     "corn": 1,
+     "door": 4,
+     "bored": 1
+    }
+   },
+   "authored_rhyme": "more",
+   "mc": {
+    "candidates": [
+     "ignore",
+     "before",
+     "floor",
+     "score",
+     "chore",
+     "four",
+     "galore"
+    ],
+    "tiers": {
+     "before": "A",
+     "chore": "A",
+     "floor": "A",
+     "four": "A",
+     "galore": "A"
+    },
+    "tier_a_counts": {
+     "before": 3,
+     "chore": 3,
+     "floor": 3,
+     "four": 1,
+     "galore": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "before",
+     "chore",
+     "floor",
+     "four",
+     "galore"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "not_line_final",
+     "gate1": "not_line_final",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-mild-wild",
+   "prompt": "A rhyming couplet:\nThe fox looked tame, his manner calm and mild,\nBut deep inside his heart was fierce and ",
+   "intermediates": [
+    "wild"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "mild",
+   "qwen_commits": {
+    "wild": 27,
+    "child": 3,
+    "disguise": 1,
+    "riled": 1,
+    "meal": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 1.0,
+    "site_hits": 5,
+    "site_words": {
+     "wild": 5,
+     "child": 3,
+     "disguise": 1,
+     "riled": 1,
+     "meal": 1
+    }
+   },
+   "authored_rhyme": "wild",
+   "mc": {
+    "candidates": [
+     "restyled",
+     "reviled",
+     "smiled",
+     "beguiled",
+     "styled"
+    ],
+    "tiers": {
+     "beguiled": "A",
+     "reviled": "A",
+     "smiled": "A",
+     "styled": "A"
+    },
+    "tier_a_counts": {
+     "beguiled": 3,
+     "reviled": 3,
+     "smiled": 3,
+     "styled": 2
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "beguiled",
+     "reviled",
+     "smiled",
+     "styled"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "not_line_final",
+     "gate1": "not_line_final",
+     "gate2": "not_line_final"
+    }
+   }
+  },
+  {
+   "name": "v3-po-guest-rest",
+   "prompt": "A rhyming couplet:\nThe hotel lobby welcomes one last guest,\nwho climbs the stairs at last to get some ",
+   "intermediates": [
+    "rest"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "guest",
+   "qwen_commits": {
+    "rest": 30,
+    "outside": 1,
+    "sky": 1,
+    "guess": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 1.0,
+    "site_hits": 8,
+    "site_words": {
+     "rest": 8,
+     "outside": 1,
+     "sky": 1,
+     "guess": 1
+    }
+   },
+   "authored_rhyme": "rest",
+   "mc": {
+    "candidates": [
+     "best",
+     "quest",
+     "nest",
+     "chest",
+     "pressed",
+     "west",
+     "blessed",
+     "dressed"
+    ],
+    "tiers": {
+     "best": "A",
+     "chest": "A",
+     "pressed": "A",
+     "quest": "A",
+     "west": "A",
+     "blessed": "A",
+     "dressed": "A",
+     "nest": "A"
+    },
+    "tier_a_counts": {
+     "best": 3,
+     "chest": 3,
+     "pressed": 3,
+     "quest": 3,
+     "west": 3,
+     "blessed": 2,
+     "dressed": 2,
+     "nest": 2
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "best",
+     "chest",
+     "pressed",
+     "quest",
+     "west",
+     "blessed",
+     "dressed",
+     "nest"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-hay-day",
+   "prompt": "A rhyming couplet:\nWe fill the barn with bales of golden hay,\nAnd rest at last to end the summer ",
+   "intermediates": [
+    "day"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "hay",
+   "qwen_commits": {
+    "day": 27,
+    "away": 3,
+    "bay": 1,
+    "done": 1,
+    "may": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 1.0,
+    "site_hits": 5,
+    "site_words": {
+     "day": 5,
+     "away": 3,
+     "bay": 1,
+     "done": 1,
+     "may": 1
+    }
+   },
+   "authored_rhyme": "day",
+   "mc": {
+    "candidates": [
+     "play",
+     "gray",
+     "way",
+     "ray",
+     "stay",
+     "pay"
+    ],
+    "tiers": {
+     "gray": "A",
+     "play": "A",
+     "stay": "A",
+     "way": "A",
+     "pay": "A"
+    },
+    "tier_a_counts": {
+     "gray": 3,
+     "play": 3,
+     "stay": 3,
+     "way": 2,
+     "pay": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "gray",
+     "play",
+     "stay",
+     "way",
+     "pay"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "not_line_final",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-grind-behind",
+   "prompt": "A rhyming couplet:\nEach day I rise and join the daily grind,\nAnd leave my dreams and hopes and rest ",
+   "intermediates": [
+    "behind"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "grind",
+   "qwen_commits": {
+    "behind": 27,
+    "shine": 1,
+    "find": 1,
+    "kind": 1,
+    "分析": 1,
+    "blind": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 1.0,
+    "site_hits": 5,
+    "site_words": {
+     "shine": 1,
+     "find": 1,
+     "behind": 5,
+     "kind": 1,
+     "分析": 1,
+     "blind": 1
+    }
+   },
+   "authored_rhyme": "behind",
+   "mc": {
+    "candidates": [
+     "defined",
+     "intertwined",
+     "mind",
+     "combined",
+     "unwind",
+     "designed",
+     "resigned"
+    ],
+    "tiers": {
+     "mind": "A",
+     "unwind": "A",
+     "designed": "A",
+     "resigned": "A"
+    },
+    "tier_a_counts": {
+     "mind": 2,
+     "unwind": 2,
+     "designed": 1,
+     "resigned": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "mind",
+     "unwind",
+     "designed",
+     "resigned"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-farm-alarm",
+   "prompt": "A rhyming couplet:\nThe rooster crows at five upon the farm,\nHe wakes us better than a clock's ",
+   "intermediates": [
+    "alarm"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "farm",
+   "qwen_commits": {
+    "alarm": 25,
+    "warm": 2,
+    "seems": 1,
+    "chomp": 1,
+    "calm": 1,
+    "barn": 1,
+    "storm": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.9,
+    "site_hits": 4,
+    "site_words": {
+     "alarm": 4,
+     "seems": 1,
+     "warm": 2,
+     "chomp": 1,
+     "calm": 1,
+     "barn": 1,
+     "storm": 1
+    }
+   },
+   "authored_rhyme": "alarm",
+   "mc": {
+    "candidates": [
+     "charm",
+     "harm",
+     "disarm",
+     "arm",
+     "forearm",
+     "underarm",
+     "rearm"
+    ],
+    "tiers": {
+     "arm": "A",
+     "charm": "A",
+     "harm": "A",
+     "disarm": "C",
+     "forearm": "C",
+     "underarm": "C",
+     "rearm": "C"
+    },
+    "tier_a_counts": {
+     "arm": 3,
+     "charm": 3,
+     "harm": 3
+    },
+    "vetted_by": "claude-opus-5-5",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "arm",
+     "charm",
+     "harm",
+     "disarm",
+     "forearm",
+     "underarm",
+     "rearm"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "not_line_final",
+     "gate1": "not_line_final",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-heal-feel",
+   "prompt": "A rhyming couplet:\nThe music has a way to help us heal,\nIt speaks of everything we think and ",
+   "intermediates": [
+    "feel"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "heal",
+   "qwen_commits": {
+    "feel": 29,
+    "real": 2,
+    "appeal": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.9,
+    "site_hits": 8,
+    "site_words": {
+     "feel": 8,
+     "real": 2,
+     "appeal": 1
+    }
+   },
+   "authored_rhyme": "feel",
+   "mc": {
+    "candidates": [
+     "seal",
+     "reveal",
+     "meal",
+     "wheel",
+     "conceal",
+     "zeal",
+     "steal",
+     "steel"
+    ],
+    "tiers": {
+     "reveal": "A",
+     "conceal": "A",
+     "zeal": "A",
+     "seal": "A",
+     "steal": "A",
+     "steel": "A",
+     "meal": "B"
+    },
+    "tier_a_counts": {
+     "reveal": 3,
+     "conceal": 2,
+     "zeal": 2,
+     "seal": 1,
+     "steal": 1,
+     "steel": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "reveal",
+     "conceal",
+     "zeal",
+     "seal",
+     "steal",
+     "steel",
+     "meal"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v2-po-wire-fire",
+   "prompt": "A rhyming couplet:\nThe tech snipped through the red and yellow wire,\nAnd suddenly the old machine caught ",
+   "intermediates": [
+    "fire"
+   ],
+   "source": "opus55_v2",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "wire",
+   "qwen_commits": {
+    "fire": 27,
+    "a": 1,
+    "sure": 1,
+    "pyre": 1,
+    "buzzed": 1,
+    "higher": 1,
+    "course": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 1.0,
+    "site_hits": 5,
+    "site_words": {
+     "fire": 5,
+     "a": 1,
+     "sure": 1,
+     "pyre": 1,
+     "buzzed": 1,
+     "higher": 1,
+     "course": 1
+    }
+   },
+   "authored_rhyme": "fire",
+   "mc": {
+    "candidates": [
+     "acquire",
+     "desire",
+     "inspire",
+     "hire",
+     "dire",
+     "entire",
+     "expire",
+     "tire",
+     "conspire",
+     "retire"
+    ],
+    "tiers": {
+     "dire": "A",
+     "entire": "A",
+     "expire": "A",
+     "desire": "A",
+     "tire": "A",
+     "conspire": "A",
+     "retire": "A"
+    },
+    "tier_a_counts": {
+     "dire": 3,
+     "entire": 3,
+     "expire": 3,
+     "desire": 2,
+     "tire": 2,
+     "conspire": 1,
+     "retire": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "dire",
+     "entire",
+     "expire",
+     "desire",
+     "tire",
+     "conspire",
+     "retire"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v2-po-land-hand",
+   "prompt": "A rhyming couplet:\nThe young prince rode across his father's land,\nHe knelt and asked the princess for her ",
+   "intermediates": [
+    "hand"
+   ],
+   "source": "opus55_v2",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "land",
+   "qwen_commits": {
+    "hand": 26,
+    "command": 2,
+    "grand": 1,
+    "planned": 1,
+    "sand": 1,
+    "land": 1,
+    "sea": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 1.0,
+    "site_hits": 4,
+    "site_words": {
+     "grand": 1,
+     "hand": 4,
+     "planned": 1,
+     "sand": 1,
+     "land": 1,
+     "command": 2,
+     "sea": 1
+    }
+   },
+   "authored_rhyme": "hand",
+   "mc": {
+    "candidates": [
+     "understand",
+     "stand",
+     "band",
+     "demand",
+     "expand",
+     "withstand",
+     "brand",
+     "strand",
+     "firsthand",
+     "spanned",
+     "banned",
+     "scanned",
+     "unplanned",
+     "manned",
+     "fanned",
+     "tanned",
+     "bland",
+     "disband",
+     "misunderstand",
+     "offhand",
+     "meadowland",
+     "unmanned",
+     "canned",
+     "panned",
+     "gland",
+     "remand",
+     "outmanned"
+    ],
+    "tiers": {
+     "band": "A",
+     "stand": "A",
+     "expand": "A",
+     "understand": "C",
+     "demand": "C",
+     "withstand": "C",
+     "brand": "C",
+     "strand": "C",
+     "firsthand": "C",
+     "spanned": "C",
+     "banned": "C",
+     "scanned": "C",
+     "unplanned": "C",
+     "manned": "C",
+     "fanned": "C",
+     "tanned": "C",
+     "bland": "C",
+     "disband": "C",
+     "misunderstand": "C",
+     "offhand": "C",
+     "meadowland": "C",
+     "unmanned": "C",
+     "canned": "C",
+     "panned": "C",
+     "gland": "C",
+     "remand": "C",
+     "outmanned": "C"
+    },
+    "tier_a_counts": {
+     "band": 3,
+     "stand": 3,
+     "expand": 2
+    },
+    "vetted_by": "claude-opus-5-5",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "band",
+     "stand",
+     "expand",
+     "understand",
+     "demand",
+     "withstand",
+     "brand",
+     "strand"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-feet-beat",
+   "prompt": "A rhyming couplet:\nThe band begins, we rise up to our feet,\nAnd all the room is moving to the ",
+   "intermediates": [
+    "beat"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "feet",
+   "qwen_commits": {
+    "beat": 26,
+    "sweet": 4,
+    "1-2-3-4": 1,
+    "repeat": 1,
+    "treat": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.9,
+    "site_hits": 5,
+    "site_words": {
+     "repeat": 1,
+     "sweet": 4,
+     "beat": 5,
+     "treat": 1
+    }
+   },
+   "authored_rhyme": "beat",
+   "mc": {
+    "candidates": [
+     "street",
+     "meet",
+     "heat",
+     "seat",
+     "complete"
+    ],
+    "tiers": {
+     "complete": "A",
+     "heat": "A",
+     "street": "A",
+     "seat": "A",
+     "meet": "A"
+    },
+    "tier_a_counts": {
+     "complete": 3,
+     "heat": 3,
+     "street": 3,
+     "seat": 2,
+     "meet": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "complete",
+     "heat",
+     "street",
+     "seat",
+     "meet"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "not_line_final",
+     "gate1": "not_line_final",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-bite-night",
+   "prompt": "A rhyming couplet:\nThe fox is hunting, hungry for a bite,\nit prowls among the shadows late at ",
+   "intermediates": [
+    "night"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "bite",
+   "qwen_commits": {
+    "night": 25,
+    "might": 2,
+    "9": 1,
+    "sight": 1,
+    "tasty": 1,
+    "flight": 1,
+    "nice": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.8,
+    "site_hits": 5,
+    "site_words": {
+     "night": 5,
+     "sight": 1,
+     "might": 2,
+     "tasty": 1,
+     "flight": 1,
+     "nice": 1
+    }
+   },
+   "authored_rhyme": "night",
+   "mc": {
+    "candidates": [
+     "despite",
+     "site",
+     "light",
+     "fight",
+     "tight",
+     "fright",
+     "white"
+    ],
+    "tiers": {
+     "light": "A",
+     "tight": "A",
+     "fright": "A",
+     "white": "A"
+    },
+    "tier_a_counts": {
+     "light": 3,
+     "tight": 2,
+     "fright": 1,
+     "white": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "light",
+     "tight",
+     "fright",
+     "white"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-rack-snack",
+   "prompt": "A rhyming couplet:\nThe cookies cooled in rows upon the rack,\nI grabbed a couple for an afternoon ",
+   "intermediates": [
+    "snack"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "rack",
+   "qwen_commits": {
+    "snack": 27,
+    "back": 2,
+    "black": 1,
+    "crack": 1,
+    "track": 1,
+    "each": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 1.0,
+    "site_hits": 5,
+    "site_words": {
+     "black": 1,
+     "snack": 5,
+     "crack": 1,
+     "track": 1,
+     "each": 1,
+     "back": 2
+    }
+   },
+   "authored_rhyme": "snack",
+   "mc": {
+    "candidates": [
+     "pack",
+     "attack",
+     "stack",
+     "lack"
+    ],
+    "tiers": {
+     "lack": "A",
+     "stack": "A",
+     "attack": "A",
+     "pack": "A"
+    },
+    "tier_a_counts": {
+     "lack": 2,
+     "stack": 2,
+     "attack": 1,
+     "pack": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "lack",
+     "stack",
+     "attack",
+     "pack"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "not_line_final",
+     "gate2": "not_line_final"
+    }
+   }
+  },
+  {
+   "name": "v3-po-pour-more",
+   "prompt": "A rhyming couplet:\nHold out your bowl and I will gladly pour,\nAnd if you're hungry, there is plenty ",
+   "intermediates": [
+    "more"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "pour",
+   "qwen_commits": {
+    "more": 26,
+    "poor": 2,
+    "here": 1,
+    "tea": 1,
+    "soar": 1,
+    "floor": 1,
+    "afford": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.9,
+    "site_hits": 5,
+    "site_words": {
+     "tea": 1,
+     "more": 5,
+     "poor": 2,
+     "soar": 1,
+     "floor": 1,
+     "afford": 1
+    }
+   },
+   "authored_rhyme": "more",
+   "mc": {
+    "candidates": [
+     "core",
+     "door",
+     "score",
+     "store",
+     "before",
+     "adore",
+     "galore",
+     "restore"
+    ],
+    "tiers": {
+     "before": "A",
+     "door": "A",
+     "store": "A",
+     "adore": "A",
+     "galore": "A",
+     "restore": "A"
+    },
+    "tier_a_counts": {
+     "before": 3,
+     "door": 3,
+     "store": 3,
+     "adore": 2,
+     "galore": 2,
+     "restore": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "before",
+     "door",
+     "store",
+     "adore",
+     "galore",
+     "restore"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "not_line_final",
+     "gate1": "cannot",
+     "gate2": "not_line_final"
+    }
+   }
+  },
+  {
+   "name": "v3-po-reef-grief",
+   "prompt": "A rhyming couplet:\nThe ship struck hard against the hidden reef,\nAnd all the sailors' wives were filled with ",
+   "intermediates": [
+    "grief"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "reef",
+   "qwen_commits": {
+    "grief": 25,
+    "beneath": 2,
+    "belief": 1,
+    "sea": 1,
+    "keel": 1,
+    "keen": 1,
+    "is": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.9,
+    "site_hits": 4,
+    "site_words": {
+     "belief": 1,
+     "grief": 4,
+     "sea": 1,
+     "beneath": 2,
+     "keel": 1,
+     "keen": 1,
+     "is": 1
+    }
+   },
+   "authored_rhyme": "grief",
+   "mc": {
+    "candidates": [
+     "sheaf",
+     "motif",
+     "leaf",
+     "massif",
+     "brief",
+     "chief",
+     "relief",
+     "thief"
+    ],
+    "tiers": {
+     "brief": "A",
+     "chief": "A",
+     "leaf": "A",
+     "relief": "A",
+     "thief": "A"
+    },
+    "tier_a_counts": {
+     "brief": 3,
+     "chief": 3,
+     "leaf": 3,
+     "relief": 3,
+     "thief": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "brief",
+     "chief",
+     "leaf",
+     "relief",
+     "thief"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "not_line_final",
+     "gate1": "cannot",
+     "gate2": "not_line_final"
+    }
+   }
+  },
+  {
+   "name": "v3-po-show-glow",
+   "prompt": "A rhyming couplet:\nThe fireflies put on a dazzling show,\nAnd lit the forest with their gentle ",
+   "intermediates": [
+    "glow"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "show",
+   "qwen_commits": {
+    "glow": 27,
+    "show": 1,
+    "sky": 1,
+    "know": 1,
+    "the": 1,
+    "low": 1,
+    "so": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 1.0,
+    "site_hits": 5,
+    "site_words": {
+     "glow": 5,
+     "show": 1,
+     "sky": 1,
+     "know": 1,
+     "the": 1,
+     "low": 1,
+     "so": 1
+    }
+   },
+   "authored_rhyme": "glow",
+   "mc": {
+    "candidates": [
+     "though",
+     "bestow",
+     "grow",
+     "aglow",
+     "below",
+     "flow",
+     "slow",
+     "row"
+    ],
+    "tiers": {
+     "aglow": "A",
+     "below": "A",
+     "flow": "A",
+     "slow": "A",
+     "row": "A",
+     "grow": "B"
+    },
+    "tier_a_counts": {
+     "aglow": 3,
+     "below": 3,
+     "flow": 3,
+     "slow": 3,
+     "row": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "aglow",
+     "below",
+     "flow",
+     "slow",
+     "row",
+     "grow"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-haste-waste",
+   "prompt": "A rhyming couplet:\nWe hurried down the mountain in great haste,\nfor not a single moment could we ",
+   "intermediates": [
+    "waste"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "haste",
+   "qwen_commits": {
+    "waste": 26,
+    "race": 1,
+    "latest": 1,
+    "view": 1,
+    "lose": 1,
+    "blaze": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.8,
+    "site_hits": 6,
+    "site_words": {
+     "race": 1,
+     "waste": 6,
+     "latest": 1,
+     "view": 1,
+     "lose": 1,
+     "blaze": 1
+    }
+   },
+   "authored_rhyme": "waste",
+   "mc": {
+    "candidates": [
+     "paste",
+     "taste",
+     "placed",
+     "replaced",
+     "chased",
+     "embraced",
+     "faced",
+     "raced",
+     "traced",
+     "laced",
+     "paced",
+     "erased"
+    ],
+    "tiers": {
+     "chased": "A",
+     "embraced": "A",
+     "faced": "A",
+     "placed": "A",
+     "raced": "A",
+     "taste": "A",
+     "traced": "A",
+     "laced": "A",
+     "paced": "A",
+     "erased": "A"
+    },
+    "tier_a_counts": {
+     "chased": 3,
+     "embraced": 3,
+     "faced": 3,
+     "placed": 3,
+     "raced": 3,
+     "taste": 3,
+     "traced": 3,
+     "laced": 2,
+     "paced": 2,
+     "erased": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "chased",
+     "embraced",
+     "faced",
+     "placed",
+     "raced",
+     "taste",
+     "traced",
+     "laced"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-crop-stop",
+   "prompt": "A rhyming couplet:\nThe tractor rumbles off to plant the crop,\nIt rolls along and never wants to ",
+   "intermediates": [
+    "stop"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "crop",
+   "qwen_commits": {
+    "stop": 27,
+    "hop": 2,
+    "up": 1,
+    "mop": 1,
+    "cycle": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.9,
+    "site_hits": 6,
+    "site_words": {
+     "stop": 6,
+     "up": 1,
+     "hop": 2,
+     "mop": 1,
+     "cycle": 1
+    }
+   },
+   "authored_rhyme": "stop",
+   "mc": {
+    "candidates": [
+     "swap",
+     "drop",
+     "cop",
+     "pop",
+     "chop",
+     "top",
+     "shop"
+    ],
+    "tiers": {
+     "chop": "A",
+     "drop": "A",
+     "top": "A",
+     "shop": "A",
+     "pop": "A"
+    },
+    "tier_a_counts": {
+     "chop": 3,
+     "drop": 3,
+     "top": 3,
+     "shop": 2,
+     "pop": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "chop",
+     "drop",
+     "top",
+     "shop",
+     "pop"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-way-day",
+   "prompt": "A rhyming couplet:\nShe dribbled past defenders all the way,\nAnd scored the goal that won the game that ",
+   "intermediates": [
+    "day"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "way",
+   "qwen_commits": {
+    "day": 26,
+    "play": 3,
+    "display": 2,
+    "tournament": 1,
+    "goal": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 1.0,
+    "site_hits": 4,
+    "site_words": {
+     "day": 4,
+     "play": 3,
+     "tournament": 1,
+     "display": 2,
+     "goal": 1
+    }
+   },
+   "authored_rhyme": "day",
+   "mc": {
+    "candidates": [
+     "away",
+     "say",
+     "ray",
+     "stay",
+     "fray",
+     "array",
+     "okay",
+     "sway",
+     "today"
+    ],
+    "tiers": {
+     "fray": "A",
+     "stay": "A",
+     "array": "A",
+     "away": "A",
+     "say": "A",
+     "okay": "A",
+     "sway": "A",
+     "today": "A"
+    },
+    "tier_a_counts": {
+     "fray": 3,
+     "stay": 3,
+     "array": 2,
+     "away": 2,
+     "say": 2,
+     "okay": 1,
+     "sway": 1,
+     "today": 1
+    },
+    "vetted_by": "",
+    "topic_confusers": 3,
+    "candidates_v2_order": [
+     "fray",
+     "stay",
+     "array",
+     "away",
+     "say",
+     "okay",
+     "sway",
+     "today"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "not_line_final",
+     "gate1": "not_line_final",
+     "gate2": "cannot"
+    }
+   }
+  },
+  {
+   "name": "v3-po-strong-long",
+   "prompt": "A rhyming couplet:\nThe wind blew hard, the gusts were cold and strong,\nThe storm kept raging on the whole night ",
+   "intermediates": [
+    "long"
+   ],
+   "source": "opus55_v3",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_tail"
+   },
+   "line_one_end": "strong",
+   "qwen_commits": {
+    "long": 27,
+    "gone": 1,
+    "song": 1,
+    "groaned": 1,
+    "wrong": 1,
+    "along": 1
+   },
+   "regate": {
+    "leg": "free+plain",
+    "consistency": 0.9,
+    "site_hits": 6,
+    "site_words": {
+     "gone": 1,
+     "long": 6,
+     "song": 1,
+     "groaned": 1,
+     "wrong": 1,
+     "along": 1
+    }
+   },
+   "authored_rhyme": "long",
+   "mc": {
+    "candidates": [
+     "belong",
+     "prolong",
+     "throng",
+     "gong",
+     "lifelong",
+     "yearlong",
+     "prong",
+     "thong",
+     "sarong",
+     "pong",
+     "dong"
+    ],
+    "tiers": {
+     "belong": "A",
+     "throng": "A",
+     "gong": "A",
+     "lifelong": "C",
+     "prolong": "C",
+     "yearlong": "C",
+     "prong": "C",
+     "thong": "C",
+     "sarong": "C",
+     "pong": "C",
+     "dong": "C"
+    },
+    "tier_a_counts": {
+     "belong": 3,
+     "throng": 3,
+     "gong": 1
+    },
+    "vetted_by": "claude-opus-5-5",
+    "topic_confusers": 4,
+    "candidates_v2_order": [
+     "belong",
+     "throng",
+     "gong",
+     "lifelong",
+     "prolong",
+     "yearlong",
+     "prong",
+     "thong"
+    ]
+   },
+   "prompt_only_opus": {
+    "draws": 3,
+    "picked_gold": 0,
+    "instrument": "poetry-mc-2026-11-01-v3+digest-v5-task-extractive+sj-v10",
+    "gate_tags": [
+     "gate0",
+     "gate1",
+     "gate2"
+    ],
+    "kinds": {
+     "gate0": "cannot",
+     "gate1": "cannot",
+     "gate2": "cannot"
+    }
+   }
+  }
+ ]
+}

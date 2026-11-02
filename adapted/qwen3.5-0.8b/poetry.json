@@ -1,0 +1,2455 @@
+{
+ "family": "poetry",
+ "gate": "Qwen3.6-27B behavioral: >=8/10 correct at temp 0.7 (greedy-verified first); association scored against association_aliases.json (phrase-aware, echo-guarded); poetry scored by committed rhyme",
+ "eval_render_note": "EVAL RENDER: feed `prompt` verbatim as plain text, NO chat template (directed-modulation is the only chat-templated family). `gate_variant` records how the item was behaviorally verified and does NOT affect the eval read.",
+ "read": "the newline token that ends line one of the couplet (one position per item, every judged layer); changed 2026-09-23 from the final prompt token, the space before the rhyme word",
+ "adapt": {
+  "model": "qwen3.5-0.8b",
+  "hf_id": "Qwen/Qwen3.5-0.8B",
+  "frozen": "2026-10-24"
+ },
+ "items": [
+  {
+   "name": "couplet-ahead-head",
+   "prompt": "A rhyming couplet:\nThe captain pointed at the route ahead,\nAnd told his crew to follow where he'd ",
+   "intermediates": [
+    "said"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "chat_prefill",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "id": "couplet-ahead-head",
+   "authored_rhyme": "led",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "couplet-blame-game",
+   "prompt": "A rhyming couplet:\nThey pointed fingers, passing round the blame,\nBut knew that they were playing the same ",
+   "intermediates": [
+    "game"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "chat_prefill",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "id": "couplet-blame-game",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "couplet-gray-day",
+   "prompt": "A rhyming couplet:\nThe dawn broke through the clouds of silver gray,\nAnd ushered in another working ",
+   "intermediates": [
+    "day"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "chat_prefill",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "id": "couplet-gray-day",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "couplet-moon-soon",
+   "prompt": "A rhyming couplet:\nThe clouds drew back and gave us up the moon,\nBut dawn would come and take her all too ",
+   "intermediates": [
+    "soon"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "chat_prefill",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "id": "couplet-moon-soon",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "couplet-pace-race",
+   "prompt": "A rhyming couplet:\nThe runner pushed to set a faster pace,\nDetermined that he would not lose the ",
+   "intermediates": [
+    "race"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "chat_prefill",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "id": "couplet-pace-race",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "couplet-sky-fly",
+   "prompt": "A rhyming couplet:\nThe kite broke free and vanished in the sky,\nA scrap of red now learning how to ",
+   "intermediates": [
+    "fly"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "chat_prefill",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "id": "couplet-sky-fly",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "couplet-star-far",
+   "prompt": "A rhyming couplet:\nHe traced the tail of one collapsing star,\nAnd wondered if she watched it from as ",
+   "intermediates": [
+    "far"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "chat_prefill",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "id": "couplet-star-far",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "couplet-war-door",
+   "prompt": "A rhyming couplet:\nHe'd given both his sons now to the war,\nAnd couldn't bear a third knock at his ",
+   "intermediates": [
+    "door"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "chat_prefill",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "id": "couplet-war-door",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "bf-couplet-one-done",
+   "prompt": "A rhyming couplet:\nThe baker pulled the loaves out one by one,\nAnd would not rest until the work was ",
+   "intermediates": [
+    "done"
+   ],
+   "source": "staging",
+   "consistency": 1.0,
+   "gate_variant": "chat_prefill",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "id": "bf-couplet-one-done",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-po-door-floor",
+   "prompt": "A rhyming couplet:\nShe swept the dust out through the kitchen door,\nThen laid the rug across the wooden ",
+   "intermediates": [
+    "floor"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "chat_prefill",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "id": "b3-po-door-floor",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-po-moon-soon",
+   "prompt": "A rhyming couplet:\nThe owl called softly to the rising moon,\nThe night was young; the dawn would come too ",
+   "intermediates": [
+    "soon"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "chat_prefill",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "id": "b3-po-moon-soon",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-po-sand-hand",
+   "prompt": "A rhyming couplet:\nThe children built their castle in the sand,\nEach turret shaped and patted by a small ",
+   "intermediates": [
+    "hand"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "chat_prefill",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "id": "b3-po-sand-hand",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-po-sky-fly",
+   "prompt": "A rhyming couplet:\nThe eagle circled high across the sky,\nWhere only wind and wings would ever ",
+   "intermediates": [
+    "fly"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "chat_prefill",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "id": "b3-po-sky-fly",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-po-sleep-deep",
+   "prompt": "A rhyming couplet:\nThe sailors rocked at anchor half asleep,\nAbove a trench a thousand fathoms ",
+   "intermediates": [
+    "deep"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "chat_prefill",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "id": "b3-po-sleep-deep",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-po-song-long",
+   "prompt": "A rhyming couplet:\nThe choir filled the chapel with their song,\nThe echo held the final note so ",
+   "intermediates": [
+    "long"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "chat_prefill",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "id": "b3-po-song-long",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-po-track-back",
+   "prompt": "A rhyming couplet:\nThe old dog chased the rabbit down the track,\nAnd hours later came limping slowly ",
+   "intermediates": [
+    "back"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "chat_prefill",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "id": "b3-po-track-back",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-po-well-fell",
+   "prompt": "A rhyming couplet:\nThe bucket dangled high above the well,\nUntil the fraying rope gave way and ",
+   "intermediates": [
+    "fell"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "chat_prefill",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "id": "b3-po-well-fell",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "couplet-dead-red",
+   "prompt": "A rhyming couplet:\nThe roses on the grave had long been dead,\nBut once had bloomed a brilliant shade of ",
+   "intermediates": [
+    "red"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.9,
+   "gate_variant": "chat_prefill",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "id": "couplet-dead-red",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "couplet-fall-wall",
+   "prompt": "A rhyming couplet:\nHe lost his grip and started down the fall,\nHis fingers scraping bloody down the ",
+   "intermediates": [
+    "wall"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.9,
+   "gate_variant": "chat_prefill",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "id": "couplet-fall-wall",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "couplet-fear-near",
+   "prompt": "A rhyming couplet:\nShe heard the footsteps and was gripped by fear,\nFor step by step the danger drew more ",
+   "intermediates": [
+    "near"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.9,
+   "gate_variant": "chat_prefill",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "id": "couplet-fear-near",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "couplet-fight-light",
+   "prompt": "A rhyming couplet:\nHe swung his fists and wouldn't quit the fight,\nUntil the ref had dimmed the final ",
+   "intermediates": [
+    "light"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.9,
+   "gate_variant": "chat_prefill",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "id": "couplet-fight-light",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "couplet-frame-same",
+   "prompt": "A rhyming couplet:\nHe hung a second picture in a frame,\nBut found the two were utterly the ",
+   "intermediates": [
+    "same"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.9,
+   "gate_variant": "chat_prefill",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "id": "couplet-frame-same",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "couplet-gown-down",
+   "prompt": "A rhyming couplet:\nShe tripped upon the hem of her long gown,\nAnd, stumbling on the stairway, tumbled ",
+   "intermediates": [
+    "down"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.9,
+   "gate_variant": "chat_prefill",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "id": "couplet-gown-down",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "couplet-hold-old",
+   "prompt": "A rhyming couplet:\nHe reached for her but found no hand to hold,\nAnd felt for once that he was growing ",
+   "intermediates": [
+    "old"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.9,
+   "gate_variant": "chat_prefill",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "id": "couplet-hold-old",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "couplet-mind-find",
+   "prompt": "A rhyming couplet:\nShe searched the corridors of her own mind,\nFor something she was never meant to ",
+   "intermediates": [
+    "find"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.9,
+   "gate_variant": "chat_prefill",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "id": "couplet-mind-find",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "couplet-sleep-deep",
+   "prompt": "A rhyming couplet:\nShe drifted off into a dreamless sleep,\nHer breathing slow, her slumber long and ",
+   "intermediates": [
+    "deep"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.9,
+   "gate_variant": "chat_prefill",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "id": "couplet-sleep-deep",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "couplet-sun-done",
+   "prompt": "A rhyming couplet:\nThe farmer worked until the setting sun,\nAnd only stopped when every chore was ",
+   "intermediates": [
+    "done"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.9,
+   "gate_variant": "chat_prefill",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "id": "couplet-sun-done",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "couplet-time-climb",
+   "prompt": "A rhyming couplet:\nHe watched the shadows mark the crawl of time,\nAnd knew the hill was still too steep to ",
+   "intermediates": [
+    "climb"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.9,
+   "gate_variant": "chat_prefill",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "id": "couplet-time-climb",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "bf-couplet-gold-told",
+   "prompt": "A rhyming couplet:\nShe wore a crown of silver and of gold,\nA queen whose story never will be ",
+   "intermediates": [
+    "told"
+   ],
+   "source": "staging",
+   "consistency": 0.9,
+   "gate_variant": "chat_prefill",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "id": "bf-couplet-gold-told",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-po-king-ring",
+   "prompt": "A rhyming couplet:\nThe herald bowed before the aging king,\nAnd placed upon his hand the golden ",
+   "intermediates": [
+    "ring"
+   ],
+   "source": "staging_b3",
+   "consistency": 0.9,
+   "gate_variant": "chat_prefill",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "id": "b3-po-king-ring",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-po-night-light",
+   "prompt": "A rhyming couplet:\nThe stars came out to end the fading night,\nAnd every window slowly lost its ",
+   "intermediates": [
+    "light"
+   ],
+   "source": "staging_b3",
+   "consistency": 0.9,
+   "gate_variant": "chat_prefill",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "id": "b3-po-night-light",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-po-road-load",
+   "prompt": "A rhyming couplet:\nThe oxen strained along the mountain road,\nTheir wagon creaking under its heavy ",
+   "intermediates": [
+    "load"
+   ],
+   "source": "staging_b3",
+   "consistency": 0.9,
+   "gate_variant": "chat_prefill",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "id": "b3-po-road-load",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-po-sea-free",
+   "prompt": "A rhyming couplet:\nThe sailor gave his whole life to the sea,\nAnd only on the waves did he feel ",
+   "intermediates": [
+    "free"
+   ],
+   "source": "staging_b3",
+   "consistency": 0.9,
+   "gate_variant": "chat_prefill",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "id": "b3-po-sea-free",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "couplet-bed-dead",
+   "prompt": "A rhyming couplet:\nShe found him cold and still upon the bed,\nAnd knew before she touched him he was ",
+   "intermediates": [
+    "dead"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.8,
+   "gate_variant": "chat_prefill",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "id": "couplet-bed-dead",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "couplet-flame-name",
+   "prompt": "A rhyming couplet:\nShe lit the letter, watched it curl to flame,\nAnd swore she'd never speak again his ",
+   "intermediates": [
+    "name"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.8,
+   "gate_variant": "chat_prefill",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "id": "couplet-flame-name",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "couplet-rain-pain",
+   "prompt": "A rhyming couplet:\nShe pressed her palm against the window's rain,\nAs if the glass could wash away her ",
+   "intermediates": [
+    "pain"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.8,
+   "gate_variant": "chat_prefill",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "id": "couplet-rain-pain",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "poetry-au-t1-w100c2-couplet-sails-tails",
+   "prompt": "A rhyming couplet:\nThe captain flipped a coin beneath the sails,\nAnd asked his mate, \"Will it be heads or ",
+   "intermediates": [
+    "tails"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   },
+   "gate_variant": "plain"
+  },
+  {
+   "name": "poetry-au-t1-w210c0-couplet-sun-fun",
+   "prompt": "A rhyming couplet:\nWe played outside beneath the summer sun,\nAnd all day long we had a lot of ",
+   "intermediates": [
+    "fun"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 210,
+    "steer": "The subject is a 0.8B model. Use only the most common one-syllable rhyme pairs a child knows (day/way, cat/hat, night/light, sun/fun, tree/free, door/floor) and line 2 so predictable that only one rhyme word fits.",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w210c0-couplet-bake-cake",
+   "prompt": "A rhyming couplet:\nMy mother loves to cook and loves to bake,\nToday she made a sweet big birthday ",
+   "intermediates": [
+    "cake"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 210,
+    "steer": "The subject is a 0.8B model. Use only the most common one-syllable rhyme pairs a child knows (day/way, cat/hat, night/light, sun/fun, tree/free, door/floor) and line 2 so predictable that only one rhyme word fits.",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w210c0-couplet-king-sing",
+   "prompt": "A rhyming couplet:\nThe crowd bowed low before the mighty king,\nAnd then the choir began to sweetly ",
+   "intermediates": [
+    "sing"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 210,
+    "steer": "The subject is a 0.8B model. Use only the most common one-syllable rhyme pairs a child knows (day/way, cat/hat, night/light, sun/fun, tree/free, door/floor) and line 2 so predictable that only one rhyme word fits.",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w210c0-couplet-chair-bear",
+   "prompt": "A rhyming couplet:\nThe little girl sat in her rocking chair,\nAnd hugged her soft and fuzzy teddy ",
+   "intermediates": [
+    "bear"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 210,
+    "steer": "The subject is a 0.8B model. Use only the most common one-syllable rhyme pairs a child knows (day/way, cat/hat, night/light, sun/fun, tree/free, door/floor) and line 2 so predictable that only one rhyme word fits.",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w210c0-couplet-goat-coat",
+   "prompt": "A rhyming couplet:\nThe farmer laughed and fed his hungry goat,\nThen shivered in the cold and grabbed his ",
+   "intermediates": [
+    "coat"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 210,
+    "steer": "The subject is a 0.8B model. Use only the most common one-syllable rhyme pairs a child knows (day/way, cat/hat, night/light, sun/fun, tree/free, door/floor) and line 2 so predictable that only one rhyme word fits.",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w210c0-couplet-sheep-sleep",
+   "prompt": "A rhyming couplet:\nI counted every single fluffy sheep,\nUntil at last I drifted off to ",
+   "intermediates": [
+    "sleep"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 210,
+    "steer": "The subject is a 0.8B model. Use only the most common one-syllable rhyme pairs a child knows (day/way, cat/hat, night/light, sun/fun, tree/free, door/floor) and line 2 so predictable that only one rhyme word fits.",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w210c0-couplet-grass-glass",
+   "prompt": "A rhyming couplet:\nWe sat outside and lay upon the grass,\nAnd drank cold lemonade from a tall ",
+   "intermediates": [
+    "glass"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 210,
+    "steer": "The subject is a 0.8B model. Use only the most common one-syllable rhyme pairs a child knows (day/way, cat/hat, night/light, sun/fun, tree/free, door/floor) and line 2 so predictable that only one rhyme word fits.",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w210c0-couplet-fox-box",
+   "prompt": "A rhyming couplet:\nWe saw a sly and clever little fox,\nThat hid inside a big brown cardboard ",
+   "intermediates": [
+    "box"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 210,
+    "steer": "The subject is a 0.8B model. Use only the most common one-syllable rhyme pairs a child knows (day/way, cat/hat, night/light, sun/fun, tree/free, door/floor) and line 2 so predictable that only one rhyme word fits.",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w210c1-couplet-cat-bat",
+   "prompt": "A rhyming couplet:\nThe batter stepped up quiet as a cat,\nAnd at the plate he swung his wooden ",
+   "intermediates": [
+    "bat"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 210,
+    "steer": "The subject is a 0.8B model. Use only the most common one-syllable rhyme pairs a child knows (day/way, cat/hat, night/light, sun/fun, tree/free, door/floor) and line 2 so predictable that only one rhyme word fits.",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w210c1-couplet-sun-run",
+   "prompt": "A rhyming couplet:\nThe children played outside beneath the sun,\nAnd through the field they all began to ",
+   "intermediates": [
+    "run"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 210,
+    "steer": "The subject is a 0.8B model. Use only the most common one-syllable rhyme pairs a child knows (day/way, cat/hat, night/light, sun/fun, tree/free, door/floor) and line 2 so predictable that only one rhyme word fits.",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w210c1-couplet-pot-hot",
+   "prompt": "A rhyming couplet:\nThe soup was bubbling in the kitchen pot,\nBe careful, for it's very very ",
+   "intermediates": [
+    "hot"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 210,
+    "steer": "The subject is a 0.8B model. Use only the most common one-syllable rhyme pairs a child knows (day/way, cat/hat, night/light, sun/fun, tree/free, door/floor) and line 2 so predictable that only one rhyme word fits.",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w210c1-couplet-sky-cry",
+   "prompt": "A rhyming couplet:\nThe clouds rolled dark and gray across the sky,\nThe movie was so sad it made me ",
+   "intermediates": [
+    "cry"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 210,
+    "steer": "The subject is a 0.8B model. Use only the most common one-syllable rhyme pairs a child knows (day/way, cat/hat, night/light, sun/fun, tree/free, door/floor) and line 2 so predictable that only one rhyme word fits.",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w210c1-couplet-shed-head",
+   "prompt": "A rhyming couplet:\nThe snow came down on every roof and shed,\nSo I pulled my hat down low upon my ",
+   "intermediates": [
+    "head"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 210,
+    "steer": "The subject is a 0.8B model. Use only the most common one-syllable rhyme pairs a child knows (day/way, cat/hat, night/light, sun/fun, tree/free, door/floor) and line 2 so predictable that only one rhyme word fits.",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w210c1-couplet-ball-tall",
+   "prompt": "A rhyming couplet:\nThe boy went out to throw and catch a ball,\nHe grew up big and strong and very ",
+   "intermediates": [
+    "tall"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 210,
+    "steer": "The subject is a 0.8B model. Use only the most common one-syllable rhyme pairs a child knows (day/way, cat/hat, night/light, sun/fun, tree/free, door/floor) and line 2 so predictable that only one rhyme word fits.",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w100c0-couplet-toad-road",
+   "prompt": "A rhyming couplet:\nHe hopped around the yard just like a toad,\nThen grabbed his bag and finally hit the ",
+   "intermediates": [
+    "road"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w100c0-couplet-goodbye-eye",
+   "prompt": "A rhyming couplet:\nShe waved to me and whispered soft goodbye,\nMy little girl, the apple of my ",
+   "intermediates": [
+    "eye"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w100c0-couplet-form-storm",
+   "prompt": "A rhyming couplet:\nThe clouds began to gather and to form,\nIt felt just like the calm before the ",
+   "intermediates": [
+    "storm"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w100c1-couplet-flag-bag",
+   "prompt": "A rhyming couplet:\nThe pirates raised their tattered flag,\nOops! He let the cat out of the ",
+   "intermediates": [
+    "bag"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w100c1-couplet-soul-roll",
+   "prompt": "A rhyming couplet:\nThe band was loud and full of soul,\nThey played all night their rock and ",
+   "intermediates": [
+    "roll"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w100c1-couplet-street-seat",
+   "prompt": "A rhyming couplet:\nThe parade went down the busy street,\nCome in, my friend, and take a ",
+   "intermediates": [
+    "seat"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w100c1-couplet-week-seek",
+   "prompt": "A rhyming couplet:\nThe kids came over twice a week,\nTo play a game of hide and ",
+   "intermediates": [
+    "seek"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w100c1-couplet-wheels-heels",
+   "prompt": "A rhyming couplet:\nThe bike rolled on its rusty wheels,\nShe fell in love, head over ",
+   "intermediates": [
+    "heels"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w100c1-couplet-roam-home",
+   "prompt": "A rhyming couplet:\nFor years he wandered, free to roam,\nNow back at last, there's no place like ",
+   "intermediates": [
+    "home"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w100c2-couplet-sun-bun",
+   "prompt": "A rhyming couplet:\nThe baker rose before the morning sun,\nAnd baked a warm and sticky cinnamon ",
+   "intermediates": [
+    "bun"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w100c2-couplet-bread-thread",
+   "prompt": "A rhyming couplet:\nThe tailor ate a crust of crumbly bread,\nThen sewed a button on with needle and ",
+   "intermediates": [
+    "thread"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat"
+  },
+  {
+   "name": "poetry-au-t1-w100c2-couplet-dance-chance",
+   "prompt": "A rhyming couplet:\nShe asked him if he'd like to join the dance,\nHe smiled because he finally had a ",
+   "intermediates": [
+    "chance"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w100c2-couplet-mice-price",
+   "prompt": "A rhyming couplet:\nThe bakery was overrun with mice,\nSo now the bread is sold at half the ",
+   "intermediates": [
+    "price"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w101c0-couplet-herds-words",
+   "prompt": "A rhyming couplet:\nThe farmer quietly tends his herds,\nFor actions speak louder than ",
+   "intermediates": [
+    "words"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 18/59 passed.\n- Failed (gold -> what the model wrote): man -> model said 'man.' (2/10); ghost -> model said 'white as a ghost' (3/10); the -> model said 'The kids were smeared with sticky strawb' (2/10); ight -> model said 'high and dry.' (2/10); fair -> model said 'fair and just.' (4/10); dust -> model said 'heart.' (0/10); bird -> model said 'The early bird will always catch the fis' (2/10); a -> model said 'time saves the soul.' (1/10); stone -> model said 'phone, and killed two birds with just a ' (2/10); gained -> model said \"It's a penny saved is just a penny\" (1/10); and -> model said 'and a little red wine.' (3/10); do -> model said 'And hummed the tune of hickory dickory' (4/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): tear; road; eye; bite; storm; bag; roll; white; seat; seek; heels; home",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w101c0-couplet-thorns-horns",
+   "prompt": "A rhyming couplet:\nThe roses hid their sharpest thorns,\nSo he grabbed the bull right by the ",
+   "intermediates": [
+    "horns"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 18/59 passed.\n- Failed (gold -> what the model wrote): man -> model said 'man.' (2/10); ghost -> model said 'white as a ghost' (3/10); the -> model said 'The kids were smeared with sticky strawb' (2/10); ight -> model said 'high and dry.' (2/10); fair -> model said 'fair and just.' (4/10); dust -> model said 'heart.' (0/10); bird -> model said 'The early bird will always catch the fis' (2/10); a -> model said 'time saves the soul.' (1/10); stone -> model said 'phone, and killed two birds with just a ' (2/10); gained -> model said \"It's a penny saved is just a penny\" (1/10); and -> model said 'and a little red wine.' (3/10); do -> model said 'And hummed the tune of hickory dickory' (4/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): tear; road; eye; bite; storm; bag; roll; white; seat; seek; heels; home",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w101c0-couplet-grow-row",
+   "prompt": "A rhyming couplet:\nHe planted seeds and watched them grow,\nAnd got his ducks all in a ",
+   "intermediates": [
+    "row"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 18/59 passed.\n- Failed (gold -> what the model wrote): man -> model said 'man.' (2/10); ghost -> model said 'white as a ghost' (3/10); the -> model said 'The kids were smeared with sticky strawb' (2/10); ight -> model said 'high and dry.' (2/10); fair -> model said 'fair and just.' (4/10); dust -> model said 'heart.' (0/10); bird -> model said 'The early bird will always catch the fis' (2/10); a -> model said 'time saves the soul.' (1/10); stone -> model said 'phone, and killed two birds with just a ' (2/10); gained -> model said \"It's a penny saved is just a penny\" (1/10); and -> model said 'and a little red wine.' (3/10); do -> model said 'And hummed the tune of hickory dickory' (4/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): tear; road; eye; bite; storm; bag; roll; white; seat; seek; heels; home",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w101c1-couplet-tire-fire",
+   "prompt": "A rhyming couplet:\nHe ran from trouble till he'd start to tire,\nThen jumped from frying pan into the ",
+   "intermediates": [
+    "fire"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 18/59 passed.\n- Failed (gold -> what the model wrote): man -> model said 'man.' (2/10); ghost -> model said 'white as a ghost' (3/10); the -> model said 'The kids were smeared with sticky strawb' (2/10); ight -> model said 'high and dry.' (2/10); fair -> model said 'fair and just.' (4/10); dust -> model said 'heart.' (0/10); bird -> model said 'The early bird will always catch the fis' (2/10); a -> model said 'time saves the soul.' (1/10); stone -> model said 'phone, and killed two birds with just a ' (2/10); gained -> model said \"It's a penny saved is just a penny\" (1/10); and -> model said 'and a little red wine.' (3/10); do -> model said 'And hummed the tune of hickory dickory' (4/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): tear; road; eye; bite; storm; bag; roll; white; seat; seek; heels; home",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w101c1-couplet-sky-die",
+   "prompt": "A rhyming couplet:\nI promised her beneath the starry sky,\nI cross my heart and hope to ",
+   "intermediates": [
+    "die"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 18/59 passed.\n- Failed (gold -> what the model wrote): man -> model said 'man.' (2/10); ghost -> model said 'white as a ghost' (3/10); the -> model said 'The kids were smeared with sticky strawb' (2/10); ight -> model said 'high and dry.' (2/10); fair -> model said 'fair and just.' (4/10); dust -> model said 'heart.' (0/10); bird -> model said 'The early bird will always catch the fis' (2/10); a -> model said 'time saves the soul.' (1/10); stone -> model said 'phone, and killed two birds with just a ' (2/10); gained -> model said \"It's a penny saved is just a penny\" (1/10); and -> model said 'and a little red wine.' (3/10); do -> model said 'And hummed the tune of hickory dickory' (4/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): tear; road; eye; bite; storm; bag; roll; white; seat; seek; heels; home",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w101c1-couplet-cup-up",
+   "prompt": "A rhyming couplet:\nShe poured herself another steaming cup,\nAnd told herself to keep her chin ",
+   "intermediates": [
+    "up"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 18/59 passed.\n- Failed (gold -> what the model wrote): man -> model said 'man.' (2/10); ghost -> model said 'white as a ghost' (3/10); the -> model said 'The kids were smeared with sticky strawb' (2/10); ight -> model said 'high and dry.' (2/10); fair -> model said 'fair and just.' (4/10); dust -> model said 'heart.' (0/10); bird -> model said 'The early bird will always catch the fis' (2/10); a -> model said 'time saves the soul.' (1/10); stone -> model said 'phone, and killed two birds with just a ' (2/10); gained -> model said \"It's a penny saved is just a penny\" (1/10); and -> model said 'and a little red wine.' (3/10); do -> model said 'And hummed the tune of hickory dickory' (4/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): tear; road; eye; bite; storm; bag; roll; white; seat; seek; heels; home",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w101c1-couplet-see-sea",
+   "prompt": "A rhyming couplet:\nOur sails were torn, no land that we could see,\nOur little boat was lost at ",
+   "intermediates": [
+    "sea"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 18/59 passed.\n- Failed (gold -> what the model wrote): man -> model said 'man.' (2/10); ghost -> model said 'white as a ghost' (3/10); the -> model said 'The kids were smeared with sticky strawb' (2/10); ight -> model said 'high and dry.' (2/10); fair -> model said 'fair and just.' (4/10); dust -> model said 'heart.' (0/10); bird -> model said 'The early bird will always catch the fis' (2/10); a -> model said 'time saves the soul.' (1/10); stone -> model said 'phone, and killed two birds with just a ' (2/10); gained -> model said \"It's a penny saved is just a penny\" (1/10); and -> model said 'and a little red wine.' (3/10); do -> model said 'And hummed the tune of hickory dickory' (4/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): tear; road; eye; bite; storm; bag; roll; white; seat; seek; heels; home",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w101c1-couplet-street-sweet",
+   "prompt": "A rhyming couplet:\nShe waved goodbye while walking down the street,\nHer speech was kind and simple, short and ",
+   "intermediates": [
+    "sweet"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 18/59 passed.\n- Failed (gold -> what the model wrote): man -> model said 'man.' (2/10); ghost -> model said 'white as a ghost' (3/10); the -> model said 'The kids were smeared with sticky strawb' (2/10); ight -> model said 'high and dry.' (2/10); fair -> model said 'fair and just.' (4/10); dust -> model said 'heart.' (0/10); bird -> model said 'The early bird will always catch the fis' (2/10); a -> model said 'time saves the soul.' (1/10); stone -> model said 'phone, and killed two birds with just a ' (2/10); gained -> model said \"It's a penny saved is just a penny\" (1/10); and -> model said 'and a little red wine.' (3/10); do -> model said 'And hummed the tune of hickory dickory' (4/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): tear; road; eye; bite; storm; bag; roll; white; seat; seek; heels; home",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w101c2-couplet-smile-mile",
+   "prompt": "A rhyming couplet:\nShe greeted guests with a warm smile,\nAnd always went the extra ",
+   "intermediates": [
+    "mile"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 18/59 passed.\n- Failed (gold -> what the model wrote): man -> model said 'man.' (2/10); ghost -> model said 'white as a ghost' (3/10); the -> model said 'The kids were smeared with sticky strawb' (2/10); ight -> model said 'high and dry.' (2/10); fair -> model said 'fair and just.' (4/10); dust -> model said 'heart.' (0/10); bird -> model said 'The early bird will always catch the fis' (2/10); a -> model said 'time saves the soul.' (1/10); stone -> model said 'phone, and killed two birds with just a ' (2/10); gained -> model said \"It's a penny saved is just a penny\" (1/10); and -> model said 'and a little red wine.' (3/10); do -> model said 'And hummed the tune of hickory dickory' (4/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): tear; road; eye; bite; storm; bag; roll; white; seat; seek; heels; home",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w101c2-couplet-grin-kin",
+   "prompt": "A rhyming couplet:\nThe old man wore a toothless grin,\nSurrounded by his kith and ",
+   "intermediates": [
+    "kin"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 18/59 passed.\n- Failed (gold -> what the model wrote): man -> model said 'man.' (2/10); ghost -> model said 'white as a ghost' (3/10); the -> model said 'The kids were smeared with sticky strawb' (2/10); ight -> model said 'high and dry.' (2/10); fair -> model said 'fair and just.' (4/10); dust -> model said 'heart.' (0/10); bird -> model said 'The early bird will always catch the fis' (2/10); a -> model said 'time saves the soul.' (1/10); stone -> model said 'phone, and killed two birds with just a ' (2/10); gained -> model said \"It's a penny saved is just a penny\" (1/10); and -> model said 'and a little red wine.' (3/10); do -> model said 'And hummed the tune of hickory dickory' (4/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): tear; road; eye; bite; storm; bag; roll; white; seat; seek; heels; home",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w101c2-couplet-lawn-dawn",
+   "prompt": "A rhyming couplet:\nHe rose up early to mow the lawn,\nHe started at the crack of ",
+   "intermediates": [
+    "dawn"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 18/59 passed.\n- Failed (gold -> what the model wrote): man -> model said 'man.' (2/10); ghost -> model said 'white as a ghost' (3/10); the -> model said 'The kids were smeared with sticky strawb' (2/10); ight -> model said 'high and dry.' (2/10); fair -> model said 'fair and just.' (4/10); dust -> model said 'heart.' (0/10); bird -> model said 'The early bird will always catch the fis' (2/10); a -> model said 'time saves the soul.' (1/10); stone -> model said 'phone, and killed two birds with just a ' (2/10); gained -> model said \"It's a penny saved is just a penny\" (1/10); and -> model said 'and a little red wine.' (3/10); do -> model said 'And hummed the tune of hickory dickory' (4/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): tear; road; eye; bite; storm; bag; roll; white; seat; seek; heels; home",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w100c0-couplet-nod-pod",
+   "prompt": "A rhyming couplet:\nThe twins agreed with just a nod,\nThey're like two peas inside a ",
+   "intermediates": [
+    "pod"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w100c0-couplet-mug-rug",
+   "prompt": "A rhyming couplet:\nHe sipped his coffee from a mug,\nThen swept his problems under the ",
+   "intermediates": [
+    "rug"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w100c0-couplet-south-mouth",
+   "prompt": "A rhyming couplet:\nThe geese are flying to the south,\nDon't look a gift horse in the ",
+   "intermediates": [
+    "mouth"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w100c1-couplet-sung-tongue",
+   "prompt": "A rhyming couplet:\nThe choir stood and the hymn was sung,\nWhy so quiet? Cat got your ",
+   "intermediates": [
+    "tongue"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w100c1-couplet-street-meet",
+   "prompt": "A rhyming couplet:\nShe sells her flowers on the street,\nAnd works hard just to make ends ",
+   "intermediates": [
+    "meet"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w100c1-couplet-friends-ends",
+   "prompt": "A rhyming couplet:\nI packed my things and called my friends,\nA box of junk and odds and ",
+   "intermediates": [
+    "ends"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w100c1-couplet-year-clear",
+   "prompt": "A rhyming couplet:\nThe news arrived at the end of the year,\nThe message came through loud and ",
+   "intermediates": [
+    "clear"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w100c2-couplet-skies-rise",
+   "prompt": "A rhyming couplet:\nThe rooster crows beneath the morning skies,\nEarly to bed and early to ",
+   "intermediates": [
+    "rise"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w100c2-couplet-bored-sword",
+   "prompt": "A rhyming couplet:\nThe knight grew tired, the battle left him bored,\nHe learned the pen is mightier than the ",
+   "intermediates": [
+    "sword"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w100c2-couplet-too-you",
+   "prompt": "A rhyming couplet:\nWe baked a cake and lit the candles too,\nAnd sang out loud, happy birthday to ",
+   "intermediates": [
+    "you"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w100c2-couplet-fine-line",
+   "prompt": "A rhyming couplet:\nThe rules were strict, but everything was fine,\nAs long as all the students toed the ",
+   "intermediates": [
+    "line"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w101c0-couplet-sky-dry",
+   "prompt": "A rhyming couplet:\nOur boat lay stranded underneath the sky,\nThe tide went out and left us high and ",
+   "intermediates": [
+    "dry"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 13/53 passed.\n- Failed (gold -> what the model wrote): flame -> model said 'flame' (3/10); won -> model said \"A penny saved's a penny\" (3/10); sleep -> model said 'sleeping dogs just' (1/10); hand -> model said 'hand in your pocket.' (3/10); he -> model said 'He hid the money in his socks,' (3/10); stone -> model said 'stubborn as a stone' (3/10); the -> model said 'The waves rolled in with salty foam,' (8/10); wine -> model said 'coffee' (0/10); the -> model said 'The vase began to tip and drop,' (6/10); i -> model said 'I felt just like a kid in a candy' (0/10); haste -> model said 'Haste makes haste, and the soup is lost.' (4/10); pain -> model said 'no pain, no more' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): pod; rug; mouth; tongue; meet; chase; dead; ends; clear; rise; sword; you",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w101c0-couplet-mud-blood",
+   "prompt": "A rhyming couplet:\nWe played outside and rolled around in mud,\nMy brother is my own flesh and ",
+   "intermediates": [
+    "blood"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 13/53 passed.\n- Failed (gold -> what the model wrote): flame -> model said 'flame' (3/10); won -> model said \"A penny saved's a penny\" (3/10); sleep -> model said 'sleeping dogs just' (1/10); hand -> model said 'hand in your pocket.' (3/10); he -> model said 'He hid the money in his socks,' (3/10); stone -> model said 'stubborn as a stone' (3/10); the -> model said 'The waves rolled in with salty foam,' (8/10); wine -> model said 'coffee' (0/10); the -> model said 'The vase began to tip and drop,' (6/10); i -> model said 'I felt just like a kid in a candy' (0/10); haste -> model said 'Haste makes haste, and the soup is lost.' (4/10); pain -> model said 'no pain, no more' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): pod; rug; mouth; tongue; meet; chase; dead; ends; clear; rise; sword; you",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat"
+  },
+  {
+   "name": "poetry-au-t1-w101c0-couplet-blades-trades",
+   "prompt": "A rhyming couplet:\nHe mends the shoes and sharpens all the blades,\nHe's known as jack of all ",
+   "intermediates": [
+    "trades"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 13/53 passed.\n- Failed (gold -> what the model wrote): flame -> model said 'flame' (3/10); won -> model said \"A penny saved's a penny\" (3/10); sleep -> model said 'sleeping dogs just' (1/10); hand -> model said 'hand in your pocket.' (3/10); he -> model said 'He hid the money in his socks,' (3/10); stone -> model said 'stubborn as a stone' (3/10); the -> model said 'The waves rolled in with salty foam,' (8/10); wine -> model said 'coffee' (0/10); the -> model said 'The vase began to tip and drop,' (6/10); i -> model said 'I felt just like a kid in a candy' (0/10); haste -> model said 'Haste makes haste, and the soup is lost.' (4/10); pain -> model said 'no pain, no more' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): pod; rug; mouth; tongue; meet; chase; dead; ends; clear; rise; sword; you",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   },
+   "gate_variant": "plain"
+  },
+  {
+   "name": "poetry-au-t1-w300c0-couplet-boy-toy",
+   "prompt": "A rhyming couplet:\nThere was a happy little boy,\nWho loved to play with his new ",
+   "intermediates": [
+    "toy"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 300,
+    "steer": "Line 2 must NOT be a fixed idiom or set phrase (no 'cat out of the bag', 'black and white', 'by the horns'). The rhyme word must be guessable from line 1 alone: it should be one of the most common rhymes of line 1's last word, and line 2 should simply continue the scene of line 1. Use everyday one-syllable words a child knows.",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w300c0-couplet-sky-high",
+   "prompt": "A rhyming couplet:\nThe bird flew up into the sky,\nIt soared so very far and ",
+   "intermediates": [
+    "high"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 300,
+    "steer": "Line 2 must NOT be a fixed idiom or set phrase (no 'cat out of the bag', 'black and white', 'by the horns'). The rhyme word must be guessable from line 1 alone: it should be one of the most common rhymes of line 1's last word, and line 2 should simply continue the scene of line 1. Use everyday one-syllable words a child knows.",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w300c0-couplet-trees-breeze",
+   "prompt": "A rhyming couplet:\nThe leaves were swaying in the trees,\nThey rustled in the gentle ",
+   "intermediates": [
+    "breeze"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 300,
+    "steer": "Line 2 must NOT be a fixed idiom or set phrase (no 'cat out of the bag', 'black and white', 'by the horns'). The rhyme word must be guessable from line 1 alone: it should be one of the most common rhymes of line 1's last word, and line 2 should simply continue the scene of line 1. Use everyday one-syllable words a child knows.",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w300c0-couplet-nest-west",
+   "prompt": "A rhyming couplet:\nThe little bird flew to its nest,\nAs the sun went down in the ",
+   "intermediates": [
+    "west"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 300,
+    "steer": "Line 2 must NOT be a fixed idiom or set phrase (no 'cat out of the bag', 'black and white', 'by the horns'). The rhyme word must be guessable from line 1 alone: it should be one of the most common rhymes of line 1's last word, and line 2 should simply continue the scene of line 1. Use everyday one-syllable words a child knows.",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w300c1-couplet-sand-land",
+   "prompt": "A rhyming couplet:\nWe built a castle in the sand,\nThe biggest one in all the ",
+   "intermediates": [
+    "land"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 300,
+    "steer": "Line 2 must NOT be a fixed idiom or set phrase (no 'cat out of the bag', 'black and white', 'by the horns'). The rhyme word must be guessable from line 1 alone: it should be one of the most common rhymes of line 1's last word, and line 2 should simply continue the scene of line 1. Use everyday one-syllable words a child knows.",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w300c1-couplet-lap-nap",
+   "prompt": "A rhyming couplet:\nThe baby yawned upon my lap,\nAnd soon she took a little ",
+   "intermediates": [
+    "nap"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 300,
+    "steer": "Line 2 must NOT be a fixed idiom or set phrase (no 'cat out of the bag', 'black and white', 'by the horns'). The rhyme word must be guessable from line 1 alone: it should be one of the most common rhymes of line 1's last word, and line 2 should simply continue the scene of line 1. Use everyday one-syllable words a child knows.",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w300c1-couplet-bark-park",
+   "prompt": "A rhyming couplet:\nMy puppy loves to run and bark,\nSo every day we walk to the ",
+   "intermediates": [
+    "park"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 300,
+    "steer": "Line 2 must NOT be a fixed idiom or set phrase (no 'cat out of the bag', 'black and white', 'by the horns'). The rhyme word must be guessable from line 1 alone: it should be one of the most common rhymes of line 1's last word, and line 2 should simply continue the scene of line 1. Use everyday one-syllable words a child knows.",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w300c1-couplet-plate-ate",
+   "prompt": "A rhyming couplet:\nMy dinner sat upon my plate,\nAnd every bit of it I ",
+   "intermediates": [
+    "ate"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 300,
+    "steer": "Line 2 must NOT be a fixed idiom or set phrase (no 'cat out of the bag', 'black and white', 'by the horns'). The rhyme word must be guessable from line 1 alone: it should be one of the most common rhymes of line 1's last word, and line 2 should simply continue the scene of line 1. Use everyday one-syllable words a child knows.",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat_prefill"
+  },
+  {
+   "name": "poetry-au-t1-w300c1-couplet-cloud-loud",
+   "prompt": "A rhyming couplet:\nThe thunder rumbled from the cloud,\nIt made a noise so very ",
+   "intermediates": [
+    "loud"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "line_one_newline"
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Make line 2 a familiar, almost forced completion with one obvious rhyme (a cliche or idiom), with short lines and a one-syllable end word."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 300,
+    "steer": "Line 2 must NOT be a fixed idiom or set phrase (no 'cat out of the bag', 'black and white', 'by the horns'). The rhyme word must be guessable from line 1 alone: it should be one of the most common rhymes of line 1's last word, and line 2 should simply continue the scene of line 1. Use everyday one-syllable words a child knows.",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   },
+   "gate_variant": "chat"
+  }
+ ]
+}

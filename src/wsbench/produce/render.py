@@ -45,7 +45,13 @@ def render(spec: ReadSpec, tokenizer: Any) -> Rendered:
     if r == "captured":
         ids = [int(x) for x in spec.extra["input_ids"]]
     elif r in ("plain", "bare"):
-        ids = tokenizer(spec.text or "", add_special_tokens=False)["input_ids"]
+        from wsbench.adapt.template import bos_prefix
+
+        # the subject's BOS (Gemma-4) leads a raw render too; Qwen/OLMo: no prefix
+        ids = (
+            bos_prefix(tokenizer)
+            + tokenizer(spec.text or "", add_special_tokens=False)["input_ids"]
+        )
     elif r == "chat":
         messages = ([{"role": "system", "content": spec.system}] if spec.system else []) + [
             {"role": "user", "content": spec.text or ""}

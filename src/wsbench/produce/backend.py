@@ -2,7 +2,8 @@
 A benchmark layer L is the output of decoder block ``model.layers[L]`` (the residual stream after
 that block), the convention every bank was captured with."""
 
-from contextlib import nullcontext
+from collections.abc import Iterator, Sequence
+from contextlib import contextmanager, nullcontext
 from dataclasses import dataclass
 from typing import Any, Self
 
@@ -70,6 +71,42 @@ class Backend:
             except AttributeError:
                 continue
         raise AttributeError("final norm not found on this model")
+
+    @contextmanager
+    def steered(
+        self, layer: int, positions: Sequence[int], vector: Any, beta: float
+    ) -> Iterator[None]:
+        """A dose injection for every forward inside the block (plan 0045 §2.3, the
+        introspection bank's recipe): on the OUTPUT residual of decoder block ``layer``, at each
+        absolute ``positions`` index, ``h <- h + beta * ||h|| * v / ||v||`` (computed in fp32,
+        written back in the residual's dtype). Removed on exit, even if the body raises."""
+        import torch
+
+        v = torch.as_tensor(vector, dtype=torch.float32).flatten()
+        n = float(v.norm())
+        if not n > 0:
+            raise ValueError("steering vector has zero norm")
+        unit = v / n
+        idx = torch.as_tensor(list(positions), dtype=torch.long)
+        blocks = self.blocks
+        if not 0 <= layer < len(blocks):
+            raise ValueError(f"inject layer {layer} out of range for a {len(blocks)}-block model")
+
+        def hook(_mod: Any, _inp: Any, out: Any) -> Any:
+            h = out[0] if isinstance(out, tuple) else out
+            if h.shape[1] <= int(idx.max()):
+                return out
+            i = idx.to(h.device)
+            x = h[:, i].float()
+            u = unit.to(h.device)
+            h[:, i] = (x + beta * x.norm(dim=-1, keepdim=True) * u).to(h.dtype)
+            return out
+
+        handle = blocks[layer].register_forward_hook(hook)
+        try:
+            yield
+        finally:
+            handle.remove()
 
     def capture(self, ids: list[int], layers: list[int], positions: list[int]) -> dict[int, Any]:
         """One forward pass; the residual stream after each requested block, at ``positions``."""

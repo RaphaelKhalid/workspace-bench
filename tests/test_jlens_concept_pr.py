@@ -20,12 +20,17 @@ from wsbench.evals.jlens_concept_pr import judge as jj
 from wsbench.evals.jlens_concept_pr import prompts as pp
 from wsbench.evals.jlens_concept_pr import score as ss
 from wsbench.evals.jlens_concept_pr.concept_pr import ItemScore, is_content_token
-from wsbench.judge_config import JudgeConfig, resolve
+from wsbench.judge_config import JudgeConfig, ResolvedJudge, resolve
 
 ROOT = Path(__file__).resolve().parents[1]
 EXAMPLE = ROOT / "examples/readouts/jlens_concept_pr.jsonl"
 LABELS = ["chat-dailydialog-0000", "chat-lmsys-0000", "pt-pile-0000"]
 CONCEPTS = ["figurative turn of phrase", "metaphor", "light-hearted aside"]
+
+# Gemini as if it were the family's pinned judge: exercises the OpenRouter route's knobs
+GEMINI_PINNED = ResolvedJudge(
+    model="google/gemini-3.8-flash", reasoning={"effort": "minimal"}, pinned=True, source="family"
+)
 
 
 @pytest.fixture
@@ -59,10 +64,6 @@ def test_keys() -> None:
         assert re.fullmatch(r"[A-Za-z0-9_:-]+", key)
 
 
-def test_concat_samples_drops_empties() -> None:
-    assert pp.concat_samples(["a", "", "  ", "b"]) == "a\n---\nb"
-
-
 def test_stage_user_bodies_and_schemas() -> None:
     assert pp.render_stage_a("some text") == "Text:\nsome text"
     assert pp.STAGE_A_SCHEMA["schema"]["type"] == "object"
@@ -74,7 +75,9 @@ def test_stage_user_bodies_and_schemas() -> None:
     assert body == "Tokens: ' x', 'y'\n\nConcepts:\n1. a\n2. b"
     assert "Walt Disney" in pp.STAGE_P_SYSTEM and pp.STAGE_P_CHUNK == 60
     assert pp.GRADE_VALUE == {"in": 1.0, "partial": 0.5, "out": 0.0}
-    assert pp.PROMPT_VERSION == "jlens-pr-v2"
+    assert (
+        pp.PROMPT_VERSION == "jlens-pr-v3+fw-v2+sense-v1"
+    )  # round 3 + review: deterministic stamps
     # placeholders are substituted in one pass: a value containing a placeholder survives
     assert pp.render_stage_a("{listing}") == "Text:\n{listing}"
     assert set(pp.PROMPTS) == {
@@ -354,6 +357,13 @@ def _grade_p(concept: str) -> str:
     return {"metaphor": "in", "figurative turn of phrase": "partial"}.get(concept, "out")
 
 
+def _first_shown_token(user: str) -> str:
+    """The first token of a Stage-P ``Tokens:`` line, as shown (its ``repr``)."""
+    m = re.match(r"Tokens: ('(?:[^'\\]|\\.)*'|\"(?:[^\"\\]|\\.)*\")", user)
+    assert m, user[:80]
+    return m.group(1)
+
+
 def _responder(system: str, user: str) -> dict[str, Any] | None:
     if user.startswith("Return"):
         return {"a": 1}
@@ -365,7 +375,13 @@ def _responder(system: str, user: str) -> dict[str, Any] | None:
         tok = user.split("\n", 1)[0]
         return {"grades": [{"concept": c, "grade": _grade_b(tok, c)} for c in concepts]}
     assert system == pp.STAGE_P_SYSTEM
-    return {"grades": [{"concept": c, "grade": _grade_p(c)} for c in concepts]}
+    shown = _first_shown_token(user)  # v3: an in/partial grade names its grounding token
+    return {
+        "grades": [
+            {"concept": c, "grade": _grade_p(c), "token": "" if _grade_p(c) == "out" else shown}
+            for c in concepts
+        ]
+    }
 
 
 def _stage_calls(fake) -> dict[str, list[dict]]:
@@ -388,7 +404,7 @@ def _stage_calls(fake) -> dict[str, list[dict]]:
 
 def test_stage_sequencing_models_and_numbers(tmp_path, fake_llm, jargs):
     fake = fake_llm(_responder)
-    args = jargs(EXAMPLE, items=LABELS)
+    args = jargs(EXAMPLE, items=LABELS, judge=GEMINI_PINNED, extra={"stage_p_foil": "0"})
     res = jj.run(args)
     st = _stage_calls(fake)
     # A -> B/foil -> P, in that order; preflight once per (model, reasoning)
@@ -410,7 +426,9 @@ def test_stage_sequencing_models_and_numbers(tmp_path, fake_llm, jargs):
     # numbers: precision = mean Stage-P support = (1 + 0.5 + 0) / 3 per cell; headline L44
     assert res.family == "jlens_concept_pr" and res.metric == "precision"
     assert res.higher_is_better is True and res.chance is None
-    assert res.chance_label == ss.CHANCE_LABEL
+    # plan 0042 item 1 (Camila: "the chance label advertises a measured foil"): foil off -> the
+    # label says so (was ss.CHANCE_LABEL here, the reported bug)
+    assert res.chance_label == ss.CHANCE_LABEL_UNMEASURED
     assert res.value == pytest.approx(0.5) and res.n_items == 3 and res.ci95 is not None
     e = res.extras
     assert e["headline_layer"] == 44 and set(e["by_layer"]) == {"44", "48"}
@@ -456,7 +474,7 @@ def test_reject_handling_and_resume(tmp_path, fake_llm, jargs):
         return _responder(system, user)
 
     fake = fake_llm(flaky)
-    args = jargs(EXAMPLE, items=LABELS)
+    args = jargs(EXAMPLE, items=LABELS, extra={"stage_p_foil": "0"})
     res = jj.run(args)
     e = res.extras
     assert e["reject_rate"]["b"] == {"n_requests": 30, "n_missing": 1, "rate": 1 / 30}
@@ -571,7 +589,8 @@ def test_complete_needs_full_grid_pinned_judge_and_low_reject_rate(tmp_path, fak
     res = jj.run(jargs(src, allow_missing=False))
     assert res.complete is True and res.n_items == 299 and res.counts["n_missing_cells"] == 0
     assert len(_stage_calls(fake)["A"]) == 299 and res.extras["headline_layer"] == 44
-    assert res.value == pytest.approx(0.5)
+    # sense-v1 (review): one item's first shown token is ' often', grounding neither fake concept
+    assert res.value == pytest.approx(149 / 299)
     # an unpinned judge, or a reject rate above 5% on any stage, breaks completeness
     fake_llm(_responder)
     other = jargs(
@@ -631,3 +650,484 @@ def test_no_content_token_cell_is_ok_with_nan():
     assert status == "ok"
     assert math.isnan(scored.precision) and math.isnan(scored.recall_at_m)
     assert scored.n_concepts == 2 and scored.n_content_tokens == 0
+
+
+# ------------------------------------------------------------------ plan 0042 (jlens-pr-v3)
+
+
+def _ok_cell(key: str, layer: int, *, concepts: list[str] | None, toks: list[str]) -> ss.CellInput:
+    return ss.CellInput(
+        key=key,
+        id=key.split("__")[0],
+        layer=layer,
+        pos=1,
+        family="chat",
+        has_text=concepts is not None,
+        n_text_tokens=3,
+        concepts=concepts,
+        tokens=toks,
+        foil_tokens=toks,
+    )
+
+
+def _score(inputs, *, measured: bool, pfoil_support: dict | None = None, layers=(44, 48)):
+    from types import SimpleNamespace
+
+    args = SimpleNamespace(
+        judge=SimpleNamespace(pinned=True),
+        items=None,
+        limit=0,
+        scope="",
+        dry_run=False,
+        extra={},
+        readouts=None,
+    )
+    grids = {"b": {}, "foil": {}}
+    for ci in inputs:
+        if ci.concepts:
+            n = len(ci.concepts)
+            grids["b"][ci.key] = {i: [1.0] * n for i in range(len(ci.tokens))}
+            grids["foil"][ci.key] = {i: [0.0] * n for i in range(len(ci.tokens))}
+    support = {
+        "p": {ci.key: [1.0] * len(ci.concepts) for ci in inputs if ci.concepts},
+        "pfoil": pfoil_support or {},
+    }
+    return ss.score(
+        args,  # type: ignore[arg-type]
+        inputs,
+        layers=list(layers),
+        grids=grids,
+        support=support,
+        reject_rate={},
+        counts_base={"n_expected_cells": len(inputs), "n_missing_cells": 0, "n_empty_cells": 0},
+        config={},
+        foil_precision_measured=measured,
+    )
+
+
+def test_foil_precision_is_null_without_pfoil() -> None:
+    """Camila: "with the foil step off ... the foil precision reports 0.0 instead of 'not
+    measured'". A zero-concept cell at L48 used to make by_layer["48"].foil_precision 0.0."""
+    toks = [" metaphor", " figure"]
+    inputs = [
+        _ok_cell("a__L044__p1", 44, concepts=["metaphor"], toks=toks),
+        _ok_cell("a__L048__p1", 48, concepts=None, toks=toks),  # empty text, zero concepts
+    ]
+    res = _score(inputs, measured=False)
+    assert res.extras["by_layer"]["48"]["foil_precision"] is None
+    assert res.extras["by_layer"]["44"]["foil_precision"] is None
+    assert all(r["foil_precision"] is None for r in res.rows)
+    assert res.extras["foil"]["precision"] is None
+    assert res.chance_label == ss.CHANCE_LABEL_UNMEASURED
+    # foil on, but no Q call returned at L48 (its only foil cell has zero concepts): still null
+    on = _score(inputs, measured=True, pfoil_support={"a__L044__p1": [0.0]})
+    assert on.extras["by_layer"]["44"]["foil_precision"] == 0.0
+    assert on.extras["by_layer"]["48"]["foil_precision"] is None
+    assert on.chance_label == ss.CHANCE_LABEL
+
+
+def test_pfoil_runs_by_default(tmp_path, fake_llm, jargs):
+    fake = fake_llm(_responder)
+    res = jj.run(jargs(EXAMPLE, items=LABELS))
+    assert len(_stage_calls(fake)["P"]) == 6  # 3 real + 3 foil
+    assert res.config["stage_p_foil"] is True
+    assert isinstance(res.extras["foil"]["precision"], float)
+    assert res.chance_label == ss.CHANCE_LABEL
+
+
+def test_stage_p_foil_opt_out(tmp_path, fake_llm, jargs):
+    fake = fake_llm(_responder)
+    res = jj.run(jargs(EXAMPLE, items=LABELS, extra={"stage_p_foil": "0"}))
+    assert len(_stage_calls(fake)["P"]) == 3
+    assert res.extras["foil"]["precision"] is None
+    assert all(b["foil_precision"] is None for b in res.extras["by_layer"].values())
+    assert res.chance_label == ss.CHANCE_LABEL_UNMEASURED
+
+
+_JUNK_SPELLINGS = {
+    " �": 134,
+    "�": 75,
+    "<|endoftext|>": 19,
+    "<|im_end|>": 18,
+    "<|fim_middle|>": 16,
+    "<|file_sep|>": 14,
+    "<tool_call>": 12,
+    "</think>": 11,
+    "<|im_start|>": 10,
+    "<think>": 9,
+    "</tool_response>": 1,
+}
+# cells whose every content-classified token is a special tag: no information after the fix
+_ALL_TAG_CELLS = {
+    ("chat-lmsys-0013", 52),
+    ("chat-lmsys-0013", 60),
+    ("chat-lmsys-0046", 52),
+    ("chat-lmsys-0046", 56),
+    ("chat-lmsys-0046", 60),
+}
+
+
+def test_junk_tokens_in_frozen_reference() -> None:
+    """Items 2/4: the shipped references hold exactly these junk spellings (209 U+FFFD + 110
+    tags); the filter matches nothing else, and only 5 all-tag cells lose every content token."""
+    from collections import Counter
+
+    from wsbench.evals.jlens_concept_pr.concept_pr import is_junk_token
+
+    items = jj.manifest_items(jj.load_manifest())
+    junk: Counter[str] = Counter()
+    emptied = set()
+    for it in items:
+        for layer in [*range(20, 61, 4), 42]:
+            toks = jj.reference_tokens(it["id"], layer, it["pos"])
+            junk.update(t for t in toks if is_junk_token(t))
+            old_content = [t for t in toks if is_content_token(t) or is_junk_token(t)]
+            if old_content and not any(is_content_token(t) for t in toks):
+                emptied.add((it["id"], layer))
+    assert dict(junk) == _JUNK_SPELLINGS
+    assert sum(v for k, v in junk.items() if "�" in k) == 209
+    assert sum(v for k, v in junk.items() if "�" not in k) == 110
+    assert emptied == _ALL_TAG_CELLS
+
+
+def test_junk_tokens_get_no_stage_b_call(tmp_path, fake_llm, jargs):
+    label = "chat-dailydialog-0046"
+    pos = next(it["pos"] for it in jj.manifest_items(jj.load_manifest()) if it["id"] == label)
+    ref = jj.reference_tokens(label, 44, pos)
+    assert sum("�" in t for t in ref) == 4 and len(ref) == 10
+    content = [t for t in ref if is_content_token(t)]
+    assert len(content) == 6
+    src = write_jsonl(
+        tmp_path / "r.jsonl", [{"id": label, "layer": 44, "pos": pos, "samples": ["a metaphor"]}]
+    )
+    fake = fake_llm(_responder)
+    res = jj.run(jargs(src, items=[label]))
+    st = _stage_calls(fake)
+    real_set = "Token set: " + pp.token_list(content)
+    real_b = [kw for kw in st["B"] if real_set in kw["messages"][1]["content"]]
+    assert len(real_b) == 6  # 10 tokens, 4 of them U+FFFD fragments
+    assert all("�" not in kw["messages"][1]["content"] for kw in st["B"] + st["P"])
+    row = res.rows[0]
+    assert row["n_content_tokens"] == 6 and row["n_junk_tokens"] == 4 and row["n_tokens"] == 10
+    assert res.extras["by_layer"]["44"]["junk_frac"] == pytest.approx(0.4)
+
+
+def test_stage_p_prompt_has_overlap_rules() -> None:
+    for system in (pp.STAGE_P_SYSTEM, pp.STAGE_B_SYSTEM):
+        assert "'osis' is out for 'congenital ptosis'" in system
+        assert "'no incentives' is out for 'incentives'" in system
+        assert "' billions' is out for '4.5 billion years ago'" in system
+        assert pp.OVERLAP_RULES in system
+    # the calibrated "says more than the token" example survives the scoped negation rule
+    assert '"no worry about overlap" is in' in pp.STAGE_P_SYSTEM
+    assert "'no worry about overlap' stays in for 'overlap'" in pp.OVERLAP_RULES
+
+
+def test_parse_stage_p_requires_grounding_token() -> None:
+    concepts = ["congenital ptosis", "eyelid"]
+    toks = ["osis", " eyel"]
+
+    def ans(g1: str, t1: str, g2: str = "out", t2: str = "") -> dict:
+        return {
+            "grades": [
+                {"concept": "congenital ptosis", "grade": g1, "token": t1},
+                {"concept": "eyelid", "grade": g2, "token": t2},
+            ]
+        }
+
+    assert pp.parse_stage_p(ans("out", ""), concepts, toks) == [0.0, 0.0]
+    assert pp.parse_stage_p(ans("in", "' eyel'", "partial", " EYEL "), concepts, toks) == [
+        1.0,
+        0.5,
+    ]
+    with pytest.raises(ValueError):  # in, citing a token that was not shown
+        pp.parse_stage_p(ans("in", "ptosis"), concepts, toks)
+    with pytest.raises(ValueError):  # partial with no grounding token
+        pp.parse_stage_p(ans("partial", ""), concepts, toks)
+    # without the shown set the grades parse as before (v2 cached answers stay readable)
+    assert pp.parse_stage_p(ans("in", "ptosis"), concepts) == [1.0, 0.0]
+    assert pp.STAGE_P_SCHEMA["schema"]["properties"]["grades"]["items"]["required"] == [
+        "concept",
+        "grade",
+        "token",
+    ]
+
+
+def test_prompt_version_is_v3() -> None:
+    assert (
+        pp.PROMPT_VERSION == "jlens-pr-v3+fw-v2+sense-v1"
+    )  # round 3 + review: deterministic stamps
+    assert SPEC.judge.prompt_version == pp.PROMPT_VERSION
+    readme = (ROOT / "evals/jlens_concept_pr/README.md").read_text(encoding="utf-8")
+    assert "jlens-pr-v3" in readme and 'jlens-pr-v2",' not in readme
+    assert "| jlens_concept_pr | claude-opus-5-5 | jlens-pr-v3+fw-v2+sense-v1 " in (
+        ROOT / "README.md"
+    ).read_text(encoding="utf-8")
+
+
+def test_stage_prompts_use_readout_phrase() -> None:
+    from wsbench import mc
+
+    assert mc.READOUT_PHRASE in pp.STAGE_A_SYSTEM
+    assert '"camera shutter speed" is in for "shutter"' in pp.STAGE_P_SYSTEM
+    assert "objective lens" not in pp.STAGE_P_SYSTEM
+    # the bare v2 Stage-B body the judge never sends is tool-free too
+    assert "lens" not in pp._STAGE_B_USER_NO_SET.lower()
+
+
+def test_stage_b_shows_the_token_set() -> None:
+    body = pp.render_stage_b(" bank", ["bank account"], [" bank", " river", " shore"])
+    assert (
+        body
+        == "Token: ' bank'\nToken set: ' bank', ' river', ' shore'\n\nConcepts:\n1. bank account"
+    )
+
+
+def test_cell_text_is_shared_bulleted_join(tmp_path, fake_llm, jargs):
+    from conftest import write_sidecar
+
+    rows = [json.loads(line) for line in EXAMPLE.read_text().splitlines()][:1]
+    rows[0]["samples"] = ["a metaphor", "", "- figure of speech"]
+    src = write_jsonl(tmp_path / "r.jsonl", rows)
+
+    def stage_a_bodies(extra: dict, out: str) -> list[str]:
+        fake = fake_llm(_responder)
+        jj.run(jargs(src, items=[rows[0]["id"]], extra=extra, out=tmp_path / out))
+        return [kw["messages"][1]["content"] for kw in _stage_calls(fake)["A"]]
+
+    # bullet4 (override): every non-empty sample, the shared "- " join (no "---" separator)
+    assert stage_a_bodies({"sampling": "bullet4"}, "o1") == [
+        "Text:\n- a metaphor\n- figure of speech"
+    ]
+    write_sidecar(src, reads="full", sampling="prose1")
+    assert stage_a_bodies({}, "o2") == ["Text:\n- a metaphor"]  # prose1: one sample per cell
+
+
+def test_lite_judges_same_cells_as_full(tmp_path, fake_llm, jargs):
+    from conftest import write_sidecar
+
+    src = write_jsonl(
+        tmp_path / "r.jsonl", [json.loads(x) for x in EXAMPLE.read_text().splitlines()]
+    )
+    write_sidecar(src, reads="full", sampling="prose1")
+    fake_llm(_responder)
+    full = jj.run(jargs(src, items=LABELS, out=tmp_path / "full"))
+    fake_llm(_responder)
+    lite = jj.run(jargs(src, items=LABELS, extra={"reads": "lite"}, out=tmp_path / "lite"))
+    assert [r["key"] for r in full.rows] == [r["key"] for r in lite.rows]
+    assert full.value == lite.value
+    assert full.config["prompt_version"] == "jlens-pr-v3+fw-v2+sense-v1"
+    assert lite.config["prompt_version"] == "jlens-pr-v3+fw-v2+sense-v1+reads-lite"
+
+
+def test_file_layers_without_reference_are_dropped(tmp_path, fake_llm, jargs, capsys):
+    pos = jj.manifest_items(jj.load_manifest())[0]["pos"]
+    rows = [
+        {"id": "chat-lmsys-0000", "layer": layer, "pos": pos, "samples": ["a metaphor"]}
+        for layer in (44, 99)
+    ]
+    fake_llm(_responder)
+    res = jj.run(jargs(write_jsonl(tmp_path / "r.jsonl", rows), items=["chat-lmsys-0000"]))
+    assert res.config["layers_judged"] == [44]
+    assert res.extras["layers_without_reference"] == [99]
+    assert set(res.extras["by_layer"]) == {"44"} and {r["layer"] for r in res.rows} == {44}
+    assert "WARNING" in capsys.readouterr().out
+
+
+def test_all_layer_producer_file_is_judged(tmp_path, fake_llm, jargs):
+    """Critique fix (1): a sidecar-declared 64-layer producer file (plan_sha over the plan, layers
+    not hashed) is judged at the layers that have a reference, the rest listed, no exit."""
+    from conftest import write_sidecar
+
+    from wsbench import reads
+
+    items = {it["id"]: it["pos"] for it in jj.manifest_items(jj.load_manifest())}
+    labels = LABELS[1:]
+    rows = [
+        {"id": lab, "layer": layer, "pos": items[lab], "samples": ["a metaphor"]}
+        for lab in labels
+        for layer in range(64)
+    ]
+    src = write_jsonl(tmp_path / "r.jsonl", rows)
+    write_sidecar(src, reads="full", sampling="prose1", plan_sha=reads.plan_sha(jj.FAMILY))
+    fake_llm(_responder)
+    res = jj.run(jargs(src, items=labels, allow_missing=False))
+    judged = sorted([*range(20, 61, 4), 42])
+    assert res.config["layers_judged"] == judged
+    assert res.extras["layers_without_reference"] == [L for L in range(64) if L not in judged]
+    assert res.config["reads_checked"] == "sidecar" and res.counts["n_missing_cells"] == 0
+    assert res.extras["headline_layer"] == 44 and res.value == pytest.approx(0.5)
+
+
+def test_headline_layer_opt(tmp_path, fake_llm, jargs):
+    fake_llm(_responder)
+    res = jj.run(jargs(EXAMPLE, items=LABELS, extra={"headline_layer": "48"}))
+    assert res.extras["headline_layer"] == 48
+    assert res.value == res.extras["by_layer"]["48"]["precision"] == 0.0
+    with pytest.raises(SystemExit) as e:
+        jj.run(jargs(EXAMPLE, items=LABELS, extra={"headline_layer": "52"}))
+    assert e.value.code == 2
+
+
+def test_layers_each_equals_by_layer(tmp_path, fake_llm, jargs):
+    """A single-layer run (the layers=each sub-run) is the all-layer run's by_layer entry, on the
+    same call keys (each (label, layer) cell is judged on its own)."""
+    fake_llm(_responder)
+    all_args = jargs(EXAMPLE, items=LABELS, out=tmp_path / "all")
+    full = jj.run(all_args)
+    fake_llm(_responder)
+    one_args = jargs(EXAMPLE, items=LABELS, layers=[44], out=tmp_path / "L44")
+    one = jj.run(one_args)
+    b = full.extras["by_layer"]["44"]
+    assert one.value == b["precision"]
+    assert one.extras["recall_at_10"] == b["recall_at_10"]
+    assert one.extras["foil"]["precision"] == b["foil_precision"]
+
+    def keys(out: Path, tag: str) -> set[str]:
+        lines = (out / "cells.jsonl").read_text().splitlines()
+        return {k for k in (json.loads(x)["key"] for x in lines) if tag in k}
+
+    assert keys(tmp_path / "L44", "") == keys(tmp_path / "all", "__L044__")
+
+
+def test_verdict_rows_carry_audit_fields(tmp_path, fake_llm, jargs):
+    fake_llm(_responder)
+    args = jargs(EXAMPLE, items=LABELS)
+    jj.run(args)
+    rows = ss.verdict_rows(args.out)
+    assert {r["kind"] for r in rows} == {"P", "B", "Q"}
+    for r in rows:
+        assert r["pass"] == (r["grade"] != "out")
+        assert r["is_foil"] == (r["kind"] == "Q")
+        assert {"key", "label", "layer", "pos", "concept", "tokens", "grade", "token"} <= set(r)
+        if r["kind"] in ("P", "Q") and r["pass"]:
+            assert r["token"] and pp._tok_norm(r["token"]) in {pp._tok_norm(t) for t in r["tokens"]}
+    assert sum(r["kind"] == "P" for r in rows) == 9  # 3 cells x 3 concepts
+    assert sum(r["kind"] == "B" for r in rows) == 90  # 3 cells x 10 tokens x 3 concepts
+
+
+def test_jlens_pr_stays_native_under_summary(tmp_path, fake_llm):
+    from types import SimpleNamespace
+
+    from wsbench import digest, runner
+
+    fake = fake_llm(_responder)
+    opts = SimpleNamespace(
+        items=LABELS,
+        layers=None,
+        limit=0,
+        allow_missing=True,
+        concurrency=4,
+        rpm=1e9,
+        dry_run=False,
+        anti_text_inversion=False,
+    )
+    r = runner.judge_family(
+        SPEC,
+        opts,  # type: ignore[arg-type]
+        EXAMPLE,
+        tmp_path / "o",
+        judge=resolve(SPEC.judge, env={}),
+        opts={"aggregate": "summary"},
+    )
+    assert r.config["aggregate"] == "native"
+    assert r.extras["summary_mode_note"] == digest.NATIVE_ONLY["jlens_concept_pr"]
+    stage_systems = {pp.STAGE_A_SYSTEM, pp.STAGE_B_SYSTEM, pp.STAGE_P_SYSTEM}
+    assert all(s in stage_systems or u.startswith("Return") for s, u in fake.calls)
+
+
+def test_jlens_arm_root_without_family_file_is_skipped(tmp_path):
+    """C12: the jlens (tokens10) arm writes no jlens_concept_pr.jsonl (the J-lens is the
+    reference), so `run all=True` over that root skips the family instead of failing it."""
+    from types import SimpleNamespace
+
+    from wsbench import runner
+
+    root = tmp_path / "readouts"
+    root.mkdir()
+    args = SimpleNamespace(
+        opt=[], judge_model=None, family_workers=1, dry_run=True, anti_text_inversion=False
+    )
+    outcomes, code = runner.run_families(
+        [SPEC],
+        args,  # type: ignore[arg-type]
+        readouts_root=root,
+        out=tmp_path / "out",
+        env={},
+    )
+    assert code == 0 and [o.status for o in outcomes] == ["skipped"]
+
+
+def test_sidecar_tokens_sampling_is_refused(tmp_path, monkeypatch, jargs):
+    from conftest import write_sidecar
+
+    monkeypatch.setattr("wsbench.llm._make_client", lambda r, k: pytest.fail("no client"))
+    src = write_jsonl(
+        tmp_path / "r.jsonl", [json.loads(x) for x in EXAMPLE.read_text().splitlines()]
+    )
+    write_sidecar(src, reads="full", sampling="tokens10")
+    with pytest.raises(SystemExit) as e:
+        jj.run(jargs(src, items=LABELS))
+    assert e.value.code == 2
+
+
+def test_jlens_pr_out_of_macro_by_metric() -> None:
+    from wsbench.results import FamilyResult, macro
+
+    r = FamilyResult(
+        family="jlens_concept_pr",
+        metric="precision",
+        value=0.3,
+        ci95=None,
+        n_items=299,
+        higher_is_better=True,
+        chance=None,
+        chance_label=ss.CHANCE_LABEL,
+        complete=True,
+        pinned_instrument=True,
+        config={"judge_model": SPEC.judge.model},
+        counts={},
+    )
+    m = macro([r], superseded={}, held_out={}, removed={})
+    assert m["excluded"] == [{"family": "jlens_concept_pr", "reason": "metric"}]
+    assert SPEC.not_in_macro == ""
+
+
+def make_adapted_bank(tmp: Path, layers: list[int]) -> Path:
+    """``WSB_BANK_ROOT`` with a 2-label ``jlens_concept_pr`` bank whose reference files exist at
+    exactly ``layers`` (plan 0042 C3: arbitrary layers need a reference at each)."""
+    d = tmp / "bank_root" / "jlens_concept_pr"
+    labels = [("chat-a", 5), ("chat-b", 7)]
+    man = {
+        "layers": layers,
+        "prompts": [
+            {"label": lab, "family": "chat", "n_pos": 20, "eval_positions": [pos]}
+            for lab, pos in labels
+        ],
+    }
+    d.mkdir(parents=True)
+    (d / "manifest.json").write_text(json.dumps(man))
+    for lab, pos in labels:
+        ref = d / "gen-jlens-pr-jlens" / lab
+        ref.mkdir(parents=True)
+        for layer in layers:
+            row = {"pos": pos, "samples": [" metaphor", " figure", " speech"], "scores": []}
+            (ref / f"L{layer:03d}.jsonl").write_text(json.dumps(row) + "\n")
+    return d.parent
+
+
+def test_arbitrary_layers_with_adapted_reference(tmp_path, monkeypatch, fake_llm, jargs):
+    from wsbench import registry
+
+    layers = [3, 17, 44]
+    root = make_adapted_bank(tmp_path, layers)
+    monkeypatch.setenv(registry.BANK_ROOT_ENV, str(root))
+    rows = [
+        {"id": lab, "layer": layer, "pos": pos, "samples": ["a metaphor"]}
+        for lab, pos in (("chat-a", 5), ("chat-b", 7))
+        for layer in layers
+    ]
+    fake_llm(_responder)
+    res = jj.run(jargs(write_jsonl(tmp_path / "r.jsonl", rows), layers=layers))
+    assert res.config["layers_judged"] == layers
+    assert set(res.extras["by_layer"]) == {"3", "17", "44"} and res.extras["headline_layer"] == 44

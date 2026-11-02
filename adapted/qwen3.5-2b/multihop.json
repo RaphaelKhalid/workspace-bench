@@ -1,0 +1,3008 @@
+{
+ "family": "multihop",
+ "gate": "Qwen3.6-27B behavioral: >=8/10 correct at temp 0.7 (greedy-verified first); association scored against association_aliases.json (phrase-aware, echo-guarded); poetry scored by committed rhyme",
+ "eval_render_note": "EVAL RENDER: feed `prompt` verbatim as plain text, NO chat template (directed-modulation is the only chat-templated family). `gate_variant` records how the item was behaviorally verified and does NOT affect the eval read.",
+ "read": "the last word of the prompt (its last non-whitespace token; one position per item, every judged layer); changed 2026-09-23 from the final prompt token, which for 33 items is the bare space after the last word (Camila: \"multihop should be read on the second to last token, ie the last word, not the space token\"). Per item, `readout.offsets` is the read position counted from the end of the Qwen3.6-27B tokenization of `prompt`: -2 for the 33 prompts that end in a bare space token, -1 for the 67 whose final token is the word itself (59) or the opening quote of `is \"` (8: the quote is the last non-whitespace token and is the read).",
+ "adapt": {
+  "model": "qwen3.5-2b",
+  "hf_id": "Qwen/Qwen3.5-2B",
+  "frozen": "2026-10-20"
+ },
+ "items": [
+  {
+   "name": "atomic-26-symbol",
+   "prompt": "Fact: The chemical symbol for the element with atomic number 26 is ",
+   "target": "Fe",
+   "intermediates": [
+    "iron"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain_stripped",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -2
+    ]
+   },
+   "id": "atomic-26-symbol",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "chem-organic-Z",
+   "prompt": "Fact: The atomic number of the element present in all organic compounds by definition is ",
+   "target": "6",
+   "intermediates": [
+    "carbon"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -2
+    ]
+   },
+   "id": "chem-organic-Z",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "double-dice-faces",
+   "prompt": "Fact: Double the number of faces on a standard die is ",
+   "target": "12",
+   "intermediates": [
+    "6",
+    "six"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -2
+    ]
+   },
+   "id": "double-dice-faces",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "firstletter-valentines-month",
+   "prompt": "Fact: The first letter of the month containing Valentine's Day is \"",
+   "target": "F",
+   "intermediates": [
+    "February"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "firstletter-valentines-month",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "func-pumps-chambers",
+   "prompt": "Fact: In humans, the organ that pumps blood through the body has this many chambers: ",
+   "target": "4",
+   "intermediates": [
+    "heart"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -2
+    ]
+   },
+   "id": "func-pumps-chambers",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "holiday-christmas-monthnum",
+   "prompt": "Fact: Christmas Day is celebrated in month number ",
+   "target": "12",
+   "intermediates": [
+    "December"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -2
+    ]
+   },
+   "id": "holiday-christmas-monthnum",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "holiday-halloween-monthnum",
+   "prompt": "Fact: Halloween is celebrated in month number ",
+   "target": "10",
+   "intermediates": [
+    "October"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -2
+    ]
+   },
+   "id": "holiday-halloween-monthnum",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "holiday-independence-monthnum",
+   "prompt": "Fact: The US Independence Day holiday is celebrated in month number ",
+   "target": "7",
+   "intermediates": [
+    "July"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -2
+    ]
+   },
+   "id": "holiday-independence-monthnum",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "holiday-valentines-monthnum",
+   "prompt": "Fact: Valentine's Day is celebrated in month number ",
+   "target": "2",
+   "intermediates": [
+    "February"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -2
+    ]
+   },
+   "id": "holiday-valentines-monthnum",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "spider-legs",
+   "prompt": "Fact: The number of legs on the animal that spins webs is ",
+   "target": "8",
+   "intermediates": [
+    "spider"
+   ],
+   "source": "jlens_source",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -2
+    ]
+   },
+   "id": "spider-legs",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "bf-christmas-season",
+   "prompt": "Fact: In the Northern Hemisphere, the season during the month of Christmas is",
+   "target": "winter",
+   "intermediates": [
+    "December"
+   ],
+   "source": "staging",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "bf-christmas-season",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "bf-eiffel-currency",
+   "prompt": "Fact: The currency used in the country home to the Eiffel Tower is the",
+   "target": "euro",
+   "intermediates": [
+    "France"
+   ],
+   "source": "staging",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "bf-eiffel-currency",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "bf-fuji-ocean",
+   "prompt": "Fact: The ocean east of the country of Mount Fuji is the",
+   "target": "Pacific",
+   "intermediates": [
+    "Japan"
+   ],
+   "source": "staging",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "bf-fuji-ocean",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "bf-giza-continent",
+   "prompt": "Fact: The continent containing the country famous for the pyramids of Giza is",
+   "target": "Africa",
+   "intermediates": [
+    "Egypt"
+   ],
+   "source": "staging",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "bf-giza-continent",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "bf-madrid-language",
+   "prompt": "Fact: The language spoken in the country whose capital is Madrid is",
+   "target": "Spanish",
+   "intermediates": [
+    "Spain"
+   ],
+   "source": "staging",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "bf-madrid-language",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "bf-southpole-bird",
+   "prompt": "Fact: The flightless bird living on the continent surrounding the South Pole is the",
+   "target": "penguin",
+   "intermediates": [
+    "Antarctica"
+   ],
+   "source": "staging",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "bf-southpole-bird",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "bf-sphinx-river",
+   "prompt": "Fact: The river flowing through the country of the Great Sphinx is the",
+   "target": "Nile",
+   "intermediates": [
+    "Egypt"
+   ],
+   "source": "staging",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "bf-sphinx-river",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "bf-stopsign-sides",
+   "prompt": "Fact: The number of sides on the shape of a standard stop sign is",
+   "target": "8",
+   "intermediates": [
+    "octagon"
+   ],
+   "source": "staging",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "bf-stopsign-sides",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "bf-sushi-capital",
+   "prompt": "Fact: The capital city of the country where sushi originated is",
+   "target": "Tokyo",
+   "intermediates": [
+    "Japan"
+   ],
+   "source": "staging",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "bf-sushi-capital",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "bf-whitebear-ocean",
+   "prompt": "Fact: The ocean where the white bear of the far north hunts is the",
+   "target": "Arctic",
+   "intermediates": [
+    "polar bear"
+   ],
+   "source": "staging",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "bf-whitebear-ocean",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-mh-acropolis-capital",
+   "prompt": "Fact: The capital of the country of the Acropolis is",
+   "target": "Athens",
+   "intermediates": [
+    "Greece"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-mh-acropolis-capital",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-mh-bakerstreet-city",
+   "prompt": "Fact: The home city of the detective of 221B Baker Street is",
+   "target": "London",
+   "intermediates": [
+    "Sherlock Holmes"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-mh-bakerstreet-city",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-mh-buenosaires-language",
+   "prompt": "Fact: The language of the country whose capital is Buenos Aires is",
+   "target": "Spanish",
+   "intermediates": [
+    "Argentina"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-mh-buenosaires-language",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-mh-colosseum-capital",
+   "prompt": "Fact: The capital of the country where the Colosseum stands is",
+   "target": "Rome",
+   "intermediates": [
+    "Italy"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-mh-colosseum-capital",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-mh-eiffel-capital",
+   "prompt": "Fact: The capital of the country famous for the Eiffel Tower is",
+   "target": "Paris",
+   "intermediates": [
+    "France"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-mh-eiffel-capital",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-mh-fjords-capital",
+   "prompt": "Fact: The capital of the country famous for fjords is",
+   "target": "Oslo",
+   "intermediates": [
+    "Norway"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-mh-fjords-capital",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-mh-fuji-currency",
+   "prompt": "Fact: The currency of the country of Mount Fuji is the",
+   "target": "yen",
+   "intermediates": [
+    "Japan"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-mh-fuji-currency",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-mh-guinness-capital",
+   "prompt": "Fact: The capital of the country where Guinness is brewed is",
+   "target": "Dublin",
+   "intermediates": [
+    "Ireland"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-mh-guinness-capital",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-mh-griffithobservatory-state",
+   "prompt": "Fact: The US state containing the Griffith Observatory is",
+   "target": "California",
+   "intermediates": [
+    "Los Angeles"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-mh-griffithobservatory-state",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-mh-kiwi-capital",
+   "prompt": "Fact: The capital of the country whose people are nicknamed Kiwis is",
+   "target": "Wellington",
+   "intermediates": [
+    "New Zealand"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-mh-kiwi-capital",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-mh-kremlin-language",
+   "prompt": "Fact: The main language of the country where the Kremlin stands is",
+   "target": "Russian",
+   "intermediates": [
+    "Russia"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-mh-kremlin-language",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-mh-liberty-river",
+   "prompt": "Fact: The river beside the island of the Statue of Liberty is the",
+   "target": "Hudson",
+   "intermediates": [
+    "New York"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-mh-liberty-river",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-mh-lisbon-language",
+   "prompt": "Fact: The language spoken in the country whose capital is Lisbon is",
+   "target": "Portuguese",
+   "intermediates": [
+    "Portugal"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-mh-lisbon-language",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-mh-nokia-capital",
+   "prompt": "Fact: The capital of the country where Nokia was founded is",
+   "target": "Helsinki",
+   "intermediates": [
+    "Finland"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-mh-nokia-capital",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-mh-zeus-country",
+   "prompt": "Fact: The country of the mountain home of Zeus is",
+   "target": "Greece",
+   "intermediates": [
+    "Olympus"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "chat",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-mh-zeus-country",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "firstletter-halloween-month",
+   "prompt": "Fact: The first letter of the month containing Halloween is \"",
+   "target": "O",
+   "intermediates": [
+    "October"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.9,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "firstletter-halloween-month",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "bf-eiffel-continent",
+   "prompt": "Fact: The continent home to the country of the Eiffel Tower is",
+   "target": "Europe",
+   "intermediates": [
+    "France"
+   ],
+   "source": "staging",
+   "consistency": 0.9,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "bf-eiffel-continent",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "bf-olympia-language",
+   "prompt": "Fact: The language of the country where the ancient Olympic Games began is",
+   "target": "Greek",
+   "intermediates": [
+    "Greece"
+   ],
+   "source": "staging",
+   "consistency": 0.9,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "bf-olympia-language",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-mh-ikea-capital",
+   "prompt": "Fact: The capital of the country where IKEA was founded is",
+   "target": "Stockholm",
+   "intermediates": [
+    "Sweden"
+   ],
+   "source": "staging_b3",
+   "consistency": 0.9,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-mh-ikea-capital",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "colosseum-currency",
+   "prompt": "Fact: The currency used in the country where the Colosseum stands is the ",
+   "target": "Euro",
+   "intermediates": [
+    "Italy"
+   ],
+   "source": "jlens_source",
+   "consistency": 0.8,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -2
+    ]
+   },
+   "id": "colosseum-currency",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "bf-nile-desert",
+   "prompt": "Fact: The largest hot desert, found on the continent where the Nile flows, is the",
+   "target": "Sahara",
+   "intermediates": [
+    "Africa"
+   ],
+   "source": "staging",
+   "consistency": 0.8,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "bf-nile-desert",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "bf-relativity-firstname",
+   "prompt": "Fact: The first name of the scientist who developed the theory of general relativity is",
+   "target": "Albert",
+   "intermediates": [
+    "Einstein"
+   ],
+   "source": "staging",
+   "consistency": 0.8,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "bf-relativity-firstname",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "bf-tajmahal-continent",
+   "prompt": "Fact: The continent where the country of the Taj Mahal lies is",
+   "target": "Asia",
+   "intermediates": [
+    "India"
+   ],
+   "source": "staging",
+   "consistency": 0.8,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "bf-tajmahal-continent",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-mh-windycity-state",
+   "prompt": "Fact: The US state containing the city nicknamed the Windy City is",
+   "target": "Illinois",
+   "intermediates": [
+    "Chicago"
+   ],
+   "source": "staging_b3",
+   "consistency": 0.8,
+   "gate_variant": "plain",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-mh-windycity-state",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c0-ez-castro-capital",
+   "prompt": "Fact: The capital of the Caribbean island country once led by Fidel Castro is",
+   "target": "Havana",
+   "intermediates": [
+    "Cuba"
+   ],
+   "bridge_question": "Which Caribbean island country was led by Fidel Castro?",
+   "bridge_aliases": [
+    "Republic of Cuba"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c0-ez-bigben-currency",
+   "prompt": "Fact: The currency of the country of Big Ben is the",
+   "target": "pound",
+   "intermediates": [
+    "United Kingdom"
+   ],
+   "bridge_question": "Which country is Big Ben located in?",
+   "bridge_aliases": [
+    "UK",
+    "Britain",
+    "Great Britain",
+    "England"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c0-ez-seoul-currency",
+   "prompt": "Fact: The currency of the country whose capital is Seoul is the",
+   "target": "won",
+   "intermediates": [
+    "South Korea"
+   ],
+   "bridge_question": "Which country has Seoul as its capital?",
+   "bridge_aliases": [
+    "Korea",
+    "Republic of Korea"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c0-ez-bangkok-currency",
+   "prompt": "Fact: The currency of the country whose capital is Bangkok is the",
+   "target": "baht",
+   "intermediates": [
+    "Thailand"
+   ],
+   "bridge_question": "Which country has Bangkok as its capital?",
+   "bridge_aliases": [
+    "Siam",
+    "Kingdom of Thailand"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c0-ez-tehran-language",
+   "prompt": "Fact: The main language spoken in the country whose capital is Tehran is",
+   "target": "Persian",
+   "intermediates": [
+    "Iran"
+   ],
+   "bridge_question": "Which country has Tehran as its capital?",
+   "bridge_aliases": [
+    "Persia",
+    "Islamic Republic of Iran"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c0-ez-warsaw-language",
+   "prompt": "Fact: The language spoken in the country whose capital is Warsaw is",
+   "target": "Polish",
+   "intermediates": [
+    "Poland"
+   ],
+   "bridge_question": "Which country has Warsaw as its capital?",
+   "bridge_aliases": [
+    "Republic of Poland"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c0-ez-nairobi-language",
+   "prompt": "Fact: The national language of the country whose capital is Nairobi is",
+   "target": "Swahili",
+   "intermediates": [
+    "Kenya"
+   ],
+   "bridge_question": "Which country has Nairobi as its capital?",
+   "bridge_aliases": [
+    "Republic of Kenya"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c0-ez-hanoi-language",
+   "prompt": "Fact: The language spoken by most people in the country whose capital is Hanoi is",
+   "target": "Vietnamese",
+   "intermediates": [
+    "Vietnam"
+   ],
+   "bridge_question": "Which country has Hanoi as its capital?",
+   "bridge_aliases": [
+    "Viet Nam"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c0-ez-lightest-symbol",
+   "prompt": "Fact: The chemical symbol of the lightest element is",
+   "target": "H",
+   "intermediates": [
+    "hydrogen"
+   ],
+   "bridge_question": "What is the lightest chemical element?",
+   "bridge_aliases": [
+    "element 1"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c0-ez-liquidmetal-symbol",
+   "prompt": "Fact: The chemical symbol of the metal that is liquid at room temperature and was used in old thermometers is",
+   "target": "Hg",
+   "intermediates": [
+    "mercury"
+   ],
+   "bridge_question": "Which metal is liquid at room temperature and was used in old thermometers?",
+   "bridge_aliases": [
+    "quicksilver",
+    "element 80"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c0-ez-hungarycapital-river",
+   "prompt": "Fact: The river that flows through the capital of Hungary is the",
+   "target": "Danube",
+   "intermediates": [
+    "Budapest"
+   ],
+   "bridge_question": "What is the capital of Hungary?",
+   "bridge_aliases": [
+    "Buda-Pest"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c1-ws-mozart-birthcountry-capital",
+   "prompt": "Fact: The capital of the country where Mozart was born is",
+   "target": "Vienna",
+   "intermediates": [
+    "Austria"
+   ],
+   "bridge_question": "In which country was Wolfgang Amadeus Mozart born?",
+   "bridge_aliases": [
+    "Republic of Austria",
+    "Österreich"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c1-ws-washingtondc-currency",
+   "prompt": "Fact: The currency of the country whose capital is Washington, D.C. is the",
+   "target": "dollar",
+   "intermediates": [
+    "United States"
+   ],
+   "bridge_question": "Which country has Washington, D.C. as its capital?",
+   "bridge_aliases": [
+    "USA",
+    "United States of America",
+    "America",
+    "US"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c1-ws-islamabad-currency",
+   "prompt": "Fact: The currency of the country whose capital is Islamabad is the",
+   "target": "rupee",
+   "intermediates": [
+    "Pakistan"
+   ],
+   "bridge_question": "Which country has Islamabad as its capital?",
+   "bridge_aliases": [
+    "Islamic Republic of Pakistan"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c1-ws-kyiv-language",
+   "prompt": "Fact: The main language spoken in the country whose capital is Kyiv is",
+   "target": "Ukrainian",
+   "intermediates": [
+    "Ukraine"
+   ],
+   "bridge_question": "Which country has Kyiv as its capital?",
+   "bridge_aliases": [
+    "the Ukraine"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c1-ws-riyadh-language",
+   "prompt": "Fact: The official language of the country whose capital is Riyadh is",
+   "target": "Arabic",
+   "intermediates": [
+    "Saudi Arabia"
+   ],
+   "bridge_question": "Which country has Riyadh as its capital?",
+   "bridge_aliases": [
+    "Kingdom of Saudi Arabia",
+    "KSA"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c1-ws-animalfarm-author-firstname",
+   "prompt": "Fact: The pen-name first name of the author of 'Animal Farm' is",
+   "target": "George",
+   "intermediates": [
+    "Orwell"
+   ],
+   "bridge_question": "Who wrote the novella 'Animal Farm'?",
+   "bridge_aliases": [
+    "George Orwell",
+    "Eric Arthur Blair",
+    "Eric Blair"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c1-ws-starrynight-firstname",
+   "prompt": "Fact: The first name of the painter of 'The Starry Night' is",
+   "target": "Vincent",
+   "intermediates": [
+    "Van Gogh"
+   ],
+   "bridge_question": "Who painted 'The Starry Night'?",
+   "bridge_aliases": [
+    "Vincent van Gogh",
+    "van Gogh"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c1-ws-odetojoy-nationality",
+   "prompt": "Fact: The nationality of the composer of the Ninth Symphony with the 'Ode to Joy' is",
+   "target": "German",
+   "intermediates": [
+    "Beethoven"
+   ],
+   "bridge_question": "Which composer wrote the Ninth Symphony featuring the 'Ode to Joy'?",
+   "bridge_aliases": [
+    "Ludwig van Beethoven"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c1-ws-wiring-metal-symbol",
+   "prompt": "Fact: The chemical symbol of the reddish metal commonly used in electrical wires is",
+   "target": "Cu",
+   "intermediates": [
+    "copper"
+   ],
+   "bridge_question": "Which reddish metal is most commonly used in electrical wiring?",
+   "bridge_aliases": [
+    "Copper",
+    "cuprum"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c2-sb-antwerp-capital",
+   "prompt": "Fact: The capital of the country that contains the cities of Antwerp and Bruges is",
+   "target": "Brussels",
+   "intermediates": [
+    "Belgium"
+   ],
+   "bridge_question": "Which country contains the cities of Antwerp and Bruges?",
+   "bridge_aliases": [
+    "Kingdom of Belgium"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c2-sb-jakarta-language",
+   "prompt": "Fact: The official language of the country whose capital is Jakarta is",
+   "target": "Indonesian",
+   "intermediates": [
+    "Indonesia"
+   ],
+   "bridge_question": "Which country has Jakarta as its capital?",
+   "bridge_aliases": [
+    "Republic of Indonesia"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c2-sb-bogota-currency",
+   "prompt": "Fact: The currency of the country whose capital is Bogotá is the",
+   "target": "peso",
+   "intermediates": [
+    "Colombia"
+   ],
+   "bridge_question": "Which country has Bogotá as its capital?",
+   "bridge_aliases": [
+    "Republic of Colombia"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c2-sb-mandela-currency",
+   "prompt": "Fact: The currency of the country where Nelson Mandela served as president is the",
+   "target": "rand",
+   "intermediates": [
+    "South Africa"
+   ],
+   "bridge_question": "Of which country was Nelson Mandela president?",
+   "bridge_aliases": [
+    "Republic of South Africa",
+    "RSA"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c2-sb-miserables-nationality",
+   "prompt": "Fact: The nationality of the writer of the novel Les Misérables was",
+   "target": "French",
+   "intermediates": [
+    "Victor Hugo"
+   ],
+   "bridge_question": "Who wrote the novel Les Misérables?",
+   "bridge_aliases": [
+    "Hugo"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c2-sb-banana-symbol",
+   "prompt": "Fact: The chemical symbol of the element that bananas are famously rich in, atomic number 19, is",
+   "target": "K",
+   "intermediates": [
+    "potassium"
+   ],
+   "bridge_question": "Which element with atomic number 19 are bananas famously rich in?",
+   "bridge_aliases": [
+    "kalium"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c0-mh-forint-language",
+   "prompt": "Fact: The official language of the country whose currency is the forint is",
+   "target": "Hungarian",
+   "intermediates": [
+    "Hungary"
+   ],
+   "bridge_question": "Which country uses the forint as its currency?",
+   "bridge_aliases": [
+    "Magyarország",
+    "Republic of Hungary"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c0-mh-dhaka-language",
+   "prompt": "Fact: The official language of the country whose capital is Dhaka is",
+   "target": "Bengali",
+   "intermediates": [
+    "Bangladesh"
+   ],
+   "bridge_question": "Which country has Dhaka as its capital?",
+   "bridge_aliases": [
+    "People's Republic of Bangladesh"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c0-mh-petronas-language",
+   "prompt": "Fact: The national language of the country home to the Petronas Towers is",
+   "target": "Malay",
+   "intermediates": [
+    "Malaysia"
+   ],
+   "bridge_question": "In which country are the Petronas Towers located?",
+   "bridge_aliases": [
+    "Federation of Malaysia"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c0-mh-addisababa-language",
+   "prompt": "Fact: The official working language of the country whose capital is Addis Ababa is",
+   "target": "Amharic",
+   "intermediates": [
+    "Ethiopia"
+   ],
+   "bridge_question": "Which country has Addis Ababa as its capital?",
+   "bridge_aliases": [
+    "Federal Democratic Republic of Ethiopia",
+    "Abyssinia"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c0-mh-casablanca-capital",
+   "prompt": "Fact: The capital of the country home to the cities of Casablanca and Marrakesh is",
+   "target": "Rabat",
+   "intermediates": [
+    "Morocco"
+   ],
+   "bridge_question": "Which country contains the cities of Casablanca and Marrakesh?",
+   "bridge_aliases": [
+    "Kingdom of Morocco"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c0-mh-goldcoast-currency",
+   "prompt": "Fact: The currency of the West African country formerly called the Gold Coast is the",
+   "target": "cedi",
+   "intermediates": [
+    "Ghana"
+   ],
+   "bridge_question": "Which West African country was formerly called the Gold Coast?",
+   "bridge_aliases": [
+    "Republic of Ghana"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c0-mh-prague-currency",
+   "prompt": "Fact: The currency of the country whose capital is Prague is the",
+   "target": "koruna",
+   "intermediates": [
+    "Czech Republic"
+   ],
+   "bridge_question": "Which country has Prague as its capital?",
+   "bridge_aliases": [
+    "Czechia"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c0-mh-transylvania-currency",
+   "prompt": "Fact: The currency of the country that contains the region of Transylvania is the",
+   "target": "leu",
+   "intermediates": [
+    "Romania"
+   ],
+   "bridge_question": "Which country contains the region of Transylvania?",
+   "bridge_aliases": [
+    "România"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c0-mh-pool-disinfectant-symbol",
+   "prompt": "Fact: The chemical symbol of the element commonly added to swimming pools as a disinfectant is",
+   "target": "Cl",
+   "intermediates": [
+    "chlorine"
+   ],
+   "bridge_question": "Which element is commonly added to swimming pools as a disinfectant?",
+   "bridge_aliases": [
+    "element 17"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c1-mh-aloha-state-capital",
+   "prompt": "Fact: The capital of the US state known as the Aloha State is",
+   "target": "Honolulu",
+   "intermediates": [
+    "Hawaii"
+   ],
+   "bridge_question": "Which US state is nicknamed the Aloha State?",
+   "bridge_aliases": [
+    "State of Hawaii",
+    "HI"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c1-mh-saddam-country-capital",
+   "prompt": "Fact: The capital of the country once ruled by Saddam Hussein is",
+   "target": "Baghdad",
+   "intermediates": [
+    "Iraq"
+   ],
+   "bridge_question": "Which country did Saddam Hussein rule?",
+   "bridge_aliases": [
+    "Republic of Iraq"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c1-mh-pyongyang-language",
+   "prompt": "Fact: The official language of the country whose capital is Pyongyang is",
+   "target": "Korean",
+   "intermediates": [
+    "North Korea"
+   ],
+   "bridge_question": "Which country has Pyongyang as its capital?",
+   "bridge_aliases": [
+    "DPRK",
+    "Democratic People's Republic of Korea"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c1-mh-angkor-wat-language",
+   "prompt": "Fact: The official language of the country home to Angkor Wat is",
+   "target": "Khmer",
+   "intermediates": [
+    "Cambodia"
+   ],
+   "bridge_question": "In which country is Angkor Wat located?",
+   "bridge_aliases": [
+    "Kingdom of Cambodia",
+    "Kampuchea"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c1-mh-zagreb-language",
+   "prompt": "Fact: The official language of the country whose capital is Zagreb is",
+   "target": "Croatian",
+   "intermediates": [
+    "Croatia"
+   ],
+   "bridge_question": "Which country has Zagreb as its capital?",
+   "bridge_aliases": [
+    "Republic of Croatia",
+    "Hrvatska"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c1-mh-galvanizing-metal-symbol",
+   "prompt": "Fact: The chemical symbol of the metal used to galvanize steel is",
+   "target": "Zn",
+   "intermediates": [
+    "zinc"
+   ],
+   "bridge_question": "Which metal is used as a coating to galvanize steel?",
+   "bridge_aliases": [],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c1-mh-brimstone-symbol",
+   "prompt": "Fact: The chemical symbol of the yellow element known in the Bible as brimstone is",
+   "target": "S",
+   "intermediates": [
+    "sulfur"
+   ],
+   "bridge_question": "Which yellow element was called brimstone in the Bible?",
+   "bridge_aliases": [
+    "sulphur"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c2-mh-harvard-state-capital",
+   "prompt": "Fact: The capital of the US state where Harvard University is located is",
+   "target": "Boston",
+   "intermediates": [
+    "Massachusetts"
+   ],
+   "bridge_question": "In which US state is Harvard University located?",
+   "bridge_aliases": [
+    "Commonwealth of Massachusetts",
+    "Bay State",
+    "MA"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c2-mh-grandcanyon-state-capital",
+   "prompt": "Fact: The capital of the US state home to the Grand Canyon is",
+   "target": "Phoenix",
+   "intermediates": [
+    "Arizona"
+   ],
+   "bridge_question": "Which US state is home to the Grand Canyon?",
+   "bridge_aliases": [
+    "Grand Canyon State",
+    "AZ"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c2-mh-belgrade-language",
+   "prompt": "Fact: The official language of the country whose capital is Belgrade is",
+   "target": "Serbian",
+   "intermediates": [
+    "Serbia"
+   ],
+   "bridge_question": "Which country has Belgrade as its capital?",
+   "bridge_aliases": [
+    "Republic of Serbia"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c2-mh-tallinn-language",
+   "prompt": "Fact: The official language of the country whose capital is Tallinn is",
+   "target": "Estonian",
+   "intermediates": [
+    "Estonia"
+   ],
+   "bridge_question": "Which country has Tallinn as its capital?",
+   "bridge_aliases": [
+    "Republic of Estonia"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c2-mh-abudhabi-currency",
+   "prompt": "Fact: The currency of the country whose capital is Abu Dhabi is the",
+   "target": "dirham",
+   "intermediates": [
+    "United Arab Emirates"
+   ],
+   "bridge_question": "Which country has Abu Dhabi as its capital?",
+   "bridge_aliases": [
+    "UAE",
+    "Emirates"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w100c2-mh-scrooge-novella-author",
+   "prompt": "Fact: The surname of the author of the novella in which Ebenezer Scrooge is visited by ghosts is",
+   "target": "Dickens",
+   "intermediates": [
+    "A Christmas Carol"
+   ],
+   "bridge_question": "In which novella is Ebenezer Scrooge visited by ghosts?",
+   "bridge_aliases": [
+    "Christmas Carol"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w101c0-aleppo-country-capital",
+   "prompt": "Fact: The capital of the country where the ancient city of Aleppo is located is",
+   "target": "Damascus",
+   "intermediates": [
+    "Syria"
+   ],
+   "bridge_question": "In which country is the ancient city of Aleppo located?",
+   "bridge_aliases": [
+    "Syrian Arab Republic"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 22/60 passed.\n- Failed (gold -> what the model wrote): Reykjavik -> model said 'Reykjavik' (7/10); Abuja -> model said 'Nairobi' (1/10); Caracas -> model said 'Bogota' (4/10); Faust -> model said 'The Sorrows of Young Werther' (0/10); Aeneid -> model said 'Divine Comedy' (0/10); Middlemarch -> model said 'The Great Gatsby' (0/10); U -> model said 'Rn' (1/10); W -> model said 'Hg' (0/10); Pluto -> model said 'Hades' (3/10); Norwegian -> model said 'NORWAY' (2/10); Czech -> model said 'American' (0/10); Atlanta -> model said 'Atlanta' (7/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Hungarian; Bengali; Malay; Amharic; Rabat; cedi; koruna; leu; Cl; Honolulu; Baghdad; Korean",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w101c0-barcelona-region-language",
+   "prompt": "Fact: The regional language spoken alongside Spanish in the region of Spain whose capital is Barcelona is",
+   "target": "Catalan",
+   "intermediates": [
+    "Catalonia"
+   ],
+   "bridge_question": "Which region of Spain has Barcelona as its capital?",
+   "bridge_aliases": [
+    "Catalunya",
+    "Cataluña"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 22/60 passed.\n- Failed (gold -> what the model wrote): Reykjavik -> model said 'Reykjavik' (7/10); Abuja -> model said 'Nairobi' (1/10); Caracas -> model said 'Bogota' (4/10); Faust -> model said 'The Sorrows of Young Werther' (0/10); Aeneid -> model said 'Divine Comedy' (0/10); Middlemarch -> model said 'The Great Gatsby' (0/10); U -> model said 'Rn' (1/10); W -> model said 'Hg' (0/10); Pluto -> model said 'Hades' (3/10); Norwegian -> model said 'NORWAY' (2/10); Czech -> model said 'American' (0/10); Atlanta -> model said 'Atlanta' (7/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Hungarian; Bengali; Malay; Amharic; Rabat; cedi; koruna; leu; Cl; Honolulu; Baghdad; Korean",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w101c0-tirana-country-language",
+   "prompt": "Fact: The official language of the Balkan country whose capital is Tirana is",
+   "target": "Albanian",
+   "intermediates": [
+    "Albania"
+   ],
+   "bridge_question": "Which Balkan country has Tirana as its capital?",
+   "bridge_aliases": [
+    "Republic of Albania",
+    "Shqipëria"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 22/60 passed.\n- Failed (gold -> what the model wrote): Reykjavik -> model said 'Reykjavik' (7/10); Abuja -> model said 'Nairobi' (1/10); Caracas -> model said 'Bogota' (4/10); Faust -> model said 'The Sorrows of Young Werther' (0/10); Aeneid -> model said 'Divine Comedy' (0/10); Middlemarch -> model said 'The Great Gatsby' (0/10); U -> model said 'Rn' (1/10); W -> model said 'Hg' (0/10); Pluto -> model said 'Hades' (3/10); Norwegian -> model said 'NORWAY' (2/10); Czech -> model said 'American' (0/10); Atlanta -> model said 'Atlanta' (7/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Hungarian; Bengali; Malay; Amharic; Rabat; cedi; koruna; leu; Cl; Honolulu; Baghdad; Korean",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w101c0-queen-of-crime-detective",
+   "prompt": "Fact: The Belgian detective created by the novelist known as the Queen of Crime is named Hercule",
+   "target": "Poirot",
+   "intermediates": [
+    "Agatha Christie"
+   ],
+   "bridge_question": "Which novelist is known as the Queen of Crime?",
+   "bridge_aliases": [
+    "Christie",
+    "Dame Agatha Christie"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 22/60 passed.\n- Failed (gold -> what the model wrote): Reykjavik -> model said 'Reykjavik' (7/10); Abuja -> model said 'Nairobi' (1/10); Caracas -> model said 'Bogota' (4/10); Faust -> model said 'The Sorrows of Young Werther' (0/10); Aeneid -> model said 'Divine Comedy' (0/10); Middlemarch -> model said 'The Great Gatsby' (0/10); U -> model said 'Rn' (1/10); W -> model said 'Hg' (0/10); Pluto -> model said 'Hades' (3/10); Norwegian -> model said 'NORWAY' (2/10); Czech -> model said 'American' (0/10); Atlanta -> model said 'Atlanta' (7/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Hungarian; Bengali; Malay; Amharic; Rabat; cedi; koruna; leu; Cl; Honolulu; Baghdad; Korean",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w101c0-sistine-painter-statue",
+   "prompt": "Fact: The famous marble statue of a biblical hero by the artist who painted the Sistine Chapel ceiling is called",
+   "target": "David",
+   "intermediates": [
+    "Michelangelo"
+   ],
+   "bridge_question": "Which artist painted the Sistine Chapel ceiling?",
+   "bridge_aliases": [
+    "Michelangelo Buonarroti"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 22/60 passed.\n- Failed (gold -> what the model wrote): Reykjavik -> model said 'Reykjavik' (7/10); Abuja -> model said 'Nairobi' (1/10); Caracas -> model said 'Bogota' (4/10); Faust -> model said 'The Sorrows of Young Werther' (0/10); Aeneid -> model said 'Divine Comedy' (0/10); Middlemarch -> model said 'The Great Gatsby' (0/10); U -> model said 'Rn' (1/10); W -> model said 'Hg' (0/10); Pluto -> model said 'Hades' (3/10); Norwegian -> model said 'NORWAY' (2/10); Czech -> model said 'American' (0/10); Atlanta -> model said 'Atlanta' (7/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Hungarian; Bengali; Malay; Amharic; Rabat; cedi; koruna; leu; Cl; Honolulu; Baghdad; Korean",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w101c1-cubism-cofounder-mural",
+   "prompt": "Fact: The famous anti-war mural painted by the Spanish co-founder of Cubism is titled",
+   "target": "Guernica",
+   "intermediates": [
+    "Pablo Picasso"
+   ],
+   "bridge_question": "Which Spanish painter co-founded Cubism?",
+   "bridge_aliases": [
+    "Picasso"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 22/60 passed.\n- Failed (gold -> what the model wrote): Reykjavik -> model said 'Reykjavik' (7/10); Abuja -> model said 'Nairobi' (1/10); Caracas -> model said 'Bogota' (4/10); Faust -> model said 'The Sorrows of Young Werther' (0/10); Aeneid -> model said 'Divine Comedy' (0/10); Middlemarch -> model said 'The Great Gatsby' (0/10); U -> model said 'Rn' (1/10); W -> model said 'Hg' (0/10); Pluto -> model said 'Hades' (3/10); Norwegian -> model said 'NORWAY' (2/10); Czech -> model said 'American' (0/10); Atlanta -> model said 'Atlanta' (7/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Hungarian; Bengali; Malay; Amharic; Rabat; cedi; koruna; leu; Cl; Honolulu; Baghdad; Korean",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "multihop-au-t1-w101c1-mecca-prayer-holy-book",
+   "prompt": "Fact: The holy book of the religion whose followers pray facing Mecca is the",
+   "target": "Quran",
+   "intermediates": [
+    "Islam"
+   ],
+   "bridge_question": "Which religion's followers pray facing Mecca?",
+   "bridge_aliases": [
+    "Islamic faith"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "last_word_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "source": "authored (claude-opus-5-5) for qwen3.5-2b: Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use famous bridges and common relations: country -> capital / language / currency, author -> famous book, element -> symbol."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 22/60 passed.\n- Failed (gold -> what the model wrote): Reykjavik -> model said 'Reykjavik' (7/10); Abuja -> model said 'Nairobi' (1/10); Caracas -> model said 'Bogota' (4/10); Faust -> model said 'The Sorrows of Young Werther' (0/10); Aeneid -> model said 'Divine Comedy' (0/10); Middlemarch -> model said 'The Great Gatsby' (0/10); U -> model said 'Rn' (1/10); W -> model said 'Hg' (0/10); Pluto -> model said 'Hades' (3/10); Norwegian -> model said 'NORWAY' (2/10); Czech -> model said 'American' (0/10); Atlanta -> model said 'Atlanta' (7/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): Hungarian; Bengali; Malay; Amharic; Rabat; cedi; koruna; leu; Cl; Honolulu; Baghdad; Korean",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  }
+ ]
+}

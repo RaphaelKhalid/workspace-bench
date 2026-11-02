@@ -1,0 +1,606 @@
+{
+ "_source": {
+  "base_model": "Qwen/Qwen3.6-27B",
+  "adapter": null,
+  "prompt_kind": "prompt_only_summary",
+  "prompt_template": "Below is a prompt that was given to a language model, cut off at a specific token. The token in question is the final token of the text below: {token!r}.\n\n<prompt>\n{prefix}\n</prompt>\n\nWhat would a language model be thinking about on this token? Please write me a summary for this token.",
+  "sampling": {
+   "k": 1,
+   "temperature": 1.0,
+   "top_p": 0.95,
+   "top_k": 64,
+   "max_new": 256,
+   "stop": [],
+   "output_prefix": ""
+  }
+ },
+ "arithmetic_intermediates": {
+  "rate": 0.8890756302521008,
+  "saturated": false,
+  "ci95": [
+   0.8621848739495799,
+   0.9142857142857143
+  ],
+  "metric": "pass_rate",
+  "higher_is_better": true,
+  "n_items": 596,
+  "n_items_decided": 595,
+  "counts": {
+   "n_expected_cells": 22022,
+   "n_missing_cells": 0,
+   "n_unjudged_cells": 1,
+   "n_empty_cells": 0
+  },
+  "judge_model": "claude-opus-5-5",
+  "instrument": "arith-free-2026-09-23+digest-v3-blind-extractive+sj-v7",
+  "layers_judged": [
+   56
+  ],
+  "complete": false,
+  "aggregate": "summary",
+  "summarizer": {
+   "model": "claude-opus-5-5",
+   "reasoning": {
+    "anthropic_effort": "default"
+   },
+   "prompt_version": "digest-v3",
+   "variant": "blind",
+   "render": "extractive",
+   "max_items": 10,
+   "max_rare": 0,
+   "numbers": 5,
+   "token_cap": 150000,
+   "decode": true,
+   "overflow": "stride",
+   "fallback": "none"
+  },
+  "written": "2026-10-29T04:25:28+00:00"
+ },
+ "association": {
+  "rate": 0.31,
+  "saturated": false,
+  "ci95": [
+   0.22,
+   0.4
+  ],
+  "metric": "pass_rate",
+  "higher_is_better": true,
+  "n_items": 100,
+  "n_items_decided": 100,
+  "counts": {
+   "n_expected_cells": 100,
+   "n_missing_cells": 0,
+   "n_unjudged_cells": 0,
+   "n_empty_cells": 5
+  },
+  "judge_model": "claude-opus-5-5",
+  "instrument": "bank-2026-10-10+digest-v3-blind-extractive+sj-v7",
+  "layers_judged": [
+   20
+  ],
+  "complete": false,
+  "aggregate": "summary",
+  "summarizer": {
+   "model": "claude-opus-5-5",
+   "reasoning": {
+    "anthropic_effort": "default"
+   },
+   "prompt_version": "digest-v3",
+   "variant": "blind",
+   "render": "extractive",
+   "max_items": 10,
+   "max_rare": 15,
+   "numbers": 0,
+   "token_cap": 150000,
+   "decode": true,
+   "overflow": "stride",
+   "fallback": "none"
+  },
+  "written": "2026-10-29T04:25:28+00:00"
+ },
+ "basic_readout": {
+  "rate": 0.61,
+  "saturated": false,
+  "ci95": [
+   0.51,
+   0.71
+  ],
+  "metric": "pass_rate",
+  "higher_is_better": true,
+  "n_items": 100,
+  "n_items_decided": 100,
+  "counts": {
+   "n_expected_cells": 100,
+   "n_missing_cells": 0,
+   "n_unjudged_cells": 0,
+   "n_empty_cells": 0
+  },
+  "judge_model": "claude-opus-5-5",
+  "instrument": "bank-2026-10-10+digest-v3-blind-extractive+sj-v7",
+  "layers_judged": [
+   20
+  ],
+  "complete": false,
+  "aggregate": "summary",
+  "summarizer": {
+   "model": "claude-opus-5-5",
+   "reasoning": {
+    "anthropic_effort": "default"
+   },
+   "prompt_version": "digest-v3",
+   "variant": "blind",
+   "render": "extractive",
+   "max_items": 10,
+   "max_rare": 15,
+   "numbers": 0,
+   "token_cap": 150000,
+   "decode": true,
+   "overflow": "stride",
+   "fallback": "none"
+  },
+  "written": "2026-10-29T04:25:28+00:00"
+ },
+ "buggy_code": {
+  "rate": 0.2916666666666667,
+  "saturated": false,
+  "ci95": [
+   0.125,
+   0.5
+  ],
+  "metric": "pass_rate",
+  "higher_is_better": true,
+  "n_items": 24,
+  "n_items_decided": null,
+  "counts": {
+   "n_expected_cells": 63,
+   "n_missing_cells": 0,
+   "n_unjudged_cells": 0,
+   "n_empty_cells": 0
+  },
+  "judge_model": "claude-opus-5-5",
+  "instrument": "buggy-pairs-2026-10-29+pair-headline-2026-10-30+digest-v3-blind-extractive+sj-v7",
+  "layers_judged": [
+   56,
+   60
+  ],
+  "complete": true,
+  "aggregate": "summary",
+  "summarizer": {
+   "model": "claude-opus-5-5",
+   "reasoning": {
+    "anthropic_effort": "default"
+   },
+   "prompt_version": "digest-v3",
+   "variant": "blind",
+   "render": "extractive",
+   "max_items": 10,
+   "max_rare": 15,
+   "numbers": 0,
+   "token_cap": 150000,
+   "decode": true,
+   "overflow": "stride",
+   "fallback": "none"
+  },
+  "written": "2026-10-30T05:58:19+00:00"
+ },
+ "conjunctive_association": {
+  "rate": 0.19,
+  "saturated": false,
+  "ci95": [
+   0.12,
+   0.28
+  ],
+  "metric": "pass_rate",
+  "higher_is_better": true,
+  "n_items": 100,
+  "n_items_decided": null,
+  "counts": {
+   "n_expected_cells": 100,
+   "n_missing_cells": 0,
+   "n_unjudged_cells": 0,
+   "n_empty_cells": 0
+  },
+  "judge_model": "claude-opus-5-5",
+  "instrument": "comp-v1+digest-v3-blind-extractive+sj-v7",
+  "layers_judged": [
+   44
+  ],
+  "complete": false,
+  "aggregate": "summary",
+  "summarizer": {
+   "model": "claude-opus-5-5",
+   "reasoning": {
+    "anthropic_effort": "default"
+   },
+   "prompt_version": "digest-v3",
+   "variant": "blind",
+   "render": "extractive",
+   "max_items": 10,
+   "max_rare": 15,
+   "numbers": 0,
+   "token_cap": 150000,
+   "decode": true,
+   "overflow": "stride",
+   "fallback": "none"
+  },
+  "written": "2026-10-29T04:25:28+00:00"
+ },
+ "directed_modulation": {
+  "rate": 0.18,
+  "saturated": false,
+  "ci95": [
+   0.11,
+   0.26
+  ],
+  "metric": "pass_rate",
+  "higher_is_better": true,
+  "n_items": 100,
+  "n_items_decided": 100,
+  "counts": {
+   "n_expected_cells": 808,
+   "n_missing_cells": 0,
+   "n_unjudged_cells": 0,
+   "n_empty_cells": 0
+  },
+  "judge_model": "claude-opus-5-5",
+  "instrument": "dm-2026-09-16+digest-v3-blind-extractive+sj-v7",
+  "layers_judged": [
+   20
+  ],
+  "complete": false,
+  "aggregate": "summary",
+  "summarizer": {
+   "model": "claude-opus-5-5",
+   "reasoning": {
+    "anthropic_effort": "default"
+   },
+   "prompt_version": "digest-v3",
+   "variant": "blind",
+   "render": "extractive",
+   "max_items": 10,
+   "max_rare": 15,
+   "numbers": 0,
+   "token_cap": 150000,
+   "decode": true,
+   "overflow": "stride",
+   "fallback": "none"
+  },
+  "written": "2026-10-29T04:25:28+00:00"
+ },
+ "moral_rationale": {
+  "rate": 0.365,
+  "saturated": false,
+  "ci95": [
+   0.3,
+   0.435
+  ],
+  "metric": "pass_rate",
+  "higher_is_better": true,
+  "n_items": 200,
+  "n_items_decided": null,
+  "counts": {
+   "n_expected_cells": 1000,
+   "n_missing_cells": 0,
+   "n_unjudged_cells": 0,
+   "n_empty_cells": 0
+  },
+  "judge_model": "claude-opus-5-5",
+  "instrument": "ec-v3+digest-v3-blind-extractive+sj-v7",
+  "layers_judged": [
+   44
+  ],
+  "complete": false,
+  "aggregate": "summary",
+  "summarizer": {
+   "model": "claude-opus-5-5",
+   "reasoning": {
+    "anthropic_effort": "default"
+   },
+   "prompt_version": "digest-v3",
+   "variant": "blind",
+   "render": "extractive",
+   "max_items": 10,
+   "max_rare": 15,
+   "numbers": 0,
+   "token_cap": 150000,
+   "decode": true,
+   "overflow": "stride",
+   "fallback": "none"
+  },
+  "written": "2026-10-29T04:25:28+00:00"
+ },
+ "multihop": {
+  "rate": 0.91,
+  "saturated": false,
+  "ci95": [
+   0.85,
+   0.96
+  ],
+  "metric": "pass_rate",
+  "higher_is_better": true,
+  "n_items": 100,
+  "n_items_decided": 100,
+  "counts": {
+   "n_expected_cells": 100,
+   "n_missing_cells": 0,
+   "n_unjudged_cells": 0,
+   "n_empty_cells": 0
+  },
+  "judge_model": "claude-opus-5-5",
+  "instrument": "bank-2026-10-10+digest-v3-blind-extractive+sj-v7",
+  "layers_judged": [
+   20
+  ],
+  "complete": false,
+  "aggregate": "summary",
+  "summarizer": {
+   "model": "claude-opus-5-5",
+   "reasoning": {
+    "anthropic_effort": "default"
+   },
+   "prompt_version": "digest-v3",
+   "variant": "blind",
+   "render": "extractive",
+   "max_items": 10,
+   "max_rare": 15,
+   "numbers": 0,
+   "token_cap": 150000,
+   "decode": true,
+   "overflow": "stride",
+   "fallback": "none"
+  },
+  "written": "2026-10-29T04:25:28+00:00"
+ },
+ "multilingual": {
+  "rate": 0.74,
+  "saturated": false,
+  "ci95": [
+   0.66,
+   0.82
+  ],
+  "metric": "pass_rate",
+  "higher_is_better": true,
+  "n_items": 100,
+  "n_items_decided": 100,
+  "counts": {
+   "n_expected_cells": 100,
+   "n_missing_cells": 0,
+   "n_unjudged_cells": 0,
+   "n_empty_cells": 1
+  },
+  "judge_model": "claude-opus-5-5",
+  "instrument": "bank-2026-10-10+digest-v3-blind-extractive+sj-v7",
+  "layers_judged": [
+   20
+  ],
+  "complete": false,
+  "aggregate": "summary",
+  "summarizer": {
+   "model": "claude-opus-5-5",
+   "reasoning": {
+    "anthropic_effort": "default"
+   },
+   "prompt_version": "digest-v3",
+   "variant": "blind",
+   "render": "extractive",
+   "max_items": 10,
+   "max_rare": 15,
+   "numbers": 0,
+   "token_cap": 150000,
+   "decode": true,
+   "overflow": "stride",
+   "fallback": "none"
+  },
+  "written": "2026-10-29T04:25:28+00:00"
+ },
+ "poetry": {
+  "rate": 0.01,
+  "saturated": false,
+  "ci95": [
+   0.0,
+   0.03
+  ],
+  "metric": "pass_rate",
+  "higher_is_better": true,
+  "n_items": 100,
+  "n_items_decided": 100,
+  "counts": {
+   "n_expected_cells": 100,
+   "n_missing_cells": 0,
+   "n_unjudged_cells": 0,
+   "n_empty_cells": 0
+  },
+  "judge_model": "claude-opus-5-5",
+  "instrument": "bank-2026-10-10+digest-v3-blind-extractive+sj-v7",
+  "layers_judged": [
+   20
+  ],
+  "complete": false,
+  "aggregate": "summary",
+  "summarizer": {
+   "model": "claude-opus-5-5",
+   "reasoning": {
+    "anthropic_effort": "default"
+   },
+   "prompt_version": "digest-v3",
+   "variant": "blind",
+   "render": "extractive",
+   "max_items": 10,
+   "max_rare": 15,
+   "numbers": 0,
+   "token_cap": 150000,
+   "decode": true,
+   "overflow": "stride",
+   "fallback": "none"
+  },
+  "written": "2026-10-29T08:02:49+00:00"
+ },
+ "relational_multihop": {
+  "rate": 0.96,
+  "saturated": true,
+  "ci95": [
+   0.92,
+   0.99
+  ],
+  "metric": "pass_rate",
+  "higher_is_better": true,
+  "n_items": 100,
+  "n_items_decided": null,
+  "counts": {
+   "n_expected_cells": 100,
+   "n_missing_cells": 0,
+   "n_unjudged_cells": 0,
+   "n_empty_cells": 0
+  },
+  "judge_model": "claude-opus-5-5",
+  "instrument": "rel-v1+digest-v3-blind-extractive+sj-v7",
+  "layers_judged": [
+   44
+  ],
+  "complete": false,
+  "aggregate": "summary",
+  "summarizer": {
+   "model": "claude-opus-5-5",
+   "reasoning": {
+    "anthropic_effort": "default"
+   },
+   "prompt_version": "digest-v3",
+   "variant": "blind",
+   "render": "extractive",
+   "max_items": 10,
+   "max_rare": 15,
+   "numbers": 0,
+   "token_cap": 150000,
+   "decode": true,
+   "overflow": "stride",
+   "fallback": "none"
+  },
+  "written": "2026-10-29T04:25:28+00:00"
+ },
+ "typo": {
+  "rate": 1.0,
+  "saturated": true,
+  "ci95": [
+   1.0,
+   1.0
+  ],
+  "metric": "pass_rate",
+  "higher_is_better": true,
+  "n_items": 100,
+  "n_items_decided": 100,
+  "counts": {
+   "n_expected_cells": 100,
+   "n_missing_cells": 0,
+   "n_unjudged_cells": 0,
+   "n_empty_cells": 0
+  },
+  "judge_model": "claude-opus-5-5",
+  "instrument": "bank-2026-10-10+digest-v3-blind-extractive+sj-v7",
+  "layers_judged": [
+   20
+  ],
+  "complete": false,
+  "aggregate": "summary",
+  "summarizer": {
+   "model": "claude-opus-5-5",
+   "reasoning": {
+    "anthropic_effort": "default"
+   },
+   "prompt_version": "digest-v3",
+   "variant": "blind",
+   "render": "extractive",
+   "max_items": 10,
+   "max_rare": 15,
+   "numbers": 0,
+   "token_cap": 150000,
+   "decode": true,
+   "overflow": "stride",
+   "fallback": "none"
+  },
+  "written": "2026-10-29T04:25:28+00:00"
+ },
+ "user_modeling": {
+  "rate": 0.06,
+  "saturated": false,
+  "ci95": [
+   0.02,
+   0.11
+  ],
+  "metric": "pass_rate",
+  "higher_is_better": true,
+  "n_items": 100,
+  "n_items_decided": null,
+  "counts": {
+   "n_expected_cells": 100,
+   "n_missing_cells": 0,
+   "n_unjudged_cells": 1,
+   "n_empty_cells": 6
+  },
+  "judge_model": "claude-opus-5-5",
+  "instrument": "um-v2+digest-v3-blind-extractive+sj-v7",
+  "layers_judged": [
+   44
+  ],
+  "complete": false,
+  "aggregate": "summary",
+  "summarizer": {
+   "model": "claude-opus-5-5",
+   "reasoning": {
+    "anthropic_effort": "default"
+   },
+   "prompt_version": "digest-v3",
+   "variant": "blind",
+   "render": "extractive",
+   "max_items": 10,
+   "max_rare": 15,
+   "numbers": 0,
+   "token_cap": 150000,
+   "decode": true,
+   "overflow": "stride",
+   "fallback": "none"
+  },
+  "written": "2026-10-29T04:25:28+00:00"
+ },
+ "chain_intermediates": {
+  "rate": 1.0,
+  "saturated": false,
+  "ci95": [
+   1.0,
+   1.0
+  ],
+  "metric": "pass_rate",
+  "higher_is_better": true,
+  "n_items": 120,
+  "n_items_decided": 120,
+  "counts": {
+   "n_expected_cells": 120,
+   "n_missing_cells": 0,
+   "n_unjudged_cells": 0,
+   "n_empty_cells": 0
+  },
+  "judge_model": "claude-opus-5-5",
+  "instrument": "chain-free-2026-09-16+digest-v3-blind-extractive+sj-v7",
+  "layers_judged": [
+   20
+  ],
+  "complete": false,
+  "aggregate": "summary",
+  "summarizer": {
+   "model": "claude-opus-5-5",
+   "reasoning": {
+    "anthropic_effort": "default"
+   },
+   "prompt_version": "digest-v3",
+   "variant": "blind",
+   "render": "extractive",
+   "max_items": 10,
+   "max_rare": 0,
+   "numbers": 5,
+   "token_cap": 150000,
+   "decode": true,
+   "overflow": "stride",
+   "fallback": "none"
+  },
+  "written": "2026-10-29T08:02:49+00:00"
+ }
+}

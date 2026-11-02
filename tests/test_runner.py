@@ -87,7 +87,7 @@ def test_fail_soft_statuses_run_json_and_summary(offline, tmp_path, capsys):
     _spec("absent", _ok)
     root, out = tmp_path / "r", tmp_path / "o"
     _readouts(root, "bad", "empty", "good")
-    code = main(["run", "all=True", f"readouts_root={root}", f"out={out}"])
+    code = main(["run", "opts=aggregate=native", "all=True", f"readouts_root={root}", f"out={out}"])
     assert code == 3  # a JudgeConfigError somewhere wins over the SystemExit
     printed = capsys.readouterr().out
     assert "absent: skipped (no readouts at" in printed
@@ -102,7 +102,14 @@ def test_fail_soft_statuses_run_json_and_summary(offline, tmp_path, capsys):
     assert "- absent: skipped — no readouts at" in summary
 
     run = json.loads((out / "run.json").read_text())
-    assert set(run) == {"started", "finished", "families", "judge_overrides", "readouts_root"}
+    assert set(run) == {
+        "started",
+        "finished",
+        "families",
+        "judge_overrides",
+        "readouts_root",
+        "aggregate",  # plan 0024: the effective aggregate mode
+    }
     assert run["judge_overrides"] == {"flag": None, "env": None}
     assert run["readouts_root"] == str(root)
     fams = run["families"]
@@ -123,10 +130,18 @@ def test_system_exit_only_is_exit_2_and_int_codes_render(offline, tmp_path):
     _spec("good", _ok)
     root, out = tmp_path / "r", tmp_path / "o"
     _readouts(root, "empty", "good")
-    assert main(["run", "all=True", f"readouts_root={root}", f"out={out}"]) == 2
+    assert (
+        main(["run", "opts=aggregate=native", "all=True", f"readouts_root={root}", f"out={out}"])
+        == 2
+    )
     run = json.loads((out / "run.json").read_text())
     assert run["families"]["empty"] == {"status": "failed", "error": "exit 2"}
-    assert main(["run", "families=good", f"readouts_root={root}", f"out={out}"]) == 0
+    assert (
+        main(
+            ["run", "opts=aggregate=native", "families=good", f"readouts_root={root}", f"out={out}"]
+        )
+        == 0
+    )
 
 
 def test_bad_opt_is_one_error_before_any_family_runs(offline, tmp_path):
@@ -140,7 +155,15 @@ def test_bad_opt_is_one_error_before_any_family_runs(offline, tmp_path):
     root, out = tmp_path / "r", tmp_path / "o"
     _readouts(root, "good")
     with pytest.raises(SystemExit):
-        main(["run", "all=True", f"readouts_root={root}", f"out={out}", "opts=novalue"])
+        main(
+            [
+                "run",
+                "all=True",
+                f"readouts_root={root}",
+                f"out={out}",
+                "opts=novalue,aggregate=native",
+            ]
+        )
     assert ran == [] and offline == [] and not (out / "run.json").exists()
 
 
@@ -159,7 +182,10 @@ def test_preflight_once_per_distinct_model_and_seeds_the_shared_set(offline, tmp
     _spec("nofile", run, model="claude-other")  # skipped -> never preflighted
     root, out = tmp_path / "r", tmp_path / "o"
     _readouts(root, "g1", "g2", "c1")
-    assert main(["run", "all=True", f"readouts_root={root}", f"out={out}"]) == 0
+    assert (
+        main(["run", "opts=aggregate=native", "all=True", f"readouts_root={root}", f"out={out}"])
+        == 0
+    )
     assert sorted(offline) == [("claude-sonnet-5", None), (GEMINI, {"effort": "minimal"})]
     assert len(inner) == 3
     assert mcjudge.preflight_key(GEMINI, {"effort": "minimal"}) in mcjudge._PREFLIGHTED
@@ -179,7 +205,10 @@ def test_preflight_failure_aborts_before_any_thread(offline, tmp_path, monkeypat
     _spec("c1", run, model="claude-sonnet-5")
     root, out = tmp_path / "r", tmp_path / "o"
     _readouts(root, "c1")
-    assert main(["run", "all=True", f"readouts_root={root}", f"out={out}"]) == 3
+    assert (
+        main(["run", "opts=aggregate=native", "all=True", f"readouts_root={root}", f"out={out}"])
+        == 3
+    )
     assert ran == []
     assert "ANTHROPIC_API_KEY is missing" in capsys.readouterr().err
 
@@ -189,7 +218,14 @@ def test_judge_override_flag_is_recorded_and_resolved_once(offline, tmp_path, mo
     monkeypatch.setenv("WSBENCH_JUDGE_MODEL", "env-model")
     root, out = tmp_path / "r", tmp_path / "o"
     _readouts(root, "g1")
-    argv = ["run", "all=True", f"readouts_root={root}", f"out={out}", "judge_model=x/y"]
+    argv = [
+        "run",
+        "opts=aggregate=native",
+        "all=True",
+        f"readouts_root={root}",
+        f"out={out}",
+        "judge_model=x/y",
+    ]
     assert main(argv) == 0
     run = json.loads((out / "run.json").read_text())
     assert run["judge_overrides"] == {"flag": "x/y", "env": "env-model"}
@@ -214,7 +250,14 @@ def test_dry_run_never_preflights_and_runs_one_at_a_time(offline, tmp_path):
         _spec(n, run)
     root, out = tmp_path / "r", tmp_path / "o"
     _readouts(root, "a", "b", "c")
-    argv = ["run", "all=True", f"readouts_root={root}", f"out={out}", "dry_run=True"]
+    argv = [
+        "run",
+        "opts=aggregate=native",
+        "all=True",
+        f"readouts_root={root}",
+        f"out={out}",
+        "dry_run=True",
+    ]
     assert main([*argv, "family_workers=3"]) == 0
     assert offline == [] and active["max"] == 1
 
@@ -230,7 +273,7 @@ def test_families_run_concurrently_under_family_workers(offline, tmp_path):
         _spec(n, run)
     root, out = tmp_path / "r", tmp_path / "o"
     _readouts(root, "a", "b", "c")
-    argv = ["run", "all=True", f"readouts_root={root}", f"out={out}"]
+    argv = ["run", "opts=aggregate=native", "all=True", f"readouts_root={root}", f"out={out}"]
     assert main([*argv, "family_workers=3"]) == 0
     run_json = json.loads((out / "run.json").read_text())
     assert {v["status"] for v in run_json["families"].values()} == {"ok"}
@@ -240,7 +283,14 @@ def test_run_json_flag_prints_json(offline, tmp_path, capsys):
     _spec("g1", _ok)
     root, out = tmp_path / "r", tmp_path / "o"
     _readouts(root, "g1", "zz")
-    argv = ["run", "all=True", f"readouts_root={root}", f"out={out}", "json=True"]
+    argv = [
+        "run",
+        "opts=aggregate=native",
+        "all=True",
+        f"readouts_root={root}",
+        f"out={out}",
+        "json=True",
+    ]
     assert main(argv) == 0
     d = json.loads(capsys.readouterr().out.strip().splitlines()[-1])  # one JSON line, last
     assert set(d) >= {"families", "macro", "statuses"}
@@ -264,9 +314,32 @@ def test_keyboard_interrupt_writes_manifest_and_exits_130(offline, tmp_path, mon
             return super().submit(fn, *a, **kw)
 
     monkeypatch.setattr(runner, "ThreadPoolExecutor", Interrupting)
-    assert main(["run", "all=True", f"readouts_root={root}", f"out={out}"]) == 130
+    assert (
+        main(["run", "opts=aggregate=native", "all=True", f"readouts_root={root}", f"out={out}"])
+        == 130
+    )
     run_json = json.loads((out / "run.json").read_text())
     st = {k: v["status"] for k, v in run_json["families"].items()}
     assert st["g1"] == "ok" and st["g2"] == "skipped"
     assert run_json["families"]["g2"]["error"] == "interrupted"
     assert "## skipped / failed" in (out / "summary.md").read_text()
+
+
+def test_mcrx_family_is_preflighted(offline, tmp_path):
+    """Plan 0033 R7: scorer mc+regex leaves EvalSpec.scorer empty, so ``run`` preflights the judge
+    of multilingual / multilingual_multihop; the regex family (multilingual_mt) makes no call."""
+    import dataclasses
+    import importlib
+
+    for name in ("multilingual", "multilingual_mt"):
+        spec = importlib.import_module(f"wsbench.evals.{name}").SPEC
+        register(dataclasses.replace(spec, run=lambda a, n=name: _ok(a, n)))
+    assert registry.FAMILIES["multilingual"].scorer == ""
+    assert registry.FAMILIES["multilingual_mt"].scorer == "regex"
+    root, out = tmp_path / "r", tmp_path / "o"
+    _readouts(root, "multilingual_mt")
+    argv = ["run", "opts=aggregate=native", "all=True", f"readouts_root={root}", f"out={out}"]
+    assert main(argv) == 0 and offline == []  # the regex family alone: no preflight
+    _readouts(root, "multilingual")
+    assert main([*argv[:-1], f"out={tmp_path / 'o2'}"]) == 0
+    assert len(offline) == 1  # the mc+regex family's judge, once

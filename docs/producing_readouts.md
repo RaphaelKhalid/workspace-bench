@@ -18,9 +18,10 @@ render it, which token positions to read, and at which layers:
 
 ```json
 {"family": "poetry", "id": "couplet-ahead-head", "render": "plain",
- "positions": {"kind": "line_one_newline"}, "layers": [20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60],
+ "positions": {"kind": "line_one_tail"}, "layers": [20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60],
  "text": "A rhyming couplet:\nThe captain pointed at the route ahead,\nAnd told his crew to follow where he'd ",
- "note": "the newline that ends line one of the couplet"}
+ "note": "line one's last word through the newline that ends it (never the line-two stub); lite = that newline",
+ "lite_positions": {"kind": "final_token"}}
 ```
 
 | key | meaning |
@@ -28,6 +29,7 @@ render it, which token positions to read, and at which layers:
 | `render` | how to turn the row into a token sequence; the vocabulary is `wsbench.readplan.RENDERS` (`plain`, `chat`, `chat_context`, `chat_prefill`, `chat_dm`, `chat_summarize`, `bare`, `captured`) |
 | `text` / `messages` / `system` / `prefill` / `suffix` / `assistant` | the pieces the render composes; `captured` rows ship `extra.input_ids` instead |
 | `positions` | a rule over the rendered tokens (below); `wsbench.readplan.resolve(rule, tokens)` turns it into indices once you have tokenized the render |
+| `lite_positions` / `lite_layers` | the `reads=lite` site (plan 0032): a rule over the row's FULL positions (`same`, `final_token`, `offset_from_end {k}`, `offsets_from_end {ks}`, `last_n {n}`, `positions {…}`, `every_nth_plus_tail {n, tail}`) and its layers (absent = the full layers). Lite is always a subset of full, so one full read serves both; `wsbench run reads=lite` re-judges the same file. A file produced `reads=lite` (sidecar `reads: "lite"`) already holds only the lite site and is judged as it is: the rule is never applied twice |
 | `layers` | the decoder layers to read (residual stream after that layer) |
 | `note` | the family's read site in one line; the family README has the rest |
 
@@ -40,9 +42,11 @@ Positions rules, all handled by `resolve`:
 | `last_n {n}` | the last `n` tokens |
 | `all` | every token |
 | `all_from_end` | every token, reported as negative offsets `-n..-1` (arithmetic intermediates: the bank and judge count from the end) |
-| `positions {positions}` | explicit indices (brew, hallucination, jailbreak, J-lens precision) |
-| `line_one_newline` | the newline token that ends line one (poetry) |
+| `positions {positions}` | explicit indices (jailbreak, J-lens precision) |
+| `line_one_newline` | the newline token that ends line one (poetry's lite site, and its full read before plan 0038) |
+| `line_one_tail {anchor?}` | line one's last word through the newline that ends it: the word's tokens, any punctuation after it, and that newline (poetry's full read, plan 0038; `couplet-ahead-head` → `" ahead"`, `","`, `"\n"` = positions 14-16). `anchor: "last_newline"` ends it at the last newline anywhere (adapted `chat_prefill` items) |
 | `from_token {token}` | from the first token with that text through the end (chain's question span) |
+| `from_text_last_token {text}` | from the LAST token of the (last) occurrence of `text` through the end (chain: "The starting number is 23" reads from the "3") |
 | `from_last_sentence_start` | from the first token of the last user turn's final sentence through the end (user modelling) |
 | `suffix_text {text}` | the tokens spelling `text` at the end of the render (directed modulation's carrier) |
 | `suffix_text_then_tail {text}` | those plus every token after them (the association families' summarize suffix and chat tail) |
@@ -75,6 +79,24 @@ run must be told `allow_missing=True` and the result is marked incomplete.
 `wsbench convert-gen-dir` and `wsbench convert-read-json` produce this shape from the two
 in-house producer layouts; anything else needs a few lines of your own.
 
+**Layers.** Every family's plan reads the 11-layer grid (`GRID`, agentic `GRID + [63]`).
+`wsbench plan layers=all` (or `WSB_LAYERS=all` in a producer's environment) plans every model
+layer; `layers=20,44` any combination. A file may hold more layers than the plan: every present
+layer is judged. `wsbench run layers=44` judges one layer (a complete, defined variant);
+`layers=each` runs the all-layer config plus one sub-run per layer in the file.
+
+**The sidecar (plan 0032 §2.9).** A producer declares how it sampled, beside the file:
+`<family>.jsonl.meta.json` = `{"reads": "full|lite", "sampling": "bullet4|prose1|tokens10",
+"reader": "<method>", "arm": "<arm>", "layers": [...], "plan_sha": "<reads.plan_sha(family)>"}`.
+The rule (decision Q1): a SINGLE-bullet oracle lens (the `*-x4` arms) gets 4 separate
+samples per activation (`bullet4`); every other prose method, the multi-bullet s3d O-lens and NLA
+included, ONE sample per activation (`prose1`); a token lens its top 10 (`tokens10`). The
+sampling is declared, never inferred from bullet shape; `sampling=` on the CLI overrides it.
+`wsbench produce` and the converters (`sampling= arm= plan_sha=`) write the sidecar. With a
+sidecar, `reads.load` enforces the full span (a lite file under `reads=full`, a missing plan
+layer or a different `plan_sha` exits 2); a sidecar-less file is judged as it is, with the
+same checks reported only (`config.reads_checked = "no_sidecar"`, never a campaign result).
+
 ## 4. Judge
 
 ```
@@ -82,6 +104,10 @@ uv run wsbench judge family=poetry readouts=outputs/readouts/mylens/poetry.jsonl
 uv run wsbench run all=True readouts_root=outputs/readouts/mylens out=outputs/judged/mylens
 uv run wsbench report dir=outputs/judged/mylens
 ```
+
+Every run is in summary mode by default (plan 0024: each item's readouts go to one passive digest,
+judged once; `docs/summarizer.md` § Item digest). Add `opts=aggregate=native` for the per-cell
+rules, into a separate `out=` dir.
 
 ## Or let the repo produce them
 
@@ -121,7 +147,15 @@ max_new_tokens=256, k=1)`, the settings the in-house arms used.
 
 Two spellings, on purpose: the read-site `token` is `tokenizer.decode([id])`, exactly what the
 banks store (`"\n"`, `" öffnen"`, `"<|im_end|>"`); the ranked `tokens` of a token lens are the
-byte-level BPE strings with `Ġ`/`▁` shown as a space (`" led"`), what the regex scorers expect.
+byte-level BPE strings with `Ġ`/`▁` shown as a space (`" led"`, and `"çļĦç»ĵæŀľ"` for 的结果).
+`wsbench.readouts.load_readouts` decodes each of those to text once, on load
+(`wsbench.bpe.decode_token`: `"çļĦç»ĵæŀľ"` -> `"的结果"`, `"Ċ"` -> `"\n"`), so every summarizer,
+judge and regex sees text. Until 2026-10-29 only hallucination, jlens_concept_pr's reference
+files, summary mode and agentic_misalignment's read-site context decoded; every other family saw non-ASCII tokens as mojibake. Write the
+vocabulary strings. A string that does not decode cleanly is kept as written: a token holding
+part of a character stays in its byte-level spelling, and most already-decoded text survives
+(`"café"`, `"się"`), but decoded text that happens to spell valid UTF-8 in the byte table
+(`"Ã©"`) is decoded again.
 `pos` is the index the plan resolves: absolute, except the two rules that count from the end
 because their banks and judges do — `offset_from_end` (some multihop items) and `all_from_end`
 (arithmetic intermediates) — whose rows carry the negative offset (`-8`). A single-layer lens reads at its trained layer whatever the
@@ -140,6 +174,12 @@ runs fan that out over Modal.
   re-generating.
 - **Sampling.** The in-house arms used k=1, temperature 1.0, top-p 0.95, top-k 64, max 256 new
   tokens for prose lenses and top-10 for token lenses; the judges accept any k.
-- **Two families without text.** `hallucination` and `jlens_concept_pr` ship captured token ids
-  and positions, not prompts: their banks are the model's own outputs, and they are read by
-  re-feeding those ids.
+- **Steering.** `introspection` rows carry `extra.steering` (a concept or gaussian vector
+  added at layer 12 over a token span, `h <- h + beta * ||h|| * v / ||v||`); the producer must
+  apply it in the forward that is read. The vectors ship with the bank
+  (`evals/introspection/vectors/*.npy`; each row names `vector_file` / `vector_row`), and
+  `wsbench produce` applies the steer itself (a forward hook on the inject layer's output over
+  the span; `type: none` rows are a plain forward). Any other steering type is refused.
+- **A family without text.** `jlens_concept_pr` ships captured token ids and positions, not
+  prompts: its items are the model's own activations, read by re-feeding those ids
+  (`hallucination`, the other such family, left for HallucinationBench, plan 0040).

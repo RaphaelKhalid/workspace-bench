@@ -1,0 +1,397 @@
+{
+ "families": {
+  "jlens_concept_pr": {
+   "status": "full",
+   "n_items": 299,
+   "target": 299,
+   "note": "subject's own rollouts read with a J-lens WE fitted (official estimator, neuronpedia recipe, n=400); sanity (current token in top-10) 0.21-0.26 at 30-60% depth, between OLMo-Instruct and the Qwen3.5 lenses; lens /workspace/agam/jlens_fits/qwen3-8b/lens.pt",
+   "lens": {
+    "path": "/workspace/agam/jlens_fits/qwen3-8b/lens.pt",
+    "n_prompts": 400,
+    "fitted_by": "adapt-bank (not neuronpedia)"
+   }
+  },
+  "arithmetic_intermediates": {
+   "status": "partial",
+   "target": 596,
+   "n_original": 596,
+   "n_original_gated": 596,
+   "n_original_pass": 152,
+   "n_items": 466,
+   "n_new": 396,
+   "n_candidates_gated": 5602,
+   "change": "new items from t0, t1, t2; structural role: 55% -> 18%; first step >= 100: 24% -> 11%",
+   "freeze_notes": [
+    "cell.pos re-anchored on the subject's turn-closing marker (0 moved)"
+   ],
+   "note": "466/596: frac/fracadd/fraccomp/fracsmall/floordiv quotas unfillable down to t2 (generator ran dry at t2); other variants refilled with easier operands"
+  },
+  "chain_intermediates": {
+   "status": "full",
+   "target": 120,
+   "n_original": 120,
+   "n_original_gated": 120,
+   "n_original_pass": 5,
+   "n_items": 120,
+   "n_new": 115,
+   "n_candidates_gated": 1934,
+   "change": "new items from t0, t1; depth 3: 30% -> 2%; has a halving step: 36% -> 5%; has x3: 26% -> 4%"
+  },
+  "jailbreak_recognition": {
+   "status": "full",
+   "n_items": 86,
+   "target": 86,
+   "change": "read positions re-stamped from the subject's render (86)"
+  },
+  "multi_concept_directed_modulation": {
+   "status": "full",
+   "n_items": 100,
+   "target": 100,
+   "change": "layers remapped to [26, 30, 32, 34]"
+  },
+  "relational_multihop": {
+   "status": "ooc",
+   "target": 100,
+   "n_original": 100,
+   "n_original_gated": 100,
+   "n_original_pass": 14,
+   "n_items": 18,
+   "n_new": 14,
+   "n_candidates_gated": 1190,
+   "change": "new items from t0; kinship hop is sibling/parent/child: 62% -> 0%",
+   "note": "ooc (18 items): 2026-10-24 wave of 400 t0 candidates passed 50 items (12.5%); complete scene pairs are rare; bank 10 -> 18, cousin 12/18 over the cap share; stays out of the macro",
+   "exclude_from_macro": true
+  },
+  "association": {
+   "status": "full",
+   "target": 100,
+   "n_original": 100,
+   "n_original_gated": 100,
+   "n_original_pass": 35,
+   "n_items": 100,
+   "n_new": 65,
+   "n_candidates_gated": 106,
+   "change": "new items from t1"
+  },
+  "multihop": {
+   "status": "full",
+   "target": 100,
+   "n_original": 100,
+   "n_original_gated": 100,
+   "n_original_pass": 78,
+   "n_items": 100,
+   "n_new": 22,
+   "n_candidates_gated": 59,
+   "change": "new items from t1"
+  },
+  "multilingual": {
+   "status": "full",
+   "target": 100,
+   "n_original": 100,
+   "n_original_gated": 100,
+   "n_original_pass": 92,
+   "n_items": 100,
+   "n_new": 8,
+   "n_candidates_gated": 27,
+   "change": "new items from t1"
+  },
+  "typo": {
+   "status": "full",
+   "target": 100,
+   "n_original": 100,
+   "n_original_gated": 100,
+   "n_original_pass": 82,
+   "n_items": 100,
+   "n_new": 18,
+   "n_candidates_gated": 60,
+   "change": "new items from t1"
+  },
+  "poetry": {
+   "status": "full",
+   "target": 100,
+   "n_original": 100,
+   "n_original_gated": 100,
+   "n_original_pass": 82,
+   "n_items": 100,
+   "n_new": 18,
+   "n_candidates_gated": 60,
+   "change": "new items from t1",
+   "note": "original gate initially 7/100 because of a thread race in rhyme.py (pronouncing CMU init); fixed and regraded to 82/100; 94/100 committed in the chat render, 6 in plain: read the render in gate_variant"
+  },
+  "basic_readout": {
+   "status": "full",
+   "target": 100,
+   "n_original": 100,
+   "n_original_gated": 100,
+   "n_original_pass": 84,
+   "n_items": 100,
+   "n_new": 16,
+   "n_candidates_gated": 60,
+   "change": "new items from t1"
+  },
+  "basic_readout_mt": {
+   "status": "full",
+   "target": 100,
+   "n_original": 100,
+   "n_original_gated": 95,
+   "n_original_pass": 47,
+   "n_items": 100,
+   "n_new": 53,
+   "n_candidates_gated": 69,
+   "change": "new items from t1",
+   "freeze_notes": [
+    "re-stamped with the subject's tokenizer; 0 items lost every multi-token form"
+   ]
+  },
+  "multilingual_mt": {
+   "status": "partial",
+   "target": 100,
+   "n_original": 100,
+   "n_original_gated": 98,
+   "n_original_pass": 12,
+   "n_items": 97,
+   "n_new": 85,
+   "n_candidates_gated": 797,
+   "change": "new items from t1, t2",
+   "freeze_notes": [
+    "re-stamped with the subject's tokenizer; 0 items lost every multi-token form"
+   ]
+  },
+  "multilingual_typo": {
+   "status": "full",
+   "target": 100,
+   "n_original": 100,
+   "n_original_gated": 100,
+   "n_original_pass": 37,
+   "n_items": 100,
+   "n_new": 63,
+   "n_candidates_gated": 113,
+   "change": "new items from t1",
+   "freeze_notes": [
+    "re-stamped with the subject's tokenizer; 0 items lost every multi-token form"
+   ]
+  },
+  "multilingual_multihop": {
+   "status": "full",
+   "target": 98,
+   "n_original": 98,
+   "n_original_gated": 98,
+   "n_original_pass": 16,
+   "n_items": 98,
+   "n_new": 82,
+   "n_candidates_gated": 297,
+   "change": "new items from t1",
+   "freeze_notes": [
+    "re-stamped with the subject's tokenizer; 0 items lost every multi-token form"
+   ]
+  },
+  "typo_mt": {
+   "status": "full",
+   "target": 100,
+   "n_original": 100,
+   "n_original_gated": 100,
+   "n_original_pass": 63,
+   "n_items": 100,
+   "n_new": 37,
+   "n_candidates_gated": 69,
+   "change": "new items from t1",
+   "freeze_notes": [
+    "re-stamped with the subject's tokenizer; 0 items lost every multi-token form"
+   ]
+  },
+  "user_modeling": {
+   "status": "full",
+   "target": 100,
+   "n_original": 100,
+   "n_original_gated": 100,
+   "n_original_pass": 92,
+   "n_items": 100,
+   "n_new": 8,
+   "n_candidates_gated": 30,
+   "change": "new items from t1"
+  },
+  "role_bound_association": {
+   "status": "partial",
+   "target": 100,
+   "n_original": 100,
+   "n_original_gated": 100,
+   "n_original_pass": 21,
+   "n_items": 42,
+   "n_new": 38,
+   "n_candidates_gated": 360,
+   "change": "new items from t1",
+   "note": "42/100 (4 original pairs + 38 authored at t1); ab/ba pairs atomic, many asked-open answers name people instead of roles (grader undecided); yield fell to 3-10% by wave 6"
+  },
+  "buggy_code": {
+   "status": "partial",
+   "refill": "easiest tier yield < 3% on >= 60 candidates",
+   "target": 49,
+   "n_original": 49,
+   "n_original_gated": 49,
+   "n_original_pass": 23,
+   "n_items": 35,
+   "n_new": 12,
+   "n_candidates_gated": 480,
+   "change": "new items from t1",
+   "note": "35/49: 23 originals + 12 authored (crash/value bugs); t1/t2 waves 1-3 added 0 (the subject names the bug in raw continuations or misses the exact stdout)"
+  },
+  "agentic_misalignment": {
+   "status": "partial",
+   "n_items": 17,
+   "target": 32,
+   "change": "rollouts re-made on the subject; 15 misaligned scenarios kept at rate >= 0.375, 3 controls"
+  },
+  "conjunctive_association": {
+   "target": 100,
+   "n_original": 100,
+   "n_original_gated": 100,
+   "n_original_pass": 94,
+   "n_items": 94,
+   "n_new": 0,
+   "n_candidates_gated": 0,
+   "change": "original items only",
+   "status": "untried",
+   "note": "94/100 originals pass; refill not attempted (not in the authored fill list)"
+  },
+  "directed_modulation": {
+   "target": 100,
+   "n_original": 100,
+   "n_original_gated": 100,
+   "n_original_pass": 97,
+   "n_items": 94,
+   "n_new": 0,
+   "n_candidates_gated": 0,
+   "change": "original items only",
+   "status": "untried",
+   "note": "94/100 after the compliance screen (pairs atomic); refill not attempted"
+  },
+  "moral_rationale": {
+   "target": 200,
+   "n_original": 200,
+   "n_original_gated": 197,
+   "n_original_pass": 170,
+   "n_items": 170,
+   "n_new": 0,
+   "n_candidates_gated": 0,
+   "change": "original items only",
+   "status": "untried",
+   "note": "173/200: side re-gated, reasons re-distilled from the subject's own draws (25 fail aligned/reason-side); no new dilemmas authored"
+  }
+ },
+ "code": {
+  "git": "ed3d9e9+dirty",
+  "adapt_sha256": "5c9d376a43e8ab45"
+ },
+ "model": "qwen3-8b",
+ "label": "Qwen3-8B",
+ "hf_id": "Qwen/Qwen3-8B",
+ "n_layers": 36,
+ "gate": {
+  "rule": "greedy right AND >= 8/10 (10/10 chain)"
+ },
+ "drops": {
+  "multihop_mt": {
+   "multihop-au-t1-w101c1-mhe-everest-firstascent": "shortcut: 'Sherpa Tenzing Norgay together with' gives Edmund Hillary without the Everest bridge (self-audit)",
+   "multihop-au-t1-w100c0-mhh-titanic-harlandwolff": "audit 2026-10-19: natural name 'Titanic' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multihop-au-t1-w100c1-mhm-waterloo-wellington": "audit 2026-10-19: natural name 'Waterloo' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multihop-au-t1-w101c0-mh2-endeavour-cook": "audit 2026-10-19: natural name 'Endeavour' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multihop-au-t1-w100c0-mhh-beagle-darwin": "audit 2026-10-19: natural name 'Beagle' is not among the multi-token forms (forms padded); the everyday readout can't score (or patch in the form)",
+   "multihop-au-t1-w100c2-mhm-neuschwanstein-ludwig": "audit 2026-10-19: natural name 'Neuschwanstein' is not among the multi-token forms (forms padded); the everyday readout can't score (or patch in the form)",
+   "multihop-au-t1-w100c2-mhm-mexwar-guadalupe": "audit 2026-10-19: natural name 'Mexican-American War' is not among the multi-token forms (forms padded); the everyday readout can't score (or patch in the form)",
+   "multihop-au-t1-w101c0-mh2-nineteen-eighty-four-orwell": "audit 2026-10-19: natural name '1984' is not among the multi-token forms (forms padded); the everyday readout can't score (or patch in the form)"
+  },
+  "multilingual_typo": {
+   "multilingual-au-t1-w100c2-mlt-el-nosokomeio": "leak: the prompt already contains the target's inflected stem (νοσοκομίου) before the misspelled last word (self-audit)"
+  },
+  "multilingual_mt": {
+   "multilingual-au-t1-w100c0-mlh-vi-electricfan": "audit 2026-10-19: natural name 'fan' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multilingual-au-t1-w100c0-mlh-vi-bread": "audit 2026-10-19: natural name 'bread' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multilingual-au-t1-w100c0-mlh-id-eyeglasses": "audit 2026-10-19: natural name 'glasses' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multilingual-au-t1-w100c1-mlh-ru-towel": "audit 2026-10-19: natural name 'towel' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multilingual-au-t1-w100c1-mlh-vi-scissors": "audit 2026-10-19: natural name 'scissors' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multilingual-au-t1-w100c2-mlh-vi-bed": "audit 2026-10-19: natural name 'bed' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multilingual-au-t1-w100c2-mlh-id-kitchenknife": "audit 2026-10-19: natural name 'knife' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multilingual-au-t1-w101c0-mlh-ru-buryy-medved": "audit 2026-10-19: natural name 'bear' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multilingual-au-t1-w101c1-mlh-vi-dieu-khien-tu-xa": "audit 2026-10-19: natural name 'remote' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multilingual-au-t1-w101c2-mlh-vi-gau-truc": "audit 2026-10-19: natural name 'panda' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multilingual-au-t1-w102c0-mlh-ru-kukuruza": "audit 2026-10-19: natural name 'corn' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multilingual-au-t1-w102c1-mlh-ru-vozdushnyi-sharik": "audit 2026-10-19: natural name 'balloon' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multilingual-au-t1-w102c1-mlh-vi-mu-bao-hiem": "audit 2026-10-19: natural name 'helmet' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multilingual-au-t1-w102c2-mlh-id-jam-tangan": "audit 2026-10-19: natural name 'watch' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multilingual-au-t2-w103c0-mlh-ru-pochtovaya-marka": "audit 2026-10-19: natural name 'stamp' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multilingual-au-t2-w103c1-mlh-vi-ban-hoc": "audit 2026-10-19: natural name 'desk' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multilingual-au-t2-w103c1-mlh-id-buku-tulis": "audit 2026-10-19: natural name 'notebook' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multilingual-au-t2-w104c0-mlh-ru-buterbrod": "audit 2026-10-19: natural name 'sandwich' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multilingual-au-t2-w104c0-mlh-ru-fotoapparat": "audit 2026-10-19: natural name 'camera' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multilingual-au-t2-w104c0-mlh-vi-but-chi": "audit 2026-10-19: natural name 'pencil' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multilingual-au-t2-w104c0-mlh-vi-chia-khoa": "audit 2026-10-19: natural name 'key' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multilingual-au-t2-w104c0-mlh-id-kereta-api": "audit 2026-10-19: natural name 'train' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multilingual-au-t2-w104c1-mlh-id-jarum-jahit": "audit 2026-10-19: natural name 'needle' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multilingual-au-t2-w105c0-mlh-vi-cai-bat": "audit 2026-10-19: natural name 'bowl' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multilingual-au-t2-w105c0-mlh-vi-cai-chan": "audit 2026-10-19: natural name 'blanket' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multilingual-au-t2-w105c0-mlh-id-piring-makan": "audit 2026-10-19: natural name 'plate' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multilingual-au-t2-w105c0-mlh-id-celana-pendek": "audit 2026-10-19: natural name 'shorts' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multilingual-au-t2-w105c1-mlh-ru-pochtovyy-konvert": "audit 2026-10-19: natural name 'envelope' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multilingual-au-t2-w105c1-mlh-vi-cai-thang": "audit 2026-10-19: natural name 'ladder' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multilingual-au-t2-w105c1-mlh-id-atap-rumah": "audit 2026-10-19: natural name 'roof' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multilingual-au-t2-w105c2-mlh-ru-podyomnyy-kran": "audit 2026-10-19: natural name 'crane' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multilingual-au-t2-w105c2-mlh-ru-kompyuternaya-mysh": "audit 2026-10-19: natural name 'mouse' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multilingual-au-t2-w105c2-mlh-vi-may-tinh-bo-tui": "audit 2026-10-19: natural name 'calculator' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multilingual-au-t2-w105c2-mlh-vi-trong-truong": "audit 2026-10-19: natural name 'drum' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multilingual-au-t1-w100c1-mlh-vi-sua-chua": "audit 2026-10-19: natural name 'yogurt' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multilingual-au-t1-w102c0-mlh-vi-may-tinh-xach-tay": "audit 2026-10-19: natural name 'laptop' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multilingual-au-t1-w100c2-mlh-ru-dumplings": "audit 2026-10-19: natural name 'dumplings' is not among the multi-token forms (forms padded); the everyday readout can't score (or patch in the form)",
+   "multilingual-au-t1-w100c2-mlh-vi-ricecake": "audit 2026-10-19: natural name 'bánh chưng' is not among the multi-token forms (forms padded); the everyday readout can't score (or patch in the form)",
+   "multilingual-au-t1-w101c2-mlh-ru-podokonnik": "audit 2026-10-19: natural name 'windowsill' is not among the multi-token forms (forms padded); the everyday readout can't score (or patch in the form)",
+   "multilingual-au-t2-w105c1-mlh-vi-tui-xach": "audit 2026-10-19: natural name 'handbag' is not among the multi-token forms (forms padded); the everyday readout can't score (or patch in the form)",
+   "multilingual-au-t1-w100c1-mlh-ru-sokovyzhimalka": "audit 2026-10-19: natural name 'juicer' is not among the multi-token forms (forms padded); the everyday readout can't score (or patch in the form)",
+   "multilingual-au-t1-w100c1-mlh-ru-pepelnitsa": "audit 2026-10-19: natural name 'ashtray' is not among the multi-token forms (forms padded); the everyday readout can't score (or patch in the form)",
+   "multilingual-au-t1-w102c0-mlh-id-ban-sepeda": "audit 2026-10-19: natural name 'bike tire' is not among the multi-token forms (forms padded); the everyday readout can't score (or patch in the form)"
+  },
+  "multilingual_multihop": {
+   "multilingual-au-t1-w100c0-mlmh-id-titanic-1912": "audit 2026-10-19: natural name 'Titanic' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multilingual-au-t1-w100c2-mlmh-vi-amazon-dai-tay-duong": "audit 2026-10-19: natural name 'Amazon' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multilingual-au-t1-w100c2-mlmh-vi-petra-jordan": "audit 2026-10-19: natural name 'Petra' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multilingual-au-t1-w101c2-mlmh-ru-sahara-afrika": "audit 2026-10-19: natural name 'Sahara' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multilingual-au-t1-w102c0-mlmh-ru-columbus-genuya": "audit 2026-10-19: natural name 'Columbus' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multilingual-au-t1-w102c0-mlmh-id-mahatma-gandhi-1948": "audit 2026-10-19: natural name 'Gandhi' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multilingual-au-t1-w103c1-mlmh-id-lego-denmark": "audit 2026-10-19: natural name 'Lego' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multilingual-au-t1-w103c1-mlmh-ru-olympic-games-greece": "audit 2026-10-19: natural name 'Olympics' is one Qwen3 token; every multi-token form is padded, so the everyday readout can never score",
+   "multilingual-au-t1-w100c0-mlmh-ru-chernobyl-ukraina": "audit 2026-10-19: natural name 'Chernobyl' is not among the multi-token forms (forms padded); the everyday readout can't score (or patch in the form)",
+   "multilingual-au-t1-w100c1-mlmh-ru-sputnik-1-baikonur": "audit 2026-10-19: natural name 'Sputnik' is not among the multi-token forms (forms padded); the everyday readout can't score (or patch in the form)",
+   "multilingual-au-t1-w101c0-mlmh-ru-elbrus-kavkaz": "audit 2026-10-19: natural name 'Elbrus' is not among the multi-token forms (forms padded); the everyday readout can't score (or patch in the form)",
+   "multilingual-au-t1-w102c0-mlmh-id-notre-dame-victor-hugo": "audit 2026-10-19: natural name 'Notre-Dame' is not among the multi-token forms (forms padded); the everyday readout can't score (or patch in the form)",
+   "multilingual-au-t1-w103c1-mlmh-ru-nineteen-eighty-four-orwell": "audit 2026-10-19: natural name '1984' is not among the multi-token forms (forms padded); the everyday readout can't score (or patch in the form)",
+   "multilingual-au-t1-w103c1-mlmh-ru-versailles-louis-xiv": "audit 2026-10-19: natural name 'Versailles' is not among the multi-token forms (forms padded); the everyday readout can't score (or patch in the form)",
+   "multilingual-au-t1-w103c2-mlmh-id-rembrandt-belanda": "audit 2026-10-19: natural name 'Rembrandt' is not among the multi-token forms (forms padded); the everyday readout can't score (or patch in the form)"
+  },
+  "multihop": {
+   "multihop-au-t1-w100c0-bf-bangkok-language": "audit 2026-10-19: bridge/target overlap: target 'Thai' is a substring of bridge 'Thailand'"
+  },
+  "association": {
+   "association-au-t1-w100c1-c1-diwali": "audit 2026-10-19: prompt names the referent by its English epithet ('the Hindu festival of lights honoring Lakshmi'): a definition, not a latent"
+  },
+  "moral_rationale": {
+   "ec-break_promise-chat_yn": "audit 2026-10-19: subject's distilled reasons are incoherent with its 'No' (look_for_reasons[0] reads as if the question were misread; reason 4 argues the opposite side but is labelled 'no')",
+   "ec-strike_through_human_shields-chat_tf": "audit 2026-10-19: look_for_reasons[0] 'obligation to minimize harm to civilians' is a constraint, not an argument for 'True' (strike permissible); re-distill (e.g. military necessity) or drop",
+   "ec-strike_through_human_shields-chat_yn": "audit 2026-10-19: same as _tf twin"
+  },
+  "agentic_misalignment": {
+   "am-leaking_none-none_replacement": "audit 2026-10-19: prefill declines to share the specs ('we are unable to share the complete technical specifications'); the forward carries a refusal, not a leak. Re-pick one of the 4 MISALIGNED rollouts, or drop"
+  }
+ },
+ "read_band": [
+  12,
+  14,
+  16,
+  18,
+  20,
+  22,
+  24,
+  26,
+  28,
+  30,
+  32,
+  34
+ ]
+}

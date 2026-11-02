@@ -1,0 +1,2002 @@
+{
+ "bank": "items_v2.json",
+ "n_v1": 100,
+ "n_v2": 99,
+ "dropped": {
+  "brh-fi-norsunluurannikko": "Qwen gate (greedy correct AND >= 8/10)"
+ },
+ "qwen_gate": {
+  "n": 10,
+  "temperature": 0.7,
+  "top_p": 0.8,
+  "top_k": 20,
+  "max_tokens": 300,
+  "greedy": true,
+  "bar": "greedy correct AND >= 8/10"
+ },
+ "rewrites": {
+  "brh-fi-norsunluurannikko": [
+   {
+    "old_question": "Missä Länsi-Afrikan valtiossa kohoaa Yamoussoukron valtava Rauhan Neitsyt Marian basilika, yksi maailman suurimmista kirkkorakennuksista?",
+    "reason": "Qwen gate: 0/10, greedy named Nigeria",
+    "new_question": "Mikä on sen Länsi-Afrikan valtion nimi, jonka Yamoussoukrossa kohoaa valtava Rauhan Neitsyt Marian basilika, yksi maailman suurimmista kirkkorakennuksista?"
+   }
+  ],
+  "brh-ar-tayebsalih": [
+   {
+    "old_question": "من هو الروائي السوداني الذي ألّف رواية «موسم الهجرة إلى الشمال» الصادرة سنة 1966؟",
+    "reason": "Qwen gate: greedy ok, 7/10 (confused with Tahar Ben Jelloun)",
+    "new_question": "إلى أيّ روائي سوداني تُنسب رواية «موسم الهجرة إلى الشمال» التي صدرت عام 1966؟"
+   }
+  ]
+ },
+ "blind_floor": {
+  "rounds": [
+   {
+    "per_draw_gold_rate": 0.602020202020202,
+    "n_leakers": 61
+   },
+   {
+    "per_draw_gold_rate": 0.498989898989899,
+    "n_leakers": 51
+   },
+   {
+    "per_draw_gold_rate": 0.43232323232323233,
+    "n_leakers": 44
+   },
+   {
+    "per_draw_gold_rate": 0.37777777777777777,
+    "n_leakers": 39
+   },
+   {
+    "per_draw_gold_rate": 0.37777777777777777,
+    "n_leakers": 39
+   },
+   {
+    "per_draw_gold_rate": 0.26262626262626265,
+    "n_leakers": 26
+   },
+   {
+    "per_draw_gold_rate": 0.2101010101010101,
+    "n_leakers": 20
+   },
+   {
+    "per_draw_gold_rate": 0.1919191919191919,
+    "n_leakers": 18
+   },
+   {
+    "per_draw_gold_rate": 0.16161616161616163,
+    "n_leakers": 15
+   }
+  ],
+  "remaining_leakers": [
+   "brh-ar-ain-jalut",
+   "brh-ar-kitab-almanazir-author",
+   "brh-ent-cryolite-systematic",
+   "brh-ent-cur-bosnia-convertible-mark",
+   "brh-ent-euler-mascheroni-constant",
+   "brh-ent-iceland-spar",
+   "brh-ent-mohr-double-compound",
+   "brh-ent-noyes-whitney",
+   "brh-he-neptune-moon",
+   "brh-id-sriwijaya",
+   "brh-id-tambora-1815",
+   "brh-ko-sohnkeechung",
+   "brh-pl-ziemie-odzyskane",
+   "brh-ru-baikonur",
+   "brh-ru-bellingshausen"
+  ]
+ },
+ "items": {
+  "brh-ar-ain-jalut": {
+   "opus_check": {
+    "english": "What is the name of the battle in which the Mamluks defeated the Mongol army in 1260 in northern Palestine?",
+    "opus_answer": "Battle of Ain Jalut",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The Mamluk victory over the Mongols in 1260 in northern Palestine is singularly identified as the Battle of Ain Jalut, since the later Homs battle that year was in Syria, not Palestine."
+   },
+   "qwen": {
+    "greedy": "اسم المعركة هو **معركة عين جالوت**.\n\nوقعت هذه المعركة الحاسمة في 3 سبتمبر 1260م (658 هـ) في سهل عين جالوت شمال فلسطين (قرب الناصرة حاليًا)، حيث انتصر الجيش المملوكي بقيادة السلطان الظاهر بيبرس وقائده قطز على جيش الإلخانات المغول بقيادة هولاكو خان (الذي لم يحضر المعركة بنفسه، بل قادها قائد مغولي آخر هو كتبغا).\n\nتُعد هذه المعركة نقطة تحول تاريخية، حيث أوقفت التوسع المغولي غربًا وحفظت العالم الإسلامي من الغزو المغولي.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 5
+  },
+  "brh-ar-dakhil": {
+   "opus_check": {
+    "english": "Who is the Umayyad prince who survived the massacre by the Abbasids, crossed over to al-Andalus, and founded the Emirate of Córdoba in 756 AD?",
+    "opus_answer": "Abd al-Rahman I",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "Only Abd al-Rahman I (al-Dakhil) fits the description of the Umayyad prince who escaped the Abbasid massacre, reached al-Andalus, and founded the Emirate of Córdoba in 756."
+   },
+   "qwen": {
+    "greedy": "الأمير الأموي الذي نجا من مذبحة بني العباس وعبر إلى الأندلس هو **عبد الرحمن الداخل** (المعروف أيضاً بـ **عبد الرحمن الأول**).\n\nبعد سقوط الدولة الأموية في دمشق عام 750 ميلادية على يد العباسيين، فر عبد الرحمن بن معاوية بن هشام بن عبد الملك مع قلة من أنصاره، وحاول عبور البحر المتوسط لكنه واجه صعوبات، ثم سار براً عبر شمال أفريقيا حتى وصل إلى الأندلس. هناك، استغل الخلافات بين الحكام المحليين، وهزم جيش الخليفة العباسي الذي أرسله لقتاله في معركة \"اللاذقية\" (أو معركة نهر الوادي الكبير) عام 756 ميلادية، وأسس بذلك **إمارة قرطبة**، التي أصبحت لاحقاً مملكة قوية ومستقلة عن الخلافة العباسية.\n\nيُلقب بـ **\"الداخل\"** لأنه دخل الأندلس وأسس فيها الدولة الأموية الثانية.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ar-kitab-almanazir-author": {
+   "opus_check": {
+    "english": "Who is the author of the Book of Optics (Kitab al-Manazir), in which he laid the foundations of the science of optics and explained how vision works?",
+    "opus_answer": "Ibn al-Haytham (Alhazen)",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The Kitab al-Manazir is universally attributed to Ibn al-Haytham (Alhazen), so a well-informed reader would give only this answer."
+   },
+   "qwen": {
+    "greedy": "صاحب كتاب \"المناظر\" هو العالم العربي المسلم **ابن الهيثم** (المعروف في الغرب باسم Alhazen).\n\nيُعد هذا الكتاب من أهم الأعمال في تاريخ العلوم، حيث أسس فيه ابن الهيثم علم البصريات الحديث، ودحض النظرية الإغريقية القديمة التي كانت تقول إن الإبصار يتم عبر أشعة تنبعث من العين، وأثبت بدلاً من ذلك أن الإبصار يحدث عندما تنعكس الضوء من الأجسام إلى العين. كما شرح فيه بنية العين وآلية عملها، ودرس ظواهر مثل الانكسار والانعكاس والعدسات.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 5
+  },
+  "brh-ar-marj-dabiq": {
+   "opus_check": {
+    "english": "In which battle did Sultan Selim I defeat the Mamluk army in 1516 north of Aleppo?",
+    "opus_answer": "Battle of Marj Dabiq",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The 1516 Ottoman victory over the Mamluks north of Aleppo is the Battle of Marj Dabiq; Ridaniya was fought near Cairo in 1517, so it does not compete."
+   },
+   "qwen": {
+    "greedy": "الموقعة التي هزم فيها السلطان سليم الأول جيش المماليك سنة 1516 شمال حلب هي **معركة مرج دابق**.\n\nوقعت هذه المعركة في **24 أغسطس 1516** (24 ربيع الأول 922 هـ)، بالقرب من مدينة حلب في سوريا، وانتهت بانتصار حاسم للعثمانيين، مما أدى إلى سقوط دولة المماليك في الشام وفتح الطريق أمام دخول العثمانيين إلى مصر لاحقاً.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ar-tayebsalih": {
+   "opus_check": {
+    "english": "To which Sudanese novelist is the novel \"Season of Migration to the North,\" published in 1966, attributed?",
+    "opus_answer": "Tayeb Salih",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "\"Season of Migration to the North\" (1966) is universally attributed to the Sudanese novelist Tayeb Salih, so the question admits only one answer."
+   },
+   "qwen": {
+    "greedy": "تُنسب رواية «موسم الهجرة إلى الشمال» إلى الروائي السوداني **الطيب صالح**.\n\nتُعد هذه الرواية من أهم الأعمال الأدبية العربية في القرن العشرين، وغالبًا ما تُوصف بأنها «رواية القرن العربي» نظرًا لتأثيرها الكبير وعمقها في معالجة قضايا الهوية، والاستعمار، والصراع الثقافي بين الشرق والغرب.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r2.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ar-tusi": {
+   "opus_check": {
+    "english": "Who is the Persian scholar who supervised the founding of the astronomical observatory that was established in the city of Maragheh in the year 1259 AD?",
+    "opus_answer": "Nasir al-Din al-Tusi",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The Maragheh observatory, founded in 1259 under Hulagu Khan, was established under the direction of the Persian scholar Nasir al-Din al-Tusi, so the question points to him alone."
+   },
+   "qwen": {
+    "greedy": "العالم الفارسي الذي أشرف على تأسيس المرصد الفلكي في مدينة مراغة سنة 1259 ميلادية هو **نصير الدين الطوسي**.\n\nأمر الخليفة المغولي هولاكو خان ببناء هذا المرصد، الذي يُعرف بـ **مرصد مراغة**، وأوكل إلى الطوسي مهمة إدارته وتطويره. أصبح هذا المرصد مركزاً علمياً عالمياً في ذلك الوقت، حيث جمع الطوسي فيه علماء من مختلف الثقافات (فارسيين، عرب، صينيين، وغيرهم) لدراسة الفلك والرياضيات، وأنتجوا جداول فلكية دقيقة معروفة باسم \"الجداول الإيلخانية\".",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-aghlabid-dynasty": {
+   "opus_check": {
+    "english": "What is the name of the Muslim ruling house that governed Ifriqiya from 800 to 909 as nominal vassals of the caliphs in Baghdad?",
+    "opus_answer": "Aghlabids",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The Aghlabids are the only dynasty that ruled Ifriqiya from 800 to 909 as nominal vassals of the Abbasid caliphs in Baghdad, so the dates and description fit them uniquely."
+   },
+   "qwen": {
+    "greedy": "The Muslim ruling house that governed Ifriqiya from 800 to 909 as nominal vassals of the Abbasid Caliphs in Baghdad was the **Aghlabid dynasty** (or the **Aghlabids**).\n\n### Key Details:\n- **Founder**: Ibrahim I ibn al-Aghlab, who was appointed governor of Ifriqiya by the Abbasid Caliph Harun al-Rashid in 800 CE.\n- **Status**: While they acknowledged the suzerainty of the Abbasid Caliphate and included the Caliph's name in their coinage and Friday sermons, they functioned as an autonomous, hereditary emirate.\n- **End of Rule**: The dynasty was overthrown in 909 CE by the Fatimid Caliphate, led by Ubayd Allah al-Mahdi Billah.\n\nThus, the correct answer is the **Aghlabid dynasty**.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-antarctic-buried-chain": {
+   "opus_check": {
+    "english": "What is the name of the ice-buried highland chain lying beneath Dome A in East Antarctica?",
+    "opus_answer": "Gamburtsev Subglacial Mountains",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The subglacial mountain range beneath Dome A is well known as the Gamburtsev Mountains (also called the Gamburtsev Subglacial Mountains), and no other range fits that description."
+   },
+   "qwen": {
+    "greedy": "The ice-buried highland chain lying beneath Dome A in East Antarctica is called the **Gamburtsev Mountains** (or the **Gamburtsev Mountain Range**).\n\n### Key Details:\n- **Location**: They are situated beneath the East Antarctic Ice Sheet, roughly centered on Dome A.\n- **Discovery**: First detected in the 1950s by Soviet geophysicist Grigory Gamburtsev using gravity measurements and seismic data.\n- **Significance**: They are considered the \"missing mountains\" of Antarctica and are believed to have played a crucial role in the formation and stability of the East Antarctic Ice Sheet. Their existence was confirmed in detail by modern radar and seismic surveys in the 2000s.\n- **Size**: The range is comparable in size to the European Alps, stretching over 1,200 kilometers (750 miles) in length.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-baikal-outflow": {
+   "opus_check": {
+    "english": "What is the single outflow draining Lake Baikal, carrying its water northward to join the Yenisei?",
+    "opus_answer": "Angara River",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The Angara is the only river flowing out of Lake Baikal, and it runs north to join the Yenisei, so the question admits no other valid answer."
+   },
+   "qwen": {
+    "greedy": "The single outflow draining Lake Baikal is the **Angara River** (or simply the **Angara**).\n\n### Key Details:\n1.  **Origin**: The Angara River originates from the northern end of Lake Baikal in Siberia, Russia.\n2.  **Direction**: It flows northward.\n3.  **Destination**: It eventually joins the **Yenisei River** (specifically, it is considered the main source of the Yenisei's upper reaches) near the city of Krasnoyarsk.\n4.  **Significance**: It is the only river that drains Lake Baikal, which holds about 20% of the world's unfrozen freshwater.\n\n**Answer:** The **Angara River**.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-bardet-biedl": {
+   "opus_check": {
+    "english": "Which autosomal recessive ciliopathy combines rod-cone dystrophy, extra digits, truncal obesity, renal anomalies and hypogonadism?",
+    "opus_answer": "Bardet-Biedl syndrome",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The combination of rod-cone dystrophy, polydactyly, truncal obesity, renal anomalies and hypogonadism in an autosomal recessive ciliopathy is the classic description of Bardet-Biedl syndrome; Alström syndrome lacks polydactyly, and Laurence-Moon syndrome lacks polydactyly and is often treated as a variant."
+   },
+   "qwen": {
+    "greedy": "The condition described is **Bardet-Biedl syndrome (BBS)**.\n\n### Key Features of Bardet-Biedl Syndrome:\n1.  **Inheritance Pattern**: Autosomal recessive.\n2.  **Primary Clinical Features**:\n    *   **Rod-cone dystrophy**: A form of retinal dystrophy leading to night blindness and progressive vision loss.\n    *   **Polydactyly**: Extra digits (usually postaxial).\n    *   **Truncal obesity**: Central obesity developing in early childhood.\n    *   **Renal anomalies**: Structural and functional kidney abnormalities (e.g., cysts, hypoplasia), which are a major cause of morbidity.\n    *   **Hypogonadism**: Underdeveloped genitalia and delayed puberty, particularly in males.\n3.  **Other Common Features**: Learning disabilities, speech delays, and diabetes mellitus.\n\n### Distinction from Similar Conditions:\n*   **Alström Syndrome**: Also involves obesity, retinal dystrophy, and renal issues, but **lacks** polydactyly and hypogonadism (males often have normal genitalia). It is also associated with sensorineural hearing loss and cardiomyopathy.\n*   **Laurence-Moon Syndrome**: Historically confused with BBS, but typically lacks polydactyly and obesity, and is associated with spastic parapleg",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-beckwith-wiedemann-syndrome": {
+   "opus_check": {
+    "english": "Which overgrowth disorder, marked by an enlarged tongue, omphalocele and a raised risk of Wilms tumour, is caused by imprinting errors at chromosome 11p15.5?",
+    "opus_answer": "Beckwith-Wiedemann syndrome",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "Macroglossia, omphalocele, Wilms tumour risk and 11p15.5 imprinting defects together uniquely identify Beckwith–Wiedemann syndrome."
+   },
+   "qwen": {
+    "greedy": "Based on the clinical features and genetic location provided, the disorder is **Beckwith-Wiedemann syndrome** (BWS).\n\n### Step-by-Step Deduction:\n\n1.  **Clinical Features Analysis**:\n    *   **Enlarged tongue (Macroglossia)**: This is a hallmark feature of Beckwith-Wiedemann syndrome, present in approximately 90% of cases.\n    *   **Omphalocele**: Abdominal wall defects, particularly omphalocele, are common in BWS.\n    *   **Raised risk of Wilms tumour**: Children with BWS have a significantly increased risk of developing embryonal tumors, most notably Wilms tumor (nephroblastoma) and hepatoblastoma.\n\n2.  **Genetic Location Analysis**:\n    *   **Chromosome 11p15.5**: This specific region contains two imprinted gene clusters:\n        *   **IGF2** (Insulin-like Growth Factor 2): Normally expressed only from the paternal allele.\n        *   **H19** and **CDKN1C**: Normally expressed only from the maternal allele.\n    *   **Imprinting Errors**: Beckwith-Wiedemann syndrome is caused by dysregulation of these imprinted genes. Common mechanisms include:\n        *   Loss of methylation at the *H19* differentially methylated region (ICR1).",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-bohr-magneton": {
+   "opus_check": {
+    "english": "What physical quantity, equal to about 9.274×10⁻²⁴ joules per tesla, is used as the natural unit for the intrinsic dipole moment of an electron?",
+    "opus_answer": "Bohr magneton",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The value 9.274×10⁻²⁴ J/T uniquely identifies the Bohr magneton, the natural unit for the electron's magnetic moment."
+   },
+   "qwen": {
+    "greedy": "Based on the value and the physical context provided, here is the step-by-step deduction to identify the quantity:\n\n### 1. Analysis of the Physical Context\nThe question asks for a \"natural unit\" used to measure the **intrinsic dipole moment of an electron**. In quantum mechanics, the intrinsic magnetic dipole moment of an electron ($\\mu_e$) is related to its spin angular momentum ($S$) by the equation:\n$$ \\vec{\\mu}_e = -g_e \\frac{e}{2m_e} \\vec{S} $$\nwhere:\n*   $e$ is the elementary charge.\n*   $m_e$ is the electron mass.\n*   $g_e$ is the electron g-factor (approximately 2).\n\nThe fundamental unit derived from these constants for the magnetic moment of a particle with spin $1/2$ is known as the **Bohr magneton**.\n\n### 2. Verification of the Value\nThe Bohr magneton ($\\mu_B$) is defined as:\n$$ \\mu_B = \\frac{e\\hbar}{2m_e} $$\n\nLet's calculate the value using standard physical constants:\n*   Elementary charge ($e$) $\\approx 1.602 \\times 10^{-19} \\, \\text{C}$\n*   Reduced Planck constant ($\\hbar$) $\\approx 1.054 \\times 10^{-34} \\, \\text{J}\\cdot\\text{s}$\n*   Electron mass ($m_e$) $\\approx 9.109 \\times 10^{-31} \\, \\text{kg}$\n\n$$ \\mu_B = \\frac{(1.602 \\times 10^{-19}) \\times (1.054 \\times 10^{-34})}{2 \\times (9.109 \\times 10^{-31})} $$\n$$ \\mu_B \\approx \\frac{1.688 \\times 10^{-53}}{1.822 \\times 10^{-30}} $$\n$$ \\mu_B \\approx 9.274 \\times 10^{-24} \\, \\text{J/T} $$\n\nThis matches the value provided in the question ($9.274 \\times 10^{-24}$ joules per tesla) exactly.\n\n### 3. Distinction from Other Units\n*   **Nuclear Magneton ($\\mu_N$):** This is the natural unit for the magnetic moment of protons and neutrons. It is much smaller (by a factor of the proton-to-electron mass ratio, $\\approx 1836$) and has a value of approximately $5.05 \\times 10^{-27} \\, \\text{J/T}$.\n*   **Bohr Magneton ($\\mu_B$):** This is the appropriate scale for electron magnetic moments.\n\n### Conclusion\n\nThe physical quantity is the **Bohr magneton** (symbol: $\\mu_B$).",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r1.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-bonaire-capital": {
+   "opus_check": {
+    "english": "What is the principal town and seat of government of the Dutch Caribbean municipality of Bonaire?",
+    "opus_answer": "Kralendijk",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "Kralendijk is the well-established capital, principal town, and seat of government of Bonaire, a special municipality of the Netherlands, and no other town could be equally named."
+   },
+   "qwen": {
+    "greedy": "The principal town and seat of government of the Dutch Caribbean municipality of Bonaire is **Kralendijk**.\n\n### Key Details:\n- **Location**: Kralendijk is located on the west coast of the island of Bonaire.\n- **Status**: It serves as the administrative center for the special municipality of Bonaire, which is part of the Kingdom of the Netherlands.\n- **Features**: The town is known for its colorful Dutch-style architecture, the historic Fort Oranje, and its role as the main commercial and governmental hub of the island.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-brunt-vaisala-frequency": {
+   "opus_check": {
+    "english": "What is the name of the angular rate at which a vertically displaced parcel of air oscillates within a statically stable stratified atmosphere?",
+    "opus_answer": "Brunt–Väisälä frequency (buoyancy frequency)",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The angular frequency of oscillation of a vertically displaced parcel in a stably stratified atmosphere is the Brunt–Väisälä frequency; the alternative name 'buoyancy frequency' is a synonym for the same quantity, not a different answer."
+   },
+   "qwen": {
+    "greedy": "The name of the angular rate at which a vertically displaced parcel of air oscillates within a statically stable stratified atmosphere is the **Brunt–Väisälä frequency** (also known as the **buoyancy frequency**).\n\n### Explanation:\n\n1.  **Physical Context**:\n    *   In a **statically stable** atmosphere, the environmental lapse rate is less than the adiabatic lapse rate.\n    *   If a parcel of air is displaced vertically, buoyancy forces act to restore it to its original equilibrium position.\n    *   Due to inertia, the parcel overshoots the equilibrium position, resulting in simple harmonic motion (oscillation).\n\n2.  **Definition**:\n    *   The **Brunt–Väisälä frequency** ($N$) is the natural frequency of this vertical oscillation.\n    *   It is defined by the formula:\n        $$\n        N = \\sqrt{\\frac{g}{\\theta} \\frac{d\\theta}{dz}}\n        $$\n        Where:\n        *   $g$ is the acceleration due to gravity.\n        *   $\\theta$ is the potential temperature.\n        *   $\\frac{d\\theta}{dz}$ is the vertical gradient of potential temperature.\n\n3.  **Significance**:\n    *   If $N^2 > 0$, the atmosphere is stable, and oscillations occur.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-chem-sarin-systematic": {
+   "opus_check": {
+    "english": "What is the systematic chemical name of the nerve agent code-named sarin?",
+    "opus_answer": null,
+    "opus_answer_ok": false,
+    "unique": null,
+    "unique_reason": null
+   },
+   "qwen": {
+    "greedy": "### Logical Deduction\n\nTo determine the systematic chemical name of the nerve agent **Sarin**, we must analyze its chemical structure and apply IUPAC (International Union of Pure and Applied Chemistry) nomenclature rules.\n\n1.  **Chemical Structure Analysis**:\n    *   Sarin is an organophosphorus compound.\n    *   Its chemical formula is $C_4H_{10}FO_2P$.\n    *   The structure consists of a central phosphorus atom bonded to:\n        *   A fluorine atom ($-F$).\n        *   A methyl group ($-CH_3$).\n        *   An isopropyl group attached to an oxygen atom ($-O-CH(CH_3)_2$).\n        *   A double-bonded oxygen atom ($=O$).\n\n2.  **Nomenclature Construction**:\n    *   **Parent Chain**: The core structure is a phosphonous acid derivative. Specifically, it is a methylphosphonate.\n    *   **Substituents**:\n        *   The oxygen atom attached to the phosphorus is bonded to an isopropyl group (also known as a propan-2-yl group). This makes it an **isopropyl** ester.\n        *   The phosphorus atom is also bonded to a **fluoro** group.\n    *   **Assembly**: Combining these elements, the molecule is the isopropyl ester of fluoro-methylphosphonic acid.\n\n3.  **Stereochemistry**:\n    *   The phosphorus atom in Sarin is chiral (it has four different groups attached).\n    *   While the general name applies to the mixture, the most toxic isomer is the **(R)-isomer**. However, the general systematic name usually refers to the chemical structure regardless of chirality unless specified.\n\n4.  **Synthesizing the Name**:\n    *   Acid part: Fluoromethylphosphonic acid.\n    *   Ester part: Isopropyl.\n    *   Combined: **Isopropyl fluoromethylphosphonate**.\n\n    *Alternative IUPAC systematic naming*:\n    *   **Isopropyl methylphosphonofluoridate** (This is also widely accepted and used in chemical literature).\n\n### Final Conclusion\n\nThe systematic chemical name of the nerve agent code-named Sarin is:\n\n**Isopropyl fluoromethylphosphonate**\n\n(It is also frequently referred to as **Isopropyl methylphosphonofluoridate**).",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r1.jsonl"
+   },
+   "blind_hits_last_round": null
+  },
+  "brh-ent-chem-wintergreen-ester": {
+   "opus_check": {
+    "english": "What is the systematic chemical name of the fragrant substance traditionally sold as oil of wintergreen?",
+    "opus_answer": "Methyl 2-hydroxybenzoate",
+    "opus_answer_ok": true,
+    "unique": false,
+    "unique_reason": "The strictly systematic IUPAC name of oil of wintergreen's main component is methyl 2-hydroxybenzoate, while 'methyl salicylate' is a semi-trivial name, so a well-informed reader could validly give either name for the same compound."
+   },
+   "qwen": {
+    "greedy": "The systematic chemical name of the fragrant substance traditionally sold as oil of wintergreen is **methyl salicylate**.\n\n### Explanation:\n1.  **Common Name**: Oil of wintergreen is a clear, colorless liquid with a strong minty aroma and flavor.\n2.  **Chemical Structure**: It is an ester formed from the reaction of **salicylic acid** and **methanol**.\n3.  **Systematic Name**:\n    *   The IUPAC systematic name is **methyl 2-hydroxybenzoate**.\n    *   However, the most widely accepted and used systematic chemical name in general chemistry and commerce is **methyl salicylate**.\n\n### Chemical Formula:\n$$C_8H_8O_3$$\n\n### Structure:\nIt consists of a benzene ring with a hydroxyl group ($-OH$) at the ortho position (position 2) and a methyl ester group ($-COOCH_3$) at position 1.",
+    "greedy_ok": true,
+    "n_ok": 9,
+    "n": 10,
+    "pass": true,
+    "fails": [
+     "### Logical Deduction\n\n1.  **Identification of the Substance**:\n    \"Oil of wintergreen\" is a common name for an essential oil obtained from the leaves of the wintergreen plant (*Gaultheria procumbens*). However, the specific chemical compound responsible for the characteristic sweet, minty aroma and flavor is a methyl ester of salicylic acid.\n\n2.  **Chemical Structure Analysis**:\n    The chemical formula for this substance is $C_8H_8O_3$. Structurally, it consists of a benzene ring with two substituents attached to adjacent carbon atoms (the *ortho* position):\n    *   A hydroxyl group ($-OH$).\n    *   A methoxycarbonyl group ($-COOCH_3$), which is an ester group.\n\n3.  **IUPAC Nomenclature Rules**:\n    *   **Parent Chain**: The parent structure is a benzene ring.\n    *   **Principal Functional Group**: The ester group has higher priority than the hydroxyl group for naming the parent chain. Therefore, the parent name is based on benzoic acid, specifically **methyl benzoate**.\n    *   **Numbering**: The carbon atom attached to the ester group is designated as position 1. The hydroxyl group is attached to the adjacent carbon, which is position 2.\n    *   **Substituent Name"
+    ],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-chindwin-confluence": {
+   "opus_check": {
+    "english": "What is the name of the much larger watercourse that the Chindwin joins near Myingyan?",
+    "opus_answer": "Irrawaddy River",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The Chindwin joins the Ayeyarwady (also spelled Irrawaddy, the same river) near Myingyan, so the question points to a single river and the spelling variants do not make it ambiguous."
+   },
+   "qwen": {
+    "greedy": "The Chindwin River joins the **Irrawaddy River** (also known as the Ayeyarwady River) near Myingyan.\n\n### Key Details:\n- **Chindwin River**: The largest tributary of the Irrawaddy.\n- **Irrawaddy River**: The principal river of Myanmar (Burma), flowing from north to south.\n- **Confluence Location**: The Chindwin merges with the Irrawaddy just south of the city of Myingyan in central Myanmar.\n\nThus, the much larger watercourse is the **Irrawaddy River**.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-concordat-worms": {
+   "opus_check": {
+    "english": "What is the name of the 1122 agreement between the papacy and Emperor Henry V that settled the long quarrel over lay investiture?",
+    "opus_answer": "Concordat of Worms",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The 1122 agreement between Pope Callixtus II and Henry V ending the Investiture Controversy is universally known as the Concordat of Worms (also called Pactum Calixtinum, which is just an alternate name for the same agreement)."
+   },
+   "qwen": {
+    "greedy": "The agreement is called the **Concordat of Worms** (or the *Pactum Calixtinum*).\n\n### Key Details:\n- **Date:** Signed in **1122**.\n- **Parties:** Pope **Callixtus II** and Holy Roman Emperor **Henry V**.\n- **Purpose:** It resolved the **Investiture Controversy**, a major conflict between the Church and secular rulers over who had the authority to appoint (invest) church officials (bishops and abbots).\n- **Terms:**\n  - The Emperor renounced the right to invest clergy with the **ring and staff** (symbols of spiritual authority).\n  - The Pope allowed the Emperor to be present at elections and to invest bishops with the **scepter** (symbol of temporal authority and lands) after they had received spiritual investiture from the Church.\n  - This compromise effectively separated spiritual and temporal powers in church appointments.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-cordillera-blanca-high": {
+   "opus_check": {
+    "english": "What is the highest summit of the Cordillera Blanca in Peru?",
+    "opus_answer": "Huascarán",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "Huascarán (specifically Huascarán Sur, 6,768 m) is unambiguously the highest peak of the Cordillera Blanca and of Peru, and naming the massif or its south summit still points to the same answer."
+   },
+   "qwen": {
+    "greedy": "The highest summit of the Cordillera Blanca in Peru is **Huascarán**.\n\n### Key Details:\n- **Elevation**: 6,768 meters (22,205 feet) above sea level.\n- **Location**: It is located in the Ancash Region of Peru, within the Huascarán National Park, which is a UNESCO World Heritage Site.\n- **Significance**: Huascarán is not only the highest peak in the Cordillera Blanca but also the highest mountain in Peru and the highest peak in the world located entirely within the tropics.\n\nThe Cordillera Blanca is part of the larger Andes mountain range and is renowned for its extensive glaciers and high peaks, many of which exceed 6,000 meters.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-cryolite-systematic": {
+   "opus_check": {
+    "english": "What is the systematic chemical name of the Greenlandic mineral cryolite, long mined at Ivittuut as a smelting flux?",
+    "opus_answer": "Sodium hexafluoroaluminate",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "Cryolite is Na3AlF6, and its standard systematic name is sodium hexafluoroaluminate; variants like trisodium hexafluoroaluminate(3−) are just alternative renderings of the same name."
+   },
+   "qwen": {
+    "greedy": "### Logical Deduction\n\n1.  **Identification of the Mineral**: The mineral described is **cryolite** (also known as ice stone). It is a rare mineral that was historically mined almost exclusively at the Ivittuut (Ivittuut) mine in Greenland.\n\n2.  **Chemical Composition**: Cryolite is a mineral composed of sodium, aluminum, and fluorine. Its chemical formula is **$Na_3AlF_6$**.\n\n3.  **Systematic Nomenclature**:\n    *   The cation is **Sodium** ($Na^+$).\n    *   The anion is a complex polyatomic ion consisting of one aluminum atom surrounded by six fluorine atoms ($AlF_6^{3-}$).\n    *   In inorganic nomenclature, the $AlF_6^{3-}$ ion is named **hexafluoroaluminate** (or hexafluoroaluminat(III)).\n    *   Combining the cation and the anion, the systematic name is **Sodium hexafluoroaluminate**.\n\n### Conclusion\n\nThe systematic chemical name of the mineral cryolite is **sodium hexafluoroaluminate** (or **sodium hexafluoroaluminat(III)**).",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r1.jsonl"
+   },
+   "blind_hits_last_round": 5
+  },
+  "brh-ent-cur-bhutan": {
+   "opus_check": {
+    "english": "What is the national monetary unit of the Himalayan kingdom governed from Thimphu?",
+    "opus_answer": "Ngultrum",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "Thimphu is the capital of Bhutan, a Himalayan kingdom, and its national currency is the ngultrum; the Indian rupee also circulates there, but it is not the national monetary unit."
+   },
+   "qwen": {
+    "greedy": "The Himalayan kingdom governed from Thimphu is **Bhutan**.\n\nThe national monetary unit of Bhutan is the **Bhutanese Ngultrum** (currency code: **BTN**; symbol: **Nu.**).\n\n### Key Details:\n- **Subunit**: 1 Ngultrum = 100 Chetrum.\n- **Exchange Rate**: The Ngultrum is pegged at par with the **Indian Rupee** (INR), meaning 1 BTN = 1 INR. Indian Rupees are also widely accepted as legal tender in Bhutan, though the reverse is not true.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-cur-bosnia-convertible-mark": {
+   "opus_check": {
+    "english": "Which currency was introduced in 1998 in Bosnia and Herzegovina under the Dayton accords and was at first pegged one-to-one to the German unit of the time?",
+    "opus_answer": "Bosnia and Herzegovina convertible mark",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The Bosnia and Herzegovina convertible mark (konvertibilna marka) is the only currency introduced in 1998 under the Dayton framework and pegged 1:1 to the Deutsche Mark."
+   },
+   "qwen": {
+    "greedy": "The currency introduced in Bosnia and Herzegovina in 1998 under the Dayton Accords is the **Convertible Mark** (Bosnian: *Konvertibilna marka*), commonly abbreviated as **KM** or **BAM**.\n\n### Key Details:\n1. **Introduction**: It was introduced on January 1, 1998, replacing the Yugoslav dinar and the Croatian dinar in their respective parts of Bosnia and Herzegovina.\n2. **Peg**: Initially, it was pegged **1:1 to the German Deutsche Mark (DEM)**.\n3. **Current Peg**: After the introduction of the Euro in 1999, the Convertible Mark was re-pegged **1:1 to the Euro (EUR)**, and this peg remains in place today.\n\nThus, the answer is the **Convertible Mark (BAM)**.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 5
+  },
+  "brh-ent-cur-eritrea": {
+   "opus_check": {
+    "english": "What is the official monetary unit of the Horn of Africa state whose capital is Asmara?",
+    "opus_answer": "Nakfa",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "Asmara is the capital of Eritrea, a Horn of Africa state whose sole official currency is the Eritrean nakfa, so the question points to exactly one answer."
+   },
+   "qwen": {
+    "greedy": "The Horn of Africa state whose capital is Asmara is **Eritrea**.\n\nThe official monetary unit of Eritrea is the **Eritrean nakfa** (currency code: **ERN**).\n\n### Key Details:\n- **Country**: Eritrea\n- **Capital**: Asmara\n- **Currency**: Eritrean nakfa\n- **Subunit**: 1 nakfa = 100 cents\n- **Introduction**: The nakfa replaced the Eritrean dollar in 1997 at a rate of 1 nakfa = 1 Eritrean dollar.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-cur-macau-unit": {
+   "opus_check": {
+    "english": "What is the official currency of the Special Administrative Region of Macau?",
+    "opus_answer": "Macanese pataca",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "Macau's official legal tender is the Macanese pataca; the Hong Kong dollar circulates widely but is not the official currency, so a well-informed reader would answer pataca."
+   },
+   "qwen": {
+    "greedy": "The official currency of the Special Administrative Region of Macau is the **Macanese pataca** (often abbreviated as **MOP** or **$**).\n\n### Key Details:\n- **Currency Code**: MOP\n- **Symbol**: $ or MOP$\n- **Subunit**: 1 pataca = 100 avos\n- **Issuing Authority**: The Monetary Authority of Macau (AMCM)\n\n### Additional Context:\n- The **Hong Kong dollar (HKD)** is also widely accepted and used in Macau due to the close economic ties between the two regions. Many businesses quote prices in HKD, and change may be given in HKD.\n- The Macanese pataca is pegged to the Hong Kong dollar at a fixed rate of **1 HKD = 1.03 MOP**.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-cur-ngultrum-subunit": {
+   "opus_check": {
+    "english": "What is the name of the subunit worth one hundredth of the Bhutanese ngultrum?",
+    "opus_answer": "Chhertum",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The Bhutanese ngultrum is divided into 100 chhertum (also spelled chetrum), so the question points to a single subunit; spelling variants name the same thing."
+   },
+   "qwen": {
+    "greedy": "The subunit worth one hundredth of the Bhutanese ngultrum is called the **chetrum** (also spelled **chetrums**).\n\n### Key Details:\n- **Currency**: Bhutanese ngultrum (BTN)\n- **Subunit**: Chetrum\n- **Conversion**: 1 ngultrum = 100 chetrum\n- **Usage**: While the chetrum is the official subunit, it is rarely used in everyday transactions due to inflation and the low value of the coin. Prices are typically rounded to the nearest ngultrum.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 1
+  },
+  "brh-ent-cur-ouguiya-subunit": {
+   "opus_check": {
+    "english": "What is the name of the subunit of the Mauritanian ouguiya, five of which make one ouguiya?",
+    "opus_answer": "Khoums",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The Mauritanian ouguiya is divided into five khoums, so the question points to exactly one standard answer (minor spelling variants aside)."
+   },
+   "qwen": {
+    "greedy": "The subunit of the Mauritanian ouguiya is called the **khoums** (also spelled **khoum**).\n\n### Explanation:\n- The **ouguiya** (MRO) is the official currency of Mauritania.\n- It is divided into **5 khoums**.\n- Therefore, **5 khoums = 1 ouguiya**.\n\nThis is a unique division compared to most currencies, which are typically divided into 100 subunits (like cents in dollars or pence in pounds). The name \"khoums\" comes from the Arabic word *khums*, meaning \"one-fifth.\"",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 1
+  },
+  "brh-ent-cur-vanuatu": {
+   "opus_check": {
+    "english": "What is the monetary unit of the Melanesian archipelago whose capital is Port Vila?",
+    "opus_answer": "Vatu",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "Port Vila is the capital of Vanuatu, whose sole official currency is the vatu, so the question points to exactly one answer."
+   },
+   "qwen": {
+    "greedy": "The Melanesian archipelago whose capital is Port Vila is **Vanuatu**.\n\nThe monetary unit of Vanuatu is the **Vanuatu vatu** (currency code: **VUV**).\n\n### Key Details:\n- **Country**: Vanuatu\n- **Capital**: Port Vila\n- **Currency**: Vanuatu vatu\n- **Symbol**: VT (often used before the amount, e.g., VT 100)\n- **Subunit**: The vatu is not subdivided into smaller units.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-currency-bhutan": {
+   "opus_check": {
+    "english": "What is the unit of currency used in the Himalayan kingdom whose capital is Thimphu?",
+    "opus_answer": "Ngultrum",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "Thimphu is the capital of Bhutan, whose official currency is the ngultrum; the Indian rupee also circulates as legal tender there, but the ngultrum is clearly the national unit of currency."
+   },
+   "qwen": {
+    "greedy": "The Himalayan kingdom whose capital is Thimphu is **Bhutan**.\n\nThe unit of currency used in Bhutan is the **Bhutanese Ngultrum** (currency code: **BTN**; symbol: **Nu.**).\n\n### Key Details:\n- **Name**: Ngultrum\n- **Subunit**: The Ngultrum is divided into 100 **Chetrum** (though Chetrum coins are rarely used in practice due to low value).\n- **Exchange Rate**: The Ngultrum is pegged at par with the **Indian Rupee** (INR), meaning 1 BTN = 1 INR. Indian Rupees are also widely accepted as legal tender in Bhutan.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-currency-eswatini": {
+   "opus_check": {
+    "english": "What is the name of the national currency of the Kingdom of Eswatini?",
+    "opus_answer": "Lilangeni",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "Eswatini's national currency is the lilangeni (plural emalangeni); the South African rand also circulates as legal tender, but it is not the national currency."
+   },
+   "qwen": {
+    "greedy": "The national currency of the Kingdom of Eswatini is the **Swazi lilangeni** (plural: **emalangeni**).\n\n### Key Details:\n- **Currency Code**: SZL\n- **Symbol**: L\n- **Subunit**: 1 lilangeni = 100 **cent**\n- **Note**: The Swazi lilangeni is pegged at par (1:1) with the South African rand (ZAR), and both currencies are legal tender in Eswatini. However, the lilangeni is the official national currency issued by the Central Bank of Eswatini.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-currency-gambia": {
+   "opus_check": {
+    "english": "What is the name of the unit of money issued by the central bank of The Gambia?",
+    "opus_answer": "Gambian dalasi",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The Central Bank of The Gambia issues the Gambian dalasi, the country's only official currency, so the question has a single correct answer."
+   },
+   "qwen": {
+    "greedy": "The unit of money issued by the Central Bank of The Gambia is the **Gambian dalasi** (plural: dalasis).\n\nIts ISO 4217 currency code is **GMD**, and it is often abbreviated as **D**. The dalasi is subdivided into 100 bututs.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-currency-mozambique": {
+   "opus_check": {
+    "english": "What is the name of the national currency of Mozambique?",
+    "opus_answer": "Mozambican metical",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "Mozambique's national currency is the metical (plural meticais), and no other answer is equally valid."
+   },
+   "qwen": {
+    "greedy": "The national currency of Mozambique is the **Mozambican metical**.\n\n*   **Currency Code:** MZN\n*   **Symbol:** MT\n*   **Subunit:** The metical is divided into 100 **centavos**.\n\nThe current version of the metical (MZN) was introduced in 2006, replacing the previous metical (MZN) at a rate of 1,000 old meticais to 1 new metical.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-currency-tajikistan": {
+   "opus_check": {
+    "english": "What is the name of the national currency of Tajikistan?",
+    "opus_answer": "Somoni",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "Tajikistan's sole national currency is the somoni, so a well-informed reader would give only this answer, and 'somoni' and 'Tajikistani somoni' are the same answer."
+   },
+   "qwen": {
+    "greedy": "The national currency of Tajikistan is the **Tajikistani somoni** (often simply referred to as the **somoni**).\n\n*   **ISO 4217 Code:** TJS\n*   **Symbol:** ЅМ (Cyrillic) or sometimes just \"TJS\" in international contexts.\n*   **Subunit:** 1 somoni = 100 dirams.\n\nThe somoni was introduced in 2000, replacing the Tajikistani ruble, and is named after Ismail Samani, the founder of the Samanid Empire.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-currency-vanuatu": {
+   "opus_check": {
+    "english": "What is the unit of currency circulating in the Pacific archipelago nation whose capital is Port Vila?",
+    "opus_answer": "Vanuatu vatu",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "Port Vila is the capital of Vanuatu, whose sole official currency is the Vanuatu vatu (VUV), so the question points to exactly one answer."
+   },
+   "qwen": {
+    "greedy": "The Pacific archipelago nation whose capital is Port Vila is **Vanuatu**.\n\nThe unit of currency circulating in Vanuatu is the **Vanuatu vatu** (currency code: **VUV**).\n\n### Key Details:\n- **Currency Name**: Vanuatu vatu\n- **Symbol**: VT (often written after the amount, e.g., 100 VT)\n- **Subunit**: The vatu is not subdivided into smaller units (no cents).\n- **Issuing Authority**: Reserve Bank of Vanuatu\n\nThe vatu has been the official currency of Vanuatu since it gained independence from France and the United Kingdom in 1980.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-drakensberg-summit": {
+   "opus_check": {
+    "english": "What is the highest summit of the Drakensberg escarpment in southern Africa, which rises in eastern Lesotho?",
+    "opus_answer": "Thabana Ntlenyana",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "Thabana Ntlenyana (3,482 m) in eastern Lesotho is widely recognized as the highest peak of the Drakensberg and of southern Africa, so a well-informed reader would give this answer."
+   },
+   "qwen": {
+    "greedy": "The highest summit of the Drakensberg escarpment is **Thabana Ntlenyana**.\n\nHere are the key details:\n\n*   **Elevation:** 3,482 meters (11,424 feet).\n*   **Location:** It is located in eastern **Lesotho**, near the border with South Africa’s KwaZulu-Natal province.\n*   **Significance:** Thabana Ntlenyana is the highest point in Lesotho and the highest peak in the Drakensberg mountain range. It is also the highest point in Southern Africa outside of the Lesotho highlands' broader context, but specifically within the Drakensberg escarpment system, it holds the top spot.\n\n**Note on Common Confusion:**\n*   **Mafadi Peak** (3,450 m) is the highest peak entirely within South Africa and is part of the Drakensberg range, but it is slightly lower than Thabana Ntlenyana.\n*   **Mont Aux Sources** (3,462 m) is another high peak in Lesotho, but it is also lower than Thabana Ntlenyana.\n\nTherefore, **Thabana Ntlenyana** is the correct answer.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-euler-mascheroni-constant": {
+   "opus_check": {
+    "english": "What is the name of the mathematical quantity roughly equal to 0.5772156649, defined as the limiting difference between the harmonic series and the natural logarithm?",
+    "opus_answer": "Euler-Mascheroni constant",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The value 0.5772156649, defined as the limit of the difference between the harmonic series and the natural logarithm, identifies only the Euler–Mascheroni constant (also called Euler's constant or gamma), and those names are all aliases for the same answer."
+   },
+   "qwen": {
+    "greedy": "The mathematical quantity you are referring to is the **Euler–Mascheroni constant** (also known simply as the **Euler constant**).\n\nIt is typically denoted by the Greek letter gamma ($\\gamma$).\n\n### Definition\nThe constant is defined as the limit of the difference between the $n$-th harmonic number ($H_n$) and the natural logarithm of $n$ as $n$ approaches infinity:\n\n$$\n\\gamma = \\lim_{n \\to \\infty} \\left( \\sum_{k=1}^n \\frac{1}{k} - \\ln(n) \\right)\n$$\n\n### Key Properties\n*   **Value**: $\\gamma \\approx 0.57721566490153286060651209008240243104215933593992$\n*   **Nature**: It is a fundamental constant in number theory and analysis.\n*   **Open Problem**: It is currently unknown whether $\\gamma$ is irrational or transcendental, although it is widely believed to be irrational.\n\n### Distinction\nIt is important not to confuse the Euler–Mascheroni constant ($\\gamma$) with the Euler number ($e \\approx 2.71828$), which is the base of the natural logarithm",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 5
+  },
+  "brh-ent-georgian-royal-line": {
+   "opus_check": {
+    "english": "Which royal line ruled the Georgian realms for roughly a millennium until the Russian annexation of 1801?",
+    "opus_answer": "Bagrationi dynasty",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The Bagrationi dynasty is the only royal line that ruled Georgian kingdoms from roughly the 9th century until Russia annexed Kartli-Kakheti in 1801, so a well-informed reader would give this answer alone."
+   },
+   "qwen": {
+    "greedy": "The royal line that ruled the Georgian realms for roughly a millennium until the Russian annexation in 1801 was the **Bagrationi dynasty** (also known as the **Bagratid dynasty**).\n\n### Key Details:\n- **Origins**: The Bagrationi dynasty traces its origins to the early medieval period, with some branches claiming descent from the ancient Armenian Bagratuni dynasty.\n- **Rule in Georgia**: \n  - The dynasty first established rule in the Kingdom of Iberia (Kartli) in the 9th century.\n  - In the 10th–11th centuries, under King Bagrat III, the various Georgian principalities were unified into a single kingdom, marking the beginning of the \"Golden Age\" of Georgia.\n  - The Bagrationi continued to rule through periods of fragmentation, foreign invasions (by Mongols, Timurids, and Ottoman/Safavid empires), and eventual decline.\n- **End of Rule**: \n  - In 1801, the Russian Empire formally annexed the Kingdom of Kartli-Kakheti (Eastern Georgia), abolishing the Bagrationi monarchy.\n  - The last king, **George XII**, died in 1800, and his son, **David Bagrationi**, was deposed by Tsar Paul I of Russia in 1801.\n\nThus, the **Bagrationi dynasty** is the correct",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-geosmin": {
+   "opus_check": {
+    "english": "What is the name of the bicyclic alcohol, made by soil-dwelling Streptomyces bacteria, that gives beetroot and rain-dampened ground their characteristic musty smell?",
+    "opus_answer": "Geosmin",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "Geosmin is the well-known bicyclic terpene alcohol produced by Streptomyces that is responsible for the earthy smell of beetroot and damp soil; 2-methylisoborneol is also a bicyclic alcohol made by Streptomyces, but it is not the compound associated with beetroot or the after-rain smell, so the clues point to a single answer."
+   },
+   "qwen": {
+    "greedy": "The name of the bicyclic alcohol is **geosmin** (chemically known as *trans*-1,10-dimethyl-trans-9-decalol).\n\n### Key Details:\n*   **Source**: It is produced by soil-dwelling bacteria of the genus *Streptomyces* (as well as some cyanobacteria and actinomycetes).\n*   **Structure**: It is a bicyclic alcohol with a decalin backbone.\n*   **Scent**: It is responsible for the distinct earthy, musty odor associated with:\n    *   Rain falling on dry soil (a phenomenon known as *petrichor*).\n    *   Beetroot (beets).\n    *   Certain types of mushrooms and aged wine (where it can be considered a fault if present in high concentrations).\n*   **Sensitivity**: Humans are extremely sensitive to geosmin, able to detect it at concentrations as low as 5–10 parts per trillion in water.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-glauber-salt": {
+   "opus_check": {
+    "english": "What name is given to the decahydrate of sodium sulfate, first obtained from an Austrian spring water in 1625 by a German apothecary and long marketed as a purgative?",
+    "opus_answer": "Glauber's salt",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The clues (sodium sulfate decahydrate, Austrian spring water in 1625, a German apothecary, sold as a laxative) point unambiguously to Glauber's salt; alternative names such as 'sal mirabilis' refer to the same substance."
+   },
+   "qwen": {
+    "greedy": "The name given to the decahydrate of sodium sulfate ($Na_2SO_4 \\cdot 10H_2O$) is **Glauber's salt**.\n\n### Historical Context and Verification:\n\n1.  **Chemical Identity**: Sodium sulfate decahydrate is a white crystalline solid. It is commonly known as Glauber's salt.\n2.  **Discovery**: It was first isolated in 1625 by the German-Dutch chemist and apothecary **Johann Rudolf Glauber** (1604–1668).\n3.  **Source**: Glauber obtained it from the waters of a spring in **Salzburg, Austria** (then part of the Holy Roman Empire). He evaporated the water and collected the crystals that formed.\n4.  **Medical Use**: Glauber promoted it as a universal medicine, particularly as a **purgative** (laxative). It remained a popular medicinal remedy for centuries under the name \"Glauber's salt.\"\n\n### Conclusion:\nThe substance is **Glauber's salt**.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-gloger-rule": {
+   "opus_check": {
+    "english": "What is the name of the zoogeographical generalization that, within a species of endotherm, populations inhabiting more humid climates are more heavily pigmented?",
+    "opus_answer": "Gloger's rule",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The described ecogeographical principle linking humid climates to darker pigmentation in endotherms is specifically and only known as Gloger's rule."
+   },
+   "qwen": {
+    "greedy": "The name of this zoogeographical generalization is **Gloger's Rule**.\n\n### Explanation:\n\n1.  **Definition**: Gloger's Rule states that within a species of endotherm (warm-blooded animals, such as birds and mammals), populations living in more humid and warm climates tend to have darker pigmentation (more melanin) than those living in drier or cooler climates.\n2.  **Proposed Mechanisms**:\n    *   **Camouflage**: Darker colors may provide better camouflage in lush, humid environments (e.g., rainforests) compared to arid, light-colored deserts.\n    *   **Pathogen Resistance**: Melanin has antimicrobial properties. In humid environments, where bacterial and fungal growth is more prevalent, darker pigmentation may offer better protection against feather or skin degradation.\n    *   **UV Protection**: In some contexts, darker pigmentation may offer protection against high UV radiation, though humidity is the primary correlate in Gloger's original formulation.\n3.  **Distinction from Other Rules**:\n    *   **Bergmann's Rule**: Relates to body size (larger bodies in colder climates to conserve heat).\n    *   **Allen's Rule**: Relates to limb length (shorter limbs in colder climates to reduce heat loss).\n    *   **Gloger's Rule**: Specifically relates to **pigmentation** and **humidity**.\n\n### Conclusion",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-hafsid-ifriqiya": {
+   "opus_check": {
+    "english": "What is the name of the Berber Muslim ruling house that governed Ifriqiya from Tunis from 1229 until the Ottoman conquest of 1574?",
+    "opus_answer": "Hafsid dynasty",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "Only the Hafsid dynasty ruled Ifriqiya from Tunis from 1229 (when Abu Zakariya declared independence from the Almohads) until the Ottoman conquest in 1574, so the description fits it alone."
+   },
+   "qwen": {
+    "greedy": "The Berber Muslim ruling house that governed Ifriqiya from Tunis from 1229 until the Ottoman conquest in 1574 is the **Hafsids** (or the **Hafsid Dynasty**).\n\n### Key Details:\n- **Founding**: The dynasty was founded by **Abu Zakariya Yahya ibn Abd al-Wahid**, who declared independence from the Almohad Caliphate in 1229.\n- **Capital**: Tunis became the capital of the Hafsid Emirate.\n- **Duration**: They ruled for approximately 345 years, until the Ottoman Empire, under Sultan Selim II and led by Admiral Hayreddin Barbarossa, conquered Tunis in 1574.\n- **Ethnicity**: The Hafsids were of Berber (specifically Zenata) origin.\n- **Legacy**: They are known for promoting trade, scholarship, and architecture, including the construction of the University of al-Zaytuna's expansion and various madrasas in Tunis.\n\nThus, the answer is the **Hafsid Dynasty**.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-hounsfield": {
+   "opus_check": {
+    "english": "On the radiodensity scale of computed tomography, where distilled water is defined as zero and air as minus one thousand, in what units is attenuation expressed?",
+    "opus_answer": "Hounsfield units",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The CT radiodensity scale with water at 0 and air at -1000 is the Hounsfield scale, so its units are uniquely Hounsfield units (HU); 'CT numbers' is only a synonym, not a different answer."
+   },
+   "qwen": {
+    "greedy": "The units in which attenuation is expressed on this scale are **Hounsfield units** (often abbreviated as **HU**).\n\n### Explanation:\n- The scale is named after **Godfrey Hounsfield**, the co-inventor of the CT scanner.\n- The formula for calculating Hounsfield units is:\n  $$\n  HU = 1000 \\times \\frac{\\mu_{\\text{tissue}} - \\mu_{\\text{water}}}{\\mu_{\\text{water}} - \\mu_{\\text{air}}}\n  $$\n  Where $\\mu$ represents the linear attenuation coefficient.\n- By definition:\n  - **Distilled water** = **0 HU**\n  - **Air** = **-1000 HU**\n  - **Cortical bone** typically ranges from **+1000 to +3000 HU**\n  - **Fat** typically ranges from **-100 to -50 HU**\n\nThis standardized scale allows for consistent interpretation of CT images across different scanners and settings.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-hounsfield-unit": {
+   "opus_check": {
+    "english": "What is the measure of radiodensity in X-ray computed tomography, defined so that distilled water reads zero and air reads minus one thousand?",
+    "opus_answer": "Hounsfield unit",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The Hounsfield unit (HU), also called the CT number, is the standard CT radiodensity scale defined with water at 0 and air at -1000, so a well-informed reader would give this answer."
+   },
+   "qwen": {
+    "greedy": "The measure of radiodensity in X-ray computed tomography (CT) defined such that distilled water reads zero and air reads minus one thousand is the **Hounsfield Unit** (often abbreviated as **HU**).\n\n### Explanation:\n\n1.  **Definition**: The Hounsfield Unit is a quantitative scale for describing radiodensity. It was named after Godfrey Hounsfield, the co-inventor of the CT scanner.\n2.  **Reference Points**:\n    *   **Distilled Water**: Defined as **0 HU**.\n    *   **Air**: Defined as **-1000 HU**.\n3.  **Formula**: The Hounsfield Unit is calculated using the linear attenuation coefficients of the material being scanned ($\\mu_{\\text{material}}$) and water ($\\mu_{\\text{water}}$):\n\n    $$\n    \\text{HU} = 1000 \\times \\frac{\\mu_{\\text{material}} - \\mu_{\\text{water}}}{\\mu_{\\text{water}}}\n    $$\n\n4.  **Common Values**:\n    *   Air: -1000 HU\n    *   Fat: -100 to -50 HU\n    *   Water: 0 HU\n    *   Soft tissue: +40 to +80 HU\n    *   Bone: +700 to +300",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-iceland-spar": {
+   "opus_check": {
+    "english": "What is the name of the optically clear variety of calcite whose strong double refraction made it the material of Nicol prisms?",
+    "opus_answer": "Iceland spar",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The optically clear, strongly birefringent variety of calcite used to make Nicol prisms is known as Iceland spar, and its alternative names (e.g., optical calcite) refer to the same material rather than offering a competing answer."
+   },
+   "qwen": {
+    "greedy": "The name of the optically clear variety of calcite is **Iceland spar** (also known as **Icelandic spar**).\n\n### Key Details:\n*   **Mineral Composition**: It is a transparent, colorless variety of the mineral **calcite** ($CaCO_3$).\n*   **Optical Property**: It exhibits extremely strong **birefringence** (double refraction), meaning that a single ray of light entering the crystal is split into two rays that travel at different speeds and in slightly different directions.\n*   **Historical Use**: Due to this property, it was the primary material used to construct **Nicol prisms**, which were the first practical polarizers invented by William Nicol in 1828. These prisms were essential in early optical experiments and polarimetry.\n*   **Origin**: The name comes from the fact that high-quality specimens were historically mined in large quantities in Iceland.",
+    "greedy_ok": true,
+    "n_ok": 9,
+    "n": 10,
+    "pass": true,
+    "fails": [
+     "### Logical Deduction\n\n1.  **Analysis of the Mineral Properties**:\n    *   **Chemical Composition**: The mineral is identified as **calcite** (calcium carbonate, $CaCO_3$).\n    *   **Optical Properties**: It is described as \"optically clear\" and possessing \"strong double refraction\" (birefringence). Calcite has a very high birefringence ($\\Delta n \\approx 0.172$), which is the highest among common minerals. This causes objects viewed through a clear crystal to appear doubled.\n\n2.  **Historical and Scientific Context**:\n    *   **Nicol Prisms**: In the early 19th century, the Scottish physicist William Nicol developed a device to produce plane-polarized light. He achieved this by cutting a specific type of calcite crystal at a precise angle and cementing the two halves together with Canada balsam.\n    *   **Material Requirements**: For this prism to function effectively, the calcite had to be of exceptionally high optical quality—free of inclusions, bubbles, or internal fractures that would scatter light.\n\n3.  **Identification of the Variety**:\n    *   The specific variety of calcite that meets these criteria is named after the locality in **Iceland** where high-quality, transparent crystals were historically found (specifically in the Reykjanes Peninsula).\n    *   This variety is distinct from"
+    ],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 5
+  },
+  "brh-ent-illimani-range": {
+   "opus_check": {
+    "english": "Which Andean mountain range in Bolivia contains Illimani and Huayna Potosí?",
+    "opus_answer": "Cordillera Real",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "Illimani and Huayna Potosí are both peaks of Bolivia's Cordillera Real, and that is the standard answer for the range containing them; one could argue for the broader Cordillera Oriental, but the specific named range is clearly the intended one."
+   },
+   "qwen": {
+    "greedy": "The Andean mountain range in Bolivia that contains both **Illimani** and **Huayna Potosí** is the **Cordillera Real**.\n\n### Key Details:\n- **Location**: The Cordillera Real is the highest mountain range in the Bolivian Andes, located in the La Paz Department.\n- **Illimani**: One of the most iconic peaks in Bolivia, standing at 6,438 meters (21,122 ft), and a prominent landmark overlooking the city of La Paz.\n- **Huayna Potosí**: Standing at 6,088 meters (19,974 ft), it is one of the most climbed peaks in the world due to its relative accessibility and proximity to La Paz.\n\nBoth peaks are part of the Cordillera Real, which is known for its high altitude and dramatic glacial landscapes.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-kachin-mandalay-waterway": {
+   "opus_check": {
+    "english": "Which great waterway rises in Kachin State and flows south past Mandalay before emptying into the Andaman Sea?",
+    "opus_answer": "Irrawaddy River",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "Only the Irrawaddy (Ayeyarwady) rises in Kachin State at the N'Mai–Mali confluence, flows south past Mandalay, and empties into the Andaman Sea, and the Ayeyarwady is simply another name for the same river."
+   },
+   "qwen": {
+    "greedy": "The great waterway described is the **Irrawaddy River** (also known as the Ayeyarwady River).\n\nHere is the breakdown of the geographical facts:\n\n1.  **Origin**: The Irrawaddy River rises in the highlands of **Kachin State** in northern Myanmar, formed by the confluence of the N'mai and Mali rivers.\n2.  **Course**: It flows southward through the center of Myanmar, passing major cities including **Mandalay**.\n3.  **Mouth**: It empties into the **Andaman Sea** via a large delta near Yangon (Rangoon).\n\nThe Irrawaddy is the longest river in Myanmar and is considered the country's most important waterway for transportation, agriculture, and culture.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 1
+  },
+  "brh-ent-karlowitz-1699": {
+   "opus_check": {
+    "english": "What is the name of the 1699 settlement that ended the long war between the Ottomans and the Holy League and transferred most of Hungary to the Habsburgs?",
+    "opus_answer": "Treaty of Karlowitz",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The 1699 peace ending the Great Turkish War between the Ottomans and the Holy League, which ceded most of Hungary to the Habsburgs, is uniquely the Treaty of Karlowitz (also spelled Carlowitz or Karlovci, all naming the same treaty)."
+   },
+   "qwen": {
+    "greedy": "The name of the 1699 settlement is the **Treaty of Karlowitz** (also known as the **Treaty of Sremski Karlovci**).\n\n### Key Details:\n- **Date Signed:** January 26, 1699\n- **Parties Involved:** The Ottoman Empire and the Holy League (comprising the Habsburg Monarchy, the Polish–Lithuanian Commonwealth, the Republic of Venice, and later Russia).\n- **Significance:**\n  - It marked the first time the Ottoman Empire ceded significant territory in Europe.\n  - The Habsburg Monarchy gained control over most of Hungary, Transylvania, Slavonia, and parts of Croatia.\n  - It ended the Great Turkish War (1683–1699).",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-kazakh-half-saline": {
+   "opus_check": {
+    "english": "Which large body of water in southeastern Kazakhstan has a fresh western half and a saline eastern half?",
+    "opus_answer": "Lake Balkhash",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "Lake Balkhash, in southeastern Kazakhstan, is the well-known lake with a fresh western part and a saline eastern part, and no other body of water fits this description."
+   },
+   "qwen": {
+    "greedy": "The large body of water in southeastern Kazakhstan that has a fresh western half and a saline eastern half is **Lake Balkhash** (also spelled Balqash).\n\n### Key Details:\n- **Location**: It is situated in the central part of Kazakhstan, extending into the southeastern region near the border with China.\n- **Unique Hydrology**: Lake Balkhash is one of the few lakes in the world with such a distinct division in salinity.\n  - The **western half** receives significant inflow from the Ili River, which brings fresh water from the Tian Shan mountains, keeping this section fresh or slightly brackish.\n  - The **eastern half** has limited inflow and high evaporation rates, resulting in significantly higher salinity (up to 10–13 grams per liter, compared to less than 1 gram per liter in the west).\n- **Size**: It is the largest endorheic lake in Kazakhstan and one of the largest lakes in Asia.\n\nThis unique characteristic makes Lake Balkhash a subject of significant ecological and scientific interest.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-khinchin-constant": {
+   "opus_check": {
+    "english": "What is the name of the constant, approximately 2.6854520, toward which the geometric mean of the partial denominators in the continued fraction expansion of almost every real number tends?",
+    "opus_answer": "Khinchin's constant",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The described constant (≈2.6854520, limit of the geometric mean of continued fraction partial quotients for almost all reals) is uniquely Khinchin's constant, with spelling variants like Khintchine's constant referring to the same thing."
+   },
+   "qwen": {
+    "greedy": "The constant you are referring to is known as **Khinchin's constant** (or the **Khinchin–Lévy constant**).\n\n### Explanation\n\n1.  **Context**: In the theory of continued fractions, any irrational number $x$ can be expressed as:\n    $$ x = a_0 + \\cfrac{1}{a_1 + \\cfrac{1}{a_2 + \\cfrac{1}{a_3 + \\dots}}} $$\n    where $a_0$ is an integer and $a_1, a_2, a_3, \\dots$ are positive integers called the **partial denominators** (or partial quotients).\n\n2.  **Khinchin's Theorem**: In 1934, the Russian mathematician Alexander Khinchin proved that for almost all real numbers (in the sense of Lebesgue measure), the geometric mean of the first $n$ partial denominators converges to a specific constant as $n$ approaches infinity. Mathematically:\n    $$ \\lim_{n \\to \\infty} \\left( a_1 a_2 \\dots a_n \\right)^{1/n} = K_0 $$\n\n3.  **Value**: The constant $K_0$ is approximately:\n    $$ K_0 \\approx 2.6854520010653064",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-lemierre-syndrome": {
+   "opus_check": {
+    "english": "What is the name for septic thrombophlebitis of the internal jugular vein that arises after an oropharyngeal infection, with emboli spreading to the lungs?",
+    "opus_answer": "Lemierre's syndrome",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "Septic thrombophlebitis of the internal jugular vein following oropharyngeal infection with septic pulmonary emboli is the classic definition of Lemierre's syndrome; synonyms such as postanginal sepsis or necrobacillosis name the same entity, so they are not competing answers."
+   },
+   "qwen": {
+    "greedy": "The condition you are describing is known as **Lemierre's syndrome** (also spelled Lemierre's disease).\n\n### Key Features:\n1.  **Primary Infection**: It typically begins with an oropharyngeal infection, most commonly **pharyngitis** or tonsillitis.\n2.  **Pathogen**: The most common causative organism is *Fusobacterium necrophorum*, an anaerobic bacterium.\n3.  **Pathophysiology**: The infection spreads from the throat to the lateral pharyngeal space, leading to **septic thrombophlebitis** of the **internal jugular vein**.\n4.  **Complications**: Septic emboli break off from the thrombus and travel to distant sites, most commonly the **lungs** (causing septic pulmonary emboli, abscesses, or pneumonia), but also potentially to joints, bones, or the brain.\n\n### Historical Context:\nIt is named after André-Jean Lemierre, a French physician who first described the condition in 1936. It is often referred to as a \"forgotten disease\" because it became rare with the advent of antibiotics, though cases still occur, particularly in healthy young adults.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-lowest-point-australia": {
+   "opus_check": {
+    "english": "Which vast salt pan in South Australia marks the continent's lowest natural elevation?",
+    "opus_answer": "Kati Thanda–Lake Eyre",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "Lake Eyre (Kati Thanda–Lake Eyre), at about 15 m below sea level, is the lowest natural point in Australia and is a vast salt pan in South Australia, so the clues single it out."
+   },
+   "qwen": {
+    "greedy": "The vast salt pan in South Australia that marks the continent's lowest natural elevation is **Lake Eyre** (also known as **Kati Thanda–Lake Eyre**).\n\n### Key Details:\n- **Elevation**: Approximately **15 meters (49 feet) below sea level**.\n- **Location**: South Australia, in the arid interior of the continent.\n- **Characteristics**: It is a large, shallow, endorheic salt lake. It is often dry, leaving behind a vast white salt pan, but can fill with water during periods of heavy rainfall in the catchment area.\n- **Significance**: It is the lowest natural point in Australia and the largest lake in the country.\n\nThus, the answer is **Lake Eyre** (or **Kati Thanda–Lake Eyre**).",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-madelung-constant": {
+   "opus_check": {
+    "english": "What is the name of the dimensionless sum of the electrostatic interactions of one ion with all the others in a crystal lattice, used to obtain lattice energy?",
+    "opus_answer": "Madelung constant",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The dimensionless lattice sum of one ion's electrostatic interactions with all other ions, used to calculate lattice energy, is by standard definition the Madelung constant, and no other term fits equally well."
+   },
+   "qwen": {
+    "greedy": "Based on the definition provided, the name of this dimensionless constant is the **Madelung constant** (or **Madelung factor**).\n\n### Explanation\n\n1.  **Definition**: The Madelung constant ($M$ or $\\alpha$) is a geometric factor that represents the sum of the electrostatic interactions between a single ion and all other ions in an infinite crystal lattice.\n2.  **Role in Lattice Energy**: It is a crucial component in the Born-Landé equation and the Kapustinskii equation, which are used to calculate the lattice energy ($U$) of an ionic solid.\n3.  **Formula**: In the context of the Born-Landé equation, the lattice energy is expressed as:\n    $$U = - \\frac{N_A M z^+ z^- e^2}{4 \\pi \\epsilon_0 r_0} \\left( 1 - \\frac{1}{n} \\right)$$\n    Where:\n    *   $M$ is the **Madelung constant**.\n    *   $N_A$ is Avogadro's constant.\n    *   $z^+$ and $z^-$ are the charge numbers of the ions.\n    *   $e$ is the elementary charge.\n    *   $r_0$ is the equilibrium distance between ions.\n    *   $n$ is the Born exponent.\n\nThe value of the Madelung constant depends solely on the geometry of the crystal structure (e.g., for a NaCl structure, $M \\approx 1.7476$).",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r1.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-matthiessen": {
+   "opus_check": {
+    "english": "What is the name of the statement that a metal's total electrical resistivity is the sum of a temperature-independent impurity term and a temperature-dependent lattice vibration term?",
+    "opus_answer": "Matthiessen's rule",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The description of resistivity as the sum of a temperature-independent impurity term and a temperature-dependent phonon term is the standard definition of Matthiessen's rule, and no other common name competes with it."
+   },
+   "qwen": {
+    "greedy": "Based on the principles of solid-state physics, here is the deduction and the final answer regarding the statement you described.\n\n### Logical Deduction\n\n1.  **Analysis of Resistivity Components**:\n    In a metal, electrical resistivity ($\\rho$) arises from the scattering of conduction electrons. There are two primary sources of this scattering:\n    *   **Lattice Vibrations (Phonons)**: As temperature increases, the atoms in the crystal lattice vibrate more vigorously, increasing the probability of electron scattering. This component is temperature-dependent ($\\rho_{\\text{thermal}}$).\n    *   **Impurities and Defects**: Static imperfections in the crystal lattice (such as foreign atoms, vacancies, or dislocations) scatter electrons regardless of temperature. This component is largely temperature-independent ($\\rho_{\\text{impurity}}$).\n\n2.  **The Additivity Rule**:\n    When the scattering mechanisms are independent of one another, the total resistivity is the sum of the individual resistivities. This relationship is expressed mathematically as:\n    $$ \\rho_{\\text{total}}(T) = \\rho_{\\text{impurity}} + \\rho_{\\text{thermal}}(T) $$\n\n3.  **Identification of the Name**:\n    This empirical rule, which states that the total resistivity is the sum of the residual resistivity (due to impurities) and the thermal resistivity (due to lattice vibrations), is named after the physicist who formulated it.\n\n### Conclusion\n\nThe name of this statement is **Matthiessen's Rule** (or **Matthiessen's Rule of Additivity**).",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r1.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-mayor-palace": {
+   "opus_check": {
+    "english": "In the Frankish kingdom under the Merovingians, what office was held by the chief steward of the royal household who came to wield real authority?",
+    "opus_answer": "Mayor of the Palace",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The office of the chief royal household steward who wielded real power under the Merovingians is clearly the Mayor of the Palace (maior domus), and alternative names such as majordomo are just equivalent terms for the same office."
+   },
+   "qwen": {
+    "greedy": "The office held by the chief steward of the royal household, who came to wield real authority in the Frankish kingdom under the Merovingians, was the **Mayor of the Palace** (Latin: *Maior Domus*; French: *Maire du Palais*).\n\n### Key Details:\n1. **Original Role**: Initially, the Mayor of the Palace was an administrative official responsible for managing the royal household and estates.\n2. **Rise to Power**: Over time, especially as Merovingian kings became increasingly passive (often referred to as \"do-nothing kings\" or *rois fainéants*), the Mayors of the Palace assumed de facto control over military, judicial, and administrative affairs.\n3. **Historical Significance**: The most famous Mayor of the Palace was **Charles Martel**, whose victory at the Battle of Tours (732) halted the Umayyad advance into Europe. His son, **Pepin the Short**, eventually deposed the last Merovingian king and founded the Carolingian dynasty in 751 AD.\n\nThus, the **Mayor of the Palace** was the office that transitioned from a household administrator to the true ruler of the Frankish kingdom.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-mccune-albright": {
+   "opus_check": {
+    "english": "Which disorder combines polyostotic fibrous dysplasia, café-au-lait skin patches and precocious puberty in one patient?",
+    "opus_answer": "McCune-Albright syndrome",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The classic triad of polyostotic fibrous dysplasia, café-au-lait spots and precocious puberty defines McCune-Albright syndrome, and no other disorder fits it equally well."
+   },
+   "qwen": {
+    "greedy": "The disorder that combines polyostotic fibrous dysplasia, café-au-lait skin patches, and precocious puberty is **McCune-Albright syndrome**.\n\n### Key Features of McCune-Albright Syndrome:\n1. **Polyostotic Fibrous Dysplasia**: Abnormal bone growth where normal bone is replaced with fibrous tissue, affecting multiple bones.\n2. **Café-au-lait Skin Patches**: Large, irregularly shaped brown pigmented spots on the skin, often with jagged (\"coast of Maine\") borders.\n3. **Endocrine Hyperfunction**: Most commonly **precocious puberty** (early onset of puberty), but can also include other endocrine abnormalities such as hyperthyroidism, growth hormone excess, or Cushing syndrome.\n\n### Pathophysiology:\n- It is caused by a **somatic activating mutation** in the *GNAS* gene, which leads to constitutive activation of the Gsα protein and increased cAMP signaling.\n- The mutation occurs post-zygotically, leading to mosaicism (only some cells are affected), which explains the variable presentation and distribution of symptoms.\n\n### Diagnosis:\n- Clinical diagnosis based on the classic triad (though not all three features are always present).\n- Imaging (X-rays, CT, MRI) for bone lesions.\n- Hormonal assays for endocrine abnormalities.\n- Genetic testing may confirm the *GNAS* mutation, but it",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-min-kunzite-parent": {
+   "opus_check": {
+    "english": "Which lithium-bearing pyroxene has a lilac gem variety called kunzite?",
+    "opus_answer": "Spodumene",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "Kunzite is the pink-to-lilac gem variety of spodumene, a lithium pyroxene, so the question determines exactly one answer."
+   },
+   "qwen": {
+    "greedy": "### Logical Deduction\n\n1.  **Analyze the Mineral Class**: The question specifies a \"lithium-bearing pyroxene.\" Pyroxenes are a group of rock-forming silicate minerals with a general formula of $XY(Si,Al)_2O_6$.\n2.  **Identify the Lithium Pyroxene**: The primary mineral in the pyroxene group that contains lithium is **Spodumene**. Its chemical formula is $LiAlSi_2O_6$.\n3.  **Verify the Gem Variety**: Spodumene occurs in several distinct color varieties, which are often given specific gem names:\n    *   **Kunzite**: A pink to lilac variety (colored by manganese).\n    *   **Hiddenite**: A green variety (colored by chromium).\n    *   **Triphane**: A colorless or white variety.\n    *   **Pekobite**: A yellow variety.\n4.  **Conclusion**: The specific mineral that fits the description of a lithium-bearing pyroxene with a lilac variety named kunzite is Spodumene.\n\n### Final Conclusion\n\nThe lithium-bearing pyroxene is **Spodumene**.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-mohr-double-compound": {
+   "opus_check": {
+    "english": "What is the common name of the double compound of ammonium and iron(II) sulfate that crystallizes with six molecules of water and has long been used as a primary standard in redox titrations?",
+    "opus_answer": "Mohr's salt",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "Ammonium iron(II) sulfate hexahydrate, (NH4)2Fe(SO4)2·6H2O, is commonly known as Mohr's salt, and the details given (double salt, hexahydrate, primary redox standard) point to that name alone."
+   },
+   "qwen": {
+    "greedy": "Based on the chemical composition and properties described, here is the step-by-step identification of the compound:\n\n### 1. Chemical Composition Analysis\n*   **Components**: The compound is a double salt consisting of ammonium sulfate $(NH_4)_2SO_4$ and iron(II) sulfate $FeSO_4$.\n*   **Stoichiometry**: The standard double salt formed by these two components has a 1:1 molar ratio.\n*   **Hydration**: The prompt specifies it crystallizes with six molecules of water (hexahydrate).\n*   **Chemical Formula**: Combining these elements results in the formula:\n    $$ (NH_4)_2Fe(SO_4)_2 \\cdot 6H_2O $$\n\n### 2. Historical and Practical Context\n*   **Primary Standard**: This compound is widely used in analytical chemistry as a primary standard for standardizing oxidizing agents (such as potassium permanganate $KMnO_4$ or potassium dichromate $K_2Cr_2O_7$) in redox titrations.\n*   **Stability**: Unlike pure iron(II) sulfate, which oxidizes rapidly in air to form iron(III), this double salt is much more stable and resistant to oxidation, making it ideal for precise measurements.\n\n### 3. Naming\n*   The compound is named after the German chemist **Friedrich Mohr**, who popularized its use in volumetric analysis.\n\n### Conclusion\n\nThe common name of this compound is **Mohr's salt**.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r1.jsonl"
+   },
+   "blind_hits_last_round": 4
+  },
+  "brh-ent-mughal-military-paymaster": {
+   "opus_check": {
+    "english": "In the Mughal imperial administration, what was the title of the post held by the paymaster-general who headed the military department and maintained the muster rolls?",
+    "opus_answer": "Mir Bakhshi",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "In Mughal central administration, the paymaster-general who headed the military department and kept the muster rolls was the Mir Bakhshi, a standard and well-established identification (a bare 'Bakhshi' is merely a shorter variant of the same title)."
+   },
+   "qwen": {
+    "greedy": "In the Mughal imperial administration, the title of the post held by the paymaster-general who headed the military department and maintained the muster rolls was **Mir Bakshi** (also spelled *Mir Bakhshi*).\n\n### Key Details:\n- **Role**: The Mir Bakshi was the second-most important minister in the Mughal court, after the Wazir (Prime Minister).\n- **Responsibilities**:\n  - Maintaining the **muster rolls** (lists of soldiers and their ranks).\n  - Overseeing the payment of salaries to the military.\n  - Managing the **Jagirdari** system (land assignments to nobles and soldiers).\n  - Acting as the chief of the military department.\n- **Etymology**: The term \"Bakshi\" is derived from the Persian word *bakshish*, meaning \"gift\" or \"grant,\" referring to the distribution of salaries and jagirs.\n\nThis position was crucial in maintaining the loyalty and efficiency of the Mughal army, which was the backbone of the empire's power.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-naples-yellow-2": {
+   "opus_check": {
+    "english": "What is the name of the historic opaque pigment with the composition Pb2Sb2O7, prized for majolica glazes and Venetian glass?",
+    "opus_answer": "Naples yellow",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "Pb2Sb2O7 (lead antimonate) is the composition of the historic pigment known as Naples yellow, and alternative names such as 'lead antimonate yellow' or 'giallolino' refer to the same pigment, so the answer is uniquely determined."
+   },
+   "qwen": {
+    "greedy": "The historic opaque pigment with the chemical composition $Pb_2Sb_2O_7$ is known as **Naples Yellow** (or **Massicot** in some older contexts, though Massicot strictly refers to lead monoxide $PbO$, the yellow pigment is universally called Naples Yellow).\n\n### Key Details:\n1.  **Composition**: It is a lead antimonate, specifically di-lead di-antimonate ($Pb_2Sb_2O_7$).\n2.  **History**: It was first produced in the 16th century, likely in Naples, Italy, hence the name. It became widely used by artists and artisans in the 17th and 18th centuries.\n3.  **Uses**:\n    *   **Majolica Glazes**: It was highly prized for providing a bright, opaque yellow color in ceramic glazes.\n    *   **Venetian Glass**: It was used to color glass, particularly in the production of opaque yellow glassware.\n    *   **Painting**: It was a standard yellow pigment in oil painting until concerns about lead toxicity led to its decline in the 20th century.\n\n### Note on Toxicity:\nDue to its lead content, Naples Yellow is toxic and has been largely replaced by safer alternatives in modern applications, though it remains available for historical restoration and specialized artistic use.\n\n**Answer:** **Nap",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-nerchinsk-1689": {
+   "opus_check": {
+    "english": "What is the name of the 1689 boundary agreement that first fixed the frontier between the Qing empire and the Russian tsardom along the Argun and the upper Amur?",
+    "opus_answer": "Treaty of Nerchinsk",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The 1689 Sino-Russian boundary agreement setting the frontier along the Argun and the Amur region is the Treaty of Nerchinsk, and no other treaty fits that description."
+   },
+   "qwen": {
+    "greedy": "The name of the 1689 boundary agreement is the **Treaty of Nerchinsk** (also known as the **Nerchinsk Treaty**).\n\n### Key Details:\n- **Signed:** September 27, 1689\n- **Parties:** The Qing Dynasty of China and the Tsardom of Russia\n- **Location:** Nerchinsk (in present-day Russia)\n- **Significance:** It was the first treaty between China and a European power. The treaty established the border along the **Argun River** and the **Stanovoy Range** (not strictly the upper Amur, but it defined the Amur basin's northern boundary), effectively ending Russian expansion into the Amur region at that time.\n- **Language:** The treaty was written in Latin, as neither side had translators for the other's language.\n\nNote: While the treaty fixed the border along the Argun River, the upper Amur region was largely ceded to China, and the Stanovoy Range became the northern boundary. A later treaty, the **Treaty of Burenya (1727)**, further clarified borders in the Lake Baikal region.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-noyes-whitney": {
+   "opus_check": {
+    "english": "What 1897 pharmaceutical relation states that a solid's dissolution rate is proportional to the difference between its saturation solubility and the bulk concentration?",
+    "opus_answer": "Noyes–Whitney equation",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The 1897 relation tying dissolution rate to the gap between saturation solubility and bulk concentration is the Noyes-Whitney equation; later refinements such as Nernst-Brunner date from 1904, so they are excluded."
+   },
+   "qwen": {
+    "greedy": "The pharmaceutical relation you are referring to is the **Noyes-Whitney equation**.\n\n### Explanation\n\n1.  **Origin**: The equation was derived independently by **Arthur Noyes** and **William Whitney** in **1897**.\n2.  **Statement**: It describes the rate of dissolution of a solid substance in a solvent. The equation states that the dissolution rate ($\\frac{dC}{dt}$) is proportional to:\n    *   The surface area of the solid ($A$).\n    *   The diffusion coefficient of the solute in the solvent ($D$).\n    *   The difference between the saturation solubility ($C_s$) and the concentration of the solute in the bulk solution at time $t$ ($C_t$).\n    *   It is inversely proportional to the thickness of the diffusion layer ($h$).\n\n### Mathematical Formulation\n\nThe standard form of the Noyes-Whitney equation is:\n\n$$\n\\frac{dC}{dt} = \\frac{DA}{h} (C_s - C_t)\n$$\n\nWhere:\n*   $\\frac{dC}{dt}$ = Dissolution rate (change in concentration over time)\n*   $D$ = Diffusion coefficient of the solute\n*   $A$ = Surface area of the solid\n*   $h$ = Thickness of the diffusion layer\n*",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 5
+  },
+  "brh-ent-orpiment": {
+   "opus_check": {
+    "english": "Which bright yellow arsenic sulfide mineral was long ground up to make the painters' pigment known as king's yellow?",
+    "opus_answer": "Orpiment",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "Orpiment (As2S3) is the bright yellow arsenic sulfide mineral historically ground to make king's yellow; realgar is orange-red, so it does not fit the description."
+   },
+   "qwen": {
+    "greedy": "The bright yellow arsenic sulfide mineral is **orpiment**.\n\n### Key Details:\n- **Chemical Composition**: Orpiment is primarily composed of **arsenic trisulfide** ($As_2S_3$).\n- **Historical Use**: For centuries, orpiment was ground into a powder to create the pigment known as **King's Yellow** (also called *Rubrasin* or *Realgar Yellow* in some contexts, though realgar is a different mineral). It was prized for its intense, vibrant yellow color.\n- **Toxicity**: Due to its high arsenic content, the pigment is highly toxic. Its use declined significantly in the 19th century with the development of safer synthetic pigments like chrome yellow and cadmium yellow.\n- **Appearance**: It occurs in nature as bright lemon-yellow to orange-yellow crystals or massive forms, often associated with the mineral realgar ($As_4S_4$), which is red.\n\nThus, the mineral is **orpiment**.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-ottoman-religious-office": {
+   "opus_check": {
+    "english": "In the Ottoman state, what was the title of the office held by the supreme religious-legal authority, who issued binding fatwas and could sanction a sultan's deposition?",
+    "opus_answer": "Şeyhülislam",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The supreme religious-legal authority in the Ottoman state who issued fatwas, including those sanctioning sultans' depositions, was the Shaykh al-Islam (Şeyhülislam), and variant spellings or the equivalent 'Grand Mufti' all name the same office."
+   },
+   "qwen": {
+    "greedy": "The title of the office held by the supreme religious-legal authority in the Ottoman state was the **Şeyhülislam** (also spelled **Sheikh al-Islam**).\n\n### Key Details:\n1. **Role**: The Şeyhülislam was the highest-ranking Islamic legal and religious official in the Ottoman Empire. He served as the chief interpreter of Islamic law (Sharia) and oversaw the judiciary, education, and religious institutions.\n2. **Fatwas**: He issued binding **fatwas** (legal opinions) that carried significant weight in both religious and state matters.\n3. **Political Power**: Although the Sultan was the supreme political authority, the Şeyhülislam held the unique power to issue fatwas that could legitimize or delegitimize the Sultan’s rule. In extreme cases, a fatwa from the Şeyhülislam could provide the religious justification for deposing a Sultan, as seen in the depositions of several Ottoman rulers (e.g., Sultan Osman II in 1622).\n4. **Hierarchy**: The office was part of the **Ilmiye** (religious) class, which was one of the two main administrative classes in the Ottoman Empire (the other being the **Askariye**, or military/bureaucratic class).\n\nThus, the correct answer is **Şeyhülislam** (Sheikh al-Islam).",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-palau-capital": {
+   "opus_check": {
+    "english": "What is the name of the purpose-built seat of national government of Palau, occupied since 2006?",
+    "opus_answer": "Ngerulmud",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "Ngerulmud, in Melekeok State, is the purpose-built seat of Palau's national government and has been occupied since 2006, so the question points to this one answer (the state name Melekeok is a broader, less precise alternative)."
+   },
+   "qwen": {
+    "greedy": "The purpose-built seat of the national government of Palau, which has been occupied since 2006, is the **Palau National Congress Building** (also known as the **Ngerulmud Complex** or simply **Ngerulmud**).\n\n### Key Details:\n- **Location**: Ngerulmud, Melekeok State, Palau.\n- **Completion and Occupation**: The complex was completed in 2004 and officially became the capital and seat of government in **2006**.\n- **Components**: The complex includes the **Palau National Congress Building** (where the legislature meets), the **Office of the President**, and the **Supreme Court of Palau**.\n- **Significance**: Ngerulmud replaced Koror as the capital of Palau. It is one of the smallest national capitals in the world by population.\n\nThus, the specific building housing the legislative branch is the **Palau National Congress Building**, but the entire governmental seat is referred to as **Ngerulmud**.",
+    "greedy_ok": true,
+    "n_ok": 8,
+    "n": 10,
+    "pass": true,
+    "fails": [
+     "The purpose-built seat of national government of Palau, occupied since 2006, is the **National Government Building** (also known as the **Palau National Government Building**).\n\n### Key Details:\n- **Location:** It is located in **Melekeok**, which became the official capital of Palau in 2006 (previously, the de facto capital was Koror).\n- **Function:** It houses the offices of the President and Vice President, the National Congress (Palau's legislature), and other key government agencies.\n- **Significance:** Its construction and occupation marked the formal relocation of the capital from Koror to Melekeok, fulfilling a long-standing plan to decentralize government functions and promote development in other states of Palau.\n\nThus, the name of the building is the **National Government Building**.",
+     "The purpose-built seat of the national government of Palau, which has been occupied since 2006, is called the **Palau National Congress Building** (also known as the **New National Congress Building** or the **Palau National Government Complex**).\n\nIt is located in **Melekeok**, which is the national capital of Palau. The building houses the two chambers of the Palau National Congress: the Senate and the House of Delegates. Construction began in the early 2000s, and the government officially moved from its previous location in Koror to Melekeok in 2006."
+    ],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 1
+  },
+  "brh-ent-rio-negro-meeting": {
+   "opus_check": {
+    "english": "Which dark-watered Amazon tributary meets the pale Solimões just downstream of Manaus?",
+    "opus_answer": "Rio Negro",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The Rio Negro is the well-known blackwater tributary that joins the sediment-laden Solimões at the Meeting of Waters near Manaus, and no other river fits the description."
+   },
+   "qwen": {
+    "greedy": "The dark-watered Amazon tributary that meets the pale Solimões just downstream of Manaus is the **Rio Negro** (Black River).\n\n### Key Details:\n- **Rio Negro**: Known for its black, tea-colored water due to high concentrations of tannins from decaying vegetation. It is one of the largest tributaries of the Amazon by volume.\n- **Solimões**: The upper section of the Amazon River, characterized by its muddy, pale yellow/brown water due to high sediment load.\n- **Encontro das Águas**: The meeting point of these two rivers is famous for the \"Meeting of Waters\" phenomenon, where the dark and light waters flow side by side for several kilometers without immediately mixing due to differences in temperature, density, and flow speed. This occurs just downstream of the city of Manaus in Brazil.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-rochelle-salt": {
+   "opus_check": {
+    "english": "What is the name of the tetrahydrate of potassium sodium tartrate, whose piezoelectric behaviour the Curie brothers demonstrated in 1880?",
+    "opus_answer": "Rochelle salt",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "Potassium sodium tartrate tetrahydrate is commonly known as Rochelle salt, though the synonym Seignette salt names the same compound, so any reader would identify the same substance."
+   },
+   "qwen": {
+    "greedy": "The name of the tetrahydrate of potassium sodium tartrate is **Rochelle salt** (also known as **seignette salt** or chemically as **potassium sodium tartrate tetrahydrate**).\n\n### Key Details:\n1.  **Chemical Formula**: $KNaC_4H_4O_6 \\cdot 4H_2O$\n2.  **Discovery of Piezoelectricity**: In 1880, Pierre and Jacques Curie demonstrated that this crystal exhibited piezoelectricity, meaning it generates an electric charge in response to applied mechanical stress. This was the first experimental demonstration of the piezoelectric effect.\n3.  **Etymology**: The name \"Rochelle salt\" comes from the city of La Rochelle in France, where it was first produced in significant quantities in the 17th century.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ent-rudolf-renamed": {
+   "opus_check": {
+    "english": "What is the present-day name of the large alkaline body of water in northern Kenya that colonial explorers named Rudolf?",
+    "opus_answer": "Lake Turkana",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "Lake Rudolf, the large alkaline lake in northern Kenya named by Teleki and von Höhnel in 1888, was renamed Lake Turkana, and no other body of water fits the description."
+   },
+   "qwen": {
+    "greedy": "The present-day name of the large alkaline body of water in northern Kenya, formerly known as Lake Rudolf, is **Lake Turkana**.\n\n### Historical Context:\n- **Original Name**: The lake was named **Lake Rudolf** in 1888 by the German explorer Ludwig von Höhnel in honor of Crown Prince Rudolf of Austria.\n- **Name Change**: After Kenya gained independence in 1963, the lake was renamed **Lake Turkana** in 1975 to reflect the indigenous Turkana people who inhabit the region.\n\n### Key Characteristics:\n- It is the world's largest permanent desert lake.\n- It is highly alkaline and saline.\n- It is located along the East African Rift Valley.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-fi-ahvenanmaa": {
+   "opus_check": {
+    "english": "Which Swedish-speaking, demilitarized autonomous province did the League of Nations confirm in 1921 as belonging to Finland when it resolved the dispute between Finland and Sweden?",
+    "opus_answer": "Åland Islands",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The 1921 League of Nations resolution of the Åland Islands question awarded the Swedish-speaking, demilitarized islands to Finland, so Åland is the only answer that fits."
+   },
+   "qwen": {
+    "greedy": "Kysymyksessä oleva alue on **Ahvenanmaa** (ruotsiksi *Åland*).\n\nVuonna 1921 Kansainliitto ratkaisi Suomen ja Ruotsin välisen kiistan Ahvenanmaan asemasta. Vaikka Ahvenanmaa oli historiallisesti ja kulttuurisesti sidoksissa Ruotsiin, Kansainliitto päätti, että saari kuuluisi Suomeen poliittisen ja sotilaallisen turvallisuuden vuoksi. Päättöön liittyi kuitenkin ehto, että Ahvenanmaa demilitarisoitaisiin ja siellä taattaisiin ruotsin kielen sekä paikallisen itsehallinnon asema. Tämä johti siihen, että Ahvenanmaasta tuli Suomen demilitarisoitu ja itsehallinnollinen maakunta.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-fi-alankomaat": {
+   "opus_check": {
+    "english": "The independence of which united republic did Spain definitively recognize in the Peace of Münster concluded in 1648, that is, by what name is this country called today?",
+    "opus_answer": "The Netherlands",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "In the 1648 Peace of Münster, Spain recognized the independence of the Republic of the Seven United Netherlands, which is known today as the Netherlands, so the question points to a single answer."
+   },
+   "qwen": {
+    "greedy": "Espanja tunnusti Münsterin rauhassa (joka oli osa Westfalenin rauhaa) **Alankomaiden** itsenäisyyden.\n\nTämä maa tunnetaan nykyisin nimellä **Alankomaat** (hollanniksi *Nederland*).\n\nHistoriallisesti kyseessä oli **Yhdistyneet Alankomaat** (hollanniksi *De Verenigde Nederlanden*), joka oli 1581–1795 toiminut tasavalta. Espanjan kuninkaan Filip IV:n ja Yhdistyneiden Alankomaiden valtiopäivien välillä solmittu sopimus päätti 80-vuotisen sodan ja tunnusti Alankomaiden itsenäisyyden Espanjan kruunusta.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-fi-alankomaat-munster-1648": {
+   "opus_check": {
+    "english": "Which republic did Spain recognize as independent in the Peace of Münster in 1648, which ended the Eighty Years' War?",
+    "opus_answer": "Dutch Republic (Republic of the Seven United Netherlands)",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The Peace of Münster (1648) is the treaty in which Spain recognized the independence of the Dutch Republic (Republic of the Seven United Netherlands), and no other republic fits."
+   },
+   "qwen": {
+    "greedy": "Espanja tunnusti **Alankomaiden tasavallan** (myös nimellä Yhdistyneet Alankomaat tai Hollannin tasavalta) itsenäiseksi Münsterin rauhassa vuonna 1648.\n\nTämä rauha oli osa laajempaa Westfalenin rauhaa, joka päätti sekä kolmikymmenvuotisen sodan että kahdeksankymmenvuotisen sodan. Espanjan kuninkaan Filip IV:n ja Alankomaiden valtiopäivien välillä solmittu sopimus merkitsi virallista tunnustusta Alankomaiden itsenäisyydestä Espanjan vallasta, joka oli kestänyt vuodesta 1568 lähtien.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-fi-norsunluurannikko": {
+   "opus_check": {
+    "english": "What is the name of the West African country in whose Yamoussoukro rises the enormous Basilica of Our Lady of Peace, one of the largest church buildings in the world?",
+    "opus_answer": "Côte d'Ivoire",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The Basilica of Our Lady of Peace is in Yamoussoukro, the capital of Côte d'Ivoire (Ivory Coast), so only one country fits; the two names refer to the same country."
+   },
+   "qwen": {
+    "greedy": "Kysymyksessä oleva valtio on **Nigeria**.\n\nTarkennus: Vaikka Yamoussoukro sijaitsee todellisuudessa **Nigeriassa** – ei, odota, tämä on yleinen harhaanjohtava kysymys. Tarkistetaan faktat:\n\nYamoussoukro on **Nigerin** (Niger) naapurimaa, mutta se on itse asiassa **Nigerian** (Nigeria) sijaan **Nigerin** (Niger) ja **Nigerian** (Nigeria) välillä oleva valtio? Ei.\n\nOikea vastaus on: **Niger** (Niger) on eri valtio kuin **Nigeria**.\n\nYamoussoukro sijaitsee **Nigerissä**? Ei.\n\nYamoussoukro sijaitsee **Nigeriassa**? Ei.\n\nYamoussoukro sijaitsee **Nigerin** (Niger) ja **Nigerian** (Nigeria) välissä olevassa valtiossa, joka on **Niger**? Ei.\n\nTarkistetaan maantiede:\nYamoussoukro on **Nigerin** (Niger) naapurimaa? Ei.\n\nYamoussoukro on **Nigerian** (Nigeria) naapurimaa? Ei.\n\nYamoussoukro sijaitsee **Nigerissä** (Niger)? Ei.\n\nYamoussoukro sijaitsee **Nigeriassa** (Nigeria)? Ei.\n\nYamoussoukro sijaitsee **Nigerin** (Niger) ja **Nigerian** (Nigeria) välissä olevassa valtiossa, joka on **Niger**? Ei.\n\nOikea valtio on **Niger**? Ei.\n\nOikea valtio on **Nigeria**? Ei.\n\nYamoussoukro sijaitsee **Nigerissä** (Niger)? Ei.\n\nYamoussoukro sijaitsee **Nigeriassa** (Nigeria)? Ei.\n\nYamoussoukro sijaitsee **Nigerin** (Niger) ja **Nigerian** (Nigeria) välissä olevassa valtiossa, joka on **Niger**? Ei.\n\nTarkistetaan uudelleen:\nYamoussoukro on **Nigerin** (Niger) pääkaupunki? Ei, Nigerin pääkaupunki on Niamey.\nYamoussoukro on **Nigerian** (Nigeria) pääkaupunki? Ei, Nigerian pääkaupunki on Abuja.\n\nYamoussoukro sijaitsee **Nigerissä** (Niger)? Ei.\n\nYamoussoukro sijaitsee **Nigeriassa** (Nigeria)? Ei.\n\nYamoussoukro sijaitsee **Nigerin** (Niger) ja **Nigerian** (Nigeria) välissä olevassa valtiossa, joka on **Niger**? Ei.\n\nOikea vastaus on: **Niger**? Ei.\n\nOikea vastaus on: **Nigeria**? Ei.\n\nYamoussoukro sijaitsee **Nigerissä** (Niger)? Ei.\n\nYamoussoukro sijaitsee **Nigeriassa** (Nigeria)? Ei.\n\nYamoussoukro sijaitsee **Nigerin** (Niger) ja **Nigerian** (Nigeria) välissä olevassa valtiossa, joka on **Niger**? Ei.\n\nTarkistetaan faktat:\nYamoussoukro on **Nigerin** (Niger) naapurimaa? Ei.\n\nYamoussoukro on **Nigerian** (Nigeria) naapurimaa? Ei.\n\nYamoussoukro sijaitsee **Nigerissä** (Niger)? Ei.\n\nYamoussoukro sijaitsee **Nigeriassa** (Nigeria)? Ei.\n\nYamoussoukro sijaitsee **Nigerin** (Niger) ja **Nigerian** (Nigeria) välissä olevassa valtiossa, joka on **Niger**? Ei.\n\nOikea vastaus on: **Niger**? Ei.\n\nOikea vastaus on: **Nigeria**? Ei.\n\nYamoussoukro sijaitsee **Nigerissä** (Niger)? Ei.\n\nYamoussoukro sijaitsee **Nigeriassa** (Nigeria)? Ei.\n\nYamoussoukro sijaitsee **Nigerin** (Niger) ja **Nigerian** (Nigeria) välissä olevassa valtiossa, joka on **Niger**? Ei.\n\nTarkistetaan uudelleen:\nYamoussoukro on **Nigerin** (Niger) pääkaupunki? Ei.\nYamoussoukro on **Nigerian** (Nigeria) pääkaupunki? Ei.\n\nYamoussoukro sijaitsee **Nigerissä** (Niger)? Ei.\n\nYamoussoukro sijaitsee **Nigeriassa** (Nigeria)? Ei.\n\nYamoussoukro sijaitsee **Nigerin** (Niger) ja **Nigerian** (Nigeria) välissä olevassa valtiossa, joka on **Niger**? Ei.\n\nOikea vastaus on: **Niger**? Ei.\n\nOikea vastaus on: **Nigeria**? Ei.\n\nYamoussoukro sijaitsee **Nigerissä** (Niger)? Ei.\n\nYamoussoukro sijaitsee **Nigeriassa** (Nigeria)? Ei.\n\nYamoussoukro sijaitsee **Nigerin** (Niger) ja **Nigerian** (Nigeria) välissä olevassa valtiossa, joka on **Niger**? Ei.\n\nTarkistetaan faktat:\nYamoussoukro on **Nigerin** (Niger) naapurimaa? Ei.\n\nYamoussoukro on **Nigerian** (Nigeria) naapurimaa? Ei.\n\nYamoussoukro sijaitsee **Nigerissä** (Niger)? Ei.\n\nYamoussoukro sijaitsee **Nigeriassa** (Nigeria)? Ei.\n\nYamoussoukro sijaitsee **Nigerin** (Niger) ja **Nigerian** (Nigeria) välissä olevassa valtiossa, joka on **Niger**? Ei.\n\nOikea vastaus on: **Niger**? Ei.\n\nOikea vastaus on: **Nigeria**? Ei.\n\nYamoussoukro sijaitsee **Nigerissä** (Niger)? Ei.\n\nYamoussoukro sijaitsee **Nigeriassa** (Nigeria)? Ei.\n\nYamoussoukro sijaitsee **Nigerin** (Niger) ja **Nigerian** (Nigeria) välissä olevassa valtiossa, joka on **Niger**? Ei.\n\nTarkistetaan uudelleen:\nYamoussoukro on **Nigerin** (Niger) pääkaupunki? Ei.\nYamoussoukro on **Nigerian** (Nigeria) pääkaupunki? Ei.\n\nYamoussoukro sijaitsee **Nigerissä** (Niger)? Ei.\n\nYamoussoukro sijaitsee **Nigeriassa** (Nigeria)? Ei.\n\nYamoussoukro sijaitsee **Nigerin** (Niger) ja **Nigerian** (Nigeria) välissä olevassa valtiossa, joka on **Niger**? Ei.\n\nOikea vastaus on: **Niger**? Ei.\n\nOikea vastaus on: **Nigeria**? Ei.\n\nYamoussoukro sijaitsee **Nigerissä** (Niger)? Ei.\n\nYamoussoukro sijaitsee **Nigeriassa** (Nigeria)? Ei.\n\nYamoussoukro sijaitsee **Nigerin** (Niger) ja **Nigerian** (Nigeria) välissä olevassa valtiossa, joka on **Niger**? Ei.\n\nTarkistetaan faktat:\nYamoussoukro on **Nigerin** (Niger) naapurimaa? Ei.\n\nYamoussoukro on **Nigerian** (Nigeria) naapurimaa? Ei.\n\nYamoussoukro sijaitsee **Nigerissä** (Niger)? Ei.\n\nYamoussoukro sijaitsee **Nigeriassa** (Nigeria)? Ei.\n\nYamoussoukro sijaitsee **Nigerin** (Niger) ja **Niger",
+    "greedy_ok": false,
+    "n_ok": 8,
+    "n": 10,
+    "pass": false,
+    "fails": [
+     "Kysymyksessä oleva valtio on **Nigeria**.\n\nYamoussoukro on kuitenkin **Kotd’ivoirin** (Noinivoryn) kaupunki, ja siellä sijaitsee **Rauhan Neitsyt Marian basilika** (Basilique Notre-Dame de la Paix), joka on yksi maailman suurimmista kirkkorakennuksista.\n\nSiis oikea vastaus on: **Kotd’Ivoire** (Noinivory).",
+     "Valtio on **Nigeria**.\n\nTarkennus: Kysymyksessä on kuitenkin virheellinen olettamus. **Yamoussoukro** sijaitsee **Nigeriassa** *ei*, vaan **Nigeriassa** on Lomé, Abuja jne. Yamoussoukro on **Nigerin** naapurivaltion **Nigerin**? Ei.\n\nOikea vastaus: Yamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYamoussoukro on **Nigerin**? Ei.\n\nYam"
+    ],
+    "samples_file": "qwen_samples_r2.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-fi-petsamo": {
+   "opus_check": {
+    "english": "What narrow corridor extending to the Arctic Ocean was ceded to the Soviet Union in the 1944 armistice?",
+    "opus_answer": "Petsamo",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "In the 1944 Moscow Armistice, Finland ceded the Petsamo (Pechenga) corridor, its access to the Arctic Ocean, to the USSR, and no other territory fits that description; 'Pechenga' is simply the Russian name for the same area."
+   },
+   "qwen": {
+    "greedy": "Pohjoiseen jäämereen ulottunut kapea käytävä, joka luovutettiin Neuvostoliitolle vuoden 1944 välirauhassa, on **Petsamon alue** (myös Petsamo tai Pechenga).\n\nTarkemmin sanottuna kyseessä oli **Petsamon maakunta**, joka käsitti muun muassa Petsamon kaupungin ja sen sataman. Alueen merkitys oli strateginen, sillä se tarjosi Neuvostoliitolle **jäättömän sataman** Pohjois-Jäämerellä (Petsamon satama), joka oli käytettävissä ympäri vuoden.\n\n### Taustaa:\n- **Talvisota (1939–1940):** Neuvostoliitto vaati Petsamoa jo talvisodan aikana, mutta Suomi säilytti alueen Moskovan rauhan (1940) nojalla.\n- **Jatkosota (1941–1944):** Sodan aikana Petsamo oli strategisesti tärkeä molemmille osapuolille.\n- **Moskovan välirauha (1944):** Syyskuussa 1944 solmitussa välirauhassa Suomi joutui luovuttamaan Petsamon Neuvostoliitolle. Luovutus astui voimaan virallisesti vuonna 19",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-he-ben-zvi": {
+   "opus_check": {
+    "english": "Who was the second President of the State of Israel, elected in 1952 after the death of Chaim Weizmann?",
+    "opus_answer": "Yitzhak Ben-Zvi",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "Yitzhak Ben-Zvi was the second President of Israel, elected in December 1952 after Chaim Weizmann's death, and no other person fits this description."
+   },
+   "qwen": {
+    "greedy": "נשיאה השני של מדינת ישראל היה **יצחק בן-צבי**.\n\nהוא נבחר לתפקיד ב-21 בדצמבר 1952, לאחר פטירתו של הנשיא הראשון, חיים ויצמן, וכיהן בתפקיד עד פטירתו ב-23 בנובמבר 1963. בן-צבי היה גם ממייסדי ההגנה וממנהיגי היישוב היהודי בארץ ישראל בתקופת המנדט הבריטי.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-he-imber-hatikva": {
+   "opus_check": {
+    "english": "Who is the poet who, in the 1870s, wrote the poem on which the lyrics of the national anthem of the State of Israel are based?",
+    "opus_answer": "Naftali Herz Imber",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "Israel's national anthem, Hatikvah, is based on the poem \"Tikvatenu,\" which Naftali Herz Imber wrote around 1878 (first version c. 1877), so only he fits the description."
+   },
+   "qwen": {
+    "greedy": "המשורר שחיבר את השיר \"תקווה\", שעליו מבוססות מילות ההמנון הלאומי של מדינת ישראל, הוא **נפתלי הרץ אימבר** (נחום סוקולוב היה זה שהלחין את המנגינה, אך המילים נכתבו על ידי אימבר).\n\nהשיר \"תקווה\" פורסם לראשונה בשנת **1878** (שנות השבעים של המאה התשע-עשרה) בעיתון \"המגיד\" בעריכת ליאו מוצקין. השיר נכתב במקור כשיר עברי קצר, והפך בהדרגה להמנון הלאומי הבלתי רשמי של העם היהודי, ולאחר מכן להמנון הרשמי של מדינת ישראל.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-he-neptune-moon": {
+   "opus_check": {
+    "english": "What is the largest of the moons of the planet Neptune?",
+    "opus_answer": "Triton",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "Triton is unambiguously Neptune's largest moon by size and mass, far exceeding all its other moons, so no other answer is equally valid."
+   },
+   "qwen": {
+    "greedy": "הלוויין הגדול ביותר של כוכב הלכת נפטון הוא **טריטון** (Triton).\n\nטריטון הוא לוויין ייחודי במספר היבטים:\n- הוא הגדול מבין 14 הלווינים הידועים של נפטון, ומשקלו מהווה כ-99.5% מסך המסה של כל לווייני נפטון יחד.\n- הוא נע במסלול רטרוגרדי (הפוך לכיוון סיבוב נפטון סביב צירו), מה שמרמז כי הוא ככל הנראה נכבש על ידי כוח המשיכה של נפטון, ומוצאו כנראה מחגורת קויפר.\n- טריטון הוא אחד הגופים הקרים ביותר במערכת השמש, עם טמפרטורה משוערת של כ-38 קלווין (כ-245 מעלות צלזיוס מתחת לאפס).",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 5
+  },
+  "brh-he-qumran": {
+   "opus_check": {
+    "english": "What is the name of the archaeological site near which, in the caves of the Judean Desert, the Dead Sea Scrolls were discovered?",
+    "opus_answer": "Qumran",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The Dead Sea Scrolls are overwhelmingly associated with the Qumran caves near the Khirbet Qumran site, so a well-informed reader would answer Qumran, even though some later finds came from other Judean Desert locations."
+   },
+   "qwen": {
+    "greedy": "האתר הארכאולוגי הסמוך למערות שבהן התגלו מגילות קומראן (המגילות הגנוזות) הוא **קומראן** (באנגלית: Qumran).\n\nהמערות, המכונות \"מערות קומראן\", נמצאות במדבר יהודה, כ-1.5 קילומטרים צפונית-מערבית לאגם המלח, בסמוך להריש (הריסות המנזר או הקהילה היהודית שפעלה במקום בתקופת בית שני). האתר הארכאולוגי עצמו, קומראן, מזוהה עם קהילת החסידים (ככל הנראה החסידים או הקהילה האסנית) שכתבה או שמרה על המגילות.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-hu-aranybulla": {
+   "opus_check": {
+    "english": "What is the commonly known name of the solemn charter that King Andrew II issued in 1222 and that put the privileges of the nobility into writing?",
+    "opus_answer": "Golden Bull of 1222",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The 1222 charter of Andrew II of Hungary codifying noble privileges is universally known as the Golden Bull (of 1222), so a well-informed reader would give only that name."
+   },
+   "qwen": {
+    "greedy": "Az 1222-ben II. András király által kiadott, a nemesi kiváltságokat rögzítő híres oklevél közismert neve az **Aranybulla**.\n\nEz a dokumentum a magyar alkotmányos fejlődés egyik legfontosabb mérföldköve, mivel korlátozta a királyi hatalmat, és biztosította a nemesi rend jogait, például a hadseregben való részvételi kötelezettség alóli mentességet bizonyos esetekben, valamint a király elleni ellenállás jogát (ha a király megsérti a törvényeket).",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-hu-erkel-ferenc": {
+   "opus_check": {
+    "english": "Who is the composer of the grand opera titled Bánk bán?",
+    "opus_answer": "Ferenc Erkel",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "Bánk bán, the Hungarian national grand opera (1861), is universally attributed to Ferenc Erkel, and no other well-known opera shares the title."
+   },
+   "qwen": {
+    "greedy": "A *Bánk bán* című nagyopera zeneszerzője **Erkel Ferenc**.\n\nAz opera szövegkönyvírója Vörösmarty Mihály volt, és a mű 1861-ben, a Nemzeti Színház megnyitásán került először színpadra. Ez az alkotás az egyik legfontosabb darabja a magyar operairodalomnak.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-hu-gabor-denes": {
+   "opus_check": {
+    "english": "Which Budapest-born electrical engineer was awarded the Nobel Prize in Physics in 1971 for the invention of holography?",
+    "opus_answer": "Dennis Gabor",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "Dennis Gabor, born in Budapest, was the sole recipient of the 1971 Nobel Prize in Physics for inventing holography, so only one answer fits."
+   },
+   "qwen": {
+    "greedy": "A kérdésben említett tudós **Dennis Gabor** (magyarul: **Gábor Dénes**).\n\nBár a Nobel-díjat hivatalosan a „holográfia elvének felfedezéséért és kidolgozásáért” ítélték oda neki 1971-ben, fontos tisztázni, hogy Gábor Dénes valójában **villamosmérnök** és fizikus volt, aki 1900-ban született Budapesten. A holográfia alapötlete az 1940-es években született meg nála, miközben elektronmikroszkópok felbontóképességének javításán dolgozott. A technológia gyakorlati megvalósítása azonban csak a lézer feltalálása után, az 1960-as években vált lehetővé.\n\nGábor Dénes tehát a helyes válasz: **Budapesten született villamosmérnök/fizikus, aki 1971-ben fizikai Nobel-díjat kapott a holográfiaért.**",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-hu-kolozsvar": {
+   "opus_check": {
+    "english": "In which Transylvanian settlement was Matthias Hunyadi born in February 1443?",
+    "opus_answer": "Kolozsvár (Cluj-Napoca)",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "Matthias Corvinus (Hunyadi) was born on 23 February 1443 in Kolozsvár, today's Cluj-Napoca, so the question points to a single place, and the historical name Kolozsvár (Klausenburg) refers to the same settlement."
+   },
+   "qwen": {
+    "greedy": "Hunyadi Mátyás **Kolozsváron** született 1443. február 23-án.\n\nA város akkoriban a Szász Erdély része volt, és a Hunyadi-család egyik fontos birtoka. A születés helye a mai Kolozsvár (románul Cluj-Napoca) területén található, amely akkoriban a Magyar Királyság része volt.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-id-bengkulu-pengasingan": {
+   "opus_check": {
+    "english": "After serving a period of exile in Ende, to which city on the southwestern coast of Sumatra was Sukarno moved by the colonial government in 1938?",
+    "opus_answer": "Bengkulu",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "Historically, Sukarno was moved from Ende (Flores) to Bengkulu (Bencoolen) on Sumatra's southwestern coast in 1938, and no other city fits; the alternate spelling Bencoolen names the same place."
+   },
+   "qwen": {
+    "greedy": "Pada tahun 1938, pemerintah kolonial Belanda memindahkan Sukarno dari Ende (di Flores) ke **Bengkulu**.\n\nBengkulu adalah sebuah kota di pesisir barat daya Pulau Sumatra. Pemindahan ini dilakukan karena kondisi kesehatan Sukarno yang memburuk di Ende, dan Bengkulu dianggap memiliki iklim yang lebih sejuk dan kondusif untuk kesehatannya. Di Bengkulu, Sukarno tinggal hingga tahun 1942, ketika Jepang menduduki Hindia Belanda.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-id-chengho": {
+   "opus_check": {
+    "english": "What is the name, according to the local spelling, of the Ming Dynasty fleet commander who was honored by the construction of the Sam Poo Kong Temple in Semarang?",
+    "opus_answer": "Cheng Ho",
+    "opus_answer_ok": true,
+    "unique": false,
+    "unique_reason": "The phrase 'according to the local spelling' points to the Indonesian rendering 'Cheng Ho' (or honorifics such as Sam Po Tay Djin), not the pinyin 'Zheng He', so the intended answer conflicts with the wording and several spellings could be defended."
+   },
+   "qwen": {
+    "greedy": "Nama panglima armada Dinasti Ming tersebut, menurut ejaan setempat (bahasa Jawa/Indonesia), adalah **Sam Poo Kong**.\n\nDalam sejarah Tiongkok, ia dikenal sebagai **Zheng He** (atau Cheng Ho). Kelenteng Sam Poo Kong di Semarang dibangun untuk menghormati jasa-jasanya, terutama karena kontribusinya dalam perdamaian dan perdagangan di Nusantara selama ekspedisi maritimnya pada abad ke-15. Nama \"Sam Poo Kong\" berasal dari gelar kehormatan yang diberikan kepadanya oleh masyarakat Tionghoa setempat, yang berarti \"Tuan Ketiga yang Mulia\" atau \"Pangeran Ketiga yang Mulia\".",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 1
+  },
+  "brh-id-denhaag-arbitrase": {
+   "opus_check": {
+    "english": "In which city is the Peace Palace, the magnificent building where the Permanent Court of Arbitration, established by the 1899 Peace Conference, holds its sessions, located?",
+    "opus_answer": "The Hague",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The Peace Palace, which houses the Permanent Court of Arbitration, is located only in The Hague, so no other answer fits."
+   },
+   "qwen": {
+    "greedy": "Istana Damai (Peace Palace) berada di kota **Den Haag** (The Hague), Belanda.\n\nGedung ini memang dibangun khusus untuk menampung Mahkamah Arbitrase Permanen (Permanent Court of Arbitration) yang didirikan setelah Konferensi Perdamaian Den Haag tahun 1899, dan kini juga menjadi markas Mahkamah Internasional (International Court of Justice).",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-id-garis-wallace": {
+   "opus_check": {
+    "english": "What is the name of the biogeographical boundary that separates Asian fauna from Australasian fauna and runs between Bali and Lombok?",
+    "opus_answer": "Wallace Line",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The boundary running between Bali and Lombok that separates Asian from Australasian fauna is the Wallace Line; other lines such as Weber's and Lydekker's lie farther east and do not pass between Bali and Lombok."
+   },
+   "qwen": {
+    "greedy": "Batas biogeografi yang Anda maksud disebut sebagai **Garis Wallace** (atau *Wallace Line*).\n\nGaris ini dinamai berdasarkan nama naturalis Inggris, **Alfred Russel Wallace**, yang pertama kali mengidentifikasinya pada abad ke-19. Garis Wallace membentang di antara pulau-pulau besar Indonesia, tepatnya:\n\n- Di sebelah barat: Pulau **Bali** dan **Kalimantan** (fauna tipe Asia, seperti harimau, gajah, dan macan tutul).\n- Di sebelah timur: Pulau **Lombok** dan **Sulawesi** (fauna tipe Australasia, seperti kanguru, kasuari, dan burung cendrawasih).\n\nSelisih fauna yang tajam ini terjadi karena perbedaan sejarah geologis dan kedalaman laut yang memisahkan kedua wilayah tersebut selama zaman es, sehingga migrasi hewan darat besar tidak dapat terjadi.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-id-kalimantan": {
+   "opus_check": {
+    "english": "The longest river in the Indonesian archipelago, namely the Kapuas, flows for more than a thousand kilometers in the western part of which island?",
+    "opus_answer": "Borneo",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The Kapuas River is located in West Kalimantan, so the island is Borneo, and the Indonesian name Kalimantan refers to the same island rather than a separate valid answer."
+   },
+   "qwen": {
+    "greedy": "Sungai Kapuas mengalir di bagian barat pulau **Kalimantan**.\n\nSungai ini merupakan sungai terpanjang di Indonesia (Nusantara) dengan panjang sekitar 1.143 kilometer, dan seluruh alirannya berada di wilayah Kalimantan Barat, Kalimantan.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-id-perjanjian-bongaya": {
+   "opus_check": {
+    "english": "What is the name of the agreement signed in 1667 between the VOC and Sultan Hasanuddin of Gowa?",
+    "opus_answer": "Treaty of Bongaya (Bungaya)",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The 1667 treaty between the VOC and Sultan Hasanuddin of Gowa is known as the Treaty of Bongaya (also spelled Bungaya or Bongaais), so variant spellings aside, only one answer fits."
+   },
+   "qwen": {
+    "greedy": "Kesepakatan yang ditandatangani pada tahun 1667 antara VOC (Vereenigde Oostindische Compagnie) dan Kerajaan Gowa (diwakili oleh Sultan Hasanuddin) adalah **Perjanjian Bongaya**.\n\nPerjanjian ini ditandatangani pada **18 November 1667** setelah VOC, dengan bantuan dari Kerajaan Bone (di bawah Arung Palakka), berhasil mengalahkan pasukan Gowa dalam serangkaian pertempuran.\n\n### Isi Utama Perjanjian Bongaya:\n1. **Pembatasan Wilayah Gowa**: Kerajaan Gowa hanya diperbolehkan memiliki satu kapal perang dan satu kapal dagang.\n2. **Kehilangan Wilayah**: Gowa harus menyerahkan wilayah-wilayah penting seperti Bone, Soppeng, Wajo, dan Luwu kepada VOC atau sekutunya.\n3. **Kewajiban Ekonomi**: Gowa harus membayar ganti rugi perang kepada VOC.\n4. **Kehilangan Kedaulatan**: Gowa kehilangan hak untuk mengadakan perjanjian dengan bangsa asing selain VOC, sehingga VOC menjadi penguasa monopoli perdagangan di Sulawesi Selatan.\n\nPerjanjian ini menandai awal dari dominasi VOC di Sulawesi Selatan dan melemahnya kekuasaan Kerajaan Gowa secara signifikan.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-id-puncak-jaya": {
+   "opus_check": {
+    "english": "What is the name of the highest point in Indonesia, which towers in the Sudirman Mountains, Central Papua Province?",
+    "opus_answer": "Puncak Jaya",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The highest point in Indonesia, in the Sudirman Range of Central Papua, is a single peak: Puncak Jaya, also known as Carstensz Pyramid. These are alternate names for the same summit, so the question picks out one answer."
+   },
+   "qwen": {
+    "greedy": "Titik tertinggi di Indonesia yang terletak di Pegunungan Sudirman, Provinsi Papua Tengah, adalah **Puncak Jaya** (juga dikenal sebagai **Carstensz Pyramid** atau **Puncak Carstensz**).\n\nPuncak ini memiliki ketinggian sekitar **4.884 meter** di atas permukaan laut dan merupakan bagian dari Pegunungan Jayawijaya (sebelumnya dikenal sebagai Pegunungan Sudirman). Puncak Jaya juga terkenal karena memiliki es abadi di khatulistiwa, meskipun lapisan es tersebut terus menipis akibat perubahan iklim.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-id-selandiabaru-tasman": {
+   "opus_check": {
+    "english": "What is the current name of the large group of islands in the South Pacific that was first sighted by a European, the sailor Abel Tasman, in 1642?",
+    "opus_answer": "New Zealand",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "Tasman sighted both Tasmania and New Zealand in 1642, but only New Zealand fits the description of a large South Pacific island group, since Tasmania is essentially one main island off Australia and Fiji and Tonga were sighted in 1643."
+   },
+   "qwen": {
+    "greedy": "Gugusan pulau besar di Pasifik Selatan yang pertama kali dilihat oleh orang Eropa, yaitu pelaut Belanda Abel Tasman, pada tahun 1642 adalah **Selandia Baru** (New Zealand).\n\nTasman mendarat di pantai barat Pulau Selatan Selandia Baru pada November 1642. Ia menamai wilayah tersebut *Nieuw Zeeland* (dalam bahasa Belanda), yang berarti \"Zelandia Baru\", sebagai penghormatan terhadap provinsi Zeeland di Belanda. Nama ini kemudian diadopsi menjadi **New Zealand** dalam bahasa Inggris.\n\nJadi, nama sekarang dari gugusan pulau tersebut adalah **Selandia Baru** (atau **New Zealand**).",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 1
+  },
+  "brh-id-sriwijaya": {
+   "opus_check": {
+    "english": "What Buddhist maritime state, centered in Palembang, controlled trade traffic in the Strait of Malacca in the 7th century?",
+    "opus_answer": "Srivijaya",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "Srivijaya is the only Buddhist thalassocracy centered at Palembang that dominated the Strait of Malacca from the 7th century, so the clues point unambiguously to it."
+   },
+   "qwen": {
+    "greedy": "Negara maritim bercorak Buddha yang berpusat di Palembang dan menguasai lalu lintas perdagangan di Selat Malaka pada abad ke-7 adalah **Kerajaan Sriwijaya**.\n\nBerikut adalah beberapa poin kunci yang mendukung jawaban ini:\n\n1. **Pusat Pemerintahan**: Sriwijaya berpusat di Palembang, Sumatera Selatan, yang merupakan lokasi strategis di muara Sungai Musi.\n2. **Waktu Kejayaan**: Kerajaan ini mencapai puncak kejayaannya antara abad ke-7 hingga abad ke-13 Masehi.\n3. **Kontrol Perdagangan**: Sriwijaya menguasai Selat Malaka dan Selat Sunda, sehingga dapat mengendalikan jalur perdagangan internasional antara Tiongkok, India, dan dunia Barat.\n4. **Agama**: Kerajaan ini bercorak Buddha Mahayana dan menjadi pusat penyebaran agama Buddha di Asia Tenggara. Banyak biksu dari Tiongkok, seperti I-Tsing, yang pernah belajar di Sriwijaya.\n5. **Bukti Sejarah**: Prasasti Kedukan Bukit (683 M) adalah salah satu bukti tertua yang menyebutkan keberadaan Sriwijaya.\n\nJadi, jawabannya adalah **Kerajaan Sriwijaya**.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 4
+  },
+  "brh-id-sungai-kapuas": {
+   "opus_check": {
+    "english": "What is the name of the longest waterway on the island of Borneo (Kalimantan) that empties near Pontianak?",
+    "opus_answer": "Kapuas River",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The Kapuas River is the longest river on Borneo and reaches the sea near Pontianak, so the question points to it alone."
+   },
+   "qwen": {
+    "greedy": "Aliran air terpanjang di Pulau Kalimantan yang bermuara di dekat Pontianak adalah **Sungai Kapuas**.\n\nBerikut adalah beberapa fakta kunci tentang Sungai Kapuas:\n- **Panjang**: Sekitar 1.143 km, menjadikannya sungai terpanjang di Indonesia dan salah satu yang terpanjang di Asia Tenggara.\n- **Lokasi**: Berasal dari Pegunungan Schwaner di Kalimantan Tengah, mengalir ke barat, dan bermuara di Selat Karimata di dekat Kota Pontianak, Kalimantan Barat.\n- **Peran Penting**: Sungai ini merupakan jalur transportasi utama, sumber air, dan pusat kehidupan ekonomi serta budaya bagi masyarakat di Kalimantan Barat.\n\nJadi, jawabannya adalah **Sungai Kapuas**.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-id-tambora-1815": {
+   "opus_check": {
+    "english": "Which volcano on Sumbawa Island had a catastrophic eruption in 1815 that triggered the 'year without a summer' in Europe?",
+    "opus_answer": "Mount Tambora",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "Mount Tambora on Sumbawa is the only volcano matching the 1815 catastrophic eruption that caused the 1816 'year without a summer.'"
+   },
+   "qwen": {
+    "greedy": "Gunung berapi yang dimaksud adalah **Gunung Tambora** (atau Tambora).\n\nLetusan dahsyat Gunung Tambora pada tahun 1815 merupakan salah satu letusan vulkanik terbesar dalam sejarah manusia, dengan indeks eksplosivitas vulkanik (VEI) mencapai 7. Letusan ini menyemburkan sejumlah besar abu vulkanik dan gas sulfur ke stratosfer, yang kemudian tersebar ke seluruh dunia. Partikel-partikel ini memantulkan sinar matahari, menyebabkan penurunan suhu global secara signifikan.\n\nAkibatnya, tahun 1816 dikenal sebagai **\"Tahun Tanpa Musim Panas\"** (*Year Without a Summer*) di Eropa dan Amerika Utara, di mana terjadi cuaca dingin ekstrem, salju di musim panas, gagal panen, dan kelaparan yang meluas.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 5
+  },
+  "brh-id-terusan-suez": {
+   "opus_check": {
+    "english": "What is the name of the project led by Ferdinand de Lesseps and inaugurated in November 1869 to connect the Red Sea with the Mediterranean Sea?",
+    "opus_answer": "Suez Canal",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The Suez Canal is the only project led by Ferdinand de Lesseps that was inaugurated in November 1869 to link the Red Sea and the Mediterranean, so a well-informed reader would give no other answer."
+   },
+   "qwen": {
+    "greedy": "Proyek yang dipimpin oleh Ferdinand de Lesseps dan diresmikan pada November 1869 tersebut adalah **Terusan Suez** (Suez Canal).\n\nTerusan Suez adalah jalur air buatan di Mesir yang menghubungkan Laut Merah dengan Laut Tengah, sehingga memungkinkan kapal untuk berlayar langsung antara Eropa dan Asia tanpa harus mengelilingi benua Afrika melalui Tanjung Harapan. Peresmian resminya dilakukan pada tanggal 17 November 1869.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ko-borobudur-java": {
+   "opus_check": {
+    "english": "What is the name of the world's largest Buddhist monument, located on the island of Java in Indonesia?",
+    "opus_answer": "Borobudur",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "Borobudur in Central Java is widely recognized as the world's largest Buddhist monument (temple), so a well-informed reader would give this answer and no other."
+   },
+   "qwen": {
+    "greedy": "인도네시아 자바섬 중부 자와(중부 자바)에 위치한 세계에서 가장 큰 불교 유적은 **보로부두르(Borobudur)**입니다.\n\n보로부두르는 9세기 마타람 왕국 시기에 건립된 석조 사원 단지로, 유네스코 세계문화유산으로 등재되어 있습니다. 전체적으로 2,500개 이상의 부조 패널과 504개의 불상을 포함하고 있으며, 그 규모와 예술적 가치로 인해 불교 건축의 걸작으로 평가받습니다.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ko-first-spacewalk-cosmonaut": {
+   "opus_check": {
+    "english": "Who was the Soviet cosmonaut who boarded Voskhod 2 in 1965 and became the first human to successfully perform an extravehicular activity?",
+    "opus_answer": "Alexei Leonov",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "Alexei Leonov was the only Voskhod 2 crew member to perform the first spacewalk on 18 March 1965; his crewmate Pavel Belyayev stayed inside the spacecraft, so the question has exactly one valid answer."
+   },
+   "qwen": {
+    "greedy": "1965년 3월 18일, 보스호트 2호(Voskhod 2) 임무 중 인류 최초로 우주 공간으로 나가 선외 활동(EVA)에 성공한 소련의 우주비행사는 **알렉세이 레오노프**(Alexei Leonov)입니다.\n\n레오노프는 약 12분 동안 우주 공간에 머물렀으며, 귀환 과정에서 우주복이 팽창하여 귀환艙으로 들어가는 데 어려움을 겪는 등 극적인 상황도 겪었습니다. 그의 이 업적은 우주 탐사 역사상 중요한 이정표로 기록되고 있습니다.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ko-samgukyusa-compiler": {
+   "opus_check": {
+    "english": "Who was the monk who compiled the history book \"Samguk Yusa,\" which recorded the Dangun myth in the late Goryeo period?",
+    "opus_answer": "Iryeon",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "Samguk Yusa, compiled in the late Goryeo period and containing the Dangun myth, is universally attributed to the monk Iryeon."
+   },
+   "qwen": {
+    "greedy": "고려 후기에 『삼국유사』를 편찬한 승려는 **일연(一然)** 스님입니다.\n\n일연 스님은 1281년(충렬왕 7년)부터 1283년까지 약 3년 동안 『삼국유사』를 집필하여 완성했습니다. 이 책에는 단군 신화를 비롯해 고구려, 백제, 신라의 역사, 풍속, 불교 유적, 괴이한 일화 등이 수록되어 있어 한국 고대사와 문화사를 연구하는 데 매우 중요한 자료로 평가받습니다.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-ko-sohnkeechung": {
+   "opus_check": {
+    "english": "Who is the track and field hero from Joseon (Korea) who won the gold medal in the marathon at the 1936 Berlin Summer Olympics?",
+    "opus_answer": "Sohn Kee-chung",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "Sohn Kee-chung (competing for Japan as Son Kitei) is the only Korean-born athlete who won the 1936 Berlin Olympic marathon gold, so the question points to him alone."
+   },
+   "qwen": {
+    "greedy": "1936년 베를린 하계 올림픽 마라톤에서 금메달을 차지한 조선 출신 육상 영웅은 **손기정** 선수입니다.\n\n당시 일제 강점기였기 때문에 손기정 선수는 일본 국적을 가지고 '손키정(孫基禎)'이라는 이름으로 출전해야 했습니다. 그는 2시간29분19초3의 기록으로 우승했으며, 시상식에서는 가슴에 달린 일본 국기(일장기)를 손으로 가리는 등 조국의 독립을 염원하는 애국심을 드러냈습니다. 이 일화는 한국 스포츠사에서 가장 유명한 에피소드 중 하나로 기억되고 있습니다.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 5
+  },
+  "brh-pl-konstantynopol-sobor-381": {
+   "opus_check": {
+    "english": "In which city was the council held at which, in 381, the Nicene Creed was supplemented?",
+    "opus_answer": "Constantinople",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The council of 381 that expanded the Nicene Creed was the First Council of Constantinople, so the city is unambiguously Constantinople."
+   },
+   "qwen": {
+    "greedy": "Sobór, na którym w 381 roku uzupełniono i ujednolicono wyznanie wiary (tzw. wyznanie nicejsko-constantynopolitańskie), obradował w **Konstantynopolu** (dzisiejszy Stambuł).\n\nBył to **I Sobór Konstantynopolitański**, uznawany za drugi sobór powszechny (ecumeniczny). Głównym celem soboru było zwalczenie arianizmu oraz precyzyjne zdefiniowanie nauki o Trójcy Świętej, w tym o boskości Ducha Świętego, co zostało odzwierciedlone w ostatecznej formie wyznania wiary.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 1
+  },
+  "brh-pl-lwow": {
+   "opus_check": {
+    "english": "In what city, called the town on the Pełtew, were the collections of the Ossolineum library, founded in 1817 by Józef Maksymilian Ossoliński, housed before the Second World War?",
+    "opus_answer": "Lviv",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The Ossolineum was located in Lviv (Lwów), the city on the Poltva (Pełtew) river, before WWII; alternate names like Lwów or Lemberg refer to the same city, so the answer is uniquely determined."
+   },
+   "qwen": {
+    "greedy": "Miejscowością, o której mowa, jest **Lwów** (obecnie Lwów, Ukraina).\n\nPrzed II wojną światową Lwów był siedzibą Biblioteki Ossolineum (Instytutu im. Ossolińskich), która została przeniesiona tam w 1817 roku z Wrocławia przez Józefa Maksymiliana Ossolińskiego. Lwów był często nazywany „grodem nad Pełtwią” ze względu na rzekę Pełtew, która przepływa przez miasto.\n\nPo II wojnie światowej, w ramach repatriacji i zmian granic Polski, zbiory Ossolineum zostały przeniesione do Wrocławia, gdzie znajdują się do dziś.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 0
+  },
+  "brh-pl-ziemie-odzyskane": {
+   "opus_check": {
+    "english": "What name was coined in the propaganda of the Polish People's Republic for the territories granted after the Potsdam Conference that had formerly been part of the Reich?",
+    "opus_answer": "Recovered Territories (Ziemie Odzyskane)",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The standard term coined in PRL propaganda for the former German territories granted to Poland after Potsdam is \"Recovered Territories\" (Ziemie Odzyskane); variants like \"Regained Territories\" are translations of the same name, not distinct answers."
+   },
+   "qwen": {
+    "greedy": "W propagandzie Polski Ludowej obszary te nazywano **Ziemiami Odzyskanymi**.\n\nTermin ten miał podkreślać rzekomą historyczną przynależność tych terenów do Polski (m.in. poprzez odwołania do średniowiecznych granic państwa polskiego) oraz legitymizować zmianę granic po II wojnie światowej jako „odzyskanie” utraconych ziem, a nie jako aneksję terytoriów niemieckich.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 5
+  },
+  "brh-ru-baikonur": {
+   "opus_check": {
+    "english": "What is the name of the launch site in the Kyzylorda Region of Kazakhstan from which the first crewed human spaceflight began on April 12, 1961?",
+    "opus_answer": "Baikonur Cosmodrome",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "Vostok 1 launched from the Baikonur Cosmodrome in Kazakhstan's Kyzylorda Region, so the answer is uniquely determined; the alternative name 'Tyuratam' (or 'Site 1/Gagarin's Start') refers to the same site rather than a competing answer."
+   },
+   "qwen": {
+    "greedy": "Эта стартовая площадка называется **Байконур** (космодром Байконур).\n\nИменно с площадки №1 («Гагаринская») космодрома Байконур 12 апреля 1961 года стартовал корабль «Восток-1» с первым в мире космонавтом Юрием Гагариным на борту.\n\nНесмотря на название, космодром географически расположен в **Кызылординской области Казахстана**, хотя и находится в долгосрочной аренде у Российской Федерации.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 5
+  },
+  "brh-ru-bellingshausen": {
+   "opus_check": {
+    "english": "Who commanded the 1819–1821 round-the-world expedition on the sloop \"Vostok\"?",
+    "opus_answer": "Fabian Gottlieb von Bellingshausen",
+    "opus_answer_ok": true,
+    "unique": true,
+    "unique_reason": "The 1819–1821 Russian circumnavigation aboard the sloop Vostok (with Mirny) was commanded by Bellingshausen; Lazarev commanded only the Mirny, so there is no equally valid alternative answer."
+   },
+   "qwen": {
+    "greedy": "Кругосветной экспедицией 1819–1821 годов на шлюпах «Восток» и «Мирный» командовал **Фаддей Фаддеевич Беллинсгаузен**.\n\nИменно он был начальником экспедиции и командиром шлюпа «Восток». Вторым кораблём, шлюпом «Мирный», командовал **Михаил Петрович Лазарев**.\n\nЭта экспедиция вошла в историю тем, что 28 января (16 января по старому стилю) 1820 года Беллинсгаузен и Лазарев открыли Антарктиду.",
+    "greedy_ok": true,
+    "n_ok": 10,
+    "n": 10,
+    "pass": true,
+    "fails": [],
+    "samples_file": "qwen_samples_r0.jsonl"
+   },
+   "blind_hits_last_round": 5
+  }
+ }
+}

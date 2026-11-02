@@ -1,0 +1,1227 @@
+{
+ "family": "association",
+ "gate": "Qwen3.6-27B behavioral: >=8/10 correct at temp 0.7 (greedy-verified first); association scored against association_aliases.json (phrase-aware, echo-guarded); poetry scored by committed rhyme",
+ "eval_render_note": "EVAL RENDER: feed `prompt` verbatim as plain text, NO chat template (directed-modulation is the only chat-templated family). `gate_variant` records how the item was behaviorally verified and does NOT affect the eval read.",
+ "adapt": {
+  "model": "qwen3.5-0.8b",
+  "hf_id": "Qwen/Qwen3.5-0.8B",
+  "frozen": "2026-10-24"
+ },
+ "items": [
+  {
+   "name": "bf-snow",
+   "prompt": "The plows worked all night, and by morning every roof and branch wore a heavy white blanket.",
+   "intermediates": [
+    "snow"
+   ],
+   "source": "staging",
+   "consistency": 1.0,
+   "gate_variant": "referent",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "bf-snow",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w100c1-bf-pineapple",
+   "prompt": "This tropical fruit has a spiky green crown, a tough diamond-patterned skin, and sweet yellow flesh often served on Hawaiian dishes.",
+   "intermediates": [
+    "pineapple"
+   ],
+   "aliases": [
+    "ananas"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w100c2-bf-compass",
+   "prompt": "Lost in the woods, the hiker held the little round dial flat and watched the magnetic needle swing toward north.",
+   "intermediates": [
+    "compass"
+   ],
+   "aliases": [
+    "magnetic compass"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w100c2-bf-chef",
+   "prompt": "In a tall white hat, he tasted the sauce, shouted orders across the busy restaurant kitchen, and carefully plated each dish.",
+   "intermediates": [
+    "chef"
+   ],
+   "aliases": [
+    "cook",
+    "head chef"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w101c0-bf-hammer",
+   "prompt": "This hand tool has a heavy metal head and a wooden handle, and builders swing it to drive nails into boards.",
+   "intermediates": [
+    "hammer"
+   ],
+   "aliases": [
+    "mallet"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 3/60 passed.\n- Rejected by lint before gating: 1x leak: ['big top'] in prompt; 1x leak: ['noodles'] in prompt; 1x leak: ['shuttlecock'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): bowling -> model said 'ten white pins' (0/10); sushi -> model said 'rice' (3/10); airport -> model said 'boarding' (0/10); camping -> model said 'A tent' (0/10); umbrella -> model said 'canopy' (0/10); thanksgiving -> model said 'Christmas' (0/10); plumber -> model said 'sink' (0/10); popcorn -> model said 'butter' (0/10); basketball -> model said 'DUNK' (0/10); aquarium -> model said 'coral reef' (0/10); laundromat -> model said 'dryers' (0/10); bicycle -> model said 'The bell' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): pineapple; compass; chef",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w101c0-bf-ambulance",
+   "prompt": "This white emergency vehicle with flashing lights and a wailing siren rushes injured people on a stretcher to the emergency room.",
+   "intermediates": [
+    "ambulance"
+   ],
+   "aliases": [],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 3/60 passed.\n- Rejected by lint before gating: 1x leak: ['big top'] in prompt; 1x leak: ['noodles'] in prompt; 1x leak: ['shuttlecock'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): bowling -> model said 'ten white pins' (0/10); sushi -> model said 'rice' (3/10); airport -> model said 'boarding' (0/10); camping -> model said 'A tent' (0/10); umbrella -> model said 'canopy' (0/10); thanksgiving -> model said 'Christmas' (0/10); plumber -> model said 'sink' (0/10); popcorn -> model said 'butter' (0/10); basketball -> model said 'DUNK' (0/10); aquarium -> model said 'coral reef' (0/10); laundromat -> model said 'dryers' (0/10); bicycle -> model said 'The bell' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): pineapple; compass; chef",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w101c1-bf2-backpack",
+   "prompt": "Students carry this bag on both shoulders with two straps, stuffing it with books, pencils, and a lunchbox.",
+   "intermediates": [
+    "backpack"
+   ],
+   "aliases": [
+    "rucksack",
+    "knapsack"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 3/60 passed.\n- Rejected by lint before gating: 1x leak: ['big top'] in prompt; 1x leak: ['noodles'] in prompt; 1x leak: ['shuttlecock'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): bowling -> model said 'ten white pins' (0/10); sushi -> model said 'rice' (3/10); airport -> model said 'boarding' (0/10); camping -> model said 'A tent' (0/10); umbrella -> model said 'canopy' (0/10); thanksgiving -> model said 'Christmas' (0/10); plumber -> model said 'sink' (0/10); popcorn -> model said 'butter' (0/10); basketball -> model said 'DUNK' (0/10); aquarium -> model said 'coral reef' (0/10); laundromat -> model said 'dryers' (0/10); bicycle -> model said 'The bell' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): pineapple; compass; chef",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w101c1-bf2-calculator",
+   "prompt": "This small electronic device with number buttons and a little screen adds, subtracts, multiplies, and divides for you in math class.",
+   "intermediates": [
+    "calculator"
+   ],
+   "aliases": [],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 3/60 passed.\n- Rejected by lint before gating: 1x leak: ['big top'] in prompt; 1x leak: ['noodles'] in prompt; 1x leak: ['shuttlecock'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): bowling -> model said 'ten white pins' (0/10); sushi -> model said 'rice' (3/10); airport -> model said 'boarding' (0/10); camping -> model said 'A tent' (0/10); umbrella -> model said 'canopy' (0/10); thanksgiving -> model said 'Christmas' (0/10); plumber -> model said 'sink' (0/10); popcorn -> model said 'butter' (0/10); basketball -> model said 'DUNK' (0/10); aquarium -> model said 'coral reef' (0/10); laundromat -> model said 'dryers' (0/10); bicycle -> model said 'The bell' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): pineapple; compass; chef",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w101c1-bf2-potato",
+   "prompt": "This starchy brown-skinned vegetable grows underground and gets turned into french fries, chips, and mashed side dishes.",
+   "intermediates": [
+    "potato"
+   ],
+   "aliases": [
+    "spud"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 3/60 passed.\n- Rejected by lint before gating: 1x leak: ['big top'] in prompt; 1x leak: ['noodles'] in prompt; 1x leak: ['shuttlecock'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): bowling -> model said 'ten white pins' (0/10); sushi -> model said 'rice' (3/10); airport -> model said 'boarding' (0/10); camping -> model said 'A tent' (0/10); umbrella -> model said 'canopy' (0/10); thanksgiving -> model said 'Christmas' (0/10); plumber -> model said 'sink' (0/10); popcorn -> model said 'butter' (0/10); basketball -> model said 'DUNK' (0/10); aquarium -> model said 'coral reef' (0/10); laundromat -> model said 'dryers' (0/10); bicycle -> model said 'The bell' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): pineapple; compass; chef",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w102c0-wb-easy-mirror",
+   "prompt": "This flat piece of glass hangs on the bathroom wall and shows your own reflection while you comb your hair or brush your teeth.",
+   "intermediates": [
+    "mirror"
+   ],
+   "aliases": [
+    "looking glass"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 5/60 passed.\n- Rejected by lint before gating: 1x leak: ['fortress'] in prompt; 1x leak: ['cheddar'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): banana -> model said 'apricot' (1/10); strawberry -> model said 'cherry' (0/10); watermelon -> model said 'strawberries' (0/10); carrot -> model said 'onions' (1/10); giraffe -> model said 'African Elephant' (0/10); penguin -> model said 'Egret' (0/10); kangaroo -> model said 'Eagle' (2/10); octopus -> model said 'Aqua' (1/10); ladder -> model said 'rungs' (0/10); helicopter -> model said 'AIRCRAFT' (2/10); tractor -> model said 'plow' (1/10); cactus -> model said 'cactus' (5/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): hammer; ambulance; backpack; calculator; potato",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w102c0-wb-easy-egg",
+   "prompt": "Hens lay these smooth oval things with a hard shell, and when you crack one into a hot pan you see a yellow yolk surrounded by white.",
+   "intermediates": [
+    "egg"
+   ],
+   "aliases": [
+    "eggs",
+    "chicken egg"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 5/60 passed.\n- Rejected by lint before gating: 1x leak: ['fortress'] in prompt; 1x leak: ['cheddar'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): banana -> model said 'apricot' (1/10); strawberry -> model said 'cherry' (0/10); watermelon -> model said 'strawberries' (0/10); carrot -> model said 'onions' (1/10); giraffe -> model said 'African Elephant' (0/10); penguin -> model said 'Egret' (0/10); kangaroo -> model said 'Eagle' (2/10); octopus -> model said 'Aqua' (1/10); ladder -> model said 'rungs' (0/10); helicopter -> model said 'AIRCRAFT' (2/10); tractor -> model said 'plow' (1/10); cactus -> model said 'cactus' (5/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): hammer; ambulance; backpack; calculator; potato",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w102c0-wb-easy-kitchen",
+   "prompt": "This room of the house has the stove, the oven, the sink and the fridge, and it is where the family cooks dinner and washes the dishes.",
+   "intermediates": [
+    "kitchen"
+   ],
+   "aliases": [],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 5/60 passed.\n- Rejected by lint before gating: 1x leak: ['fortress'] in prompt; 1x leak: ['cheddar'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): banana -> model said 'apricot' (1/10); strawberry -> model said 'cherry' (0/10); watermelon -> model said 'strawberries' (0/10); carrot -> model said 'onions' (1/10); giraffe -> model said 'African Elephant' (0/10); penguin -> model said 'Egret' (0/10); kangaroo -> model said 'Eagle' (2/10); octopus -> model said 'Aqua' (1/10); ladder -> model said 'rungs' (0/10); helicopter -> model said 'AIRCRAFT' (2/10); tractor -> model said 'plow' (1/10); cactus -> model said 'cactus' (5/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): hammer; ambulance; backpack; calculator; potato",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w102c0-wb-easy-bank",
+   "prompt": "At this building you stand in line to see a teller, deposit your paycheck, withdraw cash, and your savings are locked in a steel vault.",
+   "intermediates": [
+    "bank"
+   ],
+   "aliases": [],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 5/60 passed.\n- Rejected by lint before gating: 1x leak: ['fortress'] in prompt; 1x leak: ['cheddar'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): banana -> model said 'apricot' (1/10); strawberry -> model said 'cherry' (0/10); watermelon -> model said 'strawberries' (0/10); carrot -> model said 'onions' (1/10); giraffe -> model said 'African Elephant' (0/10); penguin -> model said 'Egret' (0/10); kangaroo -> model said 'Eagle' (2/10); octopus -> model said 'Aqua' (1/10); ladder -> model said 'rungs' (0/10); helicopter -> model said 'AIRCRAFT' (2/10); tractor -> model said 'plow' (1/10); cactus -> model said 'cactus' (5/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): hammer; ambulance; backpack; calculator; potato",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w102c2-bf-cow",
+   "prompt": "This black-and-white spotted farm animal chews grass, says moo, and gets milked every morning in the barn.",
+   "intermediates": [
+    "cow"
+   ],
+   "aliases": [
+    "cattle",
+    "dairy cow"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 5/60 passed.\n- Rejected by lint before gating: 1x leak: ['fortress'] in prompt; 1x leak: ['cheddar'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): banana -> model said 'apricot' (1/10); strawberry -> model said 'cherry' (0/10); watermelon -> model said 'strawberries' (0/10); carrot -> model said 'onions' (1/10); giraffe -> model said 'African Elephant' (0/10); penguin -> model said 'Egret' (0/10); kangaroo -> model said 'Eagle' (2/10); octopus -> model said 'Aqua' (1/10); ladder -> model said 'rungs' (0/10); helicopter -> model said 'AIRCRAFT' (2/10); tractor -> model said 'plow' (1/10); cactus -> model said 'cactus' (5/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): hammer; ambulance; backpack; calculator; potato",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w103c0-wb-easy-horse",
+   "prompt": "People ride this large animal with a saddle and hold the reins. It gallops, neighs, and eats hay.",
+   "intermediates": [
+    "horse"
+   ],
+   "aliases": [
+    "pony",
+    "stallion",
+    "mare"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 5/60 passed.\n- Rejected by lint before gating: 1x leak: ['tub'] in prompt; 1x leak: ['loaf'] in prompt; 1x leak: ['locomotive'] in prompt; 1x leak: ['cushion'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): key -> model said 'ring' (2/10); broom -> model said 'sweep' (4/10); honey -> model said 'Marmalade' (2/10); yoga -> model said 'sitting' (0/10); billiards -> model said 'A cue stick' (0/10); fishing -> model said 'trout' (0/10); church -> model said 'church' (2/10); judge -> model said 'gavel' (4/10); doctor -> model said 'Doctor' (6/10); tailor -> model said 'A tailor' (2/10); rainbow -> model said 'A rainbow' (4/10); parade -> model said 'crowds' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): mirror; egg; kitchen; bank; cow",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w103c0-wb-easy-phone",
+   "prompt": "You dial a number on this device to call your friends. It rings, and you say hello when you answer it.",
+   "intermediates": [
+    "phone"
+   ],
+   "aliases": [
+    "telephone",
+    "cellphone",
+    "smartphone",
+    "mobile phone",
+    "cell phone"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 5/60 passed.\n- Rejected by lint before gating: 1x leak: ['tub'] in prompt; 1x leak: ['loaf'] in prompt; 1x leak: ['locomotive'] in prompt; 1x leak: ['cushion'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): key -> model said 'ring' (2/10); broom -> model said 'sweep' (4/10); honey -> model said 'Marmalade' (2/10); yoga -> model said 'sitting' (0/10); billiards -> model said 'A cue stick' (0/10); fishing -> model said 'trout' (0/10); church -> model said 'church' (2/10); judge -> model said 'gavel' (4/10); doctor -> model said 'Doctor' (6/10); tailor -> model said 'A tailor' (2/10); rainbow -> model said 'A rainbow' (4/10); parade -> model said 'crowds' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): mirror; egg; kitchen; bank; cow",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w103c0-wb-easy-sun",
+   "prompt": "This bright yellow star warms the Earth during the day. It rises in the morning and sets in the evening.",
+   "intermediates": [
+    "sun"
+   ],
+   "aliases": [],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 5/60 passed.\n- Rejected by lint before gating: 1x leak: ['tub'] in prompt; 1x leak: ['loaf'] in prompt; 1x leak: ['locomotive'] in prompt; 1x leak: ['cushion'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): key -> model said 'ring' (2/10); broom -> model said 'sweep' (4/10); honey -> model said 'Marmalade' (2/10); yoga -> model said 'sitting' (0/10); billiards -> model said 'A cue stick' (0/10); fishing -> model said 'trout' (0/10); church -> model said 'church' (2/10); judge -> model said 'gavel' (4/10); doctor -> model said 'Doctor' (6/10); tailor -> model said 'A tailor' (2/10); rainbow -> model said 'A rainbow' (4/10); parade -> model said 'crowds' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): mirror; egg; kitchen; bank; cow",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w103c1-easy-dragon",
+   "prompt": "This huge creature from fairy tales has scales and wings and breathes fire. Brave knights fight it to save the princess.",
+   "intermediates": [
+    "dragon"
+   ],
+   "aliases": [],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 5/60 passed.\n- Rejected by lint before gating: 1x leak: ['tub'] in prompt; 1x leak: ['loaf'] in prompt; 1x leak: ['locomotive'] in prompt; 1x leak: ['cushion'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): key -> model said 'ring' (2/10); broom -> model said 'sweep' (4/10); honey -> model said 'Marmalade' (2/10); yoga -> model said 'sitting' (0/10); billiards -> model said 'A cue stick' (0/10); fishing -> model said 'trout' (0/10); church -> model said 'church' (2/10); judge -> model said 'gavel' (4/10); doctor -> model said 'Doctor' (6/10); tailor -> model said 'A tailor' (2/10); rainbow -> model said 'A rainbow' (4/10); parade -> model said 'crowds' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): mirror; egg; kitchen; bank; cow",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w103c1-easy-soap",
+   "prompt": "You rub this slippery bar with water until it makes foamy bubbles. It washes the dirt and germs off your hands.",
+   "intermediates": [
+    "soap"
+   ],
+   "aliases": [
+    "bar soap"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 5/60 passed.\n- Rejected by lint before gating: 1x leak: ['tub'] in prompt; 1x leak: ['loaf'] in prompt; 1x leak: ['locomotive'] in prompt; 1x leak: ['cushion'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): key -> model said 'ring' (2/10); broom -> model said 'sweep' (4/10); honey -> model said 'Marmalade' (2/10); yoga -> model said 'sitting' (0/10); billiards -> model said 'A cue stick' (0/10); fishing -> model said 'trout' (0/10); church -> model said 'church' (2/10); judge -> model said 'gavel' (4/10); doctor -> model said 'Doctor' (6/10); tailor -> model said 'A tailor' (2/10); rainbow -> model said 'A rainbow' (4/10); parade -> model said 'crowds' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): mirror; egg; kitchen; bank; cow",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w103c1-easy-map",
+   "prompt": "This folded paper shows roads, rivers, and cities as seen from above. Travelers look at it so they do not get lost.",
+   "intermediates": [
+    "map"
+   ],
+   "aliases": [
+    "atlas",
+    "road map"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 5/60 passed.\n- Rejected by lint before gating: 1x leak: ['tub'] in prompt; 1x leak: ['loaf'] in prompt; 1x leak: ['locomotive'] in prompt; 1x leak: ['cushion'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): key -> model said 'ring' (2/10); broom -> model said 'sweep' (4/10); honey -> model said 'Marmalade' (2/10); yoga -> model said 'sitting' (0/10); billiards -> model said 'A cue stick' (0/10); fishing -> model said 'trout' (0/10); church -> model said 'church' (2/10); judge -> model said 'gavel' (4/10); doctor -> model said 'Doctor' (6/10); tailor -> model said 'A tailor' (2/10); rainbow -> model said 'A rainbow' (4/10); parade -> model said 'crowds' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): mirror; egg; kitchen; bank; cow",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w103c2-wb-easy-king",
+   "prompt": "He wears a golden crown and sits on a throne in his castle. He rules the whole land beside his queen.",
+   "intermediates": [
+    "king"
+   ],
+   "aliases": [
+    "monarch",
+    "ruler"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 5/60 passed.\n- Rejected by lint before gating: 1x leak: ['tub'] in prompt; 1x leak: ['loaf'] in prompt; 1x leak: ['locomotive'] in prompt; 1x leak: ['cushion'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): key -> model said 'ring' (2/10); broom -> model said 'sweep' (4/10); honey -> model said 'Marmalade' (2/10); yoga -> model said 'sitting' (0/10); billiards -> model said 'A cue stick' (0/10); fishing -> model said 'trout' (0/10); church -> model said 'church' (2/10); judge -> model said 'gavel' (4/10); doctor -> model said 'Doctor' (6/10); tailor -> model said 'A tailor' (2/10); rainbow -> model said 'A rainbow' (4/10); parade -> model said 'crowds' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): mirror; egg; kitchen; bank; cow",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w103c2-wb-easy-car",
+   "prompt": "This vehicle has four wheels, a steering wheel, and seat belts. Your parents drive it on the road and park it in the garage.",
+   "intermediates": [
+    "car"
+   ],
+   "aliases": [
+    "automobile",
+    "auto"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 5/60 passed.\n- Rejected by lint before gating: 1x leak: ['tub'] in prompt; 1x leak: ['loaf'] in prompt; 1x leak: ['locomotive'] in prompt; 1x leak: ['cushion'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): key -> model said 'ring' (2/10); broom -> model said 'sweep' (4/10); honey -> model said 'Marmalade' (2/10); yoga -> model said 'sitting' (0/10); billiards -> model said 'A cue stick' (0/10); fishing -> model said 'trout' (0/10); church -> model said 'church' (2/10); judge -> model said 'gavel' (4/10); doctor -> model said 'Doctor' (6/10); tailor -> model said 'A tailor' (2/10); rainbow -> model said 'A rainbow' (4/10); parade -> model said 'crowds' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): mirror; egg; kitchen; bank; cow",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w103c2-wb-easy-soup",
+   "prompt": "You eat this hot liquid meal from a bowl with a spoon. Popular kinds are tomato and chicken noodle, especially when you are sick.",
+   "intermediates": [
+    "soup"
+   ],
+   "aliases": [
+    "broth",
+    "stew"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 5/60 passed.\n- Rejected by lint before gating: 1x leak: ['tub'] in prompt; 1x leak: ['loaf'] in prompt; 1x leak: ['locomotive'] in prompt; 1x leak: ['cushion'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): key -> model said 'ring' (2/10); broom -> model said 'sweep' (4/10); honey -> model said 'Marmalade' (2/10); yoga -> model said 'sitting' (0/10); billiards -> model said 'A cue stick' (0/10); fishing -> model said 'trout' (0/10); church -> model said 'church' (2/10); judge -> model said 'gavel' (4/10); doctor -> model said 'Doctor' (6/10); tailor -> model said 'A tailor' (2/10); rainbow -> model said 'A rainbow' (4/10); parade -> model said 'crowds' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): mirror; egg; kitchen; bank; cow",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w103c2-wb-easy-ocean",
+   "prompt": "This huge body of salty water covers most of the Earth. Whales, sharks, and waves are found all across it.",
+   "intermediates": [
+    "ocean"
+   ],
+   "aliases": [
+    "sea"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 103,
+    "steer": "- Last wave: 5/60 passed.\n- Rejected by lint before gating: 1x leak: ['tub'] in prompt; 1x leak: ['loaf'] in prompt; 1x leak: ['locomotive'] in prompt; 1x leak: ['cushion'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): key -> model said 'ring' (2/10); broom -> model said 'sweep' (4/10); honey -> model said 'Marmalade' (2/10); yoga -> model said 'sitting' (0/10); billiards -> model said 'A cue stick' (0/10); fishing -> model said 'trout' (0/10); church -> model said 'church' (2/10); judge -> model said 'gavel' (4/10); doctor -> model said 'Doctor' (6/10); tailor -> model said 'A tailor' (2/10); rainbow -> model said 'A rainbow' (4/10); parade -> model said 'crowds' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): mirror; egg; kitchen; bank; cow",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w104c0-wb-easy-calendar",
+   "prompt": "This page on the wall shows all the days, weeks, and months of the year. You mark birthdays and holidays on its little boxes.",
+   "intermediates": [
+    "calendar"
+   ],
+   "aliases": [],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 104,
+    "steer": "- Last wave: 10/60 passed.\n- Rejected by lint before gating: 1x leak: ['jet'] in prompt; 1x leak: ['spirit'] in prompt; 1x leak: ['peak'] in prompt; 1x leak: ['rest'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): shark -> model said 'MORPHY' (1/10); frog -> model said 'fly' (0/10); snail -> model said 'Squid' (0/10); milk -> model said 'COW' (3/10); apple -> model said 'apple' (6/10); spoon -> model said 'fork' (3/10); shoe -> model said 'shoes' (1/10); chair -> model said 'chair' (7/10); towel -> model said 'Rack' (4/10); moon -> model said 'Moon' (7/10); tree -> model said 'pine' (4/10); boat -> model said 'A boat' (5/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): horse; phone; sun; dragon; soap; map; king; car; soup; ocean",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w104c0-wb-easy-robot",
+   "prompt": "This metal machine has a body, arms, and blinking lights, and it moves on its own. It talks in a beeping voice and follows computer commands.",
+   "intermediates": [
+    "robot"
+   ],
+   "aliases": [
+    "android",
+    "droid"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 104,
+    "steer": "- Last wave: 10/60 passed.\n- Rejected by lint before gating: 1x leak: ['jet'] in prompt; 1x leak: ['spirit'] in prompt; 1x leak: ['peak'] in prompt; 1x leak: ['rest'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): shark -> model said 'MORPHY' (1/10); frog -> model said 'fly' (0/10); snail -> model said 'Squid' (0/10); milk -> model said 'COW' (3/10); apple -> model said 'apple' (6/10); spoon -> model said 'fork' (3/10); shoe -> model said 'shoes' (1/10); chair -> model said 'chair' (7/10); towel -> model said 'Rack' (4/10); moon -> model said 'Moon' (7/10); tree -> model said 'pine' (4/10); boat -> model said 'A boat' (5/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): horse; phone; sun; dragon; soap; map; king; car; soup; ocean",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w104c0-wb-easy-pyramid",
+   "prompt": "These giant stone buildings with triangle sides stand in the sand of Egypt. Ancient pharaohs were buried inside them.",
+   "intermediates": [
+    "pyramid"
+   ],
+   "aliases": [
+    "pyramids"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 104,
+    "steer": "- Last wave: 10/60 passed.\n- Rejected by lint before gating: 1x leak: ['jet'] in prompt; 1x leak: ['spirit'] in prompt; 1x leak: ['peak'] in prompt; 1x leak: ['rest'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): shark -> model said 'MORPHY' (1/10); frog -> model said 'fly' (0/10); snail -> model said 'Squid' (0/10); milk -> model said 'COW' (3/10); apple -> model said 'apple' (6/10); spoon -> model said 'fork' (3/10); shoe -> model said 'shoes' (1/10); chair -> model said 'chair' (7/10); towel -> model said 'Rack' (4/10); moon -> model said 'Moon' (7/10); tree -> model said 'pine' (4/10); boat -> model said 'A boat' (5/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): horse; phone; sun; dragon; soap; map; king; car; soup; ocean",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w104c0-wb-easy-heart",
+   "prompt": "This organ in your chest pumps blood all through your body. A doctor listens to it go thump-thump with a stethoscope.",
+   "intermediates": [
+    "heart"
+   ],
+   "aliases": [],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 104,
+    "steer": "- Last wave: 10/60 passed.\n- Rejected by lint before gating: 1x leak: ['jet'] in prompt; 1x leak: ['spirit'] in prompt; 1x leak: ['peak'] in prompt; 1x leak: ['rest'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): shark -> model said 'MORPHY' (1/10); frog -> model said 'fly' (0/10); snail -> model said 'Squid' (0/10); milk -> model said 'COW' (3/10); apple -> model said 'apple' (6/10); spoon -> model said 'fork' (3/10); shoe -> model said 'shoes' (1/10); chair -> model said 'chair' (7/10); towel -> model said 'Rack' (4/10); moon -> model said 'Moon' (7/10); tree -> model said 'pine' (4/10); boat -> model said 'A boat' (5/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): horse; phone; sun; dragon; soap; map; king; car; soup; ocean",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w104c1-wb-easy2-bandage",
+   "prompt": "You stick this little strip over a cut or scraped knee. It has a soft pad in the middle to cover the wound.",
+   "intermediates": [
+    "bandage"
+   ],
+   "aliases": [
+    "band-aid",
+    "plaster",
+    "adhesive bandage"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 104,
+    "steer": "- Last wave: 10/60 passed.\n- Rejected by lint before gating: 1x leak: ['jet'] in prompt; 1x leak: ['spirit'] in prompt; 1x leak: ['peak'] in prompt; 1x leak: ['rest'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): shark -> model said 'MORPHY' (1/10); frog -> model said 'fly' (0/10); snail -> model said 'Squid' (0/10); milk -> model said 'COW' (3/10); apple -> model said 'apple' (6/10); spoon -> model said 'fork' (3/10); shoe -> model said 'shoes' (1/10); chair -> model said 'chair' (7/10); towel -> model said 'Rack' (4/10); moon -> model said 'Moon' (7/10); tree -> model said 'pine' (4/10); boat -> model said 'A boat' (5/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): horse; phone; sun; dragon; soap; map; king; car; soup; ocean",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w104c1-wb-easy2-ruler",
+   "prompt": "This flat straight stick has inches and centimeters marked along its edge. You use it in school to measure lines and draw them straight.",
+   "intermediates": [
+    "ruler"
+   ],
+   "aliases": [],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 104,
+    "steer": "- Last wave: 10/60 passed.\n- Rejected by lint before gating: 1x leak: ['jet'] in prompt; 1x leak: ['spirit'] in prompt; 1x leak: ['peak'] in prompt; 1x leak: ['rest'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): shark -> model said 'MORPHY' (1/10); frog -> model said 'fly' (0/10); snail -> model said 'Squid' (0/10); milk -> model said 'COW' (3/10); apple -> model said 'apple' (6/10); spoon -> model said 'fork' (3/10); shoe -> model said 'shoes' (1/10); chair -> model said 'chair' (7/10); towel -> model said 'Rack' (4/10); moon -> model said 'Moon' (7/10); tree -> model said 'pine' (4/10); boat -> model said 'A boat' (5/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): horse; phone; sun; dragon; soap; map; king; car; soup; ocean",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w104c2-wb-easy-thunder",
+   "prompt": "This loud booming sound rumbles across the sky during a storm. You hear it right after a flash of lightning.",
+   "intermediates": [
+    "thunder"
+   ],
+   "aliases": [
+    "thunderclap"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 104,
+    "steer": "- Last wave: 10/60 passed.\n- Rejected by lint before gating: 1x leak: ['jet'] in prompt; 1x leak: ['spirit'] in prompt; 1x leak: ['peak'] in prompt; 1x leak: ['rest'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): shark -> model said 'MORPHY' (1/10); frog -> model said 'fly' (0/10); snail -> model said 'Squid' (0/10); milk -> model said 'COW' (3/10); apple -> model said 'apple' (6/10); spoon -> model said 'fork' (3/10); shoe -> model said 'shoes' (1/10); chair -> model said 'chair' (7/10); towel -> model said 'Rack' (4/10); moon -> model said 'Moon' (7/10); tree -> model said 'pine' (4/10); boat -> model said 'A boat' (5/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): horse; phone; sun; dragon; soap; map; king; car; soup; ocean",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w105c0-wb-easy2-orange",
+   "prompt": "This round citrus fruit has the same name as its color. You peel its thick skin or squeeze it for breakfast juice.",
+   "intermediates": [
+    "orange"
+   ],
+   "aliases": [
+    "oranges",
+    "tangerine",
+    "mandarin"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 105,
+    "steer": "- Last wave: 7/60 passed.\n- Rejected by lint before gating: 1x leak: ['bones'] in prompt; 1x leak: ['pendant', 'chain'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): tiger -> model said 'tiger' (6/10); whale -> model said 'Whale' (6/10); camel -> model said 'A camel' (1/10); parrot -> model said 'Pirates' (0/10); grapes -> model said 'raspberries' (0/10); corn -> model said 'peppers' (4/10); toilet -> model said 'flush' (0/10); bell -> model said 'bell' (3/10); flag -> model said 'flag' (1/10); puzzle -> model said 'cardboard' (0/10); queen -> model said 'Queen' (4/10); witch -> model said 'A witch' (3/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): calendar; robot; pyramid; heart; bandage; ruler; thunder",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w105c0-wb-easy2-nose",
+   "prompt": "This part of your face sits between your eyes and your mouth. You smell flowers with it, and it runs when you have a cold.",
+   "intermediates": [
+    "nose"
+   ],
+   "aliases": [
+    "nostrils"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 105,
+    "steer": "- Last wave: 7/60 passed.\n- Rejected by lint before gating: 1x leak: ['bones'] in prompt; 1x leak: ['pendant', 'chain'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): tiger -> model said 'tiger' (6/10); whale -> model said 'Whale' (6/10); camel -> model said 'A camel' (1/10); parrot -> model said 'Pirates' (0/10); grapes -> model said 'raspberries' (0/10); corn -> model said 'peppers' (4/10); toilet -> model said 'flush' (0/10); bell -> model said 'bell' (3/10); flag -> model said 'flag' (1/10); puzzle -> model said 'cardboard' (0/10); queen -> model said 'Queen' (4/10); witch -> model said 'A witch' (3/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): calendar; robot; pyramid; heart; bandage; ruler; thunder",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w105c0-wb-easy2-motorcycle",
+   "prompt": "This two-wheeled vehicle has a loud engine and handlebars. The rider wears a helmet and zooms down the road.",
+   "intermediates": [
+    "motorcycle"
+   ],
+   "aliases": [
+    "motorbike",
+    "bike",
+    "scooter"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 105,
+    "steer": "- Last wave: 7/60 passed.\n- Rejected by lint before gating: 1x leak: ['bones'] in prompt; 1x leak: ['pendant', 'chain'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): tiger -> model said 'tiger' (6/10); whale -> model said 'Whale' (6/10); camel -> model said 'A camel' (1/10); parrot -> model said 'Pirates' (0/10); grapes -> model said 'raspberries' (0/10); corn -> model said 'peppers' (4/10); toilet -> model said 'flush' (0/10); bell -> model said 'bell' (3/10); flag -> model said 'flag' (1/10); puzzle -> model said 'cardboard' (0/10); queen -> model said 'Queen' (4/10); witch -> model said 'A witch' (3/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): calendar; robot; pyramid; heart; bandage; ruler; thunder",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w105c0-wb-easy2-goldfish",
+   "prompt": "This small shiny orange pet swims around in a round glass bowl. Kids sprinkle food flakes on the water to feed it.",
+   "intermediates": [
+    "goldfish"
+   ],
+   "aliases": [
+    "fish",
+    "pet fish"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 105,
+    "steer": "- Last wave: 7/60 passed.\n- Rejected by lint before gating: 1x leak: ['bones'] in prompt; 1x leak: ['pendant', 'chain'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): tiger -> model said 'tiger' (6/10); whale -> model said 'Whale' (6/10); camel -> model said 'A camel' (1/10); parrot -> model said 'Pirates' (0/10); grapes -> model said 'raspberries' (0/10); corn -> model said 'peppers' (4/10); toilet -> model said 'flush' (0/10); bell -> model said 'bell' (3/10); flag -> model said 'flag' (1/10); puzzle -> model said 'cardboard' (0/10); queen -> model said 'Queen' (4/10); witch -> model said 'A witch' (3/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): calendar; robot; pyramid; heart; bandage; ruler; thunder",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w105c0-wb-easy2-sunglasses",
+   "prompt": "You wear these dark lenses over your eyes on bright days at the beach. They protect your eyes from the strong sunlight.",
+   "intermediates": [
+    "sunglasses"
+   ],
+   "aliases": [
+    "shades",
+    "sunnies"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 105,
+    "steer": "- Last wave: 7/60 passed.\n- Rejected by lint before gating: 1x leak: ['bones'] in prompt; 1x leak: ['pendant', 'chain'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): tiger -> model said 'tiger' (6/10); whale -> model said 'Whale' (6/10); camel -> model said 'A camel' (1/10); parrot -> model said 'Pirates' (0/10); grapes -> model said 'raspberries' (0/10); corn -> model said 'peppers' (4/10); toilet -> model said 'flush' (0/10); bell -> model said 'bell' (3/10); flag -> model said 'flag' (1/10); puzzle -> model said 'cardboard' (0/10); queen -> model said 'Queen' (4/10); witch -> model said 'A witch' (3/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): calendar; robot; pyramid; heart; bandage; ruler; thunder",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t2-w105c1-association-easy-eye-see",
+   "prompt": "You use these two body parts to see the world around you. You blink them, and tears can fall from them when you cry.",
+   "intermediates": [
+    "eye"
+   ],
+   "aliases": [
+    "eyes"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for qwen3.5-0.8b: Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t2",
+    "knobs": {
+     "brief": "Make the cues nearly defining (anvil + horseshoe + sparks -> blacksmithing): very common concepts a ten-year-old knows, two short sentences, no metaphor."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 105,
+    "steer": "- Last wave: 7/60 passed.\n- Rejected by lint before gating: 1x leak: ['bones'] in prompt; 1x leak: ['pendant', 'chain'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): tiger -> model said 'tiger' (6/10); whale -> model said 'Whale' (6/10); camel -> model said 'A camel' (1/10); parrot -> model said 'Pirates' (0/10); grapes -> model said 'raspberries' (0/10); corn -> model said 'peppers' (4/10); toilet -> model said 'flush' (0/10); bell -> model said 'bell' (3/10); flag -> model said 'flag' (1/10); puzzle -> model said 'cardboard' (0/10); queen -> model said 'Queen' (4/10); witch -> model said 'A witch' (3/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): calendar; robot; pyramid; heart; bandage; ruler; thunder",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  }
+ ]
+}

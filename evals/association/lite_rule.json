@@ -1,0 +1,64 @@
+{
+ "lite_positions": {
+  "kind": "same"
+ },
+ "procedure": "plan 0032 \u00a72.6",
+ "table": {
+  "family": "association",
+  "n_gold_lines_pooled": 5271,
+  "candidates": [
+   {
+    "k": 1,
+    "rule": {
+     "kind": "final_token"
+    },
+    "pooled_share": 0.07512805919180421,
+    "share_final-olens-rl600-x4": 0.07512805919180421
+   },
+   {
+    "k": 7,
+    "rule": {
+     "kind": "offset_from_end",
+     "k": 7
+    },
+    "pooled_share": 0.2650350977044204,
+    "share_final-olens-rl600-x4": 0.2650350977044204
+   },
+   {
+    "k": 8,
+    "rule": {
+     "kind": "offset_from_end",
+     "k": 8
+    },
+    "pooled_share": 0.16031113640675393,
+    "share_final-olens-rl600-x4": 0.16031113640675393
+   },
+   {
+    "k": 16,
+    "rule": {
+     "kind": "offset_from_end",
+     "k": 16
+    },
+    "pooled_share": 0.14209827357237717,
+    "share_final-olens-rl600-x4": 0.14209827357237717
+   }
+  ],
+  "chosen": {
+   "kind": "offset_from_end",
+   "k": 7
+  },
+  "rule": "highest pooled share; replaces final_token only by > 10% absolute"
+ },
+ "arms": [
+  "final-olens-rl600-x4"
+ ],
+ "arms_note": "Round 3 (2026-10-31): measured on the lens of record only (decision Q1 revised: agu18dec/final_olens lens_rl_step600, bullet4), whose reads=full all-layer judged run is the one on disk; the s3d / jlens / mlnla reads=full all-layer runs the pre-registration names were not produced in this campaign. k=7 is the <|im_start|> of the assistant header (the 7th token from the end of the Qwen chat tail). Raw-sample corroboration over the same readouts (samples naming a gold listed form, by offset): k=7 0.796 of samples / 92 of 93 items, k=8 0.556, k=17 0.485, k=16 0.454, k=10 0.368, k=5 0.337, k=1 (final token) 0.255 / 84 items.",
+ "decision": "Camila r2 (2026-11-01, 'Make lite subset all positions'): association lite reads ALL 19 positions of the summary request (the same positions as reads=full: the suffix 'Summarize the preceding story in one sentence.' plus the chat tail), at every grid layer, so for this family reads=lite selects exactly the reads=full cells; a lite run differs from full only in its '+reads-lite' stamp. The round-3 support-share table below (which chose offset_from_end k=7) is kept as the measurement record; its choice is superseded.",
+ "superseded": {
+  "lite_positions": {
+   "kind": "offset_from_end",
+   "k": 7
+  },
+  "round": "3 (2026-10-31)"
+ }
+}

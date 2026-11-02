@@ -455,3 +455,32 @@ def test_anthropic_temperature_dropped_with_one_warning(keys, fast, monkeypatch,
     fake2 = FakeAnthropic([_claude_response('{"a": 1}')])
     _collect([("s", "u")], CLAUDE, fake2, monkeypatch)
     assert "temperature" not in capsys.readouterr().out
+
+
+def test_ant_profile_is_opt_in(monkeypatch):
+    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    monkeypatch.setenv("ANTHROPIC_PROFILE", "default")
+    assert llm.api_key(CLAUDE) == ""  # the SDK resolves the profile
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "sk-ant-ok")
+    assert llm.api_key(CLAUDE) == "sk-ant-ok"  # an explicit key still wins
+
+
+def test_anthropic_schema_drops_numeric_bounds():
+    s = {
+        "type": "object",
+        "properties": {"score": {"type": "integer", "minimum": 1, "maximum": 10}},
+        "required": ["score"],
+    }
+    out = llm.anthropic_schema(s)
+    assert out["properties"]["score"] == {"type": "integer"} and out["required"] == ["score"]
+    assert s["properties"]["score"]["minimum"] == 1  # the input is not mutated
+
+
+def test_anthropic_effort_default_low_and_family_override():
+    from wsbench.llm import anthropic_effort
+
+    assert anthropic_effort("claude-opus-5-5", None) == {"effort": "low"}
+    assert anthropic_effort("claude-opus-5-5", {"anthropic_effort": "default"}) == {}
+    assert anthropic_effort("claude-opus-5-5", {"anthropic_effort": "high"}) == {"effort": "high"}
+    assert anthropic_effort("claude-opus-5-5", {"effort": "x"}) == {"effort": "low"}  # OR key
+    assert anthropic_effort("claude-sonnet-5", None) == {}

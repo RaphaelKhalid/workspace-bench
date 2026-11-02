@@ -1,0 +1,3300 @@
+{
+ "family": "association",
+ "gate": "Qwen3.6-27B behavioral: >=8/10 correct at temp 0.7 (greedy-verified first); association scored against association_aliases.json (phrase-aware, echo-guarded); poetry scored by committed rhyme",
+ "eval_render_note": "EVAL RENDER: feed `prompt` verbatim as plain text, NO chat template (directed-modulation is the only chat-templated family). `gate_variant` records how the item was behaviorally verified and does NOT affect the eval read.",
+ "adapt": {
+  "model": "olmo-3-7b",
+  "hf_id": "allenai/Olmo-3-7B-Instruct",
+  "frozen": "2026-10-24"
+ },
+ "items": [
+  {
+   "name": "bf-fire",
+   "prompt": "Smoke curled under the door, the alarm shrieked, and the extinguisher's pin was already pulled.",
+   "intermediates": [
+    "fire"
+   ],
+   "source": "staging",
+   "consistency": 1.0,
+   "gate_variant": "referent",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "bf-fire",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "bf-snow",
+   "prompt": "The plows worked all night, and by morning every roof and branch wore a heavy white blanket.",
+   "intermediates": [
+    "snow"
+   ],
+   "source": "staging",
+   "consistency": 1.0,
+   "gate_variant": "referent",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "bf-snow",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "bf2-lighthouse",
+   "prompt": "He climbed the spiral stairs at dusk to light the lamp, and all night the beam swept the rocks where the ships used to die.",
+   "intermediates": [
+    "lighthouse"
+   ],
+   "source": "staging",
+   "consistency": 1.0,
+   "gate_variant": "referent",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "bf2-lighthouse",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "b3-as-vaccination",
+   "prompt": "The nurse rolled up the little boy's sleeve, told him to look at the poster, and it was over before he cried.",
+   "intermediates": [
+    "vaccination"
+   ],
+   "source": "staging_b3",
+   "consistency": 1.0,
+   "gate_variant": "referent",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "b3-as-vaccination",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "bf2-volcano",
+   "prompt": "The mountain had smoked for a week, and now the villagers watched the orange glow crest the ridge at midnight.",
+   "intermediates": [
+    "volcano"
+   ],
+   "source": "staging",
+   "consistency": 0.9,
+   "gate_variant": "referent",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "bf2-volcano",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "bf2-submarine",
+   "prompt": "The captain called for periscope depth, and the only sounds were the sonar's ping and the hum of the reactor.",
+   "intermediates": [
+    "submarine"
+   ],
+   "source": "staging",
+   "consistency": 0.8,
+   "gate_variant": "referent",
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "id": "bf2-submarine",
+   "adapt": {
+    "origin": "original",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w100c0-ez-swimming",
+   "prompt": "She tucked her hair into a rubber cap, adjusted her goggles, and did flip turns at each end of the chlorinated pool lane.",
+   "intermediates": [
+    "swimming"
+   ],
+   "aliases": [
+    "swim",
+    "lap swimming",
+    "swimmer"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w100c0-ez-sushi",
+   "prompt": "The chef pressed vinegared rice into small ovals, draped slices of raw salmon on top, and served them with wasabi, pickled ginger and soy sauce.",
+   "intermediates": [
+    "sushi"
+   ],
+   "aliases": [
+    "nigiri",
+    "sashimi",
+    "maki"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w100c0-ez-pancakes",
+   "prompt": "On Sunday morning he flipped the golden rounds on the griddle, stacked them high, and drowned them in maple syrup with a pat of butter.",
+   "intermediates": [
+    "pancakes"
+   ],
+   "aliases": [
+    "pancake",
+    "flapjacks",
+    "hotcakes"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w100c0-ez-plumber",
+   "prompt": "The man in overalls crawled under the sink with a pipe wrench, cleared the clogged drain, and fixed the dripping faucet before handing over his invoice.",
+   "intermediates": [
+    "plumber"
+   ],
+   "aliases": [
+    "plumbing"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w100c0-ez-thanksgiving",
+   "prompt": "The family gathered on the fourth Thursday of November around a roast turkey, cranberry sauce and pumpkin pie, then watched football on the couch.",
+   "intermediates": [
+    "Thanksgiving"
+   ],
+   "aliases": [
+    "Turkey Day"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w100c0-ez-hanukkah",
+   "prompt": "On each of eight winter nights the family lit one more candle on the menorah, spun the dreidel for chocolate coins and fried potato latkes.",
+   "intermediates": [
+    "Hanukkah"
+   ],
+   "aliases": [
+    "Chanukah",
+    "Hanukah",
+    "Festival of Lights"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w100c0-ez-umbrella",
+   "prompt": "When the clouds burst, she pressed the button and the black canopy snapped open over her head, its thin metal ribs keeping her dry on the walk home.",
+   "intermediates": [
+    "umbrella"
+   ],
+   "aliases": [
+    "brolly",
+    "parasol"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w100c0-ez-refrigerator",
+   "prompt": "He opened the humming kitchen appliance, the little light clicked on, and cold air spilled out over the milk, the leftovers and the vegetable crisper drawer.",
+   "intermediates": [
+    "refrigerator"
+   ],
+   "aliases": [
+    "fridge",
+    "icebox"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w100c0-ez-bicycle",
+   "prompt": "She pumped up the tires, buckled her helmet, and pedaled uphill, shifting gears as the chain clicked across the rear sprockets.",
+   "intermediates": [
+    "bicycle"
+   ],
+   "aliases": [
+    "bike",
+    "cycling",
+    "biking"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w100c0-ez-gardening",
+   "prompt": "Every spring she knelt in the soil with a trowel, planted tomato seedlings, pulled weeds and watered the rows of beans with a hose.",
+   "intermediates": [
+    "gardening"
+   ],
+   "aliases": [
+    "garden",
+    "gardener"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w100c1-ws-easy-surfing",
+   "prompt": "She paddled out on her board past the breakers, waited for the perfect wave, then popped up and rode it all the way to the shore.",
+   "intermediates": [
+    "surfing"
+   ],
+   "aliases": [
+    "surf",
+    "surfer",
+    "wave riding"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w100c1-ws-easy-popcorn",
+   "prompt": "The kernels began bursting in the hot pot, and soon a big bowl of fluffy white puffs dripping with melted butter was ready for the movie.",
+   "intermediates": [
+    "popcorn"
+   ],
+   "aliases": [
+    "popped corn",
+    "pop corn"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w100c1-ws-easy-hamburger",
+   "prompt": "He flipped the beef patty on the grill, laid a slice of cheese on top, and tucked it into a sesame bun with ketchup, lettuce, and pickles.",
+   "intermediates": [
+    "hamburger"
+   ],
+   "aliases": [
+    "burger",
+    "cheeseburger"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w100c1-ws-easy-laundromat",
+   "prompt": "Rows of coin-operated washers hummed and spun while people folded warm shirts from the dryers and waited with magazines on plastic chairs.",
+   "intermediates": [
+    "laundromat"
+   ],
+   "aliases": [
+    "laundrette",
+    "launderette",
+    "laundry"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w100c1-ws-easy-circus",
+   "prompt": "Under the big striped tent, clowns tumbled out of a tiny car, a ringmaster in a red coat cracked his whip, and acrobats swung from the trapeze.",
+   "intermediates": [
+    "circus"
+   ],
+   "aliases": [
+    "big top"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w100c1-ws-easy-kite",
+   "prompt": "On the windy hilltop, the boy held tight to the string as his diamond of paper and sticks with a long ribbon tail soared high above the trees.",
+   "intermediates": [
+    "kite"
+   ],
+   "aliases": [
+    "kite flying"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w100c1-ws-easy-scissors",
+   "prompt": "She slipped her thumb and fingers through the two plastic loops and snipped along the dotted line, the twin metal blades closing with a crisp sound.",
+   "intermediates": [
+    "scissors"
+   ],
+   "aliases": [
+    "shears"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w100c1-ws-easy-picnic",
+   "prompt": "We spread a checkered blanket on the grass in the park, unpacked sandwiches and lemonade from the wicker basket, and shooed away the ants.",
+   "intermediates": [
+    "picnic"
+   ],
+   "aliases": [
+    "picnicking"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w100c1-ws-easy-valentine",
+   "prompt": "Every February 14th, couples trade heart-shaped boxes of chocolates, red roses, and little cards signed with hugs and kisses.",
+   "intermediates": [
+    "valentine"
+   ],
+   "aliases": [
+    "Valentine's Day",
+    "Valentines",
+    "Saint Valentine's Day"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w100c1-ws-easy-elevator",
+   "prompt": "The doors slid shut, she pressed the button for the twelfth floor, and the little car hummed upward while soft music played.",
+   "intermediates": [
+    "elevator"
+   ],
+   "aliases": [
+    "lift"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w100c2-ws-darts",
+   "prompt": "In the pub corner he toed the line, squinted at the round cork board, and aimed his third feathered throw at the treble twenty.",
+   "intermediates": [
+    "darts"
+   ],
+   "aliases": [
+    "dart",
+    "dartboard"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w100c2-ws-veterinarian",
+   "prompt": "She checked the dog's teeth, listened to the cat's heartbeat, and gave the nervous rabbit its shots before the next pet owner arrived.",
+   "intermediates": [
+    "veterinarian"
+   ],
+   "aliases": [
+    "vet",
+    "animal doctor"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w100c2-ws-aquarium",
+   "prompt": "Sharks glided overhead through the clear glass tunnel while kids pressed their noses against the glowing jellyfish tanks and watched the penguins being fed.",
+   "intermediates": [
+    "aquarium"
+   ],
+   "aliases": [
+    "sea life center",
+    "oceanarium"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w100c2-ws-lawnmower",
+   "prompt": "Every Saturday he yanked the pull cord, the engine roared, and he pushed it in neat stripes across the grass while the bag filled with clippings.",
+   "intermediates": [
+    "lawnmower"
+   ],
+   "aliases": [
+    "mower",
+    "lawn mower"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w100c2-ws-violin",
+   "prompt": "She tucked the wooden instrument under her chin, rosined the bow, and drew it across four strings for her solo with the orchestra.",
+   "intermediates": [
+    "violin"
+   ],
+   "aliases": [
+    "fiddle"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w100c2-ws-karaoke",
+   "prompt": "She grabbed the microphone, squinted at the lyrics scrolling across the bar's screen, and belted out a power ballad off-key while her friends cheered.",
+   "intermediates": [
+    "karaoke"
+   ],
+   "aliases": [
+    "karaoke night",
+    "singalong"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w100c2-ws-origami",
+   "prompt": "He creased the square sheet of paper again and again, never using glue or making a single cut, until a tiny crane with pointed wings emerged.",
+   "intermediates": [
+    "origami"
+   ],
+   "aliases": [
+    "paper folding",
+    "paper crane"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w100c2-ws-diwali",
+   "prompt": "Families lit rows of small clay oil lamps, drew colorful rangoli at the doorway, and shared sweets as the Hindu festival of lights began.",
+   "intermediates": [
+    "Diwali"
+   ],
+   "aliases": [
+    "Deepavali",
+    "Divali"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 100,
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w101c0-association-ez-toaster",
+   "prompt": "She dropped two slices of bread into the slots, pushed down the lever, and a minute later they popped up golden brown and crisp, ready for butter.",
+   "intermediates": [
+    "toaster"
+   ],
+   "aliases": [
+    "toast",
+    "toasters",
+    "pop-up toaster"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 28/60 passed.\n- Failed (gold -> what the model wrote): bowling -> model said 'golf ball' (4/10); basketball -> model said 'buzzer-beater' (0/10); tacos -> model said 'hushpuppies' (1/10); airport -> model said 'line' (1/10); pharmacy -> model said 'prescription' (0/10); zoo -> model said 'the enclosure' (0/10); supermarket -> model said 'Cart' (1/10); mechanic -> model said 'car' (0/10); camping -> model said 'camp' (5/10); taxi -> model said 'a taxi' (6/10); soccer -> model said 'goal' (0/10); hockey -> model said 'game' (1/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): swimming; sushi; pancakes; plumber; Thanksgiving; Hanukkah; umbrella; refrigerator; bicycle; gardening; surfing; popcorn",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w101c0-association-ez-candle",
+   "prompt": "He struck a match and lit the wick, and the small flame flickered while melted wax slowly dripped down the sides of the white stick.",
+   "intermediates": [
+    "candle"
+   ],
+   "aliases": [
+    "candles",
+    "taper",
+    "candlelight"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 28/60 passed.\n- Failed (gold -> what the model wrote): bowling -> model said 'golf ball' (4/10); basketball -> model said 'buzzer-beater' (0/10); tacos -> model said 'hushpuppies' (1/10); airport -> model said 'line' (1/10); pharmacy -> model said 'prescription' (0/10); zoo -> model said 'the enclosure' (0/10); supermarket -> model said 'Cart' (1/10); mechanic -> model said 'car' (0/10); camping -> model said 'camp' (5/10); taxi -> model said 'a taxi' (6/10); soccer -> model said 'goal' (0/10); hockey -> model said 'game' (1/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): swimming; sushi; pancakes; plumber; Thanksgiving; Hanukkah; umbrella; refrigerator; bicycle; gardening; surfing; popcorn",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w101c0-association-ez-sandwich",
+   "prompt": "She layered ham, cheese, lettuce and tomato between two slices of bread, cut it diagonally, and packed it in her son's lunchbox.",
+   "intermediates": [
+    "sandwich"
+   ],
+   "aliases": [
+    "sandwiches",
+    "sub",
+    "hoagie"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 28/60 passed.\n- Failed (gold -> what the model wrote): bowling -> model said 'golf ball' (4/10); basketball -> model said 'buzzer-beater' (0/10); tacos -> model said 'hushpuppies' (1/10); airport -> model said 'line' (1/10); pharmacy -> model said 'prescription' (0/10); zoo -> model said 'the enclosure' (0/10); supermarket -> model said 'Cart' (1/10); mechanic -> model said 'car' (0/10); camping -> model said 'camp' (5/10); taxi -> model said 'a taxi' (6/10); soccer -> model said 'goal' (0/10); hockey -> model said 'game' (1/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): swimming; sushi; pancakes; plumber; Thanksgiving; Hanukkah; umbrella; refrigerator; bicycle; gardening; surfing; popcorn",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w101c0-association-ez-snowman",
+   "prompt": "The kids rolled three big frosty balls across the white yard, stacked them up, and gave the figure a carrot nose, coal eyes and an old scarf.",
+   "intermediates": [
+    "snowman"
+   ],
+   "aliases": [
+    "snowmen",
+    "snow figure"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 28/60 passed.\n- Failed (gold -> what the model wrote): bowling -> model said 'golf ball' (4/10); basketball -> model said 'buzzer-beater' (0/10); tacos -> model said 'hushpuppies' (1/10); airport -> model said 'line' (1/10); pharmacy -> model said 'prescription' (0/10); zoo -> model said 'the enclosure' (0/10); supermarket -> model said 'Cart' (1/10); mechanic -> model said 'car' (0/10); camping -> model said 'camp' (5/10); taxi -> model said 'a taxi' (6/10); soccer -> model said 'goal' (0/10); hockey -> model said 'game' (1/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): swimming; sushi; pancakes; plumber; Thanksgiving; Hanukkah; umbrella; refrigerator; bicycle; gardening; surfing; popcorn",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w101c0-association-ez-donut",
+   "prompt": "The fried ring of sweet pastry with a hole in the middle was dipped in pink glaze, covered in sprinkles, and sold by the dozen in a cardboard box.",
+   "intermediates": [
+    "donut"
+   ],
+   "aliases": [
+    "doughnut",
+    "donuts",
+    "doughnuts"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 28/60 passed.\n- Failed (gold -> what the model wrote): bowling -> model said 'golf ball' (4/10); basketball -> model said 'buzzer-beater' (0/10); tacos -> model said 'hushpuppies' (1/10); airport -> model said 'line' (1/10); pharmacy -> model said 'prescription' (0/10); zoo -> model said 'the enclosure' (0/10); supermarket -> model said 'Cart' (1/10); mechanic -> model said 'car' (0/10); camping -> model said 'camp' (5/10); taxi -> model said 'a taxi' (6/10); soccer -> model said 'goal' (0/10); hockey -> model said 'game' (1/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): swimming; sushi; pancakes; plumber; Thanksgiving; Hanukkah; umbrella; refrigerator; bicycle; gardening; surfing; popcorn",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w101c0-association-ez-playground",
+   "prompt": "The children raced from the swings to the slide, climbed the monkey bars, dug in the sandbox, and bounced on the seesaw while parents watched from benches.",
+   "intermediates": [
+    "playground"
+   ],
+   "aliases": [
+    "playgrounds",
+    "park",
+    "jungle gym"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 28/60 passed.\n- Failed (gold -> what the model wrote): bowling -> model said 'golf ball' (4/10); basketball -> model said 'buzzer-beater' (0/10); tacos -> model said 'hushpuppies' (1/10); airport -> model said 'line' (1/10); pharmacy -> model said 'prescription' (0/10); zoo -> model said 'the enclosure' (0/10); supermarket -> model said 'Cart' (1/10); mechanic -> model said 'car' (0/10); camping -> model said 'camp' (5/10); taxi -> model said 'a taxi' (6/10); soccer -> model said 'goal' (0/10); hockey -> model said 'game' (1/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): swimming; sushi; pancakes; plumber; Thanksgiving; Hanukkah; umbrella; refrigerator; bicycle; gardening; surfing; popcorn",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w101c0-association-ez-lasagna",
+   "prompt": "He stacked flat sheets of pasta with meat sauce, ricotta and mozzarella in a rectangular pan, repeated the layers, and baked it until the cheese bubbled.",
+   "intermediates": [
+    "lasagna"
+   ],
+   "aliases": [
+    "lasagne"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 28/60 passed.\n- Failed (gold -> what the model wrote): bowling -> model said 'golf ball' (4/10); basketball -> model said 'buzzer-beater' (0/10); tacos -> model said 'hushpuppies' (1/10); airport -> model said 'line' (1/10); pharmacy -> model said 'prescription' (0/10); zoo -> model said 'the enclosure' (0/10); supermarket -> model said 'Cart' (1/10); mechanic -> model said 'car' (0/10); camping -> model said 'camp' (5/10); taxi -> model said 'a taxi' (6/10); soccer -> model said 'goal' (0/10); hockey -> model said 'game' (1/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): swimming; sushi; pancakes; plumber; Thanksgiving; Hanukkah; umbrella; refrigerator; bicycle; gardening; surfing; popcorn",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w101c0-association-ez-suitcase",
+   "prompt": "The night before the trip she folded her clothes inside, sat on the lid to zip it shut, then pulled up the handle and rolled it on its wheels to the check-in desk.",
+   "intermediates": [
+    "suitcase"
+   ],
+   "aliases": [
+    "luggage",
+    "suitcases",
+    "baggage",
+    "bag"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 28/60 passed.\n- Failed (gold -> what the model wrote): bowling -> model said 'golf ball' (4/10); basketball -> model said 'buzzer-beater' (0/10); tacos -> model said 'hushpuppies' (1/10); airport -> model said 'line' (1/10); pharmacy -> model said 'prescription' (0/10); zoo -> model said 'the enclosure' (0/10); supermarket -> model said 'Cart' (1/10); mechanic -> model said 'car' (0/10); camping -> model said 'camp' (5/10); taxi -> model said 'a taxi' (6/10); soccer -> model said 'goal' (0/10); hockey -> model said 'game' (1/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): swimming; sushi; pancakes; plumber; Thanksgiving; Hanukkah; umbrella; refrigerator; bicycle; gardening; surfing; popcorn",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w101c0-association-ez-vacuum",
+   "prompt": "He plugged in the roaring machine, pushed it back and forth across the carpet to suck up crumbs and pet hair, then emptied the dusty bin into the trash.",
+   "intermediates": [
+    "vacuum"
+   ],
+   "aliases": [
+    "vacuum cleaner",
+    "hoover",
+    "vacuuming"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 28/60 passed.\n- Failed (gold -> what the model wrote): bowling -> model said 'golf ball' (4/10); basketball -> model said 'buzzer-beater' (0/10); tacos -> model said 'hushpuppies' (1/10); airport -> model said 'line' (1/10); pharmacy -> model said 'prescription' (0/10); zoo -> model said 'the enclosure' (0/10); supermarket -> model said 'Cart' (1/10); mechanic -> model said 'car' (0/10); camping -> model said 'camp' (5/10); taxi -> model said 'a taxi' (6/10); soccer -> model said 'goal' (0/10); hockey -> model said 'game' (1/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): swimming; sushi; pancakes; plumber; Thanksgiving; Hanukkah; umbrella; refrigerator; bicycle; gardening; surfing; popcorn",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w101c0-association-ez-trampoline",
+   "prompt": "In the backyard the kids bounced higher and higher on the stretched black mat held by metal springs, doing flips inside the tall safety net.",
+   "intermediates": [
+    "trampoline"
+   ],
+   "aliases": [
+    "trampolines"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 28/60 passed.\n- Failed (gold -> what the model wrote): bowling -> model said 'golf ball' (4/10); basketball -> model said 'buzzer-beater' (0/10); tacos -> model said 'hushpuppies' (1/10); airport -> model said 'line' (1/10); pharmacy -> model said 'prescription' (0/10); zoo -> model said 'the enclosure' (0/10); supermarket -> model said 'Cart' (1/10); mechanic -> model said 'car' (0/10); camping -> model said 'camp' (5/10); taxi -> model said 'a taxi' (6/10); soccer -> model said 'goal' (0/10); hockey -> model said 'game' (1/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): swimming; sushi; pancakes; plumber; Thanksgiving; Hanukkah; umbrella; refrigerator; bicycle; gardening; surfing; popcorn",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w101c0-association-ez-thermometer",
+   "prompt": "The nurse slipped the thin glass stick under the boy's tongue, waited a minute, and read that his fever had climbed to 102 degrees.",
+   "intermediates": [
+    "thermometer"
+   ],
+   "aliases": [
+    "thermometers",
+    "fever thermometer"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 28/60 passed.\n- Failed (gold -> what the model wrote): bowling -> model said 'golf ball' (4/10); basketball -> model said 'buzzer-beater' (0/10); tacos -> model said 'hushpuppies' (1/10); airport -> model said 'line' (1/10); pharmacy -> model said 'prescription' (0/10); zoo -> model said 'the enclosure' (0/10); supermarket -> model said 'Cart' (1/10); mechanic -> model said 'car' (0/10); camping -> model said 'camp' (5/10); taxi -> model said 'a taxi' (6/10); soccer -> model said 'goal' (0/10); hockey -> model said 'game' (1/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): swimming; sushi; pancakes; plumber; Thanksgiving; Hanukkah; umbrella; refrigerator; bicycle; gardening; surfing; popcorn",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w101c1-association-ez-penguin",
+   "prompt": "This black-and-white bird cannot fly, waddles across Antarctic ice on short legs, and dives into the freezing sea to catch fish before huddling with thousands of others.",
+   "intermediates": [
+    "penguin"
+   ],
+   "aliases": [
+    "penguins",
+    "emperor penguin"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 28/60 passed.\n- Failed (gold -> what the model wrote): bowling -> model said 'golf ball' (4/10); basketball -> model said 'buzzer-beater' (0/10); tacos -> model said 'hushpuppies' (1/10); airport -> model said 'line' (1/10); pharmacy -> model said 'prescription' (0/10); zoo -> model said 'the enclosure' (0/10); supermarket -> model said 'Cart' (1/10); mechanic -> model said 'car' (0/10); camping -> model said 'camp' (5/10); taxi -> model said 'a taxi' (6/10); soccer -> model said 'goal' (0/10); hockey -> model said 'game' (1/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): swimming; sushi; pancakes; plumber; Thanksgiving; Hanukkah; umbrella; refrigerator; bicycle; gardening; surfing; popcorn",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w101c1-association-ez-giraffe",
+   "prompt": "The tallest animal on the African savanna stretched its enormously long neck to nibble acacia leaves, its tan coat covered in brown patches.",
+   "intermediates": [
+    "giraffe"
+   ],
+   "aliases": [
+    "giraffes"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 28/60 passed.\n- Failed (gold -> what the model wrote): bowling -> model said 'golf ball' (4/10); basketball -> model said 'buzzer-beater' (0/10); tacos -> model said 'hushpuppies' (1/10); airport -> model said 'line' (1/10); pharmacy -> model said 'prescription' (0/10); zoo -> model said 'the enclosure' (0/10); supermarket -> model said 'Cart' (1/10); mechanic -> model said 'car' (0/10); camping -> model said 'camp' (5/10); taxi -> model said 'a taxi' (6/10); soccer -> model said 'goal' (0/10); hockey -> model said 'game' (1/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): swimming; sushi; pancakes; plumber; Thanksgiving; Hanukkah; umbrella; refrigerator; bicycle; gardening; surfing; popcorn",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w101c1-association-ez-dolphin",
+   "prompt": "The sleek gray marine mammal leapt beside the boat, clicked and whistled to its pod, and seemed to grin with its beak-like snout.",
+   "intermediates": [
+    "dolphin"
+   ],
+   "aliases": [
+    "dolphins"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 28/60 passed.\n- Failed (gold -> what the model wrote): bowling -> model said 'golf ball' (4/10); basketball -> model said 'buzzer-beater' (0/10); tacos -> model said 'hushpuppies' (1/10); airport -> model said 'line' (1/10); pharmacy -> model said 'prescription' (0/10); zoo -> model said 'the enclosure' (0/10); supermarket -> model said 'Cart' (1/10); mechanic -> model said 'car' (0/10); camping -> model said 'camp' (5/10); taxi -> model said 'a taxi' (6/10); soccer -> model said 'goal' (0/10); hockey -> model said 'game' (1/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): swimming; sushi; pancakes; plumber; Thanksgiving; Hanukkah; umbrella; refrigerator; bicycle; gardening; surfing; popcorn",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w101c1-association-ez-burrito",
+   "prompt": "She laid a large flour tortilla flat, piled on rice, beans, grilled chicken, salsa and sour cream, then folded in the ends and rolled it into a fat cylinder wrapped in foil.",
+   "intermediates": [
+    "burrito"
+   ],
+   "aliases": [
+    "burritos"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 28/60 passed.\n- Failed (gold -> what the model wrote): bowling -> model said 'golf ball' (4/10); basketball -> model said 'buzzer-beater' (0/10); tacos -> model said 'hushpuppies' (1/10); airport -> model said 'line' (1/10); pharmacy -> model said 'prescription' (0/10); zoo -> model said 'the enclosure' (0/10); supermarket -> model said 'Cart' (1/10); mechanic -> model said 'car' (0/10); camping -> model said 'camp' (5/10); taxi -> model said 'a taxi' (6/10); soccer -> model said 'goal' (0/10); hockey -> model said 'game' (1/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): swimming; sushi; pancakes; plumber; Thanksgiving; Hanukkah; umbrella; refrigerator; bicycle; gardening; surfing; popcorn",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w101c1-association-ez-telescope",
+   "prompt": "He pointed the long tube toward the night sky, adjusted the eyepiece, and suddenly saw the craters of the moon and the rings of Saturn magnified up close.",
+   "intermediates": [
+    "telescope"
+   ],
+   "aliases": [
+    "telescopes"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 28/60 passed.\n- Failed (gold -> what the model wrote): bowling -> model said 'golf ball' (4/10); basketball -> model said 'buzzer-beater' (0/10); tacos -> model said 'hushpuppies' (1/10); airport -> model said 'line' (1/10); pharmacy -> model said 'prescription' (0/10); zoo -> model said 'the enclosure' (0/10); supermarket -> model said 'Cart' (1/10); mechanic -> model said 'car' (0/10); camping -> model said 'camp' (5/10); taxi -> model said 'a taxi' (6/10); soccer -> model said 'goal' (0/10); hockey -> model said 'game' (1/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): swimming; sushi; pancakes; plumber; Thanksgiving; Hanukkah; umbrella; refrigerator; bicycle; gardening; surfing; popcorn",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w101c1-association-ez-sunflower",
+   "prompt": "The towering garden plant had a huge head ringed with bright yellow petals that turned to follow the daylight, and its dark center later filled with striped seeds people roast as a snack.",
+   "intermediates": [
+    "sunflower"
+   ],
+   "aliases": [
+    "sunflowers"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 28/60 passed.\n- Failed (gold -> what the model wrote): bowling -> model said 'golf ball' (4/10); basketball -> model said 'buzzer-beater' (0/10); tacos -> model said 'hushpuppies' (1/10); airport -> model said 'line' (1/10); pharmacy -> model said 'prescription' (0/10); zoo -> model said 'the enclosure' (0/10); supermarket -> model said 'Cart' (1/10); mechanic -> model said 'car' (0/10); camping -> model said 'camp' (5/10); taxi -> model said 'a taxi' (6/10); soccer -> model said 'goal' (0/10); hockey -> model said 'game' (1/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): swimming; sushi; pancakes; plumber; Thanksgiving; Hanukkah; umbrella; refrigerator; bicycle; gardening; surfing; popcorn",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w101c1-association-ez-ladder",
+   "prompt": "He leaned the tall aluminum frame against the house and climbed it rung by rung up to the roof gutter while his wife held the base steady.",
+   "intermediates": [
+    "ladder"
+   ],
+   "aliases": [
+    "stepladder"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 28/60 passed.\n- Failed (gold -> what the model wrote): bowling -> model said 'golf ball' (4/10); basketball -> model said 'buzzer-beater' (0/10); tacos -> model said 'hushpuppies' (1/10); airport -> model said 'line' (1/10); pharmacy -> model said 'prescription' (0/10); zoo -> model said 'the enclosure' (0/10); supermarket -> model said 'Cart' (1/10); mechanic -> model said 'car' (0/10); camping -> model said 'camp' (5/10); taxi -> model said 'a taxi' (6/10); soccer -> model said 'goal' (0/10); hockey -> model said 'game' (1/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): swimming; sushi; pancakes; plumber; Thanksgiving; Hanukkah; umbrella; refrigerator; bicycle; gardening; surfing; popcorn",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w101c1-association-ez-parachute",
+   "prompt": "She jumped out of the plane at ten thousand feet, fell freely for a minute, then pulled the ripcord so a big nylon canopy opened above her and floated her gently to the ground.",
+   "intermediates": [
+    "parachute"
+   ],
+   "aliases": [
+    "skydiving",
+    "chute"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 28/60 passed.\n- Failed (gold -> what the model wrote): bowling -> model said 'golf ball' (4/10); basketball -> model said 'buzzer-beater' (0/10); tacos -> model said 'hushpuppies' (1/10); airport -> model said 'line' (1/10); pharmacy -> model said 'prescription' (0/10); zoo -> model said 'the enclosure' (0/10); supermarket -> model said 'Cart' (1/10); mechanic -> model said 'car' (0/10); camping -> model said 'camp' (5/10); taxi -> model said 'a taxi' (6/10); soccer -> model said 'goal' (0/10); hockey -> model said 'game' (1/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): swimming; sushi; pancakes; plumber; Thanksgiving; Hanukkah; umbrella; refrigerator; bicycle; gardening; surfing; popcorn",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w101c1-association-ez-pillow",
+   "prompt": "She fluffed the soft rectangle stuffed with feathers, slipped a fresh cotton case over it, and laid her head on it at the top of the bed.",
+   "intermediates": [
+    "pillow"
+   ],
+   "aliases": [
+    "cushion",
+    "pillows"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 28/60 passed.\n- Failed (gold -> what the model wrote): bowling -> model said 'golf ball' (4/10); basketball -> model said 'buzzer-beater' (0/10); tacos -> model said 'hushpuppies' (1/10); airport -> model said 'line' (1/10); pharmacy -> model said 'prescription' (0/10); zoo -> model said 'the enclosure' (0/10); supermarket -> model said 'Cart' (1/10); mechanic -> model said 'car' (0/10); camping -> model said 'camp' (5/10); taxi -> model said 'a taxi' (6/10); soccer -> model said 'goal' (0/10); hockey -> model said 'game' (1/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): swimming; sushi; pancakes; plumber; Thanksgiving; Hanukkah; umbrella; refrigerator; bicycle; gardening; surfing; popcorn",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w101c1-association-ez-kettle",
+   "prompt": "She filled it with water, set it on the stove, and waited until its spout whistled shrilly so she could pour boiling water over her tea bag.",
+   "intermediates": [
+    "kettle"
+   ],
+   "aliases": [
+    "teakettle",
+    "tea kettle"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 28/60 passed.\n- Failed (gold -> what the model wrote): bowling -> model said 'golf ball' (4/10); basketball -> model said 'buzzer-beater' (0/10); tacos -> model said 'hushpuppies' (1/10); airport -> model said 'line' (1/10); pharmacy -> model said 'prescription' (0/10); zoo -> model said 'the enclosure' (0/10); supermarket -> model said 'Cart' (1/10); mechanic -> model said 'car' (0/10); camping -> model said 'camp' (5/10); taxi -> model said 'a taxi' (6/10); soccer -> model said 'goal' (0/10); hockey -> model said 'game' (1/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): swimming; sushi; pancakes; plumber; Thanksgiving; Hanukkah; umbrella; refrigerator; bicycle; gardening; surfing; popcorn",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w101c1-association-ez-rainbow",
+   "prompt": "After the storm, a curved arc of red, orange, yellow, green, blue and violet bands stretched across the sky as sunlight shone through the lingering droplets.",
+   "intermediates": [
+    "rainbow"
+   ],
+   "aliases": [
+    "rainbows"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 28/60 passed.\n- Failed (gold -> what the model wrote): bowling -> model said 'golf ball' (4/10); basketball -> model said 'buzzer-beater' (0/10); tacos -> model said 'hushpuppies' (1/10); airport -> model said 'line' (1/10); pharmacy -> model said 'prescription' (0/10); zoo -> model said 'the enclosure' (0/10); supermarket -> model said 'Cart' (1/10); mechanic -> model said 'car' (0/10); camping -> model said 'camp' (5/10); taxi -> model said 'a taxi' (6/10); soccer -> model said 'goal' (0/10); hockey -> model said 'game' (1/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): swimming; sushi; pancakes; plumber; Thanksgiving; Hanukkah; umbrella; refrigerator; bicycle; gardening; surfing; popcorn",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w101c1-association-ez-firefighter",
+   "prompt": "Wearing a heavy helmet and an air tank, she jumped off the red truck with sirens blaring, unrolled the hose, and rushed into the smoking, burning building to rescue a family.",
+   "intermediates": [
+    "firefighter"
+   ],
+   "aliases": [
+    "fireman",
+    "firemen",
+    "firefighters"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 28/60 passed.\n- Failed (gold -> what the model wrote): bowling -> model said 'golf ball' (4/10); basketball -> model said 'buzzer-beater' (0/10); tacos -> model said 'hushpuppies' (1/10); airport -> model said 'line' (1/10); pharmacy -> model said 'prescription' (0/10); zoo -> model said 'the enclosure' (0/10); supermarket -> model said 'Cart' (1/10); mechanic -> model said 'car' (0/10); camping -> model said 'camp' (5/10); taxi -> model said 'a taxi' (6/10); soccer -> model said 'goal' (0/10); hockey -> model said 'game' (1/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): swimming; sushi; pancakes; plumber; Thanksgiving; Hanukkah; umbrella; refrigerator; bicycle; gardening; surfing; popcorn",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w101c1-association-ez-parade",
+   "prompt": "Crowds lined Main Street as marching bands, decorated floats, waving clowns and giant balloons rolled slowly past, while kids caught candy tossed from the passing trucks.",
+   "intermediates": [
+    "parade"
+   ],
+   "aliases": [
+    "procession",
+    "parades"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 28/60 passed.\n- Failed (gold -> what the model wrote): bowling -> model said 'golf ball' (4/10); basketball -> model said 'buzzer-beater' (0/10); tacos -> model said 'hushpuppies' (1/10); airport -> model said 'line' (1/10); pharmacy -> model said 'prescription' (0/10); zoo -> model said 'the enclosure' (0/10); supermarket -> model said 'Cart' (1/10); mechanic -> model said 'car' (0/10); camping -> model said 'camp' (5/10); taxi -> model said 'a taxi' (6/10); soccer -> model said 'goal' (0/10); hockey -> model said 'game' (1/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): swimming; sushi; pancakes; plumber; Thanksgiving; Hanukkah; umbrella; refrigerator; bicycle; gardening; surfing; popcorn",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w101c2-association-ez2-igloo",
+   "prompt": "The Inuit hunter cut blocks of packed snow with a long knife and stacked them in a spiraling dome, leaving a low tunnel entrance to keep out the Arctic wind.",
+   "intermediates": [
+    "igloo"
+   ],
+   "aliases": [
+    "snow house",
+    "snowhouse",
+    "iglu"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 28/60 passed.\n- Failed (gold -> what the model wrote): bowling -> model said 'golf ball' (4/10); basketball -> model said 'buzzer-beater' (0/10); tacos -> model said 'hushpuppies' (1/10); airport -> model said 'line' (1/10); pharmacy -> model said 'prescription' (0/10); zoo -> model said 'the enclosure' (0/10); supermarket -> model said 'Cart' (1/10); mechanic -> model said 'car' (0/10); camping -> model said 'camp' (5/10); taxi -> model said 'a taxi' (6/10); soccer -> model said 'goal' (0/10); hockey -> model said 'game' (1/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): swimming; sushi; pancakes; plumber; Thanksgiving; Hanukkah; umbrella; refrigerator; bicycle; gardening; surfing; popcorn",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w101c2-association-ez2-windmill",
+   "prompt": "On the flat Dutch countryside, four huge canvas-covered sails turned slowly in the breeze, driving the heavy stones inside the tall brick tower that ground grain into flour.",
+   "intermediates": [
+    "windmill"
+   ],
+   "aliases": [
+    "mill",
+    "dutch windmill"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 28/60 passed.\n- Failed (gold -> what the model wrote): bowling -> model said 'golf ball' (4/10); basketball -> model said 'buzzer-beater' (0/10); tacos -> model said 'hushpuppies' (1/10); airport -> model said 'line' (1/10); pharmacy -> model said 'prescription' (0/10); zoo -> model said 'the enclosure' (0/10); supermarket -> model said 'Cart' (1/10); mechanic -> model said 'car' (0/10); camping -> model said 'camp' (5/10); taxi -> model said 'a taxi' (6/10); soccer -> model said 'goal' (0/10); hockey -> model said 'game' (1/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): swimming; sushi; pancakes; plumber; Thanksgiving; Hanukkah; umbrella; refrigerator; bicycle; gardening; surfing; popcorn",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w101c2-association-ez2-typewriter",
+   "prompt": "Each key struck a metal arm that hammered an inked ribbon onto the paper, and a bell dinged when she reached the margin and slammed the carriage return.",
+   "intermediates": [
+    "typewriter"
+   ],
+   "aliases": [
+    "typewriting",
+    "typing machine"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 28/60 passed.\n- Failed (gold -> what the model wrote): bowling -> model said 'golf ball' (4/10); basketball -> model said 'buzzer-beater' (0/10); tacos -> model said 'hushpuppies' (1/10); airport -> model said 'line' (1/10); pharmacy -> model said 'prescription' (0/10); zoo -> model said 'the enclosure' (0/10); supermarket -> model said 'Cart' (1/10); mechanic -> model said 'car' (0/10); camping -> model said 'camp' (5/10); taxi -> model said 'a taxi' (6/10); soccer -> model said 'goal' (0/10); hockey -> model said 'game' (1/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): swimming; sushi; pancakes; plumber; Thanksgiving; Hanukkah; umbrella; refrigerator; bicycle; gardening; surfing; popcorn",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w101c2-association-ez2-tattoo",
+   "prompt": "The artist wiped my forearm, the buzzing needle pushed ink under the skin, and the design of a rose would stay there permanently.",
+   "intermediates": [
+    "tattoo"
+   ],
+   "aliases": [
+    "tattooing",
+    "tattoos",
+    "tat"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 28/60 passed.\n- Failed (gold -> what the model wrote): bowling -> model said 'golf ball' (4/10); basketball -> model said 'buzzer-beater' (0/10); tacos -> model said 'hushpuppies' (1/10); airport -> model said 'line' (1/10); pharmacy -> model said 'prescription' (0/10); zoo -> model said 'the enclosure' (0/10); supermarket -> model said 'Cart' (1/10); mechanic -> model said 'car' (0/10); camping -> model said 'camp' (5/10); taxi -> model said 'a taxi' (6/10); soccer -> model said 'goal' (0/10); hockey -> model said 'game' (1/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): swimming; sushi; pancakes; plumber; Thanksgiving; Hanukkah; umbrella; refrigerator; bicycle; gardening; surfing; popcorn",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w101c2-association-ez2-cactus",
+   "prompt": "The spiny plant stood in the dry Arizona sand, storing water in its thick ribbed trunk, with arms raised and needles instead of leaves.",
+   "intermediates": [
+    "cactus"
+   ],
+   "aliases": [
+    "saguaro",
+    "cacti",
+    "succulent"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 28/60 passed.\n- Failed (gold -> what the model wrote): bowling -> model said 'golf ball' (4/10); basketball -> model said 'buzzer-beater' (0/10); tacos -> model said 'hushpuppies' (1/10); airport -> model said 'line' (1/10); pharmacy -> model said 'prescription' (0/10); zoo -> model said 'the enclosure' (0/10); supermarket -> model said 'Cart' (1/10); mechanic -> model said 'car' (0/10); camping -> model said 'camp' (5/10); taxi -> model said 'a taxi' (6/10); soccer -> model said 'goal' (0/10); hockey -> model said 'game' (1/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): swimming; sushi; pancakes; plumber; Thanksgiving; Hanukkah; umbrella; refrigerator; bicycle; gardening; surfing; popcorn",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w101c2-association-ez2-kangaroo",
+   "prompt": "The Australian marsupial bounded across the outback on powerful hind legs, balancing with its thick tail, while a joey peeked out of the mother's pouch.",
+   "intermediates": [
+    "kangaroo"
+   ],
+   "aliases": [
+    "kangaroos",
+    "wallaby"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 28/60 passed.\n- Failed (gold -> what the model wrote): bowling -> model said 'golf ball' (4/10); basketball -> model said 'buzzer-beater' (0/10); tacos -> model said 'hushpuppies' (1/10); airport -> model said 'line' (1/10); pharmacy -> model said 'prescription' (0/10); zoo -> model said 'the enclosure' (0/10); supermarket -> model said 'Cart' (1/10); mechanic -> model said 'car' (0/10); camping -> model said 'camp' (5/10); taxi -> model said 'a taxi' (6/10); soccer -> model said 'goal' (0/10); hockey -> model said 'game' (1/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): swimming; sushi; pancakes; plumber; Thanksgiving; Hanukkah; umbrella; refrigerator; bicycle; gardening; surfing; popcorn",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w101c2-association-ez2-compass",
+   "prompt": "The hiker held the small round device flat in her palm and watched the magnetized needle swing until it pointed north, then turned to follow the bearing.",
+   "intermediates": [
+    "compass"
+   ],
+   "aliases": [
+    "magnetic compass"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 28/60 passed.\n- Failed (gold -> what the model wrote): bowling -> model said 'golf ball' (4/10); basketball -> model said 'buzzer-beater' (0/10); tacos -> model said 'hushpuppies' (1/10); airport -> model said 'line' (1/10); pharmacy -> model said 'prescription' (0/10); zoo -> model said 'the enclosure' (0/10); supermarket -> model said 'Cart' (1/10); mechanic -> model said 'car' (0/10); camping -> model said 'camp' (5/10); taxi -> model said 'a taxi' (6/10); soccer -> model said 'goal' (0/10); hockey -> model said 'game' (1/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): swimming; sushi; pancakes; plumber; Thanksgiving; Hanukkah; umbrella; refrigerator; bicycle; gardening; surfing; popcorn",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w101c2-association-ez2-hourglass",
+   "prompt": "She flipped the narrow-waisted timer and watched the fine sand trickle from the top bulb into the bottom one until the minutes ran out.",
+   "intermediates": [
+    "hourglass"
+   ],
+   "aliases": [
+    "sandglass",
+    "sand timer",
+    "egg timer"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 28/60 passed.\n- Failed (gold -> what the model wrote): bowling -> model said 'golf ball' (4/10); basketball -> model said 'buzzer-beater' (0/10); tacos -> model said 'hushpuppies' (1/10); airport -> model said 'line' (1/10); pharmacy -> model said 'prescription' (0/10); zoo -> model said 'the enclosure' (0/10); supermarket -> model said 'Cart' (1/10); mechanic -> model said 'car' (0/10); camping -> model said 'camp' (5/10); taxi -> model said 'a taxi' (6/10); soccer -> model said 'goal' (0/10); hockey -> model said 'game' (1/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): swimming; sushi; pancakes; plumber; Thanksgiving; Hanukkah; umbrella; refrigerator; bicycle; gardening; surfing; popcorn",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w101c2-association-ez2-guacamole",
+   "prompt": "She mashed ripe avocados with lime juice, chopped onion, cilantro and salt, then served the chunky green dip with tortilla chips.",
+   "intermediates": [
+    "guacamole"
+   ],
+   "aliases": [
+    "guac",
+    "avocado dip"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 28/60 passed.\n- Failed (gold -> what the model wrote): bowling -> model said 'golf ball' (4/10); basketball -> model said 'buzzer-beater' (0/10); tacos -> model said 'hushpuppies' (1/10); airport -> model said 'line' (1/10); pharmacy -> model said 'prescription' (0/10); zoo -> model said 'the enclosure' (0/10); supermarket -> model said 'Cart' (1/10); mechanic -> model said 'car' (0/10); camping -> model said 'camp' (5/10); taxi -> model said 'a taxi' (6/10); soccer -> model said 'goal' (0/10); hockey -> model said 'game' (1/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): swimming; sushi; pancakes; plumber; Thanksgiving; Hanukkah; umbrella; refrigerator; bicycle; gardening; surfing; popcorn",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w101c2-association-ez2-greenhouse",
+   "prompt": "The glass-walled building trapped the sun's warmth so the tomatoes and orchids inside grew all winter, while misting nozzles kept the air humid.",
+   "intermediates": [
+    "greenhouse"
+   ],
+   "aliases": [
+    "glasshouse",
+    "hothouse",
+    "conservatory"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 101,
+    "steer": "- Last wave: 28/60 passed.\n- Failed (gold -> what the model wrote): bowling -> model said 'golf ball' (4/10); basketball -> model said 'buzzer-beater' (0/10); tacos -> model said 'hushpuppies' (1/10); airport -> model said 'line' (1/10); pharmacy -> model said 'prescription' (0/10); zoo -> model said 'the enclosure' (0/10); supermarket -> model said 'Cart' (1/10); mechanic -> model said 'car' (0/10); camping -> model said 'camp' (5/10); taxi -> model said 'a taxi' (6/10); soccer -> model said 'goal' (0/10); hockey -> model said 'game' (1/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): swimming; sushi; pancakes; plumber; Thanksgiving; Hanukkah; umbrella; refrigerator; bicycle; gardening; surfing; popcorn",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w102c0-ws-easy-elephant",
+   "prompt": "The huge gray animal flapped its giant ears, sprayed water from its long trunk, and swung its ivory tusks.",
+   "intermediates": [
+    "elephant"
+   ],
+   "aliases": [
+    "elephants"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 34/60 passed.\n- Rejected by lint before gating: 1x leak: ['seder'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): hammock -> model said 'hammock' (6/10); guitar -> model said 'guitar' (6/10); dishwasher -> model said 'Washing machine' (1/10); astronaut -> model said 'EVA' (0/10); waiter -> model said 'butler' (4/10); yoga -> model said 'meditation' (3/10); ramadan -> model said 'Ramadan' (7/10); carousel -> model said 'Carousal' (3/10); waffle -> model said 'pancakes' (0/10); watermelon -> model said 'Mandarin' (1/10); lemonade -> model said 'Lemonade' (6/10); passport -> model said 'Visa' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): toaster; candle; sandwich; snowman; donut; playground; lasagna; suitcase; vacuum; trampoline; thermometer; penguin",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w102c0-ws-easy-helicopter",
+   "prompt": "The spinning blades on top went whop-whop-whop as the aircraft rose straight up from the rooftop pad without needing any runway.",
+   "intermediates": [
+    "helicopter"
+   ],
+   "aliases": [
+    "chopper"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 34/60 passed.\n- Rejected by lint before gating: 1x leak: ['seder'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): hammock -> model said 'hammock' (6/10); guitar -> model said 'guitar' (6/10); dishwasher -> model said 'Washing machine' (1/10); astronaut -> model said 'EVA' (0/10); waiter -> model said 'butler' (4/10); yoga -> model said 'meditation' (3/10); ramadan -> model said 'Ramadan' (7/10); carousel -> model said 'Carousal' (3/10); waffle -> model said 'pancakes' (0/10); watermelon -> model said 'Mandarin' (1/10); lemonade -> model said 'Lemonade' (6/10); passport -> model said 'Visa' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): toaster; candle; sandwich; snowman; donut; playground; lasagna; suitcase; vacuum; trampoline; thermometer; penguin",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w102c0-ws-easy-tractor",
+   "prompt": "The farmer climbed into the cab of the big green machine with huge rear tires and pulled a plow across the muddy field.",
+   "intermediates": [
+    "tractor"
+   ],
+   "aliases": [],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 34/60 passed.\n- Rejected by lint before gating: 1x leak: ['seder'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): hammock -> model said 'hammock' (6/10); guitar -> model said 'guitar' (6/10); dishwasher -> model said 'Washing machine' (1/10); astronaut -> model said 'EVA' (0/10); waiter -> model said 'butler' (4/10); yoga -> model said 'meditation' (3/10); ramadan -> model said 'Ramadan' (7/10); carousel -> model said 'Carousal' (3/10); waffle -> model said 'pancakes' (0/10); watermelon -> model said 'Mandarin' (1/10); lemonade -> model said 'Lemonade' (6/10); passport -> model said 'Visa' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): toaster; candle; sandwich; snowman; donut; playground; lasagna; suitcase; vacuum; trampoline; thermometer; penguin",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w102c0-ws-easy-scarecrow",
+   "prompt": "Stuffed with straw and wearing an old hat and flannel shirt, the figure stood on a pole in the cornfield to frighten the birds away.",
+   "intermediates": [
+    "scarecrow"
+   ],
+   "aliases": [],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 34/60 passed.\n- Rejected by lint before gating: 1x leak: ['seder'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): hammock -> model said 'hammock' (6/10); guitar -> model said 'guitar' (6/10); dishwasher -> model said 'Washing machine' (1/10); astronaut -> model said 'EVA' (0/10); waiter -> model said 'butler' (4/10); yoga -> model said 'meditation' (3/10); ramadan -> model said 'Ramadan' (7/10); carousel -> model said 'Carousal' (3/10); waffle -> model said 'pancakes' (0/10); watermelon -> model said 'Mandarin' (1/10); lemonade -> model said 'Lemonade' (6/10); passport -> model said 'Visa' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): toaster; candle; sandwich; snowman; donut; playground; lasagna; suitcase; vacuum; trampoline; thermometer; penguin",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w102c0-ws-easy-spider",
+   "prompt": "The eight-legged creature spun a sticky silk web in the corner and waited patiently for a fly to get trapped.",
+   "intermediates": [
+    "spider"
+   ],
+   "aliases": [
+    "spiderweb"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 34/60 passed.\n- Rejected by lint before gating: 1x leak: ['seder'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): hammock -> model said 'hammock' (6/10); guitar -> model said 'guitar' (6/10); dishwasher -> model said 'Washing machine' (1/10); astronaut -> model said 'EVA' (0/10); waiter -> model said 'butler' (4/10); yoga -> model said 'meditation' (3/10); ramadan -> model said 'Ramadan' (7/10); carousel -> model said 'Carousal' (3/10); waffle -> model said 'pancakes' (0/10); watermelon -> model said 'Mandarin' (1/10); lemonade -> model said 'Lemonade' (6/10); passport -> model said 'Visa' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): toaster; candle; sandwich; snowman; donut; playground; lasagna; suitcase; vacuum; trampoline; thermometer; penguin",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w102c0-ws-easy-zipper",
+   "prompt": "Tiny metal teeth locked together one by one as she pulled the little slider up the front of her jacket.",
+   "intermediates": [
+    "zipper"
+   ],
+   "aliases": [
+    "zip"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 34/60 passed.\n- Rejected by lint before gating: 1x leak: ['seder'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): hammock -> model said 'hammock' (6/10); guitar -> model said 'guitar' (6/10); dishwasher -> model said 'Washing machine' (1/10); astronaut -> model said 'EVA' (0/10); waiter -> model said 'butler' (4/10); yoga -> model said 'meditation' (3/10); ramadan -> model said 'Ramadan' (7/10); carousel -> model said 'Carousal' (3/10); waffle -> model said 'pancakes' (0/10); watermelon -> model said 'Mandarin' (1/10); lemonade -> model said 'Lemonade' (6/10); passport -> model said 'Visa' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): toaster; candle; sandwich; snowman; donut; playground; lasagna; suitcase; vacuum; trampoline; thermometer; penguin",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w102c0-ws-easy-strawberry",
+   "prompt": "The small red fruit had tiny seeds all over its outside and a green leafy cap, and she dipped it in melted chocolate.",
+   "intermediates": [
+    "strawberry"
+   ],
+   "aliases": [
+    "strawberries"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 34/60 passed.\n- Rejected by lint before gating: 1x leak: ['seder'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): hammock -> model said 'hammock' (6/10); guitar -> model said 'guitar' (6/10); dishwasher -> model said 'Washing machine' (1/10); astronaut -> model said 'EVA' (0/10); waiter -> model said 'butler' (4/10); yoga -> model said 'meditation' (3/10); ramadan -> model said 'Ramadan' (7/10); carousel -> model said 'Carousal' (3/10); waffle -> model said 'pancakes' (0/10); watermelon -> model said 'Mandarin' (1/10); lemonade -> model said 'Lemonade' (6/10); passport -> model said 'Visa' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): toaster; candle; sandwich; snowman; donut; playground; lasagna; suitcase; vacuum; trampoline; thermometer; penguin",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w102c0-ws-easy-crown",
+   "prompt": "Sitting on his throne, the king wore the golden headpiece covered in jewels and pointed tips.",
+   "intermediates": [
+    "crown"
+   ],
+   "aliases": [
+    "tiara"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 34/60 passed.\n- Rejected by lint before gating: 1x leak: ['seder'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): hammock -> model said 'hammock' (6/10); guitar -> model said 'guitar' (6/10); dishwasher -> model said 'Washing machine' (1/10); astronaut -> model said 'EVA' (0/10); waiter -> model said 'butler' (4/10); yoga -> model said 'meditation' (3/10); ramadan -> model said 'Ramadan' (7/10); carousel -> model said 'Carousal' (3/10); waffle -> model said 'pancakes' (0/10); watermelon -> model said 'Mandarin' (1/10); lemonade -> model said 'Lemonade' (6/10); passport -> model said 'Visa' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): toaster; candle; sandwich; snowman; donut; playground; lasagna; suitcase; vacuum; trampoline; thermometer; penguin",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w102c0-ws-easy-egg",
+   "prompt": "She cracked the white shell on the edge of the bowl, and the yellow yolk slid out beside the clear runny part.",
+   "intermediates": [
+    "egg"
+   ],
+   "aliases": [
+    "eggs"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 34/60 passed.\n- Rejected by lint before gating: 1x leak: ['seder'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): hammock -> model said 'hammock' (6/10); guitar -> model said 'guitar' (6/10); dishwasher -> model said 'Washing machine' (1/10); astronaut -> model said 'EVA' (0/10); waiter -> model said 'butler' (4/10); yoga -> model said 'meditation' (3/10); ramadan -> model said 'Ramadan' (7/10); carousel -> model said 'Carousal' (3/10); waffle -> model said 'pancakes' (0/10); watermelon -> model said 'Mandarin' (1/10); lemonade -> model said 'Lemonade' (6/10); passport -> model said 'Visa' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): toaster; candle; sandwich; snowman; donut; playground; lasagna; suitcase; vacuum; trampoline; thermometer; penguin",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w102c0-ws-easy-train",
+   "prompt": "The locomotive pulled a long line of cars along the rails, its whistle blowing as it rolled into the station.",
+   "intermediates": [
+    "train"
+   ],
+   "aliases": [
+    "railway",
+    "railroad"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 34/60 passed.\n- Rejected by lint before gating: 1x leak: ['seder'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): hammock -> model said 'hammock' (6/10); guitar -> model said 'guitar' (6/10); dishwasher -> model said 'Washing machine' (1/10); astronaut -> model said 'EVA' (0/10); waiter -> model said 'butler' (4/10); yoga -> model said 'meditation' (3/10); ramadan -> model said 'Ramadan' (7/10); carousel -> model said 'Carousal' (3/10); waffle -> model said 'pancakes' (0/10); watermelon -> model said 'Mandarin' (1/10); lemonade -> model said 'Lemonade' (6/10); passport -> model said 'Visa' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): toaster; candle; sandwich; snowman; donut; playground; lasagna; suitcase; vacuum; trampoline; thermometer; penguin",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w102c0-ws-easy-owl",
+   "prompt": "The nocturnal bird with huge round eyes turned its head almost all the way around and hooted from the barn at midnight.",
+   "intermediates": [
+    "owl"
+   ],
+   "aliases": [],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 34/60 passed.\n- Rejected by lint before gating: 1x leak: ['seder'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): hammock -> model said 'hammock' (6/10); guitar -> model said 'guitar' (6/10); dishwasher -> model said 'Washing machine' (1/10); astronaut -> model said 'EVA' (0/10); waiter -> model said 'butler' (4/10); yoga -> model said 'meditation' (3/10); ramadan -> model said 'Ramadan' (7/10); carousel -> model said 'Carousal' (3/10); waffle -> model said 'pancakes' (0/10); watermelon -> model said 'Mandarin' (1/10); lemonade -> model said 'Lemonade' (6/10); passport -> model said 'Visa' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): toaster; candle; sandwich; snowman; donut; playground; lasagna; suitcase; vacuum; trampoline; thermometer; penguin",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w102c0-ws-easy-magnet",
+   "prompt": "The horseshoe-shaped piece of metal with red and blue ends snapped onto the fridge door and pulled paper clips toward it.",
+   "intermediates": [
+    "magnet"
+   ],
+   "aliases": [
+    "magnetism"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 34/60 passed.\n- Rejected by lint before gating: 1x leak: ['seder'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): hammock -> model said 'hammock' (6/10); guitar -> model said 'guitar' (6/10); dishwasher -> model said 'Washing machine' (1/10); astronaut -> model said 'EVA' (0/10); waiter -> model said 'butler' (4/10); yoga -> model said 'meditation' (3/10); ramadan -> model said 'Ramadan' (7/10); carousel -> model said 'Carousal' (3/10); waffle -> model said 'pancakes' (0/10); watermelon -> model said 'Mandarin' (1/10); lemonade -> model said 'Lemonade' (6/10); passport -> model said 'Visa' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): toaster; candle; sandwich; snowman; donut; playground; lasagna; suitcase; vacuum; trampoline; thermometer; penguin",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w102c0-ws-easy-mirror",
+   "prompt": "Every morning she studied her reflection in the glass above the bathroom sink while brushing her hair.",
+   "intermediates": [
+    "mirror"
+   ],
+   "aliases": [],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 34/60 passed.\n- Rejected by lint before gating: 1x leak: ['seder'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): hammock -> model said 'hammock' (6/10); guitar -> model said 'guitar' (6/10); dishwasher -> model said 'Washing machine' (1/10); astronaut -> model said 'EVA' (0/10); waiter -> model said 'butler' (4/10); yoga -> model said 'meditation' (3/10); ramadan -> model said 'Ramadan' (7/10); carousel -> model said 'Carousal' (3/10); waffle -> model said 'pancakes' (0/10); watermelon -> model said 'Mandarin' (1/10); lemonade -> model said 'Lemonade' (6/10); passport -> model said 'Visa' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): toaster; candle; sandwich; snowman; donut; playground; lasagna; suitcase; vacuum; trampoline; thermometer; penguin",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w102c0-ws-easy-rocket",
+   "prompt": "The countdown reached zero, flames roared from the engines, and the tall tube lifted off the launchpad toward orbit.",
+   "intermediates": [
+    "rocket"
+   ],
+   "aliases": [
+    "spaceship",
+    "space shuttle",
+    "rocket launch"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 34/60 passed.\n- Rejected by lint before gating: 1x leak: ['seder'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): hammock -> model said 'hammock' (6/10); guitar -> model said 'guitar' (6/10); dishwasher -> model said 'Washing machine' (1/10); astronaut -> model said 'EVA' (0/10); waiter -> model said 'butler' (4/10); yoga -> model said 'meditation' (3/10); ramadan -> model said 'Ramadan' (7/10); carousel -> model said 'Carousal' (3/10); waffle -> model said 'pancakes' (0/10); watermelon -> model said 'Mandarin' (1/10); lemonade -> model said 'Lemonade' (6/10); passport -> model said 'Visa' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): toaster; candle; sandwich; snowman; donut; playground; lasagna; suitcase; vacuum; trampoline; thermometer; penguin",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w102c0-ws-easy-bridge",
+   "prompt": "Cars drove across the long steel structure held up by tall towers and cables, high above the river flowing underneath.",
+   "intermediates": [
+    "bridge"
+   ],
+   "aliases": [
+    "suspension bridge"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 34/60 passed.\n- Rejected by lint before gating: 1x leak: ['seder'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): hammock -> model said 'hammock' (6/10); guitar -> model said 'guitar' (6/10); dishwasher -> model said 'Washing machine' (1/10); astronaut -> model said 'EVA' (0/10); waiter -> model said 'butler' (4/10); yoga -> model said 'meditation' (3/10); ramadan -> model said 'Ramadan' (7/10); carousel -> model said 'Carousal' (3/10); waffle -> model said 'pancakes' (0/10); watermelon -> model said 'Mandarin' (1/10); lemonade -> model said 'Lemonade' (6/10); passport -> model said 'Visa' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): toaster; candle; sandwich; snowman; donut; playground; lasagna; suitcase; vacuum; trampoline; thermometer; penguin",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w102c0-ws-easy-pumpkin",
+   "prompt": "The big round orange squash was hollowed out, carved with a toothy face, and lit with a candle inside on October 31st.",
+   "intermediates": [
+    "pumpkin"
+   ],
+   "aliases": [
+    "jack-o-lantern",
+    "jack-o'-lantern"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 34/60 passed.\n- Rejected by lint before gating: 1x leak: ['seder'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): hammock -> model said 'hammock' (6/10); guitar -> model said 'guitar' (6/10); dishwasher -> model said 'Washing machine' (1/10); astronaut -> model said 'EVA' (0/10); waiter -> model said 'butler' (4/10); yoga -> model said 'meditation' (3/10); ramadan -> model said 'Ramadan' (7/10); carousel -> model said 'Carousal' (3/10); waffle -> model said 'pancakes' (0/10); watermelon -> model said 'Mandarin' (1/10); lemonade -> model said 'Lemonade' (6/10); passport -> model said 'Visa' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): toaster; candle; sandwich; snowman; donut; playground; lasagna; suitcase; vacuum; trampoline; thermometer; penguin",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w102c1-assoc-easy-zebra",
+   "prompt": "This African animal looks like a horse but is covered in black and white stripes, and it grazes on the savanna while watching for lions.",
+   "intermediates": [
+    "zebra"
+   ],
+   "aliases": [],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 34/60 passed.\n- Rejected by lint before gating: 1x leak: ['seder'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): hammock -> model said 'hammock' (6/10); guitar -> model said 'guitar' (6/10); dishwasher -> model said 'Washing machine' (1/10); astronaut -> model said 'EVA' (0/10); waiter -> model said 'butler' (4/10); yoga -> model said 'meditation' (3/10); ramadan -> model said 'Ramadan' (7/10); carousel -> model said 'Carousal' (3/10); waffle -> model said 'pancakes' (0/10); watermelon -> model said 'Mandarin' (1/10); lemonade -> model said 'Lemonade' (6/10); passport -> model said 'Visa' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): toaster; candle; sandwich; snowman; donut; playground; lasagna; suitcase; vacuum; trampoline; thermometer; penguin",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w102c1-assoc-easy-doorbell",
+   "prompt": "A visitor on the porch pressed the small button beside the front entrance, and a ding-dong chime rang through the house.",
+   "intermediates": [
+    "doorbell"
+   ],
+   "aliases": [
+    "bell",
+    "buzzer"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 34/60 passed.\n- Rejected by lint before gating: 1x leak: ['seder'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): hammock -> model said 'hammock' (6/10); guitar -> model said 'guitar' (6/10); dishwasher -> model said 'Washing machine' (1/10); astronaut -> model said 'EVA' (0/10); waiter -> model said 'butler' (4/10); yoga -> model said 'meditation' (3/10); ramadan -> model said 'Ramadan' (7/10); carousel -> model said 'Carousal' (3/10); waffle -> model said 'pancakes' (0/10); watermelon -> model said 'Mandarin' (1/10); lemonade -> model said 'Lemonade' (6/10); passport -> model said 'Visa' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): toaster; candle; sandwich; snowman; donut; playground; lasagna; suitcase; vacuum; trampoline; thermometer; penguin",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w102c1-assoc-easy-goldfish",
+   "prompt": "The little orange pet swam in circles in a round glass bowl on the kitchen counter, and the kids sprinkled flakes on the water each morning.",
+   "intermediates": [
+    "goldfish"
+   ],
+   "aliases": [
+    "fish"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 34/60 passed.\n- Rejected by lint before gating: 1x leak: ['seder'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): hammock -> model said 'hammock' (6/10); guitar -> model said 'guitar' (6/10); dishwasher -> model said 'Washing machine' (1/10); astronaut -> model said 'EVA' (0/10); waiter -> model said 'butler' (4/10); yoga -> model said 'meditation' (3/10); ramadan -> model said 'Ramadan' (7/10); carousel -> model said 'Carousal' (3/10); waffle -> model said 'pancakes' (0/10); watermelon -> model said 'Mandarin' (1/10); lemonade -> model said 'Lemonade' (6/10); passport -> model said 'Visa' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): toaster; candle; sandwich; snowman; donut; playground; lasagna; suitcase; vacuum; trampoline; thermometer; penguin",
+    "gate": {
+     "rate": 0.8,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w102c1-assoc-easy-sunscreen",
+   "prompt": "Before heading to the pool, Mom squeezed white SPF 50 lotion onto our shoulders and noses so we wouldn't get burned.",
+   "intermediates": [
+    "sunscreen"
+   ],
+   "aliases": [
+    "sunblock",
+    "sun cream",
+    "suncream",
+    "sunscreen lotion"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 34/60 passed.\n- Rejected by lint before gating: 1x leak: ['seder'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): hammock -> model said 'hammock' (6/10); guitar -> model said 'guitar' (6/10); dishwasher -> model said 'Washing machine' (1/10); astronaut -> model said 'EVA' (0/10); waiter -> model said 'butler' (4/10); yoga -> model said 'meditation' (3/10); ramadan -> model said 'Ramadan' (7/10); carousel -> model said 'Carousal' (3/10); waffle -> model said 'pancakes' (0/10); watermelon -> model said 'Mandarin' (1/10); lemonade -> model said 'Lemonade' (6/10); passport -> model said 'Visa' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): toaster; candle; sandwich; snowman; donut; playground; lasagna; suitcase; vacuum; trampoline; thermometer; penguin",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w102c1-assoc-easy-cheese",
+   "prompt": "The cartoon mouse sniffed out the yellow wedge full of holes, the same food that gets melted on pizza and sliced onto crackers.",
+   "intermediates": [
+    "cheese"
+   ],
+   "aliases": [
+    "swiss cheese",
+    "cheddar"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 34/60 passed.\n- Rejected by lint before gating: 1x leak: ['seder'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): hammock -> model said 'hammock' (6/10); guitar -> model said 'guitar' (6/10); dishwasher -> model said 'Washing machine' (1/10); astronaut -> model said 'EVA' (0/10); waiter -> model said 'butler' (4/10); yoga -> model said 'meditation' (3/10); ramadan -> model said 'Ramadan' (7/10); carousel -> model said 'Carousal' (3/10); waffle -> model said 'pancakes' (0/10); watermelon -> model said 'Mandarin' (1/10); lemonade -> model said 'Lemonade' (6/10); passport -> model said 'Visa' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): toaster; candle; sandwich; snowman; donut; playground; lasagna; suitcase; vacuum; trampoline; thermometer; penguin",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w102c1-assoc-easy-anchor",
+   "prompt": "The sailors dropped the heavy iron hook on its long chain over the side so the ship would stay in place and not drift away.",
+   "intermediates": [
+    "anchor"
+   ],
+   "aliases": [],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 34/60 passed.\n- Rejected by lint before gating: 1x leak: ['seder'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): hammock -> model said 'hammock' (6/10); guitar -> model said 'guitar' (6/10); dishwasher -> model said 'Washing machine' (1/10); astronaut -> model said 'EVA' (0/10); waiter -> model said 'butler' (4/10); yoga -> model said 'meditation' (3/10); ramadan -> model said 'Ramadan' (7/10); carousel -> model said 'Carousal' (3/10); waffle -> model said 'pancakes' (0/10); watermelon -> model said 'Mandarin' (1/10); lemonade -> model said 'Lemonade' (6/10); passport -> model said 'Visa' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): toaster; candle; sandwich; snowman; donut; playground; lasagna; suitcase; vacuum; trampoline; thermometer; penguin",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w102c1-assoc-easy-saxophone",
+   "prompt": "The jazz player pressed the brass keys, blew through the reed in the mouthpiece, and his curved golden horn wailed a smoky solo.",
+   "intermediates": [
+    "saxophone"
+   ],
+   "aliases": [
+    "sax"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 34/60 passed.\n- Rejected by lint before gating: 1x leak: ['seder'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): hammock -> model said 'hammock' (6/10); guitar -> model said 'guitar' (6/10); dishwasher -> model said 'Washing machine' (1/10); astronaut -> model said 'EVA' (0/10); waiter -> model said 'butler' (4/10); yoga -> model said 'meditation' (3/10); ramadan -> model said 'Ramadan' (7/10); carousel -> model said 'Carousal' (3/10); waffle -> model said 'pancakes' (0/10); watermelon -> model said 'Mandarin' (1/10); lemonade -> model said 'Lemonade' (6/10); passport -> model said 'Visa' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): toaster; candle; sandwich; snowman; donut; playground; lasagna; suitcase; vacuum; trampoline; thermometer; penguin",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w102c1-assoc-easy-dice",
+   "prompt": "She shook the two small white cubes with black dots on each face and rolled them across the board to see how many spaces to move.",
+   "intermediates": [
+    "dice"
+   ],
+   "aliases": [
+    "die"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 34/60 passed.\n- Rejected by lint before gating: 1x leak: ['seder'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): hammock -> model said 'hammock' (6/10); guitar -> model said 'guitar' (6/10); dishwasher -> model said 'Washing machine' (1/10); astronaut -> model said 'EVA' (0/10); waiter -> model said 'butler' (4/10); yoga -> model said 'meditation' (3/10); ramadan -> model said 'Ramadan' (7/10); carousel -> model said 'Carousal' (3/10); waffle -> model said 'pancakes' (0/10); watermelon -> model said 'Mandarin' (1/10); lemonade -> model said 'Lemonade' (6/10); passport -> model said 'Visa' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): toaster; candle; sandwich; snowman; donut; playground; lasagna; suitcase; vacuum; trampoline; thermometer; penguin",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w102c1-assoc-easy-bus",
+   "prompt": "The big yellow vehicle stopped at the corner with its flashing red sign out, and the children climbed aboard with their backpacks for the ride to class.",
+   "intermediates": [
+    "bus"
+   ],
+   "aliases": [
+    "school bus",
+    "schoolbus"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 34/60 passed.\n- Rejected by lint before gating: 1x leak: ['seder'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): hammock -> model said 'hammock' (6/10); guitar -> model said 'guitar' (6/10); dishwasher -> model said 'Washing machine' (1/10); astronaut -> model said 'EVA' (0/10); waiter -> model said 'butler' (4/10); yoga -> model said 'meditation' (3/10); ramadan -> model said 'Ramadan' (7/10); carousel -> model said 'Carousal' (3/10); waffle -> model said 'pancakes' (0/10); watermelon -> model said 'Mandarin' (1/10); lemonade -> model said 'Lemonade' (6/10); passport -> model said 'Visa' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): toaster; candle; sandwich; snowman; donut; playground; lasagna; suitcase; vacuum; trampoline; thermometer; penguin",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w102c1-assoc-easy-bank",
+   "prompt": "He handed his paycheck to the teller behind the counter, checked his account balance, and watched the cash get locked in the vault.",
+   "intermediates": [
+    "bank"
+   ],
+   "aliases": [],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 34/60 passed.\n- Rejected by lint before gating: 1x leak: ['seder'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): hammock -> model said 'hammock' (6/10); guitar -> model said 'guitar' (6/10); dishwasher -> model said 'Washing machine' (1/10); astronaut -> model said 'EVA' (0/10); waiter -> model said 'butler' (4/10); yoga -> model said 'meditation' (3/10); ramadan -> model said 'Ramadan' (7/10); carousel -> model said 'Carousal' (3/10); waffle -> model said 'pancakes' (0/10); watermelon -> model said 'Mandarin' (1/10); lemonade -> model said 'Lemonade' (6/10); passport -> model said 'Visa' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): toaster; candle; sandwich; snowman; donut; playground; lasagna; suitcase; vacuum; trampoline; thermometer; penguin",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w102c1-assoc-easy-pirate",
+   "prompt": "With an eye patch, a wooden peg leg and a parrot on his shoulder, the captain flew the skull-and-crossbones flag and hunted for buried treasure.",
+   "intermediates": [
+    "pirate"
+   ],
+   "aliases": [
+    "buccaneer"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 34/60 passed.\n- Rejected by lint before gating: 1x leak: ['seder'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): hammock -> model said 'hammock' (6/10); guitar -> model said 'guitar' (6/10); dishwasher -> model said 'Washing machine' (1/10); astronaut -> model said 'EVA' (0/10); waiter -> model said 'butler' (4/10); yoga -> model said 'meditation' (3/10); ramadan -> model said 'Ramadan' (7/10); carousel -> model said 'Carousal' (3/10); waffle -> model said 'pancakes' (0/10); watermelon -> model said 'Mandarin' (1/10); lemonade -> model said 'Lemonade' (6/10); passport -> model said 'Visa' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): toaster; candle; sandwich; snowman; donut; playground; lasagna; suitcase; vacuum; trampoline; thermometer; penguin",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w102c1-assoc-easy-broom",
+   "prompt": "She swept the dusty kitchen floor with the long wooden handle and stiff bristles, pushing crumbs into a dustpan, and witches are said to fly on one too.",
+   "intermediates": [
+    "broom"
+   ],
+   "aliases": [],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 34/60 passed.\n- Rejected by lint before gating: 1x leak: ['seder'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): hammock -> model said 'hammock' (6/10); guitar -> model said 'guitar' (6/10); dishwasher -> model said 'Washing machine' (1/10); astronaut -> model said 'EVA' (0/10); waiter -> model said 'butler' (4/10); yoga -> model said 'meditation' (3/10); ramadan -> model said 'Ramadan' (7/10); carousel -> model said 'Carousal' (3/10); waffle -> model said 'pancakes' (0/10); watermelon -> model said 'Mandarin' (1/10); lemonade -> model said 'Lemonade' (6/10); passport -> model said 'Visa' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): toaster; candle; sandwich; snowman; donut; playground; lasagna; suitcase; vacuum; trampoline; thermometer; penguin",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w102c2-assoc-easy-hammer",
+   "prompt": "He gripped the wooden handle, lined up the nail against the board, and swung the heavy steel head down with a loud bang.",
+   "intermediates": [
+    "hammer"
+   ],
+   "aliases": [
+    "mallet",
+    "claw hammer"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 34/60 passed.\n- Rejected by lint before gating: 1x leak: ['seder'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): hammock -> model said 'hammock' (6/10); guitar -> model said 'guitar' (6/10); dishwasher -> model said 'Washing machine' (1/10); astronaut -> model said 'EVA' (0/10); waiter -> model said 'butler' (4/10); yoga -> model said 'meditation' (3/10); ramadan -> model said 'Ramadan' (7/10); carousel -> model said 'Carousal' (3/10); waffle -> model said 'pancakes' (0/10); watermelon -> model said 'Mandarin' (1/10); lemonade -> model said 'Lemonade' (6/10); passport -> model said 'Visa' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): toaster; candle; sandwich; snowman; donut; playground; lasagna; suitcase; vacuum; trampoline; thermometer; penguin",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w102c2-assoc-easy-ambulance",
+   "prompt": "Sirens wailing and red lights flashing, the white van carrying paramedics and a stretcher raced through traffic toward the emergency room.",
+   "intermediates": [
+    "ambulance"
+   ],
+   "aliases": [
+    "paramedic van",
+    "emergency vehicle"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 34/60 passed.\n- Rejected by lint before gating: 1x leak: ['seder'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): hammock -> model said 'hammock' (6/10); guitar -> model said 'guitar' (6/10); dishwasher -> model said 'Washing machine' (1/10); astronaut -> model said 'EVA' (0/10); waiter -> model said 'butler' (4/10); yoga -> model said 'meditation' (3/10); ramadan -> model said 'Ramadan' (7/10); carousel -> model said 'Carousal' (3/10); waffle -> model said 'pancakes' (0/10); watermelon -> model said 'Mandarin' (1/10); lemonade -> model said 'Lemonade' (6/10); passport -> model said 'Visa' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): toaster; candle; sandwich; snowman; donut; playground; lasagna; suitcase; vacuum; trampoline; thermometer; penguin",
+    "gate": {
+     "rate": 0.9,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w102c2-assoc-easy-honey",
+   "prompt": "The bees filled the wax combs with a sticky golden syrup that we later drizzled over toast and stirred into tea.",
+   "intermediates": [
+    "honey"
+   ],
+   "aliases": [
+    "nectar"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 34/60 passed.\n- Rejected by lint before gating: 1x leak: ['seder'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): hammock -> model said 'hammock' (6/10); guitar -> model said 'guitar' (6/10); dishwasher -> model said 'Washing machine' (1/10); astronaut -> model said 'EVA' (0/10); waiter -> model said 'butler' (4/10); yoga -> model said 'meditation' (3/10); ramadan -> model said 'Ramadan' (7/10); carousel -> model said 'Carousal' (3/10); waffle -> model said 'pancakes' (0/10); watermelon -> model said 'Mandarin' (1/10); lemonade -> model said 'Lemonade' (6/10); passport -> model said 'Visa' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): toaster; candle; sandwich; snowman; donut; playground; lasagna; suitcase; vacuum; trampoline; thermometer; penguin",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  },
+  {
+   "name": "association-au-t1-w102c2-assoc-easy-popsicle",
+   "prompt": "On the hot summer day, the frozen orange treat on a flat wooden stick melted and dripped down the child's wrist faster than she could lick it.",
+   "intermediates": [
+    "popsicle"
+   ],
+   "aliases": [
+    "ice pop",
+    "ice lolly",
+    "freezer pop"
+   ],
+   "eval_render": "plain",
+   "readout": {
+    "kind": "final_prompt_token",
+    "offsets": [
+     -1
+    ]
+   },
+   "gate_variant": "referent",
+   "source": "authored (claude-opus-5-5) for olmo-3-7b: Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues.",
+   "adapt": {
+    "origin": "authored",
+    "tier": "t1",
+    "knobs": {
+     "brief": "Use concrete everyday concepts (objects, sports, foods, places, jobs, holidays), never emotions or historical episodes, and give at least three distinctive cues."
+    },
+    "author": "claude-opus-5-5",
+    "wave": 102,
+    "steer": "- Last wave: 34/60 passed.\n- Rejected by lint before gating: 1x leak: ['seder'] in prompt. Avoid these.\n- Failed (gold -> what the model wrote): hammock -> model said 'hammock' (6/10); guitar -> model said 'guitar' (6/10); dishwasher -> model said 'Washing machine' (1/10); astronaut -> model said 'EVA' (0/10); waiter -> model said 'butler' (4/10); yoga -> model said 'meditation' (3/10); ramadan -> model said 'Ramadan' (7/10); carousel -> model said 'Carousal' (3/10); waffle -> model said 'pancakes' (0/10); watermelon -> model said 'Mandarin' (1/10); lemonade -> model said 'Lemonade' (6/10); passport -> model said 'Visa' (0/10). Make items like these easier or pick latents the model knows without a close sibling.\n- Passed (write more like these): toaster; candle; sandwich; snowman; donut; playground; lasagna; suitcase; vacuum; trampoline; thermometer; penguin",
+    "gate": {
+     "rate": 1.0,
+     "pass": true
+    }
+   }
+  }
+ ]
+}

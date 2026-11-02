@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WorkspaceBench Atlas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header id="bar">
+  <a id="title" href="#v=overview">WorkspaceBench <span>Atlas</span></a>
+  <nav id="views">
+    <button data-v="overview">Overview <kbd>1</kbd></button>
+    <button data-v="explore">Explore <kbd>2</kbd></button>
+    <button data-v="method">How it works <kbd>3</kbd></button>
+  </nav>
+  <span class="grow"></span>
+  <span id="built" class="faint"></span>
+</header>
+
+<main>
+  <!-- OVERVIEW -->
+  <section id="v-overview" class="view" hidden>
+    <div class="wrap">
+      <h2>Adaptive WorkspaceBench</h2>
+      <p class="sub">Every frozen WorkspaceBench bank was gated on Qwen3.6-27B. For each smaller or different subject we rebuilt the
+        bank so that <b>every question is one that model actually computes</b>: re-gated on the subject itself, with failed items
+        replaced by easier items of the same kind. Below: how each lens technique scores on those per-model sets, and where.</p>
+      <div id="tiles" class="tiles"></div>
+
+      <div class="card">
+        <div class="cardhead">
+          <h3>Scoreboard · macro score per subject</h3>
+          <div id="sb-legend" class="legend"></div>
+        </div>
+        <p class="dim small">Mean normalized score over the families each set holds (n families in brackets). Subjects under 32B are
+          scored on their own adaptive set; 32B+ and the 27B reference on the normal 27B-gated bank. Compare adaptive rows with each
+          other and against their floor tick, not with normal rows. All-Opus judging; p = provisional.</p>
+        <div id="scoreboard"></div>
+      </div>
+
+      <div class="card">
+        <div class="cardhead"><h3>Subjects ≥ 32B, re-scored on the 27B bank: gated + their own golds</h3></div>
+        <p class="dim small">Their lenses were read on the normal 27B-gated bank. Here every item the subject itself does not answer (adapt gate: greedy right and ≥ 8/10, every leg) is left out,
+          and poetry, basic_readout and moral_rationale are re-judged against the subject's own rhyme, favourite and side + reasons. Same readouts, same Opus judge. Click a row to read its items.</p>
+        <div id="ngated"></div>
+      </div>
+
+      <div class="card">
+        <div class="cardhead">
+          <h3>Per family · <span id="hm-title"></span></h3>
+          <div id="hm-tech" class="seg"></div>
+        </div>
+        <p class="dim small">Normalized score per subject × family on that subject's own set (buggy_code /10).
+          Blank = family not in the set or not scored (OLMo-32B and Qwen3.6-35B have only floors on their adaptive sets; their lenses were scored on the normal bank). Click a cell to read its questions and readouts.</p>
+        <div id="heatmap" class="hmwrap"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPLORE -->
+  <section id="v-explore" class="view" hidden>
+    <aside id="side">
+      <div class="sidehead">
+        <label class="lbl">Subject</label>
+        <select id="model"></select>
+        <div id="modelmeta" class="faint small"></div>
+      </div>
+      <div id="famlist"></div>
+    </aside>
+    <section id="list">
+      <div id="famhead"></div>
+      <div class="listbar">
+        <input id="search" class="search" placeholder="Search questions, golds, ids…  /" autocomplete="off">
+        <div id="filters" class="pills"></div>
+      </div>
+      <div id="items"></div>
+    </section>
+    <section id="detail"><div class="empty">Pick a question.</div></section>
+  </section>
+
+  <!-- METHOD -->
+  <section id="v-method" class="view" hidden>
+    <div class="wrap narrow" id="method"></div>
+  </section>
+</main>
+<div id="tip" hidden></div>
+<script src="app.js"></script>
+</body>
+</html>

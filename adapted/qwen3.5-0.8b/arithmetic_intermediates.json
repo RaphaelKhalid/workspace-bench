@@ -1,0 +1,166 @@
+{
+ "family": "arithmetic_intermediates",
+ "source": "evals/workspace-bench/hillclimbing_evals/multi_token/arithmetic_intermediates/<variant>.json (source repo; items unchanged, each carrying its variant's frozen read cell and role); 14 of the 24 variants kept (Agam, 2026-09-16)",
+ "variants": {
+  "absval": {
+   "shape": "abs(a - b) * c",
+   "tolerance": "rel5pct",
+   "cell": {
+    "layer": 21,
+    "pos": -7
+   },
+   "role": "structural",
+   "n_items": 0
+  },
+  "addmul": {
+   "shape": "(a + b) * c",
+   "tolerance": "rel5pct",
+   "cell": {
+    "layer": 22,
+    "pos": -8
+   },
+   "role": "comparison",
+   "n_items": 0
+  },
+  "floordiv": {
+   "shape": "floor(a / b) + c",
+   "tolerance": "exact",
+   "cell": {
+    "layer": 22,
+    "pos": -7
+   },
+   "role": "structural",
+   "n_items": 0
+  },
+  "frac": {
+   "shape": "(p / q) * (p*q*k)",
+   "tolerance": "rel5pct",
+   "cell": {
+    "layer": 22,
+    "pos": -8
+   },
+   "role": "structural",
+   "n_items": 0
+  },
+  "fracadd": {
+   "shape": "(a / b) + (c / b),  b odd, b | (a+c)",
+   "tolerance": "rel5pct",
+   "cell": {
+    "layer": 21,
+    "pos": -8
+   },
+   "role": "structural",
+   "n_items": 0
+  },
+  "fraccomp": {
+   "shape": "((a + b) / c) * (c*e)",
+   "tolerance": "rel5pct",
+   "cell": {
+    "layer": 21,
+    "pos": -8
+   },
+   "role": "structural",
+   "n_items": 0
+  },
+  "fracint": {
+   "shape": "(a / b) + (c / b),  b | a, b | c",
+   "tolerance": "rel5pct",
+   "cell": {
+    "layer": 21,
+    "pos": -8
+   },
+   "role": "comparison",
+   "n_items": 0
+  },
+  "fracsmall": {
+   "shape": "(a / b) + (c / b),  a,c single-digit, b | (a+c)",
+   "tolerance": "rel5pct",
+   "cell": {
+    "layer": 21,
+    "pos": -8
+   },
+   "role": "comparison",
+   "n_items": 0
+  },
+  "muladd": {
+   "shape": "(a * b) + c",
+   "tolerance": "rel5pct",
+   "cell": {
+    "layer": 22,
+    "pos": -8
+   },
+   "role": "structural",
+   "n_items": 0
+  },
+  "mulmid": {
+   "shape": "(a * b) + (c * d),  products 60-100",
+   "tolerance": "rel5pct",
+   "cell": {
+    "layer": 21,
+    "pos": -8
+   },
+   "role": "comparison",
+   "n_items": 0
+  },
+  "sign": {
+   "shape": "(a - b) * c",
+   "tolerance": "exact",
+   "cell": {
+    "layer": 21,
+    "pos": -8
+   },
+   "role": "comparison",
+   "n_items": 0
+  },
+  "signpair": {
+   "shape": "(a - b) * c",
+   "tolerance": "rel5pct",
+   "cell": {
+    "layer": 21,
+    "pos": -8
+   },
+   "role": "structural",
+   "n_items": 0
+  },
+  "subsub": {
+   "shape": "(a - b) - c",
+   "tolerance": "rel5pct",
+   "cell": {
+    "layer": 21,
+    "pos": -8
+   },
+   "role": "comparison",
+   "n_items": 0
+  },
+  "subsubx": {
+   "shape": "a - (b - c)",
+   "tolerance": "rel5pct",
+   "cell": {
+    "layer": 21,
+    "pos": -8
+   },
+   "role": "comparison",
+   "n_items": 0
+  }
+ },
+ "removed_variants": [
+  "addmulx",
+  "dec16",
+  "halflead",
+  "halftrail",
+  "halves",
+  "maxsel",
+  "mulmul",
+  "negdec",
+  "negdiv8",
+  "negdiv8x"
+ ],
+ "read": "since 2026-09-23: every position of the rendered prompt (bare prompt through the chat template with an empty think block, 34-42 tokens) at layers 56 and 60 (42 for the NLA/SAE arms), judged any-cell with opts=cells=all (Camila: 'all tokens not just the equals sign'; layers = the two pre-registered layers of record). Before: one frozen (layer, position) cell per variant (cell.layer / cell.pos, the offset from the end of the render: -7 = the assistant-turn <|im_start|>, -8 = the newline after <|im_end|>), still the cells=frozen default",
+ "tolerance_note": "relative tolerance widened from 2% to 5% on 2026-09-23 (the exact variants stay exact); 13 null-set entries whose intermediate lay within 5% of the item's own were dropped so the permutation null stays clean",
+ "adapt": {
+  "model": "qwen3.5-0.8b",
+  "hf_id": "Qwen/Qwen3.5-0.8B",
+  "frozen": "2026-10-24"
+ },
+ "items": []
+}

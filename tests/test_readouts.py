@@ -1,5 +1,6 @@
 import json
 
+from wsbench.bpe import decode_token
 from wsbench.readouts import (
     Cell,
     convert_gen_dir,
@@ -44,7 +45,7 @@ def test_tokens_file_loads(tmp_path):
     assert rep.kind == "tokens" and rep.n_empty == 1
     assert (
         cells[0].kind == "tokens"
-        and cells[0].tokens == ("Ġw", "x")
+        and cells[0].tokens == (" w", "x")  # decoded at load
         and cells[0].scores == (1.5, 1.0)
     )
     assert cells[1].scores is None
@@ -222,3 +223,160 @@ def test_convert_passes_token_through(tmp_path):
     convert_gen_dir(tmp_path / "gen", out, kind="tokens")
     cells, _ = load_readouts(out)
     assert [c.token for c in cells] == ["'s", None]
+
+
+def test_decode_token_byte_level_bpe():
+    assert decode_token("æĹ¥æľ¬èªŀ") == "日本語"
+    assert decode_token("Ġlanguages") == " languages"
+    assert decode_token(" AI") == " AI"  # Ġ already shown as a space by the producer
+    assert decode_token("ðŁı") == "ðŁı"  # part of a character: kept as written
+    assert decode_token("café") == "café"  # already decoded text: kept, not mangled
+    for word in ("się", "děti", "mā", "đi"):  # Latin Extended-A: would decode to controls
+        assert decode_token(word) == word
+    assert decode_token("Ċ") == "\n" and decode_token("ĉ") == "\t"  # vocab whitespace still
+    assert decode_token("čĊ") == "\r\n"
+
+
+def test_token_cells_are_decoded_once_at_load(tmp_path):
+    # CJK and Greek tokens, spelled as Qwen's tokenizer + display_tokens write them
+    acute = chr(0xB4)  # the byte-table char for byte 0xB4 (an acute accent, so spelled out)
+    vocab = ["çļĦç»ĵæŀľ", " is", " ÏĢÏħ", "Î¾", f"Î¯Î{acute}Î±"]
+    p = _write(
+        tmp_path / "t.jsonl",
+        [{"id": "a", "layer": 36, "pos": 0, "tokens": vocab, "token": "é", "scores": [1] * 5}],
+    )
+    cells, _ = load_readouts(p)
+    assert cells[0].tokens == ("的结果", " is", " πυ", "ξ", "ίδα")
+    assert cells[0].token == "é"  # the read-site token is already text, left alone
+
+
+def test_plain_ascii_tokens_are_unchanged(tmp_path):
+    row = {"id": "a", "layer": 36, "pos": 0, "tokens": [" chess", "!"]}
+    p = _write(tmp_path / "t.jsonl", [row])
+    cells, _ = load_readouts(p)
+    assert cells[0].tokens == (" chess", "!")
+
+
+# ---------------------------------------------------------------- plan 0032 §2.9 sampling (Q1)
+
+
+def _p(i, samples, layer=20, pos=1):
+    from wsbench.readouts import Cell
+
+    return Cell(i, layer, pos, tuple(samples), None, None)
+
+
+def test_normalize_bullet4_unpacks_packed_sample():
+    from wsbench.readouts import normalize
+
+    (c,), d = normalize([_p("a", ["- g1\n- g2\n- g3\n- g4"])], "bullet4")
+    assert c.samples == ("g1", "g2", "g3", "g4") and d["n_packed_ambiguous"] == 0
+
+
+def test_normalize_bullet4_ambiguous_counts():
+    from wsbench.readouts import normalize
+
+    (c,), d = normalize([_p("a", ["- g1\n- g2\n- g3\n- g4\n- g5"])], "bullet4")
+    assert c.samples == ("g1", "g2", "g3", "g4") and d["n_packed_ambiguous"] == 1
+    (c2,), d2 = normalize([_p("a", ["- g1\n- g2"])], "bullet4")
+    assert len(c2.samples) == 2 and d2["n_cells_short"] == 1
+
+
+def test_normalize_prose1_keeps_first():
+    from wsbench.readouts import normalize
+
+    (c,), d = normalize([_p("a", ["one", "two", "three"])], "prose1")
+    assert c.samples == ("one",) and d["n_samples_trimmed"] == 1
+
+
+def test_normalize_prose1_keeps_multibullet_generation_whole():
+    from wsbench.readouts import normalize
+
+    gen = "- c1\n- c2\n- c3\n- c4"
+    (c,), d = normalize([_p("a", [gen])], "prose1")
+    assert c.samples == (gen,) and d["n_samples_trimmed"] == 0
+
+
+def test_normalize_tokens10_truncates():
+    from wsbench.readouts import Cell, normalize
+
+    toks = tuple(f"t{i}" for i in range(20))
+    sc = tuple(float(20 - i) for i in range(20))
+    (c,), d = normalize([Cell("a", 20, 1, None, toks, sc)], "tokens10")
+    assert c.tokens == toks[:10] and c.scores == sc[:10] and d["n_samples_trimmed"] == 1
+
+
+def _row(samples):
+    return {"id": "x", "layer": 20, "pos": 1, "samples": samples}
+
+
+def _args_for(path, tmp_path, **extra):
+    from conftest import native_args
+
+    from wsbench.judge_config import JudgeConfig, resolve
+
+    return native_args(
+        readouts=path,
+        out=tmp_path / "o",
+        judge=resolve(JudgeConfig()),
+        layers=None,
+        items=None,
+        limit=0,
+        allow_missing=True,
+        concurrency=1,
+        rpm=1.0,
+        dry_run=True,
+        extra=extra,
+    )
+
+
+def test_sidecar_meta_sets_sampling(tmp_path):
+    from conftest import write_jsonl, write_sidecar
+
+    from wsbench import reads
+
+    path = write_jsonl(
+        tmp_path / "r.jsonl",
+        [{"id": "x", "layer": 20, "pos": 1, "samples": ["- a\n- b\n- c\n- d"]}],
+    )
+    write_sidecar(path, sampling="bullet4", reader="rl-onchat-x4", arm="rl-onchat-x4")
+    cells, rep = reads.load(_args_for(path, tmp_path), "jlens_concept_pr")
+    assert rep.sampling == "bullet4" and rep.sampling_source == "declared"
+    assert cells[0].samples == ("a", "b", "c", "d")
+    assert reads.config_stamps(_args_for(path, tmp_path)) == {
+        "reads": "full",
+        "layers_judged": None,
+    }
+
+
+def test_no_sidecar_is_default_never_bullet4(tmp_path):
+    from conftest import write_jsonl
+
+    from wsbench import reads
+
+    path = write_jsonl(
+        tmp_path / "r.jsonl",
+        [{"id": "x", "layer": 20, "pos": 1, "samples": ["- a\n- b\n- c\n- d"]}],
+    )
+    cells, rep = reads.load(_args_for(path, tmp_path), "jlens_concept_pr")
+    assert rep.sampling == "prose1" and rep.sampling_source == "default"
+    assert cells[0].samples == ("- a\n- b\n- c\n- d",)  # never split by shape
+
+
+def test_cli_sampling_overrides_sidecar(tmp_path):
+    from conftest import write_jsonl, write_sidecar
+
+    from wsbench import reads
+
+    path = write_jsonl(
+        tmp_path / "r.jsonl", [{"id": "x", "layer": 20, "pos": 1, "samples": ["one", "two"]}]
+    )
+    write_sidecar(path, sampling="bullet4")
+    cells, rep = reads.load(_args_for(path, tmp_path, sampling="prose1"), "jlens_concept_pr")
+    assert rep.sampling_source == "override" and cells[0].samples == ("one",)
+
+
+def test_bulleted_joins_with_dash_lines():
+    from wsbench.readouts import bulleted
+
+    assert bulleted(["g1", "- g2", " ", "g3 "]) == "- g1\n- g2\n- g3"

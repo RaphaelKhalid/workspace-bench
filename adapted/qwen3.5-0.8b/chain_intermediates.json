@@ -1,0 +1,25 @@
+{
+ "family": "chain_intermediates",
+ "gate": {
+  "k": 10,
+  "max_new": 16,
+  "temperature": 0.8,
+  "top_p": 0.95,
+  "min_correct": 8,
+  "max_leak": 0
+ },
+ "model_dir": "/workspace-vast/camilablank/hf_cache/hub/models--Qwen--Qwen3.6-27B/snapshots/6a9e13bd6fc8f0983b9b99948120bc37f49c13e9",
+ "n": 120,
+ "selection": {
+  "rule": "strict 10/10 + greedy + no leak on seed-last; all depth-3 plain items + 84 depth-2 plain items round-robin over step-kind pairs; the single conditional item dropped",
+  "seed": 0
+ },
+ "source": "evals/workspace-bench/hillclimbing_evals/multi_token/chain_intermediates/items_final.json (source repo; items unchanged)",
+ "read": "the last prompt token (the end of the user turn), chat render, thinking off; layers 20..60 step 4",
+ "adapt": {
+  "model": "qwen3.5-0.8b",
+  "hf_id": "Qwen/Qwen3.5-0.8B",
+  "frozen": "2026-10-24"
+ },
+ "items": []
+}

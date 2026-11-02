@@ -42,6 +42,11 @@ def test_is_content_token() -> None:
     for emoji in [" ✅", "✅", " ✔", " ✓", "🎉", " 😊"]:
         assert is_content_token(emoji), emoji
     assert not is_content_token("️")
+    # plan 0042 items 2/4: U+FFFD byte fragments and special / control tags are junk, not content
+    for junk in ["\ufffd", " \ufffd", "<|fim_middle|>", "<think>", "</tool_response>", "<eos>"]:
+        assert not is_content_token(junk), junk
+    for still in [" access", "访问", "❤️", "✅", " \u2115", "<b"]:
+        assert is_content_token(still), still
 
 
 def test_expected_max_grade_small_set_is_plain_max() -> None:

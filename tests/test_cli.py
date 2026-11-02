@@ -103,14 +103,19 @@ def test_list_with_stub(stub, capsys, tmp_path, monkeypatch):
 
 
 def test_judge_unknown_exit_2(stub, capsys):
-    assert main(["judge", "family=nope", "readouts=x", "out=y"]) == 2
+    assert main(["judge", "opts=aggregate=native", "family=nope", "readouts=x", "out=y"]) == 2
     err = capsys.readouterr().err
     assert "nope" in err and "stub" in err
 
 
 def test_judge_writes_results_and_pinned(stub, readouts, tmp_path, capsys):
     out = tmp_path / "out"
-    assert main(["judge", "family=stub", f"readouts={readouts}", f"out={out}"]) == 0
+    assert (
+        main(
+            ["judge", "opts=aggregate=native", "family=stub", f"readouts={readouts}", f"out={out}"]
+        )
+        == 0
+    )
     r = read_results(out)
     assert r.family == "stub" and r.pinned_instrument and r.complete and r.n_items == 2
     assert r.config["judge_model"] == GEMINI and r.config["reasoning"] == {"effort": "minimal"}
@@ -124,6 +129,7 @@ def test_judge_writes_results_and_pinned(stub, readouts, tmp_path, capsys):
         main(
             [
                 "judge",
+                "opts=aggregate=native",
                 "family=stub",
                 f"readouts={readouts}",
                 f"out={out}",
@@ -141,6 +147,7 @@ def test_judge_flags_pass_through(stub, readouts, tmp_path):
     out = tmp_path / "out"
     argv = [
         "judge",
+        "opts=aggregate=native",
         "family=stub",
         f"readouts={readouts}",
         f"out={out}",
@@ -167,7 +174,7 @@ def test_judge_flags_pass_through(stub, readouts, tmp_path):
 
 def test_judge_default_out(stub, readouts, tmp_path, monkeypatch):
     monkeypatch.chdir(tmp_path)
-    assert main(["judge", "family=stub", f"readouts={readouts}"]) == 0
+    assert main(["judge", "opts=aggregate=native", "family=stub", f"readouts={readouts}"]) == 0
     assert (tmp_path / "outputs" / "stub" / "stub" / "results.json").exists()
 
 
@@ -178,7 +185,18 @@ def test_judge_config_error_exit_3(stub, readouts, tmp_path, monkeypatch):
         raise JudgeConfigError("no key")
 
     monkeypatch.setitem(registry.FAMILIES, "stub", dataclasses.replace(stub, run=boom))
-    assert main(["judge", "family=stub", f"readouts={readouts}", f"out={tmp_path / 'o'}"]) == 3
+    assert (
+        main(
+            [
+                "judge",
+                "opts=aggregate=native",
+                "family=stub",
+                f"readouts={readouts}",
+                f"out={tmp_path / 'o'}",
+            ]
+        )
+        == 3
+    )
 
 
 def test_run_and_report(stub, readouts, tmp_path, capsys):
@@ -197,7 +215,10 @@ def test_run_and_report(stub, readouts, tmp_path, capsys):
     assert other.name == "other"
     root = readouts.parent
     out = tmp_path / "run_out"
-    assert main(["run", "all=True", f"readouts_root={root}", f"out={out}"]) == 0
+    assert (
+        main(["run", "opts=aggregate=native", "all=True", f"readouts_root={root}", f"out={out}"])
+        == 0
+    )
     printed = capsys.readouterr().out
     assert "other" in printed and "skip" in printed.lower()
     assert (out / "stub" / "results.json").exists()
@@ -205,8 +226,18 @@ def test_run_and_report(stub, readouts, tmp_path, capsys):
     summary = (out / "summary.md").read_text()
     assert "| stub |" in summary and "macro" in summary
 
-    assert main(["run", "families=stub", f"readouts_root={root}", f"out={out}"]) == 0
-    assert main(["run", "families=nope", f"readouts_root={root}", f"out={out}"]) == 2
+    assert (
+        main(
+            ["run", "opts=aggregate=native", "families=stub", f"readouts_root={root}", f"out={out}"]
+        )
+        == 0
+    )
+    assert (
+        main(
+            ["run", "opts=aggregate=native", "families=nope", f"readouts_root={root}", f"out={out}"]
+        )
+        == 2
+    )
 
     (out / "summary.md").unlink()
     assert main(["report", f"dir={out}"]) == 0
@@ -216,9 +247,19 @@ def test_run_and_report(stub, readouts, tmp_path, capsys):
 
 
 def test_run_requires_exactly_one_selection(stub, tmp_path, capsys):
-    assert main(["run", f"readouts_root={tmp_path}", f"out={tmp_path / 'o'}"]) == 2
+    assert (
+        main(["run", "opts=aggregate=native", f"readouts_root={tmp_path}", f"out={tmp_path / 'o'}"])
+        == 2
+    )
     assert "exactly one" in capsys.readouterr().err
-    argv = ["run", "all=True", "families=stub", f"readouts_root={tmp_path}", f"out={tmp_path}"]
+    argv = [
+        "run",
+        "opts=aggregate=native",
+        "all=True",
+        "families=stub",
+        f"readouts_root={tmp_path}",
+        f"out={tmp_path}",
+    ]
     assert main(argv) == 2
 
 
@@ -275,12 +316,16 @@ def test_opt_and_aux_models_reach_the_family(readouts, tmp_path, monkeypatch):
         )
     )
     out = tmp_path / "o"
-    argv = ["judge", "family=stub2", f"readouts={readouts}", f"out={out}"]
-    assert main([*argv, "opts=char_cap=5,x=a=b"]) == 0
-    assert seen == {"extra": {"char_cap": "5", "x": "a=b"}, "aux": {"summarizer": "m/s"}}
-    assert main(argv) == 0 and seen["extra"] == {}
+    argv = ["judge", "opts=aggregate=native", "family=stub2", f"readouts={readouts}", f"out={out}"]
+    assert main([*argv, "opts=char_cap=5,x=a=b,aggregate=native"]) == 0
+    # plan 0024: the parsed opts always carry the aggregate mode (here the native opt-out)
+    assert seen == {
+        "extra": {"char_cap": "5", "x": "a=b", "aggregate": "native"},
+        "aux": {"summarizer": "m/s"},
+    }
+    assert main(argv) == 0 and seen["extra"] == {"aggregate": "native"}
     with pytest.raises(SystemExit):
-        main([*argv, "opts=novalue"])
+        main([*argv, "opts=novalue,aggregate=native"])
 
 
 def test_no_command_and_unknown_command_exit_2(capsys):
@@ -291,21 +336,28 @@ def test_no_command_and_unknown_command_exit_2(capsys):
 
 
 def test_missing_required_and_unknown_key_exit_2(stub, capsys):
-    assert main(["judge", "family=stub"]) == 2
+    assert main(["judge", "opts=aggregate=native", "family=stub"]) == 2
     assert "readouts" in capsys.readouterr().err
-    assert main(["judge", "family=stub", "readouts=x", "bogus=1"]) == 2
+    assert main(["judge", "opts=aggregate=native", "family=stub", "readouts=x", "bogus=1"]) == 2
     assert "bogus" in capsys.readouterr().err
 
 
 def test_show_and_help(stub, capsys):
-    argv = ["judge", "family=stub", "readouts=x", "layers=20,36", "dry_run=false", "--show"]
+    argv = [
+        "judge",
+        "family=stub",
+        "readouts=x",
+        "layers=20,36",
+        "dry_run=false",
+        "--show",
+    ]
     assert main(argv) == 0
     shown = json.loads(capsys.readouterr().out)
     assert shown["family"] == "stub" and shown["layers"] == [20, 36] and shown["limit"] == 0
     assert shown["items"] is None and shown["dry_run"] is False and shown["opt"] == []
     assert main(["--help"]) == 0
     assert "usage: wsbench" in capsys.readouterr().out
-    assert main(["run", "-h"]) == 0
+    assert main(["run", "opts=aggregate=native", "-h"]) == 0
     out = capsys.readouterr().out
     assert "readouts_root=<required>" in out and "family_workers=3" in out
 
@@ -325,7 +377,7 @@ def test_show_and_help(stub, capsys):
     ],
 )
 def test_bad_values_exit_2(stub, capsys, override):
-    argv = ["judge", "family=stub", "readouts=x", "out=y", override]
+    argv = ["judge", "opts=aggregate=native", "family=stub", "readouts=x", "out=y", override]
     if override.startswith("readouts="):
         argv.remove("readouts=x")
     assert main(argv) == 2
@@ -334,10 +386,117 @@ def test_bad_values_exit_2(stub, capsys, override):
 
 def test_string_bools_and_numeric_items(stub, readouts, tmp_path):
     out = tmp_path / "out"
-    argv = ["judge", "family=stub", f"readouts={readouts}", f"out={out}", "dry_run=false"]
+    argv = [
+        "judge",
+        "opts=aggregate=native",
+        "family=stub",
+        f"readouts={readouts}",
+        f"out={out}",
+        "dry_run=false",
+    ]
     assert main([*argv, "items=1"]) == 0
     c = read_results(out).config
     assert c["dry_run"] is False and c["items"] == ["1"]
     assert main([*argv[:-1], "dry_run=true", "items=1,2", "layers=36"]) == 0
     c = read_results(out).config
     assert c["dry_run"] is True and c["items"] == ["1", "2"] and c["layers"] == [36]
+
+
+def test_run_all_skips_superseded_but_names_still_run(stub, readouts, tmp_path, capsys):
+    def old_run(args: JudgeArgs) -> FamilyResult:
+        return dataclasses.replace(_stub_run(args), family="old")
+
+    register(
+        EvalSpec(
+            name="old",
+            title="Old",
+            group="logic",
+            bank=Path("evals/old/items.json"),
+            judge=JudgeConfig(model=GEMINI),
+            metric="pass_rate",
+            higher_is_better=True,
+            run=old_run,
+            superseded_by="stub",
+        )
+    )
+    root = readouts.parent
+    (root / "old.jsonl").write_text(readouts.read_text())
+
+    out = tmp_path / "all"
+    assert (
+        main(["run", "opts=aggregate=native", "all=True", f"readouts_root={root}", f"out={out}"])
+        == 0
+    )
+    assert (out / "stub" / "results.json").exists()
+    assert not (out / "old").exists()  # superseded: not part of "all"
+    assert "old" not in json.loads((out / "run.json").read_text())["families"]
+
+    out = tmp_path / "named"
+    assert (
+        main(
+            [
+                "run",
+                "opts=aggregate=native",
+                "families=old,stub",
+                f"readouts_root={root}",
+                f"out={out}",
+            ]
+        )
+        == 0
+    )
+    assert (out / "old" / "results.json").exists()  # an explicit name still runs
+    summary = (out / "summary.md").read_text()
+    assert "| old |" in summary and "old (superseded)" in summary  # ...but stays out of macro
+
+    out = tmp_path / "incl"
+    argv = [
+        "run",
+        "opts=aggregate=native",
+        "all=True",
+        "include_superseded=True",
+        f"readouts_root={root}",
+        f"out={out}",
+    ]
+    assert main(argv) == 0
+    assert (out / "old" / "results.json").exists()
+
+
+def test_report_json_omits_removed_families(tmp_path, capsys):
+    # plan 0033: a removed family's stale results.json is reported only under macro.excluded
+    from wsbench.judge_config import DEFAULT_JUDGE
+    from wsbench.results import write_results
+
+    def res(family: str, value: float) -> FamilyResult:
+        return FamilyResult(
+            family=family,
+            metric="pass_rate",
+            value=value,
+            ci95=(value, value),
+            n_items=10,
+            higher_is_better=True,
+            chance=0.1,
+            chance_label="1/10",
+            complete=True,
+            pinned_instrument=True,
+            config={"judge_model": DEFAULT_JUDGE, "prompt_version": "v1"},
+            counts={
+                "n_expected_cells": 10,
+                "n_missing_cells": 0,
+                "n_unjudged_cells": 0,
+                "n_empty_cells": 0,
+                "skipped_rows": 0,
+                "spend_usd": 0.0,
+            },
+        )
+
+    write_results(tmp_path / "brew_intermediates", res("brew_intermediates", 0.905))
+    write_results(tmp_path / "core", res("core", 0.3))
+    assert main(["report", f"dir={tmp_path}", "json=True"]) == 0
+    d = json.loads(capsys.readouterr().out)
+    assert [f["family"] for f in d["families"]] == ["core"]
+    brew = [e for e in d["macro"]["excluded"] if e["family"] == "brew_intermediates"]
+    assert [e["reason"] for e in brew] == ["removed"]
+    assert d["macro"]["families"] == ["core"]
+    summary = (tmp_path / "summary.md").read_text()
+    assert "| brew_intermediates |" not in summary and "| core |" in summary
+    assert "- brew_intermediates: removed (" in summary

@@ -5,7 +5,9 @@ description = "workspace-bench: evals of whether an activation-reading lens surf
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.12"
-dependencies = ["openai>=1.40", "anthropic>=1.0", "numpy>=1.26", "pydra-config>=0.0.17"]
+dependencies = [
+  "openai>=1.40", "anthropic>=1.0", "numpy>=1.26", "pydra-config>=0.0.17", "pronouncing>=0.2"
+]
 
 [project.optional-dependencies]
 dev = ["pytest>=8", "ruff>=0.6"]
@@ -24,6 +26,8 @@ packages = ["src/wsbench"]
 [tool.ruff]
 line-length = 100
 target-version = "py312"
+# box-only tooling (static viewers, the RunPod data pipelines); not part of the package
+extend-exclude = ["viewer_app", "atlas"]
 
 [tool.ruff.lint]
 select = ["E", "W", "F", "I", "N", "UP", "B", "SIM", "C4", "RUF"]

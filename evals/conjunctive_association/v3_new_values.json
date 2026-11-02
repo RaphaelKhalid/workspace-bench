@@ -1,0 +1,72 @@
+{
+ "model": "claude-opus-5-5",
+ "prompt": "You extend the answer options of a multiple-choice benchmark question. The options describe a story character's compound state; they vary along a few axes. You are given the option list, one axis and its current values. Propose ONE new value for that axis that would make two more equally plausible, same-topic wrong options. Rules: the new value must not be a synonym, near-synonym, instance, hypernym or paraphrase of any current value (or of any value on another axis); it must fit the same topic and situation, and have the same form, length and register as the current values, so the new options read exactly like the others; it must be ordinary, not odd or comic: pick the most common, everyday value of this axis that is not listed yet, the kind a story bank would most likely use, as a plain word or phrase with no extra qualifier (a guesser shown the full option list must find the new options exactly as likely to be right as the current ones). Reply with the new value phrase only, written exactly as it will be substituted for the slot value.",
+ "avoid": {
+  "q04": [
+   "supervisor",
+   "boss",
+   "manager",
+   "spouse",
+   "husband",
+   "wife",
+   "partner",
+   "assistant"
+  ]
+ },
+ "values": {
+  "q01": {
+   "axis": "relation",
+   "slot": "her parent",
+   "new": "her sibling",
+   "why": "The most common close family relation not yet listed is a sibling. It is distinct from child, parent, spouse, mentor and stranger, and it fits the possessive form of 'her parent'."
+  },
+  "q02": {
+   "axis": "content",
+   "slot": "promotion",
+   "new": "pregnancy",
+   "why": "Pregnancy is a common, everyday life milestone a friend might announce. Like the existing values, it plausibly triggers either envy or pride. It is distinct from career, relationship, creative, home and athletic achievements, and it fits the 'her closest friend's recent ___' form."
+  },
+  "q03": {
+   "axis": "relation",
+   "slot": "his parent",
+   "new": "his brother",
+   "why": "A sibling is a common, everyday close relation that is not yet among the listed ones (self, spouse, parent, grown child, closest friend). 'His brother' fits the possessive form of 'his parent' and makes plausible options for both medical test results and a possible layoff."
+  },
+  "q04": {
+   "axis": "relation",
+   "slot": "her sibling",
+   "new": "her roommate",
+   "why": "Roommate is a common everyday relation that is not already listed and is not one of the excluded terms. It fits both templates naturally: conceal her own mistake from her roommate, and take credit for her roommate's work."
+  },
+  "q05": {
+   "axis": "relation",
+   "slot": "her cousin",
+   "new": "her brother-in-law",
+   "why": "A common everyday relation that a commission might be steered to; it is distinct from sibling, cousin, friend, mentor and neighbor, and it fits the 'her X' form."
+  },
+  "q07": {
+   "axis": "relation",
+   "slot": "her sibling",
+   "new": "her boyfriend",
+   "why": "A romantic partner is a common close relation that is distinct from spouse, parent, child, sibling and friend. It is a natural person to hide a health scare from or finally tell, and it matches the form 'her X'."
+  },
+  "q08": {
+   "axis": "motive",
+   "slot": "out of ambition for the directorship",
+   "new": "out of fear of being outshone",
+   "why": "Fear of being overshadowed or exposed as inferior is a common, ordinary workplace sabotage motive. It is distinct from ambition, resentment, revenge, self-protection and shielding, matches the 'out of ...' form, and uses no pronoun."
+  },
+  "q09": {
+   "axis": "relation",
+   "slot": "his sibling",
+   "new": "his grandparent",
+   "why": "A grandparent is a common family relation that isn't on the list yet and fits naturally with a family move being canceled. It has the same possessive form as 'his sibling' and isn't a synonym or subtype of any current value."
+  },
+  "q10": {
+   "axis": "relation",
+   "slot": "her sibling",
+   "new": "her mother",
+   "why": "A parent is a common everyday relation that isn't listed yet, it is distinct from sibling, spouse, friend, colleague and neighbor, and it fits the same possessive form as 'her sibling'."
+  }
+ }
+}

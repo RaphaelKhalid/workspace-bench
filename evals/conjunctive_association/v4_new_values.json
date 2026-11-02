@@ -1,0 +1,875 @@
+{
+ "model": "claude-opus-5-5",
+ "prompt": "You extend the answer options of a multiple-choice benchmark question. The options describe a story character's compound state; they vary along a few axes. You are given the option list, one axis and its current values. Propose 10 NEW values for that axis, each of which would make two more equally plausible, same-topic wrong options. Rules: no new value may be a synonym, near-synonym, instance, hypernym or paraphrase of any current value (or of any value on another axis) or of another new value; each must fit the same topic and situation, and have the same form, length and register as the current values, so the new options read exactly like the others; each must be ordinary, not odd or comic: the most common, everyday values of this axis that are not listed yet, the kind a story bank would most likely use, as a plain word or phrase with no extra qualifier (a guesser shown the full option list must find the new options exactly as likely to be right as the current ones). List them most ordinary first, each written exactly as it will be substituted for the slot value.",
+ "avoid": {
+  "q04": [
+   "supervisor",
+   "boss",
+   "manager",
+   "spouse",
+   "husband",
+   "wife",
+   "partner",
+   "assistant"
+  ],
+  "q02": [
+   "job",
+   "raise",
+   "degree",
+   "award",
+   "prize",
+   "wedding",
+   "weight"
+  ],
+  "q06": [
+   "promotion",
+   "audition",
+   "transfer",
+   "loan",
+   "scholarship",
+   "award",
+   "internship"
+  ],
+  "q08": [
+   "bribe",
+   "jealousy",
+   "envy"
+  ]
+ },
+ "g_target": 22,
+ "max_readout_share": 0.02,
+ "readouts": "/workspace/root/wsb-bp/readouts/final-olens-rl600-x4/conjunctive_association.jsonl",
+ "clusters": {
+  "q01": {
+   "axis": "relation",
+   "slot": "her parent",
+   "slot_options": [
+    "grief over the sudden accidental death of her parent",
+    "guilt over the sudden accidental death of her parent"
+   ],
+   "n_new": 5,
+   "existing_values": [
+    "her sibling",
+    "mentor",
+    "own child",
+    "parent",
+    "spouse",
+    "stranger"
+   ],
+   "round": 2,
+   "feedback": {
+    "top": [
+     "grief over the sudden accidental death of her spouse",
+     "grief over the sudden accidental death of her young child",
+     "grief over the sudden accidental death of her longtime mentor"
+    ],
+    "new_share": 0.007,
+    "n_picks": 150
+   },
+   "round1_proposed": [
+    "her best friend",
+    "her fiancé",
+    "her grandmother",
+    "her twin brother",
+    "her teenage nephew",
+    "her business partner",
+    "her childhood friend",
+    "her coworker",
+    "her niece",
+    "her ex-husband"
+   ],
+   "round1_hits": {
+    "her best friend": 127,
+    "her fiancé": 21,
+    "her grandmother": 62,
+    "her twin brother": 66,
+    "her teenage nephew": 3,
+    "her business partner": 64,
+    "her childhood friend": 127,
+    "her coworker": 14,
+    "her niece": 7,
+    "her ex-husband": 9
+   },
+   "proposed": [
+    "her best friend",
+    "her fiancé",
+    "her grandson",
+    "her boyfriend",
+    "her twin",
+    "her teenage daughter",
+    "her closest friend from childhood",
+    "her husband's young son",
+    "her elderly aunt",
+    "her roommate"
+   ],
+   "n_samples": 8360,
+   "hits": {
+    "her best friend": 127,
+    "her fiancé": 21,
+    "her grandson": 6,
+    "her boyfriend": 8,
+    "her twin": 10,
+    "her teenage daughter": 146,
+    "her closest friend from childhood": 80,
+    "her husband's young son": 106,
+    "her elderly aunt": 36,
+    "her roommate": 3
+   }
+  },
+  "q02": {
+   "axis": "content",
+   "slot": "promotion",
+   "slot_options": [
+    "envy at her closest friend's recent promotion",
+    "pride at her closest friend's recent promotion"
+   ],
+   "n_new": 5,
+   "existing_values": [
+    "book prize",
+    "engagement",
+    "marathon finish",
+    "new house",
+    "pregnancy",
+    "promotion"
+   ],
+   "round": 2,
+   "feedback": {
+    "top": [
+     "envy at her closest friend's recent promotion",
+     "envy at her closest friend's recent engagement",
+     "envy at her closest friend's recent pregnancy"
+    ],
+    "new_share": 0.0,
+    "n_picks": 150
+   },
+   "round1_proposed": [
+    "graduation",
+    "new car",
+    "pay rise",
+    "acceptance letter",
+    "art exhibition",
+    "business launch",
+    "film role",
+    "scholarship",
+    "record deal",
+    "trip abroad"
+   ],
+   "round1_hits": {
+    "graduation": 27,
+    "new car": 56,
+    "pay rise": 15,
+    "acceptance letter": 145,
+    "art exhibition": 5,
+    "business launch": 2,
+    "film role": 106,
+    "scholarship": 7,
+    "record deal": 12,
+    "trip abroad": 18
+   },
+   "proposed": [
+    "new relationship",
+    "trip abroad",
+    "new baby",
+    "move to the city",
+    "acceptance letter",
+    "new apartment",
+    "new boyfriend",
+    "vacation",
+    "new car",
+    "graduation"
+   ],
+   "n_samples": 8360,
+   "hits": {
+    "new relationship": 183,
+    "trip abroad": 18,
+    "new baby": 12,
+    "move to the city": 29,
+    "acceptance letter": 145,
+    "new apartment": 24,
+    "new boyfriend": 25,
+    "vacation": 26,
+    "new car": 56,
+    "graduation": 27
+   }
+  },
+  "q03": {
+   "axis": "relation",
+   "slot": "his parent",
+   "slot_options": [
+    "dread while awaiting medical test results concerning his parent",
+    "dread while awaiting a possible layoff concerning his parent"
+   ],
+   "n_new": 5,
+   "existing_values": [
+    "closest friend",
+    "his brother",
+    "own child",
+    "parent",
+    "self",
+    "spouse"
+   ],
+   "round": 2,
+   "feedback": {
+    "top": [
+     "dread while awaiting medical test results concerning himself",
+     "dread while awaiting medical test results concerning his spouse",
+     "dread while awaiting a possible layoff concerning himself"
+    ],
+    "new_share": 0.0,
+    "n_picks": 150
+   },
+   "round1_proposed": [
+    "his sister",
+    "his fiancée",
+    "his girlfriend",
+    "his grandmother",
+    "his grandfather",
+    "his uncle",
+    "his aunt",
+    "his cousin",
+    "his business partner",
+    "his roommate"
+   ],
+   "round1_hits": {
+    "his sister": 79,
+    "his fiancée": 69,
+    "his girlfriend": 83,
+    "his grandmother": 28,
+    "his grandfather": 11,
+    "his uncle": 14,
+    "his aunt": 17,
+    "his cousin": 15,
+    "his business partner": 118,
+    "his roommate": 14
+   },
+   "round2a_proposed": [
+    "his fiancée",
+    "his girlfriend",
+    "his business partner",
+    "his best friend's wife",
+    "his longtime partner",
+    "his coworker",
+    "his roommate",
+    "his mentor",
+    "his stepson",
+    "his ex-wife"
+   ],
+   "round2a_hits": {
+    "his fiancée": 69,
+    "his girlfriend": 83,
+    "his business partner": 118,
+    "his best friend's wife": 418,
+    "his longtime partner": 118,
+    "his coworker": 10,
+    "his roommate": 14,
+    "his mentor": 12,
+    "his stepson": 0,
+    "his ex-wife": 19
+   },
+   "proposed": [
+    "his sister",
+    "his business partner",
+    "his roommate",
+    "his coworker",
+    "his mentor",
+    "his nephew",
+    "his cousin",
+    "his neighbor",
+    "his grandson",
+    "his boss"
+   ],
+   "n_samples": 8360,
+   "hits": {
+    "his sister": 79,
+    "his business partner": 118,
+    "his roommate": 14,
+    "his coworker": 10,
+    "his mentor": 12,
+    "his nephew": 1,
+    "his cousin": 15,
+    "his neighbor": 84,
+    "his grandson": 8,
+    "his boss": 45
+   }
+  },
+  "q04": {
+   "axis": "relation",
+   "slot": "her sibling",
+   "slot_options": [
+    "the intent to conceal her own mistake from her sibling",
+    "the intent to take credit for her sibling's work"
+   ],
+   "n_new": 5,
+   "existing_values": [
+    "client",
+    "closest friend",
+    "colleague",
+    "her roommate",
+    "mentor",
+    "sibling"
+   ],
+   "round": 2,
+   "feedback": {
+    "top": [
+     "a colleague's intent to take credit for her work",
+     "her longtime mentor's intent to take credit for her work",
+     "the intent to take credit for a colleague's work"
+    ],
+    "new_share": 0.0,
+    "n_picks": 150
+   },
+   "round1_proposed": [
+    "her cousin",
+    "her neighbor",
+    "her student",
+    "her classmate",
+    "her teammate",
+    "her intern",
+    "her landlord",
+    "her business associate",
+    "her childhood friend",
+    "her aunt"
+   ],
+   "round1_hits": {
+    "her cousin": 21,
+    "her neighbor": 51,
+    "her student": 20,
+    "her classmate": 2,
+    "her teammate": 4,
+    "her intern": 43,
+    "her landlord": 2,
+    "her business associate": 4,
+    "her childhood friend": 272,
+    "her aunt": 31
+   },
+   "round2a_proposed": [
+    "her coworker",
+    "her teammate",
+    "her collaborator",
+    "her intern",
+    "her protégé",
+    "her co-author",
+    "her lab mate",
+    "her business associate",
+    "her former teacher",
+    "her research advisor"
+   ],
+   "round2a_hits": {
+    "her coworker": 19,
+    "her teammate": 4,
+    "her collaborator": 19,
+    "her intern": 43,
+    "her protégé": 2,
+    "her co-author": 5,
+    "her lab mate": 1,
+    "her business associate": 4,
+    "her former teacher": 32,
+    "her research advisor": 5
+   },
+   "proposed": [
+    "her rival",
+    "her protégé",
+    "her mother",
+    "her father",
+    "her daughter",
+    "her fiancé",
+    "her best friend's brother",
+    "her apprentice",
+    "her business rival",
+    "her investor"
+   ],
+   "n_samples": 8360,
+   "hits": {
+    "her rival": 41,
+    "her protégé": 2,
+    "her mother": 96,
+    "her father": 165,
+    "her daughter": 83,
+    "her fiancé": 19,
+    "her best friend's brother": 74,
+    "her apprentice": 2,
+    "her business rival": 41,
+    "her investor": 15
+   }
+  },
+  "q05": {
+   "axis": "relation",
+   "slot": "her cousin",
+   "slot_options": [
+    "favoritism steering the commission to her cousin, to repay an old private debt",
+    "favoritism steering the commission to her cousin, in exchange for a promised kickback"
+   ],
+   "n_new": 5,
+   "existing_values": [
+    "closest friend",
+    "cousin",
+    "her brother-in-law",
+    "mentor",
+    "neighbor",
+    "sibling"
+   ],
+   "round": 2,
+   "feedback": {
+    "top": [
+     "favoritism steering the commission to her nephew, to repay an old private debt",
+     "favoritism steering the commission to her former mentor, to repay an old private debt",
+     "favoritism steering the commission to her nephew, in exchange for a promised kickback"
+    ],
+    "new_share": 0.367,
+    "n_picks": 150
+   },
+   "round1_proposed": [
+    "her nephew",
+    "her niece",
+    "her uncle",
+    "her aunt",
+    "her son-in-law",
+    "her former classmate",
+    "her old roommate",
+    "her godfather",
+    "her stepbrother",
+    "her sister-in-law"
+   ],
+   "round1_hits": {
+    "her nephew": 3,
+    "her niece": 11,
+    "her uncle": 14,
+    "her aunt": 10,
+    "her son-in-law": 0,
+    "her former classmate": 2,
+    "her old roommate": 3,
+    "her godfather": 1,
+    "her stepbrother": 0,
+    "her sister-in-law": 0
+   },
+   "proposed": [
+    "her former colleague",
+    "her old classmate",
+    "her business partner",
+    "her childhood friend",
+    "her former roommate",
+    "her former student",
+    "her landlord",
+    "her old teammate",
+    "her godparent",
+    "her former boss"
+   ],
+   "n_samples": 8360,
+   "hits": {
+    "her former colleague": 98,
+    "her old classmate": 2,
+    "her business partner": 46,
+    "her childhood friend": 170,
+    "her former roommate": 3,
+    "her former student": 28,
+    "her landlord": 17,
+    "her old teammate": 1,
+    "her godparent": 0,
+    "her former boss": 23
+   }
+  },
+  "q07": {
+   "axis": "relation",
+   "slot": "her sibling",
+   "slot_options": [
+    "relief at her own reassuring medical news, and the intent to keep the scare hidden from her sibling",
+    "relief at her own reassuring medical news, and the intent to finally tell her sibling about the scare"
+   ],
+   "n_new": 5,
+   "existing_values": [
+    "closest friend",
+    "her boyfriend",
+    "own child",
+    "parent",
+    "sibling",
+    "spouse"
+   ],
+   "round": 2,
+   "feedback": {
+    "top": [
+     "relief at her own reassuring medical news, and the intent to keep the scare hidden from her spouse",
+     "relief at her own reassuring medical news, and the intent to finally tell her spouse about the scare",
+     "relief at her own reassuring medical news, and the intent to keep the scare hidden from her closest friend"
+    ],
+    "new_share": 0.0,
+    "n_picks": 150
+   },
+   "round1_proposed": [
+    "her coworker",
+    "her roommate",
+    "her aunt",
+    "her cousin",
+    "her grandmother",
+    "her fiancé",
+    "her neighbor",
+    "her boss",
+    "her uncle",
+    "her mother-in-law"
+   ],
+   "round1_hits": {
+    "her coworker": 3,
+    "her roommate": 13,
+    "her aunt": 16,
+    "her cousin": 16,
+    "her grandmother": 23,
+    "her fiancé": 33,
+    "her neighbor": 44,
+    "her boss": 12,
+    "her uncle": 26,
+    "her mother-in-law": 3
+   },
+   "round2a_proposed": [
+    "her husband",
+    "her girlfriend",
+    "her fiancé",
+    "her partner",
+    "her best friend",
+    "her mother",
+    "her daughter",
+    "her son",
+    "her sister",
+    "her father"
+   ],
+   "round2a_hits": {
+    "her husband": 445,
+    "her girlfriend": 17,
+    "her fiancé": 33,
+    "her partner": 63,
+    "her best friend": 336,
+    "her mother": 245,
+    "her daughter": 165,
+    "her son": 125,
+    "her sister": 146,
+    "her father": 198
+   },
+   "proposed": [
+    "her ex-husband",
+    "her stepdaughter",
+    "her mother-in-law",
+    "her grandchild",
+    "her coworker",
+    "her roommate",
+    "her niece",
+    "her aunt",
+    "her cousin",
+    "her neighbor"
+   ],
+   "n_samples": 8360,
+   "hits": {
+    "her ex-husband": 45,
+    "her stepdaughter": 0,
+    "her mother-in-law": 3,
+    "her grandchild": 0,
+    "her coworker": 3,
+    "her roommate": 13,
+    "her niece": 5,
+    "her aunt": 16,
+    "her cousin": 16,
+    "her neighbor": 44
+   }
+  },
+  "q08": {
+   "axis": "motive",
+   "slot": "out of ambition for the directorship",
+   "slot_options": [
+    "the intent to sabotage a colleague's demonstration out of ambition for the directorship, while believing he is unaware",
+    "the intent to sabotage a colleague's demonstration out of ambition for the directorship, while believing he has begun to suspect"
+   ],
+   "n_new": 5,
+   "existing_values": [
+    "ambition",
+    "out of fear of being outshone",
+    "resentment",
+    "revenge",
+    "self-protection",
+    "shielding"
+   ],
+   "round": 2,
+   "feedback": {
+    "top": [
+     "a colleague's intent to sabotage her demonstration out of self-protection, to keep the colleague's own signed-off error buried, while believing she is unaware",
+     "the intent to sabotage a colleague's demonstration out of self-protection, to keep her own signed-off error buried, while believing he is unaware",
+     "the intent to sabotage a colleague's demonstration out of self-protection, to keep her own signed-off error buried, while believing he has begun to suspect"
+    ],
+    "new_share": 0.007,
+    "n_picks": 150
+   },
+   "round1_proposed": [
+    "out of greed for a promised bonus",
+    "under pressure from a rival company",
+    "out of loyalty to the department head",
+    "to settle a gambling debt",
+    "out of ideological opposition to the project",
+    "to win back a former partner",
+    "under blackmail over an old affair",
+    "out of contempt for the project's safety shortcuts",
+    "to secure a transfer to headquarters",
+    "out of grief over a cancelled research program"
+   ],
+   "round1_hits": {
+    "out of greed for a promised bonus": 23,
+    "under pressure from a rival company": 38,
+    "out of loyalty to the department head": 53,
+    "to settle a gambling debt": 2,
+    "out of ideological opposition to the project": 3,
+    "to win back a former partner": 55,
+    "under blackmail over an old affair": 2,
+    "out of contempt for the project's safety shortcuts": 3,
+    "to secure a transfer to headquarters": 186,
+    "out of grief over a cancelled research program": 26
+   },
+   "proposed": [
+    "out of guilt over a safety flaw the demonstration would expose, to keep it from going live",
+    "to protect a secret affair the demonstration logs would reveal",
+    "out of loyalty to a former mentor whose project would be cancelled",
+    "to keep the company's falsified test results from coming to light",
+    "out of duty to stop a product believed to be dangerous",
+    "under blackmail by an executive holding a past mistake over the saboteur",
+    "to cover up a data breach traced back to the saboteur's own code",
+    "to save a struggling spouse's competing startup",
+    "to protect a whistleblower whose evidence the demonstration would destroy",
+    "out of a promise to a dying founder to keep the original design alive"
+   ],
+   "n_samples": 8360,
+   "hits": {
+    "out of guilt over a safety flaw the demonstration would expose, to keep it from going live": 62,
+    "to protect a secret affair the demonstration logs would reveal": 32,
+    "out of loyalty to a former mentor whose project would be cancelled": 53,
+    "to keep the company's falsified test results from coming to light": 46,
+    "out of duty to stop a product believed to be dangerous": 5,
+    "under blackmail by an executive holding a past mistake over the saboteur": 2,
+    "to cover up a data breach traced back to the saboteur's own code": 41,
+    "to save a struggling spouse's competing startup": 68,
+    "to protect a whistleblower whose evidence the demonstration would destroy": 32,
+    "out of a promise to a dying founder to keep the original design alive": 22
+   }
+  },
+  "q09": {
+   "axis": "relation",
+   "slot": "his sibling",
+   "slot_options": [
+    "his belief that his sibling privately feels relief that the move was canceled",
+    "his belief that his sibling privately feels disappointment that the move was canceled"
+   ],
+   "n_new": 5,
+   "existing_values": [
+    "closest friend",
+    "his grandparent",
+    "own child",
+    "parent",
+    "sibling",
+    "spouse"
+   ],
+   "round": 2,
+   "feedback": {
+    "top": [
+     "his belief that his spouse privately feels relief that the move was canceled",
+     "his spouse's belief that he privately feels relief that the move was canceled",
+     "his belief that his spouse privately feels disappointment that the move was canceled"
+    ],
+    "new_share": 0.0,
+    "n_picks": 150
+   },
+   "round1_proposed": [
+    "his cousin",
+    "his uncle",
+    "his aunt",
+    "his roommate",
+    "his neighbor",
+    "his coworker",
+    "his girlfriend",
+    "his business partner",
+    "his teenage son",
+    "his mentor"
+   ],
+   "round1_hits": {
+    "his cousin": 15,
+    "his uncle": 29,
+    "his aunt": 22,
+    "his roommate": 21,
+    "his neighbor": 49,
+    "his coworker": 1,
+    "his girlfriend": 21,
+    "his business partner": 103,
+    "his teenage son": 103,
+    "his mentor": 6
+   },
+   "proposed": [
+    "his fiancée",
+    "his girlfriend",
+    "his business partner",
+    "his boss",
+    "his teenage son",
+    "his teenage daughter",
+    "his mother-in-law",
+    "his best man",
+    "his coworker",
+    "his landlord"
+   ],
+   "n_samples": 8360,
+   "hits": {
+    "his fiancée": 24,
+    "his girlfriend": 21,
+    "his business partner": 103,
+    "his boss": 9,
+    "his teenage son": 103,
+    "his teenage daughter": 110,
+    "his mother-in-law": 0,
+    "his best man": 286,
+    "his coworker": 1,
+    "his landlord": 2
+   }
+  },
+  "q10": {
+   "axis": "relation",
+   "slot": "her sibling",
+   "slot_options": [
+    "her belief that her sibling deliberately destroyed her unfinished book",
+    "her belief that her sibling accidentally destroyed her unfinished book"
+   ],
+   "n_new": 5,
+   "existing_values": [
+    "closest friend",
+    "colleague",
+    "her mother",
+    "neighbor",
+    "sibling",
+    "spouse"
+   ],
+   "round": 2,
+   "feedback": {
+    "top": [
+     "her belief that her closest friend deliberately destroyed her unfinished book",
+     "her belief that her spouse deliberately destroyed her unfinished book",
+     "her belief that her sibling deliberately destroyed her unfinished book"
+    ],
+    "new_share": 0.0,
+    "n_picks": 150
+   },
+   "round1_proposed": [
+    "her father",
+    "her daughter",
+    "her son",
+    "her roommate",
+    "her editor",
+    "her cousin",
+    "her aunt",
+    "her mentor",
+    "her grandmother",
+    "her landlord"
+   ],
+   "round1_hits": {
+    "her father": 187,
+    "her daughter": 146,
+    "her son": 94,
+    "her roommate": 87,
+    "her editor": 11,
+    "her cousin": 34,
+    "her aunt": 26,
+    "her mentor": 17,
+    "her grandmother": 24,
+    "her landlord": 6
+   },
+   "proposed": [
+    "her father",
+    "her daughter",
+    "her son",
+    "her roommate",
+    "her boyfriend",
+    "her best friend's husband",
+    "her stepmother",
+    "her brother-in-law",
+    "her ex-husband",
+    "her assistant"
+   ],
+   "n_samples": 8360,
+   "hits": {
+    "her father": 187,
+    "her daughter": 146,
+    "her son": 94,
+    "her roommate": 87,
+    "her boyfriend": 18,
+    "her best friend's husband": 488,
+    "her stepmother": 0,
+    "her brother-in-law": 4,
+    "her ex-husband": 34,
+    "her assistant": 321
+   }
+  },
+  "q06": {
+   "axis": "content",
+   "slot": "the job offer",
+   "slot_options": [
+    "her mistaken belief that the job offer is still undecided",
+    "her unconfirmed but accurate suspicion that the job offer has already been settled"
+   ],
+   "n_new": 6,
+   "existing_values": [
+    "apartment",
+    "casting",
+    "grant",
+    "job offer",
+    "team selection"
+   ],
+   "round": 2,
+   "feedback": {
+    "top": [
+     "her mistaken belief that the job offer is still undecided",
+     "her unconfirmed but accurate suspicion that the job offer has already been settled",
+     "her unconfirmed but accurate suspicion that the grant has already been settled"
+    ],
+    "new_share": 0.06,
+    "n_picks": 150
+   },
+   "round1_proposed": [
+    "the admission",
+    "the contract",
+    "the election",
+    "the adoption",
+    "the court ruling",
+    "the competition",
+    "the book deal",
+    "the lease renewal",
+    "the custody decision",
+    "the visa application"
+   ],
+   "round1_hits": {
+    "the admission": 5,
+    "the contract": 14,
+    "the election": 6,
+    "the adoption": 2,
+    "the court ruling": 1,
+    "the competition": 99,
+    "the book deal": 37,
+    "the lease renewal": 5,
+    "the custody decision": 190,
+    "the visa application": 89
+   },
+   "proposed": [
+    "the hiring decision",
+    "the lease",
+    "the partnership",
+    "the bid",
+    "the custody case",
+    "the visa application",
+    "the funding",
+    "the residency match",
+    "the house sale",
+    "the board appointment"
+   ],
+   "n_samples": 8360,
+   "hits": {
+    "the hiring decision": 190,
+    "the lease": 31,
+    "the partnership": 4,
+    "the bid": 17,
+    "the custody case": 11,
+    "the visa application": 89,
+    "the funding": 113,
+    "the residency match": 65,
+    "the house sale": 46,
+    "the board appointment": 18
+   }
+  }
+ }
+}
