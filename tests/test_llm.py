@@ -240,6 +240,27 @@ def test_openrouter_permission_denied_still_raises(keys, fast, monkeypatch):
         stream_json([("s", "u")], schema=SCHEMA, model=GEMINI, on_result=lambda i, r: None)
 
 
+def test_openrouter_403_with_other_metadata_still_raises(keys, fast, monkeypatch):
+    err = PermissionDeniedError("forbidden", body={"metadata": {"provider_name": "x", "raw": "y"}})
+    _install(monkeypatch, FakeOpenRouter([err]))
+    with pytest.raises(JudgeConfigError):
+        stream_json([("s", "u")], schema=SCHEMA, model=GEMINI, on_result=lambda i, r: None)
+
+
+def test_moderation_flag_read_from_a_real_sdk_error():
+    """The OpenAI SDK unwraps the response's ``error`` object into ``e.body``."""
+    openai = pytest.importorskip("openai")
+    httpx = pytest.importorskip("httpx")
+    client = openai.OpenAI(api_key="x", base_url="https://openrouter.ai/api/v1")
+    resp = httpx.Response(403, request=httpx.Request("POST", "https://openrouter.ai/api/v1/x"))
+    meta = {"reasons": ["violence"], "flagged_input": "x", "provider_name": "p", "model_slug": "m"}
+    flagged = {"error": {"code": 403, "message": "flagged", "metadata": meta}}
+    e = client._make_status_error("flagged", body=flagged, response=resp)
+    assert type(e).__name__ == "PermissionDeniedError" and llm._moderation_flagged(e)
+    other = client._make_status_error("no", body={"error": {"message": "no"}}, response=resp)
+    assert not llm._moderation_flagged(other)
+
+
 def test_openrouter_non_object_after_retries(keys, fast, monkeypatch):
     fake = FakeOpenRouter([_or_response("[1, 2]")] * 12)
     got, spend = _collect([("s", "u")], GEMINI, fake, monkeypatch)
